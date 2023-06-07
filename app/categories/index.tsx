@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { FlashList } from "@shopify/flash-list";
-import { ListItem, Spinner, XStack, YStack } from "tamagui";
+import { ListItem, Spinner, YStack } from "tamagui";
 import { Wrench } from "@tamagui/lucide-icons";
 
 import { supabase } from "../../lib/supabase";
@@ -9,24 +9,21 @@ import { SvgXml } from "react-native-svg";
 
 export default function Index() {
   const [isLoading, setLoading] = useState(true);
-  const [tools, setTools] = useState<
+  const [categories, setCategories] = useState<
     {
       id: string;
       name: string;
       slug: string;
-      website: string;
-      color?: string;
-      icon?: string;
     }[]
   >([]);
 
   const getTools = async () => {
     try {
       const { data, error } = await supabase
-        .from("tools")
-        .select("id, name, slug, color, icon, website")
+        .from("categories")
+        .select("id, name, slug")
         .order("name");
-      setTools(data);
+      setCategories(data);
     } catch (error) {
       console.error(error);
     } finally {
@@ -48,32 +45,13 @@ export default function Index() {
           keyExtractor={({ id }) => id}
           renderItem={({ item }) => {
             return (
-              <Link href={`/tools/${item.slug}`}>
-                <ListItem
-                  icon={
-                    item.icon ? (
-                      <SvgXml
-                        xml={item.icon}
-                        width="20"
-                        height="20"
-                        color={item.color ?? "#000000"}
-                      />
-                    ) : (
-                      <Wrench
-                        color={item.color ?? "#000000"}
-                        width="20"
-                        height="20"
-                      />
-                    )
-                  }
-                  title={item.name}
-                  subTitle={item.website}
-                />
+              <Link href={`/categories/${item.slug}`}>
+                <ListItem title={item.name} subTitle={item.slug} />
               </Link>
             );
           }}
-          estimatedItemSize={tools.length}
-          data={tools}
+          estimatedItemSize={categories.length}
+          data={categories}
         />
       </YStack>
     </>
