@@ -9,6 +9,9 @@ overrides:
   metro-resolver: 0.76.5
 
 dependencies:
+  '@babel/plugin-proposal-export-namespace-from':
+    specifier: ^7.18.9
+    version: 7.18.9(@babel/core@7.20.2)
   '@shopify/flash-list':
     specifier: 1.4.0
     version: 1.4.0(@babel/runtime@7.22.3)(react-native@0.71.8)(react@18.2.0)
@@ -502,6 +505,17 @@ packages:
       '@babel/core': 7.20.2
       '@babel/helper-plugin-utils': 7.21.5
       '@babel/plugin-syntax-export-default-from': 7.18.6(@babel/core@7.20.2)
+    dev: false
+
+  /@babel/plugin-proposal-export-namespace-from@7.18.9(@babel/core@7.20.2):
+    resolution: {integrity: sha512-k1NtHyOMvlDDFeb9G5PhUXuGj8m/wiwojgQVEhJ/fsVsMCpLyOP4h0uGEjYJKrRI+EVPlb5Jk+Gt9P97lOGwtA==}
+    engines: {node: '>=6.9.0'}
+    peerDependencies:
+      '@babel/core': ^7.0.0-0
+    dependencies:
+      '@babel/core': 7.20.2
+      '@babel/helper-plugin-utils': 7.21.5
+      '@babel/plugin-syntax-export-namespace-from': 7.8.3(@babel/core@7.20.2)
     dev: false
 
   /@babel/plugin-proposal-nullish-coalescing-operator@7.18.6(@babel/core@7.20.2):
