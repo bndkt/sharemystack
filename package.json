@@ -6,7 +6,8 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "doc": "npx expo-doctor@latest"
+    "doc": "npx expo-doctor@latest",
+    "build": "eas build --profile development-simulator --platform ios"
   },
   "dependencies": {
     "expo": "~48.0.18",
