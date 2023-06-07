@@ -9,6 +9,9 @@ overrides:
   metro-resolver: 0.76.5
 
 dependencies:
+  '@shopify/flash-list':
+    specifier: 1.4.0
+    version: 1.4.0(@babel/runtime@7.22.3)(react-native@0.71.8)(react@18.2.0)
   '@supabase/supabase-js':
     specifier: ^2.24.0
     version: 2.24.0
@@ -2400,6 +2403,20 @@ packages:
     dependencies:
       component-type: 1.2.1
       join-component: 1.1.0
+    dev: false
+
+  /@shopify/flash-list@1.4.0(@babel/runtime@7.22.3)(react-native@0.71.8)(react@18.2.0):
+    resolution: {integrity: sha512-PvPOyk353LuETFnNA038+QaJsAFlCQ2TYC7DHP3YnYqTX72g2BM6qLoLsPaptXKuoXX+dinOo0MbEm7HDjTy1g==}
+    peerDependencies:
+      '@babel/runtime': '*'
+      react: '*'
+      react-native: '*'
+    dependencies:
+      '@babel/runtime': 7.22.3
+      react: 18.2.0
+      react-native: 0.71.8(@babel/core@7.20.2)(@babel/preset-env@7.22.4)(react@18.2.0)
+      recyclerlistview: 4.2.0(react-native@0.71.8)(react@18.2.0)
+      tslib: 2.4.0
     dev: false
 
   /@sideway/address@4.1.4:
@@ -6822,6 +6839,19 @@ packages:
       tslib: 2.5.3
     dev: false
 
+  /recyclerlistview@4.2.0(react-native@0.71.8)(react@18.2.0):
+    resolution: {integrity: sha512-uuBCi0c+ggqHKwrzPX4Z/mJOzsBbjZEAwGGmlwpD/sD7raXixdAbdJ6BTcAmuWG50Cg4ru9p12M94Njwhr/27A==}
+    peerDependencies:
+      react: '>= 15.2.1'
+      react-native: '>= 0.30.0'
+    dependencies:
+      lodash.debounce: 4.0.8
+      prop-types: 15.8.1
+      react: 18.2.0
+      react-native: 0.71.8(@babel/core@7.20.2)(@babel/preset-env@7.22.4)(react@18.2.0)
+      ts-object-utils: 0.0.5
+    dev: false
+
   /regenerate-unicode-properties@10.1.0:
     resolution: {integrity: sha512-d1VudCLoIGitcU/hEg2QqvyGZQmdC0Lf8BqdOMXGFSvJP4bNV1+XqbPQeHHLD51Jh4QJJ225dlIFvY4Ly6MXmQ==}
     engines: {node: '>=4'}
@@ -7644,6 +7674,14 @@ packages:
 
   /ts-interface-checker@0.1.13:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
+    dev: false
+
+  /ts-object-utils@0.0.5:
+    resolution: {integrity: sha512-iV0GvHqOmilbIKJsfyfJY9/dNHCs969z3so90dQWsO1eMMozvTpnB1MEaUbb3FYtZTGjv5sIy/xmslEz0Rg2TA==}
+    dev: false
+
+  /tslib@2.4.0:
+    resolution: {integrity: sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==}
     dev: false
 
   /tslib@2.5.3:
