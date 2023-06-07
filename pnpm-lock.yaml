@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@types/react':
+    specifier: ~18.0.27
+    version: 18.0.38
   expo:
     specifier: ~48.0.18
     version: 48.0.18(@babel/core@7.20.2)
@@ -16,7 +19,7 @@ dependencies:
     version: 4.0.1(expo@48.0.18)
   expo-router:
     specifier: ^1.5.3
-    version: 1.5.3(expo-constants@14.2.1)(expo-linking@4.0.1)(expo-modules-autolinking@1.2.0)(expo-status-bar@1.4.4)(expo@48.0.18)(metro@0.76.5)(react-dom@18.2.0)(react-native-gesture-handler@2.9.0)(react-native-safe-area-context@4.5.0)(react-native-screens@3.20.0)(react-native@0.71.8)(react@18.2.0)
+    version: 1.5.3(@types/react@18.0.38)(expo-constants@14.2.1)(expo-linking@4.0.1)(expo-modules-autolinking@1.2.0)(expo-status-bar@1.4.4)(expo@48.0.18)(metro@0.76.5)(react-dom@18.2.0)(react-native-gesture-handler@2.9.0)(react-native-safe-area-context@4.5.0)(react-native-screens@3.20.0)(react-native@0.71.8)(react@18.2.0)
   expo-status-bar:
     specifier: ~1.4.4
     version: 1.4.4
@@ -35,6 +38,9 @@ dependencies:
   react-native-screens:
     specifier: ~3.20.0
     version: 3.20.0(react-native@0.71.8)(react@18.2.0)
+  typescript:
+    specifier: ^4.9.4
+    version: 4.9.5
 
 devDependencies:
   '@babel/core':
@@ -2056,7 +2062,7 @@ packages:
       rimraf: 3.0.2
     dev: false
 
-  /@radix-ui/react-compose-refs@1.0.1(react@18.2.0):
+  /@radix-ui/react-compose-refs@1.0.1(@types/react@18.0.38)(react@18.2.0):
     resolution: {integrity: sha512-fDSBgd44FKHa1FRMU59qBMPFcl2PZE+2nmqunj+BWFyYYjnhIDWL2ItDs3rrbJDQOtzt5nIebLCQc4QRfz6LJw==}
     peerDependencies:
       '@types/react': '*'
@@ -2066,10 +2072,11 @@ packages:
         optional: true
     dependencies:
       '@babel/runtime': 7.22.3
+      '@types/react': 18.0.38
       react: 18.2.0
     dev: false
 
-  /@radix-ui/react-slot@1.0.2(react@18.2.0):
+  /@radix-ui/react-slot@1.0.2(@types/react@18.0.38)(react@18.2.0):
     resolution: {integrity: sha512-YeTpuq4deV+6DusvVUW4ivBgnkHwECUu0BiN43L5UCDFgdhsRUWAghhTF5MbvNTPzmiFOx90asDSUjWuCNapwg==}
     peerDependencies:
       '@types/react': '*'
@@ -2079,7 +2086,8 @@ packages:
         optional: true
     dependencies:
       '@babel/runtime': 7.22.3
-      '@radix-ui/react-compose-refs': 1.0.1(react@18.2.0)
+      '@radix-ui/react-compose-refs': 1.0.1(@types/react@18.0.38)(react@18.2.0)
+      '@types/react': 18.0.38
       react: 18.2.0
     dev: false
 
@@ -2426,8 +2434,24 @@ packages:
     resolution: {integrity: sha512-JJulVEQXmiY9Px5axXHeYGLSjhkZEnD+MDPDGbCbIAbMslkKwmygtZFy1X6s/075Yo94sf8GuSlFfPzysQrWZQ==}
     dev: false
 
+  /@types/prop-types@15.7.5:
+    resolution: {integrity: sha512-JCB8C6SnDoQf0cNycqd/35A7MjcnK+ZTqE7judS6o7utxUCg6imJg3QK2qzHKszlTjcj2cn+NwMB2i96ubpj7w==}
+    dev: false
+
   /@types/qs@6.9.7:
     resolution: {integrity: sha512-FGa1F62FT09qcrueBA6qYTrJPVDzah9a+493+o2PCXsesWHIn27G98TsSMs3WPNbZIEj4+VJf6saSFpvD+3Zsw==}
+    dev: false
+
+  /@types/react@18.0.38:
+    resolution: {integrity: sha512-ExsidLLSzYj4cvaQjGnQCk4HFfVT9+EZ9XZsQ8Hsrcn8QNgXtpZ3m9vSIC2MWtx7jHictK6wYhQgGh6ic58oOw==}
+    dependencies:
+      '@types/prop-types': 15.7.5
+      '@types/scheduler': 0.16.3
+      csstype: 3.1.2
+    dev: false
+
+  /@types/scheduler@0.16.3:
+    resolution: {integrity: sha512-5cJ8CB4yAx7BH1oMvdU0Jh9lrEXyPkar6F9G/ERswkCuvP4KQZfZkSjcMbAICCpQTN4OuZn8tz0HiKv9TGZgrQ==}
     dev: false
 
   /@types/stack-utils@2.0.1:
@@ -3363,6 +3387,10 @@ packages:
     engines: {node: '>=8'}
     dev: false
 
+  /csstype@3.1.2:
+    resolution: {integrity: sha512-I7K1Uu0MBPzaFKg4nI5Q7Vs2t+3gWWW648spaF+Rg7pI9ds18Ugn+lvg4SHczUdKlHI5LWBXyqfS8+DufyBsgQ==}
+    dev: false
+
   /dag-map@1.0.2:
     resolution: {integrity: sha512-+LSAiGFwQ9dRnRdOeaj7g47ZFJcOUPukAP8J3A3fuZ1g9Y44BG+P1sgApjLXTQPOzC4+7S9Wr8kXsfpINM4jpw==}
     dev: false
@@ -3737,7 +3765,7 @@ packages:
       invariant: 2.2.4
     dev: false
 
-  /expo-router@1.5.3(expo-constants@14.2.1)(expo-linking@4.0.1)(expo-modules-autolinking@1.2.0)(expo-status-bar@1.4.4)(expo@48.0.18)(metro@0.76.5)(react-dom@18.2.0)(react-native-gesture-handler@2.9.0)(react-native-safe-area-context@4.5.0)(react-native-screens@3.20.0)(react-native@0.71.8)(react@18.2.0):
+  /expo-router@1.5.3(@types/react@18.0.38)(expo-constants@14.2.1)(expo-linking@4.0.1)(expo-modules-autolinking@1.2.0)(expo-status-bar@1.4.4)(expo@48.0.18)(metro@0.76.5)(react-dom@18.2.0)(react-native-gesture-handler@2.9.0)(react-native-safe-area-context@4.5.0)(react-native-screens@3.20.0)(react-native@0.71.8)(react@18.2.0):
     resolution: {integrity: sha512-rZEoRpXjXpfcx549/MI7YRitaBGFOHpIGLO+cb18ecsShl3PzGPIDaBGMnTo0m1h7ip0sAIQg1EFrSAtM4LXLA==}
     peerDependencies:
       '@react-navigation/drawer': ^6.5.8
@@ -3758,7 +3786,7 @@ packages:
     dependencies:
       '@bacons/react-views': 1.1.3(react-native@0.71.8)
       '@expo/metro-runtime': 2.0.6(react-native@0.71.8)
-      '@radix-ui/react-slot': 1.0.2(react@18.2.0)
+      '@radix-ui/react-slot': 1.0.2(@types/react@18.0.38)(react@18.2.0)
       '@react-navigation/bottom-tabs': 6.5.7(@react-navigation/native@6.1.6)(react-native-safe-area-context@4.5.0)(react-native-screens@3.20.0)(react-native@0.71.8)(react@18.2.0)
       '@react-navigation/native': 6.1.6(react-native@0.71.8)(react@18.2.0)
       '@react-navigation/native-stack': 6.9.12(@react-navigation/native@6.1.6)(react-native-safe-area-context@4.5.0)(react-native-screens@3.20.0)(react-native@0.71.8)(react@18.2.0)
@@ -7497,6 +7525,12 @@ packages:
     dependencies:
       media-typer: 0.3.0
       mime-types: 2.1.35
+    dev: false
+
+  /typescript@4.9.5:
+    resolution: {integrity: sha512-1FXk9E2Hm+QzZQ7z+McJiHL4NW1F2EzMu9Nq9i3zAaGqibafqYwCVU6WyWAuyQRRzOlxou8xZSyXLEN8oKj24g==}
+    engines: {node: '>=4.2.0'}
+    hasBin: true
     dev: false
 
   /ua-parser-js@1.0.35:
