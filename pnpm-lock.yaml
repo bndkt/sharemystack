@@ -29,7 +29,7 @@ dependencies:
     version: 1.30.29(react@18.2.0)
   '@tamagui/lucide-icons':
     specifier: ^1.30.29
-    version: 1.30.29(react-native-svg@13.9.0)(react@18.2.0)
+    version: 1.30.29(react-native-svg@13.4.0)(react@18.2.0)
   '@tamagui/theme-base':
     specifier: ^1.30.29
     version: 1.30.29(react@18.2.0)
@@ -78,6 +78,9 @@ dependencies:
   react-native-screens:
     specifier: ~3.20.0
     version: 3.20.0(react-native@0.71.8)(react@18.2.0)
+  react-native-svg:
+    specifier: 13.4.0
+    version: 13.4.0(react-native@0.71.8)(react@18.2.0)
   react-native-url-polyfill:
     specifier: ^1.3.0
     version: 1.3.0(react-native@0.71.8)
@@ -3431,7 +3434,7 @@ packages:
       - react-native
     dev: false
 
-  /@tamagui/lucide-icons@1.30.29(react-native-svg@13.9.0)(react@18.2.0):
+  /@tamagui/lucide-icons@1.30.29(react-native-svg@13.4.0)(react@18.2.0):
     resolution: {integrity: sha512-LAg57CADOazbFJSPZnxNJPAigKs3fzIJGebckzdhszVD/PvkRo8Hu+S5ZdppAvZmbcLKOL+9p2sH2fSiIEmrsw==}
     peerDependencies:
       react: '*'
@@ -3439,7 +3442,7 @@ packages:
     dependencies:
       '@tamagui/core': 1.30.29(react@18.2.0)
       react: 18.2.0
-      react-native-svg: 13.9.0(react-native@0.71.8)(react@18.2.0)
+      react-native-svg: 13.4.0(react-native@0.71.8)(react@18.2.0)
     dev: false
 
   /@tamagui/normalize-css-color@1.30.29:
@@ -8507,8 +8510,8 @@ packages:
       warn-once: 0.1.1
     dev: false
 
-  /react-native-svg@13.9.0(react-native@0.71.8)(react@18.2.0):
-    resolution: {integrity: sha512-Ey18POH0dA0ob/QiwCBVrxIiwflhYuw0P0hBlOHeY4J5cdbs8ngdKHeWC/Kt9+ryP6fNoEQ1PUgPYw2Bs/rp5Q==}
+  /react-native-svg@13.4.0(react-native@0.71.8)(react@18.2.0):
+    resolution: {integrity: sha512-B3TwK+H0+JuRhYPzF21AgqMt4fjhCwDZ9QUtwNstT5XcslJBXC0FoTkdZo8IEb1Sv4suSqhZwlAY6lwOv3tHag==}
     peerDependencies:
       react: '*'
       react-native: '*'
