@@ -7,6 +7,7 @@ create table
     color character varying null,
     icon text null,
     website character varying null,
+    twitter character varying null,
     constraint tools_pkey primary key (id),
     constraint tools_slug_key unique (slug)
   );
