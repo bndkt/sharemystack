@@ -2,12 +2,12 @@
   "name": "sharemystack",
   "version": "1.0.0",
   "scripts": {
-    "start": "expo start --clear",
+    "start": "expo start --dev-client --clear",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
     "doc": "npx expo-doctor@latest",
-    "build": "eas build --profile development-simulator --platform ios"
+    "build": "eas build --profile development-simulator --platform ios --local"
   },
   "dependencies": {
     "expo": "~48.0.18",
