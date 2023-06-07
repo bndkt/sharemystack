@@ -2,7 +2,7 @@
   "name": "sharemystack",
   "version": "1.0.0",
   "scripts": {
-    "start": "TAMAGUI_TARGET=native expo start --dev-client --clear",
+    "start": "TAMAGUI_TARGET=native expo start --dev-client --offline",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
