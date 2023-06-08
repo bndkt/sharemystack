@@ -33,7 +33,6 @@ jobs:
           expo-token: ${{ secrets.EXPO_TOKEN }}
       - name: 📢 EAS Build
         run: eas build -e ${{ inputs.profile }} -p ios --non-interactive --no-wait
-        working-directory: ./apps/app
         if: ${{ inputs.profile == 'development-simulator' || inputs.profile == 'development' }}
       - name: 📢 EAS Build and Submit
         run: eas build -e ${{ inputs.profile }} -p ios --non-interactive --no-wait --auto-submit
