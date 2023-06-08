@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
 import { FlashList } from "@shopify/flash-list";
-import { ListItem, Spinner, YStack } from "tamagui";
 import { ChevronRight, Wrench } from "@tamagui/lucide-icons";
+import { Link, Stack } from "expo-router";
+import { useEffect, useState } from "react";
+import { SvgXml } from "react-native-svg";
+import { ListItem, Spinner, YStack } from "tamagui";
 
 import { supabase } from "../../lib/supabase";
-import { Link, Stack } from "expo-router";
-import { SvgXml } from "react-native-svg";
 
 export default function Index() {
   const [isLoading, setLoading] = useState(true);

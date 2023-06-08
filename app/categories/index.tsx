@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
 import { FlashList } from "@shopify/flash-list";
-import { ListItem, Spinner, YStack } from "tamagui";
-import { Link, Stack } from "expo-router";
 import { ChevronRight } from "@tamagui/lucide-icons";
+import { Link, Stack } from "expo-router";
+import { useEffect, useState } from "react";
+import { ListItem, Spinner, YStack } from "tamagui";
 
 import { supabase } from "../../lib/supabase";
 

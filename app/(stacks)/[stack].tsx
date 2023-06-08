@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
 import { Stack, useLocalSearchParams } from "expo-router";
-
-import { supabase } from "../../lib/supabase";
+import { useEffect, useState } from "react";
 import { H2, Spinner, Text, XStack } from "tamagui";
+
 import { Database } from "../../lib/database.types";
+import { supabase } from "../../lib/supabase";
 
 export default function Index() {
   let { stack: slug } = useLocalSearchParams<{ stack: string }>();

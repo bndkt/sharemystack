@@ -1,10 +1,10 @@
+import { Stack, useLocalSearchParams } from "expo-router";
 import { useEffect, useState } from "react";
 import { View, Text } from "react-native";
-import { Stack, useLocalSearchParams } from "expo-router";
 import { SvgXml } from "react-native-svg";
+import { H2, Spinner, XStack } from "tamagui";
 
 import { supabase } from "../../lib/supabase";
-import { H2, Spinner, XStack } from "tamagui";
 
 export default function Index() {
   const { tool: slug } = useLocalSearchParams();

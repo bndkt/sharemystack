@@ -1,12 +1,12 @@
-import { useEffect, useState } from "react";
 import { Stack, useLocalSearchParams } from "expo-router";
+import { useEffect, useState } from "react";
 import { H2, Spinner, Text, XStack } from "tamagui";
 
-import { supabase } from "../../lib/supabase";
 import { Database } from "../../lib/database.types";
+import { supabase } from "../../lib/supabase";
 
 export default function Category() {
-  let { category: slug } = useLocalSearchParams<{ category: string }>();
+  const { category: slug } = useLocalSearchParams<{ category: string }>();
   const [isLoading, setLoading] = useState(true);
   const [category, setCategory] =
     useState<Database["public"]["Tables"]["categories"]["Row"]>();
