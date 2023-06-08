@@ -208,11 +208,21 @@ export interface Database {
         Row: {
           category_name: string | null
           category_slug: string | null
+          stack_id: string | null
+          tool_color: string | null
+          tool_icon: string | null
           tool_name: string | null
           tool_slug: string | null
           tool_website: string | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "picks_stack_id_fkey"
+            columns: ["stack_id"]
+            referencedRelation: "stacks"
+            referencedColumns: ["id"]
+          }
+        ]
       }
     }
     Functions: {

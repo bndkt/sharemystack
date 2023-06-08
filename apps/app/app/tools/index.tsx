@@ -1,11 +1,11 @@
 import { FlashList } from "@shopify/flash-list";
-import { ChevronRight, Wrench } from "@tamagui/lucide-icons";
+import { ChevronRight } from "@tamagui/lucide-icons";
 import { Link, Stack } from "expo-router";
 import { useEffect, useState } from "react";
-import { SvgXml } from "react-native-svg";
-import { ListItem, Spinner, YStack } from "tamagui";
+import { ListItem, Separator, Spinner, YStack } from "tamagui";
 
 import { supabase } from "../../lib/supabase";
+import { ToolIcon } from "../../components/ToolIcon";
 
 export default function Index() {
   const [isLoading, setLoading] = useState(true);
@@ -26,7 +26,7 @@ export default function Index() {
         .from("tools")
         .select("id, name, slug, color, icon, website")
         .order("name");
-      setTools(data);
+      data && setTools(data);
     } catch (error) {
       console.error(error);
     } finally {
@@ -46,25 +46,18 @@ export default function Index() {
       <YStack fullscreen>
         <FlashList
           keyExtractor={({ id }) => id}
+          ItemSeparatorComponent={() => <Separator />}
           renderItem={({ item }) => {
             return (
               <Link href={`/tools/${item.slug}`}>
                 <ListItem
                   icon={
-                    item.icon ? (
-                      <SvgXml
-                        xml={item.icon}
-                        width="20"
-                        height="20"
-                        color={item.color ?? "#000000"}
-                      />
-                    ) : (
-                      <Wrench
-                        color={item.color ?? "#000000"}
-                        width="20"
-                        height="20"
-                      />
-                    )
+                    <ToolIcon
+                      svgXml={item.icon}
+                      color={item.color}
+                      width="24"
+                      height="24"
+                    />
                   }
                   title={item.name}
                   subTitle={item.website}

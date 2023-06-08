@@ -2,7 +2,7 @@ import { FlashList } from "@shopify/flash-list";
 import { ChevronRight } from "@tamagui/lucide-icons";
 import { Link, Stack } from "expo-router";
 import { useEffect, useState } from "react";
-import { ListItem, Spinner, YStack } from "tamagui";
+import { ListItem, Separator, Spinner, YStack } from "tamagui";
 
 import { supabase } from "../../lib/supabase";
 
@@ -44,6 +44,7 @@ export default function Index() {
       <YStack fullscreen>
         <FlashList
           keyExtractor={({ id }) => id}
+          ItemSeparatorComponent={() => <Separator />}
           renderItem={({ item }) => {
             return (
               <Link href={`/(stacks)/@${item.slug}`}>

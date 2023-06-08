@@ -1,9 +1,10 @@
 import { Stack, useLocalSearchParams } from "expo-router";
 import { useEffect, useState } from "react";
 import { SvgXml } from "react-native-svg";
-import { H2, Spinner, Text, XStack } from "tamagui";
+import { H2, Spinner, Text, XStack, YStack } from "tamagui";
 
 import { supabase } from "../../lib/supabase";
+import { ToolIcon } from "../../components/ToolIcon";
 
 export default function Index() {
   const { tool: slug } = useLocalSearchParams();
@@ -49,19 +50,17 @@ export default function Index() {
   ) : tool ? (
     <>
       <Stack.Screen options={{ headerShown: true, title: tool.name }} />
-      <XStack>
-        <H2 style={{ color: tool.color ?? "#000000" }}>{tool.name}</H2>
-        <Text>{tool.website}</Text>
-        {tool.icon && (
-          <XStack
-            style={{
-              backgroundColor:
-                tool.color && tool.color.length > 0 ? tool.color : "#000000",
-            }}
-          >
-            <SvgXml xml={tool.icon} width="100%" height="100%" />
-          </XStack>
-        )}
+      <XStack alignItems="center" padding="$3">
+        <ToolIcon
+          svgXml={tool.icon}
+          color={tool.color}
+          width="24"
+          height="24"
+        />
+        <YStack marginLeft="$3">
+          <H2>{tool.name}</H2>
+          <Text>{tool.website}</Text>
+        </YStack>
       </XStack>
     </>
   ) : null;

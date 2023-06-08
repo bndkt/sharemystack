@@ -2,7 +2,7 @@ import { FlashList } from "@shopify/flash-list";
 import { ChevronRight } from "@tamagui/lucide-icons";
 import { Link, Stack } from "expo-router";
 import { useEffect, useState } from "react";
-import { ListItem, Spinner, YStack } from "tamagui";
+import { ListItem, Separator, Spinner, YStack } from "tamagui";
 
 import { supabase } from "../../lib/supabase";
 
@@ -13,6 +13,7 @@ export default function Categories() {
       id: string;
       name: string;
       slug: string;
+      categorizations: { count: number }[];
     }[]
   >([]);
 
@@ -20,8 +21,9 @@ export default function Categories() {
     try {
       const { data } = await supabase
         .from("categories")
-        .select("id, name, slug")
+        .select("id, name, slug, categorizations (count)")
         .order("name");
+      console.log({ data });
       setCategories(data);
     } catch (error) {
       console.error(error);
@@ -42,12 +44,15 @@ export default function Categories() {
       <YStack fullscreen>
         <FlashList
           keyExtractor={({ id }) => id}
+          ItemSeparatorComponent={() => <Separator />}
           renderItem={({ item }) => {
             return (
               <Link href={`/categories/${item.slug}`}>
                 <ListItem
                   title={item.name}
-                  subTitle={item.slug}
+                  subTitle={`${item.categorizations[0].count ?? "0"} tool${
+                    item.categorizations[0].count > 1 ? "s" : ""
+                  }`}
                   iconAfter={ChevronRight}
                 />
               </Link>

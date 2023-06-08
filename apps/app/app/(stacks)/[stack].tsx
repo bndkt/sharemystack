@@ -1,11 +1,11 @@
 import { Link, Stack, useLocalSearchParams } from "expo-router";
 import { useEffect, useState } from "react";
-import { H2, ListItem, Spinner, Text, YStack } from "tamagui";
-
-import { Database } from "../../lib/database.types";
-import { supabase } from "../../lib/supabase";
+import { H2, ListItem, Separator, Spinner, Text, YStack } from "tamagui";
 import { FlashList } from "@shopify/flash-list";
 import { ChevronRight } from "@tamagui/lucide-icons";
+
+import { supabase } from "../../lib/supabase";
+import { ToolIcon } from "../../components/ToolIcon";
 
 export default function Index() {
   let { stack: slug } = useLocalSearchParams<{ stack: string }>();
@@ -24,6 +24,8 @@ export default function Index() {
       category_slug: string | null;
       tool_name: string | null;
       tool_slug: string | null;
+      tool_icon: string | null;
+      tool_color: string | null;
     }[];
   }>();
 
@@ -32,12 +34,11 @@ export default function Index() {
       const { data: stacks, error } = await supabase
         .from("stacks")
         .select(
-          "id, created_at, name, slug, website, twitter, picks_view (category_name, category_slug, tool_name, tool_slug)"
+          "id, created_at, name, slug, website, twitter, picks_view (category_name, category_slug, tool_name, tool_slug, tool_icon, tool_color)"
         )
         .eq("slug", slug)
         .limit(1);
       error && console.error(error);
-      stacks && console.log(stacks[0], stacks[0].picks_view);
       stacks && setStack(stacks[0]);
     } catch (error) {
       console.error(error);
@@ -58,10 +59,13 @@ export default function Index() {
         options={{ headerShown: true, title: `${stack.name}'s stack` }}
       />
       <YStack fullscreen>
-        <H2>{stack.name}</H2>
-        <Text>{stack.website}</Text>
+        <YStack padding="$3">
+          <H2>{stack.name}</H2>
+          <Text>{stack.website}</Text>
+        </YStack>
         <FlashList
-          // keyExtractor={({ category_slug }) => category_slug}
+          // onRefresh={() => getStack()}
+          ItemSeparatorComponent={() => <Separator />}
           renderItem={({ item }) => {
             return (
               <Link href={`/(stacks)/@${item.category_slug}`}>
@@ -69,6 +73,14 @@ export default function Index() {
                   title={item.tool_name}
                   subTitle={item.category_name}
                   iconAfter={ChevronRight}
+                  icon={
+                    <ToolIcon
+                      svgXml={item.tool_icon}
+                      color={item.tool_color}
+                      width="24"
+                      height="24"
+                    />
+                  }
                 />
               </Link>
             );
