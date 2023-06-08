@@ -3,29 +3,40 @@ import { Stack, useLocalSearchParams } from "expo-router";
 
 import { supabase } from "../../lib/supabase";
 import { H2, Spinner, Text, XStack } from "tamagui";
+import { Database } from "../../lib/database.types";
 
 export default function Index() {
   let { stack: slug } = useLocalSearchParams<{ stack: string }>();
 
   slug = slug.substring(1);
 
+  console.log({ slug });
+
   const [isLoading, setLoading] = useState(true);
-  const [stack, setStack] = useState<{
-    id: string;
-    name: string;
-    slug: string;
-    website?: string;
-  } | null>(null);
+  const [stack, setStack] =
+    useState<Database["public"]["Tables"]["stacks"]["Row"]>();
+  const [picks, setPicks] =
+    useState<Database["public"]["Tables"]["tools"]["Row"]>();
 
   const getStack = async () => {
     try {
-      const { data, error } = await supabase
+      const { data: stack } = await supabase
         .from("stacks")
-        .select("id, name, slug, website")
+        .select("id, created_at, name, slug, website, twitter")
         .eq("slug", slug)
         .limit(1)
         .single();
-      setStack(data);
+      console.log({ stack });
+      setStack(stack);
+
+      const { data: picks } = await supabase
+        .from("picks")
+        .select("tools (id, name, slug, website)")
+        .eq("slug", slug)
+        .limit(1)
+        .single();
+      console.log({ picks });
+      // setPicks(picks);
     } catch (error) {
       console.error(error);
     } finally {

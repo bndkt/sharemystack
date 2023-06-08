@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
 import { FlashList } from "@shopify/flash-list";
 import { ListItem, Spinner, YStack } from "tamagui";
-import { Wrench } from "@tamagui/lucide-icons";
+import { Link, Stack } from "expo-router";
+import { ChevronRight } from "@tamagui/lucide-icons";
 
 import { supabase } from "../../lib/supabase";
-import { Link, Stack } from "expo-router";
-import { SvgXml } from "react-native-svg";
 
-export default function Index() {
+export default function Categories() {
   const [isLoading, setLoading] = useState(true);
   const [categories, setCategories] = useState<
     {
@@ -17,9 +16,9 @@ export default function Index() {
     }[]
   >([]);
 
-  const getTools = async () => {
+  const getCategories = async () => {
     try {
-      const { data, error } = await supabase
+      const { data } = await supabase
         .from("categories")
         .select("id, name, slug")
         .order("name");
@@ -32,7 +31,7 @@ export default function Index() {
   };
 
   useEffect(() => {
-    getTools();
+    getCategories();
   }, []);
 
   return isLoading ? (
@@ -46,7 +45,11 @@ export default function Index() {
           renderItem={({ item }) => {
             return (
               <Link href={`/categories/${item.slug}`}>
-                <ListItem title={item.name} subTitle={item.slug} />
+                <ListItem
+                  title={item.name}
+                  subTitle={item.slug}
+                  iconAfter={ChevronRight}
+                />
               </Link>
             );
           }}

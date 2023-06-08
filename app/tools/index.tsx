@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { FlashList } from "@shopify/flash-list";
-import { ListItem, Spinner, XStack, YStack } from "tamagui";
-import { Wrench } from "@tamagui/lucide-icons";
+import { ListItem, Spinner, YStack } from "tamagui";
+import { ChevronRight, Wrench } from "@tamagui/lucide-icons";
 
 import { supabase } from "../../lib/supabase";
 import { Link, Stack } from "expo-router";
@@ -22,7 +22,7 @@ export default function Index() {
 
   const getTools = async () => {
     try {
-      const { data, error } = await supabase
+      const { data } = await supabase
         .from("tools")
         .select("id, name, slug, color, icon, website")
         .order("name");
@@ -68,6 +68,7 @@ export default function Index() {
                   }
                   title={item.name}
                   subTitle={item.website}
+                  iconAfter={ChevronRight}
                 />
               </Link>
             );

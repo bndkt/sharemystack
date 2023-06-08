@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { FlashList } from "@shopify/flash-list";
 import { ListItem, Spinner, YStack } from "tamagui";
+import { Link, Stack } from "expo-router";
+import { ChevronRight } from "@tamagui/lucide-icons";
 
 import { supabase } from "../../lib/supabase";
-import { Link, Stack } from "expo-router";
 
 export default function Index() {
   const [isLoading, setLoading] = useState(true);
@@ -17,9 +18,9 @@ export default function Index() {
     }[]
   >([]);
 
-  const getTools = async () => {
+  const getStacks = async () => {
     try {
-      const { data, error } = await supabase
+      const { data } = await supabase
         .from("stacks")
         .select("id, name, slug, website, twitter")
         .order("name");
@@ -32,7 +33,7 @@ export default function Index() {
   };
 
   useEffect(() => {
-    getTools();
+    getStacks();
   }, []);
 
   return isLoading ? (
@@ -46,7 +47,11 @@ export default function Index() {
           renderItem={({ item }) => {
             return (
               <Link href={`/(stacks)/@${item.slug}`}>
-                <ListItem title={item.name} subTitle={item.website} />
+                <ListItem
+                  title={item.name}
+                  subTitle={item.website}
+                  iconAfter={ChevronRight}
+                />
               </Link>
             );
           }}
