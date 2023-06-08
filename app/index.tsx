@@ -1,9 +1,10 @@
-import { View, Text } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { Text } from "tamagui";
 
 export default function Index() {
   return (
-    <View>
+    <SafeAreaView>
       <Text>Home Feed</Text>
-    </View>
+    </SafeAreaView>
   );
 }
