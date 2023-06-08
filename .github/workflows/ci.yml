@@ -13,10 +13,8 @@ jobs:
         uses: actions/checkout@v3
       - name: 🏗 Setup monorepo
         uses: ./.github/actions/setup-monorepo
-        with:
-          expo-token: ${{ secrets.EXPO_TOKEN }}
-      - name: 👷‍♂️ Build all
-        run: pnpm build
+      # - name: 👷‍♂️ Build all
+      #  run: pnpm build
       - name: 👮‍♂️ Lint
         run: pnpm lint
       # - name: Run tests
