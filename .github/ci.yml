@@ -1,0 +1,21 @@
+name: Node.js CI
+
+on:
+  - push
+  - pull_request
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🚚 Checkout
+        uses: actions/checkout@v3
+      - name: 🏗 Setup monorepo
+        uses: ./.github/actions/setup-monorepo
+      - name: 👷‍♂️ Build all
+        run: pnpm build
+      - name: 👮‍♂️ Lint
+        run: pnpm lint
+      # - name: Run tests
+      #  run: pnpm test
