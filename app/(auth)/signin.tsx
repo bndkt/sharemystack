@@ -9,9 +9,7 @@ import { supabase } from "../../lib/supabase";
 
 WebBrowser.maybeCompleteAuthSession();
 
-const redirectTo = makeRedirectUri({
-  scheme: "sharemystack",
-});
+const redirectTo = makeRedirectUri();
 
 export default function SignIn() {
   const [authUrl, setAuthUrl] = useState<string | null>(null);
@@ -48,6 +46,8 @@ export default function SignIn() {
         if (errorCode) {
           console.error(errorCode);
         }
+
+        console.log({ params });
 
         const { access_token, refresh_token } = params;
 

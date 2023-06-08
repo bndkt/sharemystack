@@ -204,7 +204,16 @@ export interface Database {
       }
     }
     Views: {
-      [_ in never]: never
+      picks_view: {
+        Row: {
+          category_name: string | null
+          category_slug: string | null
+          tool_name: string | null
+          tool_slug: string | null
+          tool_website: string | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
       [_ in never]: never

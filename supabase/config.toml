@@ -63,10 +63,10 @@ enable_confirmations = false
 # `twitter`, `slack`, `spotify`, `workos`, `zoom`.
 [auth.external.twitter]
 enabled = true
-client_id = "XurO8a0VVomx1rPQAfhvg6RCX"
-secret = "FkR0BR8I1YEyHt799O4CJ472awjxJ2Xza2JdmnaaSj0N2FKfLE"
+client_id = "env(TWITTER_CLIENT_ID)"
+secret = "env(TWITTER_SECRET)"
 # Overrides the default auth redirectUrl.
-redirect_uri = "sharemystack://"
+redirect_uri = "sharemystack://**"
 # Overrides the default auth provider URL. Used to support self-hosted gitlab, single-tenant Azure,
 # or any other third-party OIDC providers.
 # url = ""
