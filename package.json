@@ -8,7 +8,8 @@
     "web": "expo start --web",
     "doc": "npx expo-doctor@latest",
     "build": "eas build --profile development-simulator --platform ios --local",
-    "supa:types": "supabase gen types typescript --local > lib/database.types.ts"
+    "supa:types": "supabase gen types typescript --local > lib/database.types.ts",
+    "lint": "eslint app components lib"
   },
   "dependencies": {
     "@babel/plugin-proposal-export-namespace-from": "^7.18.9",
