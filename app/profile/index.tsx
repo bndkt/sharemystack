@@ -1,9 +1,11 @@
-import { View, Text } from "react-native";
+import { Link } from "expo-router";
+import { Text, YStack } from "tamagui";
 
 export default function Index() {
   return (
-    <View>
+    <YStack>
       <Text>My Stack</Text>
-    </View>
+      <Link href="/signin">Sign in</Link>
+    </YStack>
   );
 }

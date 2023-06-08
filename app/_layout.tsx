@@ -2,8 +2,8 @@ import { Home, Layers, Tag, User, Wrench } from "@tamagui/lucide-icons";
 import { useFonts } from "expo-font";
 import { Tabs } from "expo-router";
 import { useColorScheme } from "react-native";
-import { TamaguiProvider, Theme } from "tamagui";
 import { SafeAreaProvider } from "react-native-safe-area-context";
+import { TamaguiProvider, Theme } from "tamagui";
 
 import "../lib/polyfill";
 import config from "../tamagui.config";

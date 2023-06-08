@@ -1,13 +1,11 @@
-import { View, Text } from "react-native";
-import * as WebBrowser from "expo-web-browser";
+import { Twitter } from "@tamagui/lucide-icons";
 import { makeRedirectUri } from "expo-auth-session";
-import { useEffect, useState } from "react";
-import * as Linking from "expo-linking";
 import * as QueryParams from "expo-auth-session/build/QueryParams";
+import * as WebBrowser from "expo-web-browser";
+import { useEffect, useState } from "react";
+import { Button, YStack } from "tamagui";
 
 import { supabase } from "../../lib/supabase";
-import { Button } from "tamagui";
-import { useLocalSearchParams } from "expo-router";
 
 WebBrowser.maybeCompleteAuthSession();
 
@@ -17,9 +15,6 @@ const redirectTo = makeRedirectUri({
 
 export default function SignIn() {
   const [authUrl, setAuthUrl] = useState<string | null>(null);
-  const searchParams = useLocalSearchParams();
-
-  console.log({ searchParams });
 
   async function prepareAuth() {
     const { data, error } = await supabase.auth.signInWithOAuth({
@@ -27,11 +22,12 @@ export default function SignIn() {
       options: {
         redirectTo,
         skipBrowserRedirect: true,
-        scopes: "tweet.read,offline.access",
       },
     });
 
-    console.log({ data });
+    if (error) {
+      console.error(error);
+    }
 
     if (data?.url) {
       setAuthUrl(data.url);
@@ -44,13 +40,15 @@ export default function SignIn() {
 
   async function signIn() {
     if (authUrl) {
-      const res = await WebBrowser.openAuthSessionAsync(
-        authUrl,
-        Linking.createURL("/signin")
-      );
+      const res = await WebBrowser.openAuthSessionAsync(authUrl);
       if (res.type === "success") {
         const { url } = res;
         const { params, errorCode } = QueryParams.getQueryParams(url);
+
+        if (errorCode) {
+          console.error(errorCode);
+        }
+
         const { access_token, refresh_token } = params;
 
         const { data, error } = await supabase.auth.setSession({
@@ -63,17 +61,18 @@ export default function SignIn() {
   }
 
   return (
-    <View>
-      <Text>Home Feed</Text>
-
+    <YStack padding="$3">
       <Button
         disabled={!authUrl}
         onPress={() => {
           signIn();
         }}
+        backgroundColor={"#1D9BF0"}
+        color="#FFFFFF"
+        icon={<Twitter color="#FFFFFF" />}
       >
-        Sign in
+        Sign in with Twitter
       </Button>
-    </View>
+    </YStack>
   );
 }
