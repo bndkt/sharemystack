@@ -8,7 +8,7 @@ import { supabase } from "../../lib/supabase";
 export default function Index() {
   let { stack: slug } = useLocalSearchParams<{ stack: string }>();
 
-  slug = slug.substring(1);
+  slug = slug?.substring(1);
 
   console.log({ slug });
 
@@ -26,8 +26,7 @@ export default function Index() {
         .eq("slug", slug)
         .limit(1)
         .single();
-      console.log({ stack });
-      setStack(stack);
+      stack && setStack(stack);
 
       const { data: picks } = await supabase
         .from("picks")
@@ -36,7 +35,7 @@ export default function Index() {
         .limit(1)
         .single();
       console.log({ picks });
-      // setPicks(picks);
+      picks && setPicks(picks);
     } catch (error) {
       console.error(error);
     } finally {
@@ -50,7 +49,7 @@ export default function Index() {
 
   return isLoading ? (
     <Spinner />
-  ) : (
+  ) : stack && picks ? (
     <>
       <Stack.Screen
         options={{ headerShown: true, title: `${stack.name}'s stack` }}
@@ -60,5 +59,5 @@ export default function Index() {
         <Text>{stack.website}</Text>
       </XStack>
     </>
-  );
+  ) : null;
 }

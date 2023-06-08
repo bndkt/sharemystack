@@ -1,8 +1,7 @@
 import { Stack, useLocalSearchParams } from "expo-router";
 import { useEffect, useState } from "react";
-import { View, Text } from "react-native";
 import { SvgXml } from "react-native-svg";
-import { H2, Spinner, XStack } from "tamagui";
+import { H2, Spinner, Text, XStack } from "tamagui";
 
 import { supabase } from "../../lib/supabase";
 
@@ -21,7 +20,7 @@ export default function Index() {
 
   const getTool = async () => {
     try {
-      const { data, error } = await supabase
+      const { data } = await supabase
         .from("tools")
         .select("id, name, slug, color, icon, website")
         .eq("slug", slug)
@@ -47,7 +46,7 @@ export default function Index() {
   // Category
   return isLoading ? (
     <Spinner />
-  ) : (
+  ) : tool ? (
     <>
       <Stack.Screen options={{ headerShown: true, title: tool.name }} />
       <XStack>
@@ -56,7 +55,8 @@ export default function Index() {
         {tool.icon && (
           <XStack
             style={{
-              backgroundColor: tool.color.length > 0 ? tool.color : "#000000",
+              backgroundColor:
+                tool.color && tool.color.length > 0 ? tool.color : "#000000",
             }}
           >
             <SvgXml xml={tool.icon} width="100%" height="100%" />
@@ -64,5 +64,5 @@ export default function Index() {
         )}
       </XStack>
     </>
-  );
+  ) : null;
 }

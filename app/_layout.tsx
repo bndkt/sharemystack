@@ -1,3 +1,4 @@
+import { Home, Layers, Tag, User, Wrench } from "@tamagui/lucide-icons";
 import { useFonts } from "expo-font";
 import { Tabs } from "expo-router";
 import { useColorScheme } from "react-native";
@@ -5,8 +6,6 @@ import { TamaguiProvider, Theme } from "tamagui";
 
 import "../lib/polyfill";
 import config from "../tamagui.config";
-
-import { Home, Layers, Tag, User, Wrench } from "@tamagui/lucide-icons";
 
 export default function Layout() {
   const colorScheme = useColorScheme();

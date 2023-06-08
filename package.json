@@ -9,7 +9,7 @@
     "doc": "npx expo-doctor@latest",
     "build": "eas build --profile development-simulator --platform ios --local",
     "supa:types": "supabase gen types typescript --local > lib/database.types.ts",
-    "lint": "eslint app components lib"
+    "lint": "eslint app lib"
   },
   "dependencies": {
     "@babel/plugin-proposal-export-namespace-from": "^7.18.9",
@@ -47,6 +47,7 @@
     "@types/react": "~18.0.27",
     "eslint": "^8.42.0",
     "eslint-config-universe": "^11.2.0",
+    "prettier": "^2.8.8",
     "supabase": "^1.64.8",
     "typescript": "^4.9.4"
   },
