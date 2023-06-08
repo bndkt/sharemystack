@@ -1,4 +1,4 @@
-create view picks_view as
+create view categories_view as
     select
     picks.stack_id,
     categories.name as category_name,
@@ -9,7 +9,5 @@ create view picks_view as
     tools.icon as tool_icon,
     tools.color as tool_color
     from
-    picks
-    left join stacks on picks.stack_id = stacks.id
-    left join tools on picks.tool_id = tools.id
-    left join categories on picks.category_id = categories.id;
+    categories
+    left join categorizations on categorizations.tool_id = tools.id;
