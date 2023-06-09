@@ -16,7 +16,12 @@
     "preview": {
       "distribution": "internal"
     },
-    "production": {}
+    "production": {
+      "channel": "production",
+      "ios": {
+        "autoIncrement": "buildNumber"
+      }
+    }
   },
   "submit": {
     "production": {}
