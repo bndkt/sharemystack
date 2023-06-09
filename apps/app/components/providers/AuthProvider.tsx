@@ -1,43 +1,56 @@
+import React, { ReactNode, useEffect, useState } from "react";
 import { useRouter, useSegments } from "expo-router";
-import React, { ReactNode, useState } from "react";
 
-const AuthContext = React.createContext(null);
+import { supabase } from "../../lib/supabase";
+
+type User = {
+  name?: string;
+} | null;
+
+const AuthContext = React.createContext<{
+  signIn: () => void;
+  signOut: () => void;
+  user: User;
+}>({
+  signIn: () => {},
+  signOut: () => {},
+  user: null,
+});
 
 export function useAuth() {
   return React.useContext(AuthContext);
 }
 
-function useProtectedRoute(user) {
+export function useProtectedRoute() {
   const segments = useSegments();
   const router = useRouter();
+  const { user } = useAuth();
 
-  React.useEffect(() => {
+  useEffect(() => {
     const inAuthGroup = segments[0] === "(auth)";
 
-    if (
-      // If the user is not signed in and the initial segment is not anything in the auth group.
-      !user &&
-      !inAuthGroup
-    ) {
+    if (!user) {
       // Redirect to the sign-in page.
-      router.replace("/sign-in");
-    } else if (user && inAuthGroup) {
-      // Redirect away from the sign-in page.
-      router.replace("/");
+      router.replace("/(auth)/sign-in");
     }
   }, [user, segments]);
 }
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const [user, setAuth] = useState(null);
+  const [user, setUser] = useState(null);
 
-  useProtectedRoute(user);
+  async function signOut() {
+    const { error } = await supabase.auth.signOut();
+    if (error) {
+      console.error(error);
+    }
+  }
 
   return (
     <AuthContext.Provider
       value={{
-        signIn: () => setAuth({}),
-        signOut: () => setAuth(null),
+        signIn: () => {},
+        signOut,
         user,
       }}
     >
