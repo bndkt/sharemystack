@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { ListItem, Separator, Spinner, YStack } from "tamagui";
 
 import { supabase } from "../../lib/supabase";
-import { ToolIcon } from "../../components/ToolIcon";
+import { ToolIcon } from "../../components/icons/ToolIcon";
 import { SuggestionButton } from "../../components/SuggestionButton";
 
 export default function Index() {

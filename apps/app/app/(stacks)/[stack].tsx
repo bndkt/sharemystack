@@ -5,7 +5,7 @@ import { FlashList } from "@shopify/flash-list";
 import { ChevronRight } from "@tamagui/lucide-icons";
 
 import { supabase } from "../../lib/supabase";
-import { ToolIcon } from "../../components/ToolIcon";
+import { ToolIcon } from "../../components/icons/ToolIcon";
 
 export default function Index() {
   let { stack: slug } = useLocalSearchParams<{ stack: string }>();

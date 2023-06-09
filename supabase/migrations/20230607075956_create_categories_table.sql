@@ -4,6 +4,7 @@ create table
     created_at timestamp with time zone not null default now(),
     name character varying not null,
     slug character varying not null,
+    icon character varying not null,
     constraint categories_pkey primary key (id),
     constraint categories_slug_key unique (slug)
   );

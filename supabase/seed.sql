@@ -1,12 +1,18 @@
 insert into
-public.categories (id, name, slug)
+public.categories (id, name, slug, icon)
 values
-(gen_random_uuid(), 'Email Service', 'email-service'),
-('8f5ff296-f438-40fc-8c48-b437810385af', 'Operating System', 'operating-system'),
-('bf4fb3cd-38d9-4135-abc7-7f291c498366', 'Note-taking', 'note-taking'),
-(gen_random_uuid(), 'Mobile Operating System', 'mobile-operating-system'),
-('0e93b69f-3415-4fec-a5e6-da1f779b43a6', 'Password Management', 'password-management'),
-(gen_random_uuid(), 'Todo List', 'todo-list');
+(gen_random_uuid(), 'Email Service', 'email-service', 'Mail'),
+(gen_random_uuid(), 'Browser', 'browser', ''),
+(gen_random_uuid(), 'Calendar', 'calendar', 'Calendar'),
+(gen_random_uuid(), 'IDE', 'ide', 'TerminalSquare'),
+(gen_random_uuid(), 'Terminal', 'terminal', 'Terminal'),
+(gen_random_uuid(), 'Music', 'music', 'Music'),
+(gen_random_uuid(), 'Podcast', 'podcast', 'Podcast'),
+('8f5ff296-f438-40fc-8c48-b437810385af', 'Operating System', 'operating-system', 'AppWindow'),
+('bf4fb3cd-38d9-4135-abc7-7f291c498366', 'Note-taking', 'note-taking', 'ClipboardEdit'),
+(gen_random_uuid(), 'Mobile Operating System', 'mobile-operating-system', 'Smartphone'),
+('0e93b69f-3415-4fec-a5e6-da1f779b43a6', 'Password Management', 'password-management', 'Fingerprint'),
+(gen_random_uuid(), 'Todo List', 'todo-list', 'CheckSquare');
 
 insert into
 public.tools (id, name, slug, website, twitter, color, icon)

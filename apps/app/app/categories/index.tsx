@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { ListItem, Separator, Spinner, YStack } from "tamagui";
 
 import { supabase } from "../../lib/supabase";
+import { CategoryIcon } from "../../components/icons/CategoryIcon";
 
 export default function Categories() {
   const [isLoading, setLoading] = useState(true);
@@ -13,6 +14,7 @@ export default function Categories() {
       id: string;
       name: string;
       slug: string;
+      icon: string;
       categorizations: { count: number }[];
     }[]
   >([]);
@@ -21,7 +23,7 @@ export default function Categories() {
     try {
       const { data } = await supabase
         .from("categories")
-        .select("id, name, slug, categorizations (count)")
+        .select("id, name, slug, icon, categorizations (count)")
         .order("name");
       console.log({ data });
       setCategories(data);
@@ -54,6 +56,9 @@ export default function Categories() {
                     item.categorizations[0].count > 1 ? "s" : ""
                   }`}
                   iconAfter={ChevronRight}
+                  icon={
+                    <CategoryIcon name={item.icon} width="24" height="24" />
+                  }
                 />
               </Link>
             );
