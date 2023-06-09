@@ -16,7 +16,17 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.sharemystack"
+      "bundleIdentifier": "com.sharemystack",
+
+      "config": {
+        "usesNonExemptEncryption": false
+      },
+      "associatedDomains": [
+        "applinks:sharemystack.com",
+        "appclips:sharemystack.com",
+        "webcredentials:sharemystack.com",
+        "activitycontinuation:sharemystack.com"
+      ]
     },
     "android": {
       "adaptiveIcon": {
