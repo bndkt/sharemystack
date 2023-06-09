@@ -74,9 +74,23 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   }
 
+  async function getUser() {
+    if (session) {
+      const { data, error } = await supabase.auth.getUser();
+
+      if (error) {
+        console.error(error);
+        signOut();
+      } else {
+        setUser(data.user);
+      }
+    }
+  }
+
   useEffect(() => {
-    getSession();
-  }, []);
+    if (!session) getSession();
+    if (session && !user) getUser();
+  }, [session, user]);
 
   return (
     <AuthContext.Provider

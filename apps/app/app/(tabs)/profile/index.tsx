@@ -5,12 +5,12 @@ import {
   useAuth,
   useProtectedRoute,
 } from "../../../components/providers/AuthProvider";
-import { SignOutButton } from "../../../components/providers/SignOutButton";
+import { MyProfile } from "../../../components/profile/MyProfile";
 
 export default function Index() {
-  const { session } = useAuth();
+  const { session, user } = useAuth();
 
   useProtectedRoute();
 
-  return <YStack>{session ? <SignOutButton /> : <SignIn />}</YStack>;
+  return <YStack>{session ? <MyProfile /> : <SignIn />}</YStack>;
 }
