@@ -1,14 +1,16 @@
 import { YStack } from "tamagui";
 
 import { SignIn } from "../../../components/SignIn";
-import { useProtectedRoute } from "../../../components/providers/AuthProvider";
+import {
+  useAuth,
+  useProtectedRoute,
+} from "../../../components/providers/AuthProvider";
+import { SignOutButton } from "../../../components/providers/SignOutButton";
 
 export default function Index() {
+  const { session } = useAuth();
+
   useProtectedRoute();
 
-  return (
-    <YStack>
-      <SignIn />
-    </YStack>
-  );
+  return <YStack>{session ? <SignOutButton /> : <SignIn />}</YStack>;
 }

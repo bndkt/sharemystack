@@ -1,20 +1,25 @@
 import React, { ReactNode, useEffect, useState } from "react";
 import { useRouter } from "expo-router";
+import { AuthUser, AuthSession } from "@supabase/supabase-js";
 
 import { supabase } from "../../lib/supabase";
 
-type User = {
-  name?: string;
-} | null;
-
 const AuthContext = React.createContext<{
-  signIn: () => void;
+  session: AuthSession | null;
+  user: AuthUser | null;
+  signIn: ({
+    session,
+    user,
+  }: {
+    session: AuthSession | null;
+    user: AuthUser | null;
+  }) => void;
   signOut: () => void;
-  user: User;
 }>({
+  session: null,
+  user: null,
   signIn: () => {},
   signOut: () => {},
-  user: null,
 });
 
 export function useAuth() {
@@ -23,33 +28,63 @@ export function useAuth() {
 
 export function useProtectedRoute() {
   const router = useRouter();
-  const { user } = useAuth();
+  const { session } = useAuth();
 
   useEffect(() => {
-    if (!user) {
+    if (!session) {
       // Redirect to the sign-in page.
       console.log("Redirecting to sign-in page");
       // router.replace("/(tabs)/(profile)/sign-in");
     }
-  }, [user, router]);
+  }, [session, router]);
 }
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const [user, setUser] = useState(null);
+  const [session, setSession] = useState<AuthSession | null>(null);
+  const [user, setUser] = useState<AuthUser | null>(null);
+
+  async function signIn({
+    session,
+    user,
+  }: {
+    session: AuthSession | null;
+    user: AuthUser | null;
+  }) {
+    setSession(session);
+    setUser(user);
+  }
 
   async function signOut() {
     const { error } = await supabase.auth.signOut();
+    setSession(null);
+
     if (error) {
       console.error(error);
     }
   }
 
+  async function getSession() {
+    const { data, error } = await supabase.auth.getSession();
+
+    if (error) {
+      console.error(error);
+      signOut();
+    } else {
+      setSession(data.session);
+    }
+  }
+
+  useEffect(() => {
+    getSession();
+  }, []);
+
   return (
     <AuthContext.Provider
       value={{
-        signIn: () => {},
-        signOut,
+        session,
         user,
+        signIn,
+        signOut,
       }}
     >
       {children}

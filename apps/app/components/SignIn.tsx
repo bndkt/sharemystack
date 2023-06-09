@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { Button, YStack } from "tamagui";
 
 import { supabase } from "../lib/supabase";
+import { useAuth } from "./providers/AuthProvider";
 
 WebBrowser.maybeCompleteAuthSession();
 
@@ -13,6 +14,7 @@ const redirectTo = makeRedirectUri();
 
 export function SignIn() {
   const [authUrl, setAuthUrl] = useState<string | null>(null);
+  const { signIn } = useAuth();
 
   async function prepareAuth() {
     const { data, error } = await supabase.auth.signInWithOAuth({
@@ -36,7 +38,7 @@ export function SignIn() {
     prepareAuth();
   }, []);
 
-  async function signIn() {
+  async function signInWithTwitter() {
     if (authUrl) {
       const res = await WebBrowser.openAuthSessionAsync(authUrl);
       if (res.type === "success") {
@@ -47,15 +49,18 @@ export function SignIn() {
           console.error(errorCode);
         }
 
-        console.log({ params });
-
         const { access_token, refresh_token } = params;
 
         const { data, error } = await supabase.auth.setSession({
           access_token,
           refresh_token,
         });
-        console.log({ data, error });
+
+        if (error) {
+          console.error(error);
+        } else {
+          signIn(data);
+        }
       }
     }
   }
@@ -65,7 +70,7 @@ export function SignIn() {
       <Button
         disabled={!authUrl}
         onPress={() => {
-          signIn();
+          signInWithTwitter();
         }}
         backgroundColor={"#1D9BF0"}
         color="#FFFFFF"
