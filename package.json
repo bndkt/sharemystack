@@ -10,6 +10,7 @@
     "dev": "turbo run dev",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "update": "pnpm update -i -r -L",
     "manypkg": "npx @manypkg/cli@latest check"
   },
   "dependencies": {
