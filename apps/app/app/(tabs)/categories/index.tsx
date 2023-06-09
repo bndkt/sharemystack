@@ -1,12 +1,12 @@
 import { FlashList } from "@shopify/flash-list";
 import { ChevronRight } from "@tamagui/lucide-icons";
-import { Link, Stack } from "expo-router";
+import { Link } from "expo-router";
 import { useEffect, useState } from "react";
 import { ListItem, Separator, Spinner, YStack } from "tamagui";
 
-import { supabase } from "../../../lib/supabase";
-import { CategoryIcon } from "../../../components/icons/CategoryIcon";
 import { SuggestionButton } from "../../../components/SuggestionButton";
+import { CategoryIcon } from "../../../components/icons/CategoryIcon";
+import { supabase } from "../../../lib/supabase";
 
 export default function Categories() {
   const [isLoading, setLoading] = useState(true);

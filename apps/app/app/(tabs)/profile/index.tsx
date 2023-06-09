@@ -1,7 +1,7 @@
-import { Text, YStack } from "tamagui";
+import { YStack } from "tamagui";
 
-import { useProtectedRoute } from "../../../components/providers/AuthProvider";
 import { SignIn } from "../../../components/SignIn";
+import { useProtectedRoute } from "../../../components/providers/AuthProvider";
 
 export default function Index() {
   useProtectedRoute();

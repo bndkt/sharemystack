@@ -1,11 +1,11 @@
+import { FlashList } from "@shopify/flash-list";
+import { ChevronRight } from "@tamagui/lucide-icons";
 import { Link, Stack, useLocalSearchParams } from "expo-router";
 import { useEffect, useState } from "react";
 import { H2, ListItem, Separator, Spinner, Text, YStack } from "tamagui";
-import { FlashList } from "@shopify/flash-list";
-import { ChevronRight } from "@tamagui/lucide-icons";
 
-import { supabase } from "../../../lib/supabase";
 import { ToolIcon } from "../../../components/icons/ToolIcon";
+import { supabase } from "../../../lib/supabase";
 
 export default function Index() {
   let { stack: slug } = useLocalSearchParams<{ stack: string }>();

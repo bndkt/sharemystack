@@ -1,12 +1,12 @@
 import { FlashList } from "@shopify/flash-list";
 import { ChevronRight } from "@tamagui/lucide-icons";
-import { Link, Stack } from "expo-router";
+import { Link } from "expo-router";
 import { useEffect, useState } from "react";
 import { ListItem, Separator, Spinner, YStack } from "tamagui";
 
-import { supabase } from "../../../lib/supabase";
-import { ToolIcon } from "../../../components/icons/ToolIcon";
 import { SuggestionButton } from "../../../components/SuggestionButton";
+import { ToolIcon } from "../../../components/icons/ToolIcon";
+import { supabase } from "../../../lib/supabase";
 
 export default function Index() {
   const [isLoading, setLoading] = useState(true);
