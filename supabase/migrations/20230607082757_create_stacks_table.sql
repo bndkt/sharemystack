@@ -6,6 +6,7 @@ create table
     slug character varying not null,
     twitter character varying null,
     website character varying null,
+    featured boolean not null default false,
     constraint stacks_pkey primary key (id),
     constraint stacks_slug_key unique (slug)
   );
