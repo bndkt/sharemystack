@@ -5,14 +5,14 @@ import * as WebBrowser from "expo-web-browser";
 import { useEffect, useState } from "react";
 import { Button, YStack } from "tamagui";
 
-import { supabase } from "../lib/supabase";
-import { useAuth } from "./providers/AuthProvider";
+import { supabase } from "../../lib/supabase";
+import { useAuth } from "../providers/AuthProvider";
 
 WebBrowser.maybeCompleteAuthSession();
 
 const redirectTo = makeRedirectUri();
 
-export function SignIn() {
+export function SignInButton() {
   const [authUrl, setAuthUrl] = useState<string | null>(null);
   const { signIn } = useAuth();
 
