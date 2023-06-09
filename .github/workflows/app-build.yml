@@ -9,7 +9,7 @@ on:
         default: development-simulator
         required: true
         options:
-          - simulator
+          - development
           - development-simulator
           - preview
           - production
@@ -38,4 +38,4 @@ jobs:
       - name: 📢 EAS Build and Submit
         run: eas build -e ${{ inputs.profile }} -p ios --non-interactive --no-wait --auto-submit
         working-directory: ./apps/app
-        if: ${{ inputs.submit && inputs.profile != 'development-simulator' && inputs.profile != 'development' }}
+        if: ${{ inputs.submit && inputs.profile == 'production' }}
