@@ -126,26 +126,26 @@ importers:
         version: 0.18.12(react-dom@18.2.0)(react@18.2.0)
       tamagui:
         specifier: ^1.31.3
-        version: 1.31.3(@types/react@18.2.9)(react-dom@18.2.0)(react-native-web@0.18.12)(react-native@0.71.8)(react@18.2.0)
+        version: 1.31.3(@types/react@18.0.27)(react-dom@18.2.0)(react-native-web@0.18.12)(react-native@0.71.8)(react@18.2.0)
     devDependencies:
       '@babel/core':
         specifier: ^7.22.5
         version: 7.22.5
       '@types/react':
-        specifier: ~18.2.9
-        version: 18.2.9
+        specifier: ~18.0.27
+        version: 18.0.27
       eslint:
         specifier: ^8.42.0
         version: 8.42.0
       eslint-config-universe:
         specifier: ^11.2.0
-        version: 11.2.0(eslint@8.42.0)(prettier@2.8.8)(typescript@5.1.3)
+        version: 11.2.0(eslint@8.42.0)(prettier@2.8.8)(typescript@4.9.4)
       prettier:
         specifier: ^2.8.8
         version: 2.8.8
       typescript:
-        specifier: ^5.1.3
-        version: 5.1.3
+        specifier: ^4.9.4
+        version: 4.9.4
 
   apps/web:
     dependencies:
@@ -185,13 +185,13 @@ importers:
         version: 1.17.0
       '@remix-run/eslint-config':
         specifier: ^1.17.0
-        version: 1.17.0(eslint@8.42.0)(react@18.2.0)(typescript@5.1.3)
+        version: 1.17.0(eslint@8.42.0)(react@18.2.0)(typescript@4.9.4)
       '@tailwindcss/typography':
         specifier: ^0.5.9
         version: 0.5.9(tailwindcss@3.3.2)
       '@types/react':
-        specifier: ^18.2.9
-        version: 18.2.9
+        specifier: ~18.0.27
+        version: 18.0.27
       '@types/react-dom':
         specifier: ^18.2.4
         version: 18.2.4
@@ -208,8 +208,8 @@ importers:
         specifier: ^3.3.2
         version: 3.3.2
       typescript:
-        specifier: ^5.1.3
-        version: 5.1.3
+        specifier: ^4.9.4
+        version: 4.9.4
       wrangler:
         specifier: ^3.1.0
         version: 3.1.0
@@ -1803,7 +1803,6 @@ packages:
     cpu: [arm64]
     os: [android]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@esbuild/android-arm64@0.17.6:
@@ -1830,7 +1829,6 @@ packages:
     cpu: [arm]
     os: [android]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@esbuild/android-arm@0.17.6:
@@ -1857,7 +1855,6 @@ packages:
     cpu: [x64]
     os: [android]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@esbuild/android-x64@0.17.6:
@@ -1884,7 +1881,6 @@ packages:
     cpu: [arm64]
     os: [darwin]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@esbuild/darwin-arm64@0.17.6:
@@ -1911,7 +1907,6 @@ packages:
     cpu: [x64]
     os: [darwin]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@esbuild/darwin-x64@0.17.6:
@@ -1938,7 +1933,6 @@ packages:
     cpu: [arm64]
     os: [freebsd]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@esbuild/freebsd-arm64@0.17.6:
@@ -1965,7 +1959,6 @@ packages:
     cpu: [x64]
     os: [freebsd]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@esbuild/freebsd-x64@0.17.6:
@@ -1992,7 +1985,6 @@ packages:
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@esbuild/linux-arm64@0.17.6:
@@ -2019,7 +2011,6 @@ packages:
     cpu: [arm]
     os: [linux]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@esbuild/linux-arm@0.17.6:
@@ -2046,7 +2037,6 @@ packages:
     cpu: [ia32]
     os: [linux]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@esbuild/linux-ia32@0.17.6:
@@ -2073,7 +2063,6 @@ packages:
     cpu: [loong64]
     os: [linux]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@esbuild/linux-loong64@0.17.6:
@@ -2100,7 +2089,6 @@ packages:
     cpu: [mips64el]
     os: [linux]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@esbuild/linux-mips64el@0.17.6:
@@ -2127,7 +2115,6 @@ packages:
     cpu: [ppc64]
     os: [linux]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@esbuild/linux-ppc64@0.17.6:
@@ -2154,7 +2141,6 @@ packages:
     cpu: [riscv64]
     os: [linux]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@esbuild/linux-riscv64@0.17.6:
@@ -2181,7 +2167,6 @@ packages:
     cpu: [s390x]
     os: [linux]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@esbuild/linux-s390x@0.17.6:
@@ -2208,7 +2193,6 @@ packages:
     cpu: [x64]
     os: [linux]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@esbuild/linux-x64@0.17.6:
@@ -2235,7 +2219,6 @@ packages:
     cpu: [x64]
     os: [netbsd]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@esbuild/netbsd-x64@0.17.6:
@@ -2262,7 +2245,6 @@ packages:
     cpu: [x64]
     os: [openbsd]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@esbuild/openbsd-x64@0.17.6:
@@ -2289,7 +2271,6 @@ packages:
     cpu: [x64]
     os: [sunos]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@esbuild/sunos-x64@0.17.6:
@@ -2316,7 +2297,6 @@ packages:
     cpu: [arm64]
     os: [win32]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@esbuild/win32-arm64@0.17.6:
@@ -2343,7 +2323,6 @@ packages:
     cpu: [ia32]
     os: [win32]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@esbuild/win32-ia32@0.17.6:
@@ -2370,7 +2349,6 @@ packages:
     cpu: [x64]
     os: [win32]
     requiresBuild: true
-    dev: false
     optional: true
 
   /@esbuild/win32-x64@0.17.6:
@@ -2707,7 +2685,7 @@ packages:
       '@expo/json-file': 8.2.37
       debug: 4.3.4
       expo-modules-autolinking: 1.2.0
-      fs-extra: 9.0.0
+      fs-extra: 9.1.0
       resolve-from: 5.0.0
       semver: 7.3.2
       xml2js: 0.4.23
@@ -3047,7 +3025,7 @@ packages:
       react: 18.2.0
     dev: false
 
-  /@radix-ui/react-use-callback-ref@1.0.1(@types/react@18.2.9)(react@18.2.0):
+  /@radix-ui/react-use-callback-ref@1.0.1(@types/react@18.0.27)(react@18.2.0):
     resolution: {integrity: sha512-D94LjX4Sp0xJFVaoQOd3OO9k7tpBYNOXdVhkltUbGv2Qb9OXdrg/CpsjlZv7ia14Sylv398LswWBVVu5nqKzAQ==}
     peerDependencies:
       '@types/react': '*'
@@ -3057,11 +3035,11 @@ packages:
         optional: true
     dependencies:
       '@babel/runtime': 7.22.5
-      '@types/react': 18.2.9
+      '@types/react': 18.0.27
       react: 18.2.0
     dev: false
 
-  /@radix-ui/react-use-escape-keydown@1.0.3(@types/react@18.2.9)(react@18.2.0):
+  /@radix-ui/react-use-escape-keydown@1.0.3(@types/react@18.0.27)(react@18.2.0):
     resolution: {integrity: sha512-vyL82j40hcFicA+M4Ex7hVkB9vHgSse1ZWomAqV2Je3RleKGO5iM8KMOEtfoSB0PnIelMd2lATjTGMYqN5ylTg==}
     peerDependencies:
       '@types/react': '*'
@@ -3071,12 +3049,12 @@ packages:
         optional: true
     dependencies:
       '@babel/runtime': 7.22.5
-      '@radix-ui/react-use-callback-ref': 1.0.1(@types/react@18.2.9)(react@18.2.0)
-      '@types/react': 18.2.9
+      '@radix-ui/react-use-callback-ref': 1.0.1(@types/react@18.0.27)(react@18.2.0)
+      '@types/react': 18.0.27
       react: 18.2.0
     dev: false
 
-  /@radix-ui/react-use-previous@1.0.1(@types/react@18.2.9)(react@18.2.0):
+  /@radix-ui/react-use-previous@1.0.1(@types/react@18.0.27)(react@18.2.0):
     resolution: {integrity: sha512-cV5La9DPwiQ7S0gf/0qiD6YgNqM5Fk97Kdrlc5yBcrF3jyEZQwm7vYFqMo4IfeHgJXsRaMvLABFtd0OVEmZhDw==}
     peerDependencies:
       '@types/react': '*'
@@ -3086,7 +3064,7 @@ packages:
         optional: true
     dependencies:
       '@babel/runtime': 7.22.5
-      '@types/react': 18.2.9
+      '@types/react': 18.0.27
       react: 18.2.0
     dev: false
 
@@ -3489,7 +3467,7 @@ packages:
       - utf-8-validate
     dev: true
 
-  /@remix-run/eslint-config@1.17.0(eslint@8.42.0)(react@18.2.0)(typescript@5.1.3):
+  /@remix-run/eslint-config@1.17.0(eslint@8.42.0)(react@18.2.0)(typescript@4.9.4):
     resolution: {integrity: sha512-tOIRQN1knA529DbZab/oCh5v3aMJh34auj6H9L7R/fFeOocqhQPK3EZCqdkw5GDNKjFCrfcSUMFuLVBD8Ye5Zw==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     peerDependencies:
@@ -3504,21 +3482,21 @@ packages:
       '@babel/eslint-parser': 7.22.5(@babel/core@7.22.5)(eslint@8.42.0)
       '@babel/preset-react': 7.22.5(@babel/core@7.22.5)
       '@rushstack/eslint-patch': 1.3.1
-      '@typescript-eslint/eslint-plugin': 5.59.9(@typescript-eslint/parser@5.59.9)(eslint@8.42.0)(typescript@5.1.3)
-      '@typescript-eslint/parser': 5.59.9(eslint@8.42.0)(typescript@5.1.3)
+      '@typescript-eslint/eslint-plugin': 5.59.9(@typescript-eslint/parser@5.59.9)(eslint@8.42.0)(typescript@4.9.4)
+      '@typescript-eslint/parser': 5.59.9(eslint@8.42.0)(typescript@4.9.4)
       eslint: 8.42.0
       eslint-import-resolver-node: 0.3.7
       eslint-import-resolver-typescript: 3.5.5(@typescript-eslint/parser@5.59.9)(eslint-import-resolver-node@0.3.7)(eslint-plugin-import@2.27.5)(eslint@8.42.0)
       eslint-plugin-import: 2.27.5(@typescript-eslint/parser@5.59.9)(eslint-import-resolver-typescript@3.5.5)(eslint@8.42.0)
-      eslint-plugin-jest: 26.9.0(@typescript-eslint/eslint-plugin@5.59.9)(eslint@8.42.0)(typescript@5.1.3)
+      eslint-plugin-jest: 26.9.0(@typescript-eslint/eslint-plugin@5.59.9)(eslint@8.42.0)(typescript@4.9.4)
       eslint-plugin-jest-dom: 4.0.3(eslint@8.42.0)
       eslint-plugin-jsx-a11y: 6.7.1(eslint@8.42.0)
       eslint-plugin-node: 11.1.0(eslint@8.42.0)
       eslint-plugin-react: 7.32.2(eslint@8.42.0)
       eslint-plugin-react-hooks: 4.6.0(eslint@8.42.0)
-      eslint-plugin-testing-library: 5.11.0(eslint@8.42.0)(typescript@5.1.3)
+      eslint-plugin-testing-library: 5.11.0(eslint@8.42.0)(typescript@4.9.4)
       react: 18.2.0
-      typescript: 5.1.3
+      typescript: 4.9.4
     transitivePeerDependencies:
       - eslint-import-resolver-webpack
       - jest
@@ -3703,7 +3681,7 @@ packages:
       - react
     dev: false
 
-  /@tamagui/alert-dialog@1.31.3(@types/react@18.2.9)(react-dom@18.2.0)(react-native@0.71.8)(react@18.2.0):
+  /@tamagui/alert-dialog@1.31.3(@types/react@18.0.27)(react-dom@18.2.0)(react-native@0.71.8)(react@18.2.0):
     resolution: {integrity: sha512-IMIRdTq7ey12rUJqZmUmxx/ZqbqNpSOMk1LMZ4l7Toe2GvaqP1HLoQNDjui3SAm4jJApAzVrtwHycA/0QHeHng==}
     peerDependencies:
       react: '*'
@@ -3714,13 +3692,13 @@ packages:
       '@tamagui/compose-refs': 1.31.3(react@18.2.0)
       '@tamagui/core': 1.31.3(react@18.2.0)
       '@tamagui/create-context': 1.31.3(react@18.2.0)
-      '@tamagui/dialog': 1.31.3(@types/react@18.2.9)(react-dom@18.2.0)(react-native@0.71.8)(react@18.2.0)
-      '@tamagui/dismissable': 1.31.3(@types/react@18.2.9)(react@18.2.0)
+      '@tamagui/dialog': 1.31.3(@types/react@18.0.27)(react-dom@18.2.0)(react-native@0.71.8)(react@18.2.0)
+      '@tamagui/dismissable': 1.31.3(@types/react@18.0.27)(react@18.2.0)
       '@tamagui/focus-scope': 1.31.3(react@18.2.0)
       '@tamagui/polyfill-dev': 1.31.3
       '@tamagui/popper': 1.31.3(react-dom@18.2.0)(react-native@0.71.8)(react@18.2.0)
       '@tamagui/portal': 1.31.3(react-native@0.71.8)(react@18.2.0)
-      '@tamagui/remove-scroll': 1.31.3(@types/react@18.2.9)(react@18.2.0)
+      '@tamagui/remove-scroll': 1.31.3(@types/react@18.0.27)(react@18.2.0)
       '@tamagui/stacks': 1.31.3(react@18.2.0)
       '@tamagui/text': 1.31.3(react-native@0.71.8)(react@18.2.0)
       '@tamagui/use-controllable-state': 1.31.3(react@18.2.0)
@@ -3845,12 +3823,12 @@ packages:
       react-native: 0.71.8(@babel/core@7.22.5)(@babel/preset-env@7.22.5)(react@18.2.0)
     dev: false
 
-  /@tamagui/checkbox@1.31.3(@types/react@18.2.9)(react-native@0.71.8)(react@18.2.0):
+  /@tamagui/checkbox@1.31.3(@types/react@18.0.27)(react-native@0.71.8)(react@18.2.0):
     resolution: {integrity: sha512-1D6OnnL6qwkj/3BUl8CwX8JXv5dW7EBjKQCekM4DSlPBUm+BXimt2PPNAqHdfLwEW+c4XsJLHigR/TkX/VNL1A==}
     peerDependencies:
       react: '*'
     dependencies:
-      '@radix-ui/react-use-previous': 1.0.1(@types/react@18.2.9)(react@18.2.0)
+      '@radix-ui/react-use-previous': 1.0.1(@types/react@18.0.27)(react@18.2.0)
       '@tamagui/core': 1.31.3(react@18.2.0)
       '@tamagui/create-context': 1.31.3(react@18.2.0)
       '@tamagui/focusable': 1.31.3(react@18.2.0)
@@ -3977,7 +3955,7 @@ packages:
     resolution: {integrity: sha512-7YjAQAOqmX4DmePHZxQmbqXMom2Ij2lWpe69WA+JIFl/1flpuwYMJaybRIwvOXH9thiKPsJhR0zmj+ujnFayog==}
     dev: false
 
-  /@tamagui/dialog@1.31.3(@types/react@18.2.9)(react-dom@18.2.0)(react-native@0.71.8)(react@18.2.0):
+  /@tamagui/dialog@1.31.3(@types/react@18.0.27)(react-dom@18.2.0)(react-native@0.71.8)(react@18.2.0):
     resolution: {integrity: sha512-Da/uD7QYwPJsBS9DfQV5+iE58M2XzFdC+OCanNhVVFkFbDBYb+JlN4fhdAJ5s3OebOqg1TDMQgm/M888XofTKw==}
     peerDependencies:
       react: '*'
@@ -3989,13 +3967,13 @@ packages:
       '@tamagui/compose-refs': 1.31.3(react@18.2.0)
       '@tamagui/core': 1.31.3(react@18.2.0)
       '@tamagui/create-context': 1.31.3(react@18.2.0)
-      '@tamagui/dismissable': 1.31.3(@types/react@18.2.9)(react@18.2.0)
+      '@tamagui/dismissable': 1.31.3(@types/react@18.0.27)(react@18.2.0)
       '@tamagui/focus-scope': 1.31.3(react@18.2.0)
       '@tamagui/polyfill-dev': 1.31.3
       '@tamagui/popper': 1.31.3(react-dom@18.2.0)(react-native@0.71.8)(react@18.2.0)
       '@tamagui/portal': 1.31.3(react-native@0.71.8)(react@18.2.0)
-      '@tamagui/remove-scroll': 1.31.3(@types/react@18.2.9)(react@18.2.0)
-      '@tamagui/sheet': 1.31.3(@types/react@18.2.9)(react-native@0.71.8)(react@18.2.0)
+      '@tamagui/remove-scroll': 1.31.3(@types/react@18.0.27)(react@18.2.0)
+      '@tamagui/sheet': 1.31.3(@types/react@18.0.27)(react-native@0.71.8)(react@18.2.0)
       '@tamagui/stacks': 1.31.3(react@18.2.0)
       '@tamagui/text': 1.31.3(react-native@0.71.8)(react@18.2.0)
       '@tamagui/use-controllable-state': 1.31.3(react@18.2.0)
@@ -4006,12 +3984,12 @@ packages:
       - react-dom
     dev: false
 
-  /@tamagui/dismissable@1.31.3(@types/react@18.2.9)(react@18.2.0):
+  /@tamagui/dismissable@1.31.3(@types/react@18.0.27)(react@18.2.0):
     resolution: {integrity: sha512-7VZKleq2mzuRId/b/BrjfxXtcblA/HNmAsDKrAFGEO6YVjaRXOmZRyZcR0dHNJOi88W22r7ToPE26QjbXWMlZw==}
     peerDependencies:
       react: '*'
     dependencies:
-      '@radix-ui/react-use-escape-keydown': 1.0.3(@types/react@18.2.9)(react@18.2.0)
+      '@radix-ui/react-use-escape-keydown': 1.0.3(@types/react@18.0.27)(react@18.2.0)
       '@tamagui/compose-refs': 1.31.3(react@18.2.0)
       '@tamagui/core': 1.31.3(react@18.2.0)
       '@tamagui/use-event': 1.31.3(react@18.2.0)
@@ -4242,7 +4220,7 @@ packages:
     resolution: {integrity: sha512-b8+ZlV6UyXZ2K/OKdFC437QaofcCA2VqMvfXLR87KyeGczhQbIwBFaxTUYXnq4RJ6UWfVesYli7duKv4CL68vQ==}
     dev: false
 
-  /@tamagui/popover@1.31.3(@types/react@18.2.9)(react-dom@18.2.0)(react-native@0.71.8)(react@18.2.0):
+  /@tamagui/popover@1.31.3(@types/react@18.0.27)(react-dom@18.2.0)(react-native@0.71.8)(react@18.2.0):
     resolution: {integrity: sha512-WdCfuM/XR6RtMCQDwZYwpu9+oZpJV011d5Jv0cgGY4LfYX0Gy4ID8dzLD0a2nOHq3FNQYUpMfSusL1APpjVK7w==}
     peerDependencies:
       react: '*'
@@ -4254,15 +4232,15 @@ packages:
       '@tamagui/aria-hidden': 1.31.3(react@18.2.0)
       '@tamagui/compose-refs': 1.31.3(react@18.2.0)
       '@tamagui/core': 1.31.3(react@18.2.0)
-      '@tamagui/dismissable': 1.31.3(@types/react@18.2.9)(react@18.2.0)
+      '@tamagui/dismissable': 1.31.3(@types/react@18.0.27)(react@18.2.0)
       '@tamagui/floating': 1.31.3(react-dom@18.2.0)(react-native@0.71.8)(react@18.2.0)
       '@tamagui/focus-scope': 1.31.3(react@18.2.0)
       '@tamagui/polyfill-dev': 1.31.3
       '@tamagui/popper': 1.31.3(react-dom@18.2.0)(react-native@0.71.8)(react@18.2.0)
       '@tamagui/portal': 1.31.3(react-native@0.71.8)(react@18.2.0)
-      '@tamagui/remove-scroll': 1.31.3(@types/react@18.2.9)(react@18.2.0)
+      '@tamagui/remove-scroll': 1.31.3(@types/react@18.0.27)(react@18.2.0)
       '@tamagui/scroll-view': 1.31.3(react@18.2.0)
-      '@tamagui/sheet': 1.31.3(@types/react@18.2.9)(react-native@0.71.8)(react@18.2.0)
+      '@tamagui/sheet': 1.31.3(@types/react@18.0.27)(react-native@0.71.8)(react@18.2.0)
       '@tamagui/stacks': 1.31.3(react@18.2.0)
       '@tamagui/use-controllable-state': 1.31.3(react@18.2.0)
       react: 18.2.0
@@ -4324,12 +4302,12 @@ packages:
     resolution: {integrity: sha512-/f7IHdXrQwvCvD0pNCssQXYUQnc9WVTcYIxz2h8/x5qpDM1H5cReUTtb66BKSMbNC3eE+a9Dji1p4Kzb0h+rWw==}
     dev: false
 
-  /@tamagui/radio-group@1.31.3(@types/react@18.2.9)(react-native@0.71.8)(react@18.2.0):
+  /@tamagui/radio-group@1.31.3(@types/react@18.0.27)(react-native@0.71.8)(react@18.2.0):
     resolution: {integrity: sha512-+z2wOrM4JgpCmPeVTQH/U5gcpkb0bet9994j4B1q7YOX8lTfC4pR9KkAWw+jQDzvMLrSECOPy1iCLACFW0d5tg==}
     peerDependencies:
       react: '*'
     dependencies:
-      '@radix-ui/react-use-previous': 1.0.1(@types/react@18.2.9)(react@18.2.0)
+      '@radix-ui/react-use-previous': 1.0.1(@types/react@18.0.27)(react@18.2.0)
       '@tamagui/compose-refs': 1.31.3(react@18.2.0)
       '@tamagui/core': 1.31.3(react@18.2.0)
       '@tamagui/create-context': 1.31.3(react@18.2.0)
@@ -4372,13 +4350,13 @@ packages:
       react: 18.2.0
     dev: false
 
-  /@tamagui/remove-scroll@1.31.3(@types/react@18.2.9)(react@18.2.0):
+  /@tamagui/remove-scroll@1.31.3(@types/react@18.0.27)(react@18.2.0):
     resolution: {integrity: sha512-1WnrMHpiBscTND0eGENvwCL3KCxWNNEUN5IatCS7TZ1n2knHY8Vm6HBiBiRHo+g/DeL1V+jSUNi98c7cV4CjQw==}
     peerDependencies:
       react: '*'
     dependencies:
       react: 18.2.0
-      react-remove-scroll: 2.5.6(@types/react@18.2.9)(react@18.2.0)
+      react-remove-scroll: 2.5.6(@types/react@18.0.27)(react@18.2.0)
     transitivePeerDependencies:
       - '@types/react'
     dev: false
@@ -4408,7 +4386,7 @@ packages:
       react: 18.2.0
     dev: false
 
-  /@tamagui/select@1.31.3(@types/react@18.2.9)(react-dom@18.2.0)(react-native@0.71.8)(react@18.2.0):
+  /@tamagui/select@1.31.3(@types/react@18.0.27)(react-dom@18.2.0)(react-native@0.71.8)(react@18.2.0):
     resolution: {integrity: sha512-h43zgSzyypG2CVqTSglueQrMagwuAvU2YVSiVGG1K5+m5T4gVGBXLI+McHWZ1gbe31hU2K1MtxejXec5YVa6Og==}
     peerDependencies:
       react: '*'
@@ -4418,18 +4396,18 @@ packages:
       '@floating-ui/react': 0.24.2(react-dom@18.2.0)(react@18.2.0)
       '@floating-ui/react-dom': 2.0.0(react-dom@18.2.0)(react@18.2.0)
       '@floating-ui/react-native': 0.10.0(react-native@0.71.8)(react@18.2.0)
-      '@radix-ui/react-use-previous': 1.0.1(@types/react@18.2.9)(react@18.2.0)
+      '@radix-ui/react-use-previous': 1.0.1(@types/react@18.0.27)(react@18.2.0)
       '@tamagui/adapt': 1.31.3(react@18.2.0)
       '@tamagui/compose-refs': 1.31.3(react@18.2.0)
       '@tamagui/core': 1.31.3(react@18.2.0)
       '@tamagui/create-context': 1.31.3(react@18.2.0)
-      '@tamagui/dismissable': 1.31.3(@types/react@18.2.9)(react@18.2.0)
+      '@tamagui/dismissable': 1.31.3(@types/react@18.0.27)(react@18.2.0)
       '@tamagui/focus-scope': 1.31.3(react@18.2.0)
       '@tamagui/get-token': 1.31.3(react-native@0.71.8)(react@18.2.0)
       '@tamagui/list-item': 1.31.3(react-native@0.71.8)(react@18.2.0)
       '@tamagui/portal': 1.31.3(react-native@0.71.8)(react@18.2.0)
       '@tamagui/separator': 1.31.3(react@18.2.0)
-      '@tamagui/sheet': 1.31.3(@types/react@18.2.9)(react-native@0.71.8)(react@18.2.0)
+      '@tamagui/sheet': 1.31.3(@types/react@18.0.27)(react-native@0.71.8)(react@18.2.0)
       '@tamagui/stacks': 1.31.3(react@18.2.0)
       '@tamagui/text': 1.31.3(react-native@0.71.8)(react@18.2.0)
       '@tamagui/use-controllable-state': 1.31.3(react@18.2.0)
@@ -4460,7 +4438,7 @@ packages:
       react: 18.2.0
     dev: false
 
-  /@tamagui/sheet@1.31.3(@types/react@18.2.9)(react-native@0.71.8)(react@18.2.0):
+  /@tamagui/sheet@1.31.3(@types/react@18.0.27)(react-native@0.71.8)(react@18.2.0):
     resolution: {integrity: sha512-1/qHBJ/2Lu0xs7xo1qlsJeVkuAF8trkh5SNaRt6YaJ479Vncde5q01Mywcgx3u7wj9FWuTUCs7daKe31xD9QKg==}
     peerDependencies:
       react: '*'
@@ -4471,7 +4449,7 @@ packages:
       '@tamagui/core': 1.31.3(react@18.2.0)
       '@tamagui/create-context': 1.31.3(react@18.2.0)
       '@tamagui/portal': 1.31.3(react-native@0.71.8)(react@18.2.0)
-      '@tamagui/remove-scroll': 1.31.3(@types/react@18.2.9)(react@18.2.0)
+      '@tamagui/remove-scroll': 1.31.3(@types/react@18.0.27)(react@18.2.0)
       '@tamagui/scroll-view': 1.31.3(react@18.2.0)
       '@tamagui/stacks': 1.31.3(react@18.2.0)
       '@tamagui/use-constant': 1.31.3(react@18.2.0)
@@ -4556,13 +4534,13 @@ packages:
       - supports-color
     dev: false
 
-  /@tamagui/switch@1.31.3(@types/react@18.2.9)(react-native@0.71.8)(react@18.2.0):
+  /@tamagui/switch@1.31.3(@types/react@18.0.27)(react-native@0.71.8)(react@18.2.0):
     resolution: {integrity: sha512-bXiH80h8rd3RV8ESLtyokp6CxzcpBkTHAgks6ouyOhYT6EeFWLS7Ck90RSiKpv+vm92mpV+heKU3qkqQ7n/aRA==}
     peerDependencies:
       react: '*'
       react-native: '*'
     dependencies:
-      '@radix-ui/react-use-previous': 1.0.1(@types/react@18.2.9)(react@18.2.0)
+      '@radix-ui/react-use-previous': 1.0.1(@types/react@18.0.27)(react@18.2.0)
       '@tamagui/compose-refs': 1.31.3(react@18.2.0)
       '@tamagui/core': 1.31.3(react@18.2.0)
       '@tamagui/create-context': 1.31.3(react@18.2.0)
@@ -4663,7 +4641,7 @@ packages:
       - react-native
     dev: false
 
-  /@tamagui/tooltip@1.31.3(@types/react@18.2.9)(react-dom@18.2.0)(react-native@0.71.8)(react@18.2.0):
+  /@tamagui/tooltip@1.31.3(@types/react@18.0.27)(react-dom@18.2.0)(react-native@0.71.8)(react@18.2.0):
     resolution: {integrity: sha512-61r34YFE2Py+1Qf20AD5eD+rOHjxu9HAvuyLUDOdQodZFie3SaESFZsPbT/It5L1gJff7h3uED2IsYNdcDo1nw==}
     peerDependencies:
       react: '*'
@@ -4676,7 +4654,7 @@ packages:
       '@tamagui/floating': 1.31.3(react-dom@18.2.0)(react-native@0.71.8)(react@18.2.0)
       '@tamagui/get-token': 1.31.3(react-native@0.71.8)(react@18.2.0)
       '@tamagui/polyfill-dev': 1.31.3
-      '@tamagui/popover': 1.31.3(@types/react@18.2.9)(react-dom@18.2.0)(react-native@0.71.8)(react@18.2.0)
+      '@tamagui/popover': 1.31.3(@types/react@18.0.27)(react-dom@18.2.0)(react-native@0.71.8)(react@18.2.0)
       '@tamagui/popper': 1.31.3(react-dom@18.2.0)(react-native@0.71.8)(react@18.2.0)
       '@tamagui/stacks': 1.31.3(react@18.2.0)
       '@tamagui/text': 1.31.3(react-native@0.71.8)(react@18.2.0)
@@ -4956,11 +4934,11 @@ packages:
   /@types/react-dom@18.2.4:
     resolution: {integrity: sha512-G2mHoTMTL4yoydITgOGwWdWMVd8sNgyEP85xVmMKAPUBwQWm9wBPQUmvbeF4V3WBY1P7mmL4BkjQ0SqUpf1snw==}
     dependencies:
-      '@types/react': 18.2.9
+      '@types/react': 18.0.27
     dev: true
 
-  /@types/react@18.2.9:
-    resolution: {integrity: sha512-pL3JAesUkF7PEQGxh5XOwdXGV907te6m1/Qe1ERJLgomojS6Ne790QiA7GUl434JEkFA2aAaB6qJ5z4e1zJn/w==}
+  /@types/react@18.0.27:
+    resolution: {integrity: sha512-3vtRKHgVxu3Jp9t718R9BuzoD4NcQ8YJ5XRzsSKxNDiDonD2MXIT1TmSkenxuCycZJoQT5d2vE8LwWJxBC1gmA==}
     dependencies:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.3
@@ -5015,7 +4993,7 @@ packages:
       '@types/yargs-parser': 21.0.0
     dev: false
 
-  /@typescript-eslint/eslint-plugin@5.59.9(@typescript-eslint/parser@5.59.9)(eslint@8.42.0)(typescript@5.1.3):
+  /@typescript-eslint/eslint-plugin@5.59.9(@typescript-eslint/parser@5.59.9)(eslint@8.42.0)(typescript@4.9.4):
     resolution: {integrity: sha512-4uQIBq1ffXd2YvF7MAvehWKW3zVv/w+mSfRAu+8cKbfj3nwzyqJLNcZJpQ/WZ1HLbJDiowwmQ6NO+63nCA+fqA==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     peerDependencies:
@@ -5027,23 +5005,23 @@ packages:
         optional: true
     dependencies:
       '@eslint-community/regexpp': 4.5.1
-      '@typescript-eslint/parser': 5.59.9(eslint@8.42.0)(typescript@5.1.3)
+      '@typescript-eslint/parser': 5.59.9(eslint@8.42.0)(typescript@4.9.4)
       '@typescript-eslint/scope-manager': 5.59.9
-      '@typescript-eslint/type-utils': 5.59.9(eslint@8.42.0)(typescript@5.1.3)
-      '@typescript-eslint/utils': 5.59.9(eslint@8.42.0)(typescript@5.1.3)
+      '@typescript-eslint/type-utils': 5.59.9(eslint@8.42.0)(typescript@4.9.4)
+      '@typescript-eslint/utils': 5.59.9(eslint@8.42.0)(typescript@4.9.4)
       debug: 4.3.4
       eslint: 8.42.0
       grapheme-splitter: 1.0.4
       ignore: 5.2.4
       natural-compare-lite: 1.4.0
       semver: 7.5.1
-      tsutils: 3.21.0(typescript@5.1.3)
-      typescript: 5.1.3
+      tsutils: 3.21.0(typescript@4.9.4)
+      typescript: 4.9.4
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /@typescript-eslint/parser@5.59.9(eslint@8.42.0)(typescript@5.1.3):
+  /@typescript-eslint/parser@5.59.9(eslint@8.42.0)(typescript@4.9.4):
     resolution: {integrity: sha512-FsPkRvBtcLQ/eVK1ivDiNYBjn3TGJdXy2fhXX+rc7czWl4ARwnpArwbihSOHI2Peg9WbtGHrbThfBUkZZGTtvQ==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     peerDependencies:
@@ -5055,10 +5033,10 @@ packages:
     dependencies:
       '@typescript-eslint/scope-manager': 5.59.9
       '@typescript-eslint/types': 5.59.9
-      '@typescript-eslint/typescript-estree': 5.59.9(typescript@5.1.3)
+      '@typescript-eslint/typescript-estree': 5.59.9(typescript@4.9.4)
       debug: 4.3.4
       eslint: 8.42.0
-      typescript: 5.1.3
+      typescript: 4.9.4
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -5071,7 +5049,7 @@ packages:
       '@typescript-eslint/visitor-keys': 5.59.9
     dev: true
 
-  /@typescript-eslint/type-utils@5.59.9(eslint@8.42.0)(typescript@5.1.3):
+  /@typescript-eslint/type-utils@5.59.9(eslint@8.42.0)(typescript@4.9.4):
     resolution: {integrity: sha512-ksEsT0/mEHg9e3qZu98AlSrONAQtrSTljL3ow9CGej8eRo7pe+yaC/mvTjptp23Xo/xIf2mLZKC6KPv4Sji26Q==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     peerDependencies:
@@ -5081,12 +5059,12 @@ packages:
       typescript:
         optional: true
     dependencies:
-      '@typescript-eslint/typescript-estree': 5.59.9(typescript@5.1.3)
-      '@typescript-eslint/utils': 5.59.9(eslint@8.42.0)(typescript@5.1.3)
+      '@typescript-eslint/typescript-estree': 5.59.9(typescript@4.9.4)
+      '@typescript-eslint/utils': 5.59.9(eslint@8.42.0)(typescript@4.9.4)
       debug: 4.3.4
       eslint: 8.42.0
-      tsutils: 3.21.0(typescript@5.1.3)
-      typescript: 5.1.3
+      tsutils: 3.21.0(typescript@4.9.4)
+      typescript: 4.9.4
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -5096,7 +5074,7 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
 
-  /@typescript-eslint/typescript-estree@5.59.9(typescript@5.1.3):
+  /@typescript-eslint/typescript-estree@5.59.9(typescript@4.9.4):
     resolution: {integrity: sha512-pmM0/VQ7kUhd1QyIxgS+aRvMgw+ZljB3eDb+jYyp6d2bC0mQWLzUDF+DLwCTkQ3tlNyVsvZRXjFyV0LkU/aXjA==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     peerDependencies:
@@ -5111,13 +5089,13 @@ packages:
       globby: 11.1.0
       is-glob: 4.0.3
       semver: 7.5.1
-      tsutils: 3.21.0(typescript@5.1.3)
-      typescript: 5.1.3
+      tsutils: 3.21.0(typescript@4.9.4)
+      typescript: 4.9.4
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /@typescript-eslint/utils@5.59.9(eslint@8.42.0)(typescript@5.1.3):
+  /@typescript-eslint/utils@5.59.9(eslint@8.42.0)(typescript@4.9.4):
     resolution: {integrity: sha512-1PuMYsju/38I5Ggblaeb98TOoUvjhRvLpLa1DoTOFaLWqaXl/1iQ1eGurTXgBY58NUdtfTXKP5xBq7q9NDaLKg==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     peerDependencies:
@@ -5128,7 +5106,7 @@ packages:
       '@types/semver': 7.5.0
       '@typescript-eslint/scope-manager': 5.59.9
       '@typescript-eslint/types': 5.59.9
-      '@typescript-eslint/typescript-estree': 5.59.9(typescript@5.1.3)
+      '@typescript-eslint/typescript-estree': 5.59.9(typescript@4.9.4)
       eslint: 8.42.0
       eslint-scope: 5.1.1
       semver: 7.5.1
@@ -7132,7 +7110,6 @@ packages:
       '@esbuild/win32-arm64': 0.17.19
       '@esbuild/win32-ia32': 0.17.19
       '@esbuild/win32-x64': 0.17.19
-    dev: false
 
   /esbuild@0.17.6:
     resolution: {integrity: sha512-TKFRp9TxrJDdRWfSsSERKEovm6v30iHnrjlcGhLBOtReE28Yp1VSBRfO3GTaOFMoxsNerx4TjrhzSuma9ha83Q==}
@@ -7206,7 +7183,7 @@ packages:
       eslint: 8.42.0
     dev: true
 
-  /eslint-config-universe@11.2.0(eslint@8.42.0)(prettier@2.8.8)(typescript@5.1.3):
+  /eslint-config-universe@11.2.0(eslint@8.42.0)(prettier@2.8.8)(typescript@4.9.4):
     resolution: {integrity: sha512-exyQ2DozdDjq+FmIFmo0l3LDVBIn9l8/hJn6EP/EYKGutj0Wr7MvDLp1nVLP07Wk9ykD0Hi2s8g+TP4SW5cOmQ==}
     peerDependencies:
       eslint: '>=8.10'
@@ -7215,8 +7192,8 @@ packages:
       prettier:
         optional: true
     dependencies:
-      '@typescript-eslint/eslint-plugin': 5.59.9(@typescript-eslint/parser@5.59.9)(eslint@8.42.0)(typescript@5.1.3)
-      '@typescript-eslint/parser': 5.59.9(eslint@8.42.0)(typescript@5.1.3)
+      '@typescript-eslint/eslint-plugin': 5.59.9(@typescript-eslint/parser@5.59.9)(eslint@8.42.0)(typescript@4.9.4)
+      '@typescript-eslint/parser': 5.59.9(eslint@8.42.0)(typescript@4.9.4)
       eslint: 8.42.0
       eslint-config-prettier: 8.8.0(eslint@8.42.0)
       eslint-plugin-import: 2.27.5(@typescript-eslint/parser@5.59.9)(eslint-import-resolver-typescript@3.5.5)(eslint@8.42.0)
@@ -7287,7 +7264,7 @@ packages:
       eslint-import-resolver-webpack:
         optional: true
     dependencies:
-      '@typescript-eslint/parser': 5.59.9(eslint@8.42.0)(typescript@5.1.3)
+      '@typescript-eslint/parser': 5.59.9(eslint@8.42.0)(typescript@4.9.4)
       debug: 3.2.7
       eslint: 8.42.0
       eslint-import-resolver-node: 0.3.7
@@ -7317,7 +7294,7 @@ packages:
       '@typescript-eslint/parser':
         optional: true
     dependencies:
-      '@typescript-eslint/parser': 5.59.9(eslint@8.42.0)(typescript@5.1.3)
+      '@typescript-eslint/parser': 5.59.9(eslint@8.42.0)(typescript@4.9.4)
       array-includes: 3.1.6
       array.prototype.flat: 1.3.1
       array.prototype.flatmap: 1.3.1
@@ -7352,7 +7329,7 @@ packages:
       requireindex: 1.2.0
     dev: true
 
-  /eslint-plugin-jest@26.9.0(@typescript-eslint/eslint-plugin@5.59.9)(eslint@8.42.0)(typescript@5.1.3):
+  /eslint-plugin-jest@26.9.0(@typescript-eslint/eslint-plugin@5.59.9)(eslint@8.42.0)(typescript@4.9.4):
     resolution: {integrity: sha512-TWJxWGp1J628gxh2KhaH1H1paEdgE2J61BBF1I59c6xWeL5+D1BzMxGDN/nXAfX+aSkR5u80K+XhskK6Gwq9ng==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     peerDependencies:
@@ -7365,8 +7342,8 @@ packages:
       jest:
         optional: true
     dependencies:
-      '@typescript-eslint/eslint-plugin': 5.59.9(@typescript-eslint/parser@5.59.9)(eslint@8.42.0)(typescript@5.1.3)
-      '@typescript-eslint/utils': 5.59.9(eslint@8.42.0)(typescript@5.1.3)
+      '@typescript-eslint/eslint-plugin': 5.59.9(@typescript-eslint/parser@5.59.9)(eslint@8.42.0)(typescript@4.9.4)
+      '@typescript-eslint/utils': 5.59.9(eslint@8.42.0)(typescript@4.9.4)
       eslint: 8.42.0
     transitivePeerDependencies:
       - supports-color
@@ -7463,13 +7440,13 @@ packages:
       string.prototype.matchall: 4.0.8
     dev: true
 
-  /eslint-plugin-testing-library@5.11.0(eslint@8.42.0)(typescript@5.1.3):
+  /eslint-plugin-testing-library@5.11.0(eslint@8.42.0)(typescript@4.9.4):
     resolution: {integrity: sha512-ELY7Gefo+61OfXKlQeXNIDVVLPcvKTeiQOoMZG9TeuWa7Ln4dUNRv8JdRWBQI9Mbb427XGlVB1aa1QPZxBJM8Q==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0, npm: '>=6'}
     peerDependencies:
       eslint: ^7.5.0 || ^8.0.0
     dependencies:
-      '@typescript-eslint/utils': 5.59.9(eslint@8.42.0)(typescript@5.1.3)
+      '@typescript-eslint/utils': 5.59.9(eslint@8.42.0)(typescript@4.9.4)
       eslint: 8.42.0
     transitivePeerDependencies:
       - supports-color
@@ -13002,7 +12979,7 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: false
 
-  /react-remove-scroll-bar@2.3.4(@types/react@18.2.9)(react@18.2.0):
+  /react-remove-scroll-bar@2.3.4(@types/react@18.0.27)(react@18.2.0):
     resolution: {integrity: sha512-63C4YQBUt0m6ALadE9XV56hV8BgJWDmmTPY758iIJjfQKt2nYwoUrPk0LXRXcB/yIj82T1/Ixfdpdk68LwIB0A==}
     engines: {node: '>=10'}
     peerDependencies:
@@ -13012,13 +12989,13 @@ packages:
       '@types/react':
         optional: true
     dependencies:
-      '@types/react': 18.2.9
+      '@types/react': 18.0.27
       react: 18.2.0
-      react-style-singleton: 2.2.1(@types/react@18.2.9)(react@18.2.0)
+      react-style-singleton: 2.2.1(@types/react@18.0.27)(react@18.2.0)
       tslib: 2.5.3
     dev: false
 
-  /react-remove-scroll@2.5.6(@types/react@18.2.9)(react@18.2.0):
+  /react-remove-scroll@2.5.6(@types/react@18.0.27)(react@18.2.0):
     resolution: {integrity: sha512-bO856ad1uDYLefgArk559IzUNeQ6SWH4QnrevIUjH+GczV56giDfl3h0Idptf2oIKxQmd1p9BN25jleKodTALg==}
     engines: {node: '>=10'}
     peerDependencies:
@@ -13028,13 +13005,13 @@ packages:
       '@types/react':
         optional: true
     dependencies:
-      '@types/react': 18.2.9
+      '@types/react': 18.0.27
       react: 18.2.0
-      react-remove-scroll-bar: 2.3.4(@types/react@18.2.9)(react@18.2.0)
-      react-style-singleton: 2.2.1(@types/react@18.2.9)(react@18.2.0)
+      react-remove-scroll-bar: 2.3.4(@types/react@18.0.27)(react@18.2.0)
+      react-style-singleton: 2.2.1(@types/react@18.0.27)(react@18.2.0)
       tslib: 2.5.3
-      use-callback-ref: 1.3.0(@types/react@18.2.9)(react@18.2.0)
-      use-sidecar: 1.1.2(@types/react@18.2.9)(react@18.2.0)
+      use-callback-ref: 1.3.0(@types/react@18.0.27)(react@18.2.0)
+      use-sidecar: 1.1.2(@types/react@18.0.27)(react@18.2.0)
     dev: false
 
   /react-router-dom@6.12.0(react-dom@18.2.0)(react@18.2.0):
@@ -13070,7 +13047,7 @@ packages:
       react-is: 18.2.0
     dev: false
 
-  /react-style-singleton@2.2.1(@types/react@18.2.9)(react@18.2.0):
+  /react-style-singleton@2.2.1(@types/react@18.0.27)(react@18.2.0):
     resolution: {integrity: sha512-ZWj0fHEMyWkHzKYUr2Bs/4zU6XLmq9HsgBURm7g5pAVfyn49DgUiNgY2d4lXRlYSiCif9YBGpQleewkcqddc7g==}
     engines: {node: '>=10'}
     peerDependencies:
@@ -13080,7 +13057,7 @@ packages:
       '@types/react':
         optional: true
     dependencies:
-      '@types/react': 18.2.9
+      '@types/react': 18.0.27
       get-nonce: 1.0.1
       invariant: 2.2.4
       react: 18.2.0
@@ -14236,23 +14213,23 @@ packages:
       - ts-node
     dev: true
 
-  /tamagui@1.31.3(@types/react@18.2.9)(react-dom@18.2.0)(react-native-web@0.18.12)(react-native@0.71.8)(react@18.2.0):
+  /tamagui@1.31.3(@types/react@18.0.27)(react-dom@18.2.0)(react-native-web@0.18.12)(react-native@0.71.8)(react@18.2.0):
     resolution: {integrity: sha512-/YKaSN1QmNdoCMYRYuyTdLBB94489HHuy8FF+XljZJR8WE3riW+EG6Ts0DtwafxCiopx40I8gatlTeJGYLxbdA==}
     peerDependencies:
       react: '*'
       react-native-web: '*'
     dependencies:
       '@tamagui/adapt': 1.31.3(react@18.2.0)
-      '@tamagui/alert-dialog': 1.31.3(@types/react@18.2.9)(react-dom@18.2.0)(react-native@0.71.8)(react@18.2.0)
+      '@tamagui/alert-dialog': 1.31.3(@types/react@18.0.27)(react-dom@18.2.0)(react-native@0.71.8)(react@18.2.0)
       '@tamagui/animate-presence': 1.31.3(react@18.2.0)
       '@tamagui/avatar': 1.31.3(react-native@0.71.8)(react@18.2.0)
       '@tamagui/button': 1.31.3(react-native@0.71.8)(react@18.2.0)
       '@tamagui/card': 1.31.3(react-native@0.71.8)(react@18.2.0)
-      '@tamagui/checkbox': 1.31.3(@types/react@18.2.9)(react-native@0.71.8)(react@18.2.0)
+      '@tamagui/checkbox': 1.31.3(@types/react@18.0.27)(react-native@0.71.8)(react@18.2.0)
       '@tamagui/compose-refs': 1.31.3(react@18.2.0)
       '@tamagui/core': 1.31.3(react@18.2.0)
       '@tamagui/create-context': 1.31.3(react@18.2.0)
-      '@tamagui/dialog': 1.31.3(@types/react@18.2.9)(react-dom@18.2.0)(react-native@0.71.8)(react@18.2.0)
+      '@tamagui/dialog': 1.31.3(@types/react@18.0.27)(react-dom@18.2.0)(react-native@0.71.8)(react@18.2.0)
       '@tamagui/fake-react-native': 1.31.3
       '@tamagui/focusable': 1.31.3(react@18.2.0)
       '@tamagui/font-size': 1.31.3(react@18.2.0)
@@ -14266,25 +14243,25 @@ packages:
       '@tamagui/label': 1.31.3(react-native@0.71.8)(react@18.2.0)
       '@tamagui/linear-gradient': 1.31.3(react@18.2.0)
       '@tamagui/list-item': 1.31.3(react-native@0.71.8)(react@18.2.0)
-      '@tamagui/popover': 1.31.3(@types/react@18.2.9)(react-dom@18.2.0)(react-native@0.71.8)(react@18.2.0)
+      '@tamagui/popover': 1.31.3(@types/react@18.0.27)(react-dom@18.2.0)(react-native@0.71.8)(react@18.2.0)
       '@tamagui/popper': 1.31.3(react-dom@18.2.0)(react-native@0.71.8)(react@18.2.0)
       '@tamagui/portal': 1.31.3(react-native@0.71.8)(react@18.2.0)
       '@tamagui/progress': 1.31.3(react-native@0.71.8)(react@18.2.0)
-      '@tamagui/radio-group': 1.31.3(@types/react@18.2.9)(react-native@0.71.8)(react@18.2.0)
+      '@tamagui/radio-group': 1.31.3(@types/react@18.0.27)(react-native@0.71.8)(react@18.2.0)
       '@tamagui/react-native-media-driver': 1.31.3(react-native@0.71.8)(react@18.2.0)
       '@tamagui/scroll-view': 1.31.3(react@18.2.0)
-      '@tamagui/select': 1.31.3(@types/react@18.2.9)(react-dom@18.2.0)(react-native@0.71.8)(react@18.2.0)
+      '@tamagui/select': 1.31.3(@types/react@18.0.27)(react-dom@18.2.0)(react-native@0.71.8)(react@18.2.0)
       '@tamagui/separator': 1.31.3(react@18.2.0)
       '@tamagui/shapes': 1.31.3(react@18.2.0)
-      '@tamagui/sheet': 1.31.3(@types/react@18.2.9)(react-native@0.71.8)(react@18.2.0)
+      '@tamagui/sheet': 1.31.3(@types/react@18.0.27)(react-native@0.71.8)(react@18.2.0)
       '@tamagui/slider': 1.31.3(react-native@0.71.8)(react@18.2.0)
       '@tamagui/stacks': 1.31.3(react@18.2.0)
-      '@tamagui/switch': 1.31.3(@types/react@18.2.9)(react-native@0.71.8)(react@18.2.0)
+      '@tamagui/switch': 1.31.3(@types/react@18.0.27)(react-native@0.71.8)(react@18.2.0)
       '@tamagui/tabs': 1.31.3(react-dom@18.2.0)(react-native@0.71.8)(react@18.2.0)
       '@tamagui/text': 1.31.3(react-native@0.71.8)(react@18.2.0)
       '@tamagui/theme': 1.31.3(react@18.2.0)
       '@tamagui/toggle-group': 1.31.3(react-native@0.71.8)(react@18.2.0)
-      '@tamagui/tooltip': 1.31.3(@types/react@18.2.9)(react-dom@18.2.0)(react-native@0.71.8)(react@18.2.0)
+      '@tamagui/tooltip': 1.31.3(@types/react@18.0.27)(react-dom@18.2.0)(react-native@0.71.8)(react@18.2.0)
       '@tamagui/use-controllable-state': 1.31.3(react@18.2.0)
       '@tamagui/use-debounce': 1.31.3(react@18.2.0)
       '@tamagui/use-event': 1.31.3(react@18.2.0)
@@ -14525,14 +14502,14 @@ packages:
   /tslib@2.5.3:
     resolution: {integrity: sha512-mSxlJJwl3BMEQCUNnxXBU9jP4JBktcEGhURcPR6VQVlnP0FdDEsIaz0C35dXNGLyRfrATNofF0F5p2KPxQgB+w==}
 
-  /tsutils@3.21.0(typescript@5.1.3):
+  /tsutils@3.21.0(typescript@4.9.4):
     resolution: {integrity: sha512-mHKK3iUXL+3UF6xL5k0PEhKRUBKPBCv/+RkEOpjRWxxx27KKRBmmA60A9pgOUvMi8GKhRMPEmjBRPzs2W7O1OA==}
     engines: {node: '>= 6'}
     peerDependencies:
       typescript: '>=2.8.0 || >= 3.2.0-dev || >= 3.3.0-dev || >= 3.4.0-dev || >= 3.5.0-dev || >= 3.6.0-dev || >= 3.6.0-beta || >= 3.7.0-dev || >= 3.7.0-beta'
     dependencies:
       tslib: 1.14.1
-      typescript: 5.1.3
+      typescript: 4.9.4
     dev: true
 
   /tunnel-agent@0.6.0:
@@ -14679,10 +14656,17 @@ packages:
       is-typedarray: 1.0.0
     dev: false
 
+  /typescript@4.9.4:
+    resolution: {integrity: sha512-Uz+dTXYzxXXbsFpM86Wh3dKCxrQqUcVMxwU54orwlJjOpO3ao8L7j5lH+dWfTwgCwIuM9GQ2kvVotzYJMXTBZg==}
+    engines: {node: '>=4.2.0'}
+    hasBin: true
+    dev: true
+
   /typescript@5.1.3:
     resolution: {integrity: sha512-XH627E9vkeqhlZFQuL+UsyAXEnibT0kWR2FWONlr4sTjvxyJYnyefgrkyECLzM5NenmKzRAy2rR/OlYLA1HkZw==}
     engines: {node: '>=14.17'}
     hasBin: true
+    dev: false
 
   /ua-parser-js@1.0.35:
     resolution: {integrity: sha512-fKnGuqmTBnIE+/KXSzCn4db8RTigUzw1AN0DmdU6hJovUTbYJKyqj+8Mt1c4VfRDnOVJnENmfYkIPZ946UrSAA==}
@@ -14908,7 +14892,7 @@ packages:
       querystring: 0.2.0
     dev: false
 
-  /use-callback-ref@1.3.0(@types/react@18.2.9)(react@18.2.0):
+  /use-callback-ref@1.3.0(@types/react@18.0.27)(react@18.2.0):
     resolution: {integrity: sha512-3FT9PRuRdbB9HfXhEq35u4oZkvpJ5kuYbpqhCfmiZyReuRgpnhDlbr2ZEnnuS0RrJAPn6l23xjFg9kpDM+Ms7w==}
     engines: {node: '>=10'}
     peerDependencies:
@@ -14918,7 +14902,7 @@ packages:
       '@types/react':
         optional: true
     dependencies:
-      '@types/react': 18.2.9
+      '@types/react': 18.0.27
       react: 18.2.0
       tslib: 2.5.3
     dev: false
@@ -14931,7 +14915,7 @@ packages:
       react: 18.2.0
     dev: false
 
-  /use-sidecar@1.1.2(@types/react@18.2.9)(react@18.2.0):
+  /use-sidecar@1.1.2(@types/react@18.0.27)(react@18.2.0):
     resolution: {integrity: sha512-epTbsLuzZ7lPClpz2TyryBfztm7m+28DlEv2ZCQ3MDr5ssiwyOwGH/e5F9CkfWjJ1t4clvI58yF822/GUkjjhw==}
     engines: {node: '>=10'}
     peerDependencies:
@@ -14941,7 +14925,7 @@ packages:
       '@types/react':
         optional: true
     dependencies:
-      '@types/react': 18.2.9
+      '@types/react': 18.0.27
       detect-node-es: 1.1.0
       react: 18.2.0
       tslib: 2.5.3
@@ -15087,7 +15071,7 @@ packages:
       terser:
         optional: true
     dependencies:
-      esbuild: 0.17.6
+      esbuild: 0.17.19
       postcss: 8.4.24
       rollup: 3.24.0
     optionalDependencies:
