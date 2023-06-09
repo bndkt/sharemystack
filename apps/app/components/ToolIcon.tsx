@@ -1,4 +1,4 @@
-import { Wrench } from "@tamagui/lucide-icons";
+import { BoxSelect, Wrench } from "@tamagui/lucide-icons";
 import { SvgXml } from "react-native-svg";
 
 export function ToolIcon({
@@ -17,6 +17,6 @@ export function ToolIcon({
   return svgXml ? (
     <SvgXml xml={svgXml} color={color} width={width} height={height} />
   ) : (
-    <Wrench color={color} width={width} height={height} />
+    <BoxSelect color="$gray5" width={width} height={height} />
   );
 }
