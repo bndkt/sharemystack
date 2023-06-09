@@ -1,6 +1,5 @@
-import { Home, Layers, Tag, User, Wrench } from "@tamagui/lucide-icons";
 import { useFonts } from "expo-font";
-import { Slot, Stack, Tabs } from "expo-router";
+import { Slot } from "expo-router";
 import { useColorScheme } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { TamaguiProvider, Theme } from "tamagui";
@@ -27,15 +26,7 @@ export default function Layout() {
         <Theme name={colorScheme === "dark" ? "dark" : "light"}>
           <NavigationThemeProvider>
             <AuthProvider>
-              <Stack
-                screenOptions={{ headerShown: false }}
-                initialRouteName="(tabs)"
-              >
-                <Stack.Screen
-                  name="(modals)"
-                  options={{ presentation: "modal" }}
-                />
-              </Stack>
+              <Slot />
             </AuthProvider>
           </NavigationThemeProvider>
         </Theme>

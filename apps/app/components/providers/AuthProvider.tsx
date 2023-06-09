@@ -1,5 +1,5 @@
 import React, { ReactNode, useEffect, useState } from "react";
-import { useRouter, useSegments } from "expo-router";
+import { useRouter } from "expo-router";
 
 import { supabase } from "../../lib/supabase";
 
@@ -22,18 +22,16 @@ export function useAuth() {
 }
 
 export function useProtectedRoute() {
-  const segments = useSegments();
   const router = useRouter();
   const { user } = useAuth();
 
   useEffect(() => {
-    const inAuthGroup = segments[0] === "(auth)";
-
     if (!user) {
       // Redirect to the sign-in page.
-      router.replace("/(modals)/sign-in");
+      console.log("Redirecting to sign-in page");
+      // router.replace("/(tabs)/(profile)/sign-in");
     }
-  }, [user, segments]);
+  }, [user, router]);
 }
 
 export function AuthProvider({ children }: { children: ReactNode }) {

@@ -37,9 +37,10 @@ export default function Layout() {
         }}
       />
       <Tabs.Screen
-        name="profile"
+        name="(profile)"
         options={{
           title: "My Profile",
+          headerShown: false,
           tabBarIcon: ({ color }) => <User color={color} />,
         }}
       />
