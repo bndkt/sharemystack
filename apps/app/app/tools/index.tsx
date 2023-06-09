@@ -6,6 +6,7 @@ import { ListItem, Separator, Spinner, YStack } from "tamagui";
 
 import { supabase } from "../../lib/supabase";
 import { ToolIcon } from "../../components/ToolIcon";
+import { SuggestionButton } from "../../components/SuggestionButton";
 
 export default function Index() {
   const [isLoading, setLoading] = useState(true);
@@ -14,9 +15,9 @@ export default function Index() {
       id: string;
       name: string;
       slug: string;
-      website: string;
-      color?: string;
-      icon?: string;
+      website: string | null;
+      color?: string | null;
+      icon?: string | null;
     }[]
   >([]);
 
@@ -69,6 +70,7 @@ export default function Index() {
           estimatedItemSize={tools.length}
           data={tools}
         />
+        <SuggestionButton />
       </YStack>
     </>
   );

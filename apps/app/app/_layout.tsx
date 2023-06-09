@@ -7,6 +7,7 @@ import { TamaguiProvider, Theme } from "tamagui";
 
 import "../lib/polyfill";
 import config from "../tamagui.config";
+import { NavigationThemeProvider } from "../components/providers/NavigationThemeProvider";
 
 export default function Layout() {
   const colorScheme = useColorScheme();
@@ -23,47 +24,49 @@ export default function Layout() {
     <SafeAreaProvider>
       <TamaguiProvider config={config}>
         <Theme name={colorScheme === "dark" ? "dark" : "light"}>
-          <Tabs>
-            <Tabs.Screen
-              name="index"
-              options={{
-                title: "Home",
-                headerShown: false,
-                tabBarIcon: ({ color }) => <Home color={color} />,
-              }}
-            />
-            <Tabs.Screen
-              name="(stacks)"
-              options={{
-                title: "Stacks",
-                headerShown: false,
-                tabBarIcon: ({ color }) => <Layers color={color} />,
-              }}
-            />
-            <Tabs.Screen
-              name="tools"
-              options={{
-                title: "Tools",
-                headerShown: false,
-                tabBarIcon: ({ color }) => <Wrench color={color} />,
-              }}
-            />
-            <Tabs.Screen
-              name="categories"
-              options={{
-                title: "Categories",
-                headerShown: false,
-                tabBarIcon: ({ color }) => <Tag color={color} />,
-              }}
-            />
-            <Tabs.Screen
-              name="profile"
-              options={{
-                title: "My Profile",
-                tabBarIcon: ({ color }) => <User color={color} />,
-              }}
-            />
-          </Tabs>
+          <NavigationThemeProvider>
+            <Tabs>
+              <Tabs.Screen
+                name="index"
+                options={{
+                  title: "Home",
+                  headerShown: false,
+                  tabBarIcon: ({ color }) => <Home color={color} />,
+                }}
+              />
+              <Tabs.Screen
+                name="(stacks)"
+                options={{
+                  title: "Stacks",
+                  headerShown: false,
+                  tabBarIcon: ({ color }) => <Layers color={color} />,
+                }}
+              />
+              <Tabs.Screen
+                name="tools"
+                options={{
+                  title: "Tools",
+                  headerShown: false,
+                  tabBarIcon: ({ color }) => <Wrench color={color} />,
+                }}
+              />
+              <Tabs.Screen
+                name="categories"
+                options={{
+                  title: "Categories",
+                  headerShown: false,
+                  tabBarIcon: ({ color }) => <Tag color={color} />,
+                }}
+              />
+              <Tabs.Screen
+                name="profile"
+                options={{
+                  title: "My Profile",
+                  tabBarIcon: ({ color }) => <User color={color} />,
+                }}
+              />
+            </Tabs>
+          </NavigationThemeProvider>
         </Theme>
       </TamaguiProvider>
     </SafeAreaProvider>
