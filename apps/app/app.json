@@ -43,6 +43,17 @@
         "projectId": "987c3c40-d46a-45e7-a545-112f3c6e23e9"
       }
     },
-    "plugins": ["sentry-expo"]
+    "plugins": ["sentry-expo"],
+    "hooks": {
+      "postPublish": [
+        {
+          "file": "sentry-expo/upload-sourcemaps",
+          "config": {
+            "organization": "feldapp",
+            "project": "sharemystack"
+          }
+        }
+      ]
+    }
   }
 }
