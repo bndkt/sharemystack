@@ -2527,14 +2527,14 @@ values
 ');
 
 insert into
-public.stacks (id, name, slug, twitter, website)
+public.stacks (id, name, featured, slug, twitter, website)
 values
-('fbc5602c-ebef-4282-8754-d56520486498', 'Benedikt Müller', 'bndkt', 'bndkt', 'https://bndkt.com/'),
-(gen_random_uuid(), 'Nick Milo', 'nickmilo', 'NickMilo', 'https://www.linkingyourthinking.com/'),
-(gen_random_uuid(), 'Ali Abdaal', 'aliabdaal', 'aliabdaal', 'https://aliabdaal.com/'),
-(gen_random_uuid(), 'Tiago Forte', 'fortelabs', 'fortelabs', 'https://fortelabs.com/'),
-(gen_random_uuid(), 'Thomas Frank', 'tomfrankly', 'TomFrankly', 'https://thomasjfrank.com/'),
-(gen_random_uuid(), 'Marie Poulin', 'mariepoulin', 'mariepoulin', 'https://mariepoulin.com/');
+('fbc5602c-ebef-4282-8754-d56520486498', 'Benedikt Müller', false, 'bndkt', 'bndkt', 'https://bndkt.com/'),
+(gen_random_uuid(), 'Nick Milo', true, 'nickmilo', 'NickMilo', 'https://www.linkingyourthinking.com/'),
+(gen_random_uuid(), 'Ali Abdaal', true, 'aliabdaal', 'aliabdaal', 'https://aliabdaal.com/'),
+(gen_random_uuid(), 'Tiago Forte', true, 'fortelabs', 'fortelabs', 'https://fortelabs.com/'),
+(gen_random_uuid(), 'Thomas Frank', true, 'tomfrankly', 'TomFrankly', 'https://thomasjfrank.com/'),
+(gen_random_uuid(), 'Marie Poulin', true, 'mariepoulin', 'mariepoulin', 'https://mariepoulin.com/');
 
 insert into
 public.categorizations (category_id, tool_id)
