@@ -23,7 +23,7 @@ export const meta: V2_MetaFunction = () => [
   {
     name: "title",
     content:
-      "Share My Stack - Share you personal productivity stack with the world!",
+      "Share My Stack - Share your personal productivity stack with the world!",
   },
   { name: "viewport", content: "width=device-width,initial-scale=1" },
   {
