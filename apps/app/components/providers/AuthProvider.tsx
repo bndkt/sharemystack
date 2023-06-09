@@ -31,7 +31,7 @@ export function useProtectedRoute() {
 
     if (!user) {
       // Redirect to the sign-in page.
-      router.replace("/(auth)/sign-in");
+      router.replace("/(modals)/sign-in");
     }
   }, [user, segments]);
 }

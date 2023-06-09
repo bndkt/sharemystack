@@ -4,7 +4,7 @@ import { Link, Stack } from "expo-router";
 import { useEffect, useState } from "react";
 import { ListItem, Separator, Spinner, YStack } from "tamagui";
 
-import { supabase } from "../../lib/supabase";
+import { supabase } from "../../../lib/supabase";
 
 export default function Index() {
   const [isLoading, setLoading] = useState(true);

@@ -1,5 +1,11 @@
-import { Stack } from "expo-router";
+import { Slot } from "expo-router";
 
-export default function Layout() {
-  return <Stack screenOptions={{ presentation: "modal" }} />;
+import { Modal } from "../../components/Modal";
+
+export default function Modals() {
+  return (
+    <Modal>
+      <Slot />
+    </Modal>
+  );
 }

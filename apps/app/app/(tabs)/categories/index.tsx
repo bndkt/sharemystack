@@ -4,9 +4,9 @@ import { Link, Stack } from "expo-router";
 import { useEffect, useState } from "react";
 import { ListItem, Separator, Spinner, YStack } from "tamagui";
 
-import { supabase } from "../../lib/supabase";
-import { CategoryIcon } from "../../components/icons/CategoryIcon";
-import { SuggestionButton } from "../../components/SuggestionButton";
+import { supabase } from "../../../lib/supabase";
+import { CategoryIcon } from "../../../components/icons/CategoryIcon";
+import { SuggestionButton } from "../../../components/SuggestionButton";
 
 export default function Categories() {
   const [isLoading, setLoading] = useState(true);
