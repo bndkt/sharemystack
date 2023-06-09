@@ -4,7 +4,11 @@ import { Button } from "tamagui";
 import { config } from "../lib/config";
 import { Lightbulb, Plus, PlusCircle } from "@tamagui/lucide-icons";
 
-export function SuggestionButton() {
+export function SuggestionButton({
+  suggestion = "tool",
+}: {
+  suggestion?: string;
+}) {
   return (
     <Button
       onPress={() => {
@@ -13,7 +17,7 @@ export function SuggestionButton() {
       icon={<PlusCircle />}
       margin="$3"
     >
-      Suggest new tool
+      {`Suggest new ${suggestion}`}
     </Button>
   );
 }
