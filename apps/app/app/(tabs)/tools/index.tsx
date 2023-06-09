@@ -43,7 +43,6 @@ export default function Index() {
     <Spinner />
   ) : (
     <>
-      <Stack.Screen options={{ headerShown: true, title: "Tools" }} />
       <YStack fullscreen>
         <FlashList
           keyExtractor={({ id }) => id}

@@ -1,4 +1,3 @@
-import { Link } from "expo-router";
 import { Text, YStack } from "tamagui";
 
 import { useProtectedRoute } from "../../../components/providers/AuthProvider";
@@ -9,7 +8,6 @@ export default function Index() {
 
   return (
     <YStack>
-      <Text>My Stack</Text>
       <SignIn />
     </YStack>
   );

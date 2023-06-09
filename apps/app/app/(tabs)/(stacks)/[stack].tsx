@@ -55,9 +55,7 @@ export default function Index() {
     <Spinner />
   ) : stack ? (
     <>
-      <Stack.Screen
-        options={{ headerShown: true, title: `${stack.name}'s stack` }}
-      />
+      <Stack.Screen options={{ headerShown: true, title: stack.name }} />
       <YStack fullscreen>
         <YStack padding="$3">
           <H2>{stack.name}</H2>
