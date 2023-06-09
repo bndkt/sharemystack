@@ -7,6 +7,7 @@ create table
     twitter character varying null,
     website character varying null,
     featured boolean not null default false,
+    updated_at timestamp with time zone not null default now(),
     constraint stacks_pkey primary key (id),
     constraint stacks_slug_key unique (slug)
   );
