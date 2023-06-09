@@ -34,7 +34,7 @@ jobs:
       - name: 📢 EAS Build
         run: eas build -e ${{ inputs.profile }} -p ios --non-interactive --no-wait
         working-directory: ./apps/app
-        if: ${{ inputs.profile == 'development-simulator' || inputs.profile == 'development' }}
+        if: ${{ inputs.profile == 'development-simulator' || inputs.profile == 'development' || !inputs.submit }}
       - name: 📢 EAS Build and Submit
         run: eas build -e ${{ inputs.profile }} -p ios --non-interactive --no-wait --auto-submit
         working-directory: ./apps/app
