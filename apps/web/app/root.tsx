@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { json } from "@remix-run/cloudflare";
 import type {
   V2_MetaFunction,
@@ -13,8 +14,10 @@ import {
   ScrollRestoration,
   useLoaderData,
 } from "@remix-run/react";
+import { createBrowserClient } from "@supabase/auth-helpers-remix";
 
 import stylesheet from "./tailwind.css";
+import { Database } from "./lib/database.types";
 
 export const meta: V2_MetaFunction = () => [
   {
@@ -39,15 +42,25 @@ export const links: LinksFunction = () => [
 
 type LoaderData = {
   measurementId: string | undefined;
+  supabaseUrl: string;
+  supabaseAnonKey: string;
 };
 
-// Load the GA tracking id from the .env
 export const loader: LoaderFunction = async ({ context }) => {
-  return json<LoaderData>({ measurementId: context.MEASUREMENT_ID as string });
+  return json<LoaderData>({
+    measurementId: context.MEASUREMENT_ID as string,
+    supabaseUrl: context.SUPABASE_URL as string,
+    supabaseAnonKey: context.SUPABASE_ANON_KEY as string,
+  });
 };
 
 export default function App() {
-  const { measurementId } = useLoaderData<LoaderData>();
+  const { measurementId, supabaseUrl, supabaseAnonKey } =
+    useLoaderData<LoaderData>();
+
+  const [supabase] = useState(() =>
+    createBrowserClient<Database>(supabaseUrl, supabaseAnonKey)
+  );
 
   return (
     <html className="h-full antialiased" lang="en">
@@ -71,7 +84,7 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <Outlet />
+        <Outlet context={{ supabase }} />
         <ScrollRestoration />
         <Scripts />
         <LiveReload />

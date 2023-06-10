@@ -14,6 +14,7 @@ export default function Index() {
     name: string;
     slug: string;
     website: string;
+    twitter?: string;
     color?: string;
     icon?: string;
   } | null>(null);
@@ -22,7 +23,7 @@ export default function Index() {
     try {
       const { data } = await supabase
         .from("tools")
-        .select("id, name, slug, color, icon, website")
+        .select("id, name, slug, color, icon, website, twitter")
         .eq("slug", slug)
         .limit(1)
         .single();
@@ -58,7 +59,8 @@ export default function Index() {
         />
         <YStack marginLeft="$3">
           <H2>{tool.name}</H2>
-          <Text>{tool.website}</Text>
+          <Text>Website: {tool.website}</Text>
+          <Text>Twitter: {tool.twitter}</Text>
         </YStack>
       </XStack>
     </>

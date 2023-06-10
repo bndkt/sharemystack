@@ -8,7 +8,7 @@
     "web": "expo start --web",
     "doc": "npx expo-doctor@latest",
     "build:local": "eas build --profile development-simulator --platform ios --local",
-    "supa:types": "supabase gen types typescript --local > lib/database.types.ts",
+    "sb:types": "supabase gen types typescript --local > lib/database.types.ts",
     "lint": "eslint app lib",
     "eas-build-pre-install": "corepack enable && corepack prepare pnpm@latest-8 --activate"
   },
