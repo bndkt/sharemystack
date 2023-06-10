@@ -11,7 +11,8 @@
     "dev": "npm-run-all build --parallel \"dev:*\"",
     "start": "cross-env NODE_ENV=production npm run wrangler",
     "typecheck": "tsc",
-    "wrangler": "wrangler pages dev ./public"
+    "wrangler": "wrangler pages dev ./public",
+    "sb:types": "supabase gen types typescript --local > app/lib/database.types.ts"
   },
   "packageManager": "pnpm@8.6.1",
   "dependencies": {
@@ -21,6 +22,7 @@
     "@remix-run/cloudflare-pages": "^1.17.0",
     "@remix-run/react": "^1.17.0",
     "@supabase/auth-helpers-remix": "^0.2.1",
+    "@tsndr/cloudflare-worker-jwt": "^2.2.1",
     "clsx": "^1.2.1",
     "isbot": "^3.6.10",
     "react": "^18.2.0",

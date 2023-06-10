@@ -182,6 +182,9 @@ importers:
       '@supabase/auth-helpers-remix':
         specifier: ^0.2.1
         version: 0.2.1(@supabase/supabase-js@2.24.0)
+      '@tsndr/cloudflare-worker-jwt':
+        specifier: ^2.2.1
+        version: 2.2.1
       clsx:
         specifier: ^1.2.1
         version: 1.2.1
@@ -4991,6 +4994,10 @@ packages:
     resolution: {integrity: sha512-RbzJvlNzmRq5c3O09UipeuXno4tA1FE6ikOjxZK0tuxVv3412l64l5t1W5pj4+rJq9vpkm/kwiR07aZXnsKPxw==}
     engines: {node: '>= 6'}
     dev: true
+
+  /@tsndr/cloudflare-worker-jwt@2.2.1:
+    resolution: {integrity: sha512-yYxjmag5AXXs7FDCUlse8cCTQlug3fbrqUb4/s4kvdauOg5wq2V6BayHD/OUWOGmgohefFRqu4vA5phU3+Cyng==}
+    dev: false
 
   /@types/acorn@4.0.6:
     resolution: {integrity: sha512-veQTnWP+1D/xbxVrPC3zHnCZRjSrKfhbMUlEA43iMZLu7EsnTtkJklIuwrCPbOi8YkvDQAiW05VQQFvvz9oieQ==}
