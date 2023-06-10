@@ -1,5 +1,6 @@
 import { LoaderArgs, redirect } from "@remix-run/cloudflare";
 import { createServerClient } from "@supabase/auth-helpers-remix";
+import { config } from "~/lib/config";
 import { Database } from "~/lib/database.types";
 
 export const loader = async ({ request, context }: LoaderArgs) => {
@@ -18,7 +19,7 @@ export const loader = async ({ request, context }: LoaderArgs) => {
   const { data, error } = await supabase.auth.signInWithOAuth({
     provider: "twitter",
     options: {
-      redirectTo: `http://127.0.0.1:8788/auth/callback?companyID=${companyId}&redirectUrl=${redirectUrl}`,
+      redirectTo: `https://${config.domain}/auth/callback?companyID=${companyId}&redirectUrl=${redirectUrl}`,
     },
   });
 
