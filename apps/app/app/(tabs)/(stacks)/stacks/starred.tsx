@@ -1,40 +1,19 @@
 import { useEffect, useState } from "react";
 import { Spinner, YStack } from "tamagui";
 
-import { supabase } from "../../../../lib/supabase";
 import { List } from "../../../../components/List";
+import { StacksResponse, getStacks } from "../../../../lib/database/getStacks";
 
 export default function Index() {
   const [isLoading, setLoading] = useState(true);
-  const [stacks, setStacks] = useState<
-    {
-      id: string;
-      name: string;
-      slug: string;
-      website?: string;
-      twitter?: string;
-    }[]
-  >([]);
-
-  const getStacks = async () => {
-    try {
-      const { data, error } = await supabase
-        .from("stacks")
-        .select("id, name, slug, website, twitter")
-        .eq("featured", true)
-        .order("name");
-      console.log(data, error);
-      setStacks(data);
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setLoading(false);
-    }
-  };
+  const [stacks, setStacks] = useState<StacksResponse["data"]>(null);
 
   useEffect(() => {
-    getStacks();
-  }, []);
+    getStacks({ starred: true }).then(({ data }) => {
+      setStacks(data);
+      setLoading(false);
+    });
+  }, [setStacks, getStacks]);
 
   return isLoading ? (
     <Spinner />

@@ -37,18 +37,21 @@ export interface Database {
       categories: {
         Row: {
           created_at: string
+          icon: string
           id: string
           name: string
           slug: string
         }
         Insert: {
           created_at?: string
+          icon: string
           id?: string
           name: string
           slug: string
         }
         Update: {
           created_at?: string
+          icon?: string
           id?: string
           name?: string
           slug?: string
@@ -113,6 +116,12 @@ export interface Database {
             referencedColumns: ["id"]
           },
           {
+            foreignKeyName: "picks_stack_id_fkey"
+            columns: ["stack_id"]
+            referencedRelation: "stacks_view"
+            referencedColumns: ["id"]
+          },
+          {
             foreignKeyName: "picks_tool_id_fkey"
             columns: ["tool_id"]
             referencedRelation: "tools"
@@ -145,29 +154,100 @@ export interface Database {
       stacks: {
         Row: {
           created_at: string
+          featured: boolean
           id: string
           name: string
           slug: string
           twitter: string | null
+          updated_at: string
+          user_id: string | null
           website: string | null
         }
         Insert: {
           created_at?: string
+          featured?: boolean
           id?: string
           name: string
           slug: string
           twitter?: string | null
+          updated_at?: string
+          user_id?: string | null
           website?: string | null
         }
         Update: {
           created_at?: string
+          featured?: boolean
           id?: string
           name?: string
           slug?: string
           twitter?: string | null
+          updated_at?: string
+          user_id?: string | null
           website?: string | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "stacks_user_id_fkey"
+            columns: ["user_id"]
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
+      stars: {
+        Row: {
+          category_id: string | null
+          id: string
+          stack_id: string | null
+          tool_id: string | null
+          user_id: string | null
+        }
+        Insert: {
+          category_id?: string | null
+          id?: string
+          stack_id?: string | null
+          tool_id?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          category_id?: string | null
+          id?: string
+          stack_id?: string | null
+          tool_id?: string | null
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "stars_category_id_fkey"
+            columns: ["category_id"]
+            referencedRelation: "categories"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "stars_stack_id_fkey"
+            columns: ["stack_id"]
+            referencedRelation: "stacks"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "stars_stack_id_fkey"
+            columns: ["stack_id"]
+            referencedRelation: "stacks_view"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "stars_tool_id_fkey"
+            columns: ["tool_id"]
+            referencedRelation: "tools"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "stars_user_id_fkey"
+            columns: ["user_id"]
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          }
+        ]
       }
       tools: {
         Row: {
@@ -220,6 +300,35 @@ export interface Database {
             foreignKeyName: "picks_stack_id_fkey"
             columns: ["stack_id"]
             referencedRelation: "stacks"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "picks_stack_id_fkey"
+            columns: ["stack_id"]
+            referencedRelation: "stacks_view"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
+      stacks_view: {
+        Row: {
+          created_at: string | null
+          featured: boolean | null
+          id: string | null
+          name: string | null
+          slug: string | null
+          starred: boolean | null
+          stars: number | null
+          twitter: string | null
+          updated_at: string | null
+          user_id: string | null
+          website: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "stacks_user_id_fkey"
+            columns: ["user_id"]
+            referencedRelation: "users"
             referencedColumns: ["id"]
           }
         ]

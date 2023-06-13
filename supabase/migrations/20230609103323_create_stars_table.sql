@@ -1,10 +1,11 @@
 create table
   stars (
-    profile_id uuid references profiles,
+    id uuid not null default gen_random_uuid(),
+    user_id uuid references auth.users,
     stack_id uuid references stacks,
     tool_id uuid references tools,
     category_id uuid references categories,
-    primary key (profile_id, stack_id, tool_id, category_id)
+    constraint stars_pkey primary key (id)
   );
 
 alter table stars

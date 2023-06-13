@@ -6,6 +6,7 @@ import { H2, ListItem, Separator, Spinner, Text, YStack } from "tamagui";
 
 import { ToolIcon } from "../../../components/icons/ToolIcon";
 import { supabase } from "../../../lib/supabase";
+import { ToolList } from "../../../components/stacks/ToolList";
 
 export default function Index() {
   let { stack: slug } = useLocalSearchParams<{ stack: string }>();
@@ -61,31 +62,7 @@ export default function Index() {
           <H2>{stack.name}</H2>
           <Text>{stack.website}</Text>
         </YStack>
-        <FlashList
-          // onRefresh={() => getStack()}
-          ItemSeparatorComponent={() => <Separator />}
-          renderItem={({ item }) => {
-            return (
-              <Link href={`/(stacks)/@${item.category_slug}`}>
-                <ListItem
-                  title={item.tool_name}
-                  subTitle={item.category_name}
-                  iconAfter={ChevronRight}
-                  icon={
-                    <ToolIcon
-                      svgXml={item.tool_icon}
-                      color={item.tool_color}
-                      width="24"
-                      height="24"
-                    />
-                  }
-                />
-              </Link>
-            );
-          }}
-          estimatedItemSize={stack.picks_view.length}
-          data={stack.picks_view}
-        />
+        <ToolList data={stack.picks_view} />
       </YStack>
     </>
   ) : null;

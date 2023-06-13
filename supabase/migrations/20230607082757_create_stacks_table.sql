@@ -2,6 +2,7 @@ create table
   stacks (
     id uuid not null default gen_random_uuid(),
     created_at timestamp with time zone not null default now(),
+    user_id uuid references auth.users,
     name character varying not null,
     slug character varying not null,
     twitter character varying null,
@@ -20,8 +21,8 @@ create policy "Stacks are viewable by everyone."
 
 create policy "Users can insert their own stack."
   on stacks for insert
-  with check ( auth.uid() = id );
+  with check ( auth.uid() = user_id );
 
 create policy "Users can update their own stack."
   on stacks for update
-  using ( auth.uid() = id );
+  using ( auth.uid() = user_id );

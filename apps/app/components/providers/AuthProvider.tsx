@@ -7,6 +7,7 @@ import { supabase } from "../../lib/supabase";
 const AuthContext = React.createContext<{
   session: AuthSession | null;
   user: AuthUser | null;
+  profile: {} | null;
   signIn: ({
     session,
     user,
@@ -18,6 +19,7 @@ const AuthContext = React.createContext<{
 }>({
   session: null,
   user: null,
+  profile: null,
   signIn: () => {},
   signOut: () => {},
 });
@@ -42,6 +44,7 @@ export function useProtectedRoute() {
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [session, setSession] = useState<AuthSession | null>(null);
   const [user, setUser] = useState<AuthUser | null>(null);
+  const [profile, setProfile] = useState<{} | null>(null);
 
   async function signIn({
     session,
@@ -87,16 +90,35 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   }
 
+  /* async function getProfile() {
+    if (user) {
+      const { data, error } = await supabase
+        .from("profiles")
+        .select("*")
+        .eq("id", user.id)
+        .single();
+
+      if (error) {
+        console.error(error);
+        signOut();
+      } else {
+        setProfile(data);
+      }
+    }
+  } */
+
   useEffect(() => {
     if (!session) getSession();
     if (session && !user) getUser();
-  }, [session, user]);
+    // if (session && !profile) getProfile();
+  }, [session, user, profile]);
 
   return (
     <AuthContext.Provider
       value={{
         session,
         user,
+        profile,
         signIn,
         signOut,
       }}

@@ -8,12 +8,16 @@ export function List<T>({
   href,
   title,
   subTitle,
+  placeholder,
 }: {
-  data: readonly T[];
+  data: readonly T[] | null;
   href: (item: T) => string;
   title: (item: T) => string;
   subTitle?: (item: T) => string | null | undefined;
+  placeholder?: JSX.Element;
 }) {
+  placeholder ??= <Text>No data</Text>;
+
   return data && data.length ? (
     <FlashList
       ItemSeparatorComponent={() => <Separator />}
@@ -32,6 +36,6 @@ export function List<T>({
       data={data}
     />
   ) : (
-    <Text>No data</Text>
+    placeholder
   );
 }

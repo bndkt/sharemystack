@@ -1,4 +1,9 @@
 insert into
+auth.users (id, aud, role, email, email_confirmed_at, raw_app_meta_data, raw_user_meta_data)
+values
+('6a6d9730-acf6-465e-851b-c19d2f5d533b', 'authenticated', 'authenticated', 'benedikt@feld.app', now(), '{"provider":"twitter","providers":["twitter"]}', '{"iss":"https://api.twitter.com/1.1/account/verify_credentials.json","sub":"10189402","name":"Benedikt","email":"benedikt@feld.app","picture":"https://pbs.twimg.com/profile_images/1356532269322809347/b8lcrpI6_normal.jpg","full_name":"Benedikt","user_name":"bndkt","avatar_url":"https://pbs.twimg.com/profile_images/1356532269322809347/b8lcrpI6_normal.jpg","provider_id":"10189402","email_verified":true,"preferred_username":"bndkt"}');
+
+insert into
 public.categories (id, name, slug, icon)
 values
 (gen_random_uuid(), 'Email Service', 'email-service', 'Mail'),
@@ -2661,14 +2666,14 @@ values
 ');
 
 insert into
-public.stacks (id, name, featured, slug, twitter, website)
+public.stacks (id, name, featured, slug, twitter, website, user_id)
 values
-('fbc5602c-ebef-4282-8754-d56520486498', 'Benedikt Müller', false, 'bndkt', 'bndkt', 'https://bndkt.com/'),
-(gen_random_uuid(), 'Nick Milo', true, 'nickmilo', 'NickMilo', 'https://www.linkingyourthinking.com/'),
-(gen_random_uuid(), 'Ali Abdaal', true, 'aliabdaal', 'aliabdaal', 'https://aliabdaal.com/'),
-(gen_random_uuid(), 'Tiago Forte', true, 'fortelabs', 'fortelabs', 'https://fortelabs.com/'),
-(gen_random_uuid(), 'Thomas Frank', true, 'tomfrankly', 'TomFrankly', 'https://thomasjfrank.com/'),
-(gen_random_uuid(), 'Marie Poulin', true, 'mariepoulin', 'mariepoulin', 'https://mariepoulin.com/');
+('fbc5602c-ebef-4282-8754-d56520486498', 'Benedikt Müller', false, 'bndkt', 'bndkt', 'https://bndkt.com/', '6a6d9730-acf6-465e-851b-c19d2f5d533b'), -- '6a6d9730-acf6-465e-851b-c19d2f5d533b'
+(gen_random_uuid(), 'Nick Milo', true, 'nickmilo', 'NickMilo', 'https://www.linkingyourthinking.com/', NULL),
+(gen_random_uuid(), 'Ali Abdaal', true, 'aliabdaal', 'aliabdaal', 'https://aliabdaal.com/', NULL),
+(gen_random_uuid(), 'Tiago Forte', true, 'fortelabs', 'fortelabs', 'https://fortelabs.com/', NULL),
+(gen_random_uuid(), 'Thomas Frank', true, 'tomfrankly', 'TomFrankly', 'https://thomasjfrank.com/', NULL),
+(gen_random_uuid(), 'Marie Poulin', true, 'mariepoulin', 'mariepoulin', 'https://mariepoulin.com/', NULL);
 
 insert into
 public.categorizations (category_id, tool_id)
@@ -2683,3 +2688,9 @@ values
 ('fbc5602c-ebef-4282-8754-d56520486498', 'bf4fb3cd-38d9-4135-abc7-7f291c498366', '0115cd3b-869d-4058-94e1-a67863eb6045'),
 ('fbc5602c-ebef-4282-8754-d56520486498', '0e93b69f-3415-4fec-a5e6-da1f779b43a6', '9ab4d55d-a1cc-402f-9fe6-d60227a6c7a6'),
 ('fbc5602c-ebef-4282-8754-d56520486498', '8f5ff296-f438-40fc-8c48-b437810385af', 'f0586aef-c792-4b6c-8d5c-8c6de1b436dc');
+
+insert into
+public.stars (user_id, stack_id, category_id, tool_id)
+values
+('6a6d9730-acf6-465e-851b-c19d2f5d533b', 'fbc5602c-ebef-4282-8754-d56520486498', NULL, NULL),
+('6a6d9730-acf6-465e-851b-c19d2f5d533b', 'fbc5602c-ebef-4282-8754-d56520486498', NULL, NULL);
