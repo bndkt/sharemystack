@@ -4,13 +4,12 @@ import { Spinner, YStack } from "tamagui";
 import { List } from "../../../../components/List";
 import { StacksResponse, getStacks } from "../../../../lib/database/getStacks";
 
-export default function Index() {
+export default function FeaturedStacks() {
   const [isLoading, setLoading] = useState(true);
   const [stacks, setStacks] = useState<StacksResponse["data"]>(null);
 
   useEffect(() => {
-    getStacks({ featured: true }).then(({ data, error }) => {
-      console.log("stacks", data, error);
+    getStacks({ featured: true }).then(({ data }) => {
       setStacks(data);
       setLoading(false);
     });

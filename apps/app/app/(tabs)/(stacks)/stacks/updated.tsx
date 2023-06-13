@@ -4,7 +4,7 @@ import { Spinner, YStack } from "tamagui";
 import { List } from "../../../../components/List";
 import { StacksResponse, getStacks } from "../../../../lib/database/getStacks";
 
-export default function Index() {
+export default function UpdatedStacks() {
   const [isLoading, setLoading] = useState(true);
   const [stacks, setStacks] = useState<StacksResponse["data"]>(null);
 

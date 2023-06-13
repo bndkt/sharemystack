@@ -3,8 +3,9 @@ import { Spinner, YStack } from "tamagui";
 
 import { List } from "../../../../components/List";
 import { StacksResponse, getStacks } from "../../../../lib/database/getStacks";
+import { withAuth } from "../../../../components/auth/withAuth";
 
-export default function Index() {
+function StarredStacks() {
   const [isLoading, setLoading] = useState(true);
   const [stacks, setStacks] = useState<StacksResponse["data"]>(null);
 
@@ -30,3 +31,5 @@ export default function Index() {
     </>
   );
 }
+
+export default withAuth(StarredStacks);

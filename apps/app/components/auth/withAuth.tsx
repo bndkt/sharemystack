@@ -1,8 +1,12 @@
 import { useAuth } from "../providers/AuthProvider";
 import { SignInButton } from "./SignInButton";
 
-export function AuthSwitch({ children }: { children: JSX.Element }) {
-  const { session, user } = useAuth();
+export function withAuth(Component: React.FC) {
+  function AuthSwitch() {
+    const { session } = useAuth();
 
-  return session ? children : <SignInButton />;
+    return session ? <Component /> : <SignInButton />;
+  }
+
+  return AuthSwitch;
 }

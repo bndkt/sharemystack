@@ -1,11 +1,10 @@
 import { Button, Text, YStack } from "tamagui";
+
 import { supabase } from "../../lib/supabase";
 import { useAuth } from "../providers/AuthProvider";
-import { useRouter } from "expo-router";
 
-export function CreateStack({ getStack }: { getStack: () => void }) {
+export function CreateStack({ refresh }: { refresh: () => void }) {
   const { user } = useAuth();
-  const { push } = useRouter();
 
   async function createStack() {
     if (user) {
@@ -15,7 +14,7 @@ export function CreateStack({ getStack }: { getStack: () => void }) {
         twitter: user.user_metadata.preferred_username.preferred_username,
         user_id: user.id,
       });
-      getStack();
+      refresh();
       console.log({ data, error });
       console.log("createStack", user.user_metadata);
     }
