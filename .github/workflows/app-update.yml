@@ -1,0 +1,31 @@
+name: App - Update
+
+on:
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: "EAS Branch"
+        type: choice
+        default: main
+        required: true
+        options:
+          - main
+          - preview
+          - production
+
+jobs:
+  update:
+    name: EAS Update
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🚚 Checkout
+        uses: actions/checkout@v3
+      - name: 🏗 Setup monorepo
+        uses: ./.github/actions/setup-monorepo
+        with:
+          expo-token: ${{ secrets.EXPO_TOKEN }}
+      - name: 📢 Publish update
+        run: eas update --non-interactive --branch=${{ inputs.branch }} --message=${{ github.sha }}
+        working-directory: ./apps/app
+        if: ${{ inputs.branch }}
