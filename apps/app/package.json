@@ -7,7 +7,7 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "doc": "npx expo-doctor@latest",
-    "build:local": "eas build --profile production --platform ios --local",
+    "build:local": "eas build --profile development --platform ios --local",
     "sb:types": "supabase gen types typescript --local > lib/database.types.ts",
     "lint": "eslint app lib",
     "eas-build-pre-install": "corepack enable && corepack prepare pnpm@latest-8 --activate"
@@ -18,12 +18,12 @@
     "@sentry/react-native": "4.15.2",
     "@shopify/flash-list": "1.4.0",
     "@supabase/supabase-js": "^2.25.0",
-    "@tamagui/animations-react-native": "^1.33.1",
-    "@tamagui/babel-plugin": "^1.33.1",
-    "@tamagui/config": "^1.33.1",
-    "@tamagui/font-inter": "^1.33.1",
-    "@tamagui/lucide-icons": "^1.33.1",
-    "@tamagui/theme-base": "^1.33.1",
+    "@tamagui/animations-react-native": "^1.33.2",
+    "@tamagui/babel-plugin": "^1.33.2",
+    "@tamagui/config": "^1.33.2",
+    "@tamagui/font-inter": "^1.33.2",
+    "@tamagui/lucide-icons": "^1.33.2",
+    "@tamagui/theme-base": "^1.33.2",
     "babel-plugin-transform-inline-environment-variables": "^0.4.4",
     "expo": "~48.0.19",
     "expo-application": "~5.1.1",
@@ -51,7 +51,7 @@
     "react-native-url-polyfill": "^1.3.0",
     "react-native-web": "~0.18.12",
     "sentry-expo": "~6.2.1",
-    "tamagui": "^1.33.1"
+    "tamagui": "^1.33.2"
   },
   "devDependencies": {
     "@babel/core": "^7.22.5",
