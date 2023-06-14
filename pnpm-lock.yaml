@@ -142,6 +142,9 @@ importers:
       tamagui:
         specifier: ^1.33.2
         version: 1.33.2(@types/react@18.0.27)(react-dom@18.2.0)(react-native-web@0.18.12)(react-native@0.71.8)(react@18.2.0)
+      twitter-api-sdk:
+        specifier: ^1.2.1
+        version: 1.2.1
     devDependencies:
       '@babel/core':
         specifier: ^7.22.5
@@ -15322,6 +15325,16 @@ packages:
       turbo-linux-arm64: 1.10.3
       turbo-windows-64: 1.10.3
       turbo-windows-arm64: 1.10.3
+    dev: false
+
+  /twitter-api-sdk@1.2.1:
+    resolution: {integrity: sha512-tNQ6DGYucFk94JlnUMsHCkHg5o1wnCdHh71Y2ukygNVssOdD1gNVjOpaojJrdwbEAhoZvcWdGHerCa55F8HKxQ==}
+    engines: {node: '>=14'}
+    dependencies:
+      abort-controller: 3.0.0
+      node-fetch: 2.6.11
+    transitivePeerDependencies:
+      - encoding
     dev: false
 
   /type-check@0.3.2:
