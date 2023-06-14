@@ -7,6 +7,7 @@ import { withAuth } from "../../../../components/auth/withAuth";
 import { useAuth } from "../../../../components/providers/AuthProvider";
 import { CreateStack } from "../../../../components/stacks/CreateStack";
 import { Link, Twitter } from "@tamagui/lucide-icons";
+import { StackSheet } from "../../../../components/stacks/StackSheet";
 
 function MyStack() {
   const [isLoading, setLoading] = useState(true);
@@ -48,6 +49,7 @@ function MyStack() {
           </YStack>
         }
       />
+      <StackSheet />
     </YStack>
   ) : (
     <CreateStack refresh={() => setRefresh(true)} />
