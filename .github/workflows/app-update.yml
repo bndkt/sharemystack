@@ -26,6 +26,6 @@ jobs:
         with:
           expo-token: ${{ secrets.EXPO_TOKEN }}
       - name: 📢 Publish update
-        run: eas update --non-interactive --branch=${{ inputs.branch }} --message=${{ github.sha }}
+        run: TAMAGUI_TARGET=native eas update --non-interactive -p ios --branch=${{ inputs.branch }} --message=${{ github.sha }}
         working-directory: ./apps/app
         if: ${{ inputs.branch }}
