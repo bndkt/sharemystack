@@ -2670,7 +2670,7 @@ insert into
 public.stacks (id, name, featured, slug, twitter, twitter_image_url, website, user_id)
 values
 ('fbc5602c-ebef-4282-8754-d56520486498', 'Benedikt Müller', false, 'bndkt', 'bndkt', 'https://pbs.twimg.com/profile_images/1356532269322809347/b8lcrpI6_400x400.jpg', 'https://bndkt.com/', '6a6d9730-acf6-465e-851b-c19d2f5d533b'), -- '6a6d9730-acf6-465e-851b-c19d2f5d533b'
-(gen_random_uuid(), 'Nick Milo', true, 'nickmilo', 'NickMilo', 'https://pbs.twimg.com/profile_images/1556427088361672709/7npJWuTQ_400x400.jpg', 'https://www.linkingyourthinking.com/', NULL),
+('4abd2df7-bd61-457f-8297-47aa33910cc8', 'Nick Milo', true, 'nickmilo', 'NickMilo', 'https://pbs.twimg.com/profile_images/1556427088361672709/7npJWuTQ_400x400.jpg', 'https://www.linkingyourthinking.com/', NULL),
 (gen_random_uuid(), 'Ali Abdaal', true, 'aliabdaal', 'aliabdaal', 'https://pbs.twimg.com/profile_images/1496857274165436420/yjDjLCDh_400x400.jpg', 'https://aliabdaal.com/', NULL),
 (gen_random_uuid(), 'Tiago Forte', true, 'fortelabs', 'fortelabs', 'https://pbs.twimg.com/profile_images/1527701676521672707/YXvJP3ac_400x400.jpg', 'https://fortelabs.com/', NULL),
 (gen_random_uuid(), 'Thomas Frank', true, 'tomfrankly', 'TomFrankly', 'https://pbs.twimg.com/profile_images/1011750442135678976/pjQtLPdD_400x400.jpg', 'https://thomasjfrank.com/', NULL),
@@ -2689,10 +2689,11 @@ public.picks (stack_id, category_id, tool_id)
 values
 ('fbc5602c-ebef-4282-8754-d56520486498', 'bf4fb3cd-38d9-4135-abc7-7f291c498366', '0115cd3b-869d-4058-94e1-a67863eb6045'),
 ('fbc5602c-ebef-4282-8754-d56520486498', '0e93b69f-3415-4fec-a5e6-da1f779b43a6', '9ab4d55d-a1cc-402f-9fe6-d60227a6c7a6'),
-('fbc5602c-ebef-4282-8754-d56520486498', '8f5ff296-f438-40fc-8c48-b437810385af', 'f0586aef-c792-4b6c-8d5c-8c6de1b436dc');
+('fbc5602c-ebef-4282-8754-d56520486498', '8f5ff296-f438-40fc-8c48-b437810385af', 'f0586aef-c792-4b6c-8d5c-8c6de1b436dc'),
+('4abd2df7-bd61-457f-8297-47aa33910cc8', 'bf4fb3cd-38d9-4135-abc7-7f291c498366', '0115cd3b-869d-4058-94e1-a67863eb6045');
 
 insert into
 public.stars (user_id, stack_id, category_id, tool_id)
 values
 ('6a6d9730-acf6-465e-851b-c19d2f5d533b', 'fbc5602c-ebef-4282-8754-d56520486498', NULL, NULL),
-('6a6d9730-acf6-465e-851b-c19d2f5d533b', 'fbc5602c-ebef-4282-8754-d56520486498', NULL, NULL);
+('6a6d9730-acf6-465e-851b-c19d2f5d533b', '4abd2df7-bd61-457f-8297-47aa33910cc8', NULL, NULL);
