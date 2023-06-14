@@ -6,6 +6,7 @@ create table
     name character varying not null,
     slug character varying not null,
     twitter character varying null,
+    twitter_image_url character varying null,
     website character varying null,
     featured boolean not null default false,
     updated_at timestamp with time zone not null default now(),

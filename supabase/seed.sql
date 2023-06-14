@@ -1,7 +1,8 @@
 insert into
 auth.users (id, aud, role, email, email_confirmed_at, raw_app_meta_data, raw_user_meta_data)
 values
-('6a6d9730-acf6-465e-851b-c19d2f5d533b', 'authenticated', 'authenticated', 'benedikt@feld.app', now(), '{"provider":"twitter","providers":["twitter"]}', '{"iss":"https://api.twitter.com/1.1/account/verify_credentials.json","sub":"10189402","name":"Benedikt","email":"benedikt@feld.app","picture":"https://pbs.twimg.com/profile_images/1356532269322809347/b8lcrpI6_normal.jpg","full_name":"Benedikt","user_name":"bndkt","avatar_url":"https://pbs.twimg.com/profile_images/1356532269322809347/b8lcrpI6_normal.jpg","provider_id":"10189402","email_verified":true,"preferred_username":"bndkt"}');
+('6a6d9730-acf6-465e-851b-c19d2f5d533b', 'authenticated', 'authenticated', 'benedikt@feld.app', now(), '{"provider":"twitter","providers":["twitter"]}', '{"iss":"https://api.twitter.com/1.1/account/verify_credentials.json","sub":"10189402","name":"Benedikt","email":"benedikt@feld.app","picture":"https://pbs.twimg.com/profile_images/1356532269322809347/b8lcrpI6_normal.jpg","full_name":"Benedikt","user_name":"bndkt","avatar_url":"https://pbs.twimg.com/profile_images/1356532269322809347/b8lcrpI6_normal.jpg","provider_id":"10189402","email_verified":true,"preferred_username":"bndkt"}')
+on conflict (id) do nothing;
 
 insert into
 public.categories (id, name, slug, icon)
@@ -2666,14 +2667,15 @@ values
 ');
 
 insert into
-public.stacks (id, name, featured, slug, twitter, website, user_id)
+public.stacks (id, name, featured, slug, twitter, twitter_image_url, website, user_id)
 values
-('fbc5602c-ebef-4282-8754-d56520486498', 'Benedikt Müller', false, 'bndkt', 'bndkt', 'https://bndkt.com/', '6a6d9730-acf6-465e-851b-c19d2f5d533b'), -- '6a6d9730-acf6-465e-851b-c19d2f5d533b'
-(gen_random_uuid(), 'Nick Milo', true, 'nickmilo', 'NickMilo', 'https://www.linkingyourthinking.com/', NULL),
-(gen_random_uuid(), 'Ali Abdaal', true, 'aliabdaal', 'aliabdaal', 'https://aliabdaal.com/', NULL),
-(gen_random_uuid(), 'Tiago Forte', true, 'fortelabs', 'fortelabs', 'https://fortelabs.com/', NULL),
-(gen_random_uuid(), 'Thomas Frank', true, 'tomfrankly', 'TomFrankly', 'https://thomasjfrank.com/', NULL),
-(gen_random_uuid(), 'Marie Poulin', true, 'mariepoulin', 'mariepoulin', 'https://mariepoulin.com/', NULL);
+('fbc5602c-ebef-4282-8754-d56520486498', 'Benedikt Müller', false, 'bndkt', 'bndkt', 'https://pbs.twimg.com/profile_images/1356532269322809347/b8lcrpI6_400x400.jpg', 'https://bndkt.com/', '6a6d9730-acf6-465e-851b-c19d2f5d533b'), -- '6a6d9730-acf6-465e-851b-c19d2f5d533b'
+(gen_random_uuid(), 'Nick Milo', true, 'nickmilo', 'NickMilo', 'https://pbs.twimg.com/profile_images/1556427088361672709/7npJWuTQ_400x400.jpg', 'https://www.linkingyourthinking.com/', NULL),
+(gen_random_uuid(), 'Ali Abdaal', true, 'aliabdaal', 'aliabdaal', 'https://pbs.twimg.com/profile_images/1496857274165436420/yjDjLCDh_400x400.jpg', 'https://aliabdaal.com/', NULL),
+(gen_random_uuid(), 'Tiago Forte', true, 'fortelabs', 'fortelabs', 'https://pbs.twimg.com/profile_images/1527701676521672707/YXvJP3ac_400x400.jpg', 'https://fortelabs.com/', NULL),
+(gen_random_uuid(), 'Thomas Frank', true, 'tomfrankly', 'TomFrankly', 'https://pbs.twimg.com/profile_images/1011750442135678976/pjQtLPdD_400x400.jpg', 'https://thomasjfrank.com/', NULL),
+(gen_random_uuid(), 'Marie Poulin', true, 'mariepoulin', 'mariepoulin', 'https://pbs.twimg.com/profile_images/1327070756581244930/8cbltVhc_400x400.jpg', 'https://mariepoulin.com/', NULL),
+(gen_random_uuid(), 'August Bradley', true, 'augustbradley', 'AugustBradley', 'https://pbs.twimg.com/profile_images/1087478571059240960/LoZXD4aY_400x400.jpg', 'https://www.yearzero.io/', NULL);
 
 insert into
 public.categorizations (category_id, tool_id)
