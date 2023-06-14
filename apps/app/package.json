@@ -7,7 +7,7 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "doc": "npx expo-doctor@latest",
-    "build:local": "eas build --profile development --platform ios --local",
+    "build:local": "eas build --profile development-simulator --platform ios --local",
     "sb:types": "supabase gen types typescript --local > lib/database.types.ts",
     "lint": "eslint app lib",
     "eas-build-pre-install": "corepack enable && corepack prepare pnpm@latest-8 --activate"
@@ -60,10 +60,6 @@
     "eslint-config-universe": "^11.2.0",
     "prettier": "^2.8.8",
     "typescript": "^4.9.4"
-  },
-  "resolutions": {
-    "metro": "0.76.5",
-    "metro-resolver": "0.76.5"
   },
   "private": true
 }
