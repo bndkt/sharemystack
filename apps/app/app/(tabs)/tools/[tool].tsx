@@ -3,43 +3,20 @@ import { useEffect, useState } from "react";
 import { H2, Spinner, Text, XStack, YStack } from "tamagui";
 
 import { ToolIcon } from "../../../components/icons/ToolIcon";
-import { supabase } from "../../../lib/supabase";
+import { ToolResponse, getTool } from "../../../lib/database/getTool";
 
 export default function Index() {
-  const { tool: slug } = useLocalSearchParams();
-
+  const { tool: slug } = useLocalSearchParams<{ tool: string }>();
   const [isLoading, setLoading] = useState(true);
-  const [tool, setTool] = useState<{
-    id: string;
-    name: string;
-    slug: string;
-    website: string;
-    twitter?: string;
-    color?: string;
-    icon?: string;
-  } | null>(null);
-
-  const getTool = async () => {
-    try {
-      const { data } = await supabase
-        .from("tools")
-        .select("id, name, slug, color, icon, website, twitter")
-        .eq("slug", slug)
-        .limit(1)
-        .single();
-      setTool(data);
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setLoading(false);
-    }
-  };
+  const [tool, setTool] = useState<ToolResponse["data"]>(null);
 
   useEffect(() => {
-    getTool();
-  }, []);
-
-  console.log({ tool });
+    slug &&
+      getTool({ slug }).then(({ data }) => {
+        setTool(data);
+        setLoading(false);
+      });
+  }, [getTool, setTool]);
 
   // Color
   // Icon

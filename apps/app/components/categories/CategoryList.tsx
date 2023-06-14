@@ -14,7 +14,7 @@ export function CategoryList({
     <YStack fullscreen>
       <List
         data={categories}
-        href={(item) => `/categories/@${item.slug}`}
+        href={(item) => `/categories/${item.slug}`}
         title={(item) => item.name}
         subTitle={(item) =>
           `${item.categorizations[0].count ?? "0"} tool${

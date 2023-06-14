@@ -10,7 +10,7 @@ export function ToolList({ tools }: { tools: ToolsResponse["data"] }) {
     <YStack fullscreen>
       <List
         data={tools}
-        href={(item) => `/tools/@${item.slug}`}
+        href={(item) => `/tools/${item.slug}`}
         title={(item) => item.name}
         subTitle={(item) => item.website}
         icon={(item) => <ToolIcon svgXml={item.icon} width="24" height="24" />}
