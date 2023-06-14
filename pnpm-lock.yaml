@@ -28,6 +28,9 @@ importers:
       '@babel/plugin-proposal-export-namespace-from':
         specifier: ^7.18.9
         version: 7.18.9(@babel/core@7.22.5)
+      '@gorhom/bottom-sheet':
+        specifier: 5.0.0-alpha.2
+        version: 5.0.0-alpha.2(@types/react@18.0.27)(react-native-gesture-handler@2.9.0)(react-native-reanimated@2.14.4)(react-native@0.71.8)(react@18.2.0)
       '@react-navigation/material-top-tabs':
         specifier: ^6.6.2
         version: 6.6.2(@react-navigation/native@6.1.6)(react-native-pager-view@6.1.2)(react-native-tab-view@3.5.1)(react-native@0.71.8)(react@18.2.0)
@@ -3010,6 +3013,41 @@ packages:
 
   /@gar/promisify@1.1.3:
     resolution: {integrity: sha512-k2Ty1JcVojjJFwrg/ThKi2ujJ7XNLYaFGNB/bWT9wGR+oSMJHMa5w+CUq6p/pVrKeNNgA7pCqEcjSnHVoqJQFw==}
+
+  /@gorhom/bottom-sheet@5.0.0-alpha.2(@types/react@18.0.27)(react-native-gesture-handler@2.9.0)(react-native-reanimated@2.14.4)(react-native@0.71.8)(react@18.2.0):
+    resolution: {integrity: sha512-nuff4kFeCO6xKTrItD4qwXps4CdrcTgR2UUWtpMrQgZ0LQxwibL8wYEcuM736aPL5ErFa6WxC4oiKB88XQbN9Q==}
+    peerDependencies:
+      '@types/react': '*'
+      '@types/react-native': '*'
+      react: '*'
+      react-native: '*'
+      react-native-gesture-handler: '>=2.9.0'
+      react-native-reanimated: '>=3.0.0'
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+      '@types/react-native':
+        optional: true
+    dependencies:
+      '@gorhom/portal': 1.0.14(react-native@0.71.8)(react@18.2.0)
+      '@types/react': 18.0.27
+      invariant: 2.2.4
+      react: 18.2.0
+      react-native: 0.71.8(@babel/core@7.22.5)(@babel/preset-env@7.22.5)(react@18.2.0)
+      react-native-gesture-handler: 2.9.0(react-native@0.71.8)(react@18.2.0)
+      react-native-reanimated: 2.14.4(@babel/core@7.22.5)(react-native@0.71.8)(react@18.2.0)
+    dev: false
+
+  /@gorhom/portal@1.0.14(react-native@0.71.8)(react@18.2.0):
+    resolution: {integrity: sha512-MXyL4xvCjmgaORr/rtryDNFy3kU4qUbKlwtQqqsygd0xX3mhKjOLn6mQK8wfu0RkoE0pBE0nAasRoHua+/QZ7A==}
+    peerDependencies:
+      react: '*'
+      react-native: '*'
+    dependencies:
+      nanoid: 3.3.6
+      react: 18.2.0
+      react-native: 0.71.8(@babel/core@7.22.5)(@babel/preset-env@7.22.5)(react@18.2.0)
+    dev: false
 
   /@graphql-typed-document-node/core@3.2.0(graphql@15.8.0):
     resolution: {integrity: sha512-mB9oAsNCm9aM3/SOv4YtBMqZbYj10R7dkq8byBqxGY/ncFwhf2oQzMV+LCRlWoDSEBJ3COiR1yeDvMtsoOsuFQ==}
