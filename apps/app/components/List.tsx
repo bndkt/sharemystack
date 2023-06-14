@@ -13,7 +13,7 @@ export function List<T>({
   placeholder,
 }: {
   data: readonly T[] | null;
-  href: (item: T) => string;
+  href?: (item: T) => string;
   title: (item: T) => string | null;
   subTitle?: (item: T) => string | null | undefined;
   icon?: (
@@ -30,7 +30,7 @@ export function List<T>({
     <FlashList
       ItemSeparatorComponent={() => <Separator />}
       renderItem={({ item }) => {
-        return (
+        return href ? (
           <Link href={href(item)}>
             <ListItem
               title={title(item)}
@@ -39,6 +39,12 @@ export function List<T>({
               iconAfter={ChevronRight}
             />
           </Link>
+        ) : (
+          <ListItem
+            title={title(item)}
+            subTitle={subTitle && subTitle(item)}
+            icon={icon && icon(item)}
+          />
         );
       }}
       estimatedItemSize={data.length}

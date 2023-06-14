@@ -9,21 +9,19 @@ import { CreateStack } from "../../../../components/stacks/CreateStack";
 
 function MyStack() {
   const [isLoading, setLoading] = useState(true);
+  const [refresh, setRefresh] = useState(false);
   const [stack, setStack] = useState<StackResponse["data"]>(null);
   const { user } = useAuth();
 
-  function load() {
-    if (user) {
+  useEffect(() => {
+    if (user && (!stack || refresh)) {
       getStack({ user: user.id }).then(({ data }) => {
         setStack(data);
         setLoading(false);
+        setRefresh(false);
       });
     }
-  }
-
-  useEffect(() => {
-    load();
-  }, [load]);
+  }, [user, stack, refresh]);
 
   return isLoading ? (
     <Spinner />
@@ -34,7 +32,7 @@ function MyStack() {
         <Text>{stack.website}</Text>
       </YStack>
       <ToolList
-        data={stack.picks_view}
+        tools={stack.picks_view}
         placeholder={
           <YStack padding="$3">
             <Text marginBottom="$3" textAlign="center">
@@ -46,7 +44,7 @@ function MyStack() {
       />
     </YStack>
   ) : (
-    <CreateStack refresh={load} />
+    <CreateStack refresh={() => setRefresh(true)} />
   );
 }
 
