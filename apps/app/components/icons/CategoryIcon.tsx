@@ -3,8 +3,8 @@ import * as icons from "@tamagui/lucide-icons";
 export function CategoryIcon({
   name,
   color,
-  width = "20",
-  height = "20",
+  width = "16",
+  height = "16",
 }: {
   name?: string | null;
   color?: string | null;

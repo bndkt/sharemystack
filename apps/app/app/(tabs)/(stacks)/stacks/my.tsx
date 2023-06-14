@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import { Button, H3, Spinner, Text, XStack, YStack } from "tamagui";
+import { Link, Twitter } from "@tamagui/lucide-icons";
 
-import { ToolList } from "../../../../components/stacks/ToolList";
+import { PickList } from "../../../../components/stacks/PickList";
 import { StackResponse, getStack } from "../../../../lib/database/getStack";
 import { withAuth } from "../../../../components/auth/withAuth";
 import { useAuth } from "../../../../components/providers/AuthProvider";
 import { CreateStack } from "../../../../components/stacks/CreateStack";
-import { Link, Twitter } from "@tamagui/lucide-icons";
 import { StackSheet } from "../../../../components/stacks/StackSheet";
 
 function MyStack() {
@@ -38,7 +38,7 @@ function MyStack() {
           )}
         </XStack>
       </YStack>
-      <ToolList
+      <PickList
         tools={stack.picks_view}
         placeholder={
           <YStack padding="$3">

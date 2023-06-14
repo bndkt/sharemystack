@@ -14,7 +14,7 @@ function StarredStacks() {
       setStacks(data);
       setLoading(false);
     });
-  }, [setStacks, getStacks]);
+  }, [getStacks, setStacks]);
 
   return isLoading ? <Spinner /> : <StackList stacks={stacks} />;
 }

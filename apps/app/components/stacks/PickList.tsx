@@ -1,7 +1,7 @@
 import { List } from "../List";
 import { ToolIcon } from "../icons/ToolIcon";
 
-type ToolList = {
+type PickList = {
   category_name: string | null;
   category_slug: string | null;
   tool_name: string | null;
@@ -10,16 +10,16 @@ type ToolList = {
   tool_color: string | null;
 }[];
 
-export function ToolList({
-  tools,
+export function PickList({
+  picks,
   placeholder,
 }: {
-  tools: ToolList;
+  picks: PickList;
   placeholder?: JSX.Element;
 }) {
   return (
     <List
-      data={tools}
+      data={picks}
       // href={(item) => `/(stacks)/@${item.category_slug}`}
       title={(item) => item.tool_name}
       subTitle={(item) => item.category_name}

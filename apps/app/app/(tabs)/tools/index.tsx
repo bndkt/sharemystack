@@ -1,3 +1,24 @@
+import { useEffect, useState } from "react";
+import { Spinner } from "tamagui";
+
+import { ToolsResponse, getTools } from "../../../lib/database/getTools";
+import { ToolList } from "../../../components/tools/ToolList";
+
+export default function Tools() {
+  const [isLoading, setLoading] = useState(true);
+  const [tools, setTools] = useState<ToolsResponse["data"]>(null);
+
+  useEffect(() => {
+    getTools().then(({ data }) => {
+      setTools(data);
+      setLoading(false);
+    });
+  }, [getTools, setTools]);
+
+  return isLoading ? <Spinner /> : <ToolList tools={tools} />;
+}
+
+/* 
 import { FlashList } from "@shopify/flash-list";
 import { ChevronRight } from "@tamagui/lucide-icons";
 import { Link } from "expo-router";
@@ -74,3 +95,5 @@ export default function Index() {
     </>
   );
 }
+
+*/

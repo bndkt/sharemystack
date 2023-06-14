@@ -26,7 +26,7 @@ export const getStacks = async ({
     query = query.eq("starred", true);
   }
   if (limit) {
-    query = query.limit(25);
+    query = query.limit(limit);
   }
 
   return await query;

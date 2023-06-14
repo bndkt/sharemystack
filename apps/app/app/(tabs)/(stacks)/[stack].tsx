@@ -2,7 +2,7 @@ import { Stack, useLocalSearchParams } from "expo-router";
 import { useEffect, useState } from "react";
 import { H3, Spinner, Text, YStack } from "tamagui";
 
-import { ToolList } from "../../../components/stacks/ToolList";
+import { PickList } from "../../../components/stacks/PickList";
 import { StackResponse, getStack } from "../../../lib/database/getStack";
 
 export default function Index() {
@@ -31,7 +31,7 @@ export default function Index() {
           <H3>{stack.name}</H3>
           <Text>{stack.website}</Text>
         </YStack>
-        <ToolList tools={stack.picks_view} />
+        <PickList picks={stack.picks_view} />
       </YStack>
     </>
   ) : null;
