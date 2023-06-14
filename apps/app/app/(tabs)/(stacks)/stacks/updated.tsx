@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { Spinner, YStack } from "tamagui";
+import { Spinner } from "tamagui";
 
-import { List } from "../../../../components/List";
 import { StacksResponse, getStacks } from "../../../../lib/database/getStacks";
+import { StackList } from "../../../../components/stacks/StackList";
 
 export default function UpdatedStacks() {
   const [isLoading, setLoading] = useState(true);
@@ -15,18 +15,5 @@ export default function UpdatedStacks() {
     });
   }, [setStacks, getStacks]);
 
-  return isLoading ? (
-    <Spinner />
-  ) : (
-    <>
-      <YStack fullscreen>
-        <List
-          data={stacks}
-          href={(item) => `/(stacks)/@${item.slug}`}
-          title={(item) => item.name}
-          subTitle={(item) => item.website}
-        />
-      </YStack>
-    </>
-  );
+  return isLoading ? <Spinner /> : <StackList stacks={stacks} />;
 }

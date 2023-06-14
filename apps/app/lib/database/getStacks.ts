@@ -13,7 +13,9 @@ export const getStacks = async ({
 } = {}) => {
   let query = supabase
     .from("stacks_view")
-    .select("id, name, slug, website, twitter, starred, stars");
+    .select(
+      "id, name, slug, website, twitter, twitter_image_url, starred, stars"
+    );
   if (updated) {
     query = query.order("updated_at", { ascending: false });
   }

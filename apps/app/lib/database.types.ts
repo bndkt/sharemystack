@@ -159,6 +159,7 @@ export interface Database {
           name: string
           slug: string
           twitter: string | null
+          twitter_image_url: string | null
           updated_at: string
           user_id: string | null
           website: string | null
@@ -170,6 +171,7 @@ export interface Database {
           name: string
           slug: string
           twitter?: string | null
+          twitter_image_url?: string | null
           updated_at?: string
           user_id?: string | null
           website?: string | null
@@ -181,6 +183,7 @@ export interface Database {
           name?: string
           slug?: string
           twitter?: string | null
+          twitter_image_url?: string | null
           updated_at?: string
           user_id?: string | null
           website?: string | null
@@ -320,6 +323,7 @@ export interface Database {
           starred: boolean | null
           stars: number | null
           twitter: string | null
+          twitter_image_url: string | null
           updated_at: string | null
           user_id: string | null
           website: string | null

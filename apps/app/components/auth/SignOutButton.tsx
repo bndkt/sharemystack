@@ -1,6 +1,6 @@
 import { Button } from "tamagui";
 
-import { useAuth } from "./AuthProvider";
+import { useAuth } from "../providers/AuthProvider";
 
 export function SignOutButton() {
   const { signOut } = useAuth();
