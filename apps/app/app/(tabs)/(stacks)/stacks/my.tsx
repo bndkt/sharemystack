@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import { Button, H2, Spinner, Text, YStack } from "tamagui";
+import { Button, H3, Spinner, Text, XStack, YStack } from "tamagui";
 
 import { ToolList } from "../../../../components/stacks/ToolList";
 import { StackResponse, getStack } from "../../../../lib/database/getStack";
 import { withAuth } from "../../../../components/auth/withAuth";
 import { useAuth } from "../../../../components/providers/AuthProvider";
 import { CreateStack } from "../../../../components/stacks/CreateStack";
+import { Link, Twitter } from "@tamagui/lucide-icons";
 
 function MyStack() {
   const [isLoading, setLoading] = useState(true);
@@ -28,8 +29,13 @@ function MyStack() {
   ) : stack ? (
     <YStack fullscreen>
       <YStack padding="$3">
-        <H2>{stack.name}</H2>
-        <Text>{stack.website}</Text>
+        <H3>{stack.name}</H3>
+        <XStack space="$2">
+          {stack.website && <Button size="$3" onPress={() => {}} icon={Link} />}
+          {stack.twitter && (
+            <Button size="$3" onPress={() => {}} icon={Twitter} />
+          )}
+        </XStack>
       </YStack>
       <ToolList
         tools={stack.picks_view}

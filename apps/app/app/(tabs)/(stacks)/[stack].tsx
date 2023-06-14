@@ -1,6 +1,6 @@
 import { Stack, useLocalSearchParams } from "expo-router";
 import { useEffect, useState } from "react";
-import { H2, Spinner, Text, YStack } from "tamagui";
+import { H3, Spinner, Text, YStack } from "tamagui";
 
 import { ToolList } from "../../../components/stacks/ToolList";
 import { StackResponse, getStack } from "../../../lib/database/getStack";
@@ -28,7 +28,7 @@ export default function Index() {
       <Stack.Screen options={{ headerShown: true, title: stack.name ?? "" }} />
       <YStack fullscreen>
         <YStack padding="$3">
-          <H2>{stack.name}</H2>
+          <H3>{stack.name}</H3>
           <Text>{stack.website}</Text>
         </YStack>
         <ToolList tools={stack.picks_view} />
