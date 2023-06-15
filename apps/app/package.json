@@ -2,7 +2,7 @@
   "name": "app",
   "version": "1.0.0",
   "scripts": {
-    "start": "TAMAGUI_TARGET=native expo start --dev-client --offline",
+    "start": "DEBUG=expo:* TAMAGUI_TARGET=native expo start --dev-client",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
@@ -36,7 +36,7 @@
     "expo-linking": "~4.1.0",
     "expo-router": "^1.7.6",
     "expo-status-bar": "~1.5.0",
-    "expo-updates": "~0.17.0",
+    "expo-updates": "0.16.4",
     "expo-web-browser": "~12.2.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
