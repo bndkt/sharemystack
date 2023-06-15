@@ -59,5 +59,8 @@ module.exports = {
         },
       ],
     },
+    runtimeVersion: {
+      policy: "sdkVersion",
+    },
   },
 };
