@@ -66,7 +66,7 @@ export function SignInButton() {
   }
 
   return (
-    <YStack padding="$3">
+    <YStack padding="$3" space="$3">
       <Button
         disabled={!authUrl}
         onPress={() => {
@@ -77,6 +77,22 @@ export function SignInButton() {
         icon={<Twitter color="#FFFFFF" />}
       >
         Sign in with Twitter
+      </Button>
+      <Button
+        onPress={async () => {
+          const { data, error } = await supabase.auth.signInWithPassword({
+            email: "test@sharemystack.com",
+            password: "test",
+          });
+
+          if (error) {
+            console.error(error);
+          } else {
+            signIn(data);
+          }
+        }}
+      >
+        Sign in (DEV)
       </Button>
     </YStack>
   );

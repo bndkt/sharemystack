@@ -1,8 +1,13 @@
 insert into
-auth.users (id, aud, role, email, email_confirmed_at, raw_app_meta_data, raw_user_meta_data)
+auth.users (instance_id, id, aud, role, email, encrypted_password, email_confirmed_at, created_at, updated_at, raw_app_meta_data, raw_user_meta_data, confirmation_token, recovery_token, email_change_token_new, email_change)
 values
-('6a6d9730-acf6-465e-851b-c19d2f5d533b', 'authenticated', 'authenticated', 'benedikt@feld.app', now(), '{"provider":"twitter","providers":["twitter"]}', '{"iss":"https://api.twitter.com/1.1/account/verify_credentials.json","sub":"10189402","name":"Benedikt","email":"benedikt@feld.app","picture":"https://pbs.twimg.com/profile_images/1356532269322809347/b8lcrpI6_normal.jpg","full_name":"Benedikt","user_name":"bndkt","avatar_url":"https://pbs.twimg.com/profile_images/1356532269322809347/b8lcrpI6_normal.jpg","provider_id":"10189402","email_verified":true,"preferred_username":"bndkt"}')
+('00000000-0000-0000-0000-000000000000', '6a6d9730-acf6-465e-851b-c19d2f5d533b', 'authenticated', 'authenticated', 'test@sharemystack.com', '$2a$10$iRobDodxHCqbf7eWt2hlsubfp4oovU1opGe0CJT4MZfUWMbSitfH.', now(), now(), now(), '{"provider":"email","providers":["email"]}', '{}', '', '', '', '')
 on conflict (id) do nothing;
+
+insert into
+auth.identities (id, provider, user_id, identity_data, last_sign_in_at, created_at, updated_at)
+values
+('6a6d9730-acf6-465e-851b-c19d2f5d533b', 'email', '6a6d9730-acf6-465e-851b-c19d2f5d533b', '{"sub":"6a6d9730-acf6-465e-851b-c19d2f5d533b","email":"test@sharemystack.com"}', now(), now(), now());
 
 insert into
 public.categories (id, name, slug, icon)

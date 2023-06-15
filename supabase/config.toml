@@ -47,11 +47,11 @@ additional_redirect_urls = ["https://localhost:8081"]
 # week).
 jwt_expiry = 3600
 # Allow/disallow new user signups to your project.
-enable_signup = true
+enable_signup = false
 
 [auth.email]
 # Allow/disallow new user signups via email to your project.
-enable_signup = false
+enable_signup = true
 # If enabled, a user will be required to confirm any email change on both the old, and new email
 # addresses. If disabled, only the new email is required to confirm.
 double_confirm_changes = true
