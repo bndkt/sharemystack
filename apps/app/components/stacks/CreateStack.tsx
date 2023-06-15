@@ -10,13 +10,15 @@ export function CreateStack({ refresh }: { refresh: () => void }) {
     if (user) {
       const { data, error } = await supabase.from("stacks").insert({
         name: user.user_metadata.full_name,
-        slug: (user.user_metadata.preferred_username as string).toLowerCase(),
-        twitter: user.user_metadata.preferred_username.preferred_username,
+        slug: user.user_metadata.preferred_username
+          ? (user.user_metadata.preferred_username as string).toLowerCase()
+          : undefined,
+        twitter: user.user_metadata.preferred_username,
         user_id: user.id,
       });
       refresh();
       console.log({ data, error });
-      console.log("createStack", user.user_metadata);
+      console.log("createStack", data, error);
     }
   }
 

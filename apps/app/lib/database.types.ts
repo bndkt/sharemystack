@@ -156,7 +156,7 @@ export interface Database {
           created_at: string
           featured: boolean
           id: string
-          name: string
+          name: string | null
           slug: string
           twitter: string | null
           twitter_image_url: string | null
@@ -168,8 +168,8 @@ export interface Database {
           created_at?: string
           featured?: boolean
           id?: string
-          name: string
-          slug: string
+          name?: string | null
+          slug?: string
           twitter?: string | null
           twitter_image_url?: string | null
           updated_at?: string
@@ -180,7 +180,7 @@ export interface Database {
           created_at?: string
           featured?: boolean
           id?: string
-          name?: string
+          name?: string | null
           slug?: string
           twitter?: string | null
           twitter_image_url?: string | null
