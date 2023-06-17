@@ -6,7 +6,6 @@ settings:
 
 overrides:
   expo-updates-interface: 0.9.2
-  '@expo/cli': next
 
 importers:
 
@@ -94,8 +93,8 @@ importers:
         specifier: ~1.5.0
         version: 1.5.0
       expo-updates:
-        specifier: ~0.17.0
-        version: 0.17.0(expo@49.0.0-alpha.4)
+        specifier: ~0.16.4
+        version: 0.16.4(expo@49.0.0-alpha.4)
       expo-web-browser:
         specifier: ~12.2.0
         version: 12.2.0(expo@49.0.0-alpha.4)
@@ -140,7 +139,7 @@ importers:
         version: 0.18.12(react-dom@18.2.0)(react@18.2.0)
       sentry-expo:
         specifier: ~6.1.0
-        version: 6.1.0(expo-application@5.2.0)(expo-constants@14.3.0)(expo-device@5.3.0)(expo-updates@0.17.0)(expo@49.0.0-alpha.4)(react-native@0.71.7)(react@18.2.0)
+        version: 6.1.0(expo-application@5.2.0)(expo-constants@14.3.0)(expo-device@5.3.0)(expo-updates@0.16.4)(expo@49.0.0-alpha.4)(react-native@0.71.7)(react@18.2.0)
       tamagui:
         specifier: ^1.33.5
         version: 1.33.5(@types/react@18.0.27)(react-dom@18.2.0)(react-native-web@0.18.12)(react-native@0.71.7)(react@18.2.0)
@@ -2920,18 +2919,14 @@ packages:
       write-file-atomic: 2.4.3
     dev: false
 
-  /@expo/metro-config@0.8.0:
-    resolution: {integrity: sha512-zaA1V/4p8oGK8EyBdyq19Ro+7m0JvA+jcAzFYexVHktKt7UAm6VeWvTL0ca7E67K4vZ3McApInJTINNXOzEn6Q==}
+  /@expo/metro-config@0.7.1:
+    resolution: {integrity: sha512-vGWU62Zp5pRGw5IEHDNdqvsy62/hu/Na7bswePYVjoaItOjJY7+qilFeF0AAK+3V8qAM8fpltH3ByylKfWaA7A==}
     dependencies:
       '@expo/config': 8.0.2
-      '@expo/env': 0.0.2
-      '@expo/json-file': 8.2.37
       chalk: 4.1.2
       debug: 4.3.4
       find-yarn-workspace-root: 2.0.0
       getenv: 1.0.0
-      lightningcss: 1.19.0
-      postcss: 8.4.24
       resolve-from: 5.0.0
       sucrase: 3.32.0
     transitivePeerDependencies:
@@ -3031,7 +3026,7 @@ packages:
       '@expo/json-file': 8.2.37
       debug: 4.3.4
       expo-modules-autolinking: 1.4.0
-      fs-extra: 9.1.0
+      fs-extra: 9.0.0
       resolve-from: 5.0.0
       semver: 7.3.2
       xml2js: 0.4.23
@@ -8653,6 +8648,10 @@ packages:
       - react-dom
     dev: false
 
+  /expo-json-utils@0.5.1:
+    resolution: {integrity: sha512-Y5boshyf40vPjwxNnOIfacZPNkOymecZRQ1k+TSXlq6gnw5XRsnM5hnP0VLVYhdv8x+9CX6E1fDsDUNvsK38Dg==}
+    dev: false
+
   /expo-json-utils@0.6.0:
     resolution: {integrity: sha512-EiweJLICgtL8R9ylZ8df0WTRVKLY+WdmP8hBIxSmGwIzemPOG41UkXS6qAsapx46uGCgYzCPx9VYqJxJzqb7gQ==}
     dev: false
@@ -8676,6 +8675,12 @@ packages:
     transitivePeerDependencies:
       - expo
       - supports-color
+    dev: false
+
+  /expo-manifests@0.5.2:
+    resolution: {integrity: sha512-WnsTlE2le3pV/B/AJPKTOSjb2K9AT1mPDCfQxTQ/KMCwF95saoXYt2OPF3hxZNaMAV6VIAhXgd5Y6wpcH9ruPQ==}
+    dependencies:
+      expo-json-utils: 0.5.1
     dev: false
 
   /expo-manifests@0.6.0:
@@ -8795,20 +8800,20 @@ packages:
       expo: 49.0.0-alpha.4(@babel/core@7.22.5)
     dev: false
 
-  /expo-updates@0.17.0(expo@49.0.0-alpha.4):
-    resolution: {integrity: sha512-tlx6O1SR4hTYInLgmfF7UigTOZljy5p637ZmiNZkr+Kl5n2w+yW6hinH5NYSAna1hKujkqyitjWB5SL0X/9MMA==}
+  /expo-updates@0.16.4(expo@49.0.0-alpha.4):
+    resolution: {integrity: sha512-hEUotP10sBiYn6dvkYC2rIa+kAmsBuaMp32sIVNAYEwKMQJqEwqNAKTU6CpJ4Aoc//BYL2Hv8qNo/UsT4rATRg==}
     hasBin: true
     peerDependencies:
       expo: '*'
     dependencies:
       '@expo/code-signing-certificates': 0.0.5
       '@expo/config': 8.0.2
-      '@expo/config-plugins': 7.0.0
-      '@expo/metro-config': 0.8.0
+      '@expo/config-plugins': 6.0.2
+      '@expo/metro-config': 0.7.1
       arg: 4.1.0
       expo: 49.0.0-alpha.4(@babel/core@7.22.5)
       expo-eas-client: 0.5.1
-      expo-manifests: 0.6.0
+      expo-manifests: 0.5.2
       expo-structured-headers: 3.1.1
       expo-updates-interface: 0.9.2(expo@49.0.0-alpha.4)
       fbemitter: 3.0.0
@@ -14703,7 +14708,7 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /sentry-expo@6.1.0(expo-application@5.2.0)(expo-constants@14.3.0)(expo-device@5.3.0)(expo-updates@0.17.0)(expo@49.0.0-alpha.4)(react-native@0.71.7)(react@18.2.0):
+  /sentry-expo@6.1.0(expo-application@5.2.0)(expo-constants@14.3.0)(expo-device@5.3.0)(expo-updates@0.16.4)(expo@49.0.0-alpha.4)(react-native@0.71.7)(react@18.2.0):
     resolution: {integrity: sha512-K0gC10Uj0+E26RK6oCNDq3ozctqDObt4fL649rElZW0YVJw82WraRLiaN5zWADXQnsEumpQs4meQo+RL9w2J8g==}
     peerDependencies:
       expo: '>=47.0.0'
@@ -14721,7 +14726,7 @@ packages:
       expo-application: 5.2.0(expo@49.0.0-alpha.4)
       expo-constants: 14.3.0(expo@49.0.0-alpha.4)
       expo-device: 5.3.0(expo@49.0.0-alpha.4)
-      expo-updates: 0.17.0(expo@49.0.0-alpha.4)
+      expo-updates: 0.16.4(expo@49.0.0-alpha.4)
       mkdirp: 1.0.4
       rimraf: 3.0.2
     transitivePeerDependencies:
