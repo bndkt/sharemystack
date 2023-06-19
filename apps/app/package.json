@@ -2,7 +2,7 @@
   "name": "app",
   "version": "1.0.0",
   "scripts": {
-    "start": "DEBUG=expo:* TAMAGUI_TARGET=native expo start --dev-client --clear",
+    "dev": "DEBUG=expo:* TAMAGUI_TARGET=native expo start --dev-client --clear",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
