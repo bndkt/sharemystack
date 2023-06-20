@@ -8,8 +8,8 @@ export const getCategories = async ({
   limit?: number;
 } = {}) => {
   let query = supabase
-    .from("categories")
-    .select("id, name, slug, icon, categorizations (count)")
+    .from("categories_view")
+    .select("id, name, slug, icon, tools, picks")
     .order("name");
 
   if (search) {

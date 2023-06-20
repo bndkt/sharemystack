@@ -30,7 +30,7 @@ function MyStack() {
   ) : stack ? (
     <YStack fullscreen>
       <YStack padding="$3">
-        <H3>{stack.name}</H3>
+        <H3>{stack.name ?? "Unnamed stack"}</H3>
         <XStack space="$2">
           {stack.website && <Button size="$3" onPress={() => {}} icon={Link} />}
           {stack.twitter && (
@@ -39,13 +39,12 @@ function MyStack() {
         </XStack>
       </YStack>
       <PickList
-        tools={stack.picks_view}
+        picks={stack.picks_view}
         placeholder={
           <YStack padding="$3">
             <Text marginBottom="$3" textAlign="center">
               You have not added any tools to your stack yet.
             </Text>
-            <Button onPress={() => {}}>Add tools now</Button>
           </YStack>
         }
       />

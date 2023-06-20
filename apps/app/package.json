@@ -2,13 +2,13 @@
   "name": "app",
   "version": "1.0.0",
   "scripts": {
-    "dev": "DEBUG=expo:* TAMAGUI_TARGET=native expo start --dev-client --clear",
+    "dev": "TAMAGUI_TARGET=native expo start --dev-client --clear",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
     "doc": "npx expo-doctor@latest",
     "build:local": "eas build --profile simulator --platform ios --local --non-interactive",
-    "sb:types": "supabase gen types typescript --local > lib/database.types.ts",
+    "types": "supabase gen types typescript --local > lib/database.types.ts",
     "lint": "eslint app lib",
     "eas-build-pre-install": "corepack enable && corepack prepare pnpm@latest-8 --activate"
   },

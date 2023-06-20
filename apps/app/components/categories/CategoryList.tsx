@@ -7,8 +7,10 @@ import { SuggestionButton } from "../SuggestionButton";
 
 export function CategoryList({
   categories,
+  suggestionButton,
 }: {
   categories: CategoriesResponse["data"];
+  suggestionButton?: boolean;
 }) {
   return (
     <YStack fullscreen>
@@ -17,15 +19,13 @@ export function CategoryList({
         href={(item) => `/categories/${item.slug}`}
         title={(item) => item.name}
         subTitle={(item) =>
-          `${item.categorizations[0].count ?? "0"} tool${
-            (item.categorizations[0].count as number) !== 1 ? "s" : ""
-          }`
+          `${item.tools ?? "0"} tool${item.tools !== 1 ? "s" : ""}`
         }
         icon={(item) => (
           <CategoryIcon name={item.icon} width="24" height="24" />
         )}
       />
-      <SuggestionButton suggestion="category" />
+      {suggestionButton && <SuggestionButton suggestion="category" />}
     </YStack>
   );
 }
