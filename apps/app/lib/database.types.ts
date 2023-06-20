@@ -89,6 +89,18 @@ export interface Database {
             columns: ["tool_id"]
             referencedRelation: "tools"
             referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "categorizations_tool_id_fkey"
+            columns: ["tool_id"]
+            referencedRelation: "categories_tools_view"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "categorizations_tool_id_fkey"
+            columns: ["tool_id"]
+            referencedRelation: "tools_view"
+            referencedColumns: ["id"]
           }
         ]
       }
@@ -137,6 +149,18 @@ export interface Database {
             foreignKeyName: "picks_tool_id_fkey"
             columns: ["tool_id"]
             referencedRelation: "tools"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "picks_tool_id_fkey"
+            columns: ["tool_id"]
+            referencedRelation: "categories_tools_view"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "picks_tool_id_fkey"
+            columns: ["tool_id"]
+            referencedRelation: "tools_view"
             referencedColumns: ["id"]
           }
         ]
@@ -263,6 +287,18 @@ export interface Database {
             referencedColumns: ["id"]
           },
           {
+            foreignKeyName: "stars_tool_id_fkey"
+            columns: ["tool_id"]
+            referencedRelation: "categories_tools_view"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "stars_tool_id_fkey"
+            columns: ["tool_id"]
+            referencedRelation: "tools_view"
+            referencedColumns: ["id"]
+          },
+          {
             foreignKeyName: "stars_user_id_fkey"
             columns: ["user_id"]
             referencedRelation: "users"
@@ -305,6 +341,21 @@ export interface Database {
       }
     }
     Views: {
+      categories_tools_view: {
+        Row: {
+          category: string | null
+          category_slug: string | null
+          color: string | null
+          created_at: string | null
+          icon: string | null
+          id: string | null
+          name: string | null
+          slug: string | null
+          twitter: string | null
+          website: string | null
+        }
+        Relationships: []
+      }
       categories_view: {
         Row: {
           created_at: string | null
@@ -366,6 +417,20 @@ export interface Database {
             referencedColumns: ["id"]
           }
         ]
+      }
+      tools_view: {
+        Row: {
+          categories: number | null
+          color: string | null
+          created_at: string | null
+          icon: string | null
+          id: string | null
+          name: string | null
+          slug: string | null
+          twitter: string | null
+          website: string | null
+        }
+        Relationships: []
       }
     }
     Functions: {
