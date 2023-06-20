@@ -1,3 +1,4 @@
+import { GestureResponderEvent } from "react-native";
 import { YStack } from "tamagui";
 
 import { List } from "../List";
@@ -7,16 +8,19 @@ import { SuggestionButton } from "../SuggestionButton";
 
 export function CategoryList({
   categories,
+  onPress,
   suggestionButton,
 }: {
   categories: CategoriesResponse["data"];
+  onPress?: (slug: string | null) => void;
   suggestionButton?: boolean;
 }) {
   return (
     <YStack fullscreen>
       <List
         data={categories}
-        href={(item) => `/categories/${item.slug}`}
+        href={!onPress ? (item) => `/categories/${item.slug}` : undefined}
+        onPress={onPress ? (item) => onPress(item.slug) : undefined}
         title={(item) => item.name}
         subTitle={(item) =>
           `${item.tools ?? "0"} tool${item.tools !== 1 ? "s" : ""}`

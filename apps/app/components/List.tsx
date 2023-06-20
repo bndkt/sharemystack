@@ -2,6 +2,7 @@ import { FlashList } from "@shopify/flash-list";
 import { ChevronRight } from "@tamagui/lucide-icons";
 import { Link } from "expo-router";
 import { FunctionComponent } from "react";
+import { GestureResponderEvent } from "react-native";
 import { ListItem, Separator, Text } from "tamagui";
 
 export function List<T>({
@@ -10,6 +11,7 @@ export function List<T>({
   title,
   subTitle,
   icon,
+  onPress,
   placeholder,
 }: {
   data: readonly T[] | null;
@@ -22,6 +24,7 @@ export function List<T>({
     | JSX.Element
     | FunctionComponent<{ color?: string; size?: number }>
     | null;
+  onPress?: (item: T) => void;
   placeholder?: JSX.Element;
 }) {
   placeholder ??= <Text>No data</Text>;
@@ -39,6 +42,14 @@ export function List<T>({
               iconAfter={ChevronRight}
             />
           </Link>
+        ) : onPress ? (
+          <ListItem
+            title={title(item)}
+            subTitle={subTitle && subTitle(item)}
+            icon={icon && icon(item)}
+            onPress={onPress ? () => onPress(item) : undefined}
+            iconAfter={ChevronRight}
+          />
         ) : (
           <ListItem
             title={title(item)}
