@@ -81,25 +81,19 @@ export interface Database {
           {
             foreignKeyName: "categorizations_category_id_fkey"
             columns: ["category_id"]
-            referencedRelation: "categories_tools_view"
-            referencedColumns: ["category_id"]
+            referencedRelation: "categories_view"
+            referencedColumns: ["id"]
           },
           {
             foreignKeyName: "categorizations_category_id_fkey"
             columns: ["category_id"]
-            referencedRelation: "categories_view"
-            referencedColumns: ["id"]
+            referencedRelation: "tools_view"
+            referencedColumns: ["category_id"]
           },
           {
             foreignKeyName: "categorizations_tool_id_fkey"
             columns: ["tool_id"]
             referencedRelation: "tools"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "categorizations_tool_id_fkey"
-            columns: ["tool_id"]
-            referencedRelation: "categories_tools_view"
             referencedColumns: ["id"]
           },
           {
@@ -136,14 +130,14 @@ export interface Database {
           {
             foreignKeyName: "picks_category_id_fkey"
             columns: ["category_id"]
-            referencedRelation: "categories_tools_view"
-            referencedColumns: ["category_id"]
+            referencedRelation: "categories_view"
+            referencedColumns: ["id"]
           },
           {
             foreignKeyName: "picks_category_id_fkey"
             columns: ["category_id"]
-            referencedRelation: "categories_view"
-            referencedColumns: ["id"]
+            referencedRelation: "tools_view"
+            referencedColumns: ["category_id"]
           },
           {
             foreignKeyName: "picks_stack_id_fkey"
@@ -161,12 +155,6 @@ export interface Database {
             foreignKeyName: "picks_tool_id_fkey"
             columns: ["tool_id"]
             referencedRelation: "tools"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "picks_tool_id_fkey"
-            columns: ["tool_id"]
-            referencedRelation: "categories_tools_view"
             referencedColumns: ["id"]
           },
           {
@@ -277,14 +265,14 @@ export interface Database {
           {
             foreignKeyName: "stars_category_id_fkey"
             columns: ["category_id"]
-            referencedRelation: "categories_tools_view"
-            referencedColumns: ["category_id"]
+            referencedRelation: "categories_view"
+            referencedColumns: ["id"]
           },
           {
             foreignKeyName: "stars_category_id_fkey"
             columns: ["category_id"]
-            referencedRelation: "categories_view"
-            referencedColumns: ["id"]
+            referencedRelation: "tools_view"
+            referencedColumns: ["category_id"]
           },
           {
             foreignKeyName: "stars_stack_id_fkey"
@@ -302,12 +290,6 @@ export interface Database {
             foreignKeyName: "stars_tool_id_fkey"
             columns: ["tool_id"]
             referencedRelation: "tools"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "stars_tool_id_fkey"
-            columns: ["tool_id"]
-            referencedRelation: "categories_tools_view"
             referencedColumns: ["id"]
           },
           {
@@ -359,22 +341,6 @@ export interface Database {
       }
     }
     Views: {
-      categories_tools_view: {
-        Row: {
-          category_id: string | null
-          category_name: string | null
-          category_slug: string | null
-          color: string | null
-          created_at: string | null
-          icon: string | null
-          id: string | null
-          name: string | null
-          slug: string | null
-          twitter: string | null
-          website: string | null
-        }
-        Relationships: []
-      }
       categories_view: {
         Row: {
           created_at: string | null
@@ -438,7 +404,10 @@ export interface Database {
       }
       tools_view: {
         Row: {
-          categorizations: number | null
+          all_picks: number | null
+          category_id: string | null
+          category_name: string | null
+          category_slug: string | null
           color: string | null
           created_at: string | null
           icon: string | null
@@ -446,6 +415,7 @@ export interface Database {
           name: string | null
           slug: string | null
           twitter: string | null
+          user_picks: number | null
           website: string | null
         }
         Relationships: []

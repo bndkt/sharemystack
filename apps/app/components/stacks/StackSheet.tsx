@@ -4,6 +4,7 @@ import {
   BottomSheetModalProvider,
 } from "@gorhom/bottom-sheet";
 import { Button, Spinner, YStack } from "tamagui";
+import { Check, Plus } from "@tamagui/lucide-icons";
 
 import { CategoryList } from "../categories/CategoryList";
 import {
@@ -11,8 +12,9 @@ import {
   getCategories,
 } from "../../lib/database/getCategories";
 import { ToolsResponse, getTools } from "../../lib/database/getTools";
-import { ToolList } from "../tools/ToolList";
 import { supabase } from "../../lib/supabase";
+import { List } from "../List";
+import { ToolIcon } from "../icons/ToolIcon";
 
 export function StackSheet({
   stack,
@@ -95,13 +97,20 @@ export function StackSheet({
         {isLoading ? (
           <Spinner />
         ) : category ? (
-          <ToolList
-            tools={tools}
-            onPress={(tool: string | null) => {
-              console.log("Tool:", tool);
-              setTool(tool);
-            }}
-          />
+          <YStack fullscreen>
+            <List
+              data={tools}
+              onPress={(item) =>
+                !item.user_picks ? setTool(item.id) : undefined
+              }
+              title={(item) => item.name}
+              subTitle={(item) => item.website}
+              icon={(item) => (
+                <ToolIcon svgXml={item.icon} width="24" height="24" />
+              )}
+              iconAfter={(item) => (item.user_picks ? <Check /> : <Plus />)}
+            />
+          </YStack>
         ) : (
           <CategoryList
             categories={categories}

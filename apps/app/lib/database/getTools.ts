@@ -10,8 +10,9 @@ export const getTools = async ({
   limit?: number;
 } = {}) => {
   let query = supabase
-    .from(category ? "categories_tools_view" : "tools_view")
-    .select("id, name, slug, color, icon, website")
+    // .from(category ? "categories_tools_view" : "tools_view")
+    .from("tools_view")
+    .select("id, name, slug, color, icon, website, user_picks, all_picks")
     .order("name");
 
   if (search) {

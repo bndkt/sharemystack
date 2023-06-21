@@ -13,6 +13,7 @@ export function List<T>({
   icon,
   onPress,
   placeholder,
+  iconAfter,
 }: {
   data: readonly T[] | null;
   href?: (item: T) => string;
@@ -26,6 +27,7 @@ export function List<T>({
     | null;
   onPress?: (item: T) => void;
   placeholder?: JSX.Element;
+  iconAfter?: (item: T) => JSX.Element | undefined;
 }) {
   placeholder ??= <Text>No data</Text>;
 
@@ -39,7 +41,7 @@ export function List<T>({
               title={title(item)}
               subTitle={subTitle && subTitle(item)}
               icon={icon && icon(item)}
-              iconAfter={ChevronRight}
+              iconAfter={iconAfter ? iconAfter(item) : ChevronRight}
             />
           </Link>
         ) : onPress ? (
@@ -48,13 +50,14 @@ export function List<T>({
             subTitle={subTitle && subTitle(item)}
             icon={icon && icon(item)}
             onPress={onPress ? () => onPress(item) : undefined}
-            iconAfter={ChevronRight}
+            iconAfter={iconAfter ? iconAfter(item) : ChevronRight}
           />
         ) : (
           <ListItem
             title={title(item)}
             subTitle={subTitle && subTitle(item)}
             icon={icon && icon(item)}
+            iconAfter={iconAfter && iconAfter(item)}
           />
         );
       }}

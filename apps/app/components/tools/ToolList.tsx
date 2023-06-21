@@ -19,7 +19,7 @@ export function ToolList({
         href={!onPress ? (item) => `/tools/${item.slug}` : undefined}
         onPress={onPress ? (item) => onPress(item.id) : undefined}
         title={(item) => item.name}
-        subTitle={(item) => item.website}
+        subTitle={(item) => `Included in ${item.all_picks} stacks`}
         icon={(item) => <ToolIcon svgXml={item.icon} width="24" height="24" />}
       />
       <SuggestionButton suggestion="tool" />
