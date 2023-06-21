@@ -81,6 +81,12 @@ export interface Database {
           {
             foreignKeyName: "categorizations_category_id_fkey"
             columns: ["category_id"]
+            referencedRelation: "categories_tools_view"
+            referencedColumns: ["category_id"]
+          },
+          {
+            foreignKeyName: "categorizations_category_id_fkey"
+            columns: ["category_id"]
             referencedRelation: "categories_view"
             referencedColumns: ["id"]
           },
@@ -126,6 +132,12 @@ export interface Database {
             columns: ["category_id"]
             referencedRelation: "categories"
             referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "picks_category_id_fkey"
+            columns: ["category_id"]
+            referencedRelation: "categories_tools_view"
+            referencedColumns: ["category_id"]
           },
           {
             foreignKeyName: "picks_category_id_fkey"
@@ -265,6 +277,12 @@ export interface Database {
           {
             foreignKeyName: "stars_category_id_fkey"
             columns: ["category_id"]
+            referencedRelation: "categories_tools_view"
+            referencedColumns: ["category_id"]
+          },
+          {
+            foreignKeyName: "stars_category_id_fkey"
+            columns: ["category_id"]
             referencedRelation: "categories_view"
             referencedColumns: ["id"]
           },
@@ -343,7 +361,8 @@ export interface Database {
     Views: {
       categories_tools_view: {
         Row: {
-          category: string | null
+          category_id: string | null
+          category_name: string | null
           category_slug: string | null
           color: string | null
           created_at: string | null

@@ -12,7 +12,7 @@ export function CategoryList({
   suggestionButton,
 }: {
   categories: CategoriesResponse["data"];
-  onPress?: (slug: string | null) => void;
+  onPress?: (tool: string | null) => void;
   suggestionButton?: boolean;
 }) {
   return (
@@ -20,7 +20,7 @@ export function CategoryList({
       <List
         data={categories}
         href={!onPress ? (item) => `/categories/${item.slug}` : undefined}
-        onPress={onPress ? (item) => onPress(item.slug) : undefined}
+        onPress={onPress ? (item) => onPress(item.id) : undefined}
         title={(item) => item.name}
         subTitle={(item) =>
           `${item.tools ?? "0"} tool${item.tools !== 1 ? "s" : ""}`

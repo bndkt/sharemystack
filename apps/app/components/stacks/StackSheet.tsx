@@ -3,20 +3,31 @@ import {
   BottomSheetModal,
   BottomSheetModalProvider,
 } from "@gorhom/bottom-sheet";
-import { Button, Text, YStack } from "tamagui";
+import { Button, Spinner, YStack } from "tamagui";
 
 import { CategoryList } from "../categories/CategoryList";
 import {
   CategoriesResponse,
   getCategories,
 } from "../../lib/database/getCategories";
+import { ToolsResponse, getTools } from "../../lib/database/getTools";
+import { ToolList } from "../tools/ToolList";
+import { supabase } from "../../lib/supabase";
 
-export function StackSheet() {
+export function StackSheet({
+  stack,
+  refresh,
+}: {
+  stack: string | null;
+  refresh: () => void;
+}) {
   const bottomSheetModalRef = useRef<BottomSheetModal>(null);
   const [isLoading, setLoading] = useState(true);
   const [categories, setCategories] =
     useState<CategoriesResponse["data"]>(null);
   const [category, setCategory] = useState<string | null>(null);
+  const [tools, setTools] = useState<ToolsResponse["data"]>(null);
+  const [tool, setTool] = useState<string | null>(null);
 
   useEffect(() => {
     getCategories().then(({ data }) => {
@@ -24,6 +35,31 @@ export function StackSheet() {
       setLoading(false);
     });
   }, [getCategories, setCategories]);
+
+  useEffect(() => {
+    if (category) {
+      setLoading(true);
+      getTools({ category }).then(({ data }) => {
+        setTools(data);
+        setLoading(false);
+      });
+    }
+  }, [category, getTools, setTools]);
+
+  useEffect(() => {
+    if (stack && category && tool) {
+      let query = supabase
+        .from("picks")
+        .insert({ stack_id: stack, tool_id: tool, category_id: category });
+
+      query.then((result) => {
+        console.log({ result });
+        refresh();
+        setTool(null);
+        setCategory(null);
+      });
+    }
+  }, [stack, category, tool]);
 
   const snapPoints = useMemo(() => ["25%", "50%", "75%"], []);
 
@@ -56,12 +92,25 @@ export function StackSheet() {
           elevation: 5,
         }}
       >
-        <CategoryList
-          categories={categories}
-          onPress={(slug: string | null) => {
-            console.log("Category:", slug);
-          }}
-        />
+        {isLoading ? (
+          <Spinner />
+        ) : category ? (
+          <ToolList
+            tools={tools}
+            onPress={(tool: string | null) => {
+              console.log("Tool:", tool);
+              setTool(tool);
+            }}
+          />
+        ) : (
+          <CategoryList
+            categories={categories}
+            onPress={(category: string | null) => {
+              console.log("Category:", category);
+              setCategory(category);
+            }}
+          />
+        )}
       </BottomSheetModal>
     </BottomSheetModalProvider>
   );

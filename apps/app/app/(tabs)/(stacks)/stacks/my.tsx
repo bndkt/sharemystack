@@ -48,7 +48,7 @@ function MyStack() {
           </YStack>
         }
       />
-      <StackSheet />
+      <StackSheet stack={stack.id} refresh={() => setRefresh(true)} />
     </YStack>
   ) : (
     <CreateStack refresh={() => setRefresh(true)} />
