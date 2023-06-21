@@ -9,7 +9,7 @@ export const getCategories = async ({
 } = {}) => {
   let query = supabase
     .from("categories_view")
-    .select("id, name, slug, icon, tools, picks")
+    .select("id, name, slug, icon, tools")
     .order("name");
 
   if (search) {

@@ -381,7 +381,6 @@ export interface Database {
           icon: string | null
           id: string | null
           name: string | null
-          picks: number | null
           slug: string | null
           tools: number | null
         }
@@ -439,7 +438,7 @@ export interface Database {
       }
       tools_view: {
         Row: {
-          categories: number | null
+          categorizations: number | null
           color: string | null
           created_at: string | null
           icon: string | null
