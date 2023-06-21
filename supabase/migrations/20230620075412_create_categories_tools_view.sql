@@ -1,7 +1,8 @@
 create view categories_tools_view as
     select
     tools.*,
-    categories.name as category,
+    categories.id as category_id,
+    categories.name as category_name,
     categories.slug as category_slug
     from
     tools
