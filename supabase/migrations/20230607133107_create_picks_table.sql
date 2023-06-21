@@ -11,3 +11,13 @@ alter table picks
 
 create policy "Picks are viewable by everyone."
   on picks for select using ( true );
+
+create policy "Users can insert picks for their own stack."
+  on picks for insert
+  with check ( 
+    exists(
+      select 1
+      from stacks
+      where stacks.user_id = auth.uid()
+    )
+  );
