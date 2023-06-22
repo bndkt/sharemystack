@@ -13,10 +13,6 @@ module.exports = {
       resizeMode: "contain",
       backgroundColor: "#ffffff",
     },
-    updates: {
-      fallbackToCacheTimeout: 0,
-      url: "https://u.expo.dev/987c3c40-d46a-45e7-a545-112f3c6e23e9",
-    },
     assetBundlePatterns: ["**/*"],
     ios: {
       supportsTablet: true,
