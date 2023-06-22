@@ -7,6 +7,10 @@
         ],
         "components": [
           {
+            "auth/*": "no_universal_links",
+            "exclude": true
+          },
+          {
             "*": "*"
           }
         ]
