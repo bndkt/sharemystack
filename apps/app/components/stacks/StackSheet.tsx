@@ -3,7 +3,7 @@ import {
   BottomSheetModal,
   BottomSheetModalProvider,
 } from "@gorhom/bottom-sheet";
-import { Button, Spinner, YStack } from "tamagui";
+import { Button, Spinner, Text, YStack } from "tamagui";
 import { Check, Plus } from "@tamagui/lucide-icons";
 
 import { CategoryList } from "../categories/CategoryList";
@@ -98,6 +98,11 @@ export function StackSheet({
           <Spinner />
         ) : category ? (
           <YStack fullscreen>
+            <YStack paddingHorizontal="$3">
+              <Button onPress={() => setCategory(null)}>
+                Back to categories
+              </Button>
+            </YStack>
             <List
               data={tools}
               onPress={(item) =>

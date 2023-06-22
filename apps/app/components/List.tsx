@@ -1,8 +1,7 @@
 import { FlashList } from "@shopify/flash-list";
 import { ChevronRight } from "@tamagui/lucide-icons";
 import { Link } from "expo-router";
-import { FunctionComponent } from "react";
-import { GestureResponderEvent } from "react-native";
+import { FunctionComponent, ReactNode } from "react";
 import { ListItem, Separator, Text } from "tamagui";
 
 export function List<T>({
@@ -17,8 +16,8 @@ export function List<T>({
 }: {
   data: readonly T[] | null;
   href?: (item: T) => string;
-  title: (item: T) => string | null;
-  subTitle?: (item: T) => string | null | undefined;
+  title: (item: T) => ReactNode;
+  subTitle?: (item: T) => ReactNode;
   icon?: (
     item: T
   ) =>
@@ -29,7 +28,11 @@ export function List<T>({
   placeholder?: JSX.Element;
   iconAfter?: (item: T) => JSX.Element | undefined;
 }) {
-  placeholder ??= <Text>No data</Text>;
+  placeholder ??= (
+    <Text padding="$3" textAlign="center">
+      No data
+    </Text>
+  );
 
   return data && data.length ? (
     <FlashList

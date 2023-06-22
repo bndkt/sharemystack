@@ -10,20 +10,20 @@ values
 ('6a6d9730-acf6-465e-851b-c19d2f5d533b', 'email', '6a6d9730-acf6-465e-851b-c19d2f5d533b', '{"sub":"6a6d9730-acf6-465e-851b-c19d2f5d533b","email":"test@sharemystack.com"}', now(), now(), now());
 
 insert into
-public.categories (id, name, slug, icon)
+public.categories (id, name, slug, icon, soon)
 values
-(gen_random_uuid(), 'Email Service', 'email-service', 'Mail'),
-(gen_random_uuid(), 'Browser', 'browser', ''),
-(gen_random_uuid(), 'Calendar', 'calendar', 'Calendar'),
-(gen_random_uuid(), 'IDE', 'ide', 'TerminalSquare'),
-(gen_random_uuid(), 'Terminal', 'terminal', 'Terminal'),
-(gen_random_uuid(), 'Music', 'music', 'Music'),
-(gen_random_uuid(), 'Podcast', 'podcast', 'Podcast'),
-('8f5ff296-f438-40fc-8c48-b437810385af', 'Operating System', 'operating-system', 'AppWindow'),
-('bf4fb3cd-38d9-4135-abc7-7f291c498366', 'Note-taking', 'note-taking', 'ClipboardEdit'),
-(gen_random_uuid(), 'Mobile Operating System', 'mobile-operating-system', 'Smartphone'),
-('0e93b69f-3415-4fec-a5e6-da1f779b43a6', 'Password Management', 'password-management', 'Fingerprint'),
-(gen_random_uuid(), 'Todo List', 'todo-list', 'CheckSquare');
+(gen_random_uuid(), 'Email Service', 'email-service', 'Mail', false),
+(gen_random_uuid(), 'Browser', 'browser', '', false),
+(gen_random_uuid(), 'Calendar', 'calendar', 'Calendar', true),
+(gen_random_uuid(), 'IDE', 'ide', 'TerminalSquare', true),
+(gen_random_uuid(), 'Terminal', 'terminal', 'Terminal', true),
+(gen_random_uuid(), 'Music', 'music', 'Music', true),
+(gen_random_uuid(), 'Podcast', 'podcast', 'Podcast', true),
+('8f5ff296-f438-40fc-8c48-b437810385af', 'Operating System', 'operating-system', 'AppWindow', false),
+('bf4fb3cd-38d9-4135-abc7-7f291c498366', 'Note-taking', 'note-taking', 'ClipboardEdit', false),
+(gen_random_uuid(), 'Mobile Operating System', 'mobile-operating-system', 'Smartphone', false),
+('0e93b69f-3415-4fec-a5e6-da1f779b43a6', 'Password Management', 'password-management', 'Fingerprint', false),
+(gen_random_uuid(), 'Todo List', 'todo-list', 'CheckSquare', false);
 
 insert into
 public.tools (id, name, slug, website, twitter, color, icon)

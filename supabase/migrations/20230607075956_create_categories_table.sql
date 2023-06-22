@@ -5,6 +5,7 @@ create table
     name character varying not null,
     slug character varying not null,
     icon character varying not null,
+    soon boolean not null default false,
     constraint categories_pkey primary key (id),
     constraint categories_slug_key unique (slug)
   );

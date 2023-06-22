@@ -41,6 +41,7 @@ export interface Database {
           id: string
           name: string
           slug: string
+          soon: boolean
         }
         Insert: {
           created_at?: string
@@ -48,6 +49,7 @@ export interface Database {
           id?: string
           name: string
           slug: string
+          soon?: boolean
         }
         Update: {
           created_at?: string
@@ -55,6 +57,7 @@ export interface Database {
           id?: string
           name?: string
           slug?: string
+          soon?: boolean
         }
         Relationships: []
       }
@@ -348,6 +351,7 @@ export interface Database {
           id: string | null
           name: string | null
           slug: string | null
+          soon: boolean | null
           tools: number | null
         }
         Relationships: []
