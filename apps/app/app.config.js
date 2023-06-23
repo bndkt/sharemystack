@@ -52,7 +52,7 @@ module.exports = {
       /* ["expo-router"], { origin: "https://sharemystack.com" }, */
     ],
     hooks: {
-      postPublish: [
+      /* postPublish: [
         {
           file: "sentry-expo/upload-sourcemaps",
           config: {
@@ -60,7 +60,7 @@ module.exports = {
             project: "sharemystack",
           },
         },
-      ],
+      ], */
     },
     runtimeVersion: {
       policy: "sdkVersion",
