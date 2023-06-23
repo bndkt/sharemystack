@@ -7,7 +7,7 @@
     "ios": "npx expo start --ios",
     "web": "TAMAGUI_TARGET=web npx expo start --web",
     "doc": "npx expo-doctor@latest",
-    "build:local": "eas build --profile simulator --platform ios --local --non-interactive",
+    "build:local": "TAMAGUI_TARGET=native eas build --profile simulator --platform ios --local --non-interactive",
     "types": "supabase gen types typescript --local > lib/database.types.ts",
     "lint": "eslint app lib",
     "eas-build-pre-install": "corepack enable && corepack prepare pnpm@latest-8 --activate"
