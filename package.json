@@ -16,20 +16,13 @@
   "dependencies": {
     "esbuild": "^0.18.6",
     "prettier": "^2.8.8",
-    "turbo": "^1.10.5",
-    "supabase": "^1.68.6"
+    "supabase": "^1.68.6",
+    "turbo": "^1.10.6"
   },
   "packageManager": "pnpm@8.6.3",
   "pnpm": {
     "updateConfig": {
-      "ignoreDependencies": [
-        "uuid",
-        "react-native-web",
-        "react-native-svg",
-        "react-native-safe-area-context",
-        "@shopify/flash-list",
-        "@sentry/react-native"
-      ]
+      "ignoreDependencies": []
     }
   },
   "engines": {
