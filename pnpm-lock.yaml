@@ -93,8 +93,8 @@ importers:
         specifier: ~1.6.0
         version: 1.6.0
       expo-updates:
-        specifier: ~0.18.1
-        version: 0.18.1(expo@49.0.0-alpha.6)
+        specifier: ~0.18.2
+        version: 0.18.2(expo@49.0.0-alpha.6)
       expo-web-browser:
         specifier: ~12.3.0
         version: 12.3.0(expo@49.0.0-alpha.6)
@@ -139,7 +139,7 @@ importers:
         version: 0.18.12(react-dom@18.2.0)(react@18.2.0)
       sentry-expo:
         specifier: ~7.0.0
-        version: 7.0.0(expo-application@5.3.0)(expo-constants@14.4.1)(expo-device@5.4.0)(expo-updates@0.18.1)(expo@49.0.0-alpha.6)(react-native@0.72.0)(react@18.2.0)
+        version: 7.0.0(expo-application@5.3.0)(expo-constants@14.4.1)(expo-device@5.4.0)(expo-updates@0.18.2)(expo@49.0.0-alpha.6)(react-native@0.72.0)(react@18.2.0)
       tamagui:
         specifier: ^1.35.12
         version: 1.35.12(@types/react@18.2.13)(react-dom@18.2.0)(react-native-web@0.18.12)(react-native@0.72.0)(react@18.2.0)
@@ -8611,8 +8611,8 @@ packages:
       expo: 49.0.0-alpha.6(@babel/core@7.22.5)
     dev: false
 
-  /expo-updates@0.18.1(expo@49.0.0-alpha.6):
-    resolution: {integrity: sha512-uZXrlDOF7fdUL3OhUTV1viXSlXntWMQvkonVzUxWRXgdulhRlOqCuxr+cMjGQY5GNb69BVavgEIsvB45x6gWCA==}
+  /expo-updates@0.18.2(expo@49.0.0-alpha.6):
+    resolution: {integrity: sha512-6aLWknJgD1CxZTNdQwUHLZHByA3jXlmYm0hBVDNCWP8x0eBVZEupfWIu43ZEVb5vmeA56Nbpuy6/Yk/giejZ7g==}
     hasBin: true
     peerDependencies:
       expo: '*'
@@ -13973,7 +13973,7 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /sentry-expo@7.0.0(expo-application@5.3.0)(expo-constants@14.4.1)(expo-device@5.4.0)(expo-updates@0.18.1)(expo@49.0.0-alpha.6)(react-native@0.72.0)(react@18.2.0):
+  /sentry-expo@7.0.0(expo-application@5.3.0)(expo-constants@14.4.1)(expo-device@5.4.0)(expo-updates@0.18.2)(expo@49.0.0-alpha.6)(react-native@0.72.0)(react@18.2.0):
     resolution: {integrity: sha512-fBXzCtVr6OAi46E5IqwaFAmi+1Gpj+zf1suKgrqQjOhaWX5weW9CtTpNpq0Q88ubTYurZTs/1pvP6cYLEWOSPA==}
     peerDependencies:
       expo: '>=47.0.0'
@@ -13991,7 +13991,7 @@ packages:
       expo-application: 5.3.0(expo@49.0.0-alpha.6)
       expo-constants: 14.4.1(expo@49.0.0-alpha.6)
       expo-device: 5.4.0(expo@49.0.0-alpha.6)
-      expo-updates: 0.18.1(expo@49.0.0-alpha.6)
+      expo-updates: 0.18.2(expo@49.0.0-alpha.6)
       mkdirp: 1.0.4
       rimraf: 3.0.2
     transitivePeerDependencies:
