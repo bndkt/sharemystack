@@ -8,7 +8,6 @@ module.exports = {
     orientation: "portrait",
     icon: "./assets/icon.png",
     userInterfaceStyle: "automatic",
-    sdkVersion: "49.0.0",
     splash: {
       image: "./assets/splash.png",
       resizeMode: "contain",
