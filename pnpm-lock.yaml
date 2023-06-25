@@ -87,8 +87,8 @@ importers:
         specifier: ~5.0.2
         version: 5.0.2(expo@49.0.0-alpha.9)
       expo-router:
-        specifier: 2.0.0-rc.4
-        version: 2.0.0-rc.4(expo-constants@14.4.2)(expo-linking@5.0.2)(expo-modules-autolinking@1.2.0)(expo-status-bar@1.6.0)(expo@49.0.0-alpha.9)(metro@0.76.7)(react-dom@18.2.0)(react-native-gesture-handler@2.12.0)(react-native-reanimated@3.3.0)(react-native-safe-area-context@4.6.3)(react-native-screens@3.22.0)(react-native@0.72.0)(react@18.2.0)
+        specifier: 2.0.0-rc.5
+        version: 2.0.0-rc.5(expo-constants@14.4.2)(expo-linking@5.0.2)(expo-modules-autolinking@1.2.0)(expo-status-bar@1.6.0)(expo@49.0.0-alpha.9)(metro@0.76.7)(react-dom@18.2.0)(react-native-gesture-handler@2.12.0)(react-native-reanimated@3.3.0)(react-native-safe-area-context@4.6.3)(react-native-screens@3.22.0)(react-native@0.72.0)(react@18.2.0)
       expo-status-bar:
         specifier: ~1.6.0
         version: 1.6.0
@@ -2913,8 +2913,8 @@ packages:
       - supports-color
     dev: false
 
-  /@expo/metro-runtime@2.1.8(react-native@0.72.0):
-    resolution: {integrity: sha512-jDXzc1hzSNxDkdb16bVzsYLWt8OORRzRNBdWB7RiDWc8yD+74piycLE2Vuwfb9EEmiO+IfAV+5KsOQWFUzLabg==}
+  /@expo/metro-runtime@2.1.9(react-native@0.72.0):
+    resolution: {integrity: sha512-+9Cjuq0s7pd1Ar7Kl86Y9FWNUVFWa2108LaqPQuKOvXmiFAMmkTFHHxoCHRcPncLyW+a12A7PsatHBi+MawsUg==}
     peerDependencies:
       react-native: '*'
     dependencies:
@@ -6036,8 +6036,8 @@ packages:
       deep-equal: 2.2.1
     dev: true
 
-  /aria-query@5.2.1:
-    resolution: {integrity: sha512-7uFg4b+lETFgdaJyETnILsXgnnzVnkHcgRbwbPwevm5x/LmUlt3MjczMRe1zg824iBgXZNRPTBftNYyRSKLp2g==}
+  /aria-query@5.3.0:
+    resolution: {integrity: sha512-b0P0sZPKtyu8HkeRAfCq0IfURZK+SuwMjY1UXGBU27wpAiTwQAIlq56IbIO+ytk/JjS1fMR14ee5WBBfKi5J6A==}
     dependencies:
       dequal: 2.0.3
     dev: true
@@ -7970,7 +7970,7 @@ packages:
       eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8
     dependencies:
       '@babel/runtime': 7.22.5
-      aria-query: 5.2.1
+      aria-query: 5.3.0
       array-includes: 3.1.6
       array.prototype.flatmap: 1.3.1
       ast-types-flow: 0.0.7
@@ -8447,8 +8447,8 @@ packages:
       fontfaceobserver: 2.3.0
     dev: false
 
-  /expo-head@0.0.10(expo-constants@14.4.2)(expo@49.0.0-alpha.9)(react-dom@18.2.0)(react-native@0.72.0)(react@18.2.0):
-    resolution: {integrity: sha512-bxE8Cx6btu8PDN+d3sS43V0fwYARGYY0sjud+NHxik0xe2BgMzPFBClT44g67TFDFJFEmYDcYd/rqIKKCmqshw==}
+  /expo-head@0.0.11(expo-constants@14.4.2)(expo@49.0.0-alpha.9)(react-dom@18.2.0)(react-native@0.72.0)(react@18.2.0):
+    resolution: {integrity: sha512-nQ/DmxuLRLmCmnWFvfKoqG0/CA1SqEe4kvPlp7sAjsptLC7BHxOTViNchLznOlXTc/9yG05YYzZbWHvjIeE08Q==}
     peerDependencies:
       expo: '*'
       expo-constants: '*'
@@ -8527,8 +8527,8 @@ packages:
       invariant: 2.2.4
     dev: false
 
-  /expo-router@2.0.0-rc.4(expo-constants@14.4.2)(expo-linking@5.0.2)(expo-modules-autolinking@1.2.0)(expo-status-bar@1.6.0)(expo@49.0.0-alpha.9)(metro@0.76.7)(react-dom@18.2.0)(react-native-gesture-handler@2.12.0)(react-native-reanimated@3.3.0)(react-native-safe-area-context@4.6.3)(react-native-screens@3.22.0)(react-native@0.72.0)(react@18.2.0):
-    resolution: {integrity: sha512-4Jy5apEts5ttdj9H8vTtn8RXc6Lw6wqD09xP7IqEafOIaX5Pwy8d9n582sIex/9LBfTA8mDNSeCQZy/m1YK+2w==}
+  /expo-router@2.0.0-rc.5(expo-constants@14.4.2)(expo-linking@5.0.2)(expo-modules-autolinking@1.2.0)(expo-status-bar@1.6.0)(expo@49.0.0-alpha.9)(metro@0.76.7)(react-dom@18.2.0)(react-native-gesture-handler@2.12.0)(react-native-reanimated@3.3.0)(react-native-safe-area-context@4.6.3)(react-native-screens@3.22.0)(react-native@0.72.0)(react@18.2.0):
+    resolution: {integrity: sha512-KqvBgu+b6OvHnK6l9w2Vi4biM3urP9agRuWU9j9U3lG3V9IDLnES0X9j6CwI2I8Zx7kq9i8XBk1Nb+tTEbArLA==}
     peerDependencies:
       '@react-navigation/drawer': ^6.5.8
       '@testing-library/jest-native': '*'
@@ -8550,14 +8550,14 @@ packages:
         optional: true
     dependencies:
       '@bacons/react-views': 1.1.3(react-native@0.72.0)
-      '@expo/metro-runtime': 2.1.8(react-native@0.72.0)
+      '@expo/metro-runtime': 2.1.9(react-native@0.72.0)
       '@radix-ui/react-slot': 1.0.1(react@18.2.0)
       '@react-navigation/bottom-tabs': 6.5.8(@react-navigation/native@6.1.7)(react-native-safe-area-context@4.6.3)(react-native-screens@3.22.0)(react-native@0.72.0)(react@18.2.0)
       '@react-navigation/native': 6.1.7(react-native@0.72.0)(react@18.2.0)
       '@react-navigation/native-stack': 6.9.13(@react-navigation/native@6.1.7)(react-native-safe-area-context@4.6.3)(react-native-screens@3.22.0)(react-native@0.72.0)(react@18.2.0)
       expo: 49.0.0-alpha.9(@babel/core@7.22.5)
       expo-constants: 14.4.2(expo@49.0.0-alpha.9)
-      expo-head: 0.0.10(expo-constants@14.4.2)(expo@49.0.0-alpha.9)(react-dom@18.2.0)(react-native@0.72.0)(react@18.2.0)
+      expo-head: 0.0.11(expo-constants@14.4.2)(expo@49.0.0-alpha.9)(react-dom@18.2.0)(react-native@0.72.0)(react@18.2.0)
       expo-linking: 5.0.2(expo@49.0.0-alpha.9)
       expo-splash-screen: 0.18.2(expo-modules-autolinking@1.2.0)(expo@49.0.0-alpha.9)
       expo-status-bar: 1.6.0
@@ -13836,8 +13836,8 @@ packages:
       estree-walker: 0.6.1
     dev: true
 
-  /rollup@3.25.1:
-    resolution: {integrity: sha512-tywOR+rwIt5m2ZAWSe5AIJcTat8vGlnPFAv15ycCrw33t6iFsXZ6mzHVFh2psSjxQPmI+xgzMZZizUAukBI4aQ==}
+  /rollup@3.25.2:
+    resolution: {integrity: sha512-VLnkxZMDr3jpxgtmS8pQZ0UvhslmF4ADq/9w4erkctbgjCqLW9oa89fJuXEs4ZmgyoF7Dm8rMDKSS5b5u2hHUg==}
     engines: {node: '>=14.18.0', npm: '>=8.0.0'}
     hasBin: true
     optionalDependencies:
@@ -15382,7 +15382,7 @@ packages:
     dependencies:
       esbuild: 0.17.19
       postcss: 8.4.24
-      rollup: 3.25.1
+      rollup: 3.25.2
     optionalDependencies:
       fsevents: 2.3.2
     dev: true
