@@ -1,4 +1,3 @@
-import { GestureResponderEvent } from "react-native";
 import { Text, YStack } from "tamagui";
 
 import { List } from "../List";

@@ -19,5 +19,9 @@ export default function Categories() {
     });
   }, [getCategories, setCategories]);
 
-  return isLoading ? <Spinner /> : <CategoryList categories={categories} />;
+  return isLoading ? (
+    <Spinner />
+  ) : (
+    <CategoryList categories={categories} suggestionButton={true} />
+  );
 }
