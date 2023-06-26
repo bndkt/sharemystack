@@ -175,8 +175,8 @@ importers:
         specifier: ^1.17.1
         version: 1.17.1(@cloudflare/workers-types@3.19.0)
       '@remix-run/cloudflare-pages':
-        specifier: ^1.17.1
-        version: 1.17.1(@cloudflare/workers-types@3.19.0)
+        specifier: ^1.18.0
+        version: 1.18.0(@cloudflare/workers-types@3.19.0)
       '@remix-run/react':
         specifier: ^1.17.1
         version: 1.17.1(react-dom@18.2.0)(react@18.2.0)
@@ -3749,14 +3749,14 @@ packages:
       nanoid: 3.3.6
     dev: false
 
-  /@remix-run/cloudflare-pages@1.17.1(@cloudflare/workers-types@3.19.0):
-    resolution: {integrity: sha512-Wmr52fiZLE3s6tG1k6vkdD3JwfImk5xb9VS7VZFR6Qzl8i5A7QaSrp0RNtvPragIpWQQxyDDc5HzRj8vAJ1YcQ==}
-    engines: {node: '>=14'}
+  /@remix-run/cloudflare-pages@1.18.0(@cloudflare/workers-types@3.19.0):
+    resolution: {integrity: sha512-B70/fPbV5E3ZrY6RKEkKx7yTXWwn7ranhZ16g58dSBkk4K2+56OqqdJRuTrj/NEZFqXLJ6ml13U6kwN8Ier5sw==}
+    engines: {node: '>=14.0.0'}
     peerDependencies:
       '@cloudflare/workers-types': ^3.0.0
     dependencies:
       '@cloudflare/workers-types': 3.19.0
-      '@remix-run/cloudflare': 1.17.1(@cloudflare/workers-types@3.19.0)
+      '@remix-run/cloudflare': 1.18.0(@cloudflare/workers-types@3.19.0)
     dev: false
 
   /@remix-run/cloudflare@1.17.1(@cloudflare/workers-types@3.19.0):
@@ -3768,6 +3768,17 @@ packages:
       '@cloudflare/kv-asset-handler': 0.1.3
       '@cloudflare/workers-types': 3.19.0
       '@remix-run/server-runtime': 1.17.1
+    dev: false
+
+  /@remix-run/cloudflare@1.18.0(@cloudflare/workers-types@3.19.0):
+    resolution: {integrity: sha512-0O+qTblbY73j4GRrD2hVb56KHhDhcY/fOQglR3lsBImd9vR3yoW+y9yUi/WRN3/sMOyK4UUCcq5wm2WaJPkI1g==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      '@cloudflare/workers-types': ^2.0.0 || ^3.0.0
+    dependencies:
+      '@cloudflare/kv-asset-handler': 0.1.3
+      '@cloudflare/workers-types': 3.19.0
+      '@remix-run/server-runtime': 1.18.0
     dev: false
 
   /@remix-run/dev@1.17.1:
@@ -3901,6 +3912,11 @@ packages:
     resolution: {integrity: sha512-EXJysQ7J3veRECd0kZFQwYYd5sJMcq2O/m60zu1W2l3oVQ9xtub8jTOtYRE0+M2iomyG/W3Ps7+vp2kna0C27Q==}
     engines: {node: '>=14'}
 
+  /@remix-run/router@1.7.0:
+    resolution: {integrity: sha512-Eu1V3kz3mV0wUpVTiFHuaT8UD1gj/0VnoFHQYX35xlslQUpe8CuYoKFn9d4WZFHm3yDywz6ALZuGdnUPKrNeAw==}
+    engines: {node: '>=14'}
+    dev: false
+
   /@remix-run/server-runtime@1.17.1:
     resolution: {integrity: sha512-PuLDaf7WmrOaQzM70yCcM6Jm+g+UHzeBFvocxdqohJnO/8+/n5pFIKHwhooqcSq2TR0WtVpSVhCakdywiOH2mA==}
     engines: {node: '>=14'}
@@ -3910,6 +3926,18 @@ packages:
       cookie: 0.4.2
       set-cookie-parser: 2.6.0
       source-map: 0.7.4
+
+  /@remix-run/server-runtime@1.18.0:
+    resolution: {integrity: sha512-iiSKgGIWMkvf4ftnjGBmIJpgqxRwv8XQilAINapaYsx1zEM6egZGYE6WvaxLuRQSceZZNgLAYzL48TmK+DAU5g==}
+    engines: {node: '>=14.0.0'}
+    dependencies:
+      '@remix-run/router': 1.7.0
+      '@types/cookie': 0.4.1
+      '@web3-storage/multipart-parser': 1.0.0
+      cookie: 0.4.2
+      set-cookie-parser: 2.6.0
+      source-map: 0.7.4
+    dev: false
 
   /@rollup/pluginutils@4.2.1:
     resolution: {integrity: sha512-iKnFXr7NkdZAIHiIWE+BX5ULi/ucVFYWD6TbAV+rZctiRTY2PL6tsIKhoIOaoskiWAkgu+VsbXgUVDNLHf+InQ==}
@@ -5451,6 +5479,10 @@ packages:
       '@types/node': 20.3.1
       '@types/responselike': 1.0.0
     dev: true
+
+  /@types/cookie@0.4.1:
+    resolution: {integrity: sha512-XW/Aa8APYr6jSVVA1y/DEIZX0/GMKLEVekNG727R8cs56ahETkRAy/3DR7+fJyh7oUgGwNQaRfXCun0+KbWY7Q==}
+    dev: false
 
   /@types/debug@4.1.8:
     resolution: {integrity: sha512-/vPO1EPOs306Cvhwv7KfVfYvOJqA/S/AXjaHQiJboCZzcNDb+TIJFN9/2C9DZ//ijSKWioNyUxD792QmDJ+HKQ==}
