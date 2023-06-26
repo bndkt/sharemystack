@@ -11,7 +11,7 @@ export function CategoryIcon({
   width?: string;
   height?: string;
 }) {
-  color ??= "#000000";
+  color ??= "$color";
 
   const iconNames = Object.keys(icons);
   if (!name || !iconNames.includes(name)) {

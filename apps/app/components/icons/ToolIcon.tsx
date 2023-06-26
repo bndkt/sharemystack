@@ -12,7 +12,7 @@ export function ToolIcon({
   width?: string;
   height?: string;
 }) {
-  color ??= "#000000";
+  color ??= "$color";
 
   return svgXml ? (
     <SvgXml xml={svgXml} color={color} width={width} height={height} />
