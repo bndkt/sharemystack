@@ -7,6 +7,7 @@
     "ios": "expo start --ios",
     "web": "TAMAGUI_TARGET=web expo start --web --clear",
     "doc": "npx expo-doctor@latest",
+    "build": "eas build --profile production --platform ios --non-interactive --auto-submit",
     "build:local": "eas build --profile simulator --platform ios --local --non-interactive",
     "types": "supabase gen types typescript --local > lib/database.types.ts",
     "lint": "eslint app lib",
