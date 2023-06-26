@@ -3,7 +3,6 @@ module.exports = {
     name: "Share My Stack",
     slug: "sharemystack",
     scheme: "sharemystack",
-    owner: "mueller",
     version: "1.0.0",
     orientation: "portrait",
     icon: "./assets/icon.png",
@@ -13,8 +12,11 @@ module.exports = {
       resizeMode: "contain",
       backgroundColor: "#ffffff",
     },
+    developmentClient: {
+      silentLaunch: true,
+    },
     updates: {
-      fallbackToCacheTimeout: 0,
+      enabled: false,
       url: "https://u.expo.dev/987c3c40-d46a-45e7-a545-112f3c6e23e9",
     },
     assetBundlePatterns: ["**/*"],
