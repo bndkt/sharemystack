@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 import { List } from "../List";
 import { ToolIcon } from "../icons/ToolIcon";
 
@@ -13,9 +15,11 @@ type PickList = {
 export function PickList({
   picks,
   placeholder,
+  rightActions,
 }: {
   picks: PickList;
   placeholder?: JSX.Element;
+  rightActions?: { text: ReactNode; color: string; onPress: () => void }[];
 }) {
   return (
     <List
@@ -32,6 +36,7 @@ export function PickList({
         />
       )}
       placeholder={placeholder}
+      rightActions={rightActions}
     />
   );
 }

@@ -4,6 +4,8 @@ import { Link } from "expo-router";
 import { FunctionComponent, ReactNode } from "react";
 import { ListItem, Separator, Text } from "tamagui";
 
+import { SwipeableRow } from "./SwipeableRow";
+
 export function List<T>({
   data,
   href,
@@ -13,6 +15,7 @@ export function List<T>({
   onPress,
   placeholder,
   iconAfter,
+  rightActions,
 }: {
   data: readonly T[] | null;
   href?: (item: T) => string;
@@ -27,6 +30,7 @@ export function List<T>({
   onPress?: (item: T) => void;
   placeholder?: JSX.Element;
   iconAfter?: (item: T) => JSX.Element | undefined;
+  rightActions?: { text: ReactNode; color: string; onPress: () => void }[];
 }) {
   placeholder ??= (
     <Text padding="$3" textAlign="center">
@@ -38,30 +42,34 @@ export function List<T>({
     <FlashList
       ItemSeparatorComponent={() => <Separator />}
       renderItem={({ item }) => {
-        return href ? (
-          <Link href={href(item)}>
-            <ListItem
-              title={title(item)}
-              subTitle={subTitle && subTitle(item)}
-              icon={icon && icon(item)}
-              iconAfter={iconAfter ? iconAfter(item) : ChevronRight}
-            />
-          </Link>
-        ) : onPress ? (
-          <ListItem
-            title={title(item)}
-            subTitle={subTitle && subTitle(item)}
-            icon={icon && icon(item)}
-            onPress={onPress ? () => onPress(item) : undefined}
-            iconAfter={iconAfter ? iconAfter(item) : ChevronRight}
-          />
-        ) : (
-          <ListItem
-            title={title(item)}
-            subTitle={subTitle && subTitle(item)}
-            icon={icon && icon(item)}
-            iconAfter={iconAfter && iconAfter(item)}
-          />
+        return (
+          <SwipeableRow rightActions={rightActions}>
+            {href ? (
+              <Link href={href(item)}>
+                <ListItem
+                  title={title(item)}
+                  subTitle={subTitle && subTitle(item)}
+                  icon={icon && icon(item)}
+                  iconAfter={iconAfter ? iconAfter(item) : ChevronRight}
+                />
+              </Link>
+            ) : onPress ? (
+              <ListItem
+                title={title(item)}
+                subTitle={subTitle && subTitle(item)}
+                icon={icon && icon(item)}
+                onPress={onPress ? () => onPress(item) : undefined}
+                iconAfter={iconAfter ? iconAfter(item) : ChevronRight}
+              />
+            ) : (
+              <ListItem
+                title={title(item)}
+                subTitle={subTitle && subTitle(item)}
+                icon={icon && icon(item)}
+                iconAfter={iconAfter && iconAfter(item)}
+              />
+            )}
+          </SwipeableRow>
         );
       }}
       estimatedItemSize={data.length}

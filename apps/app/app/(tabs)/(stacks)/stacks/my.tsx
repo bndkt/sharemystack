@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Button, H3, Text, XStack, YStack } from "tamagui";
-import { Link, Twitter } from "@tamagui/lucide-icons";
+import { Link, Trash2, Twitter } from "@tamagui/lucide-icons";
 
 import { PickList } from "@/components/stacks/PickList";
 import { StackResponse, getStack } from "@/lib/database/getStack";
@@ -26,6 +26,11 @@ function MyStack() {
     }
   }, [user, stack, refresh]);
 
+  function removePick() {
+    console.log("remove");
+    setRefresh(true);
+  }
+
   return isLoading ? (
     <Loading />
   ) : stack ? (
@@ -48,6 +53,13 @@ function MyStack() {
             </Text>
           </YStack>
         }
+        rightActions={[
+          {
+            text: <Trash2 color="white" />,
+            color: "$red10",
+            onPress: () => removePick(),
+          },
+        ]}
       />
       <StackSheet stack={stack.id} refresh={() => setRefresh(true)} />
     </YStack>
