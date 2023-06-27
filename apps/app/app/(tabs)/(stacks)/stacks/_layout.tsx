@@ -1,4 +1,4 @@
-import { MaterialTopTabs } from "../../../../components/MaterialTopTabs";
+import { MaterialTopTabs } from "@/components/MaterialTopTabs";
 
 export default function Layout() {
   return (

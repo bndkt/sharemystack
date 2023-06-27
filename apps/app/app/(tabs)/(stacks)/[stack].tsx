@@ -2,8 +2,8 @@ import { Stack, useLocalSearchParams } from "expo-router";
 import { useEffect, useState } from "react";
 import { H3, Spinner, Text, YStack } from "tamagui";
 
-import { PickList } from "../../../components/stacks/PickList";
-import { StackResponse, getStack } from "../../../lib/database/getStack";
+import { PickList } from "@/components/stacks/PickList";
+import { StackResponse, getStack } from "@/lib/database/getStack";
 
 export default function Index() {
   let { stack: slug } = useLocalSearchParams<{ stack: string }>();

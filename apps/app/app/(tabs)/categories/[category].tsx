@@ -2,11 +2,8 @@ import { Stack, useLocalSearchParams } from "expo-router";
 import { useEffect, useState } from "react";
 import { H2, Spinner, XStack, YStack } from "tamagui";
 
-import {
-  CategoryResponse,
-  getCategory,
-} from "../../../lib/database/getCategory";
-import { CategoryIcon } from "../../../components/icons/CategoryIcon";
+import { CategoryResponse, getCategory } from "@/lib/database/getCategory";
+import { CategoryIcon } from "@/components/icons/CategoryIcon";
 
 export default function Category() {
   const { category: slug } = useLocalSearchParams<{ category: string }>();

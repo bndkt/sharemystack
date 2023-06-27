@@ -2,8 +2,8 @@ import { Stack, useLocalSearchParams } from "expo-router";
 import { useEffect, useState } from "react";
 import { H2, Spinner, Text, XStack, YStack } from "tamagui";
 
-import { ToolIcon } from "../../../components/icons/ToolIcon";
-import { ToolResponse, getTool } from "../../../lib/database/getTool";
+import { ToolIcon } from "@/components/icons/ToolIcon";
+import { ToolResponse, getTool } from "@/lib/database/getTool";
 
 export default function Index() {
   const { tool: slug } = useLocalSearchParams<{ tool: string }>();

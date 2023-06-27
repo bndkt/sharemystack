@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { Spinner } from "tamagui";
 
-import { StacksResponse, getStacks } from "../../../../lib/database/getStacks";
-import { withAuth } from "../../../../components/auth/withAuth";
-import { StackList } from "../../../../components/stacks/StackList";
+import { StacksResponse, getStacks } from "@/lib/database/getStacks";
+import { withAuth } from "@/components/auth/withAuth";
+import { StackList } from "@/components/stacks/StackList";
 
 function StarredStacks() {
   const [isLoading, setLoading] = useState(true);

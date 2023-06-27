@@ -1,6 +1,6 @@
 import { Button, Text, YStack } from "tamagui";
 
-import { withAuth } from "../../components/auth/withAuth";
+import { withAuth } from "@/components/auth/withAuth";
 
 function SSO() {
   return (

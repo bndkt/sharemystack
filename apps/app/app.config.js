@@ -35,6 +35,9 @@ module.exports = {
       ],
       appStoreUrl: "https://apps.apple.com/us/app/share-my-stack/id6450111644",
     },
+    experiments: {
+      tsconfigPaths: true,
+    },
     android: {
       adaptiveIcon: {
         foregroundImage: "./assets/adaptive-icon.png",
@@ -63,7 +66,7 @@ module.exports = {
       ],
     },
     runtimeVersion: {
-      policy: "1.0.0",
+      policy: "sdkVersion",
     },
   },
 };

@@ -4,8 +4,8 @@ import { Spinner } from "tamagui";
 import {
   getCategories,
   CategoriesResponse,
-} from "../../../lib/database/getCategories";
-import { CategoryList } from "../../../components/categories/CategoryList";
+} from "@/lib/database/getCategories";
+import { CategoryList } from "@/components/categories/CategoryList";
 
 export default function Categories() {
   const [isLoading, setLoading] = useState(true);
