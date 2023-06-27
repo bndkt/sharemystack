@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import { Spinner } from "tamagui";
 
 import { StacksResponse, getStacks } from "@/lib/database/getStacks";
 import { withAuth } from "@/components/auth/withAuth";
 import { StackList } from "@/components/stacks/StackList";
+import { Loading } from "@/components/Loading";
 
 function StarredStacks() {
   const [isLoading, setLoading] = useState(true);
@@ -16,7 +16,7 @@ function StarredStacks() {
     });
   }, [getStacks, setStacks]);
 
-  return isLoading ? <Spinner /> : <StackList stacks={stacks} />;
+  return isLoading ? <Loading /> : <StackList stacks={stacks} />;
 }
 
 export default withAuth(StarredStacks);

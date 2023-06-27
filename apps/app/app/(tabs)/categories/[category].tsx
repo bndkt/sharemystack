@@ -1,9 +1,10 @@
 import { Stack, useLocalSearchParams } from "expo-router";
 import { useEffect, useState } from "react";
-import { H2, Spinner, XStack, YStack } from "tamagui";
+import { H2, XStack, YStack } from "tamagui";
 
 import { CategoryResponse, getCategory } from "@/lib/database/getCategory";
 import { CategoryIcon } from "@/components/icons/CategoryIcon";
+import { Loading } from "@/components/Loading";
 
 export default function Category() {
   const { category: slug } = useLocalSearchParams<{ category: string }>();
@@ -19,7 +20,7 @@ export default function Category() {
   }, [getCategory, setCategory]);
 
   return isLoading ? (
-    <Spinner />
+    <Loading />
   ) : category ? (
     <>
       <Stack.Screen options={{ headerShown: true, title: category.name }} />

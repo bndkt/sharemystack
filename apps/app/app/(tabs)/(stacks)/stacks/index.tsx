@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { Spinner } from "tamagui";
 
 import { StacksResponse, getStacks } from "@/lib/database/getStacks";
 import { StackList } from "@/components/stacks/StackList";
+import { Loading } from "@/components/Loading";
 
 export default function FeaturedStacks() {
   const [isLoading, setLoading] = useState(true);
@@ -15,5 +15,5 @@ export default function FeaturedStacks() {
     });
   }, [setStacks, getStacks]);
 
-  return isLoading ? <Spinner /> : <StackList stacks={stacks} />;
+  return isLoading ? <Loading /> : <StackList stacks={stacks} />;
 }

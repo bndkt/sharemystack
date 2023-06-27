@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { Spinner } from "tamagui";
 
 import {
   getCategories,
   CategoriesResponse,
 } from "@/lib/database/getCategories";
 import { CategoryList } from "@/components/categories/CategoryList";
+import { Loading } from "@/components/Loading";
 
 export default function Categories() {
   const [isLoading, setLoading] = useState(true);
@@ -20,7 +20,7 @@ export default function Categories() {
   }, [getCategories, setCategories]);
 
   return isLoading ? (
-    <Spinner />
+    <Loading />
   ) : (
     <CategoryList categories={categories} suggestionButton={true} />
   );

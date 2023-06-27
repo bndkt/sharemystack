@@ -1,9 +1,10 @@
 import { Stack, useLocalSearchParams } from "expo-router";
 import { useEffect, useState } from "react";
-import { H2, Spinner, Text, XStack, YStack } from "tamagui";
+import { H2, Text, XStack, YStack } from "tamagui";
 
 import { ToolIcon } from "@/components/icons/ToolIcon";
 import { ToolResponse, getTool } from "@/lib/database/getTool";
+import { Loading } from "@/components/Loading";
 
 export default function Index() {
   const { tool: slug } = useLocalSearchParams<{ tool: string }>();
@@ -23,7 +24,7 @@ export default function Index() {
   // Users
   // Category
   return isLoading ? (
-    <Spinner />
+    <Loading />
   ) : tool ? (
     <>
       <Stack.Screen options={{ headerShown: true, title: tool.name }} />

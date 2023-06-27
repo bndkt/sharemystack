@@ -3,7 +3,7 @@ import {
   BottomSheetModal,
   BottomSheetModalProvider,
 } from "@gorhom/bottom-sheet";
-import { Button, Spinner, Text, YStack } from "tamagui";
+import { Button, YStack } from "tamagui";
 import { Check, Plus } from "@tamagui/lucide-icons";
 
 import { CategoryList } from "../categories/CategoryList";
@@ -15,6 +15,7 @@ import { ToolsResponse, getTools } from "../../lib/database/getTools";
 import { supabase } from "../../lib/supabase";
 import { List } from "../List";
 import { ToolIcon } from "../icons/ToolIcon";
+import { Loading } from "../Loading";
 
 export function StackSheet({
   stack,
@@ -34,7 +35,7 @@ export function StackSheet({
   useEffect(() => {
     getCategories().then(({ data }) => {
       setCategories(data);
-      setLoading(false);
+      // setLoading(false);
     });
   }, [getCategories, setCategories]);
 
@@ -50,6 +51,7 @@ export function StackSheet({
 
   useEffect(() => {
     if (stack && category && tool) {
+      setLoading(true);
       let query = supabase
         .from("picks")
         .insert({ stack_id: stack, tool_id: tool, category_id: category });
@@ -59,6 +61,7 @@ export function StackSheet({
         refresh();
         setTool(null);
         setCategory(null);
+        setLoading(false);
       });
     }
   }, [stack, category, tool]);
@@ -95,7 +98,7 @@ export function StackSheet({
         }}
       >
         {isLoading ? (
-          <Spinner />
+          <Loading />
         ) : category ? (
           <YStack fullscreen>
             <YStack paddingHorizontal="$3">

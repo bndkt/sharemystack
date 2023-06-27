@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Button, H3, Spinner, Text, XStack, YStack } from "tamagui";
+import { Button, H3, Text, XStack, YStack } from "tamagui";
 import { Link, Twitter } from "@tamagui/lucide-icons";
 
 import { PickList } from "@/components/stacks/PickList";
@@ -8,6 +8,7 @@ import { withAuth } from "@/components/auth/withAuth";
 import { useAuth } from "@/components/providers/AuthProvider";
 import { CreateStack } from "@/components/stacks/CreateStack";
 import { StackSheet } from "@/components/stacks/StackSheet";
+import { Loading } from "@/components/Loading";
 
 function MyStack() {
   const [isLoading, setLoading] = useState(true);
@@ -26,7 +27,7 @@ function MyStack() {
   }, [user, stack, refresh]);
 
   return isLoading ? (
-    <Spinner />
+    <Loading />
   ) : stack ? (
     <YStack fullscreen>
       <YStack padding="$3">

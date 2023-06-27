@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { Spinner } from "tamagui";
 
 import { ToolsResponse, getTools } from "@/lib/database/getTools";
 import { ToolList } from "@/components/tools/ToolList";
+import { Loading } from "@/components/Loading";
 
 export default function Tools() {
   const [isLoading, setLoading] = useState(true);
@@ -15,5 +15,5 @@ export default function Tools() {
     });
   }, [getTools, setTools]);
 
-  return isLoading ? <Spinner /> : <ToolList tools={tools} />;
+  return isLoading ? <Loading /> : <ToolList tools={tools} />;
 }

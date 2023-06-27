@@ -1,9 +1,10 @@
 import { Stack, useLocalSearchParams } from "expo-router";
 import { useEffect, useState } from "react";
-import { H3, Spinner, Text, YStack } from "tamagui";
+import { H3, Text, YStack } from "tamagui";
 
 import { PickList } from "@/components/stacks/PickList";
 import { StackResponse, getStack } from "@/lib/database/getStack";
+import { Loading } from "@/components/Loading";
 
 export default function Index() {
   let { stack: slug } = useLocalSearchParams<{ stack: string }>();
@@ -22,7 +23,7 @@ export default function Index() {
   }, [slug, stack]);
 
   return isLoading ? (
-    <Spinner />
+    <Loading />
   ) : stack ? (
     <>
       <Stack.Screen options={{ headerShown: true, title: stack.name ?? "" }} />
