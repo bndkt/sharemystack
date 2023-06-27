@@ -63,7 +63,7 @@ module.exports = {
       ],
     },
     runtimeVersion: {
-      policy: "sdkVersion",
+      policy: "1.0.0",
     },
   },
 };
