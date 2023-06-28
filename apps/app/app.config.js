@@ -53,7 +53,7 @@ module.exports = {
         projectId: "987c3c40-d46a-45e7-a545-112f3c6e23e9",
       },
     },
-    plugins: ["sentry-expo", "expo-router"],
+    plugins: ["sentry-expo", "expo-router", "expo-apple-authentication"],
     hooks: {
       postPublish: [
         {
