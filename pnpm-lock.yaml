@@ -141,14 +141,14 @@ importers:
         specifier: ^1.3.0
         version: 1.3.0(react-native@0.72.0)
       react-native-web:
-        specifier: ~0.18.12
-        version: 0.18.12(react-dom@18.2.0)(react@18.2.0)
+        specifier: ~0.19.6
+        version: 0.19.6(react-dom@18.2.0)(react@18.2.0)
       sentry-expo:
         specifier: ~7.0.0
         version: 7.0.0(expo-application@5.3.0)(expo-constants@14.4.2)(expo-device@5.4.0)(expo-updates@0.18.5)(expo@49.0.0-beta.0)(react-native@0.72.0)(react@18.2.0)
       tamagui:
         specifier: ^1.36.4
-        version: 1.36.4(@types/react@18.0.27)(react-dom@18.2.0)(react-native-web@0.18.12)(react-native@0.72.0)(react@18.2.0)
+        version: 1.36.4(@types/react@18.0.27)(react-dom@18.2.0)(react-native-web@0.19.6)(react-native@0.72.0)(react@18.2.0)
     devDependencies:
       '@babel/core':
         specifier: ^7.22.5
@@ -6981,13 +6981,6 @@ packages:
       parse-json: 4.0.0
     dev: false
 
-  /create-react-class@15.7.0:
-    resolution: {integrity: sha512-QZv4sFWG9S5RUvkTYWbflxeZX+JG7Cz0Tn33rQBJ+WFQTqTfUTjMjiv9tnfXazjsO5r0KhPs+AqCjyrQX6h2ng==}
-    dependencies:
-      loose-envify: 1.4.0
-      object-assign: 4.1.1
-    dev: false
-
   /cross-env@7.0.3:
     resolution: {integrity: sha512-+/HKd6EgcQCJGh2PSjZuUitQBQynKor4wrFbRg4DtAgS1aWO+gU52xpH7M9ScGgXSYmAVS9bIJ8EzuaGw0oNAw==}
     engines: {node: '>=10.14', npm: '>=6', yarn: '>=1'}
@@ -12056,10 +12049,6 @@ packages:
     engines: {node: '>=0.12.0'}
     dev: false
 
-  /normalize-css-color@1.0.2:
-    resolution: {integrity: sha512-jPJ/V7Cp1UytdidsPqviKEElFQJs22hUUgK5BOPHTwOonNCk7/2qOxhhqzEajmFrWJowADFfOFh1V+aWkRfy+w==}
-    dev: false
-
   /normalize-package-data@2.5.0:
     resolution: {integrity: sha512-/5CMN3T0R4XTj4DcGaexo+roZSdSFW/0AOOTROrjxzCG1wrWXEsGbRKevjlIL+ZDE4sZlJr5ED4YW0yqmkK+eA==}
     dependencies:
@@ -13284,25 +13273,6 @@ packages:
       react-dom: 18.2.0(react@18.2.0)
       react-native-web-internals: 1.36.4(react@18.2.0)
       styleq: 0.1.3
-    dev: false
-
-  /react-native-web@0.18.12(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-fboP7yqobJ8InSr4fP+bQ3scOtSQtUoPcR+HWasH8b/fk/RO+mWcJs/8n+lewy9WTZc2D68ha7VwRDviUshEWA==}
-    peerDependencies:
-      react: ^17.0.2 || ^18.0.0
-      react-dom: ^17.0.2 || ^18.0.0
-    dependencies:
-      '@babel/runtime': 7.22.5
-      create-react-class: 15.7.0
-      fbjs: 3.0.5
-      inline-style-prefixer: 6.0.4
-      normalize-css-color: 1.0.2
-      postcss-value-parser: 4.2.0
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-      styleq: 0.1.3
-    transitivePeerDependencies:
-      - encoding
     dev: false
 
   /react-native-web@0.19.6(react-dom@18.2.0)(react@18.2.0):
@@ -14569,7 +14539,7 @@ packages:
       - ts-node
     dev: true
 
-  /tamagui@1.36.4(@types/react@18.0.27)(react-dom@18.2.0)(react-native-web@0.18.12)(react-native@0.72.0)(react@18.2.0):
+  /tamagui@1.36.4(@types/react@18.0.27)(react-dom@18.2.0)(react-native-web@0.19.6)(react-native@0.72.0)(react@18.2.0):
     resolution: {integrity: sha512-sEearq/Apo858942E8OJaGtJ4g8OElHOLlgCSy7HH25O/OajJZ+drXErfO1cpZXHsacwFdknkL6WWeE7/1VAww==}
     peerDependencies:
       react: '*'
@@ -14625,7 +14595,7 @@ packages:
       '@tamagui/use-window-dimensions': 1.36.4(react-native@0.72.0)(react@18.2.0)
       '@tamagui/visually-hidden': 1.36.4(react@18.2.0)
       react: 18.2.0
-      react-native-web: 0.18.12(react-dom@18.2.0)(react@18.2.0)
+      react-native-web: 0.19.6(react-dom@18.2.0)(react@18.2.0)
       reforest: 0.12.3(react@18.2.0)
     transitivePeerDependencies:
       - '@types/react'
