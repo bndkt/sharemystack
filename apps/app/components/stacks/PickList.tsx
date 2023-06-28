@@ -1,25 +1,17 @@
-import { ReactNode } from "react";
-
-import { List } from "../List";
+import { StackResponse } from "@/lib/database/getStack";
+import { GenerateRightActions, List } from "../List";
 import { ToolIcon } from "../icons/ToolIcon";
-
-type PickList = {
-  category_name: string | null;
-  category_slug: string | null;
-  tool_name: string | null;
-  tool_slug: string | null;
-  tool_icon: string | null;
-  tool_color: string | null;
-}[];
 
 export function PickList({
   picks,
   placeholder,
-  rightActions,
+  generateRightActions,
 }: {
-  picks: PickList;
+  picks: NonNullable<StackResponse["data"]>["picks_view"];
   placeholder?: JSX.Element;
-  rightActions?: { text: ReactNode; color: string; onPress: () => void }[];
+  generateRightActions?: GenerateRightActions<
+    NonNullable<StackResponse["data"]>["picks_view"][number]
+  >;
 }) {
   return (
     <List
@@ -36,7 +28,7 @@ export function PickList({
         />
       )}
       placeholder={placeholder}
-      rightActions={rightActions}
+      generateRightActions={generateRightActions}
     />
   );
 }

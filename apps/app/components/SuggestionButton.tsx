@@ -2,22 +2,26 @@ import * as WebBrowser from "expo-web-browser";
 import { Button } from "tamagui";
 
 import { config } from "../lib/config";
-import { Lightbulb, Plus, PlusCircle } from "@tamagui/lucide-icons";
+import { PlusCircle } from "@tamagui/lucide-icons";
 
 export function SuggestionButton({
   suggestion = "tool",
+  text,
+  icon,
 }: {
   suggestion?: string;
+  text?: string;
+  icon?: JSX.Element;
 }) {
   return (
     <Button
       onPress={() => {
         WebBrowser.openBrowserAsync(config.formsLink);
       }}
-      icon={<PlusCircle />}
+      icon={icon ?? <PlusCircle />}
       margin="$3"
     >
-      {`Suggest new ${suggestion}`}
+      {text ?? `Suggest new ${suggestion}`}
     </Button>
   );
 }

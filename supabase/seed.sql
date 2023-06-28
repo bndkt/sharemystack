@@ -1,5 +1,6 @@
 -- gen_random_uuid()
 
+/*
 insert into
 auth.users (instance_id, id, aud, role, email, encrypted_password, email_confirmed_at, created_at, updated_at, raw_app_meta_data, raw_user_meta_data, confirmation_token, recovery_token, email_change_token_new, email_change)
 values
@@ -10,6 +11,7 @@ insert into
 auth.identities (id, provider, user_id, identity_data, last_sign_in_at, created_at, updated_at)
 values
 ('6a6d9730-acf6-465e-851b-c19d2f5d533b', 'email', '6a6d9730-acf6-465e-851b-c19d2f5d533b', '{"sub":"6a6d9730-acf6-465e-851b-c19d2f5d533b","email":"test@sharemystack.com"}', now(), now(), now());
+*/
 
 insert into
 public.categories (id, name, slug, icon, soon)
@@ -2844,7 +2846,7 @@ values
 insert into
 public.stacks (id, name, featured, slug, twitter, twitter_image_url, website, user_id)
 values
-('fbc5602c-ebef-4282-8754-d56520486498', 'Benedikt Müller', false, '_bndkt', 'bndkt', 'https://pbs.twimg.com/profile_images/1356532269322809347/b8lcrpI6_400x400.jpg', 'https://bndkt.com/', NULL),
+-- ('fbc5602c-ebef-4282-8754-d56520486498', 'Benedikt Müller', false, '_bndkt', 'bndkt', 'https://pbs.twimg.com/profile_images/1356532269322809347/b8lcrpI6_400x400.jpg', 'https://bndkt.com/', NULL),
 ('4abd2df7-bd61-457f-8297-47aa33910cc8', 'Nick Milo', true, 'nickmilo', 'NickMilo', 'https://pbs.twimg.com/profile_images/1556427088361672709/7npJWuTQ_400x400.jpg', 'https://www.linkingyourthinking.com/', NULL),
 ('7eef57cd-dfb6-481d-967e-7d3a024f19d2', 'Ali Abdaal', true, 'aliabdaal', 'aliabdaal', 'https://pbs.twimg.com/profile_images/1496857274165436420/yjDjLCDh_400x400.jpg', 'https://aliabdaal.com/', NULL),
 ('211b7b6b-4117-4151-b6bc-cb64214227fd', 'Tiago Forte', true, 'fortelabs', 'fortelabs', 'https://pbs.twimg.com/profile_images/1527701676521672707/YXvJP3ac_400x400.jpg', 'https://fortelabs.com/', NULL),
@@ -2887,9 +2889,9 @@ values
 insert into
 public.picks (stack_id, category_id, tool_id)
 values
-('fbc5602c-ebef-4282-8754-d56520486498', 'bf4fb3cd-38d9-4135-abc7-7f291c498366', '0115cd3b-869d-4058-94e1-a67863eb6045'), -- Benedikt
-('fbc5602c-ebef-4282-8754-d56520486498', '0e93b69f-3415-4fec-a5e6-da1f779b43a6', '9ab4d55d-a1cc-402f-9fe6-d60227a6c7a6'), -- Benedikt
-('fbc5602c-ebef-4282-8754-d56520486498', '8f5ff296-f438-40fc-8c48-b437810385af', 'f0586aef-c792-4b6c-8d5c-8c6de1b436dc'), -- Benedikt
+-- ('fbc5602c-ebef-4282-8754-d56520486498', 'bf4fb3cd-38d9-4135-abc7-7f291c498366', '0115cd3b-869d-4058-94e1-a67863eb6045'), -- Benedikt
+-- ('fbc5602c-ebef-4282-8754-d56520486498', '0e93b69f-3415-4fec-a5e6-da1f779b43a6', '9ab4d55d-a1cc-402f-9fe6-d60227a6c7a6'), -- Benedikt
+-- ('fbc5602c-ebef-4282-8754-d56520486498', '8f5ff296-f438-40fc-8c48-b437810385af', 'f0586aef-c792-4b6c-8d5c-8c6de1b436dc'), -- Benedikt
 ('4abd2df7-bd61-457f-8297-47aa33910cc8', 'bf4fb3cd-38d9-4135-abc7-7f291c498366', '0115cd3b-869d-4058-94e1-a67863eb6045'), -- Nick Milo
 ('7eef57cd-dfb6-481d-967e-7d3a024f19d2', 'bf4fb3cd-38d9-4135-abc7-7f291c498366', '5b6a6858-d014-45b7-8dd6-4b85372663d6'), -- Ali Abdaal, Notion
 ('211b7b6b-4117-4151-b6bc-cb64214227fd', 'bf4fb3cd-38d9-4135-abc7-7f291c498366', '0e23f13f-bb06-485d-a420-2497661dc023'), -- Tiago Forte, Evernote
@@ -2897,8 +2899,9 @@ values
 ('aeb47866-c97a-4c7a-9967-b98e0d2fea7c', 'bf4fb3cd-38d9-4135-abc7-7f291c498366', '5b6a6858-d014-45b7-8dd6-4b85372663d6'), -- Marie Poulin, Notion
 ('061bce7c-3ee1-4660-ad34-4157d79a85ac', 'bf4fb3cd-38d9-4135-abc7-7f291c498366', '5b6a6858-d014-45b7-8dd6-4b85372663d6'); -- August Bradley, Notion
 
-insert into
+/* insert into
 public.stars (user_id, stack_id, category_id, tool_id)
 values
-('6a6d9730-acf6-465e-851b-c19d2f5d533b', 'fbc5602c-ebef-4282-8754-d56520486498', NULL, NULL),
-('6a6d9730-acf6-465e-851b-c19d2f5d533b', '4abd2df7-bd61-457f-8297-47aa33910cc8', NULL, NULL);
+('6a6d9730-acf6-465e-851b-c19d2f5d533b', 'fbc5602c-ebef-4282-8754-d56520486498', NULL, NULL), -- Benedikt
+('6a6d9730-acf6-465e-851b-c19d2f5d533b', '4abd2df7-bd61-457f-8297-47aa33910cc8', NULL, NULL); -- Benedikt
+*/

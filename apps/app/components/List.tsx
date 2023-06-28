@@ -6,6 +6,12 @@ import { ListItem, Separator, Text } from "tamagui";
 
 import { SwipeableRow } from "./SwipeableRow";
 
+export type GenerateRightActions<T> = (item: T) => {
+  text: ReactNode;
+  color: string;
+  onPress: () => void;
+}[];
+
 export function List<T>({
   data,
   href,
@@ -15,7 +21,7 @@ export function List<T>({
   onPress,
   placeholder,
   iconAfter,
-  rightActions,
+  generateRightActions,
 }: {
   data: readonly T[] | null;
   href?: (item: T) => string;
@@ -30,7 +36,7 @@ export function List<T>({
   onPress?: (item: T) => void;
   placeholder?: JSX.Element;
   iconAfter?: (item: T) => JSX.Element | undefined;
-  rightActions?: { text: ReactNode; color: string; onPress: () => void }[];
+  generateRightActions?: GenerateRightActions<T>;
 }) {
   placeholder ??= (
     <Text padding="$3" textAlign="center">
@@ -43,7 +49,11 @@ export function List<T>({
       ItemSeparatorComponent={() => <Separator />}
       renderItem={({ item }) => {
         return (
-          <SwipeableRow rightActions={rightActions}>
+          <SwipeableRow
+            rightActions={
+              generateRightActions ? generateRightActions(item) : undefined
+            }
+          >
             {href ? (
               <Link href={href(item)}>
                 <ListItem

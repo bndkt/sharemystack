@@ -35,7 +35,7 @@ export function StackSheet({
   useEffect(() => {
     getCategories().then(({ data }) => {
       setCategories(data);
-      // setLoading(false);
+      setLoading(false);
     });
   }, [getCategories, setCategories]);
 
@@ -52,12 +52,12 @@ export function StackSheet({
   useEffect(() => {
     if (stack && category && tool) {
       setLoading(true);
-      let query = supabase
+      const query = supabase
         .from("picks")
         .insert({ stack_id: stack, tool_id: tool, category_id: category });
 
       query.then((result) => {
-        console.log({ result });
+        // console.log({ result });
         refresh();
         setTool(null);
         setCategory(null);

@@ -9,6 +9,7 @@ import { useAuth } from "@/components/providers/AuthProvider";
 import { CreateStack } from "@/components/stacks/CreateStack";
 import { StackSheet } from "@/components/stacks/StackSheet";
 import { Loading } from "@/components/Loading";
+import { supabase } from "@/lib/supabase";
 
 function MyStack() {
   const [isLoading, setLoading] = useState(true);
@@ -26,9 +27,17 @@ function MyStack() {
     }
   }, [user, stack, refresh]);
 
-  function removePick() {
-    console.log("remove");
-    setRefresh(true);
+  function removePick(stackId: string | null, toolId: string | null) {
+    console.log("remove", { stackId, toolId });
+    setLoading(true);
+    const query = supabase
+      .from("picks")
+      .delete()
+      .match({ stack_id: stackId, tool_id: toolId });
+    query.then((result) => {
+      // console.log({ result });
+      setRefresh(true);
+    });
   }
 
   return isLoading ? (
@@ -53,11 +62,11 @@ function MyStack() {
             </Text>
           </YStack>
         }
-        rightActions={[
+        generateRightActions={(item) => [
           {
             text: <Trash2 color="white" />,
             color: "$red10",
-            onPress: () => removePick(),
+            onPress: () => removePick(item.stack_id, item.tool_id),
           },
         ]}
       />

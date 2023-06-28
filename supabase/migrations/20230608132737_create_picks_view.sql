@@ -1,6 +1,7 @@
 create view picks_view as
     select
     picks.stack_id,
+    picks.tool_id,
     categories.name as category_name,
     categories.slug as category_slug,
     tools.name as tool_name,

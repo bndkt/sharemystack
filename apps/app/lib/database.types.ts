@@ -3,7 +3,7 @@ export type Json =
   | number
   | boolean
   | null
-  | { [key: string]: Json }
+  | { [key: string]: Json | undefined }
   | Json[]
 
 export interface Database {
@@ -363,6 +363,7 @@ export interface Database {
           stack_id: string | null
           tool_color: string | null
           tool_icon: string | null
+          tool_id: string | null
           tool_name: string | null
           tool_slug: string | null
           tool_website: string | null
@@ -378,6 +379,18 @@ export interface Database {
             foreignKeyName: "picks_stack_id_fkey"
             columns: ["stack_id"]
             referencedRelation: "stacks_view"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "picks_tool_id_fkey"
+            columns: ["tool_id"]
+            referencedRelation: "tools"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "picks_tool_id_fkey"
+            columns: ["tool_id"]
+            referencedRelation: "tools_view"
             referencedColumns: ["id"]
           }
         ]
@@ -543,12 +556,6 @@ export interface Database {
             foreignKeyName: "objects_bucketId_fkey"
             columns: ["bucket_id"]
             referencedRelation: "buckets"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "objects_owner_fkey"
-            columns: ["owner"]
-            referencedRelation: "users"
             referencedColumns: ["id"]
           }
         ]

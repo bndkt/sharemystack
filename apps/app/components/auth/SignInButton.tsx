@@ -78,7 +78,7 @@ export function SignInButton() {
       >
         Sign in with Twitter
       </Button>
-      <Button
+      {/* <Button
         onPress={async () => {
           const { data, error } = await supabase.auth.signInWithPassword({
             email: "test@sharemystack.com",
@@ -93,7 +93,7 @@ export function SignInButton() {
         }}
       >
         Sign in (DEV)
-      </Button>
+      </Button> */}
     </YStack>
   );
 }
