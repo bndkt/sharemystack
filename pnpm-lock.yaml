@@ -65,6 +65,9 @@ importers:
       expo:
         specifier: ~49.0.0-alpha.10
         version: 49.0.0-alpha.10(@babel/core@7.22.5)
+      expo-apple-authentication:
+        specifier: ~6.1.0
+        version: 6.1.0(expo@49.0.0-alpha.10)
       expo-application:
         specifier: ~5.3.0
         version: 5.3.0(expo@49.0.0-alpha.10)
@@ -8310,6 +8313,14 @@ packages:
     resolution: {integrity: sha512-XYfuKMvj4O35f/pOXLObndIRvyQ+/+6AhODh+OKWj9S9498pHHn/IMszH+gt0fBCRWMNfk1ZSp5x3AifmnI2vg==}
     engines: {node: '>=6'}
     dev: true
+
+  /expo-apple-authentication@6.1.0(expo@49.0.0-alpha.10):
+    resolution: {integrity: sha512-zTjSSerzDZoqA3+zw/I6T+Ss9ue90quqRn6G32JrACUu7UB66381RsznTp25Gctly9FdzxvcTK3gfaKSPqWmXw==}
+    peerDependencies:
+      expo: '*'
+    dependencies:
+      expo: 49.0.0-alpha.10(@babel/core@7.22.5)
+    dev: false
 
   /expo-application@5.3.0(expo@49.0.0-alpha.10):
     resolution: {integrity: sha512-XLkaELwmiXW6JjFVkwuiFQaGZoNKAxNAcSJkFdz8s4rCljEwehylbzoPk37QHw3cxqb4v0/2EICtg4C4kpEVCA==}
