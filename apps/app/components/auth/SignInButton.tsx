@@ -7,6 +7,7 @@ import { Button, YStack } from "tamagui";
 
 import { supabase } from "../../lib/supabase";
 import { useAuth } from "../providers/AuthProvider";
+import { SignInWithApple } from "./SignInWithApple";
 
 WebBrowser.maybeCompleteAuthSession();
 
@@ -75,9 +76,11 @@ export function SignInButton() {
         backgroundColor={"#1D9BF0"}
         color="#FFFFFF"
         icon={<Twitter color="#FFFFFF" />}
+        borderRadius={5}
       >
         Sign in with Twitter
       </Button>
+      <SignInWithApple />
       {/* <Button
         onPress={async () => {
           const { data, error } = await supabase.auth.signInWithPassword({
