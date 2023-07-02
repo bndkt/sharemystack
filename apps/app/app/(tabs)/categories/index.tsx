@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 
+import { Loading } from "@/components/Loading";
+import { CategoryList } from "@/components/categories/CategoryList";
 import {
   getCategories,
   CategoriesResponse,
 } from "@/lib/database/getCategories";
-import { CategoryList } from "@/components/categories/CategoryList";
-import { Loading } from "@/components/Loading";
 
 export default function Categories() {
   const [isLoading, setLoading] = useState(true);

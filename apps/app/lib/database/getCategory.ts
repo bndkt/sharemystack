@@ -1,7 +1,7 @@
 import { supabase } from "../supabase";
 
 export const getCategory = async ({ slug }: { slug: string }) => {
-  let query = supabase
+  const query = supabase
     .from("categories_view")
     .select("id, created_at, name, slug, icon")
     .eq("slug", slug)

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 
-import { StacksResponse, getStacks } from "@/lib/database/getStacks";
+import { Loading } from "@/components/Loading";
 import { withAuth } from "@/components/auth/withAuth";
 import { StackList } from "@/components/stacks/StackList";
-import { Loading } from "@/components/Loading";
+import { StacksResponse, getStacks } from "@/lib/database/getStacks";
 
 function StarredStacks() {
   const [isLoading, setLoading] = useState(true);

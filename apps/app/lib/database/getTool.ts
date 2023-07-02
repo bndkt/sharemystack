@@ -1,7 +1,7 @@
 import { supabase } from "../supabase";
 
 export const getTool = async ({ slug }: { slug: string }) => {
-  let query = supabase
+  const query = supabase
     .from("tools")
     .select("id, name, slug, color, icon, website, twitter")
     .eq("slug", slug)

@@ -1,7 +1,8 @@
-import { SuggestionButton } from "@/components/SuggestionButton";
 import { MessageSquare } from "@tamagui/lucide-icons";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { H3, Text, YStack } from "tamagui";
+
+import { SuggestionButton } from "@/components/SuggestionButton";
 
 export default function Index() {
   return (

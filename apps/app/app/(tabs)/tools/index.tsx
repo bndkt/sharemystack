@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 
-import { ToolsResponse, getTools } from "@/lib/database/getTools";
-import { ToolList } from "@/components/tools/ToolList";
 import { Loading } from "@/components/Loading";
+import { ToolList } from "@/components/tools/ToolList";
+import { ToolsResponse, getTools } from "@/lib/database/getTools";
 
 export default function Tools() {
   const [isLoading, setLoading] = useState(true);
