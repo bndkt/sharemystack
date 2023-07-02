@@ -8,7 +8,7 @@
     "web": "TAMAGUI_TARGET=web expo start --web --clear",
     "doc": "npx expo-doctor@latest",
     "build:prod": "eas build --profile production --platform ios --non-interactive --auto-submit",
-    "build:local": "eas build --profile development --platform ios --local",
+    "build:local": "eas build --profile production --platform ios --local",
     "types": "supabase gen types typescript --local > lib/database.types.ts",
     "lint": "eslint app lib",
     "eas-build-pre-install": "corepack enable && corepack prepare pnpm@latest-8 --activate"
