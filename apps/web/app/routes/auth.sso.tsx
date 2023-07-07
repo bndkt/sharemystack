@@ -1,5 +1,6 @@
 import { LoaderArgs, redirect } from "@remix-run/cloudflare";
 import { createServerClient } from "@supabase/auth-helpers-remix";
+
 import { config } from "~/lib/config";
 import { Database } from "~/lib/database.types";
 
