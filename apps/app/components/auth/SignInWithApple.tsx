@@ -1,10 +1,13 @@
 import { supabase } from "@/lib/supabase";
 import * as AppleAuthentication from "expo-apple-authentication";
 import { StyleSheet } from "react-native";
-import * as Crypto from "expo-crypto";
+// import * as Crypto from "expo-crypto";
+
+import { useAuth } from "../providers/AuthProvider";
 
 export function SignInWithApple() {
-  const nonce = Crypto.randomUUID();
+  const { signIn } = useAuth();
+  // const nonce = Crypto.randomUUID();
 
   return (
     <AppleAuthentication.AppleAuthenticationButton
@@ -15,7 +18,7 @@ export function SignInWithApple() {
       onPress={async () => {
         try {
           const credential = await AppleAuthentication.signInAsync({
-            nonce,
+            // nonce,
             requestedScopes: [
               AppleAuthentication.AppleAuthenticationScope.FULL_NAME,
               AppleAuthentication.AppleAuthenticationScope.EMAIL,
@@ -23,11 +26,17 @@ export function SignInWithApple() {
           });
 
           if (credential.identityToken) {
-            await supabase.auth.signInWithIdToken({
+            const { data, error } = await supabase.auth.signInWithIdToken({
               provider: "apple",
               token: credential.identityToken,
-              nonce,
+              // nonce,
             });
+
+            if (error) {
+              console.error(error);
+            } else {
+              signIn(data);
+            }
           }
         } catch (e: any) {
           if (e.code === "ERR_REQUEST_CANCELED") {
