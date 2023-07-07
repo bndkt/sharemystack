@@ -19,7 +19,7 @@ function Profile() {
           </Avatar>
         )}
         <YStack>
-          <Text>Username: @{user?.user_metadata.preferred_username}</Text>
+          {/* <Text>Username: @{user?.user_metadata.preferred_username}</Text> */}
           <Text>Email: {user?.email}</Text>
         </YStack>
       </XStack>
