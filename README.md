@@ -4,8 +4,8 @@
 
 ## Built with
 
-- Expo SDK v48
-- Expo Router v1
-- React Native v0.71
-- Tamagui v1
+- Expo SDK 49
+- Expo Router 2
+- React Native 0.72
+- Tamagui
 - Supabase
