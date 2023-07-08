@@ -54,8 +54,6 @@ export const loader = async ({ request, context }: LoaderArgs) => {
         context.CANNY_PRIVATE_KEY as string
       );
 
-      console.log({ ssoToken });
-
       const redirectUrl =
         "https://canny.io/api/redirects/sso?companyID=" +
         companyID +
