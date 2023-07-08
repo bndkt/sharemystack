@@ -55,7 +55,7 @@ importers:
         version: 1.39.4(react@18.2.0)
       '@tamagui/lucide-icons':
         specifier: ^1.39.4
-        version: 1.39.4(react-native-svg@13.9.0)(react@18.2.0)
+        version: 1.39.4(react-native-svg@13.10.0)(react@18.2.0)
       '@tamagui/theme-base':
         specifier: ^1.39.4
         version: 1.39.4(react@18.2.0)
@@ -132,8 +132,8 @@ importers:
         specifier: ~3.22.0
         version: 3.22.0(react-native@0.72.1)(react@18.2.0)
       react-native-svg:
-        specifier: 13.9.0
-        version: 13.9.0(react-native@0.72.1)(react@18.2.0)
+        specifier: 13.10.0
+        version: 13.10.0(react-native@0.72.1)(react@18.2.0)
       react-native-tab-view:
         specifier: ^3.5.2
         version: 3.5.2(react-native-pager-view@6.2.0)(react-native@0.72.1)(react@18.2.0)
@@ -4672,7 +4672,7 @@ packages:
       - immer
     dev: false
 
-  /@tamagui/helpers-icon@1.39.4(react-native-svg@13.9.0)(react@18.2.0):
+  /@tamagui/helpers-icon@1.39.4(react-native-svg@13.10.0)(react@18.2.0):
     resolution: {integrity: sha512-qd0wIWksU2X9y0ACa0mCvpju3Hs9ijJfVjP4CfwH3pXU/NGvlvGaB4WmWtvz+YVcheT2+N5CLzzY/IouZin3aA==}
     peerDependencies:
       react: '*'
@@ -4680,7 +4680,7 @@ packages:
     dependencies:
       '@tamagui/core': 1.39.4(react@18.2.0)
       react: 18.2.0
-      react-native-svg: 13.9.0(react-native@0.72.1)(react@18.2.0)
+      react-native-svg: 13.10.0(react-native@0.72.1)(react@18.2.0)
     dev: false
 
   /@tamagui/helpers-node@1.39.4:
@@ -4761,16 +4761,16 @@ packages:
       - react-native
     dev: false
 
-  /@tamagui/lucide-icons@1.39.4(react-native-svg@13.9.0)(react@18.2.0):
+  /@tamagui/lucide-icons@1.39.4(react-native-svg@13.10.0)(react@18.2.0):
     resolution: {integrity: sha512-g66vi64JeHW2eRZIpRvpJpQfe3AhZpjVuHPBolPaHBzo7Nqv0KbPdFT4aCDS9UC6EHhkuSsu0G5Z9znafIUYEw==}
     peerDependencies:
       react: '*'
       react-native-svg: '>=12'
     dependencies:
       '@tamagui/core': 1.39.4(react@18.2.0)
-      '@tamagui/helpers-icon': 1.39.4(react-native-svg@13.9.0)(react@18.2.0)
+      '@tamagui/helpers-icon': 1.39.4(react-native-svg@13.10.0)(react@18.2.0)
       react: 18.2.0
-      react-native-svg: 13.9.0(react-native@0.72.1)(react@18.2.0)
+      react-native-svg: 13.10.0(react-native@0.72.1)(react@18.2.0)
     dev: false
 
   /@tamagui/normalize-css-color@1.39.4:
@@ -13132,8 +13132,8 @@ packages:
       warn-once: 0.1.1
     dev: false
 
-  /react-native-svg@13.9.0(react-native@0.72.1)(react@18.2.0):
-    resolution: {integrity: sha512-Ey18POH0dA0ob/QiwCBVrxIiwflhYuw0P0hBlOHeY4J5cdbs8ngdKHeWC/Kt9+ryP6fNoEQ1PUgPYw2Bs/rp5Q==}
+  /react-native-svg@13.10.0(react-native@0.72.1)(react@18.2.0):
+    resolution: {integrity: sha512-D/oYTmUi5nsA/2Nw4WYlF1UUi3vZqhpESpiEhpYCIFB/EMd6vz4A/uq3tIzZFcfa5z2oAdGSxRU1TaYr8IcPlQ==}
     peerDependencies:
       react: '*'
       react-native: '*'
