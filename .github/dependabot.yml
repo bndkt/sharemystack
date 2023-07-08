@@ -4,7 +4,6 @@
 # https://docs.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
 
 version: 2
-enable-beta-ecosystems: true
 updates:
   - package-ecosystem: "github-actions"
     directory: "/"
@@ -29,6 +28,8 @@ updates:
           - "react-native-safe-area-context"
           - "@types/react"
           - "@sentry/react-native"
+          - "react-native-svg"
+          - "react-native-web"
       remix:
         patterns:
           - "@remix-run/*"
