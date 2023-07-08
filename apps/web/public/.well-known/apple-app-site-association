@@ -5,14 +5,9 @@
         "appIDs": [
           "G76836P2D4.com.sharemystack"
         ],
-        "components": [
-          {
-            "auth/*": "no_universal_links",
-            "exclude": true
-          },
-          {
-            "*": "*"
-          }
+        "paths": [
+          "NOT /auth/*",
+          "*"
         ]
       }
     ]
