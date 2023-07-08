@@ -12,7 +12,7 @@
     "start": "cross-env NODE_ENV=production npm run wrangler",
     "typecheck": "tsc",
     "wrangler": "wrangler pages dev ./public",
-    "sb:types": "supabase gen types typescript --local > app/lib/database.types.ts"
+    "types": "supabase gen types typescript --local > app/lib/database.types.ts"
   },
   "packageManager": "pnpm@8.6.1",
   "dependencies": {

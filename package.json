@@ -8,6 +8,7 @@
     "rebuild": "pnpm run reinstall && pnpm run build",
     "build": "CI=1 turbo run build",
     "dev": "turbo run dev",
+    "types": "turbo run types",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "update": "pnpm update -i -r -L",

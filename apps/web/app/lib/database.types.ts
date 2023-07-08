@@ -3,7 +3,7 @@ export type Json =
   | number
   | boolean
   | null
-  | { [key: string]: Json }
+  | { [key: string]: Json | undefined }
   | Json[]
 
 export interface Database {
@@ -41,6 +41,7 @@ export interface Database {
           id: string
           name: string
           slug: string
+          soon: boolean
         }
         Insert: {
           created_at?: string
@@ -48,6 +49,7 @@ export interface Database {
           id?: string
           name: string
           slug: string
+          soon?: boolean
         }
         Update: {
           created_at?: string
@@ -55,6 +57,7 @@ export interface Database {
           id?: string
           name?: string
           slug?: string
+          soon?: boolean
         }
         Relationships: []
       }
@@ -79,9 +82,27 @@ export interface Database {
             referencedColumns: ["id"]
           },
           {
+            foreignKeyName: "categorizations_category_id_fkey"
+            columns: ["category_id"]
+            referencedRelation: "categories_view"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "categorizations_category_id_fkey"
+            columns: ["category_id"]
+            referencedRelation: "tools_view"
+            referencedColumns: ["category_id"]
+          },
+          {
             foreignKeyName: "categorizations_tool_id_fkey"
             columns: ["tool_id"]
             referencedRelation: "tools"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "categorizations_tool_id_fkey"
+            columns: ["tool_id"]
+            referencedRelation: "tools_view"
             referencedColumns: ["id"]
           }
         ]
@@ -110,9 +131,27 @@ export interface Database {
             referencedColumns: ["id"]
           },
           {
+            foreignKeyName: "picks_category_id_fkey"
+            columns: ["category_id"]
+            referencedRelation: "categories_view"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "picks_category_id_fkey"
+            columns: ["category_id"]
+            referencedRelation: "tools_view"
+            referencedColumns: ["category_id"]
+          },
+          {
             foreignKeyName: "picks_stack_id_fkey"
             columns: ["stack_id"]
             referencedRelation: "stacks"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "picks_stack_id_fkey"
+            columns: ["stack_id"]
+            referencedRelation: "stacks_view"
             referencedColumns: ["id"]
           },
           {
@@ -120,27 +159,11 @@ export interface Database {
             columns: ["tool_id"]
             referencedRelation: "tools"
             referencedColumns: ["id"]
-          }
-        ]
-      }
-      profiles: {
-        Row: {
-          created_at: string
-          id: string
-        }
-        Insert: {
-          created_at?: string
-          id?: string
-        }
-        Update: {
-          created_at?: string
-          id?: string
-        }
-        Relationships: [
+          },
           {
-            foreignKeyName: "profiles_id_fkey"
-            columns: ["id"]
-            referencedRelation: "users"
+            foreignKeyName: "picks_tool_id_fkey"
+            columns: ["tool_id"]
+            referencedRelation: "tools_view"
             referencedColumns: ["id"]
           }
         ]
@@ -150,52 +173,68 @@ export interface Database {
           created_at: string
           featured: boolean
           id: string
-          name: string
+          name: string | null
           slug: string
           twitter: string | null
+          twitter_image_url: string | null
           updated_at: string
+          user_id: string | null
           website: string | null
         }
         Insert: {
           created_at?: string
           featured?: boolean
           id?: string
-          name: string
-          slug: string
+          name?: string | null
+          slug?: string
           twitter?: string | null
+          twitter_image_url?: string | null
           updated_at?: string
+          user_id?: string | null
           website?: string | null
         }
         Update: {
           created_at?: string
           featured?: boolean
           id?: string
-          name?: string
+          name?: string | null
           slug?: string
           twitter?: string | null
+          twitter_image_url?: string | null
           updated_at?: string
+          user_id?: string | null
           website?: string | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "stacks_user_id_fkey"
+            columns: ["user_id"]
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          }
+        ]
       }
       stars: {
         Row: {
-          category_id: string
-          profile_id: string
-          stack_id: string
-          tool_id: string
+          category_id: string | null
+          id: string
+          stack_id: string | null
+          tool_id: string | null
+          user_id: string | null
         }
         Insert: {
-          category_id: string
-          profile_id: string
-          stack_id: string
-          tool_id: string
+          category_id?: string | null
+          id?: string
+          stack_id?: string | null
+          tool_id?: string | null
+          user_id?: string | null
         }
         Update: {
-          category_id?: string
-          profile_id?: string
-          stack_id?: string
-          tool_id?: string
+          category_id?: string | null
+          id?: string
+          stack_id?: string | null
+          tool_id?: string | null
+          user_id?: string | null
         }
         Relationships: [
           {
@@ -205,10 +244,16 @@ export interface Database {
             referencedColumns: ["id"]
           },
           {
-            foreignKeyName: "stars_profile_id_fkey"
-            columns: ["profile_id"]
-            referencedRelation: "profiles"
+            foreignKeyName: "stars_category_id_fkey"
+            columns: ["category_id"]
+            referencedRelation: "categories_view"
             referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "stars_category_id_fkey"
+            columns: ["category_id"]
+            referencedRelation: "tools_view"
+            referencedColumns: ["category_id"]
           },
           {
             foreignKeyName: "stars_stack_id_fkey"
@@ -217,9 +262,27 @@ export interface Database {
             referencedColumns: ["id"]
           },
           {
+            foreignKeyName: "stars_stack_id_fkey"
+            columns: ["stack_id"]
+            referencedRelation: "stacks_view"
+            referencedColumns: ["id"]
+          },
+          {
             foreignKeyName: "stars_tool_id_fkey"
             columns: ["tool_id"]
             referencedRelation: "tools"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "stars_tool_id_fkey"
+            columns: ["tool_id"]
+            referencedRelation: "tools_view"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "stars_user_id_fkey"
+            columns: ["user_id"]
+            referencedRelation: "users"
             referencedColumns: ["id"]
           }
         ]
@@ -259,6 +322,18 @@ export interface Database {
       }
     }
     Views: {
+      categories_view: {
+        Row: {
+          created_at: string | null
+          icon: string | null
+          id: string | null
+          name: string | null
+          slug: string | null
+          soon: boolean | null
+          tools: number | null
+        }
+        Relationships: []
+      }
       picks_view: {
         Row: {
           category_name: string | null
@@ -266,6 +341,7 @@ export interface Database {
           stack_id: string | null
           tool_color: string | null
           tool_icon: string | null
+          tool_id: string | null
           tool_name: string | null
           tool_slug: string | null
           tool_website: string | null
@@ -276,8 +352,68 @@ export interface Database {
             columns: ["stack_id"]
             referencedRelation: "stacks"
             referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "picks_stack_id_fkey"
+            columns: ["stack_id"]
+            referencedRelation: "stacks_view"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "picks_tool_id_fkey"
+            columns: ["tool_id"]
+            referencedRelation: "tools"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "picks_tool_id_fkey"
+            columns: ["tool_id"]
+            referencedRelation: "tools_view"
+            referencedColumns: ["id"]
           }
         ]
+      }
+      stacks_view: {
+        Row: {
+          created_at: string | null
+          featured: boolean | null
+          id: string | null
+          name: string | null
+          slug: string | null
+          starred: boolean | null
+          stars: number | null
+          twitter: string | null
+          twitter_image_url: string | null
+          updated_at: string | null
+          user_id: string | null
+          website: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "stacks_user_id_fkey"
+            columns: ["user_id"]
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
+      tools_view: {
+        Row: {
+          all_picks: number | null
+          category_id: string | null
+          category_name: string | null
+          category_slug: string | null
+          color: string | null
+          created_at: string | null
+          icon: string | null
+          id: string | null
+          name: string | null
+          slug: string | null
+          twitter: string | null
+          user_picks: number | null
+          website: string | null
+        }
+        Relationships: []
       }
     }
     Functions: {
@@ -398,12 +534,6 @@ export interface Database {
             foreignKeyName: "objects_bucketId_fkey"
             columns: ["bucket_id"]
             referencedRelation: "buckets"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "objects_owner_fkey"
-            columns: ["owner"]
-            referencedRelation: "users"
             referencedColumns: ["id"]
           }
         ]
