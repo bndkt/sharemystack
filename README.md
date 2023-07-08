@@ -9,3 +9,11 @@
 - React Native 0.72
 - Tamagui
 - Supabase
+
+## Here is a list of "stuff" I plan to demonstrate with this app (in no particular order):
+
+- [ ] iOS App Clips (using https://github.com/bndkt/react-native-app-clip)
+- [ ] iOS Widgets/Live Activities (using https://github.com/bndkt/react-native-widget-extension)
+- [ ] Universal Links (using https://github.com/expo/router)
+- [ ] iOS Handoff (using https://github.com/expo/router)
+- [ ] Web App powered by React Native Web (using https://github.com/expo/router)
