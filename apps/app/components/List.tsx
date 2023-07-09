@@ -82,7 +82,7 @@ export function List<T>({
           </SwipeableRow>
         );
       }}
-      estimatedItemSize={data.length}
+      estimatedItemSize={75}
       data={data}
     />
   ) : (

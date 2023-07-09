@@ -66,7 +66,7 @@ export function StackSheet({
     }
   }, [stack, category, tool]);
 
-  const snapPoints = useMemo(() => ["25%", "50%", "75%"], []);
+  const snapPoints = useMemo(() => [/* "25%", */ "50%" /* "75%" */], []);
 
   // callbacks
   const handlePresentModalPress = useCallback(() => {
@@ -83,7 +83,7 @@ export function StackSheet({
       </YStack>
       <BottomSheetModal
         ref={bottomSheetModalRef}
-        index={1}
+        index={0}
         snapPoints={snapPoints}
         onChange={handleSheetChanges}
         style={{
