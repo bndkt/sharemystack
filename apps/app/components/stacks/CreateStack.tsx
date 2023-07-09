@@ -16,6 +16,7 @@ export function CreateStack({ refresh }: { refresh: () => void }) {
               .toLowerCase()
           : user.id,
         twitter: user.user_metadata.preferred_username,
+        twitter_image_url: user.user_metadata.avatar_url,
         user_id: user.id,
       });
       refresh();

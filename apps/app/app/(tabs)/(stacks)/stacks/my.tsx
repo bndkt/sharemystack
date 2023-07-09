@@ -28,7 +28,6 @@ function MyStack() {
   }, [user, stack, refresh]);
 
   function removePick(stackId: string | null, toolId: string | null) {
-    console.log("remove", { stackId, toolId });
     setLoading(true);
     const query = supabase
       .from("picks")
