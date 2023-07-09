@@ -1,5 +1,7 @@
 import { ExpoConfig } from "expo/config";
 
+const projectId = "c68d7a2f-d33a-4220-b4c3-148177066a75";
+
 const config: ExpoConfig = {
   name: "Share My Stack",
   slug: "sharemystack",
@@ -19,7 +21,7 @@ const config: ExpoConfig = {
   },
   updates: {
     enabled: true,
-    url: "https://u.expo.dev/987c3c40-d46a-45e7-a545-112f3c6e23e9",
+    url: `https://u.expo.dev/${projectId}`,
   },
   assetBundlePatterns: ["**/*"],
   ios: {
@@ -51,10 +53,14 @@ const config: ExpoConfig = {
   },
   extra: {
     eas: {
-      projectId: "987c3c40-d46a-45e7-a545-112f3c6e23e9",
+      projectId,
     },
   },
-  plugins: ["sentry-expo", "expo-router", "expo-apple-authentication"],
+  plugins: [
+    "sentry-expo",
+    ["expo-router", { headOrigin: "https://sharemystack.com" }],
+    "expo-apple-authentication",
+  ],
   hooks: {
     postPublish: [
       {
