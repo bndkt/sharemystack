@@ -9,6 +9,7 @@
 - React Native 0.72
 - Tamagui
 - Supabase
+- React Native Bottom Sheet
 
 ## Here is a list of "stuff" I plan to demonstrate with this app (in no particular order):
 
