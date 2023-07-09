@@ -60,7 +60,9 @@ export function List<T>({
                   title={title(item)}
                   subTitle={subTitle && subTitle(item)}
                   icon={icon && icon(item)}
-                  iconAfter={iconAfter ? iconAfter(item) : ChevronRight}
+                  iconAfter={
+                    iconAfter ? iconAfter(item) : <ChevronRight size="$1" />
+                  }
                 />
               </Link>
             ) : onPress ? (
@@ -69,7 +71,9 @@ export function List<T>({
                 subTitle={subTitle && subTitle(item)}
                 icon={icon && icon(item)}
                 onPress={onPress ? () => onPress(item) : undefined}
-                iconAfter={iconAfter ? iconAfter(item) : ChevronRight}
+                iconAfter={
+                  iconAfter ? iconAfter(item) : <ChevronRight size="$1" />
+                }
               />
             ) : (
               <ListItem

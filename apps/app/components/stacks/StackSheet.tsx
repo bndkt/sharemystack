@@ -116,7 +116,13 @@ export function StackSheet({
               icon={(item) => (
                 <ToolIcon svgXml={item.icon} width="24" height="24" />
               )}
-              iconAfter={(item) => (item.user_picks ? <Check /> : <Plus />)}
+              iconAfter={(item) =>
+                item.user_picks ? (
+                  <Check color="gray" size="$1" />
+                ) : (
+                  <Plus size="$1" />
+                )
+              }
             />
           </YStack>
         ) : (
