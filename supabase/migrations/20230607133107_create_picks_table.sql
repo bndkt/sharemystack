@@ -10,7 +10,8 @@ alter table picks
   enable row level security;
 
 create policy "Picks are viewable by everyone."
-  on picks for select using ( true );
+  on picks for select
+  using ( true );
 
 create policy "Users can insert picks for their own stack."
   on picks for insert

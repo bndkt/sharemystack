@@ -9,4 +9,5 @@ alter table categorizations
   enable row level security;
 
 create policy "Categorizations are viewable by everyone."
-  on categorizations for select using ( true );
+  on categorizations for select
+  using ( true );

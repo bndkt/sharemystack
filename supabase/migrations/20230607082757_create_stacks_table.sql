@@ -18,7 +18,8 @@ alter table stacks
   enable row level security;
 
 create policy "Stacks are viewable by everyone."
-  on stacks for select using ( true );
+  on stacks for select
+  using ( true );
 
 create policy "Users can insert their own stack."
   on stacks for insert
