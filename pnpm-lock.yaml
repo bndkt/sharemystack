@@ -59,9 +59,15 @@ importers:
       '@tamagui/theme-base':
         specifier: ^1.39.5
         version: 1.39.5(react@18.2.0)
+      '@tamagui/toast':
+        specifier: ^1.39.5
+        version: 1.39.5(@types/react@18.2.14)(burnt@0.11.7)(react-native@0.72.1)(react@18.2.0)
       babel-plugin-transform-inline-environment-variables:
         specifier: ^0.4.4
         version: 0.4.4
+      burnt:
+        specifier: ^0.11.7
+        version: 0.11.7(expo@49.0.0)(react-dom@18.2.0)(react-native@0.72.1)(react@18.2.0)
       expo:
         specifier: ~49.0.0
         version: 49.0.0(@babel/core@7.22.8)
@@ -5194,6 +5200,31 @@ packages:
       - react
     dev: false
 
+  /@tamagui/toast@1.39.5(@types/react@18.2.14)(burnt@0.11.7)(react-native@0.72.1)(react@18.2.0):
+    resolution: {integrity: sha512-NAYy4t/7AB/XNDgyzEYrdq9/QxYbIR9kgnwURY0K7CvuCXnJy0zKIvipsLip80bK8FABkApE+bFdavtkgOh95Q==}
+    peerDependencies:
+      burnt: ^0.10.0
+      react: '*'
+      react-native: '*'
+    dependencies:
+      '@tamagui/animate-presence': 1.39.5(react@18.2.0)
+      '@tamagui/compose-refs': 1.39.5(react@18.2.0)
+      '@tamagui/core': 1.39.5(react@18.2.0)
+      '@tamagui/create-context': 1.39.5(react@18.2.0)
+      '@tamagui/dismissable': 1.39.5(@types/react@18.2.14)(react@18.2.0)
+      '@tamagui/polyfill-dev': 1.39.5
+      '@tamagui/portal': 1.39.5(react-native@0.72.1)(react@18.2.0)
+      '@tamagui/stacks': 1.39.5(react@18.2.0)
+      '@tamagui/text': 1.39.5(react-native@0.72.1)(react@18.2.0)
+      '@tamagui/use-controllable-state': 1.39.5(react@18.2.0)
+      '@tamagui/visually-hidden': 1.39.5(react@18.2.0)
+      burnt: 0.11.7(expo@49.0.0)(react-dom@18.2.0)(react-native@0.72.1)(react@18.2.0)
+      react: 18.2.0
+      react-native: 0.72.1(@babel/core@7.22.8)(@babel/preset-env@7.22.7)(react@18.2.0)
+    transitivePeerDependencies:
+      - '@types/react'
+    dev: false
+
   /@tamagui/toggle-group@1.39.5(react-native@0.72.1)(react@18.2.0):
     resolution: {integrity: sha512-hszkOEzjZv5b7fLP7V2op+pmKsgWUMUsDXs3+0dkQwqzozTKvCYP8DBFa99S3OJ2O62sVVwCMZs22OGshlWevQ==}
     peerDependencies:
@@ -6471,6 +6502,22 @@ packages:
     dependencies:
       run-applescript: 5.0.0
     dev: true
+
+  /burnt@0.11.7(expo@49.0.0)(react-dom@18.2.0)(react-native@0.72.1)(react@18.2.0):
+    resolution: {integrity: sha512-Td70Axu53eDdEFDehCW1IvBY6xopdgcIISHMDKhQQFKAuoxdYHsensfXIzOAsjqTaNFA8NFmnYfLdQhAoPc9MA==}
+    peerDependencies:
+      expo: '*'
+      react: '*'
+      react-native: '*'
+    dependencies:
+      expo: 49.0.0(@babel/core@7.22.8)
+      react: 18.2.0
+      react-native: 0.72.1(@babel/core@7.22.8)(@babel/preset-env@7.22.7)(react@18.2.0)
+      sf-symbols-typescript: 1.0.0
+      sonner: 0.3.5(react-dom@18.2.0)(react@18.2.0)
+    transitivePeerDependencies:
+      - react-dom
+    dev: false
 
   /busboy@1.6.0:
     resolution: {integrity: sha512-8SFQbg/0hQ9xy3UNTB0YEnsNBbWfhf7RtnzpL7TkBiTBRfrQ9Fxcnz7VJsleJpyp6rVLvXiuORqjlHi5q+PYuA==}
@@ -13932,6 +13979,11 @@ packages:
   /setprototypeof@1.2.0:
     resolution: {integrity: sha512-E5LDX7Wrp85Kil5bhZv46j8jOeboKq5JMmYM3gVGdGH8xFpPWXUMsNrlODCrkoxMEeNi/XZIwuRvY4XNwYMJpw==}
 
+  /sf-symbols-typescript@1.0.0:
+    resolution: {integrity: sha512-DkS7q3nN68dEMb4E18HFPDAvyrjDZK9YAQQF2QxeFu9gp2xRDXFMF8qLJ1EmQ/qeEGQmop4lmMM1WtYJTIcCMw==}
+    engines: {node: '>=10'}
+    dev: false
+
   /shallow-clone@3.0.1:
     resolution: {integrity: sha512-/6KqX+GVUdqPuPPd2LxDDxzX6CAbjJehAAOKlNpqqUpAqPM6HeL8f+o3a+JsyGjn2lv0WY8UsTgUJjU9Ok55NA==}
     engines: {node: '>=8'}
@@ -14057,6 +14109,16 @@ packages:
       ip: 2.0.0
       smart-buffer: 4.2.0
     dev: true
+
+  /sonner@0.3.5(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-yIwaQ4dftMvFApuruto2t7wGyyaPRpj5qYBWYJIz4Z7uGcVn0IfqI/hWN0JyJN4izNbZFuCYZISf3fOGnvSlNQ==}
+    peerDependencies:
+      react: ^18.0.0
+      react-dom: ^18.0.0
+    dependencies:
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+    dev: false
 
   /sort-keys@2.0.0:
     resolution: {integrity: sha512-/dPCrG1s3ePpWm6yBbxZq5Be1dXGLyLn9Z791chDC3NFrpkVbWGzkBwPN1knaciexFXgRJ7hzdnwZ4stHSDmjg==}
