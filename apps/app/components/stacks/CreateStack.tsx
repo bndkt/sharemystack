@@ -11,8 +11,10 @@ export function CreateStack({ refresh }: { refresh: () => void }) {
       const { data, error } = await supabase.from("stacks").insert({
         name: user.user_metadata.full_name,
         slug: user.user_metadata.preferred_username
-          ? (user.user_metadata.preferred_username as string).toLowerCase()
-          : undefined,
+          ? "@"
+              .concat(user.user_metadata.preferred_username as string)
+              .toLowerCase()
+          : user.id,
         twitter: user.user_metadata.preferred_username,
         user_id: user.id,
       });

@@ -7,8 +7,7 @@ import { PickList } from "@/components/stacks/PickList";
 import { StackResponse, getStack } from "@/lib/database/getStack";
 
 export default function Index() {
-  let { stack: slug } = useLocalSearchParams<{ stack: string }>();
-  slug = slug?.substring(1);
+  const { stack: slug } = useLocalSearchParams<{ stack: string }>();
 
   const [isLoading, setLoading] = useState(true);
   const [stack, setStack] = useState<StackResponse["data"]>(null);

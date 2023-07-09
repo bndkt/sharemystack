@@ -9,7 +9,7 @@ export function StackList({ stacks }: { stacks: StacksResponse["data"] }) {
     <YStack fullscreen>
       <List
         data={stacks}
-        href={(item) => `/(stacks)/@${item.slug}`}
+        href={(item) => `/(stacks)/${item.slug}`}
         title={(item) => item.name}
         subTitle={(item) => item.website}
         icon={(item) => <ImageIcon src={item.twitter_image_url} />}
