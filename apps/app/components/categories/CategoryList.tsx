@@ -9,10 +9,14 @@ export function CategoryList({
   categories,
   onPress,
   suggestionButton,
+  onRefresh,
+  refreshing,
 }: {
   categories: CategoriesResponse["data"];
   onPress?: (tool: string | null) => void;
   suggestionButton?: boolean;
+  onRefresh?: () => void;
+  refreshing?: boolean;
 }) {
   return (
     <YStack fullscreen>
@@ -40,6 +44,8 @@ export function CategoryList({
             color={item.soon ? "$gray8" : undefined}
           />
         )}
+        onRefresh={onRefresh}
+        refreshing={refreshing}
       />
       {suggestionButton && <SuggestionButton suggestion="category" />}
     </YStack>

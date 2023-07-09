@@ -8,9 +8,13 @@ import { ToolIcon } from "../icons/ToolIcon";
 export function ToolList({
   tools,
   onPress,
+  onRefresh,
+  refreshing,
 }: {
   tools: ToolsResponse["data"];
   onPress?: (tool: string | null) => void;
+  onRefresh?: () => void;
+  refreshing?: boolean;
 }) {
   return (
     <YStack fullscreen>
@@ -25,6 +29,8 @@ export function ToolList({
           )
         }
         icon={(item) => <ToolIcon svgXml={item.icon} width="24" height="24" />}
+        onRefresh={onRefresh}
+        refreshing={refreshing}
       />
       <SuggestionButton suggestion="tool" />
     </YStack>

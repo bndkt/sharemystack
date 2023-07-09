@@ -5,15 +5,32 @@ import { ToolList } from "@/components/tools/ToolList";
 import { ToolsResponse, getTools } from "@/lib/database/getTools";
 
 export default function Tools() {
-  const [isLoading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
+  const [refreshing, setRefreshing] = useState(false);
   const [tools, setTools] = useState<ToolsResponse["data"]>(null);
 
-  useEffect(() => {
+  function loadData() {
     getTools().then(({ data }) => {
       setTools(data);
       setLoading(false);
+      setRefreshing(false);
     });
-  }, [getTools, setTools]);
+  }
 
-  return isLoading ? <Loading /> : <ToolList tools={tools} />;
+  useEffect(() => {
+    loadData();
+  }, []);
+
+  return loading ? (
+    <Loading />
+  ) : (
+    <ToolList
+      tools={tools}
+      onRefresh={() => {
+        setRefreshing(true);
+        loadData();
+      }}
+      refreshing={refreshing}
+    />
+  );
 }

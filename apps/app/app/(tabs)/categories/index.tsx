@@ -8,20 +8,34 @@ import {
 } from "@/lib/database/getCategories";
 
 export default function Categories() {
-  const [isLoading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
+  const [refreshing, setRefreshing] = useState(false);
   const [categories, setCategories] =
     useState<CategoriesResponse["data"]>(null);
 
-  useEffect(() => {
+  function loadData() {
     getCategories().then(({ data }) => {
       setCategories(data);
       setLoading(false);
+      setRefreshing(false);
     });
-  }, [getCategories, setCategories]);
+  }
 
-  return isLoading ? (
+  useEffect(() => {
+    loadData();
+  }, []);
+
+  return loading ? (
     <Loading />
   ) : (
-    <CategoryList categories={categories} suggestionButton={true} />
+    <CategoryList
+      categories={categories}
+      suggestionButton={true}
+      onRefresh={() => {
+        setRefreshing(true);
+        loadData();
+      }}
+      refreshing={refreshing}
+    />
   );
 }
