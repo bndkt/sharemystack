@@ -5,15 +5,32 @@ import { StackList } from "@/components/stacks/StackList";
 import { StacksResponse, getStacks } from "@/lib/database/getStacks";
 
 export default function FeaturedStacks() {
-  const [isLoading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
+  const [refreshing, setRefreshing] = useState(false);
   const [stacks, setStacks] = useState<StacksResponse["data"]>(null);
 
-  useEffect(() => {
+  function loadData() {
     getStacks({ featured: true }).then(({ data }) => {
       setStacks(data);
       setLoading(false);
+      setRefreshing(false);
     });
-  }, [setStacks, getStacks]);
+  }
 
-  return isLoading ? <Loading /> : <StackList stacks={stacks} />;
+  useEffect(() => {
+    loadData();
+  }, []);
+
+  return loading ? (
+    <Loading />
+  ) : (
+    <StackList
+      stacks={stacks}
+      onRefresh={() => {
+        setRefreshing(true);
+        loadData();
+      }}
+      refreshing={refreshing}
+    />
+  );
 }

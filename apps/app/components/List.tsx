@@ -22,6 +22,8 @@ export function List<T>({
   placeholder,
   iconAfter,
   generateRightActions,
+  onRefresh,
+  refreshing,
 }: {
   data: readonly T[] | null;
   href?: (item: T) => string;
@@ -37,6 +39,8 @@ export function List<T>({
   placeholder?: JSX.Element;
   iconAfter?: (item: T) => JSX.Element | undefined;
   generateRightActions?: GenerateRightActions<T>;
+  onRefresh?: () => void;
+  refreshing?: boolean;
 }) {
   placeholder ??= (
     <Text padding="$3" textAlign="center">
@@ -88,6 +92,8 @@ export function List<T>({
       }}
       estimatedItemSize={75}
       data={data}
+      onRefresh={onRefresh}
+      refreshing={refreshing}
     />
   ) : (
     placeholder

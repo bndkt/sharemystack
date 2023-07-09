@@ -30,7 +30,7 @@ export default function Index() {
 
   function toggleStar() {
     setIsStarred(!isStarred);
-    console.log("toggleStar", user?.id, stack?.id, !isStarred);
+
     if (user?.id && stack?.id) {
       const query = !isStarred
         ? supabase
@@ -47,7 +47,6 @@ export default function Index() {
 
       query.then((result) => {
         console.log({ result });
-        // setRefresh(true);
       });
     }
   }

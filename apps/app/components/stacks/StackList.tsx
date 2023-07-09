@@ -4,7 +4,15 @@ import { List } from "../List";
 import { StacksResponse } from "../../lib/database/getStacks";
 import { ImageIcon } from "../icons/StackIcon";
 
-export function StackList({ stacks }: { stacks: StacksResponse["data"] }) {
+export function StackList({
+  stacks,
+  onRefresh,
+  refreshing,
+}: {
+  stacks: StacksResponse["data"];
+  onRefresh?: () => void;
+  refreshing?: boolean;
+}) {
   return (
     <YStack fullscreen>
       <List
@@ -13,6 +21,8 @@ export function StackList({ stacks }: { stacks: StacksResponse["data"] }) {
         title={(item) => item.name}
         subTitle={(item) => item.slug}
         icon={(item) => <ImageIcon src={item.twitter_image_url} />}
+        onRefresh={onRefresh}
+        refreshing={refreshing}
       />
     </YStack>
   );

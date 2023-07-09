@@ -6,17 +6,34 @@ import { StackList } from "@/components/stacks/StackList";
 import { StacksResponse, getStacks } from "@/lib/database/getStacks";
 
 function StarredStacks() {
-  const [isLoading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
+  const [refreshing, setRefreshing] = useState(false);
   const [stacks, setStacks] = useState<StacksResponse["data"]>(null);
 
-  useEffect(() => {
+  function loadData() {
     getStacks({ starred: true }).then(({ data }) => {
       setStacks(data);
       setLoading(false);
+      setRefreshing(false);
     });
-  }, [getStacks, setStacks]);
+  }
 
-  return isLoading ? <Loading /> : <StackList stacks={stacks} />;
+  useEffect(() => {
+    loadData();
+  }, []);
+
+  return loading ? (
+    <Loading />
+  ) : (
+    <StackList
+      stacks={stacks}
+      onRefresh={() => {
+        setRefreshing(true);
+        loadData();
+      }}
+      refreshing={refreshing}
+    />
+  );
 }
 
 export default withAuth(StarredStacks);
