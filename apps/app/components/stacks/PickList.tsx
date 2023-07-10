@@ -23,7 +23,7 @@ export function PickList({
       icon={(item) => (
         <ToolIcon
           svgXml={item.tool_icon}
-          color={item.tool_color}
+          // color={item.tool_color}
           width="36"
           height="36"
         />

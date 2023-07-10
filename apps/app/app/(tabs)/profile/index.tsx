@@ -7,8 +7,6 @@ import { useAuth } from "@/components/providers/AuthProvider";
 function Profile() {
   const { user } = useAuth();
 
-  console.log({ user });
-
   return (
     <YStack padding="$3">
       <XStack marginBottom="$3">

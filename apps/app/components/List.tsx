@@ -52,8 +52,6 @@ export function List<T>({
     </Text>
   );
 
-  console.log(tokens.color.sms);
-
   return data && data.length ? (
     <FlashList
       ItemSeparatorComponent={() => <Separator />}
