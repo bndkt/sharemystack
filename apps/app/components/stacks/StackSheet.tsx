@@ -3,7 +3,7 @@ import {
   BottomSheetModal,
   BottomSheetModalProvider,
 } from "@gorhom/bottom-sheet";
-import { Button, YStack } from "tamagui";
+import { Button, YStack, useTheme } from "tamagui";
 import { Check, Plus } from "@tamagui/lucide-icons";
 
 import { CategoryList } from "../categories/CategoryList";
@@ -31,6 +31,7 @@ export function StackSheet({
   const [category, setCategory] = useState<string | null>(null);
   const [tools, setTools] = useState<ToolsResponse["data"]>(null);
   const [tool, setTool] = useState<string | null>(null);
+  const theme = useTheme();
 
   useEffect(() => {
     getCategories().then(({ data }) => {
@@ -87,7 +88,7 @@ export function StackSheet({
         snapPoints={snapPoints}
         onChange={handleSheetChanges}
         style={{
-          shadowColor: "#000",
+          shadowColor: theme.color.val,
           shadowOffset: {
             width: 0,
             height: 2,
@@ -95,6 +96,13 @@ export function StackSheet({
           shadowOpacity: 0.25,
           shadowRadius: 3.84,
           elevation: 5,
+          backgroundColor: theme.background.val,
+        }}
+        handleIndicatorStyle={{
+          backgroundColor: theme.color.val,
+        }}
+        handleStyle={{
+          backgroundColor: theme.background.val,
         }}
       >
         {isLoading ? (

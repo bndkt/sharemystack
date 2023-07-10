@@ -8,7 +8,13 @@ const bodyFont = createInterFont();
 
 const appConfig = createTamagui({
   themes,
-  tokens,
+  tokens: {
+    ...tokens,
+    color: {
+      ...tokens.color,
+      sms: "#f43f5e",
+    },
+  },
   shorthands,
   fonts: {
     heading: headingFont,
