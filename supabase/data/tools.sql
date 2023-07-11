@@ -1,35 +1,4 @@
--- gen_random_uuid()
-
-/*
 insert into
-auth.users (instance_id, id, aud, role, email, encrypted_password, email_confirmed_at, created_at, updated_at, raw_app_meta_data, raw_user_meta_data, confirmation_token, recovery_token, email_change_token_new, email_change)
-values
-('00000000-0000-0000-0000-000000000000', '6a6d9730-acf6-465e-851b-c19d2f5d533b', 'authenticated', 'authenticated', 'test@sharemystack.com', '$2a$10$iRobDodxHCqbf7eWt2hlsubfp4oovU1opGe0CJT4MZfUWMbSitfH.', now(), now(), now(), '{"provider":"email","providers":["email"]}', '{}', '', '', '', '')
-on conflict (id) do nothing;
-
-insert into
-auth.identities (id, provider, user_id, identity_data, last_sign_in_at, created_at, updated_at)
-values
-('6a6d9730-acf6-465e-851b-c19d2f5d533b', 'email', '6a6d9730-acf6-465e-851b-c19d2f5d533b', '{"sub":"6a6d9730-acf6-465e-851b-c19d2f5d533b","email":"test@sharemystack.com"}', now(), now(), now());
-*/
-
-insert into
-public.categories (id, name, slug, icon, soon)
-values
-('6a9095b4-132e-4625-891d-8286e92e8f92', 'Email Service', 'email-service', 'Mail', false),
-('f899b6d5-a1e1-48fe-96c2-ec45e00425bc', 'Browser', 'browser', '', false),
-('d3faed2f-ea3f-4ec9-9118-e3d6db4fe42e', 'Calendar', 'calendar', 'Calendar', true),
-('a53d4fba-35a4-49e6-baf3-0e7bf2a1188b', 'IDE', 'ide', 'TerminalSquare', true),
-('cf44a840-289b-4667-8ce5-39a705c9725f', 'Terminal', 'terminal', 'Terminal', true),
-('7cc31f5b-77a9-4fb6-960d-c72ef0abf82b', 'Music', 'music', 'Music', true),
-('13477943-f847-4c57-80f2-e519d54ff860', 'Podcast', 'podcast', 'Podcast', true),
-('8f5ff296-f438-40fc-8c48-b437810385af', 'Operating System', 'operating-system', 'AppWindow', false),
-('bf4fb3cd-38d9-4135-abc7-7f291c498366', 'Note-taking', 'note-taking', 'ClipboardEdit', false),
-('5b4d499c-114e-472f-baa9-3adc7685936c', 'Mobile Operating System', 'mobile-operating-system', 'Smartphone', false),
-('0e93b69f-3415-4fec-a5e6-da1f779b43a6', 'Password Management', 'password-management', 'Fingerprint', false),
-('0b8e259e-7683-4267-a1e7-e8cba6a39f19', 'Todo List', 'todo-list', 'CheckSquare', false);
-
-upsert into
 public.tools (id, name, slug, website, twitter, color, icon)
 values
 ('0115cd3b-869d-4058-94e1-a67863eb6045', 'Obsidian', 'obsidian', 'https://obsidian.md/', '', '#7C3AED', '
@@ -2653,7 +2622,7 @@ values
             fill="#4EC1FC" />
     </svg>
 '),
-(gen_random_uuid(), 'Bitwarden', 'bitwarden', 'https://bitwarden.com/', '', '', '
+('eb2a8dc6-2ad4-4228-b4da-ea41d6e95055', 'Bitwarden', 'bitwarden', 'https://bitwarden.com/', '', '', '
     <svg viewBox="0 0 182 218" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
             d="M179.304 2.68965C177.498 0.887307 175.358 0 172.913 0H9.08607C6.61311 0 4.50136 0.887307 2.69526 2.68965C0.889156 4.49199 0 6.62707 0 9.06716V118.067C0 126.192 1.58381 134.26 4.75144 142.274C7.91906 150.26 11.8647 157.358 16.5606 163.569C21.2564 169.753 26.8414 175.798 33.3434 181.676C39.8454 187.554 45.8472 192.407 51.3211 196.289C56.8227 200.171 62.5467 203.831 68.5207 207.297C74.4947 210.763 78.746 213.092 81.2467 214.312C83.7475 215.532 85.7759 216.503 87.2763 217.14C88.4156 217.695 89.6382 218 90.9719 218C92.3056 218 93.5282 217.723 94.6675 217.14C96.1957 216.475 98.1963 215.532 100.725 214.312C103.226 213.092 107.477 210.735 113.451 207.297C119.425 203.831 125.149 200.171 130.651 196.289C136.152 192.407 142.154 187.527 148.656 181.676C155.158 175.798 160.743 169.78 165.439 163.569C170.135 157.358 174.053 150.287 177.248 142.274C180.416 134.288 181.999 126.219 181.999 118.067V9.09489C182.027 6.62707 181.11 4.49199 179.304 2.68965ZM158.187 119.093C158.187 158.551 90.9997 192.545 90.9997 192.545V23.3472H158.187C158.187 23.3472 158.187 79.6357 158.187 119.093Z"
@@ -2771,26 +2740,65 @@ values
             fill="#EA4335" />
     </svg>
 '),
-('9174884a-a9c4-4dec-8069-ac66f47744f9', 'Google Drive', 'google-drive', 'https://drive.google.com/', '', '', '
-    <svg viewBox="0 0 30 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+('c2ac9bb6-10ce-4b46-aefb-962d8e1de5c9', 'Google Mail', 'google-mail', 'https://google.com/', '', '', '
+    <svg viewBox="0 0 88 67" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6 67H20V33L0 18V61C0 64.315 2.685 67 6 67Z" fill="#4285F4" />
+        <path d="M68 67H82C85.315 67 88 64.315 88 61V18L68 33V67Z" fill="#34A853" />
+        <path d="M68 6.99999V33L88 18V9.99999C88 2.58499 79.535 -1.65001 73.6 2.79999L68 6.99999Z"
+            fill="#FBBC04" />
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M20 33V7L44 25L68 7V33L44 51L20 33Z"
+            fill="#EA4335" />
+        <path d="M0 9.99999V18L20 33V6.99999L14.4 2.79999C8.465 -1.65001 0 2.58499 0 9.99999Z"
+            fill="#C5221F" />
+    </svg>
+'),
+('b3c10887-f3b3-438f-9fdf-5136e86c57bd', 'Google Calendar', 'google-calendar', 'https://google.com/', '', '', '
+    <svg viewBox="0 0 76 76" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M58 18H18V58H58V18Z" fill="white" />
         <path
-            d="M20.5108 18.4318L21.8046 22.8926L25.1949 26.5437C25.6534 26.2795 26.0438 25.896 26.3182 25.4204L29.4682 19.9659C29.7426 19.492 29.879 18.9619 29.879 18.4318L25.0415 17.4943L20.5108 18.4318Z"
+            d="M26.205 49.03C24.71 48.02 23.675 46.545 23.11 44.595L26.58 43.165C26.895 44.365 27.445 45.295 28.23 45.955C29.01 46.615 29.96 46.94 31.07 46.94C32.205 46.94 33.18 46.595 33.995 45.905C34.81 45.215 35.22 44.335 35.22 43.27C35.22 42.18 34.79 41.29 33.93 40.6C33.07 39.91 31.99 39.565 30.7 39.565H28.695V36.13H30.495C31.605 36.13 32.54 35.83 33.3 35.23C34.06 34.63 34.44 33.81 34.44 32.765C34.44 31.835 34.1 31.095 33.42 30.54C32.74 29.985 31.88 29.705 30.835 29.705C29.815 29.705 29.005 29.975 28.405 30.52C27.8054 31.0665 27.3546 31.7564 27.095 32.525L23.66 31.095C24.115 29.805 24.95 28.665 26.175 27.68C27.4 26.695 28.965 26.2 30.865 26.2C32.27 26.2 33.535 26.47 34.655 27.015C35.775 27.56 36.655 28.315 37.29 29.275C37.925 30.24 38.24 31.32 38.24 32.52C38.24 33.745 37.945 34.78 37.355 35.63C36.765 36.48 36.04 37.13 35.18 37.585V37.79C36.2905 38.2478 37.2551 38.9998 37.97 39.965C38.695 40.94 39.06 42.105 39.06 43.465C39.06 44.825 38.715 46.04 38.025 47.105C37.335 48.17 36.38 49.01 35.17 49.62C33.955 50.23 32.59 50.54 31.075 50.54C29.32 50.545 27.7 50.04 26.205 49.03ZM47.52 31.81L43.71 34.565L41.805 31.675L48.64 26.745H51.26V50H47.52V31.81Z"
+            fill="#4285F4" />
+        <path d="M58 58H18V76H58V58Z" fill="#34A853" />
+        <path d="M58 0H6C2.685 0 0 2.685 0 6V58H18V18H58V0Z" fill="#4285F4" />
+        <path d="M0 58V70C0 73.315 2.685 76 6 76H18V58H0Z" fill="#188038" />
+        <path d="M76 18H58V58H76V18Z" fill="#FBBC04" />
+        <path d="M76 18V6C76 2.685 73.315 0 70 0H58V18H76Z" fill="#1967D2" />
+        <path d="M58 76L76 58H58V76Z" fill="#EA4335" />
+    </svg>
+'),
+('31bd97cd-300a-494f-9712-0f50bed27e89', 'Google Meet', 'google-meet', 'https://google.com/', '', '', '
+    <svg viewBox="0 0 88 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M50 36L58.53 45.75L70 53.08L72 36.065L70 19.425L58.31 25.865L50 36Z" fill="#00832D" />
+        <path d="M0.5 51.5V66C0.5 69.315 3.185 72 6.5 72H21L24 61.04L21 51.5L11.05 48.5L0.5 51.5Z"
+            fill="#0066DA" />
+        <path d="M21 0L0.5 20.5L11.05 23.5L21 20.5L23.95 11.085L21 0Z" fill="#E94235" />
+        <path d="M21 20.5H0.5V51.5H21V20.5Z" fill="#2684FC" />
+        <path
+            d="M83.095 8.67999L70 19.425V53.08L83.15 63.865C85.12 65.405 88 64 88 61.5V11C88 8.46499 85.055 7.07499 83.095 8.67999ZM50 36V51.5H21V72H64C67.315 72 70 69.315 70 66V53.08L50 36Z"
+            fill="#00AC47" />
+        <path d="M64 0H21V20.5H50V36L70 19.425V6C70 2.685 67.315 0 64 0Z" fill="#FFBA00" />
+    </svg>
+'),
+('9174884a-a9c4-4dec-8069-ac66f47744f9', 'Google Drive', 'google-drive', 'https://drive.google.com/', '', '', '
+    <svg viewBox="0 0 88 78" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+            d="M6.95001 66.85L10.8 73.5C11.6 74.9 12.75 76 14.1 76.8L27.85 53H0.350006C0.350006 54.55 0.749988 56.1 1.54999 57.5L6.95001 66.85Z"
+            fill="#0066DA" />
+        <path
+            d="M44 25L30.25 1.20001C28.9 2.00001 27.75 3.10001 26.95 4.50001L1.54999 48.5C0.764701 49.8698 0.351052 51.4211 0.350006 53H27.85L44 25Z"
+            fill="#00AC47" />
+        <path
+            d="M73.9 76.8C75.25 76 76.4 74.9 77.2 73.5L78.8 70.75L86.45 57.5C87.25 56.1 87.65 54.55 87.65 53H60.148L66 64.5L73.9 76.8Z"
             fill="#EA4335" />
         <path
-            d="M19.6841 0.774428C19.2256 0.510223 18.6989 0.363632 18.15 0.363632H11.8517C11.3063 0.363632 10.7744 0.513632 10.3176 0.774428L11.6744 5.34431L14.9881 8.8625L15 8.88636L18.3375 5.32556L19.6841 0.774428Z"
-            fill="#188038" />
+            d="M44 25L57.75 1.2C56.4 0.400001 54.85 0 53.25 0H34.75C33.15 0 31.6 0.450001 30.25 1.2L44 25Z"
+            fill="#00832D" />
         <path
-            d="M9.48922 18.4318L4.66024 17.3239L0.122742 18.4318C0.122742 18.9602 0.259105 19.4886 0.531833 19.9642L3.68183 25.4204C3.95626 25.8943 4.34661 26.2778 4.80513 26.5437L8.14433 23.104L9.48922 18.4318Z"
-            fill="#1967D2" />
+            d="M60.15 53H27.85L14.1 76.8C15.45 77.6 17 78 18.6 78H69.4C71 78 72.55 77.55 73.9 76.8L60.15 53Z"
+            fill="#2684FC" />
         <path
-            d="M25.1369 9.39773L20.8074 1.89772C20.533 1.42216 20.1426 1.03863 19.6841 0.774429L15 8.88636L20.5108 18.4318H29.8773C29.8773 17.9017 29.7409 17.3733 29.4665 16.8977L25.1369 9.39773Z"
-            fill="#FBBC04" />
-        <path
-            d="M20.5108 18.4318H9.48921L4.80511 26.5437C5.26364 26.8079 5.79034 26.9545 6.33921 26.9545H23.6591C24.208 26.9545 24.7347 26.8079 25.1932 26.5437L20.5108 18.4318Z"
-            fill="#4285F4" />
-        <path
-            d="M15 8.88636L10.3176 0.774429C9.85911 1.03863 9.47047 1.42045 9.19604 1.89432L0.531833 16.9028C0.259105 17.3767 0.122742 17.9051 0.122742 18.4318H9.48922L15 8.88636Z"
-            fill="#34A853" />
+            d="M73.75 26.5L61.05 4.50001C60.25 3.10001 59.1 2.00001 57.75 1.20001L44 25L60.15 53H87.6C87.6 51.45 87.2 49.9 86.4 48.5L73.75 26.5Z"
+            fill="#FFBA00" />
     </svg>
 '),
 ('af495155-60b7-425c-871f-28917d91c586', 'Dropbox', 'dropbox', 'https://dropbox.com/', '', '', '
@@ -2926,67 +2934,13 @@ values
             </linearGradient>
         </defs>
     </svg>
-');
-
-insert into
-public.stacks (id, name, featured, slug, twitter, twitter_image_url, website, user_id)
-values
--- ('fbc5602c-ebef-4282-8754-d56520486498', 'Benedikt Müller', false, '_bndkt', 'bndkt', 'https://pbs.twimg.com/profile_images/1356532269322809347/b8lcrpI6_400x400.jpg', 'https://bndkt.com/', NULL),
-('4abd2df7-bd61-457f-8297-47aa33910cc8', 'Nick Milo', true, '@nickmilo', 'NickMilo', 'https://pbs.twimg.com/profile_images/1674146602355924992/S1Ys-6VE_400x400.jpg', 'https://www.linkingyourthinking.com/', NULL),
-('7eef57cd-dfb6-481d-967e-7d3a024f19d2', 'Ali Abdaal', true, '@aliabdaal', 'aliabdaal', 'https://pbs.twimg.com/profile_images/1496857274165436420/yjDjLCDh_400x400.jpg', 'https://aliabdaal.com/', NULL),
-('211b7b6b-4117-4151-b6bc-cb64214227fd', 'Tiago Forte', true, '@fortelabs', 'fortelabs', 'https://pbs.twimg.com/profile_images/1527701676521672707/YXvJP3ac_400x400.jpg', 'https://fortelabs.com/', NULL),
-('c7e04ef0-f3bd-4532-a33f-029c924c0e05', 'Thomas Frank', true, '@tomfrankly', 'TomFrankly', 'https://pbs.twimg.com/profile_images/1011750442135678976/pjQtLPdD_400x400.jpg', 'https://thomasjfrank.com/', NULL),
-('aeb47866-c97a-4c7a-9967-b98e0d2fea7c', 'Marie Poulin', true, '@mariepoulin', 'mariepoulin', 'https://pbs.twimg.com/profile_images/1327070756581244930/8cbltVhc_400x400.jpg', 'https://mariepoulin.com/', NULL),
-('061bce7c-3ee1-4660-ad34-4157d79a85ac', 'August Bradley', true, '@augustbradley', 'AugustBradley', 'https://pbs.twimg.com/profile_images/1087478571059240960/LoZXD4aY_400x400.jpg', 'https://www.yearzero.io/', NULL);
-
-insert into
-public.categorizations (tool_id, category_id)
-values
-('0115cd3b-869d-4058-94e1-a67863eb6045', 'bf4fb3cd-38d9-4135-abc7-7f291c498366'),
-('5b6a6858-d014-45b7-8dd6-4b85372663d6', 'bf4fb3cd-38d9-4135-abc7-7f291c498366'),
-('c60f8bf1-a3a7-4dee-a7f8-cef89a9a7f6a', 'bf4fb3cd-38d9-4135-abc7-7f291c498366'),
-('9ab4d55d-a1cc-402f-9fe6-d60227a6c7a6', '0e93b69f-3415-4fec-a5e6-da1f779b43a6'),
-('776cb0c8-c0d2-4071-a9e1-e0d9eae4cbd6', '0e93b69f-3415-4fec-a5e6-da1f779b43a6'),
-('0e23f13f-bb06-485d-a420-2497661dc023', 'bf4fb3cd-38d9-4135-abc7-7f291c498366'),
-('f0586aef-c792-4b6c-8d5c-8c6de1b436dc', '8f5ff296-f438-40fc-8c48-b437810385af'),
-('f2d26e2e-b59a-44bc-8673-340f0516457f', '8f5ff296-f438-40fc-8c48-b437810385af'),
-('92f307f2-6897-4831-9033-25833df73f6d', '8f5ff296-f438-40fc-8c48-b437810385af'),
-('68c52f82-7755-434d-bc07-1eee6bfe982f', 'a53d4fba-35a4-49e6-baf3-0e7bf2a1188b'),
-('95c4b2f8-9b08-462a-a4cd-b8e908b8b3df', 'f899b6d5-a1e1-48fe-96c2-ec45e00425bc'),
-('324d5413-cde6-4151-a71d-8dad2c7c05e0', '6a9095b4-132e-4625-891d-8286e92e8f92'),
-('3ce6bedb-2605-4f54-a269-89a4737b14ba', '0b8e259e-7683-4267-a1e7-e8cba6a39f19'),
-('0a2ffd37-4073-4b94-b0b7-96e03700c98f', '0b8e259e-7683-4267-a1e7-e8cba6a39f19'),
--- ('3526b556-c5da-4902-854b-267a5c71b942', ''), Salesforce
--- ('94eba581-26a2-466b-aa06-6f84b5202cc6', ''), Discord
-('b021f050-f4af-4233-9fda-6eeb4cf65544', 'd3faed2f-ea3f-4ec9-9118-e3d6db4fe42e'),
-('f40604f8-e501-4418-9238-880c13d914f9', 'f899b6d5-a1e1-48fe-96c2-ec45e00425bc'),
--- ('98d9d7de-0ae1-440c-a708-2955b82bfbf1', ''), Superhuman
-('9b4c841a-cac0-4be6-b74b-eb699a24fb46', 'bf4fb3cd-38d9-4135-abc7-7f291c498366'),
--- ('da0f681a-763a-4fe1-9785-8d9f6d7a47e0', ''), Day One
-('739e7782-5e7f-424f-9e82-0c2f39b102ce', 'bf4fb3cd-38d9-4135-abc7-7f291c498366'),
-('e5dcb6e8-2728-42dc-9895-544192f9cb1c', 'bf4fb3cd-38d9-4135-abc7-7f291c498366'),
--- ('a1587dcb-2676-4408-acb5-147a446d1435', ''), Slack
-('1a2e7f2f-192b-4c5c-88c8-4a5971caa4e9', '5b4d499c-114e-472f-baa9-3adc7685936c'),
-('3c1419d1-802d-40ad-ab17-5b4240ec06b5', '5b4d499c-114e-472f-baa9-3adc7685936c'),
-('1ce3f168-0d7a-438f-b499-515a17276230', 'f899b6d5-a1e1-48fe-96c2-ec45e00425bc'),
-('603ec4b3-4ea4-4ef7-b2a6-ec0536f58de4', 'f899b6d5-a1e1-48fe-96c2-ec45e00425bc');
-
-insert into
-public.picks (stack_id, category_id, tool_id)
-values
--- ('fbc5602c-ebef-4282-8754-d56520486498', 'bf4fb3cd-38d9-4135-abc7-7f291c498366', '0115cd3b-869d-4058-94e1-a67863eb6045'), -- Benedikt
--- ('fbc5602c-ebef-4282-8754-d56520486498', '0e93b69f-3415-4fec-a5e6-da1f779b43a6', '9ab4d55d-a1cc-402f-9fe6-d60227a6c7a6'), -- Benedikt
--- ('fbc5602c-ebef-4282-8754-d56520486498', '8f5ff296-f438-40fc-8c48-b437810385af', 'f0586aef-c792-4b6c-8d5c-8c6de1b436dc'), -- Benedikt
-('4abd2df7-bd61-457f-8297-47aa33910cc8', 'bf4fb3cd-38d9-4135-abc7-7f291c498366', '0115cd3b-869d-4058-94e1-a67863eb6045'), -- Nick Milo
-('7eef57cd-dfb6-481d-967e-7d3a024f19d2', 'bf4fb3cd-38d9-4135-abc7-7f291c498366', '5b6a6858-d014-45b7-8dd6-4b85372663d6'), -- Ali Abdaal, Notion
-('211b7b6b-4117-4151-b6bc-cb64214227fd', 'bf4fb3cd-38d9-4135-abc7-7f291c498366', '0e23f13f-bb06-485d-a420-2497661dc023'), -- Tiago Forte, Evernote
-('c7e04ef0-f3bd-4532-a33f-029c924c0e05', 'bf4fb3cd-38d9-4135-abc7-7f291c498366', '5b6a6858-d014-45b7-8dd6-4b85372663d6'), -- Thomas Frank, Notion
-('aeb47866-c97a-4c7a-9967-b98e0d2fea7c', 'bf4fb3cd-38d9-4135-abc7-7f291c498366', '5b6a6858-d014-45b7-8dd6-4b85372663d6'), -- Marie Poulin, Notion
-('061bce7c-3ee1-4660-ad34-4157d79a85ac', 'bf4fb3cd-38d9-4135-abc7-7f291c498366', '5b6a6858-d014-45b7-8dd6-4b85372663d6'); -- August Bradley, Notion
-
-/* insert into
-public.stars (user_id, stack_id, category_id, tool_id)
-values
-('6a6d9730-acf6-465e-851b-c19d2f5d533b', 'fbc5602c-ebef-4282-8754-d56520486498', NULL, NULL), -- Benedikt
-('6a6d9730-acf6-465e-851b-c19d2f5d533b', '4abd2df7-bd61-457f-8297-47aa33910cc8', NULL, NULL); -- Benedikt
-*/
+')
+on conflict (id)
+do update set
+    name = EXCLUDED.name,
+    slug = EXCLUDED.slug,
+    website = EXCLUDED.website,
+    twitter = EXCLUDED.twitter,
+    color = EXCLUDED.color,
+    icon = EXCLUDED.icon
+;
