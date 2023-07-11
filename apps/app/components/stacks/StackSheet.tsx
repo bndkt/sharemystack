@@ -135,13 +135,20 @@ export function StackSheet({
             />
           </YStack>
         ) : (
-          <CategoryList
-            categories={categories}
-            onPress={(category: string | null) => {
-              console.log("Category:", category);
-              setCategory(category);
-            }}
-          />
+          <YStack fullscreen>
+            <YStack paddingHorizontal="$3">
+              <Button onPress={() => bottomSheetModalRef.current?.close()}>
+                Close
+              </Button>
+            </YStack>
+            <CategoryList
+              categories={categories}
+              onPress={(category: string | null) => {
+                console.log("Category:", category);
+                setCategory(category);
+              }}
+            />
+          </YStack>
         )}
       </BottomSheetModal>
     </BottomSheetModalProvider>

@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
+import { YStack } from "tamagui";
 
 import { Loading } from "@/components/Loading";
+import { SuggestionButton } from "@/components/SuggestionButton";
 import { ToolList } from "@/components/tools/ToolList";
 import { ToolsResponse, getTools } from "@/lib/database/getTools";
 
@@ -24,13 +26,16 @@ export default function Tools() {
   return loading ? (
     <Loading />
   ) : (
-    <ToolList
-      tools={tools}
-      onRefresh={() => {
-        setRefreshing(true);
-        loadData();
-      }}
-      refreshing={refreshing}
-    />
+    <YStack fullscreen>
+      <ToolList
+        tools={tools}
+        onRefresh={() => {
+          setRefreshing(true);
+          loadData();
+        }}
+        refreshing={refreshing}
+      />
+      <SuggestionButton suggestion="tool" />
+    </YStack>
   );
 }

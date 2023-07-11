@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
+import { YStack } from "tamagui";
 
 import { Loading } from "@/components/Loading";
+import { SuggestionButton } from "@/components/SuggestionButton";
 import { CategoryList } from "@/components/categories/CategoryList";
 import {
   getCategories,
@@ -28,14 +30,17 @@ export default function Categories() {
   return loading ? (
     <Loading />
   ) : (
-    <CategoryList
-      categories={categories}
-      suggestionButton={true}
-      onRefresh={() => {
-        setRefreshing(true);
-        loadData();
-      }}
-      refreshing={refreshing}
-    />
+    <YStack fullscreen>
+      <CategoryList
+        categories={categories}
+        suggestionButton={true}
+        onRefresh={() => {
+          setRefreshing(true);
+          loadData();
+        }}
+        refreshing={refreshing}
+      />
+      <SuggestionButton suggestion="category" />
+    </YStack>
   );
 }
