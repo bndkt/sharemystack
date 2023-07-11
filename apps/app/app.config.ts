@@ -2,6 +2,18 @@ import { ExpoConfig } from "expo/config";
 
 const projectId = "c68d7a2f-d33a-4220-b4c3-148177066a75";
 
+const hooks: ExpoConfig["hooks"] = { postPublish: [] };
+
+if (process.env.SENTRY_AUTH_TOKEN) {
+  hooks.postPublish?.push({
+    file: "sentry-expo/upload-sourcemaps",
+    config: {
+      organization: "feldapp",
+      project: "sharemystack",
+    },
+  });
+}
+
 const config: ExpoConfig = {
   name: "Share My Stack",
   slug: "sharemystack",
@@ -64,17 +76,7 @@ const config: ExpoConfig = {
     ["expo-router", { headOrigin: "https://sharemystack.com" }],
     "expo-apple-authentication",
   ],
-  hooks: {
-    postPublish: [
-      {
-        file: "sentry-expo/upload-sourcemaps",
-        config: {
-          organization: "feldapp",
-          project: "sharemystack",
-        },
-      },
-    ],
-  },
+  hooks,
   runtimeVersion: {
     policy: "sdkVersion",
   },
