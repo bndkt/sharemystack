@@ -97,7 +97,7 @@ export function List<T>({
                 title={title(item)}
                 subTitle={subTitle && subTitle(item)}
                 icon={icon && icon(item)}
-                iconAfter={iconAfter && iconAfter(item)}
+                // iconAfter={iconAfter && iconAfter(item)}
               />
             )}
           </SwipeableRow>

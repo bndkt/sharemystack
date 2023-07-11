@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 
+import { Loading } from "@/components/Loading";
 import { StackList } from "@/components/stacks/StackList";
 import { StacksResponse, getStacks } from "@/lib/database/getStacks";
-import { Loading } from "@/components/Loading";
 
 export default function UpdatedStacks() {
   const [loading, setLoading] = useState(true);

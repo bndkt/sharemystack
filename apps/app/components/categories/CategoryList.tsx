@@ -1,4 +1,5 @@
 import { Text, YStack } from "tamagui";
+import { ChevronRight } from "@tamagui/lucide-icons";
 
 import { List } from "../List";
 import { CategoriesResponse } from "../../lib/database/getCategories";
@@ -25,7 +26,11 @@ export function CategoryList({
         href={
           !onPress && false ? (item) => `/categories/${item.slug}` : undefined // Deactivated
         }
-        onPress={onPress ? (item) => onPress(item.id) : undefined}
+        onPress={
+          onPress
+            ? (item) => (!item.soon ? onPress(item.id) : undefined)
+            : undefined
+        }
         title={(item) =>
           item.soon ? <Text color="$gray8">{item.name}</Text> : item.name
         }
@@ -44,6 +49,9 @@ export function CategoryList({
             color={item.soon ? "$gray8" : undefined}
           />
         )}
+        iconAfter={(item) =>
+          item.soon ? undefined : <ChevronRight size="$1" />
+        }
         onRefresh={onRefresh}
         refreshing={refreshing}
       />

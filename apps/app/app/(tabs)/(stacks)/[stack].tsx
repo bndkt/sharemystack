@@ -1,13 +1,14 @@
+import { Star } from "@tamagui/lucide-icons";
 import { Stack, useLocalSearchParams } from "expo-router";
 import { useEffect, useState } from "react";
 import { Button, H3, Text, XStack, YStack } from "tamagui";
+import { customEvent } from "vexo-analytics";
 
 import { Loading } from "@/components/Loading";
+import { useAuth } from "@/components/providers/AuthProvider";
 import { PickList } from "@/components/stacks/PickList";
 import { StackResponse, getStack } from "@/lib/database/getStack";
-import { Star } from "@tamagui/lucide-icons";
 import { supabase } from "@/lib/supabase";
-import { useAuth } from "@/components/providers/AuthProvider";
 
 export default function Index() {
   const { stack: slug } = useLocalSearchParams<{ stack: string }>();
@@ -30,6 +31,12 @@ export default function Index() {
 
   function toggleStar() {
     setIsStarred(!isStarred);
+
+    if (!isStarred) {
+      customEvent("starred", {
+        stack: stack?.id,
+      });
+    }
 
     if (user?.id && stack?.id) {
       const query = !isStarred

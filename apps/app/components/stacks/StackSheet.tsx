@@ -104,6 +104,7 @@ export function StackSheet({
         handleStyle={{
           backgroundColor: theme.background.val,
         }}
+        backgroundStyle={{ backgroundColor: theme.background.val }}
       >
         {isLoading ? (
           <Loading />
