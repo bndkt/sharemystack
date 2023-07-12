@@ -56,19 +56,18 @@ function MyStack() {
   }
 
   function save() {
-    console.log("save");
     if (stack && slug && isValidSlug(slug)) {
-      setEditing(false);
-      return;
-      /* const query = supabase
+      setLoading(true);
+
+      const query = supabase
         .from("stacks")
         .update({ slug, name })
         .match({ id: stack.id });
       query.then((result) => {
-        // console.log({ result });
+        console.log({ result });
         setEditing(false);
-        // setRefresh(true);
-      }); */
+        setRefresh(true);
+      });
     }
   }
 
@@ -88,7 +87,7 @@ function MyStack() {
         <XStack alignContent="center">
           <YStack flexGrow={1}>
             {editing ? (
-              <XStack>
+              <XStack alignItems="center">
                 <Input
                   value={name ?? ""}
                   onChangeText={(text) => setName(text)}
@@ -100,7 +99,7 @@ function MyStack() {
                   icon={<Save size="$1" />}
                   unstyled
                   justifyContent="center"
-                  marginLeft="$2"
+                  marginLeft="$3"
                   onPress={save}
                 />
               </XStack>
@@ -111,7 +110,7 @@ function MyStack() {
               <XStack>
                 <Input
                   value={slug ?? ""}
-                  onChangeText={(text) => setSlug(text)}
+                  onChangeText={(text) => isValidSlug(text) && setSlug(text)}
                   borderTopWidth={0}
                   borderTopStartRadius={0}
                   borderTopEndRadius={0}
@@ -121,7 +120,7 @@ function MyStack() {
                   icon={<Undo2 size="$1" />}
                   unstyled
                   justifyContent="center"
-                  marginLeft="$2"
+                  marginLeft="$3"
                   onPress={cancel}
                 />
               </XStack>
