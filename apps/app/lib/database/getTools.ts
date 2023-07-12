@@ -3,7 +3,7 @@ import { supabase } from "../supabase";
 export const getTools = async ({
   search,
   category,
-  limit = 25,
+  limit = 100,
 }: {
   search?: string;
   category?: string;
