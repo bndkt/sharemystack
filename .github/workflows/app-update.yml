@@ -26,6 +26,12 @@ jobs:
         with:
           expo-token: ${{ secrets.EXPO_TOKEN }}
       - name: 📢 Publish update
-        run: TAMAGUI_TARGET=native eas update --non-interactive -p ios --branch=${{ inputs.branch }} --message=${{ github.sha }}
+        run: eas update --non-interactive -p ios --branch=${{ inputs.branch }} --message=${{ github.sha }}
         working-directory: ./apps/app
         if: ${{ inputs.branch }}
+        env:
+          TAMAGUI_TARGET: "native"
+          EXPO_PUBLIC_SUPABASE_URL: ${{ secrets.EXPO_PUBLIC_SUPABASE_URL }}
+          EXPO_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.EXPO_PUBLIC_SUPABASE_ANON_KEY }}
+          EXPO_PUBLIC_MIXPANEL_TOKEN: ${{ secrets.EXPO_PUBLIC_MIXPANEL_TOKEN }}
+          EXPO_PUBLIC_VEXO_API_KEY: ${{ secrets.EXPO_PUBLIC_VEXO_API_KEY }}
