@@ -17,6 +17,7 @@ values
 ('f370ab2a-7abb-4ad8-a501-58a25bb559f4', 'Email Client', 'email-client', 'Mail', false),
 ('86f3c1ef-3cfb-46e4-841d-3f2e1d9d1843', 'File Hosting', 'file-hosting', 'File', false),
 ('7c470aa0-e03c-4542-ba46-6983b51c8ae0', 'Video Conferencing', 'video-conferencing', 'Video', false),
+('ec5b8a05-80a5-4c72-abf1-0082c763d9fd', 'Instant Messaging', 'instant-messaging', 'MessageCircle', false),
 ('0b8e259e-7683-4267-a1e7-e8cba6a39f19', 'Task Management', 'task-management', 'CheckSquare', false)
 on conflict (id)
 do update set
@@ -79,6 +80,11 @@ values
 ('c481dac2-17d7-4b63-b07d-8e9fd267f499', '7c470aa0-e03c-4542-ba46-6983b51c8ae0'), -- Microsoft Teams
 ('31bd97cd-300a-494f-9712-0f50bed27e89', '7c470aa0-e03c-4542-ba46-6983b51c8ae0'), -- Google Meet
 ('5f526565-81a5-4944-be2c-b6ce9cefed93', '7c470aa0-e03c-4542-ba46-6983b51c8ae0'), -- Zoom
+-- Instant Messaging
+('3a1fcf9e-61af-468b-b299-375f48d4ebe1', 'ec5b8a05-80a5-4c72-abf1-0082c763d9fd'), -- WhatsApp
+-- ('', 'ec5b8a05-80a5-4c72-abf1-0082c763d9fd'), -- iMessage
+('5e2a51d2-c8f2-4813-aa28-2a3be8ce6e79', 'ec5b8a05-80a5-4c72-abf1-0082c763d9fd'), -- Signal
+('19dc4b7c-6f8d-4e1d-a1e4-67567bd25368', 'ec5b8a05-80a5-4c72-abf1-0082c763d9fd'), -- Telegram
 -- File Hosting
 ('a37e164f-f6a9-4412-9579-083fe5f725d7', '86f3c1ef-3cfb-46e4-841d-3f2e1d9d1843'), -- OneDrive
 ('4c55bed6-cf33-4800-b050-ee45a67bee9c', '86f3c1ef-3cfb-46e4-841d-3f2e1d9d1843'), -- Box
