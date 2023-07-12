@@ -17,7 +17,7 @@ export default function Index() {
   const [stack, setStack] = useState<StackResponse["data"]>(null);
   const [isStarred, setIsStarred] = useState(false);
 
-  const { user } = useAuth();
+  const { user, session } = useAuth();
 
   useEffect(() => {
     if (slug && !stack) {
@@ -69,19 +69,21 @@ export default function Index() {
             <H3>{stack.name}</H3>
             <Text>{stack.slug}</Text>
           </YStack>
-          <YStack justifyContent="center">
-            <Button
-              icon={
-                <Star
-                  color="gray"
-                  fill={isStarred ? "gray" : "transparent"}
-                  size="$1"
-                />
-              }
-              unstyled
-              onPress={toggleStar}
-            />
-          </YStack>
+          {session && (
+            <YStack justifyContent="center">
+              <Button
+                icon={
+                  <Star
+                    color="gray"
+                    fill={isStarred ? "gray" : "transparent"}
+                    size="$1"
+                  />
+                }
+                unstyled
+                onPress={toggleStar}
+              />
+            </YStack>
+          )}
         </XStack>
         <PickList picks={stack.picks_view} />
       </YStack>
