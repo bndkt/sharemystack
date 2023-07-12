@@ -21,6 +21,7 @@ export default function Index() {
           margin="$3"
           onPress={() => router.push("/stacks/my")}
           backgroundColor="$sms"
+          color="$background"
         >
           Go to my stack
         </Button>
