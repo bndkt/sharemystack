@@ -17,7 +17,9 @@ export const getStacks = async ({
       "id, name, slug, website, twitter, twitter_image_url, starred, stars"
     );
   if (updated) {
-    query = query.order("updated_at", { ascending: false });
+    query = query
+      .not("name", "is", "null")
+      .order("updated_at", { ascending: false });
   }
   if (featured) {
     query = query.eq("featured", true);
