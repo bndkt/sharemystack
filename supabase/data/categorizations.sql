@@ -37,6 +37,7 @@ values
 ('9b4c841a-cac0-4be6-b74b-eb699a24fb46', 'bf4fb3cd-38d9-4135-abc7-7f291c498366'), -- RemNote
 ('739e7782-5e7f-424f-9e82-0c2f39b102ce', 'bf4fb3cd-38d9-4135-abc7-7f291c498366'), -- Logseq
 ('e5dcb6e8-2728-42dc-9895-544192f9cb1c', 'bf4fb3cd-38d9-4135-abc7-7f291c498366'), -- Tana
+('7d5a14f8-f5a1-4163-b9fe-075d8979f6f5', 'bf4fb3cd-38d9-4135-abc7-7f291c498366'), -- Bear
 -- Password Management
 ('9ab4d55d-a1cc-402f-9fe6-d60227a6c7a6', '0e93b69f-3415-4fec-a5e6-da1f779b43a6'), -- 1Password
 ('776cb0c8-c0d2-4071-a9e1-e0d9eae4cbd6', '0e93b69f-3415-4fec-a5e6-da1f779b43a6'), -- LastPass
