@@ -8,7 +8,7 @@
     "web": "TAMAGUI_TARGET=web expo start --web --clear",
     "doc": "npx expo-doctor@latest",
     "build:prod": "eas build --profile production --platform ios --non-interactive --auto-submit",
-    "build:local": "eas build --profile simulator --platform ios --local",
+    "build:local": "eas build --profile simulator --platform ios --non-interactive --local",
     "types": "supabase gen types typescript --local > lib/database.types.ts",
     "lint": "eslint app lib",
     "eas-build-pre-install": "corepack enable && corepack prepare pnpm@latest-8 --activate"
@@ -29,7 +29,7 @@
     "@tamagui/toast": "^1.39.7",
     "babel-plugin-transform-inline-environment-variables": "^0.4.4",
     "burnt": "^0.11.7",
-    "expo": "49.0.2",
+    "expo": "~49.0.3",
     "expo-apple-authentication": "~6.1.0",
     "expo-application": "~5.3.0",
     "expo-auth-session": "~5.0.2",
