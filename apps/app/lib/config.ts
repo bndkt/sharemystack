@@ -1,3 +1,3 @@
 export const config = {
-  formsLink: "https://sharemystack.canny.io/",
+  feedbackLink: "https://sharemystack.canny.io/",
 };

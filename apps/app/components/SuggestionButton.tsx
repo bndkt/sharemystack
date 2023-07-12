@@ -16,7 +16,7 @@ export function SuggestionButton({
   return (
     <Button
       onPress={() => {
-        WebBrowser.openBrowserAsync(config.formsLink);
+        WebBrowser.openBrowserAsync(config.feedbackLink);
       }}
       icon={icon ?? <PlusCircle />}
       margin="$3"
