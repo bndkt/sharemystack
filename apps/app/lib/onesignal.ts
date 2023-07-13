@@ -14,7 +14,7 @@ OneSignal.setNotificationWillShowInForegroundHandler(
       "OneSignal: notification will show in foreground:",
       notificationReceivedEvent
     );
-    let notification = notificationReceivedEvent.getNotification();
+    const notification = notificationReceivedEvent.getNotification();
     console.log("notification: ", notification);
     const data = notification.additionalData;
     console.log("additionalData: ", data);

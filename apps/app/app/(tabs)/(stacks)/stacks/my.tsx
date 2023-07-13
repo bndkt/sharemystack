@@ -1,5 +1,6 @@
 import { Edit, Save, Trash2, Undo2 } from "@tamagui/lucide-icons";
 import { useEffect, useRef, useState } from "react";
+import { TextInput } from "react-native";
 import { Button, H3, H4, Input, Text, XStack, YStack } from "tamagui";
 
 import { Loading } from "@/components/Loading";
@@ -11,7 +12,6 @@ import { StackSheet } from "@/components/stacks/StackSheet";
 import { StackResponse, getStack } from "@/lib/database/getStack";
 import { supabase } from "@/lib/supabase";
 import { isValidSlug } from "@/lib/validation";
-import { TextInput } from "react-native";
 
 function MyStack() {
   const [isLoading, setLoading] = useState(true);
