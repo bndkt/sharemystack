@@ -222,6 +222,9 @@ importers:
       react-dom:
         specifier: 18.2.0
         version: 18.2.0(react@18.2.0)
+      react-qr-code:
+        specifier: ^2.0.11
+        version: 2.0.11(react@18.2.0)
     devDependencies:
       '@cloudflare/workers-types':
         specifier: ^3.19.0
@@ -2890,7 +2893,7 @@ packages:
       '@expo/json-file': 8.2.37
       debug: 4.3.4
       expo-modules-autolinking: 1.5.0
-      fs-extra: 9.0.0
+      fs-extra: 9.1.0
       resolve-from: 5.0.0
       semver: 7.5.3
       xml2js: 0.6.0
@@ -12685,6 +12688,10 @@ packages:
     resolution: {integrity: sha512-rRV+zQD8tVFys26lAGR9WUuS4iUAngJScM+ZRSKtvl5tKeZ2t5bvdNFdNHBW9FWR4guGHlgmsZ1G7BSm2wTbuA==}
     engines: {node: '>=6'}
 
+  /qr.js@0.0.0:
+    resolution: {integrity: sha512-c4iYnWb+k2E+vYpRimHqSu575b1/wKl4XFeJGpFmrJQz5I88v9aY2czh7s0w36srfCM1sXgC/xpoJz5dJfq+OQ==}
+    dev: false
+
   /qrcode-terminal@0.11.0:
     resolution: {integrity: sha512-Uu7ii+FQy4Qf82G4xu7ShHhjhGahEpCWc3x8UavY3CTcWV+ufmmCtwkr7ZKsX42jdL0kr1B5FKUeqJvAn51jzQ==}
     hasBin: true
@@ -13050,6 +13057,20 @@ packages:
       - encoding
       - supports-color
       - utf-8-validate
+    dev: false
+
+  /react-qr-code@2.0.11(react@18.2.0):
+    resolution: {integrity: sha512-P7mvVM5vk9NjGdHMt4Z0KWeeJYwRAtonHTghZT2r+AASinLUUKQ9wfsGH2lPKsT++gps7hXmaiMGRvwTDEL9OA==}
+    peerDependencies:
+      react: ^16.x || ^17.x || ^18.x
+      react-native-svg: '*'
+    peerDependenciesMeta:
+      react-native-svg:
+        optional: true
+    dependencies:
+      prop-types: 15.8.1
+      qr.js: 0.0.0
+      react: 18.2.0
     dev: false
 
   /react-refresh@0.14.0:
