@@ -8,6 +8,7 @@ import "@/lib/polyfill";
 import "@/lib/sentry";
 import "@/lib/vexo";
 import "@/lib/mixpanel";
+import "@/lib/onesignal";
 import { AuthProvider } from "@/components/providers/AuthProvider";
 import { NavigationThemeProvider } from "@/components/providers/NavigationThemeProvider";
 import config from "@/tamagui.config";

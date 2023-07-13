@@ -88,7 +88,10 @@ const config: ExpoConfig = {
     [
       "onesignal-expo-plugin",
       {
-        mode: "development",
+        mode:
+          process.env.APP_VARIANT === "production"
+            ? "production"
+            : "development",
       },
     ],
   ],
