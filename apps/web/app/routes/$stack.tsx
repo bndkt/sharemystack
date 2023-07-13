@@ -5,10 +5,8 @@ import QRCode from "react-qr-code";
 import { config } from "~/lib/config";
 
 export async function loader({ params }: LoaderArgs) {
-  console.log(params.stack);
-
   return {
-    stack: params.stack,
+    stack: params.stack?.toLowerCase().substring(1),
   };
 }
 
