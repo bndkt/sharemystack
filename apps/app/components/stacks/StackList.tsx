@@ -17,7 +17,7 @@ export function StackList({
     <YStack fullscreen>
       <List
         data={stacks}
-        href={(item) => `/(stacks)/${item.slug}`}
+        href={(item) => `/(stacks)/@${item.slug}`}
         title={(item) => item.name}
         subTitle={(item) => `@${item.slug}`}
         icon={(item) => <ImageIcon src={item.twitter_image_url} />}

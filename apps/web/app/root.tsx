@@ -18,6 +18,7 @@ import { createBrowserClient } from "@supabase/auth-helpers-remix";
 
 import stylesheet from "./tailwind.css";
 import { Database } from "./lib/database.types";
+import { Header } from "./components/Header";
 
 export const meta: V2_MetaFunction = () => [
   {
@@ -83,7 +84,8 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className="bg-sharemystack">
+        <Header />
         <Outlet context={{ supabase }} />
         <ScrollRestoration />
         <Scripts />

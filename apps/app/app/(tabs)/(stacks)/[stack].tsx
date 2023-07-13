@@ -11,7 +11,8 @@ import { StackResponse, getStack } from "@/lib/database/getStack";
 import { supabase } from "@/lib/supabase";
 
 export default function Index() {
-  const { stack: slug } = useLocalSearchParams<{ stack: string }>();
+  let { stack: slug } = useLocalSearchParams<{ stack: string }>();
+  slug = slug?.toLowerCase().substring(1);
 
   const [isLoading, setLoading] = useState(true);
   const [stack, setStack] = useState<StackResponse["data"]>(null);
