@@ -94,6 +94,9 @@ export function CreateStack({ refresh }: { refresh: () => void }) {
             borderColor={validate && !isValidSlug(slug) ? "$red10" : undefined}
             onFocus={() => setValidate(false)}
             ref={slugRef}
+            autoCapitalize="none"
+            autoComplete="off"
+            autoCorrect={false}
           />
         </XStack>
       </YStack>

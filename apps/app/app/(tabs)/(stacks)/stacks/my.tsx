@@ -1,5 +1,5 @@
 import { Edit, Save, Trash2, Undo2 } from "@tamagui/lucide-icons";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button, H3, H4, Input, Text, XStack, YStack } from "tamagui";
 
 import { Loading } from "@/components/Loading";
@@ -11,6 +11,7 @@ import { StackSheet } from "@/components/stacks/StackSheet";
 import { StackResponse, getStack } from "@/lib/database/getStack";
 import { supabase } from "@/lib/supabase";
 import { isValidSlug } from "@/lib/validation";
+import { TextInput } from "react-native";
 
 function MyStack() {
   const [isLoading, setLoading] = useState(true);
@@ -20,6 +21,9 @@ function MyStack() {
   const [slug, setSlug] = useState<string | null | undefined>();
   const [stack, setStack] = useState<StackResponse["data"]>(null);
   const { user } = useAuth();
+  const [validate, setValidate] = useState(false);
+  const nameRef = useRef<TextInput>(null);
+  const slugRef = useRef<TextInput>(null);
 
   useEffect(() => {
     if (user && (!stack || refresh)) {
@@ -46,6 +50,9 @@ function MyStack() {
   }
 
   function save() {
+    nameRef.current?.blur();
+    slugRef.current?.blur();
+    setValidate(true);
     if (stack && slug && isValidSlug(slug)) {
       setLoading(true);
 
@@ -62,6 +69,7 @@ function MyStack() {
   }
 
   function cancel() {
+    setValidate(false);
     if (stack) {
       setName(stack.name);
       setSlug(stack.slug);
@@ -84,6 +92,10 @@ function MyStack() {
                   borderBottomStartRadius={0}
                   borderBottomEndRadius={0}
                   flexGrow={1}
+                  ref={nameRef}
+                  borderColor={validate && !name ? "$red10" : undefined}
+                  placeholder="Name"
+                  onFocus={() => setValidate(false)}
                 />
                 <Button
                   icon={<Save size="$1" />}
@@ -107,11 +119,18 @@ function MyStack() {
                   borderBottomEndRadius={0}
                   editable={false}
                   paddingRight={0}
+                  borderColor={
+                    validate && !isValidSlug(slug) ? "$red10" : undefined
+                  }
                 />
                 <Input
                   value={slug ?? ""}
                   onChangeText={(text) =>
-                    isValidSlug(text, true) && setSlug(text.toLowerCase())
+                    (!text || isValidSlug(text, true)) &&
+                    setSlug(text.toLowerCase())
+                  }
+                  borderColor={
+                    validate && !isValidSlug(slug) ? "$red10" : undefined
                   }
                   borderLeftWidth={0}
                   borderTopWidth={0}
@@ -120,6 +139,12 @@ function MyStack() {
                   borderBottomStartRadius={0}
                   paddingLeft={0}
                   flexGrow={1}
+                  autoCapitalize="none"
+                  autoComplete="off"
+                  autoCorrect={false}
+                  ref={slugRef}
+                  placeholder="handle"
+                  onFocus={() => setValidate(false)}
                 />
                 <Button
                   icon={<Undo2 size="$1" />}
