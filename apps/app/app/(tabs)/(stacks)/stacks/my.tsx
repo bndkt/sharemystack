@@ -11,9 +11,9 @@ import { StackSheet } from "@/components/stacks/StackSheet";
 import { StackResponse, getStack } from "@/lib/database/getStack";
 import { supabase } from "@/lib/supabase";
 
-function isValidSlug(str: string): boolean {
+function isValidSlug(str: string, ignoreLength = false): boolean {
   // Ensure the slug is at least 3 characters long
-  if (str.length < 3) {
+  if (str.length < 3 && !ignoreLength) {
     return false;
   }
 
@@ -107,13 +107,28 @@ function MyStack() {
               <H3>{stack.name ?? "<Unnamed stack>"}</H3>
             )}
             {editing ? (
-              <XStack>
+              <XStack alignItems="center">
                 <Input
-                  value={slug ?? ""}
-                  onChangeText={(text) => isValidSlug(text) && setSlug(text)}
+                  value="@"
                   borderTopWidth={0}
                   borderTopStartRadius={0}
                   borderTopEndRadius={0}
+                  borderRightWidth={0}
+                  borderBottomEndRadius={0}
+                  editable={false}
+                  paddingRight={0}
+                />
+                <Input
+                  value={slug ?? ""}
+                  onChangeText={(text) =>
+                    isValidSlug(text, true) && setSlug(text.toLowerCase())
+                  }
+                  borderLeftWidth={0}
+                  borderTopWidth={0}
+                  borderTopStartRadius={0}
+                  borderTopEndRadius={0}
+                  borderBottomStartRadius={0}
+                  paddingLeft={0}
                   flexGrow={1}
                 />
                 <Button
@@ -125,7 +140,7 @@ function MyStack() {
                 />
               </XStack>
             ) : (
-              <H4>{stack.slug}</H4>
+              <H4>@{stack.slug}</H4>
             )}
           </YStack>
           {!editing && (

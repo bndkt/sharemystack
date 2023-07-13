@@ -19,7 +19,7 @@ export function StackList({
         data={stacks}
         href={(item) => `/(stacks)/${item.slug}`}
         title={(item) => item.name}
-        subTitle={(item) => item.slug}
+        subTitle={(item) => `@${item.slug}`}
         icon={(item) => <ImageIcon src={item.twitter_image_url} />}
         onRefresh={onRefresh}
         refreshing={refreshing}
