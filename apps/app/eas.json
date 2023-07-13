@@ -8,7 +8,10 @@
     "development": {
       "channel": "main",
       "developmentClient": true,
-      "distribution": "internal"
+      "distribution": "internal",
+      "env": {
+        "APP_VARIANT": "development"
+      }
     },
     "simulator": {
       "extends": "development",
@@ -26,7 +29,7 @@
         "autoIncrement": "buildNumber"
       },
       "env": {
-        "EXPO_USE_PATH_ALIASES": "true"
+        "APP_VARIANT": "development"
       }
     }
   },

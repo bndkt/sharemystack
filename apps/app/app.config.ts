@@ -1,6 +1,16 @@
 import { ExpoConfig } from "expo/config";
 
 const projectId = "c68d7a2f-d33a-4220-b4c3-148177066a75";
+const name =
+  process.env.APP_VARIANT === "production" ? "Share My Stack" : "SMS Dev";
+const bundleIdentifier =
+  process.env.APP_VARIANT === "production"
+    ? "com.sharemystack"
+    : "com.sharemystack.dev";
+const scheme =
+  process.env.APP_VARIANT === "production"
+    ? "sharemystack"
+    : "sharemystack-dev";
 
 const hooks: ExpoConfig["hooks"] = { postPublish: [] };
 
@@ -15,9 +25,9 @@ if (process.env.SENTRY_AUTH_TOKEN) {
 }
 
 const config: ExpoConfig = {
-  name: "Share My Stack",
+  name,
   slug: "sharemystack",
-  scheme: "sharemystack",
+  scheme,
   owner: "mueller",
   version: "1.0.0",
   orientation: "portrait",
@@ -41,7 +51,7 @@ const config: ExpoConfig = {
   assetBundlePatterns: ["**/*"],
   ios: {
     supportsTablet: true,
-    bundleIdentifier: "com.sharemystack",
+    bundleIdentifier,
     config: {
       usesNonExemptEncryption: false,
     },
@@ -75,6 +85,12 @@ const config: ExpoConfig = {
     "sentry-expo",
     ["expo-router", { headOrigin: "https://sharemystack.com" }],
     "expo-apple-authentication",
+    [
+      "onesignal-expo-plugin",
+      {
+        mode: "development",
+      },
+    ],
   ],
   hooks,
   runtimeVersion: {
