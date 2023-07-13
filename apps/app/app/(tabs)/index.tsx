@@ -1,9 +1,9 @@
 import { MessageSquare } from "@tamagui/lucide-icons";
+import { useRouter } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Button, H3, Text, YStack } from "tamagui";
 
 import { SuggestionButton } from "@/components/SuggestionButton";
-import { useRouter } from "expo-router";
 
 export default function Index() {
   const router = useRouter();

@@ -10,17 +10,7 @@ import { PickList } from "@/components/stacks/PickList";
 import { StackSheet } from "@/components/stacks/StackSheet";
 import { StackResponse, getStack } from "@/lib/database/getStack";
 import { supabase } from "@/lib/supabase";
-
-function isValidSlug(str: string, ignoreLength = false): boolean {
-  // Ensure the slug is at least 3 characters long
-  if (str.length < 3 && !ignoreLength) {
-    return false;
-  }
-
-  // Ensure the slug only contains alphanumeric characters (letters and numbers)
-  const alphanumericRegex = /^[a-z0-9]+$/i;
-  return alphanumericRegex.test(str);
-}
+import { isValidSlug } from "@/lib/validation";
 
 function MyStack() {
   const [isLoading, setLoading] = useState(true);
