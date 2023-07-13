@@ -12,10 +12,9 @@ export default function Index() {
     <SafeAreaView>
       <YStack>
         <H3 padding="$3">Welcome to Share My Stack</H3>
-        <Text padding="$3">
-          This app is very much work in progress. I'm releasing it as a MVP
-          (Minimum Viable Product). That means that it's not finished yet, but
-          the very basic functionality is there and you can give it a try!
+        <Text padding="$3" paddingTop="$0" fontSize="$6" lineHeight="$6">
+          Curate your personal productivity stack to share it with the world and
+          discover which tools others are using.
         </Text>
         <Button
           margin="$3"
