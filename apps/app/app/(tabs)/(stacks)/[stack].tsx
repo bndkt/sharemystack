@@ -67,7 +67,7 @@ export default function Index() {
         <XStack padding="$3">
           <YStack flexGrow={1}>
             <H3>{stack.name}</H3>
-            <Text>{stack.slug}</Text>
+            <Text>@{stack.slug}</Text>
           </YStack>
           {session && (
             <YStack justifyContent="center">
