@@ -3,6 +3,7 @@ import { useRouter } from "expo-router";
 import { AuthUser, AuthSession } from "@supabase/supabase-js";
 
 import { supabase } from "../../lib/supabase";
+import { updateOneSignalProfile } from "@/lib/onesignal";
 
 const AuthContext = React.createContext<{
   session: AuthSession | null;
@@ -52,6 +53,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }) {
     setSession(session);
     setUser(user);
+    user && updateOneSignalProfile(user.id, user.email);
   }
 
   async function signOut() {

@@ -27,3 +27,9 @@ OneSignal.setNotificationWillShowInForegroundHandler(
 OneSignal.setNotificationOpenedHandler((notification) => {
   console.log("OneSignal: notification opened:", notification);
 });
+
+export function updateOneSignalProfile(externalUserId: string, email?: string) {
+  console.log("setExternalUserId", { externalUserId, email });
+  externalUserId && OneSignal.setExternalUserId(externalUserId);
+  email && OneSignal.setEmail(email);
+}
