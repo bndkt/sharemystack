@@ -1,6 +1,12 @@
-import { Edit, Save, Trash2, Undo2 } from "@tamagui/lucide-icons";
+import {
+  Edit,
+  Save,
+  Share as ShareIcon,
+  Trash2,
+  Undo2,
+} from "@tamagui/lucide-icons";
 import { useEffect, useRef, useState } from "react";
-import { TextInput } from "react-native";
+import { TextInput, Share } from "react-native";
 import { Button, H3, H4, Input, Text, XStack, YStack } from "tamagui";
 
 import { Loading } from "@/components/Loading";
@@ -12,6 +18,7 @@ import { StackSheet } from "@/components/stacks/StackSheet";
 import { StackResponse, getStack } from "@/lib/database/getStack";
 import { supabase } from "@/lib/supabase";
 import { isValidSlug } from "@/lib/validation";
+import { config } from "@/lib/config";
 
 function MyStack() {
   const [isLoading, setLoading] = useState(true);
@@ -159,13 +166,26 @@ function MyStack() {
             )}
           </YStack>
           {!editing && (
-            <Button
-              icon={<Edit size="$1" />}
-              unstyled
-              justifyContent="center"
-              marginLeft="$2"
-              onPress={() => setEditing(true)}
-            />
+            <>
+              <Button
+                icon={<Edit size="$1" />}
+                unstyled
+                justifyContent="center"
+                marginLeft="$2"
+                onPress={() => setEditing(true)}
+              />
+              <Button
+                icon={<ShareIcon size="$1" />}
+                unstyled
+                justifyContent="center"
+                marginLeft="$2"
+                onPress={async () => {
+                  await Share.share({
+                    url: `${config.domain}/@${slug}`,
+                  });
+                }}
+              />
+            </>
           )}
         </XStack>
         {/* <XStack space="$2">
