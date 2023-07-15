@@ -85,6 +85,7 @@ const config: ExpoConfig = {
     "sentry-expo",
     ["expo-router", { headOrigin: "https://sharemystack.com" }],
     "expo-apple-authentication",
+    "expo-localization",
     [
       "onesignal-expo-plugin",
       {
