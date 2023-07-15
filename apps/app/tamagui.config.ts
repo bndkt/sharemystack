@@ -8,6 +8,9 @@ const bodyFont = createInterFont();
 
 const appConfig = createTamagui({
   themes,
+  defaultTheme: "dark",
+  shouldAddPrefersColorThemes: false,
+  themeClassNameOnRoot: false,
   tokens: {
     ...tokens,
     color: {
