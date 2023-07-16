@@ -1,9 +1,10 @@
-import { supabase } from "@/lib/supabase";
 import * as AppleAuthentication from "expo-apple-authentication";
 import { StyleSheet } from "react-native";
 // import * as Crypto from "expo-crypto";
 
 import { useAuth } from "../providers/AuthProvider";
+
+import { supabase } from "@/lib/supabase";
 
 export function SignInWithApple() {
   const { signIn } = useAuth();

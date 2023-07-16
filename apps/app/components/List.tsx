@@ -2,8 +2,8 @@ import { FlashList } from "@shopify/flash-list";
 import { ChevronRight } from "@tamagui/lucide-icons";
 import { Link } from "expo-router";
 import { FunctionComponent, ReactNode } from "react";
-import { ListItem, Separator, Text, getTokens, useTheme } from "tamagui";
 import { RefreshControl } from "react-native-gesture-handler";
+import { ListItem, Separator, Text, getTokens, useTheme } from "tamagui";
 
 import { SwipeableRow } from "./SwipeableRow";
 
@@ -52,7 +52,7 @@ export function List<T>({
     </Text>
   );
 
-  return data && data.length ? (
+  return data?.length ? (
     <FlashList
       ItemSeparatorComponent={() => <Separator />}
       contentContainerStyle={{ backgroundColor: theme.background.val }}

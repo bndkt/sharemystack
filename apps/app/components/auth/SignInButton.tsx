@@ -5,9 +5,9 @@ import * as WebBrowser from "expo-web-browser";
 import { useEffect, useState } from "react";
 import { Button, YStack } from "tamagui";
 
+import { SignInWithApple } from "./SignInWithApple";
 import { supabase } from "../../lib/supabase";
 import { useAuth } from "../providers/AuthProvider";
-import { SignInWithApple } from "./SignInWithApple";
 
 WebBrowser.maybeCompleteAuthSession();
 

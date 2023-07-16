@@ -1,8 +1,8 @@
-import { Text } from "tamagui";
 import { ChevronRight } from "@tamagui/lucide-icons";
+import { Text } from "tamagui";
 
-import { List } from "../List";
 import { CategoriesResponse } from "../../lib/database/getCategories";
+import { List } from "../List";
 import { CategoryIcon } from "../icons/CategoryIcon";
 
 export function CategoryList({
@@ -22,7 +22,7 @@ export function CategoryList({
     <List
       data={categories}
       href={
-        !onPress && false ? (item) => `/categories/${item.slug}` : undefined // Deactivated
+        undefined // !onPress && false ? (item) => `/categories/${item.slug}` : undefined // Deactivated
       }
       onPress={
         onPress

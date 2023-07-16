@@ -1,10 +1,11 @@
-import { Button, Input, Text, XStack, YStack } from "tamagui";
 import { useRef, useState } from "react";
+import { TextInput } from "react-native";
+import { Button, Input, Text, XStack, YStack } from "tamagui";
 
 import { supabase } from "../../lib/supabase";
 import { useAuth } from "../providers/AuthProvider";
+
 import { isValidSlug } from "@/lib/validation";
-import { TextInput } from "react-native";
 
 export function CreateStack({ refresh }: { refresh: () => void }) {
   const { user } = useAuth();

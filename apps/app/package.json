@@ -11,7 +11,7 @@
     "build:prod": "eas build --profile production --platform ios --auto-submit",
     "build:local": "eas build --profile development --platform ios --local",
     "types": "supabase gen types typescript --local > lib/database.types.ts",
-    "lint": "eslint app lib",
+    "lint": "eslint app lib components",
     "eas-build-pre-install": "corepack enable && corepack prepare pnpm@latest-8 --activate"
   },
   "dependencies": {

@@ -1,12 +1,11 @@
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import {
   BottomSheetModal,
   BottomSheetModalProvider,
 } from "@gorhom/bottom-sheet";
-import { Button, YStack, useTheme } from "tamagui";
 import { Check, Plus } from "@tamagui/lucide-icons";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { Button, YStack, useTheme } from "tamagui";
 
-import { CategoryList } from "../categories/CategoryList";
 import {
   CategoriesResponse,
   getCategories,
@@ -14,8 +13,9 @@ import {
 import { ToolsResponse, getTools } from "../../lib/database/getTools";
 import { supabase } from "../../lib/supabase";
 import { List } from "../List";
-import { ToolIcon } from "../icons/ToolIcon";
 import { Loading } from "../Loading";
+import { CategoryList } from "../categories/CategoryList";
+import { ToolIcon } from "../icons/ToolIcon";
 
 export function StackSheet({
   stack,

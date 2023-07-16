@@ -1,7 +1,7 @@
 import { YStack } from "tamagui";
 
-import { List } from "../List";
 import { StacksResponse } from "../../lib/database/getStacks";
+import { List } from "../List";
 import { ImageIcon } from "../icons/StackIcon";
 
 export function StackList({

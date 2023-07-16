@@ -1,8 +1,9 @@
-import React, { ReactNode, useEffect, useState } from "react";
-import { useRouter } from "expo-router";
 import { AuthUser, AuthSession } from "@supabase/supabase-js";
+import { useRouter } from "expo-router";
+import React, { ReactNode, useEffect, useState } from "react";
 
 import { supabase } from "../../lib/supabase";
+
 import { updateOneSignalProfile } from "@/lib/onesignal";
 
 const AuthContext = React.createContext<{
