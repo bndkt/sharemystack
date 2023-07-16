@@ -19,13 +19,14 @@ import { Loading } from "../Loading";
 
 export function StackSheet({
   stack,
-  refresh,
+  refresh: refreshStack,
 }: {
   stack: string | null;
   refresh: () => void;
 }) {
   const bottomSheetModalRef = useRef<BottomSheetModal>(null);
   const [isLoading, setLoading] = useState(true);
+  const [refresh, setRefresh] = useState(false);
   const [categories, setCategories] =
     useState<CategoriesResponse["data"]>(null);
   const [category, setCategory] = useState<string | null>(null);
@@ -46,9 +47,10 @@ export function StackSheet({
       getTools({ category }).then(({ data }) => {
         setTools(data);
         setLoading(false);
+        setRefresh(false);
       });
     }
-  }, [category, getTools, setTools]);
+  }, [category, getTools, setTools, refresh]);
 
   useEffect(() => {
     if (stack && category && tool) {
@@ -59,13 +61,26 @@ export function StackSheet({
 
       query.then((result) => {
         // console.log({ result });
-        refresh();
+        setRefresh(true);
+        refreshStack();
         setTool(null);
-        setCategory(null);
+        // setCategory(null);
         setLoading(false);
       });
     }
   }, [stack, category, tool]);
+
+  function removePick(stackId: string, categoryId: string, toolId: string) {
+    console.log("Remove tool", { stackId, categoryId, toolId });
+    const query = supabase
+      .from("picks")
+      .delete()
+      .match({ stack_id: stackId, tool_id: toolId });
+    query.then((result) => {
+      setRefresh(true);
+      refreshStack();
+    });
+  }
 
   const snapPoints = useMemo(() => [/* "25%", */ "50%" /* "75%" */], []);
 
@@ -118,7 +133,9 @@ export function StackSheet({
             <List
               data={tools}
               onPress={(item) =>
-                !item.user_picks ? setTool(item.id) : undefined
+                stack && item.user_picks && item.id
+                  ? removePick(stack, category, item.id)
+                  : setTool(item.id)
               }
               title={(item) => item.name}
               subTitle={(item) => item.website}
@@ -144,7 +161,6 @@ export function StackSheet({
             <CategoryList
               categories={categories}
               onPress={(category: string | null) => {
-                console.log("Category:", category);
                 setCategory(category);
               }}
             />

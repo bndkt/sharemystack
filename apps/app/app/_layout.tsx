@@ -1,6 +1,5 @@
 import { useFonts } from "expo-font";
 import { Slot } from "expo-router";
-import { useColorScheme } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { TamaguiProvider, Theme } from "tamagui";
 
@@ -14,8 +13,6 @@ import { NavigationThemeProvider } from "@/components/providers/NavigationThemeP
 import config from "@/tamagui.config";
 
 export default function Layout() {
-  const colorScheme = useColorScheme();
-
   const [loaded] = useFonts({
     Inter: require("@tamagui/font-inter/otf/Inter-Medium.otf"),
     InterBold: require("@tamagui/font-inter/otf/Inter-Bold.otf"),
@@ -26,16 +23,16 @@ export default function Layout() {
   }
 
   return (
-    <SafeAreaProvider>
+    <AuthProvider>
       <TamaguiProvider config={config}>
-        <Theme name={colorScheme === "dark" ? "dark" : "light"}>
+        <Theme>
           <NavigationThemeProvider>
-            <AuthProvider>
+            <SafeAreaProvider>
               <Slot />
-            </AuthProvider>
+            </SafeAreaProvider>
           </NavigationThemeProvider>
         </Theme>
       </TamaguiProvider>
-    </SafeAreaProvider>
+    </AuthProvider>
   );
 }

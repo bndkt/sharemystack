@@ -15,10 +15,10 @@ import { useAuth } from "@/components/providers/AuthProvider";
 import { CreateStack } from "@/components/stacks/CreateStack";
 import { PickList } from "@/components/stacks/PickList";
 import { StackSheet } from "@/components/stacks/StackSheet";
+import { config } from "@/lib/config";
 import { StackResponse, getStack } from "@/lib/database/getStack";
 import { supabase } from "@/lib/supabase";
 import { isValidSlug } from "@/lib/validation";
-import { config } from "@/lib/config";
 
 function MyStack() {
   const [isLoading, setLoading] = useState(true);
@@ -171,14 +171,14 @@ function MyStack() {
                 icon={<Edit size="$1" />}
                 unstyled
                 justifyContent="center"
-                marginLeft="$2"
+                padding="$3"
                 onPress={() => setEditing(true)}
               />
               <Button
                 icon={<ShareIcon size="$1" />}
                 unstyled
                 justifyContent="center"
-                marginLeft="$2"
+                padding="$3"
                 onPress={async () => {
                   await Share.share({
                     url: `${config.domain}/@${slug}`,
