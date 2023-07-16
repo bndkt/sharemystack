@@ -1,7 +1,8 @@
+import { useColorScheme } from "react-native";
 import { useFonts } from "expo-font";
 import { Slot } from "expo-router";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import { TamaguiProvider, Theme } from "tamagui";
+import { TamaguiProvider, Text, Theme, XStack } from "tamagui";
 
 import "@/lib/polyfill";
 import "@/lib/sentry";
@@ -13,6 +14,9 @@ import { NavigationThemeProvider } from "@/components/providers/NavigationThemeP
 import config from "@/tamagui.config";
 
 export default function Layout() {
+  const colorScheme = useColorScheme();
+  console.log("Layout");
+
   const [loaded] = useFonts({
     Inter: require("@tamagui/font-inter/otf/Inter-Medium.otf"),
     InterBold: require("@tamagui/font-inter/otf/Inter-Bold.otf"),
@@ -23,16 +27,16 @@ export default function Layout() {
   }
 
   return (
-    <AuthProvider>
-      <TamaguiProvider config={config}>
-        <Theme>
-          <NavigationThemeProvider>
-            <SafeAreaProvider>
+    <TamaguiProvider config={config}>
+      <Theme name={colorScheme}>
+        <NavigationThemeProvider>
+          <SafeAreaProvider>
+            <AuthProvider>
               <Slot />
-            </SafeAreaProvider>
-          </NavigationThemeProvider>
-        </Theme>
-      </TamaguiProvider>
-    </AuthProvider>
+            </AuthProvider>
+          </SafeAreaProvider>
+        </NavigationThemeProvider>
+      </Theme>
+    </TamaguiProvider>
   );
 }
