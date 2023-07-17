@@ -1,10 +1,8 @@
 import { AuthUser, AuthSession } from "@supabase/supabase-js";
-import { useRouter } from "expo-router";
-import React, { ReactNode, useEffect, useState } from "react";
-
-import { supabase } from "../../lib/supabase";
+import React, { ReactNode, useContext, useEffect, useState } from "react";
 
 import { updateOneSignalProfile } from "@/lib/onesignal";
+import { supabase } from "@/lib/supabase";
 
 const AuthContext = React.createContext<{
   session: AuthSession | null;
@@ -25,20 +23,7 @@ const AuthContext = React.createContext<{
 });
 
 export function useAuth() {
-  return React.useContext(AuthContext);
-}
-
-export function useProtectedRoute() {
-  const router = useRouter();
-  const { session } = useAuth();
-
-  useEffect(() => {
-    if (!session) {
-      // Redirect to the sign-in page.
-      console.log("Redirecting to sign-in page");
-      // router.replace("/(tabs)/(profile)/sign-in");
-    }
-  }, [session, router]);
+  return useContext(AuthContext);
 }
 
 export function AuthProvider({ children }: { children: ReactNode }) {

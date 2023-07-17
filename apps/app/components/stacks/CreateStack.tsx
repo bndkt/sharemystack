@@ -19,29 +19,23 @@ export function CreateStack({ refresh }: { refresh: () => void }) {
   const nameRef = useRef<TextInput>(null);
   const slugRef = useRef<TextInput>(null);
 
-  /* useEffect(() => {
-    if (user) {
-      !name && setName(user.user_metadata.full_name);
-      !slug && setSlug(user.user_metadata.preferred_username);
-    }
-  }, [user]); */
-
   async function createStack() {
     nameRef.current?.blur();
     slugRef.current?.blur();
     setValidate(true);
     if (user && name && slug) {
-      console.log({ name, slug });
-      const { data, error } = await supabase.from("stacks").insert({
-        name,
-        slug,
-        twitter: user.user_metadata.preferred_username,
-        twitter_image_url: user.user_metadata.avatar_url,
-        user_id: user.id,
-      });
-      refresh();
-      // console.log({ data, error });
-      // console.log("createStack", data, error);
+      supabase
+        .from("stacks")
+        .insert({
+          name,
+          slug,
+          twitter: user.user_metadata.preferred_username,
+          twitter_image_url: user.user_metadata.avatar_url,
+          user_id: user.id,
+        })
+        .then(() => {
+          refresh();
+        });
     }
   }
 

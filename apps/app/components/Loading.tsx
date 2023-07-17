@@ -2,7 +2,11 @@ import { Spinner, YStack } from "tamagui";
 
 export function Loading() {
   return (
-    <YStack fullscreen={true} justifyContent="center">
+    <YStack
+      fullscreen={true}
+      justifyContent="center"
+      backgroundColor="$background"
+    >
       <Spinner color="#f43f5e" />
     </YStack>
   );
