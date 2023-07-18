@@ -1,11 +1,12 @@
 import { Star } from "@tamagui/lucide-icons";
 import { Stack, useLocalSearchParams } from "expo-router";
 import { useEffect, useState } from "react";
-import { Button, H3, Text, XStack, YStack } from "tamagui";
+import { Button, H3, ListItem, Text, XStack, YStack } from "tamagui";
 import { customEvent } from "vexo-analytics";
 
+import { List } from "@/components/List";
 import { Loading } from "@/components/Loading";
-import { PickList } from "@/components/picks/PickList";
+import { ToolIcon } from "@/components/icons/ToolIcon";
 import { useAuth } from "@/components/providers/AuthProvider";
 import { StackResponse, getStack } from "@/lib/database/getStack";
 import { supabase } from "@/lib/supabase";
@@ -86,7 +87,20 @@ export default function Index() {
             </YStack>
           )}
         </XStack>
-        <PickList picks={stack.picks_view} />
+        <List
+          data={stack.picks_view}
+          renderItem={({ item }) => {
+            return (
+              <ListItem
+                title={item.tool_name}
+                subTitle={item.category_name}
+                icon={
+                  <ToolIcon svgXml={item.tool_icon} width="36" height="36" />
+                }
+              />
+            );
+          }}
+        />
       </YStack>
     </>
   ) : null;

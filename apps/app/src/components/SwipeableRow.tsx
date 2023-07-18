@@ -69,9 +69,10 @@ export function SwipeableRow({
   rightActions,
 }: {
   children: ReactNode;
+  // leftActions?: { text: ReactNode; color: string; onPress: () => void }[];
   rightActions?: { text: ReactNode; color: string; onPress: () => void }[];
 }) {
-  return rightActions ? (
+  return (
     <Swipeable
       friction={2}
       enableTrackpadTwoFingerGesture
@@ -86,15 +87,13 @@ export function SwipeableRow({
           : undefined
       }
       onSwipeableOpen={(direction) => {
-        // console.log(`Opening swipeable from the ${direction}`);
+        console.log(`Opening swipeable from the ${direction}`);
       }}
       onSwipeableClose={(direction) => {
-        // console.log(`Closing swipeable to the ${direction}`);
+        console.log(`Closing swipeable to the ${direction}`);
       }}
     >
       {children}
     </Swipeable>
-  ) : (
-    children
   );
 }
