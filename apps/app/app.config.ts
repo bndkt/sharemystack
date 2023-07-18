@@ -32,7 +32,7 @@ const config: ExpoConfig = {
   version: "1.0.0",
   orientation: "portrait",
   icon: "./assets/icon.png",
-  userInterfaceStyle: "light",
+  userInterfaceStyle: "automatic",
   splash: {
     image: "./assets/splash.png",
     resizeMode: "contain",
