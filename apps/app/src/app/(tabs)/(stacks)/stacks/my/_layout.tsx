@@ -1,5 +1,5 @@
 import { Trash2 } from "@tamagui/lucide-icons";
-import { Slot, usePathname } from "expo-router";
+import { Slot } from "expo-router";
 import { useEffect, useState } from "react";
 import { ListItem, YStack } from "tamagui";
 
@@ -17,7 +17,6 @@ import { supabase } from "@/lib/supabase";
 export function MyStack() {
   const [isLoading, setLoading] = useState(true);
   const [refresh, setRefresh] = useState(false);
-  const pathname = usePathname();
 
   const [stack, setStack] = useState<StackResponse["data"]>(null);
   const { user } = useAuth();
