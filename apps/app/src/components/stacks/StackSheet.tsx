@@ -2,7 +2,7 @@ import {
   BottomSheetModal,
   BottomSheetModalProvider,
 } from "@gorhom/bottom-sheet";
-import { Stack } from "expo-router";
+import { Slot } from "expo-router";
 import { useCallback, useMemo, useRef } from "react";
 import { Button, YStack, useTheme } from "tamagui";
 
@@ -49,10 +49,7 @@ export function StackSheet() {
         }}
         backgroundStyle={{ backgroundColor: theme.background.val }}
       >
-        <Stack>
-          <Stack.Screen name="index" options={{ title: "Categories" }} />
-          <Stack.Screen name="tools" options={{ title: "Tools" }} />
-        </Stack>
+        <Slot />
       </BottomSheetModal>
     </BottomSheetModalProvider>
   );
