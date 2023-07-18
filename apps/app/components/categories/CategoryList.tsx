@@ -1,9 +1,9 @@
+import { Link } from "expo-router";
 import { ListItem, Text } from "tamagui";
 
 import { CategoriesResponse } from "../../lib/database/getCategories";
 import { List } from "../List";
 import { CategoryIcon } from "../icons/CategoryIcon";
-import { Link } from "expo-router";
 
 export function CategoryList({
   categories,
@@ -27,7 +27,7 @@ export function CategoryList({
         return (
           <Link
             href={
-              true || item.soon ? "/categories" : `/categories/${item.slug}`
+              "/categories" // item.soon ? "/categories" : `/categories/${item.slug}`
             }
           >
             <ListItem
@@ -44,8 +44,6 @@ export function CategoryList({
               icon={
                 <CategoryIcon
                   name={item.icon}
-                  width="24"
-                  height="24"
                   color={item.soon ? "$gray8" : undefined}
                 />
               }

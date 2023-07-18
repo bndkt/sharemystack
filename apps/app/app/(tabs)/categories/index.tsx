@@ -1,15 +1,15 @@
+import { Link } from "expo-router";
 import { useEffect, useState } from "react";
 import { ListItem, Text, YStack } from "tamagui";
-import { Link } from "expo-router";
 
+import { List } from "@/components/List";
 import { Loading } from "@/components/Loading";
 import { SuggestionButton } from "@/components/SuggestionButton";
+import { CategoryIcon } from "@/components/icons/CategoryIcon";
 import {
   getCategories,
   CategoriesResponse,
 } from "@/lib/database/getCategories";
-import { List } from "@/components/List";
-import { CategoryIcon } from "@/components/icons/CategoryIcon";
 
 export default function Categories() {
   const [loading, setLoading] = useState(true);
@@ -37,7 +37,7 @@ export default function Categories() {
           return (
             <Link
               href={
-                true || item.soon ? "/categories" : `/categories/${item.slug}`
+                "/categories" // || item.soon ? "/categories" : `/categories/${item.slug}`
               }
             >
               <ListItem
@@ -58,8 +58,6 @@ export default function Categories() {
                 icon={
                   <CategoryIcon
                     name={item.icon}
-                    width="24"
-                    height="24"
                     color={item.soon ? "$gray8" : undefined}
                   />
                 }

@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { ListItem, YStack } from "tamagui";
 
+import { List } from "@/components/List";
 import { Loading } from "@/components/Loading";
 import { SuggestionButton } from "@/components/SuggestionButton";
-import { ToolsResponse, getTools } from "@/lib/database/getTools";
-import { List } from "@/components/List";
 import { ToolIcon } from "@/components/icons/ToolIcon";
+import { ToolsResponse, getTools } from "@/lib/database/getTools";
 
 export default function Tools() {
   const [loading, setLoading] = useState(true);

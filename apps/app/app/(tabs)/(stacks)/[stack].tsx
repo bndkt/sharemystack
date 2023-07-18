@@ -5,8 +5,8 @@ import { Button, H3, Text, XStack, YStack } from "tamagui";
 import { customEvent } from "vexo-analytics";
 
 import { Loading } from "@/components/Loading";
-import { useAuth } from "@/components/providers/AuthProvider";
 import { PickList } from "@/components/picks/PickList";
+import { useAuth } from "@/components/providers/AuthProvider";
 import { StackResponse, getStack } from "@/lib/database/getStack";
 import { supabase } from "@/lib/supabase";
 

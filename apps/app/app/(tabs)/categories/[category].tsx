@@ -23,7 +23,9 @@ export default function Category() {
     <Loading />
   ) : category ? (
     <>
-      <Stack.Screen options={{ headerShown: true, title: category.name }} />
+      <Stack.Screen
+        options={{ headerShown: true, title: category.name ?? "" }}
+      />
       <XStack alignItems="center" padding="$3">
         <CategoryIcon name={category.icon} width="24" height="24" />
         <YStack marginLeft="$3">

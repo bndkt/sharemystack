@@ -1,4 +1,4 @@
-import { Spinner, Text, YStack, getTokens } from "tamagui";
+import { Spinner, Text, YStack } from "tamagui";
 
 export function Loading({ message }: { message?: string }) {
   message ??= "Loading";

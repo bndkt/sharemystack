@@ -1,6 +1,6 @@
-import { ListItem, YStack } from "tamagui";
-import { Link } from "expo-router";
 import { ChevronRight } from "@tamagui/lucide-icons";
+import { Link } from "expo-router";
+import { ListItem, YStack } from "tamagui";
 
 import { StacksResponse } from "../../lib/database/getStacks";
 import { List } from "../List";
