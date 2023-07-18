@@ -8,6 +8,7 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import { TamaguiProvider, Theme } from "tamagui";
 
 import "@/lib/polyfill";
+// import "@/lib/watermelon";
 import "@/lib/sentry";
 import "@/lib/vexo";
 import "@/lib/mixpanel";
