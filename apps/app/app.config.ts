@@ -101,10 +101,15 @@ const config: ExpoConfig = {
     [
       "expo-build-properties",
       {
-        extraPods: {
-          name: "simdjson",
-          path: "../node_modules/@nozbe/simdjson",
-          modular_headers: true,
+        ios: {
+          extraPods: [
+            {
+              name: "simdjson",
+              configurations: ["Debug", "Release"],
+              path: "../../../node_modules/@nozbe/simdjson",
+              modular_headers: true,
+            },
+          ],
         },
       },
     ],
