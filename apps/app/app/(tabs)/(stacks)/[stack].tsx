@@ -6,7 +6,7 @@ import { customEvent } from "vexo-analytics";
 
 import { Loading } from "@/components/Loading";
 import { useAuth } from "@/components/providers/AuthProvider";
-import { PickList } from "@/components/stacks/PickList";
+import { PickList } from "@/components/picks/PickList";
 import { StackResponse, getStack } from "@/lib/database/getStack";
 import { supabase } from "@/lib/supabase";
 

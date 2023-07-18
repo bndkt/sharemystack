@@ -13,7 +13,7 @@ import { Loading } from "@/components/Loading";
 import { withAuth } from "@/components/auth/withAuth";
 import { useAuth } from "@/components/providers/AuthProvider";
 import { CreateStack } from "@/components/stacks/CreateStack";
-import { PickList } from "@/components/stacks/PickList";
+import { PickList } from "@/components/picks/PickList";
 import { StackSheet } from "@/components/stacks/StackSheet";
 import { config } from "@/lib/config";
 import { StackResponse, getStack } from "@/lib/database/getStack";
