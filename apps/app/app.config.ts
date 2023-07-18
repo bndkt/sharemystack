@@ -37,9 +37,6 @@ const config: ExpoConfig = {
     image: "./assets/splash.png",
     resizeMode: "contain",
     backgroundColor: "#ffffff",
-    dark: {
-      backgroundColor: "#000000",
-    },
   },
   developmentClient: {
     silentLaunch: true,
