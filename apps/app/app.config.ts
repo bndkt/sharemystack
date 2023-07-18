@@ -80,7 +80,13 @@ const config: ExpoConfig = {
   },
   plugins: [
     "sentry-expo",
-    ["expo-router", { headOrigin: "https://sharemystack.com" }],
+    [
+      "expo-router",
+      {
+        origin: "https://sharemystack.com",
+        asyncRoutes: "development",
+      },
+    ],
     "expo-apple-authentication",
     "expo-localization",
     [
