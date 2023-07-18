@@ -1,21 +1,20 @@
 import { useEffect, useState } from "react";
-import { YStack } from "tamagui";
+import { ListItem, YStack } from "tamagui";
 
 import { Loading } from "@/components/Loading";
 import { SuggestionButton } from "@/components/SuggestionButton";
-import { ToolList } from "@/components/tools/ToolList";
 import { ToolsResponse, getTools } from "@/lib/database/getTools";
+import { List } from "@/components/List";
+import { ToolIcon } from "@/components/icons/ToolIcon";
 
 export default function Tools() {
   const [loading, setLoading] = useState(true);
-  const [refreshing, setRefreshing] = useState(false);
   const [tools, setTools] = useState<ToolsResponse["data"]>(null);
 
   function loadData() {
     getTools().then(({ data }) => {
       setTools(data);
       setLoading(false);
-      setRefreshing(false);
     });
   }
 
@@ -27,13 +26,19 @@ export default function Tools() {
     <Loading />
   ) : (
     <YStack fullscreen>
-      <ToolList
-        tools={tools}
-        onRefresh={() => {
-          setRefreshing(true);
-          loadData();
+      <List
+        data={tools}
+        renderItem={({ item }) => {
+          return (
+            <ListItem
+              title={item.name}
+              subTitle={`Included in ${item.all_picks} stack`.concat(
+                item.all_picks !== 1 ? "s" : ""
+              )}
+              icon={<ToolIcon svgXml={item.icon} width="24" height="24" />}
+            />
+          );
         }}
-        refreshing={refreshing}
       />
       <SuggestionButton suggestion="tool" />
     </YStack>

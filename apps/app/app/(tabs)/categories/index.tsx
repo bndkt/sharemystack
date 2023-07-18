@@ -1,17 +1,18 @@
 import { useEffect, useState } from "react";
-import { YStack } from "tamagui";
+import { ListItem, Text, YStack } from "tamagui";
+import { Link } from "expo-router";
 
 import { Loading } from "@/components/Loading";
 import { SuggestionButton } from "@/components/SuggestionButton";
-import { CategoryList } from "@/components/categories/CategoryList";
 import {
   getCategories,
   CategoriesResponse,
 } from "@/lib/database/getCategories";
+import { List } from "@/components/List";
+import { CategoryIcon } from "@/components/icons/CategoryIcon";
 
 export default function Categories() {
   const [loading, setLoading] = useState(true);
-  const [refreshing, setRefreshing] = useState(false);
   const [categories, setCategories] =
     useState<CategoriesResponse["data"]>(null);
 
@@ -19,7 +20,6 @@ export default function Categories() {
     getCategories().then(({ data }) => {
       setCategories(data);
       setLoading(false);
-      setRefreshing(false);
     });
   }
 
@@ -31,14 +31,43 @@ export default function Categories() {
     <Loading />
   ) : (
     <YStack fullscreen>
-      <CategoryList
-        categories={categories}
-        suggestionButton={true}
-        onRefresh={() => {
-          setRefreshing(true);
-          loadData();
+      <List
+        data={categories}
+        renderItem={({ item }) => {
+          return (
+            <Link
+              href={
+                true || item.soon ? "/categories" : `/categories/${item.slug}`
+              }
+            >
+              <ListItem
+                title={
+                  item.soon ? (
+                    <Text color="$gray8">{item.name}</Text>
+                  ) : (
+                    item.name
+                  )
+                }
+                subTitle={
+                  item.soon ? (
+                    <Text color="$gray8">Coming soon</Text>
+                  ) : (
+                    `${item.tools ?? "0"} tool${item.tools !== 1 ? "s" : ""}`
+                  )
+                }
+                icon={
+                  <CategoryIcon
+                    name={item.icon}
+                    width="24"
+                    height="24"
+                    color={item.soon ? "$gray8" : undefined}
+                  />
+                }
+                // iconAfter={item.soon ? undefined : <ChevronRight size="$1" />}
+              />
+            </Link>
+          );
         }}
-        refreshing={refreshing}
       />
       <SuggestionButton suggestion="category" />
     </YStack>
