@@ -22,7 +22,7 @@ export default function FeaturedStacks() {
   }, []);
 
   return loading ? (
-    <Loading />
+    <Loading message="Loading featured stacks" />
   ) : (
     <StackList
       stacks={stacks}

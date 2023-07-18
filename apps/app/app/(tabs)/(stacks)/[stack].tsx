@@ -60,7 +60,7 @@ export default function Index() {
   }
 
   return isLoading ? (
-    <Loading />
+    <Loading message="Loading stack" />
   ) : stack ? (
     <>
       <Stack.Screen options={{ headerShown: true, title: stack.name ?? "" }} />

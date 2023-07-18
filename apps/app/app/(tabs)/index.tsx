@@ -17,10 +17,9 @@ export default function Index() {
           discover which tools others are using.
         </Text>
         <Button
+          themeInverse
           margin="$3"
           onPress={() => router.push("/stacks/my")}
-          backgroundColor="$sms"
-          color="$background"
         >
           Go to my stack
         </Button>

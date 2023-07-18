@@ -22,7 +22,7 @@ export default function UpdatedStacks() {
   }, []);
 
   return loading ? (
-    <Loading />
+    <Loading message="Loading updates stacks" />
   ) : (
     <StackList
       stacks={stacks}

@@ -23,7 +23,7 @@ function StarredStacks() {
   }, []);
 
   return loading ? (
-    <Loading />
+    <Loading message="Loading starred stacks" />
   ) : (
     <StackList
       stacks={stacks}
