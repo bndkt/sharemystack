@@ -98,6 +98,16 @@ const config: ExpoConfig = {
             : "development",
       },
     ],
+    [
+      "expo-build-properties",
+      {
+        extraPods: {
+          name: "simdjson",
+          path: "../node_modules/@nozbe/simdjson",
+          modular_headers: true,
+        },
+      },
+    ],
   ],
   hooks,
   runtimeVersion: {
