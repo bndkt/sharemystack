@@ -1,34 +1,41 @@
-import React, {
-  Dispatch,
-  ReactNode,
-  SetStateAction,
-  useContext,
-  useState,
-} from "react";
+import { ReactNode, createContext, useContext } from "react";
 
-const AppContext = React.createContext<{
-  resizeBottomSheet: boolean;
-  setResizeBottomSheet: Dispatch<SetStateAction<boolean>>;
+import { StackResponse } from "@/lib/database/getStack";
+
+const MyStackContext = createContext<{
+  stack: StackResponse["data"] | null;
+  addPick: (toolId: string, categoryId: string) => void;
+  removePick: (stackId: string) => void;
 }>({
-  resizeBottomSheet: false,
-  setResizeBottomSheet: () => {},
+  stack: null,
+  addPick: () => {},
+  removePick: () => {},
 });
 
-export function useApp() {
-  return useContext(AppContext);
+export function useMyStack() {
+  return useContext(MyStackContext);
 }
 
-export function AppProvider({ children }: { children: ReactNode }) {
-  const [resizeBottomSheet, setResizeBottomSheet] = useState(false);
-
+export function MyStackProvider({
+  stack,
+  addPick,
+  removePick,
+  children,
+}: {
+  stack: StackResponse["data"];
+  addPick: (toolId: string, categoryId: string) => void;
+  removePick: (stackId: string) => void;
+  children: ReactNode;
+}) {
   return (
-    <AppContext.Provider
+    <MyStackContext.Provider
       value={{
-        resizeBottomSheet,
-        setResizeBottomSheet,
+        stack,
+        addPick,
+        removePick,
       }}
     >
       {children}
-    </AppContext.Provider>
+    </MyStackContext.Provider>
   );
 }

@@ -3,7 +3,7 @@ import { Stack } from "expo-router";
 import { useCallback, useMemo, useRef } from "react";
 import { useTheme } from "tamagui";
 
-import { HeaderRight } from "@/components/stacks/HeaderRight";
+// import { HeaderRight } from "@/components/stacks/HeaderRight";
 
 export default function Layout() {
   const bottomSheetRef = useRef<BottomSheet>(null);
@@ -40,7 +40,7 @@ export default function Layout() {
       }}
       backgroundStyle={{ backgroundColor: theme.background.val }}
     >
-      <Stack screenOptions={{ headerRight: () => <HeaderRight /> }}>
+      <Stack /* screenOptions={{ headerRight: () => <HeaderRight /> }} */>
         <Stack.Screen name="index" options={{ title: "Categories" }} />
         <Stack.Screen name="tools" options={{ title: "Tools" }} />
       </Stack>

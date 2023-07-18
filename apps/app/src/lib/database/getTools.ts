@@ -2,11 +2,11 @@ import { supabase } from "../supabase";
 
 export const getTools = async ({
   search,
-  category,
+  categoryId,
   limit = 100,
 }: {
   search?: string;
-  category?: string;
+  categoryId?: string;
   limit?: number;
 } = {}) => {
   let query = supabase
@@ -19,8 +19,8 @@ export const getTools = async ({
     // query = query.limit(limit);
   }
 
-  if (category) {
-    query = query.eq("category_slug", category);
+  if (categoryId) {
+    query = query.eq("category_id", categoryId);
   }
 
   if (limit) {

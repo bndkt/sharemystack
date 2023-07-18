@@ -1,10 +1,16 @@
 import { AuthUser, AuthSession } from "@supabase/supabase-js";
-import React, { ReactNode, useContext, useEffect, useState } from "react";
+import {
+  ReactNode,
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 
 import { updateOneSignalProfile } from "@/lib/onesignal";
 import { supabase } from "@/lib/supabase";
 
-const AuthContext = React.createContext<{
+const AuthContext = createContext<{
   session: AuthSession | null;
   user: AuthUser | null;
   signIn: ({
