@@ -23,7 +23,7 @@ export default function Tools() {
   }, []);
 
   return loading ? (
-    <Loading />
+    <Loading message="Loading tools" />
   ) : (
     <YStack fullscreen>
       <List

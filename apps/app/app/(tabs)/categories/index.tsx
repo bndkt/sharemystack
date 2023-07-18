@@ -28,7 +28,7 @@ export default function Categories() {
   }, []);
 
   return loading ? (
-    <Loading />
+    <Loading message="Loading categories" />
   ) : (
     <YStack fullscreen>
       <List

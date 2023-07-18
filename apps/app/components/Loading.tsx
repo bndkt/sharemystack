@@ -1,13 +1,14 @@
-import { Spinner, YStack } from "tamagui";
+import { Spinner, Text, YStack, getTokens } from "tamagui";
 
-export function Loading() {
+export function Loading({ message }: { message?: string }) {
+  message ??= "Loading";
+
   return (
-    <YStack
-      fullscreen={true}
-      justifyContent="center"
-      backgroundColor="$background"
-    >
-      <Spinner color="#f43f5e" />
+    <YStack fullscreen={true} justifyContent="center">
+      <Spinner />
+      <Text textAlign="center" marginTop="$6">
+        {message} …
+      </Text>
     </YStack>
   );
 }
