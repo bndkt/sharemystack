@@ -20,7 +20,7 @@ export const getTools = async ({
   }
 
   if (category) {
-    query = query.eq("category_id", category);
+    query = query.eq("category_slug", category);
   }
 
   if (limit) {

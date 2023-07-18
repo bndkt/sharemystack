@@ -75,23 +75,7 @@ export function MyStack() {
           );
         }}
       />
-      {/* <PickList
-        picks={stack.picks_view}
-        placeholder={
-          <YStack padding="$3">
-            <Text marginBottom="$3" textAlign="center">
-              You have not added any tools to your stack yet.
-            </Text>
-          </YStack>
-        }
-        /* generateRightActions={(item) => [
-          {
-            text: <Trash2 color="white" />,
-            color: "$red10",
-            onPress: () => removePick(item.stack_id, item.tool_id),
-          },
-        ]} */}
-      <StackSheet stack={stack.id} refresh={() => setRefresh(true)} />
+      <StackSheet />
     </YStack>
   ) : (
     <CreateStack refresh={() => setRefresh(true)} />

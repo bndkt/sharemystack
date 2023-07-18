@@ -11,16 +11,12 @@ export default function Tools() {
   const [loading, setLoading] = useState(true);
   const [tools, setTools] = useState<ToolsResponse["data"]>(null);
 
-  function loadData() {
+  useEffect(() => {
     getTools().then(({ data }) => {
       setTools(data);
       setLoading(false);
     });
-  }
-
-  useEffect(() => {
-    loadData();
-  }, []);
+  }, [getTools, setTools]);
 
   return loading ? (
     <Loading message="Loading tools" />

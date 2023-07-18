@@ -2,8 +2,8 @@ import "expo-dev-client";
 import "react-native-gesture-handler";
 import { useFonts } from "expo-font";
 import { Slot } from "expo-router";
-import { Suspense, useState } from "react";
-import { Platform, useColorScheme } from "react-native";
+import { Suspense } from "react";
+// import { useColorScheme } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { TamaguiProvider, Theme } from "tamagui";
 
@@ -18,32 +18,21 @@ import { NavigationThemeProvider } from "@/components/providers/NavigationThemeP
 import config from "@/tamagui.config";
 
 export default function Layout() {
-  const [waiting, setWaiting] = useState(true);
-  const colorScheme = useColorScheme();
+  // const colorScheme = useColorScheme();
 
   const [loaded] = useFonts({
     Inter: require("@tamagui/font-inter/otf/Inter-Medium.otf"),
     InterBold: require("@tamagui/font-inter/otf/Inter-Bold.otf"),
   });
 
-  if (Platform.OS === "ios") {
-    setTimeout(() => {
-      setWaiting(false);
-    }, 1);
-  } else {
-    setImmediate(() => {
-      setWaiting(false);
-    });
-  }
-
-  if (!loaded || waiting) {
+  if (!loaded) {
     return null;
   }
 
   return (
     <Suspense fallback={<Loading />}>
       <TamaguiProvider config={config}>
-        <Theme name={colorScheme}>
+        <Theme name={"light"}>
           <NavigationThemeProvider>
             <SafeAreaProvider>
               <AuthProvider>

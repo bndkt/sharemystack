@@ -1,17 +1,17 @@
+import { ChevronRight } from "@tamagui/lucide-icons";
 import { Link } from "expo-router";
 import { useEffect, useState } from "react";
 import { ListItem, Text, YStack } from "tamagui";
 
 import { List } from "@/components/List";
 import { Loading } from "@/components/Loading";
-import { SuggestionButton } from "@/components/SuggestionButton";
 import { CategoryIcon } from "@/components/icons/CategoryIcon";
 import {
-  getCategories,
   CategoriesResponse,
+  getCategories,
 } from "@/lib/database/getCategories";
 
-export default function Categories() {
+export default function Index() {
   const [loading, setLoading] = useState(true);
   const [categories, setCategories] =
     useState<CategoriesResponse["data"]>(null);
@@ -31,11 +31,7 @@ export default function Categories() {
         data={categories}
         renderItem={({ item }) => {
           return (
-            <Link
-              href={
-                "/categories" // || item.soon ? "/categories" : `/categories/${item.slug}`
-              }
-            >
+            <Link href={`/(tabs)/stacks/my/tools?category=${item.slug}`}>
               <ListItem
                 title={
                   item.soon ? (
@@ -57,13 +53,12 @@ export default function Categories() {
                     color={item.soon ? "$gray8" : undefined}
                   />
                 }
-                // iconAfter={item.soon ? undefined : <ChevronRight size="$1" />}
+                iconAfter={<ChevronRight size="$1" />}
               />
             </Link>
           );
         }}
       />
-      <SuggestionButton suggestion="category" />
     </YStack>
   );
 }
