@@ -16,7 +16,6 @@ export function useObservableTools() {
       setTools(newTools);
     });
 
-    // Clean up subscription on component unmount
     return () => subscription.unsubscribe();
   }, [database]);
 
