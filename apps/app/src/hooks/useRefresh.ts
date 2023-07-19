@@ -8,7 +8,7 @@ export function useRefresh() {
   function refresh() {
     if (!refreshing) {
       setRefreshing(true);
-      sync().then(() => setRefreshing(false));
+      sync().finally(() => setRefreshing(false));
     }
   }
 
