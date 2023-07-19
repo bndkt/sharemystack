@@ -70,19 +70,25 @@ export interface Database {
       categorizations: {
         Row: {
           category_id: string
+          created_at: string
           deleted_at: string | null
+          id: string
           tool_id: string
           updated_at: string
         }
         Insert: {
           category_id: string
+          created_at?: string
           deleted_at?: string | null
+          id?: string
           tool_id: string
           updated_at?: string
         }
         Update: {
           category_id?: string
+          created_at?: string
           deleted_at?: string | null
+          id?: string
           tool_id?: string
           updated_at?: string
         }
@@ -366,6 +372,7 @@ export interface Database {
           id: string | null
           name: string | null
           slug: string | null
+          soon: boolean | null
           tools: number | null
           updated_at: string | null
         }
@@ -413,6 +420,7 @@ export interface Database {
       stacks_view: {
         Row: {
           created_at: string | null
+          deleted_at: string | null
           featured: boolean | null
           id: string | null
           name: string | null
@@ -433,6 +441,24 @@ export interface Database {
             referencedColumns: ["id"]
           }
         ]
+      }
+      sync_stacks_view: {
+        Row: {
+          created_at: string | null
+          deleted_at: string | null
+          featured: boolean | null
+          id: string | null
+          name: string | null
+          slug: string | null
+          starred: boolean | null
+          stars: number | null
+          twitter: string | null
+          twitter_image_url: string | null
+          updated_at: string | null
+          user_id: string | null
+          website: string | null
+        }
+        Relationships: []
       }
       tools_view: {
         Row: {

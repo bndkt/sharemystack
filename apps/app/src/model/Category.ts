@@ -11,6 +11,10 @@ export class Category extends Model {
       type: "has_many" as const,
       foreignKey: "category_id",
     },
+    [TableName.PICKS]: {
+      type: "has_many" as const,
+      foreignKey: "category_id",
+    },
   };
 
   @text("name") name!: string;

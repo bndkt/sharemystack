@@ -10,10 +10,6 @@ import { sync } from "@/lib/sync";
 export default function Index() {
   const router = useRouter();
 
-  useEffect(() => {
-    sync(true);
-  }, [sync]);
-
   return (
     <SafeAreaView>
       <YStack>
@@ -28,6 +24,14 @@ export default function Index() {
           onPress={() => router.push("/stacks/my")}
         >
           Go to my stack
+        </Button>
+        <Button
+          themeInverse
+          margin="$3"
+          onPress={() => sync(true)}
+          backgroundColor="$red10"
+        >
+          💣 Nuke DB
         </Button>
         <SuggestionButton text="Give Feedback" icon={<MessageSquare />} />
       </YStack>

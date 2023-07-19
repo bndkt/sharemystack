@@ -1,36 +1,18 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
-import { Loading } from "@/components/Loading";
 import { StackList } from "@/components/stacks/StackList";
-import { StacksResponse, getStacks } from "@/lib/database/getStacks";
+import { useObservableStacks } from "@/hooks/useObservableStacks";
+import { useRefresh } from "@/hooks/useRefresh";
 
-export default function UpdatedStacks() {
-  const [loading, setLoading] = useState(true);
-  const [refreshing, setRefreshing] = useState(false);
-  const [stacks, setStacks] = useState<StacksResponse["data"]>(null);
-
-  function loadData() {
-    getStacks({ updated: true }).then(({ data }) => {
-      setStacks(data);
-      setLoading(false);
-      setRefreshing(false);
-    });
-  }
+export default function FeaturedStacks() {
+  const stacks = useObservableStacks({ updated: true, limit: 20 });
+  const { refresh, refreshing } = useRefresh();
 
   useEffect(() => {
-    loadData();
+    refresh();
   }, []);
 
-  return loading ? (
-    <Loading message="Loading updates stacks" />
-  ) : (
-    <StackList
-      stacks={stacks}
-      onRefresh={() => {
-        setRefreshing(true);
-        loadData();
-      }}
-      refreshing={refreshing}
-    />
+  return (
+    <StackList stacks={stacks} onRefresh={refresh} refreshing={refreshing} />
   );
 }

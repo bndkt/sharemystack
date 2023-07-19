@@ -5,7 +5,7 @@ import { Category } from "./Category";
 import { Tool } from "./Tool";
 import { TableName } from "./schema";
 
-export class Categorizations extends Model {
+export class Categorization extends Model {
   static table = TableName.CATEGORIZATIONS;
 
   static associations = {

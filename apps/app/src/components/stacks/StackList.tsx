@@ -6,12 +6,14 @@ import { StacksResponse } from "../../lib/database/getStacks";
 import { List } from "../List";
 import { ImageIcon } from "../icons/StackIcon";
 
+import { Stack } from "@/model/Stack";
+
 export function StackList({
   stacks,
   onRefresh,
   refreshing,
 }: {
-  stacks: StacksResponse["data"];
+  stacks: StacksResponse["data"] | Stack[];
   onRefresh?: () => void;
   refreshing?: boolean;
 }) {

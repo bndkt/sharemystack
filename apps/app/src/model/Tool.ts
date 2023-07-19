@@ -9,7 +9,11 @@ export class Tool extends Model {
   static associations = {
     [TableName.CATEGORIZATIONS]: {
       type: "has_many" as const,
-      foreignKey: "category_id",
+      foreignKey: "tool_id",
+    },
+    [TableName.PICKS]: {
+      type: "has_many" as const,
+      foreignKey: "tool_id",
     },
   };
 
