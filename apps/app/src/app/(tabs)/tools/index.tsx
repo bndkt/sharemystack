@@ -1,35 +1,32 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { ListItem, YStack } from "tamagui";
 
 import { List } from "@/components/List";
-import { Loading } from "@/components/Loading";
 import { SuggestionButton } from "@/components/SuggestionButton";
 import { ToolIcon } from "@/components/icons/ToolIcon";
-import { ToolsResponse, getTools } from "@/lib/database/getTools";
+import { useObservableTools } from "@/hooks/useObservableTools";
+import { useRefresh } from "@/hooks/useRefresh";
 
 export default function Tools() {
-  const [loading, setLoading] = useState(true);
-  const [tools, setTools] = useState<ToolsResponse["data"]>(null);
+  const tools = useObservableTools();
+  const { refresh, refreshing } = useRefresh();
 
   useEffect(() => {
-    getTools().then(({ data }) => {
-      setTools(data);
-      setLoading(false);
-    });
-  }, [getTools, setTools]);
+    refresh();
+  }, []);
 
-  return loading ? (
-    <Loading message="Loading tools" />
-  ) : (
+  return (
     <YStack fullscreen>
       <List
         data={tools}
+        onRefresh={refresh}
+        refreshing={refreshing}
         renderItem={({ item }) => {
           return (
             <ListItem
               title={item.name}
-              subTitle={`Included in ${item.all_picks} stack`.concat(
-                item.all_picks !== 1 ? "s" : ""
+              subTitle={`Included in ${item.allPicks} stack`.concat(
+                item.allPicks !== 1 ? "s" : ""
               )}
               icon={<ToolIcon svgXml={item.icon} width="24" height="24" />}
             />

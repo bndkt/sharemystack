@@ -37,42 +37,54 @@ export interface Database {
       categories: {
         Row: {
           created_at: string
+          deleted_at: string | null
           icon: string
           id: string
           name: string
           slug: string
           soon: boolean
+          updated_at: string
         }
         Insert: {
           created_at?: string
+          deleted_at?: string | null
           icon: string
           id?: string
           name: string
           slug: string
           soon?: boolean
+          updated_at?: string
         }
         Update: {
           created_at?: string
+          deleted_at?: string | null
           icon?: string
           id?: string
           name?: string
           slug?: string
           soon?: boolean
+          updated_at?: string
         }
         Relationships: []
       }
       categorizations: {
         Row: {
           category_id: string
+          deleted_at: string | null
           tool_id: string
+          updated_at: string
         }
         Insert: {
           category_id: string
+          deleted_at?: string | null
           tool_id: string
+          updated_at?: string
         }
         Update: {
           category_id?: string
+          deleted_at?: string | null
           tool_id?: string
+          updated_at?: string
         }
         Relationships: [
           {
@@ -110,18 +122,27 @@ export interface Database {
       picks: {
         Row: {
           category_id: string
+          created_at: string
+          deleted_at: string | null
           stack_id: string
           tool_id: string
+          updated_at: string
         }
         Insert: {
           category_id: string
+          created_at?: string
+          deleted_at?: string | null
           stack_id: string
           tool_id: string
+          updated_at?: string
         }
         Update: {
           category_id?: string
+          created_at?: string
+          deleted_at?: string | null
           stack_id?: string
           tool_id?: string
+          updated_at?: string
         }
         Relationships: [
           {
@@ -171,6 +192,7 @@ export interface Database {
       stacks: {
         Row: {
           created_at: string
+          deleted_at: string | null
           featured: boolean
           id: string
           name: string | null
@@ -183,6 +205,7 @@ export interface Database {
         }
         Insert: {
           created_at?: string
+          deleted_at?: string | null
           featured?: boolean
           id?: string
           name?: string | null
@@ -195,6 +218,7 @@ export interface Database {
         }
         Update: {
           created_at?: string
+          deleted_at?: string | null
           featured?: boolean
           id?: string
           name?: string | null
@@ -217,23 +241,29 @@ export interface Database {
       stars: {
         Row: {
           category_id: string | null
+          deleted_at: string | null
           id: string
           stack_id: string | null
           tool_id: string | null
+          updated_at: string
           user_id: string | null
         }
         Insert: {
           category_id?: string | null
+          deleted_at?: string | null
           id?: string
           stack_id?: string | null
           tool_id?: string | null
+          updated_at?: string
           user_id?: string | null
         }
         Update: {
           category_id?: string | null
+          deleted_at?: string | null
           id?: string
           stack_id?: string | null
           tool_id?: string | null
+          updated_at?: string
           user_id?: string | null
         }
         Relationships: [
@@ -291,31 +321,37 @@ export interface Database {
         Row: {
           color: string | null
           created_at: string
+          deleted_at: string | null
           icon: string | null
           id: string
           name: string
           slug: string
           twitter: string | null
+          updated_at: string
           website: string | null
         }
         Insert: {
           color?: string | null
           created_at?: string
+          deleted_at?: string | null
           icon?: string | null
           id?: string
           name: string
           slug: string
           twitter?: string | null
+          updated_at?: string
           website?: string | null
         }
         Update: {
           color?: string | null
           created_at?: string
+          deleted_at?: string | null
           icon?: string | null
           id?: string
           name?: string
           slug?: string
           twitter?: string | null
+          updated_at?: string
           website?: string | null
         }
         Relationships: []
@@ -325,12 +361,13 @@ export interface Database {
       categories_view: {
         Row: {
           created_at: string | null
+          deleted_at: string | null
           icon: string | null
           id: string | null
           name: string | null
           slug: string | null
-          soon: boolean | null
           tools: number | null
+          updated_at: string | null
         }
         Relationships: []
       }
@@ -405,11 +442,12 @@ export interface Database {
           category_slug: string | null
           color: string | null
           created_at: string | null
+          deleted_at: string | null
           icon: string | null
           id: string | null
           name: string | null
           slug: string | null
-          twitter: string | null
+          updated_at: string | null
           user_picks: number | null
           website: string | null
         }
@@ -417,7 +455,12 @@ export interface Database {
       }
     }
     Functions: {
-      [_ in never]: never
+      pull: {
+        Args: {
+          last_pulled_at?: number
+        }
+        Returns: Json
+      }
     }
     Enums: {
       [_ in never]: never

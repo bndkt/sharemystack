@@ -1,5 +1,6 @@
 import "expo-dev-client";
 import "react-native-gesture-handler";
+import DatabaseProvider from "@nozbe/watermelondb/DatabaseProvider";
 import { useFonts } from "expo-font";
 import { Slot } from "expo-router";
 import { Suspense } from "react";
@@ -8,7 +9,6 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import { TamaguiProvider, Theme } from "tamagui";
 
 import "@/lib/polyfill";
-// import "@/lib/watermelon";
 import "@/lib/sentry";
 import "@/lib/vexo";
 import "@/lib/mixpanel";
@@ -16,6 +16,7 @@ import "@/lib/onesignal";
 import { Loading } from "@/components/Loading";
 import { AuthProvider } from "@/components/providers/AuthProvider";
 import { NavigationThemeProvider } from "@/components/providers/NavigationThemeProvider";
+import { database } from "@/lib/watermelon";
 import config from "@/tamagui.config";
 
 export default function Layout() {
@@ -36,9 +37,11 @@ export default function Layout() {
         <Theme name={"light"}>
           <NavigationThemeProvider>
             <SafeAreaProvider>
-              <AuthProvider>
-                <Slot />
-              </AuthProvider>
+              <DatabaseProvider database={database}>
+                <AuthProvider>
+                  <Slot />
+                </AuthProvider>
+              </DatabaseProvider>
             </SafeAreaProvider>
           </NavigationThemeProvider>
         </Theme>

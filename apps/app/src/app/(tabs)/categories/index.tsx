@@ -1,34 +1,27 @@
 import { Link } from "expo-router";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { ListItem, Text, YStack } from "tamagui";
 
 import { List } from "@/components/List";
-import { Loading } from "@/components/Loading";
 import { SuggestionButton } from "@/components/SuggestionButton";
 import { CategoryIcon } from "@/components/icons/CategoryIcon";
-import {
-  getCategories,
-  CategoriesResponse,
-} from "@/lib/database/getCategories";
+import { useObservableCategories } from "@/hooks/useObservableCategories";
+import { useRefresh } from "@/hooks/useRefresh";
 
 export default function Categories() {
-  const [loading, setLoading] = useState(true);
-  const [categories, setCategories] =
-    useState<CategoriesResponse["data"]>(null);
+  const categories = useObservableCategories();
+  const { refresh, refreshing } = useRefresh();
 
   useEffect(() => {
-    getCategories().then(({ data }) => {
-      setCategories(data);
-      setLoading(false);
-    });
-  }, [getCategories, setCategories]);
+    refresh();
+  }, []);
 
-  return loading ? (
-    <Loading message="Loading categories" />
-  ) : (
+  return (
     <YStack fullscreen>
       <List
         data={categories}
+        onRefresh={refresh}
+        refreshing={refreshing}
         renderItem={({ item }) => {
           return (
             <Link
@@ -48,7 +41,9 @@ export default function Categories() {
                   item.soon ? (
                     <Text color="$gray8">Coming soon</Text>
                   ) : (
-                    `${item.tools ?? "0"} tool${item.tools !== 1 ? "s" : ""}`
+                    `${item.numberOfTools ?? "0"} tool${
+                      item.numberOfTools !== 1 ? "s" : ""
+                    }`
                   )
                 }
                 icon={

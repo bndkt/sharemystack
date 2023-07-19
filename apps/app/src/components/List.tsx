@@ -34,10 +34,12 @@ export function List<T>({
       onRefresh={onRefresh}
       refreshing={refreshing}
       refreshControl={
-        <RefreshControl
-          refreshing={refreshing ?? false}
-          onRefresh={onRefresh}
-        />
+        onRefresh ? (
+          <RefreshControl
+            refreshing={refreshing ?? false}
+            onRefresh={onRefresh}
+          />
+        ) : undefined
       }
     />
   );
