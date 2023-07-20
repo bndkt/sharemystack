@@ -1,8 +1,8 @@
 import { ListItem } from "tamagui";
 
-import { ToolsResponse } from "../../lib/database/getTools";
-import { List } from "../List";
-import { ToolIcon } from "../icons/ToolIcon";
+import { List } from "@/components/List";
+import { ToolIcon } from "@/components/icons/ToolIcon";
+import { ToolsResponse } from "@/lib/database/getTools";
 
 export function ToolList({
   tools,

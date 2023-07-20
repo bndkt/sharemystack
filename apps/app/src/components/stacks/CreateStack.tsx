@@ -2,9 +2,8 @@ import { useRef, useState } from "react";
 import { TextInput } from "react-native";
 import { Button, Input, Text, XStack, YStack } from "tamagui";
 
-import { supabase } from "../../lib/supabase";
-import { useAuth } from "../providers/AuthProvider";
-
+import { useAuth } from "@/hooks/useAuth";
+import { supabase } from "@/lib/supabase";
 import { isValidSlug } from "@/lib/validation";
 
 export function CreateStack({ refresh }: { refresh: () => void }) {

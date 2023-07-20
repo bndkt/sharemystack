@@ -7,7 +7,7 @@ import { customEvent } from "vexo-analytics";
 import { List } from "@/components/List";
 import { Loading } from "@/components/Loading";
 import { ToolIcon } from "@/components/icons/ToolIcon";
-import { useAuth } from "@/components/providers/AuthProvider";
+import { useAuth } from "@/hooks/useAuth";
 import { StackResponse, getStack } from "@/lib/database/getStack";
 import { supabase } from "@/lib/supabase";
 

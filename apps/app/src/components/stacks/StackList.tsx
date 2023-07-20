@@ -2,10 +2,9 @@ import { ChevronRight } from "@tamagui/lucide-icons";
 import { Link } from "expo-router";
 import { ListItem, YStack } from "tamagui";
 
-import { StacksResponse } from "../../lib/database/getStacks";
-import { List } from "../List";
-import { ImageIcon } from "../icons/StackIcon";
-
+import { List } from "@/components/List";
+import { ImageIcon } from "@/components/icons/StackIcon";
+import { StacksResponse } from "@/lib/database/getStacks";
 import { Stack } from "@/model/Stack";
 
 export function StackList({

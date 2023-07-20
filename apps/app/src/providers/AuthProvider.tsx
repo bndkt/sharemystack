@@ -1,16 +1,10 @@
 import { AuthUser, AuthSession } from "@supabase/supabase-js";
-import {
-  ReactNode,
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-} from "react";
+import { ReactNode, createContext, useEffect, useState } from "react";
 
 import { updateOneSignalProfile } from "@/lib/onesignal";
 import { supabase } from "@/lib/supabase";
 
-const AuthContext = createContext<{
+export const AuthContext = createContext<{
   session: AuthSession | null;
   user: AuthUser | null;
   signIn: ({
@@ -27,10 +21,6 @@ const AuthContext = createContext<{
   signIn: () => {},
   signOut: () => {},
 });
-
-export function useAuth() {
-  return useContext(AuthContext);
-}
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [session, setSession] = useState<AuthSession | null>(null);

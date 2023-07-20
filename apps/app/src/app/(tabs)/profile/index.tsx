@@ -2,7 +2,7 @@ import { Avatar, Text, XStack, YStack } from "tamagui";
 
 import { SignOutButton } from "@/components/auth/SignOutButton";
 import { withAuth } from "@/components/auth/withAuth";
-import { useAuth } from "@/components/providers/AuthProvider";
+import { useAuth } from "@/hooks/useAuth";
 
 function Profile() {
   const { user } = useAuth();

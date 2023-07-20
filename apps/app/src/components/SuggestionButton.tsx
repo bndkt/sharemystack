@@ -2,7 +2,7 @@ import { PlusCircle } from "@tamagui/lucide-icons";
 import * as WebBrowser from "expo-web-browser";
 import { Button } from "tamagui";
 
-import { config } from "../lib/config";
+import { config } from "@/lib/config";
 
 export function SuggestionButton({
   suggestion = "tool",

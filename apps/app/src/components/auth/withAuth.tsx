@@ -1,5 +1,6 @@
 import { SignInButton } from "./SignInButton";
-import { useAuth } from "../providers/AuthProvider";
+
+import { useAuth } from "@/hooks/useAuth";
 
 export function withAuth(Component: React.FC) {
   function AuthSwitch() {

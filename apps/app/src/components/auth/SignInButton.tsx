@@ -6,8 +6,9 @@ import { useEffect, useState } from "react";
 import { Button, YStack } from "tamagui";
 
 import { SignInWithApple } from "./SignInWithApple";
-import { supabase } from "../../lib/supabase";
-import { useAuth } from "../providers/AuthProvider";
+
+import { useAuth } from "@/hooks/useAuth";
+import { supabase } from "@/lib/supabase";
 
 WebBrowser.maybeCompleteAuthSession();
 

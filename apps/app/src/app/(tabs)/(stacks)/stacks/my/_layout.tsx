@@ -8,12 +8,12 @@ import { Loading } from "@/components/Loading";
 import { SwipeableRow } from "@/components/SwipeableRow";
 import { withAuth } from "@/components/auth/withAuth";
 import { ToolIcon } from "@/components/icons/ToolIcon";
-import { useAuth } from "@/components/providers/AuthProvider";
-import { MyStackProvider } from "@/components/providers/MyStackProvider";
 import { CreateStack } from "@/components/stacks/CreateStack";
 import { MyStackHeader } from "@/components/stacks/MyStackHeader";
+import { useAuth } from "@/hooks/useAuth";
 import { StackResponse, getStack } from "@/lib/database/getStack";
 import { supabase } from "@/lib/supabase";
+import { MyStackProvider } from "@/providers/MyStackProvider";
 
 export function MyStack() {
   const [isLoading, setLoading] = useState(true);

@@ -14,9 +14,9 @@ import "@/lib/vexo";
 import "@/lib/mixpanel";
 import "@/lib/onesignal";
 import { Loading } from "@/components/Loading";
-import { AuthProvider } from "@/components/providers/AuthProvider";
-import { NavigationThemeProvider } from "@/components/providers/NavigationThemeProvider";
 import { database } from "@/lib/watermelon";
+import { AuthProvider } from "@/providers/AuthProvider";
+import { NavigationThemeProvider } from "@/providers/NavigationThemeProvider";
 import config from "@/tamagui.config";
 
 export default function Layout() {
