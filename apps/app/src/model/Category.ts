@@ -1,6 +1,7 @@
 import { Model, Q } from "@nozbe/watermelondb";
 import { lazy, text } from "@nozbe/watermelondb/decorators";
 
+import { Tool } from "./Tool";
 import { TableName } from "./schema";
 
 export class Category extends Model {
@@ -25,6 +26,6 @@ export class Category extends Model {
 
   @lazy
   tools = this.collections
-    .get("tools")
+    .get<Tool>("tools")
     .query(Q.on("categorizations", "category_id", this.id));
 }

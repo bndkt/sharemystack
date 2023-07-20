@@ -6,64 +6,66 @@ import { ListItem, YStack } from "tamagui";
 import { List } from "@/components/List";
 import { Loading } from "@/components/Loading";
 import { ToolIcon } from "@/components/icons/ToolIcon";
-import { useMyStack } from "@/components/providers/MyStackProvider";
-import { CategoryResponse, getCategory } from "@/lib/database/getCategory";
-import { ToolsResponse, getTools } from "@/lib/database/getTools";
+import { useObservableCategory } from "@/hooks/useObservableCategory";
+import { Tool } from "@/model/Tool";
+import { useMyStack } from "@/providers/MyStackProvider";
 
 export default function Edit() {
-  const [loading, setLoading] = useState(true);
-  const [category, setCategory] = useState<CategoryResponse["data"]>(null);
-  const [tools, setTools] = useState<ToolsResponse["data"]>(null);
+  const [tools, setTools] = useState<Tool[]>();
   const { category: slug } = useLocalSearchParams<{ category: string }>();
   const { addPick, removePick } = useMyStack();
 
-  useEffect(() => {
-    if (slug) {
-      getCategory({ slug }).then(({ data }) => {
-        if (data?.id) {
-          setCategory(data);
-          getTools({ categoryId: data.id }).then(({ data }) => {
-            setTools(data);
-            setLoading(false);
-          });
-        }
-      });
-    }
-  }, [slug, getTools, setTools]);
+  if (!slug) throw new Error("No category slug provided");
 
-  return loading ? (
-    <Loading message="Loading tools" />
-  ) : (
+  const category = useObservableCategory(slug);
+
+  useEffect(() => {
+    if (category) {
+      console.log(category.slug);
+      const subscription = category.tools.observe().subscribe((newTools) => {
+        setTools(newTools);
+      });
+
+      return () => subscription.unsubscribe();
+    }
+  }, [category, setTools]);
+
+  if (!category) {
+    return <Loading message="Loading category" />;
+  }
+
+  return (
     <>
-      <Stack.Screen options={{ title: category?.name ?? "" }} />
-      <YStack fullscreen>
-        <List
-          data={tools}
-          renderItem={({ item }) => {
-            return (
-              <ListItem
-                title={item.name}
-                /* subTitle={`Included in ${item.all_picks} stack`.concat(
-                  item.all_picks !== 1 ? "s" : ""
-                )} */
-                icon={<ToolIcon svgXml={item.icon} width="24" height="24" />}
-                iconAfter={
-                  item.user_picks ? (
-                    <Check color="gray" size="$1" />
-                  ) : (
-                    <Plus size="$1" />
-                  )
-                }
-                onPress={() =>
-                  item.user_picks
-                    ? item.id && removePick(item.id)
-                    : item.id && category?.id && addPick(item.id, category.id)
-                }
-              />
-            );
-          }}
-        />
-      </YStack>
+      <Stack.Screen options={{ title: category.name ?? "" }} />
+      {!tools ? (
+        <Loading message="Loading tools" />
+      ) : (
+        <YStack fullscreen>
+          <List
+            data={tools}
+            renderItem={({ item }) => {
+              return (
+                <ListItem
+                  title={item.name}
+                  icon={<ToolIcon svgXml={item.icon} width="24" height="24" />}
+                  iconAfter={
+                    item.userPicks ? (
+                      <Check color="gray" size="$1" />
+                    ) : (
+                      <Plus size="$1" />
+                    )
+                  }
+                  onPress={() =>
+                    item.userPicks
+                      ? item.id && removePick(item.id)
+                      : item.id && category?.id && addPick(item.id, category.id)
+                  }
+                />
+              );
+            }}
+          />
+        </YStack>
+      )}
     </>
   );
 }

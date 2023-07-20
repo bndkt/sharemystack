@@ -1,4 +1,4 @@
-import { MessageSquare } from "@tamagui/lucide-icons";
+import { MessageSquare, Skull } from "@tamagui/lucide-icons";
 import { useRouter } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Button, H3, Text, YStack } from "tamagui";
@@ -25,17 +25,20 @@ export default function Index() {
           >
             Go to my stack
           </Button>
-          <SuggestionButton text="Give Feedback" icon={<MessageSquare />} />
         </YStack>
-        <Button
-          themeInverse
-          margin="$3"
-          onPress={() => sync(true)}
-          backgroundColor="$red10"
-          icon={<Text>💣</Text>}
-        >
-          Nuke local database
-        </Button>
+        <YStack>
+          <SuggestionButton text="Give Feedback" icon={<MessageSquare />} />
+          <Button
+            // themeInverse
+            marginHorizontal="$3"
+            onPress={() => sync(true)}
+            backgroundColor="$red10"
+            color="$background"
+            icon={Skull}
+          >
+            Nuke Local Database
+          </Button>
+        </YStack>
       </YStack>
     </SafeAreaView>
   );
