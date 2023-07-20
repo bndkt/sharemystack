@@ -12,21 +12,23 @@ select jsonb_build_object(
         'created',
         COALESCE(
             jsonb_agg(to_jsonb(t)) FILTER (
-                WHERE t.created_at > _ts
+                WHERE t.deleted_at IS NULL
+                    AND t.created_at > _ts
             ),
             '[]'::jsonb
         ),
         'updated',
         COALESCE(
             jsonb_agg(to_jsonb(t)) FILTER (
-                WHERE t.created_at <= _ts
+                WHERE t.deleted_at IS NULL
+                    AND t.created_at <= _ts
                     AND t.updated_at > _ts
             ),
             '[]'::jsonb
         ),
         'deleted',
         COALESCE(
-            jsonb_agg(to_jsonb(t)) FILTER (
+            jsonb_agg(to_jsonb(t.id)) FILTER (
                 WHERE t.deleted_at > _ts
             ),
             '[]'::jsonb
@@ -37,80 +39,86 @@ from tools_view t;
 SELECT jsonb_build_object(
         'created',
         COALESCE(
-            jsonb_agg(to_jsonb(c)) FILTER (
-                WHERE c.created_at > _ts
+            jsonb_agg(to_jsonb(t)) FILTER (
+                WHERE t.deleted_at IS NULL
+                    AND t.created_at > _ts
             ),
             '[]'::jsonb
         ),
         'updated',
         COALESCE(
-            jsonb_agg(to_jsonb(c)) FILTER (
-                WHERE c.created_at <= _ts
-                    AND c.updated_at > _ts
+            jsonb_agg(to_jsonb(t)) FILTER (
+                WHERE t.deleted_at IS NULL
+                    AND t.created_at <= _ts
+                    AND t.updated_at > _ts
             ),
             '[]'::jsonb
         ),
         'deleted',
         COALESCE(
-            jsonb_agg(to_jsonb(c)) FILTER (
-                WHERE c.deleted_at > _ts
+            jsonb_agg(to_jsonb(t.id)) FILTER (
+                WHERE t.deleted_at > _ts
             ),
             '[]'::jsonb
         )
     ) INTO _categories
-FROM categories_view c;
+FROM categories_view t;
 --- Categorizations
 SELECT jsonb_build_object(
         'created',
         COALESCE(
-            jsonb_agg(to_jsonb(c)) FILTER (
-                WHERE c.created_at > _ts
+            jsonb_agg(to_jsonb(t)) FILTER (
+                WHERE t.deleted_at IS NULL
+                    AND t.created_at > _ts
             ),
             '[]'::jsonb
         ),
         'updated',
         COALESCE(
-            jsonb_agg(to_jsonb(c)) FILTER (
-                WHERE c.created_at <= _ts
-                    AND c.updated_at > _ts
+            jsonb_agg(to_jsonb(t)) FILTER (
+                WHERE t.deleted_at IS NULL
+                    AND t.created_at <= _ts
+                    AND t.updated_at > _ts
             ),
             '[]'::jsonb
         ),
         'deleted',
         COALESCE(
-            jsonb_agg(to_jsonb(c)) FILTER (
-                WHERE c.deleted_at > _ts
+            jsonb_agg(to_jsonb(t.id)) FILTER (
+                WHERE t.deleted_at > _ts
             ),
             '[]'::jsonb
         )
     ) INTO _categorizations
-FROM categorizations c;
+FROM categorizations t;
 --- Stacks
 SELECT jsonb_build_object(
         'created',
         COALESCE(
-            jsonb_agg(to_jsonb(s)) FILTER (
-                WHERE s.created_at > _ts
+            jsonb_agg(to_jsonb(t)) FILTER (
+                WHERE t.deleted_at IS NULL
+                    AND t.created_at > _ts
             ),
             '[]'::jsonb
         ),
         'updated',
         COALESCE(
-            jsonb_agg(to_jsonb(s)) FILTER (
-                WHERE s.created_at <= _ts
-                    AND s.updated_at > _ts
+            jsonb_agg(to_jsonb(t)) FILTER (
+                WHERE t.deleted_at IS NULL
+                    AND t.created_at <= _ts
+                    AND t.updated_at > _ts
             ),
             '[]'::jsonb
         ),
         'deleted',
         COALESCE(
-            jsonb_agg(to_jsonb(s)) FILTER (
-                WHERE s.deleted_at > _ts
+            jsonb_agg(to_jsonb(t.id)) FILTER (
+                WHERE t.deleted_at > _ts
             ),
             '[]'::jsonb
         )
     ) INTO _stacks
-FROM sync_stacks_view s;
+FROM sync_stacks_view t;
 RETURN jsonb_build_object(
     'changes',
     jsonb_build_object(
