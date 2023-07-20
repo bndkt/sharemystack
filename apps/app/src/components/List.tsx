@@ -9,7 +9,7 @@ export function List<T>({
   onRefresh,
   refreshing,
 }: {
-  data: readonly T[] | null;
+  data?: readonly T[] | null;
   renderItem?: ListRenderItem<T> | null;
   placeholder?: JSX.Element | string;
   onRefresh?: () => void;

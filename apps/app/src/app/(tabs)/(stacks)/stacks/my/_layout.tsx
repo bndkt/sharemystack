@@ -4,66 +4,58 @@ import { useEffect, useState } from "react";
 import { ListItem, YStack } from "tamagui";
 
 import { List } from "@/components/List";
-import { Loading } from "@/components/Loading";
 import { SwipeableRow } from "@/components/SwipeableRow";
 import { withAuth } from "@/components/auth/withAuth";
 import { ToolIcon } from "@/components/icons/ToolIcon";
 import { CreateStack } from "@/components/stacks/CreateStack";
 import { MyStackHeader } from "@/components/stacks/MyStackHeader";
+import { PickItem } from "@/components/stacks/PickItem";
 import { useAuth } from "@/hooks/useAuth";
-import { StackResponse, getStack } from "@/lib/database/getStack";
-import { supabase } from "@/lib/supabase";
+import { useMyStack } from "@/hooks/useMyStack";
+import { useObservableStack } from "@/hooks/useObservableStack";
+import { Pick } from "@/model/Pick";
 import { MyStackProvider } from "@/providers/MyStackProvider";
 
 export function MyStack() {
-  const [isLoading, setLoading] = useState(true);
-  const [refresh, setRefresh] = useState(false);
-  const [stack, setStack] = useState<StackResponse["data"]>(null);
   const { user } = useAuth();
+  const [picks, setPicks] = useState<Pick[]>();
+  const { removePick } = useMyStack();
+
+  if (!user) throw new Error("User not found");
+
+  const stack = useObservableStack({ userId: user?.id });
 
   useEffect(() => {
-    if (user && (!stack || refresh)) {
-      getStack({ user: user.id }).then(({ data }) => {
-        setStack(data);
-        setLoading(false);
-        setRefresh(false);
+    if (stack) {
+      const subscription = stack.picks.observe().subscribe((newPicks) => {
+        setPicks(newPicks);
       });
+
+      return () => subscription.unsubscribe();
     }
-  }, [user, stack, refresh]);
+  }, [stack, setPicks]);
 
-  function addPick(toolId: string, categoryId: string) {
-    console.log("addPick", toolId, categoryId);
+  return stack ? (
+    <MyStackProvider stack={stack}>
+      <YStack fullscreen>
+        <MyStackHeader stack={stack} refresh={() => {}} />
+        <List
+          data={picks}
+          placeholder="You have not added any tools to your stack yet."
+          renderItem={({ item }) => <PickItem pick={item} />}
+        />
+        <Slot />
+      </YStack>
+    </MyStackProvider>
+  ) : (
+    <CreateStack refresh={() => {}} />
+  );
+}
 
-    if (stack?.id) {
-      const query = supabase.from("picks").insert({
-        stack_id: stack.id,
-        tool_id: toolId,
-        category_id: categoryId,
-      });
+export default withAuth(MyStack);
 
-      query.then((result) => {
-        console.log({ result });
-        setRefresh(true);
-      });
-    }
-  }
-
-  function removePick(toolId: string) {
-    if (stack?.id) {
-      const query = supabase
-        .from("picks")
-        .delete()
-        .match({ stack_id: stack.id, tool_id: toolId });
-      query.then(() => {
-        setRefresh(true);
-      });
-    }
-  }
-
-  return isLoading ? (
-    <Loading message="Loading my stack" />
-  ) : stack ? (
-    <MyStackProvider stack={stack} addPick={addPick} removePick={removePick}>
+{
+  /* <MyStackProvider stack={stack} addPick={addPick} removePick={removePick}>
       <YStack fullscreen>
         <MyStackHeader stack={stack} refresh={() => setRefresh(true)} />
         <List
@@ -82,10 +74,10 @@ export function MyStack() {
                 ]}
               >
                 <ListItem
-                  title={item.tool_name}
-                  subTitle={item.category_name}
+                  title={item.toolName}
+                  subTitle={item.categoryName}
                   icon={
-                    <ToolIcon svgXml={item.tool_icon} width="36" height="36" />
+                    <ToolIcon svgXml={item.toolIcon} width="36" height="36" />
                   }
                 />
               </SwipeableRow>
@@ -94,10 +86,5 @@ export function MyStack() {
         />
         <Slot />
       </YStack>
-    </MyStackProvider>
-  ) : (
-    <CreateStack refresh={() => setRefresh(true)} />
-  );
+        </MyStackProvider> */
 }
-
-export default withAuth(MyStack);

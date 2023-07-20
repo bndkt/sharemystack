@@ -1,9 +1,11 @@
-import { ReactNode, createContext, useContext } from "react";
+import { ReactNode, createContext } from "react";
 
-import { StackResponse } from "@/lib/database/getStack";
+import { supabase } from "@/lib/supabase";
+import { sync } from "@/lib/sync";
+import { Stack } from "@/model/Stack";
 
-const MyStackContext = createContext<{
-  stack: StackResponse["data"] | null;
+export const MyStackContext = createContext<{
+  stack: Stack | null;
   addPick: (toolId: string, categoryId: string) => void;
   removePick: (stackId: string) => void;
 }>({
@@ -12,21 +14,37 @@ const MyStackContext = createContext<{
   removePick: () => {},
 });
 
-export function useMyStack() {
-  return useContext(MyStackContext);
-}
-
 export function MyStackProvider({
   stack,
-  addPick,
-  removePick,
   children,
 }: {
-  stack: StackResponse["data"];
-  addPick: (toolId: string, categoryId: string) => void;
-  removePick: (stackId: string) => void;
+  stack: Stack;
   children: ReactNode;
 }) {
+  function addPick(toolId: string, categoryId: string) {
+    const query = supabase.from("picks").insert({
+      stack_id: stack.id,
+      tool_id: toolId,
+      category_id: categoryId,
+    });
+
+    query.then((result) => {
+      console.log({ result });
+      sync();
+    });
+  }
+
+  function removePick(pickId: string) {
+    const query = supabase
+      .from("picks")
+      .update({ deleted_at: "NOW()" })
+      .eq("id", pickId);
+    query.then((result) => {
+      console.log({ result });
+      sync();
+    });
+  }
+
   return (
     <MyStackContext.Provider
       value={{

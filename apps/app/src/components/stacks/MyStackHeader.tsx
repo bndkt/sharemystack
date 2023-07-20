@@ -13,12 +13,13 @@ import { config } from "@/lib/config";
 import { StackResponse } from "@/lib/database/getStack";
 import { supabase } from "@/lib/supabase";
 import { isValidSlug } from "@/lib/validation";
+import { Stack } from "@/model/Stack";
 
 export function MyStackHeader({
   stack,
   refresh,
 }: {
-  stack: NonNullable<StackResponse["data"]>;
+  stack: NonNullable<StackResponse["data"] | Stack>;
   refresh: () => void;
 }) {
   const [isLoading, setLoading] = useState(true);

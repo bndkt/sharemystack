@@ -130,6 +130,7 @@ export interface Database {
           category_id: string
           created_at: string
           deleted_at: string | null
+          id: string
           stack_id: string
           tool_id: string
           updated_at: string
@@ -138,6 +139,7 @@ export interface Database {
           category_id: string
           created_at?: string
           deleted_at?: string | null
+          id?: string
           stack_id: string
           tool_id: string
           updated_at?: string
@@ -146,6 +148,7 @@ export interface Database {
           category_id?: string
           created_at?: string
           deleted_at?: string | null
+          id?: string
           stack_id?: string
           tool_id?: string
           updated_at?: string

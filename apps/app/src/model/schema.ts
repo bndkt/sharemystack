@@ -64,7 +64,8 @@ export const schema = appSchema({
     tableSchema({
       name: TableName.PICKS,
       columns: [
-        { name: "toold_id", type: "string", isIndexed: true },
+        { name: "stack_id", type: "string", isIndexed: true },
+        { name: "tool_id", type: "string", isIndexed: true },
         { name: "category_id", type: "string", isIndexed: true },
         { name: "created_at", type: "number" },
         { name: "updated_at", type: "number" },

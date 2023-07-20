@@ -1,6 +1,7 @@
 import { Model, Q, Relation } from "@nozbe/watermelondb";
 import { immutableRelation, lazy, text } from "@nozbe/watermelondb/decorators";
 
+import { Pick } from "./Pick";
 import { TableName } from "./schema";
 
 export class Stack extends Model {
@@ -22,5 +23,8 @@ export class Stack extends Model {
   @text("stars") stars!: number;
   @text("user_id") user!: string;
 
-  @lazy featured = this.collection.query(Q.where("featured", true));
+  @lazy
+  picks = this.collections
+    .get<Pick>(TableName.PICKS)
+    .query(Q.where("stack_id", this.id));
 }

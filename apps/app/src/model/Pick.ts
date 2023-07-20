@@ -1,6 +1,9 @@
 import { Model, Relation } from "@nozbe/watermelondb";
 import { immutableRelation, text } from "@nozbe/watermelondb/decorators";
 
+import { Category } from "./Category";
+import { Stack } from "./Stack";
+import { Tool } from "./Tool";
 import { TableName } from "./schema";
 
 export class Pick extends Model {
@@ -12,8 +15,13 @@ export class Pick extends Model {
     [TableName.STACKS]: { type: "belongs_to" as const, key: "stack_id" },
   };
 
-  @text("name") name!: string;
-  @text("slug") icon!: string;
-  @text("starred") starred!: boolean;
-  @text("user_id") user!: number;
+  @immutableRelation(TableName.STACKS, "stack_id") stack!: Relation<Stack>;
+  @immutableRelation(TableName.TOOLS, "tool_id") tool!: Relation<Tool>;
+  @immutableRelation(TableName.CATEGORIES, "category_id")
+  category!: Relation<Category>;
+
+  // @text("tool_id") toolId!: string;
+  // @text("tool_name") toolName!: string;
+  // @text("tool_icon") toolIcon!: string;
+  // @text("category_name") categoryName!: string;
 }
