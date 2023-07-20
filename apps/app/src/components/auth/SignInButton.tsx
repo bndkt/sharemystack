@@ -43,6 +43,7 @@ export function SignInButton() {
   async function signInWithTwitter() {
     if (authUrl) {
       const res = await WebBrowser.openAuthSessionAsync(authUrl);
+
       if (res.type === "success") {
         const { url } = res;
         const { params, errorCode } = QueryParams.getQueryParams(url);
