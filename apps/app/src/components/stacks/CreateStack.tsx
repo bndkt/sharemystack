@@ -5,6 +5,7 @@ import { Button, Input, Text, XStack, YStack } from "tamagui";
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/lib/supabase";
 import { isValidSlug } from "@/lib/validation";
+import { useRefresh } from "@/hooks/useRefresh";
 
 export function CreateStack() {
   const { user } = useAuth();
@@ -17,6 +18,7 @@ export function CreateStack() {
   const [validate, setValidate] = useState(false);
   const nameRef = useRef<TextInput>(null);
   const slugRef = useRef<TextInput>(null);
+  const { refresh } = useRefresh();
 
   async function createStack() {
     nameRef.current?.blur();
@@ -33,7 +35,7 @@ export function CreateStack() {
           user_id: user.id,
         })
         .then(() => {
-          // refresh();
+          refresh();
         });
     }
   }
