@@ -1,6 +1,5 @@
-import { redirect } from "@remix-run/cloudflare";
+import { redirect, type LoaderFunction } from "@remix-run/cloudflare";
 import { createServerClient } from "@supabase/auth-helpers-remix";
-import type { LoaderArgs } from "@remix-run/cloudflare";
 import { sign } from "@tsndr/cloudflare-worker-jwt";
 
 import type { Database } from "../lib/database.types";
@@ -18,7 +17,7 @@ function createCannyToken(
   return sign(userData, key, { algorithm: "HS256" });
 }
 
-export const loader = async ({ request, context }: LoaderArgs) => {
+export const loader: LoaderFunction = async ({ request, context }) => {
   const response = new Response();
   const url = new URL(request.url);
 
@@ -51,7 +50,7 @@ export const loader = async ({ request, context }: LoaderArgs) => {
           id: data.user.id,
           name: data.user.user_metadata.full_name,
         },
-        context.EXPO_PUBLIC_CANNY_PRIVATE_KEY as string
+        context.env.CANNY_PRIVATE_KEY
       );
 
       const redirectUrl =
