@@ -24,9 +24,7 @@ export default function Index() {
         refreshing={refreshing}
         renderItem={({ item }) => {
           return (
-            <Link
-              href={`/(tabs)/(stacks)/stacks/my/picks/tools?category=${item.slug}`}
-            >
+            <Link href={`/(tabs)/(stacks)/stacks/my/picks/${item.slug}`}>
               <ListItem
                 title={
                   item.soon ? (

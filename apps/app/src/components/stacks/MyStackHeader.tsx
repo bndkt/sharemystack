@@ -1,45 +1,31 @@
-import {
-  Edit,
-  Save,
-  Share as ShareIcon,
-  Trash2,
-  Undo2,
-} from "@tamagui/lucide-icons";
+import { Edit, Save, Share as ShareIcon, Undo2 } from "@tamagui/lucide-icons";
 import { useRef, useState } from "react";
 import { TextInput, Share } from "react-native";
 import { Button, H3, H4, Input, XStack, YStack } from "tamagui";
 
+import { useRefresh } from "@/hooks/useRefresh";
 import { config } from "@/lib/config";
-import { StackResponse } from "@/lib/database/getStack";
 import { supabase } from "@/lib/supabase";
 import { isValidSlug } from "@/lib/validation";
 import { Stack } from "@/model/Stack";
 
-export function MyStackHeader({
-  stack,
-  refresh,
-}: {
-  stack: NonNullable<StackResponse["data"] | Stack>;
-  refresh: () => void;
-}) {
-  const [isLoading, setLoading] = useState(true);
+export function MyStackHeader({ stack }: { stack: Stack }) {
   const [editing, setEditing] = useState(false);
-  const [name, setName] = useState<string | null | undefined>();
-  const [slug, setSlug] = useState<string | null | undefined>();
+  const [name, setName] = useState<string>(stack.name);
+  const [slug, setSlug] = useState<string>(stack.slug);
   const [validate, setValidate] = useState(false);
   const nameRef = useRef<TextInput>(null);
   const slugRef = useRef<TextInput>(null);
+  const { refresh } = useRefresh();
 
   function save() {
     nameRef.current?.blur();
     slugRef.current?.blur();
     setValidate(true);
-    if (stack && slug && isValidSlug(slug)) {
-      setLoading(true);
-
+    if (slug && isValidSlug(slug)) {
       const query = supabase
         .from("stacks")
-        .update({ slug, name })
+        .update({ slug, name, updated_at: "NOW()" })
         .match({ id: stack.id });
       query.then((result) => {
         console.log({ result });
@@ -51,10 +37,10 @@ export function MyStackHeader({
 
   function cancel() {
     setValidate(false);
-    if (stack) {
-      setName(stack.name);
-      setSlug(stack.slug);
-    }
+
+    setName(stack.name);
+    setSlug(stack.slug);
+
     setEditing(false);
   }
 
@@ -65,7 +51,7 @@ export function MyStackHeader({
           {editing ? (
             <XStack alignItems="center">
               <Input
-                value={name ?? ""}
+                value={name}
                 onChangeText={(text) => setName(text)}
                 borderBottomStartRadius={0}
                 borderBottomEndRadius={0}
@@ -102,7 +88,7 @@ export function MyStackHeader({
                 }
               />
               <Input
-                value={slug ?? ""}
+                value={slug}
                 onChangeText={(text) =>
                   (!text || isValidSlug(text, true)) &&
                   setSlug(text.toLowerCase())

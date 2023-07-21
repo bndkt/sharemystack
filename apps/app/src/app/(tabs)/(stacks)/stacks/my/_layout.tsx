@@ -2,6 +2,7 @@ import { Slot } from "expo-router";
 import { YStack } from "tamagui";
 
 import { List } from "@/components/List";
+import { Loading } from "@/components/Loading";
 import { withAuth } from "@/components/auth/withAuth";
 import { CreateStack } from "@/components/stacks/CreateStack";
 import { MyStackHeader } from "@/components/stacks/MyStackHeader";
@@ -9,7 +10,6 @@ import { PickItem } from "@/components/stacks/PickItem";
 import { useAuth } from "@/hooks/useAuth";
 import { useObservableStack } from "@/hooks/useObservableStack";
 import { MyStackProvider } from "@/providers/MyStackProvider";
-import { Loading } from "@/components/Loading";
 
 export function MyStack() {
   const { user } = useAuth();
@@ -26,7 +26,7 @@ export function MyStack() {
   ) : stack ? (
     <MyStackProvider stack={stack} picks={picks}>
       <YStack fullscreen>
-        <MyStackHeader stack={stack} refresh={() => {}} />
+        <MyStackHeader stack={stack} />
         <List
           data={picks}
           placeholder="You have not added any tools to your stack yet."

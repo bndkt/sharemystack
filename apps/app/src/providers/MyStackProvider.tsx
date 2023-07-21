@@ -2,8 +2,8 @@ import { ReactNode, createContext } from "react";
 
 import { useRefresh } from "@/hooks/useRefresh";
 import { supabase } from "@/lib/supabase";
-import { Stack } from "@/model/Stack";
 import { Pick } from "@/model/Pick";
+import { Stack } from "@/model/Stack";
 
 export const MyStackContext = createContext<{
   stack: Stack | null;

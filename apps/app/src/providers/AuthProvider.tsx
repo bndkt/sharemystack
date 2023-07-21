@@ -1,9 +1,9 @@
 import { AuthUser, AuthSession } from "@supabase/supabase-js";
 import { ReactNode, createContext, useEffect, useState } from "react";
 
+import { useRefresh } from "@/hooks/useRefresh";
 import { updateOneSignalProfile } from "@/lib/onesignal";
 import { supabase } from "@/lib/supabase";
-import { useRefresh } from "@/hooks/useRefresh";
 
 export const AuthContext = createContext<{
   session: AuthSession | null;

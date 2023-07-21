@@ -4,17 +4,17 @@ import { YStack } from "tamagui";
 
 import { List } from "@/components/List";
 import { Loading } from "@/components/Loading";
+import { PickTool } from "@/components/stacks/PickTool";
 import { useMyStack } from "@/hooks/useMyStack";
 import { useObservableCategory } from "@/hooks/useObservableCategory";
 import { Pick } from "@/model/Pick";
 import { Tool } from "@/model/Tool";
-import { PickTool } from "@/components/stacks/PickTool";
 
 export default function Tools() {
   const [tools, setTools] = useState<Tool[]>();
-  // const [picks, setPicks] = useState<Pick[]>();
+  const [picks, setPicks] = useState<Pick[]>();
   const { category: slug } = useLocalSearchParams<{ category: string }>();
-  const { stack, picks } = useMyStack();
+  const { stack } = useMyStack();
 
   if (!slug) throw new Error("No category slug provided");
 
@@ -30,6 +30,16 @@ export default function Tools() {
       return () => subscription.unsubscribe();
     }
   }, [category, setTools]);
+
+  useEffect(() => {
+    if (stack) {
+      const subscription = stack.picks.observe().subscribe((newPicks) => {
+        setPicks(newPicks);
+      });
+
+      return () => subscription.unsubscribe();
+    }
+  }, [stack, setPicks]);
 
   if (!category) {
     return <Loading message="Loading category" />;

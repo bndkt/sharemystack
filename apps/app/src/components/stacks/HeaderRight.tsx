@@ -10,7 +10,7 @@ export function HeaderRight() {
       icon={<X size="$1" />}
       onPress={() => {
         console.log("close bottom sheet");
-        router.replace("/");
+        router.push("/(tabs)/(stacks)/stacks/my/tmp");
       }}
       unstyled
     />

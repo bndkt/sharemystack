@@ -1,11 +1,13 @@
-import { ListItem } from "tamagui";
-import { ToolIcon } from "../icons/ToolIcon";
-import { Pick } from "@/model/Pick";
-import { Tool } from "@/model/Tool";
-import { useMyStack } from "@/hooks/useMyStack";
-import { Category } from "@/model/Category";
 import { Check, Plus } from "@tamagui/lucide-icons";
 import { useMemo } from "react";
+import { ListItem } from "tamagui";
+
+import { ToolIcon } from "../icons/ToolIcon";
+
+import { useMyStack } from "@/hooks/useMyStack";
+import { Category } from "@/model/Category";
+import { Pick } from "@/model/Pick";
+import { Tool } from "@/model/Tool";
 
 export function PickTool({
   category,
