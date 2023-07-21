@@ -72,7 +72,7 @@ export function SwipeableRow({
   // leftActions?: { text: ReactNode; color: string; onPress: () => void }[];
   rightActions?: { text: ReactNode; color: string; onPress: () => void }[];
 }) {
-  return (
+  return rightActions ? (
     <Swipeable
       friction={2}
       enableTrackpadTwoFingerGesture
@@ -95,5 +95,7 @@ export function SwipeableRow({
     >
       {children}
     </Swipeable>
+  ) : (
+    children
   );
 }

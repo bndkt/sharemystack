@@ -1,35 +1,26 @@
 import { Star } from "@tamagui/lucide-icons";
 import { Stack, useLocalSearchParams } from "expo-router";
-import { useEffect, useState } from "react";
-import { Button, H3, ListItem, Text, XStack, YStack } from "tamagui";
+import { useState } from "react";
+import { Button, H3, Text, XStack, YStack } from "tamagui";
 import { customEvent } from "vexo-analytics";
 
 import { List } from "@/components/List";
-import { Loading } from "@/components/Loading";
-import { ToolIcon } from "@/components/icons/ToolIcon";
 import { useAuth } from "@/hooks/useAuth";
-import { StackResponse, getStack } from "@/lib/database/getStack";
 import { supabase } from "@/lib/supabase";
+import { useObservableStack } from "@/hooks/useObservableStack";
+import { PickItem } from "@/components/stacks/PickItem";
 
 export default function Index() {
   let { stack: slug } = useLocalSearchParams<{ stack: string }>();
   slug = slug?.toLowerCase().substring(1);
 
-  const [isLoading, setLoading] = useState(true);
-  const [stack, setStack] = useState<StackResponse["data"]>(null);
   const [isStarred, setIsStarred] = useState(false);
 
   const { user, session } = useAuth();
 
-  useEffect(() => {
-    if (slug && !stack) {
-      getStack({ slug }).then(({ data }) => {
-        setStack(data);
-        setIsStarred(data?.starred ?? false);
-        setLoading(false);
-      });
-    }
-  }, [slug, stack]);
+  if (!slug) throw new Error("Stack not found");
+
+  const { stack, picks } = useObservableStack({ slug, loadPicks: true });
 
   function toggleStar() {
     setIsStarred(!isStarred);
@@ -60,9 +51,7 @@ export default function Index() {
     }
   }
 
-  return isLoading ? (
-    <Loading message="Loading stack" />
-  ) : stack ? (
+  return stack ? (
     <>
       <Stack.Screen options={{ headerShown: true, title: stack.name ?? "" }} />
       <YStack fullscreen>
@@ -88,18 +77,8 @@ export default function Index() {
           )}
         </XStack>
         <List
-          data={stack.picks_view}
-          renderItem={({ item }) => {
-            return (
-              <ListItem
-                title={item.tool_name}
-                subTitle={item.category_name}
-                icon={
-                  <ToolIcon svgXml={item.tool_icon} width="36" height="36" />
-                }
-              />
-            );
-          }}
+          data={picks}
+          renderItem={({ item }) => <PickItem pick={item} />}
         />
       </YStack>
     </>

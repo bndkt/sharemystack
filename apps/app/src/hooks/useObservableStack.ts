@@ -4,19 +4,34 @@ import { useEffect, useState } from "react";
 
 import { Stack } from "@/model/Stack";
 import { TableName } from "@/model/schema";
+import { Pick } from "@/model/Pick";
 
-export function useObservableStack({ userId }: { userId: string }) {
+type StackSelector =
+  | {
+      userId: string;
+      slug?: never;
+      loadPicks?: boolean;
+    }
+  | {
+      userId?: never;
+      slug: string;
+      loadPicks?: boolean;
+    };
+
+export function useObservableStack({ userId, slug, loadPicks }: StackSelector) {
   const database = useDatabase();
   const [stack, setStack] = useState<Stack>();
+  const [picks, setPicks] = useState<Pick[]>();
 
   useEffect(() => {
     const stacksCollection = database.collections.get<Stack>(TableName.STACKS);
 
-    const stacksQuery = stacksCollection.query(
-      Q.where("user_id", userId),
-      Q.take(1)
-    );
+    const args: Q.Clause[] = [];
+    userId && args.push(Q.where("user_id", userId));
+    slug && args.push(Q.where("slug", slug));
+    args.push(Q.take(1));
 
+    const stacksQuery = stacksCollection.query(args);
     const stacksObservable = stacksQuery.observe();
 
     const subscription = stacksObservable.subscribe((newStacks) => {
@@ -24,7 +39,17 @@ export function useObservableStack({ userId }: { userId: string }) {
     });
 
     return () => subscription.unsubscribe();
-  }, [database]);
+  }, [database, userId, slug, setStack]);
 
-  return stack;
+  useEffect(() => {
+    if (stack && loadPicks) {
+      const subscription = stack.picks.observe().subscribe((newPicks) => {
+        setPicks(newPicks);
+      });
+
+      return () => subscription.unsubscribe();
+    }
+  }, [stack, setPicks]);
+
+  return { stack, picks };
 }

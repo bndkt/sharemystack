@@ -11,7 +11,13 @@ import { Category } from "@/model/Category";
 import { Pick } from "@/model/Pick";
 import { Tool } from "@/model/Tool";
 
-export function PickItem({ pick }: { pick: Pick }) {
+export function PickItem({
+  pick,
+  editable,
+}: {
+  pick: Pick;
+  editable?: boolean;
+}) {
   const [tool, setTool] = useState<Tool>();
   const [category, setCategory] = useState<Category>();
   const { removePick } = useMyStack();
@@ -34,13 +40,17 @@ export function PickItem({ pick }: { pick: Pick }) {
 
   return tool && category ? (
     <SwipeableRow
-      rightActions={[
-        {
-          text: <Trash2 color="white" />,
-          color: "$red10",
-          onPress: () => removePick(pick.id),
-        },
-      ]}
+      rightActions={
+        editable
+          ? [
+              {
+                text: <Trash2 color="white" />,
+                color: "$red10",
+                onPress: () => removePick(pick.id),
+              },
+            ]
+          : undefined
+      }
     >
       <ListItem
         title={tool.name}
