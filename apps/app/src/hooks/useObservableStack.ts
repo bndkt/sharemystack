@@ -51,7 +51,7 @@ export function useObservableStack({ userId, slug, loadPicks }: StackSelector) {
 
       return () => subscription.unsubscribe();
     }
-  }, [stack, setPicks]);
+  }, [stack, setPicks, loadPicks]);
 
   return { stack, picks, loading };
 }

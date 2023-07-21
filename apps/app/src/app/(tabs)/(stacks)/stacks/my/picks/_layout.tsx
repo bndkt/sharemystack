@@ -1,5 +1,5 @@
 import BottomSheet from "@gorhom/bottom-sheet";
-import { Stack } from "expo-router";
+import { Stack, useRouter } from "expo-router";
 import { useCallback, useMemo, useRef } from "react";
 import { useTheme } from "tamagui";
 
@@ -8,6 +8,7 @@ import { useTheme } from "tamagui";
 export default function Layout() {
   const bottomSheetRef = useRef<BottomSheet>(null);
   const theme = useTheme();
+  const router = useRouter();
 
   const snapPoints = useMemo(() => ["50%"], []); // "25%", "50%", "75%"
 
@@ -21,6 +22,8 @@ export default function Layout() {
       index={0}
       snapPoints={snapPoints}
       onChange={handleSheetChanges}
+      enablePanDownToClose={true}
+      onClose={() => router.push("/(tabs)/(stacks)/stacks/my")}
       style={{
         shadowColor: theme.color.val,
         shadowOffset: {

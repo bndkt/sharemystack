@@ -17,14 +17,14 @@ export function MyStack() {
   if (!user) throw new Error("User not found");
 
   const { stack, picks, loading } = useObservableStack({
-    userId: user?.id,
+    userId: user.id,
     loadPicks: true,
   });
 
   return loading ? (
     <Loading message="Loading stack" />
   ) : stack ? (
-    <MyStackProvider stack={stack}>
+    <MyStackProvider stack={stack} picks={picks}>
       <YStack fullscreen>
         <MyStackHeader stack={stack} refresh={() => {}} />
         <List

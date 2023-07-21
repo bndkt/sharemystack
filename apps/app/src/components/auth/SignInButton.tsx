@@ -32,6 +32,7 @@ export function SignInButton() {
     }
 
     if (data?.url) {
+      console.log(data.url);
       setAuthUrl(data.url);
     }
   }

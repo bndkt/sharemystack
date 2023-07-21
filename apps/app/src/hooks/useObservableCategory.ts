@@ -7,7 +7,8 @@ import { TableName } from "@/model/schema";
 
 export function useObservableCategory(slug: string) {
   const database = useDatabase();
-  const [categoriy, setCategory] = useState<Category>();
+  const [category, setCategory] = useState<Category>();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const categoriesCollection = database.collections.get<Category>(
@@ -20,10 +21,11 @@ export function useObservableCategory(slug: string) {
 
     const subscription = categoriesObservable.subscribe((newCategories) => {
       setCategory(newCategories[0]);
+      setLoading(false);
     });
 
     return () => subscription.unsubscribe();
-  }, [database]);
+  }, [database, slug, setCategory, setLoading]);
 
-  return categoriy;
+  return { category, loading };
 }

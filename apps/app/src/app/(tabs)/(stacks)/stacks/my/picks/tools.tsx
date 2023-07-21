@@ -1,25 +1,24 @@
-import { Check, Plus } from "@tamagui/lucide-icons";
 import { Stack, useLocalSearchParams } from "expo-router";
 import { useEffect, useState } from "react";
-import { ListItem, YStack } from "tamagui";
+import { YStack } from "tamagui";
 
 import { List } from "@/components/List";
 import { Loading } from "@/components/Loading";
-import { ToolIcon } from "@/components/icons/ToolIcon";
 import { useMyStack } from "@/hooks/useMyStack";
 import { useObservableCategory } from "@/hooks/useObservableCategory";
 import { Pick } from "@/model/Pick";
 import { Tool } from "@/model/Tool";
+import { PickTool } from "@/components/stacks/PickTool";
 
 export default function Tools() {
   const [tools, setTools] = useState<Tool[]>();
-  const [picks, setPicks] = useState<Pick[]>();
+  // const [picks, setPicks] = useState<Pick[]>();
   const { category: slug } = useLocalSearchParams<{ category: string }>();
-  const { stack, addPick, removePick } = useMyStack();
+  const { stack, picks } = useMyStack();
 
   if (!slug) throw new Error("No category slug provided");
 
-  const category = useObservableCategory(slug);
+  const { category, loading } = useObservableCategory(slug);
 
   useEffect(() => {
     if (category) {
@@ -32,17 +31,6 @@ export default function Tools() {
     }
   }, [category, setTools]);
 
-  useEffect(() => {
-    if (stack) {
-      const subscription = stack.picks.observe().subscribe((newPicks) => {
-        console.log("newPicks", newPicks.length);
-        setPicks(newPicks);
-      });
-
-      return () => subscription.unsubscribe();
-    }
-  });
-
   if (!category) {
     return <Loading message="Loading category" />;
   }
@@ -50,34 +38,15 @@ export default function Tools() {
   return (
     <>
       <Stack.Screen options={{ title: category.name ?? "" }} />
-      {!tools ? (
+      {loading ? (
         <Loading message="Loading tools" />
       ) : (
         <YStack fullscreen>
           <List
             data={tools}
-            renderItem={({ item }) => {
-              const picked = Boolean(
-                picks?.find((pick) => pick.tool.id === item.id)
-              );
-
-              return (
-                <ListItem
-                  title={item.name}
-                  icon={<ToolIcon svgXml={item.icon} width="24" height="24" />}
-                  iconAfter={
-                    picked ? (
-                      <Check color="gray" size="$1" />
-                    ) : (
-                      <Plus size="$1" />
-                    )
-                  }
-                  onPress={() =>
-                    picked ? removePick(item.id) : addPick(item.id, category.id)
-                  }
-                />
-              );
-            }}
+            renderItem={({ item }) => (
+              <PickTool category={category} item={item} picks={picks} />
+            )}
           />
         </YStack>
       )}

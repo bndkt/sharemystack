@@ -3,9 +3,11 @@ import { ReactNode, createContext } from "react";
 import { useRefresh } from "@/hooks/useRefresh";
 import { supabase } from "@/lib/supabase";
 import { Stack } from "@/model/Stack";
+import { Pick } from "@/model/Pick";
 
 export const MyStackContext = createContext<{
   stack: Stack | null;
+  picks?: Pick[];
   addPick: (toolId: string, categoryId: string) => void;
   removePick: (stackId: string) => void;
 }>({
@@ -16,9 +18,11 @@ export const MyStackContext = createContext<{
 
 export function MyStackProvider({
   stack,
+  picks,
   children,
 }: {
   stack: Stack;
+  picks?: Pick[];
   children: ReactNode;
 }) {
   const { refresh } = useRefresh();
@@ -51,6 +55,7 @@ export function MyStackProvider({
     <MyStackContext.Provider
       value={{
         stack,
+        picks,
         addPick,
         removePick,
       }}
