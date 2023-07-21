@@ -1,14 +1,14 @@
-create or replace function pull(last_pulled_at bigint default 0) returns jsonb as $$
-declare _ts timestamp with time zone;
+CREATE OR replace FUNCTION pull(last_pulled_at BIGINT default 0) RETURNS jsonb AS $$
+DECLARE _ts TIMESTAMP WITH TIME ZONE;
 _tools JSONB;
 _categories JSONB;
 _categorizations JSONB;
 _stacks JSONB;
 _picks JSONB;
-begin -- Timestamp
+BEGIN -- Timestamp
 _ts := to_timestamp(last_pulled_at / 1000);
 -- Tools
-select jsonb_build_object(
+SELECT jsonb_build_object(
         'created',
         COALESCE(
             jsonb_agg(to_jsonb(t)) FILTER (
@@ -33,8 +33,8 @@ select jsonb_build_object(
             ),
             '[]'::jsonb
         )
-    ) into _tools
-from tools t;
+    ) INTO _tools
+FROM tools_view t;
 --- Categories
 SELECT jsonb_build_object(
         'created',
@@ -168,7 +168,7 @@ RETURN jsonb_build_object(
     'timestamp',
     EXTRACT(
         EPOCH
-        FROM NOW() at time zone 'UTC'
+        FROM NOW() AT TIME ZONE 'UTC'
     ) * 1000
 );
 END;

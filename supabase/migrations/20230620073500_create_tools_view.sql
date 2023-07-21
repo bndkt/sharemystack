@@ -7,9 +7,6 @@ select tools.id,
     tools.color,
     tools.created_at,
     tools.deleted_at,
-    categories.id as category_id,
-    categories.name as category_name,
-    categories.slug as category_slug,
     count(picks) as all_picks,
     count(stacks) as user_picks,
     CASE
@@ -24,4 +21,4 @@ from tools
         picks.stack_id = stacks.id
         and stacks.user_id = auth.uid()
     )
-group by (tools.id, categories.id);
+group by (tools.id);
