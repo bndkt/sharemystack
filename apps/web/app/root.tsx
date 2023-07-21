@@ -1,9 +1,8 @@
-import { useState } from "react";
-import { json } from "@remix-run/cloudflare";
-import type {
+import {
+  json,
   V2_MetaFunction,
-  LinksFunction,
-  LoaderFunction,
+  type LinksFunction,
+  type LoaderFunction,
 } from "@remix-run/cloudflare";
 import {
   Links,
@@ -15,10 +14,16 @@ import {
   useLoaderData,
 } from "@remix-run/react";
 import { createBrowserClient } from "@supabase/auth-helpers-remix";
-
-import stylesheet from "./tailwind.css";
+import { useState } from "react";
 import { Database } from "./lib/database.types";
 import { Header } from "./components/Header";
+import styles from "./tailwind.css";
+
+type LoaderData = {
+  measurementId: string | undefined;
+  supabaseUrl: string;
+  supabaseAnonKey: string;
+};
 
 export const meta: V2_MetaFunction = () => [
   {
@@ -37,16 +42,6 @@ export const meta: V2_MetaFunction = () => [
   },
 ];
 
-export const links: LinksFunction = () => [
-  { rel: "stylesheet", href: stylesheet },
-];
-
-type LoaderData = {
-  measurementId: string | undefined;
-  supabaseUrl: string;
-  supabaseAnonKey: string;
-};
-
 export const loader: LoaderFunction = async ({ context }) => {
   return json<LoaderData>({
     measurementId: context.MEASUREMENT_ID as string,
@@ -54,6 +49,8 @@ export const loader: LoaderFunction = async ({ context }) => {
     supabaseAnonKey: context.SUPABASE_ANON_KEY as string,
   });
 };
+
+export const links: LinksFunction = () => [{ rel: "stylesheet", href: styles }];
 
 export default function App() {
   const { measurementId, supabaseUrl, supabaseAnonKey } =
@@ -64,8 +61,12 @@ export default function App() {
   );
 
   return (
-    <html className="h-full antialiased" lang="en">
+    <html lang="en">
       <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <Meta />
+        <Links />
         {measurementId && (
           <>
             <script
@@ -81,8 +82,6 @@ export default function App() {
             />
           </>
         )}
-        <Meta />
-        <Links />
       </head>
       <body className="bg-sharemystack">
         <Header />
