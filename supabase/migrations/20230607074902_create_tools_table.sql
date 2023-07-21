@@ -1,19 +1,17 @@
-create table
-  tools (
-    id uuid not null default gen_random_uuid(),
-    created_at timestamp with time zone not null default now(),
-    name character varying not null,
-    slug character varying not null,
-    color character varying null,
-    icon text null,
-    website character varying null,
-    twitter character varying null,
-    constraint tools_pkey primary key (id),
-    constraint tools_slug_key unique (slug)
-  );
-
-alter table tools
-  enable row level security;
-
-create policy "Tools are viewable by everyone."
-  on tools for select using ( true );
+CREATE TABLE tools (
+  id uuid NOT NULL default gen_random_uuid(),
+  PRIMARY KEY (id),
+  created_at TIMESTAMP WITH TIME ZONE NOT NULL default NOW(),
+  updated_at TIMESTAMP WITH TIME ZONE NOT NULL default NOW(),
+  deleted_at TIMESTAMP WITH TIME ZONE default NULL,
+  NAME CHARACTER varying NOT NULL,
+  slug CHARACTER varying NOT NULL,
+  CONSTRAINT tools_slug_key unique (slug),
+  color CHARACTER varying NULL,
+  icon TEXT NULL,
+  website CHARACTER varying NULL,
+  twitter CHARACTER varying NULL
+);
+ALTER TABLE tools ENABLE ROW LEVEL SECURITY;
+CREATE POLICY "Tools are viewable by everyone." ON tools for
+SELECT USING (true);

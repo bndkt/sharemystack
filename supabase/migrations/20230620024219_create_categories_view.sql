@@ -1,8 +1,16 @@
-create view categories_view as
-    select
-    categories.*,
-    COUNT(categorizations) as tools
-    from
-    categories
-    left join categorizations on (categorizations.category_id = categories.id)
-    group by categories.id;
+CREATE view categories_view AS
+SELECT categories.id,
+    categories.name,
+    categories.slug,
+    categories.icon,
+    categories.soon,
+    categories.created_at,
+    categories.deleted_at,
+    COUNT(categorizations) as tools,
+    CASE
+        WHEN max(categorizations.updated_at) > categories.updated_at THEN max(categorizations.updated_at)
+        ELSE categories.updated_at
+    END AS updated_at
+FROM categories
+    LEFT JOIN categorizations ON (categorizations.category_id = categories.id)
+GROUP BY categories.id;

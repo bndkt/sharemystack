@@ -1,0 +1,42 @@
+Create a postgres function called "pull" that accepts a millisecond timestamp, converts it into a timestamptz value and returns a jsonb object that looks exactly like the following example, containing the creations, updates and deletions that have occurred in the "tools" and "categories" tables (which have different columns) since that timestamp. The statement should include all columns from the tables and even work if additional columns are added to the table. The timestamp in the returned JSON should be the current timestamp, not the one passed in. Use only functions available in standard Postgres like jsonb_build_object and jsonb_object_agg.
+
+{
+  "changes": {
+    "tools": {
+      "created": [
+        {
+          "id": "6a9095b4-132e-4625-891d-8286e92e8f92",
+          "name": "Foo",
+          "slug": "foo",
+          "website": "https://foo.com",
+          "created_at": 1689727065519,
+          "updated_at": 1689727065519
+        },
+        {
+          "id": "f899b6d5-a1e1-48fe-96c2-ec45e00425bc",
+          "name": "Bar",
+          "slug": "bar",
+          "website": "https://bar.com",
+          "created_at": 1689727065519,
+          "updated_at": 1689727065519
+        }
+      ],
+      "updated": [
+        {
+          "id": "a53d4fba-35a4-49e6-baf3-0e7bf2a1188b",
+          "name": "Baz",
+          "slug": "baz",
+          "created_at": 1689727065519,
+          "updated_at": 1689727065519
+        }
+      ],
+      "deleted": ["7cc31f5b-77a9-4fb6-960d-c72ef0abf82b"]
+    },
+    "categories": {
+      "created": [],
+      "updated": [],
+      "deleted": []
+    }
+  },
+  "timestamp": 1689727065519
+}
