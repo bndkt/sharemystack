@@ -42,11 +42,23 @@ export const meta: V2_MetaFunction = () => [
   },
 ];
 
+declare module "@remix-run/cloudflare" {
+  export interface AppLoadContext {
+    env: {
+      MEASUREMENT_ID: string;
+      EXPO_PUBLIC_SUPABASE_URL: string;
+      EXPO_PUBLIC_SUPABASE_ANON_KEY: string;
+    };
+  }
+}
+
 export const loader: LoaderFunction = async ({ context }) => {
+  console.log("LOADER", context.env);
+
   return json<LoaderData>({
-    measurementId: context.MEASUREMENT_ID as string,
-    supabaseUrl: context.SUPABASE_URL as string,
-    supabaseAnonKey: context.SUPABASE_ANON_KEY as string,
+    measurementId: context.env.MEASUREMENT_ID,
+    supabaseUrl: context.env.EXPO_PUBLIC_SUPABASE_URL,
+    supabaseAnonKey: context.env.EXPO_PUBLIC_SUPABASE_ANON_KEY,
   });
 };
 

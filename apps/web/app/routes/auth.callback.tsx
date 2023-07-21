@@ -51,7 +51,7 @@ export const loader = async ({ request, context }: LoaderArgs) => {
           id: data.user.id,
           name: data.user.user_metadata.full_name,
         },
-        context.CANNY_PRIVATE_KEY as string
+        context.EXPO_PUBLIC_CANNY_PRIVATE_KEY as string
       );
 
       const redirectUrl =
