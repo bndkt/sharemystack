@@ -84,7 +84,7 @@ const config: ExpoConfig = {
       "expo-router",
       {
         origin: "https://sharemystack.com",
-        asyncRoutes: "development",
+        // asyncRoutes: "development",
       },
     ],
     "expo-apple-authentication",
