@@ -5,10 +5,10 @@ import { Button, H3, Text, XStack, YStack } from "tamagui";
 import { customEvent } from "vexo-analytics";
 
 import { List } from "@/components/List";
-import { useAuth } from "@/hooks/useAuth";
-import { supabase } from "@/lib/supabase";
-import { useObservableStack } from "@/hooks/useObservableStack";
 import { PickItem } from "@/components/stacks/PickItem";
+import { useAuth } from "@/hooks/useAuth";
+import { useObservableStack } from "@/hooks/useObservableStack";
+import { supabase } from "@/lib/supabase";
 
 export default function Index() {
   let { stack: slug } = useLocalSearchParams<{ stack: string }>();

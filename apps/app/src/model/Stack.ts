@@ -1,5 +1,5 @@
-import { Model, Q, Relation } from "@nozbe/watermelondb";
-import { immutableRelation, lazy, text } from "@nozbe/watermelondb/decorators";
+import { Model, Q } from "@nozbe/watermelondb";
+import { lazy, text } from "@nozbe/watermelondb/decorators";
 
 import { Pick } from "./Pick";
 import { TableName } from "./schema";

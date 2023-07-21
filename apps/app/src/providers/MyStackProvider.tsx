@@ -1,7 +1,7 @@
 import { ReactNode, createContext } from "react";
 
+import { useRefresh } from "@/hooks/useRefresh";
 import { supabase } from "@/lib/supabase";
-import { sync } from "@/lib/sync";
 import { Stack } from "@/model/Stack";
 
 export const MyStackContext = createContext<{
@@ -21,6 +21,8 @@ export function MyStackProvider({
   stack: Stack;
   children: ReactNode;
 }) {
+  const { refresh } = useRefresh();
+
   function addPick(toolId: string, categoryId: string) {
     const query = supabase.from("picks").insert({
       stack_id: stack.id,
@@ -30,7 +32,7 @@ export function MyStackProvider({
 
     query.then((result) => {
       console.log({ result });
-      sync();
+      refresh();
     });
   }
 
@@ -41,7 +43,7 @@ export function MyStackProvider({
       .eq("id", pickId);
     query.then((result) => {
       console.log({ result });
-      sync();
+      refresh();
     });
   }
 

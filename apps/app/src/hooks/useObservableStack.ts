@@ -2,9 +2,9 @@ import { Q } from "@nozbe/watermelondb";
 import { useDatabase } from "@nozbe/watermelondb/hooks";
 import { useEffect, useState } from "react";
 
+import { Pick } from "@/model/Pick";
 import { Stack } from "@/model/Stack";
 import { TableName } from "@/model/schema";
-import { Pick } from "@/model/Pick";
 
 type StackSelector =
   | {

@@ -1,5 +1,5 @@
 import { Model, Relation } from "@nozbe/watermelondb";
-import { immutableRelation, text } from "@nozbe/watermelondb/decorators";
+import { immutableRelation } from "@nozbe/watermelondb/decorators";
 
 import { Category } from "./Category";
 import { Stack } from "./Stack";
