@@ -9,18 +9,21 @@ import { PickItem } from "@/components/stacks/PickItem";
 import { useAuth } from "@/hooks/useAuth";
 import { useObservableStack } from "@/hooks/useObservableStack";
 import { MyStackProvider } from "@/providers/MyStackProvider";
+import { Loading } from "@/components/Loading";
 
 export function MyStack() {
   const { user } = useAuth();
 
   if (!user) throw new Error("User not found");
 
-  const { stack, picks } = useObservableStack({
+  const { stack, picks, loading } = useObservableStack({
     userId: user?.id,
     loadPicks: true,
   });
 
-  return stack ? (
+  return loading ? (
+    <Loading message="Loading stack" />
+  ) : stack ? (
     <MyStackProvider stack={stack}>
       <YStack fullscreen>
         <MyStackHeader stack={stack} refresh={() => {}} />
@@ -33,7 +36,7 @@ export function MyStack() {
       </YStack>
     </MyStackProvider>
   ) : (
-    <CreateStack refresh={() => {}} />
+    <CreateStack />
   );
 }
 

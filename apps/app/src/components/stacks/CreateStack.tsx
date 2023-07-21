@@ -6,7 +6,7 @@ import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/lib/supabase";
 import { isValidSlug } from "@/lib/validation";
 
-export function CreateStack({ refresh }: { refresh: () => void }) {
+export function CreateStack() {
   const { user } = useAuth();
   const [name, setName] = useState<string | null | undefined>(
     user?.user_metadata.full_name
@@ -33,7 +33,7 @@ export function CreateStack({ refresh }: { refresh: () => void }) {
           user_id: user.id,
         })
         .then(() => {
-          refresh();
+          // refresh();
         });
     }
   }

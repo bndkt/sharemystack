@@ -22,6 +22,7 @@ export function useObservableStack({ userId, slug, loadPicks }: StackSelector) {
   const database = useDatabase();
   const [stack, setStack] = useState<Stack>();
   const [picks, setPicks] = useState<Pick[]>();
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const stacksCollection = database.collections.get<Stack>(TableName.STACKS);
@@ -36,6 +37,7 @@ export function useObservableStack({ userId, slug, loadPicks }: StackSelector) {
 
     const subscription = stacksObservable.subscribe((newStacks) => {
       setStack(newStacks[0]);
+      setLoading(false);
     });
 
     return () => subscription.unsubscribe();
@@ -51,5 +53,5 @@ export function useObservableStack({ userId, slug, loadPicks }: StackSelector) {
     }
   }, [stack, setPicks]);
 
-  return { stack, picks };
+  return { stack, picks, loading };
 }
