@@ -34,7 +34,7 @@ select jsonb_build_object(
             '[]'::jsonb
         )
     ) into _tools
-from tools_view t;
+from tools t;
 --- Categories
 SELECT jsonb_build_object(
         'created',
