@@ -26,7 +26,7 @@ export default function Tools() {
       {loading ? (
         <Loading message="Loading tools" />
       ) : (
-        <YStack fullscreen>
+        <YStack fullscreen minHeight={100}>
           <List
             data={tools}
             renderItem={({ item }) => (

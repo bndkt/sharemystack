@@ -20,7 +20,7 @@ export function PickItem({
 }) {
   const [tool, setTool] = useState<Tool>();
   const [category, setCategory] = useState<Category>();
-  const { removePick } = useMyStack();
+  const { stack } = useMyStack();
 
   useEffect(() => {
     const subscription = pick.tool.observe().subscribe((newTool) => {
@@ -46,7 +46,7 @@ export function PickItem({
               {
                 text: <Trash2 color="white" />,
                 color: "$red10",
-                onPress: () => removePick(pick.id),
+                onPress: () => stack?.removePick(pick),
               },
             ]
           : undefined

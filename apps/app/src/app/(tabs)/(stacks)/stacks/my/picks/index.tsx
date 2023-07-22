@@ -17,7 +17,7 @@ export default function Index() {
   }, []);
 
   return (
-    <YStack fullscreen>
+    <YStack fullscreen minHeight={100}>
       <List
         data={categories}
         onRefresh={refresh}

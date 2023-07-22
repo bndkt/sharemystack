@@ -33,8 +33,10 @@ export async function sync(reset = false) {
 
       return { changes, timestamp };
     },
-    /* pushChanges: async ({ changes, lastPulledAt }) => {
-      const response = await fetch(
+    pushChanges: async ({ changes, lastPulledAt }) => {
+      console.log("Pushing changes ...");
+      console.log(changes);
+      /* const response = await fetch(
         `https://my.backend/sync?last_pulled_at=${lastPulledAt}`,
         {
           method: "POST",
@@ -43,8 +45,8 @@ export async function sync(reset = false) {
       );
       if (!response.ok) {
         throw new Error(await response.text());
-      }
-    }, */
+      } */
+    },
     // migrationsEnabledAtVersion: 1,
   });
 }

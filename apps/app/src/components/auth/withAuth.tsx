@@ -4,9 +4,9 @@ import { useAuth } from "@/hooks/useAuth";
 
 export function withAuth(Component: React.FC) {
   function AuthSwitch() {
-    const { session } = useAuth();
+    const { session, user } = useAuth();
 
-    return session ? <Component /> : <SignInButton />;
+    return session && user ? <Component /> : <SignInButton />;
   }
 
   return AuthSwitch;

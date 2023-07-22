@@ -8,6 +8,7 @@ import { useMyStack } from "@/hooks/useMyStack";
 import { Category } from "@/model/Category";
 import { Pick } from "@/model/Pick";
 import { Tool } from "@/model/Tool";
+import { useRefresh } from "@/hooks/useRefresh";
 
 export function PickTool({
   category,
@@ -17,6 +18,7 @@ export function PickTool({
   item: Tool;
 }) {
   const { stack, picks, addPick, removePick } = useMyStack();
+  const { refresh } = useRefresh();
 
   const pick = useMemo(() => {
     return picks?.find((pick) => pick.tool.id === item.id);
@@ -25,11 +27,13 @@ export function PickTool({
   function add(tool: Tool, category: Category) {
     // addPick(item.id, category.id);
     stack?.addPick(tool, category);
+    refresh();
   }
 
   function remove(pick: Pick) {
     // removePick(pick.id);
     stack?.removePick(pick);
+    refresh();
   }
 
   return (

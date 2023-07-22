@@ -1,7 +1,7 @@
 import BottomSheet from "@gorhom/bottom-sheet";
 import { Stack, useRouter } from "expo-router";
 import { useCallback, useMemo, useRef } from "react";
-import { useTheme } from "tamagui";
+import { YStack, useTheme } from "tamagui";
 
 import { HeaderRight } from "@/components/stacks/HeaderRight";
 
@@ -45,7 +45,7 @@ export default function Layout() {
     >
       <Stack screenOptions={{ headerRight: () => <HeaderRight /> }}>
         <Stack.Screen name="index" options={{ title: "Categories" }} />
-        <Stack.Screen name="tools" options={{ title: "Tools" }} />
+        <Stack.Screen name="[category]" options={{ title: "Tools" }} />
       </Stack>
     </BottomSheet>
   );
