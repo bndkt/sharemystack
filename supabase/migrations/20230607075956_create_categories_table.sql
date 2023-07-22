@@ -8,7 +8,7 @@ create table categories (
   slug character varying not null,
   constraint categories_slug_key unique (slug),
   icon character varying not null,
-  soon boolean not null default false
+  is_coming_soon boolean not null default false
 );
 alter table categories enable row level security;
 create policy "Categories are viewable by everyone." on categories for

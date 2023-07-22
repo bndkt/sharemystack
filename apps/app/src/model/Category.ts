@@ -21,8 +21,8 @@ export class Category extends Model {
   @text("name") name!: string;
   @text("slug") slug!: string;
   @text("icon") icon!: string;
-  @text("soon") soon!: boolean;
-  @text("tools") numberOfTools!: number;
+  @text("is_coming_soon") isComingSoon!: boolean;
+  @text("number_of_tools") numberOfTools!: number;
 
   @lazy
   tools = this.collections

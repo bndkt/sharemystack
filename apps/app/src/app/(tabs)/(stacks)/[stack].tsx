@@ -1,20 +1,18 @@
 import { Star } from "@tamagui/lucide-icons";
 import { Stack, useLocalSearchParams } from "expo-router";
-import { useState } from "react";
 import { Button, H3, Text, XStack, YStack } from "tamagui";
-import { customEvent } from "vexo-analytics";
 
 import { List } from "@/components/List";
 import { PickItem } from "@/components/stacks/PickItem";
 import { useAuth } from "@/hooks/useAuth";
 import { useObservableStack } from "@/hooks/useObservableStack";
 import { supabase } from "@/lib/supabase";
+import { useRefresh } from "@/hooks/useRefresh";
 
 export default function Index() {
+  const { refresh } = useRefresh();
   let { stack: slug } = useLocalSearchParams<{ stack: string }>();
   slug = slug?.toLowerCase().substring(1);
-
-  const [isStarred, setIsStarred] = useState(false);
 
   const { user, session } = useAuth();
 
@@ -22,31 +20,38 @@ export default function Index() {
 
   const { stack, picks } = useObservableStack({ slug, loadPicks: true });
 
-  function toggleStar() {
-    setIsStarred(!isStarred);
-
-    if (!isStarred) {
-      customEvent("starred", {
-        stack: stack?.id,
-      });
+  function addStar() {
+    if (user && stack) {
+      supabase
+        .from("stars")
+        .insert({
+          stack_id: stack.id,
+          user_id: user.id,
+        })
+        .then((result) => {
+          console.log({ result });
+          refresh();
+        });
     }
+  }
 
-    if (user?.id && stack?.id) {
-      const query = !isStarred
+  function toggleStar() {
+    if (user && stack) {
+      const query = stack.starred
         ? supabase
             .from("stars")
-            .upsert({
-              stack_id: stack.id,
-              user_id: user?.id,
+            .update({
+              deleted_at: "NOW()",
             })
-            .select()
-        : supabase.from("stars").delete().match({
+            .match({ stack_id: stack.id, user_id: user.id, deleted_at: null })
+        : supabase.from("stars").insert({
             stack_id: stack.id,
-            user_id: user?.id,
+            user_id: user.id,
           });
 
       query.then((result) => {
         console.log({ result });
+        refresh();
       });
     }
   }
@@ -66,7 +71,7 @@ export default function Index() {
                 icon={
                   <Star
                     color="gray"
-                    fill={isStarred ? "gray" : "transparent"}
+                    fill={stack.starred ? "gray" : "transparent"}
                     size="$1"
                   />
                 }

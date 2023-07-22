@@ -16,11 +16,12 @@ export class Stack extends Model {
 
   @text("name") name!: string;
   @text("slug") slug!: string;
-  @text("twitter_image_url") twitter_image_url!: string;
+  @text("twitter_image_url") twitterImageUrl!: string;
   @text("website") website!: string;
   @text("twitter") twitter!: string;
-  @text("starred") starred!: boolean;
-  @text("stars") stars!: number;
+  @text("is_starred") isStarred!: boolean;
+  @text("is_featured") isFeatured!: boolean;
+  @text("number_of_stars") numberOfStars!: number;
   @text("user_id") user!: string;
 
   @lazy

@@ -13,4 +13,4 @@ from (
 union
 select *
 from stacks_view
-where starred is true
+where is_starred is true

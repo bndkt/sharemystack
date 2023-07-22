@@ -4,7 +4,6 @@ import { ListItem, YStack } from "tamagui";
 
 import { List } from "@/components/List";
 import { ImageIcon } from "@/components/icons/StackIcon";
-import { StacksResponse } from "@/lib/database/getStacks";
 import { Stack } from "@/model/Stack";
 
 export function StackList({
@@ -12,7 +11,7 @@ export function StackList({
   onRefresh,
   refreshing,
 }: {
-  stacks: StacksResponse["data"] | Stack[];
+  stacks: Stack[];
   onRefresh?: () => void;
   refreshing?: boolean;
 }) {
@@ -28,7 +27,7 @@ export function StackList({
               <ListItem
                 title={item.name}
                 subTitle={`@${item.slug}`}
-                icon={<ImageIcon src={item.twitter_image_url} />}
+                icon={<ImageIcon src={item.twitterImageUrl} />}
                 iconAfter={<ChevronRight size="$1" />}
               />
             </Link>

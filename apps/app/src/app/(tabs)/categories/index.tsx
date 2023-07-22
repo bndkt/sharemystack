@@ -31,14 +31,14 @@ export default function Categories() {
             >
               <ListItem
                 title={
-                  item.soon ? (
+                  item.isComingSoon ? (
                     <Text color="$gray8">{item.name}</Text>
                   ) : (
                     item.name
                   )
                 }
                 subTitle={
-                  item.soon ? (
+                  item.isComingSoon ? (
                     <Text color="$gray8">Coming soon</Text>
                   ) : (
                     `${item.numberOfTools ?? "0"} tool${
@@ -49,7 +49,7 @@ export default function Categories() {
                 icon={
                   <CategoryIcon
                     name={item.icon}
-                    color={item.soon ? "$gray8" : undefined}
+                    color={item.isComingSoon ? "$gray8" : undefined}
                   />
                 }
                 // iconAfter={item.soon ? undefined : <ChevronRight size="$1" />}

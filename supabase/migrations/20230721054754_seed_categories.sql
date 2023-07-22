@@ -1,5 +1,5 @@
 -- gen_random_uuid()
-insert into public.categories (id, name, slug, icon, soon)
+insert into public.categories (id, name, slug, icon, is_coming_soon)
 values (
         '6a9095b4-132e-4625-891d-8286e92e8f92',
         'Email Service',
@@ -116,7 +116,7 @@ update
 set name = EXCLUDED.name,
     slug = EXCLUDED.slug,
     icon = EXCLUDED.icon,
-    soon = EXCLUDED.soon;
+    is_coming_soon = EXCLUDED.is_coming_soon;
 insert into public.categorizations (tool_id, category_id)
 values -- Note-taking
     (

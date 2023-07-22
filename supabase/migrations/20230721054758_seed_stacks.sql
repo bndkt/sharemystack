@@ -1,7 +1,7 @@
 insert into public.stacks (
         id,
         name,
-        featured,
+        is_featured,
         slug,
         twitter,
         twitter_image_url,
@@ -83,5 +83,6 @@ set name = EXCLUDED.name,
     twitter_image_url = EXCLUDED.twitter_image_url,
     website = EXCLUDED.website,
     user_id = EXCLUDED.user_id,
+    is_featured = EXCLUDED.is_featured,
     deleted_at = EXCLUDED.deleted_at,
     updated_at = NOW();

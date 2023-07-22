@@ -25,11 +25,11 @@ export function useObservableStacks({
     let stacksQuery = stacksCollection.query();
 
     if (featured) {
-      stacksQuery = stacksQuery.extend(Q.where("featured", true));
+      stacksQuery = stacksQuery.extend(Q.where("is_featured", true));
     }
 
     if (starred) {
-      stacksQuery = stacksQuery.extend(Q.where("starred", true));
+      stacksQuery = stacksQuery.extend(Q.where("is_starred", true));
     }
 
     if (updated) {

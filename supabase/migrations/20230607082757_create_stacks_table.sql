@@ -11,7 +11,7 @@ create table stacks (
   twitter character varying null,
   twitter_image_url character varying null,
   website character varying null,
-  featured boolean not null default false
+  is_featured boolean not null default false
 );
 alter table stacks enable row level security;
 create policy "Stacks are viewable by everyone." on stacks for
