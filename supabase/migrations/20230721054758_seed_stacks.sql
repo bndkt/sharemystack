@@ -60,7 +60,7 @@ values -- ('fbc5602c-ebef-4282-8754-d56520486498', 'Benedikt Müller', false, '_
         true,
         'mariepoulin',
         'mariepoulin',
-        'https://pbs.twimg.com/profile_images/1327070756581244930/8cbltVhc_400x400.jpg',
+        'https://pbs.twimg.com/profile_images/1680058634678714368/uiHqRHdq_400x400.jpg',
         'https://mariepoulin.com/',
         NULL,
         NULL
