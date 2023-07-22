@@ -6,7 +6,7 @@ import { Category } from "@/model/Category";
 import { Pick } from "@/model/Pick";
 import { Stack } from "@/model/Stack";
 import { Tool } from "@/model/Tool";
-import { migrations } from "@/model/migrations";
+// import { migrations } from "@/model/migrations";
 import { schema } from "@/model/schema";
 
 // First, create the adapter to the underlying database:
