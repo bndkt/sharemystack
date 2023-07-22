@@ -1,45 +1,21 @@
-import { Star } from "@tamagui/lucide-icons";
 import { Stack, useLocalSearchParams } from "expo-router";
-import { Button, H3, Text, XStack, YStack } from "tamagui";
+import { H3, Text, XStack, YStack } from "tamagui";
 
 import { List } from "@/components/List";
 import { PickItem } from "@/components/stacks/PickItem";
-import { useAuth } from "@/hooks/useAuth";
+import { Star } from "@/components/stacks/Star";
 import { useObservableStack } from "@/hooks/useObservableStack";
-import { useRefresh } from "@/hooks/useRefresh";
-import { supabase } from "@/lib/supabase";
 
 export default function Index() {
-  const { refresh } = useRefresh();
   let { stack: slug } = useLocalSearchParams<{ stack: string }>();
   slug = slug?.toLowerCase().substring(1);
 
-  const { user, session } = useAuth();
-
   if (!slug) throw new Error("Stack not found");
 
-  const { stack, picks } = useObservableStack({ slug, loadPicks: true });
-
-  function toggleStar() {
-    if (user && stack) {
-      const query = stack.isStarred
-        ? supabase
-            .from("stars")
-            .update({
-              deleted_at: "NOW()",
-            })
-            .match({ stack_id: stack.id, user_id: user.id, deleted_at: null })
-        : supabase.from("stars").insert({
-            stack_id: stack.id,
-            user_id: user.id,
-          });
-
-      query.then((result) => {
-        console.log({ result });
-        refresh();
-      });
-    }
-  }
+  const { stack, picks } = useObservableStack({
+    slug,
+    loadPicks: true,
+  });
 
   return stack ? (
     <>
@@ -50,21 +26,7 @@ export default function Index() {
             <H3>{stack.name}</H3>
             <Text>@{stack.slug}</Text>
           </YStack>
-          {session && (
-            <YStack justifyContent="center">
-              <Button
-                icon={
-                  <Star
-                    color="gray"
-                    fill={stack.isStarred ? "gray" : "transparent"}
-                    size="$1"
-                  />
-                }
-                unstyled
-                onPress={toggleStar}
-              />
-            </YStack>
-          )}
+          <Star stack={stack} />
         </XStack>
         <List
           data={picks}

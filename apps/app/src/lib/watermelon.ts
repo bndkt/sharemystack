@@ -1,12 +1,13 @@
 import { Database } from "@nozbe/watermelondb";
 import SQLiteAdapter from "@nozbe/watermelondb/adapters/sqlite";
 
+// import { migrations } from "@/model/migrations";
 import { Categorization } from "@/model/Categorization";
 import { Category } from "@/model/Category";
 import { Pick } from "@/model/Pick";
 import { Stack } from "@/model/Stack";
+import { Star } from "@/model/Star";
 import { Tool } from "@/model/Tool";
-// import { migrations } from "@/model/migrations";
 import { schema } from "@/model/schema";
 
 // First, create the adapter to the underlying database:
@@ -29,5 +30,5 @@ const adapter = new SQLiteAdapter({
 // Then, make a Watermelon database from it!
 export const database = new Database({
   adapter,
-  modelClasses: [Tool, Category, Categorization, Stack, Pick],
+  modelClasses: [Tool, Category, Categorization, Stack, Pick, Star],
 });

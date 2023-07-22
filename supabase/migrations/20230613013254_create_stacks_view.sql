@@ -17,10 +17,17 @@ select stacks.id,
         ELSE stacks.updated_at
     END AS updated_at
 from stacks
-    left join stars as all_stars on (all_stars.stack_id = stacks.id)
+    left join stars as all_stars on (
+        all_stars.stack_id = stacks.id
+        and all_stars.deleted_at is null
+    )
     left join stars as user_stars on (
         user_stars.stack_id = stacks.id
         and user_stars.user_id = auth.uid()
+        and user_stars.deleted_at is null
     )
-    left join picks on (picks.stack_id = stacks.id)
+    left join picks on (
+        picks.stack_id = stacks.id
+        and picks.deleted_at is null
+    )
 group by stacks.id;

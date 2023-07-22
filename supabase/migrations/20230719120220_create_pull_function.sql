@@ -5,6 +5,7 @@ _categories JSONB;
 _categorizations JSONB;
 _stacks JSONB;
 _picks JSONB;
+_stars JSONB;
 BEGIN -- Timestamp
 _ts := to_timestamp(last_pulled_at / 1000);
 -- Tools
@@ -151,6 +152,34 @@ WHERE stack_id IN (
         SELECT id
         FROM sync_stacks_view
     );
+--- Stars
+SELECT jsonb_build_object(
+        'created',
+        COALESCE(
+            jsonb_agg(to_jsonb(t)) FILTER (
+                WHERE t.deleted_at IS NULL
+                    AND t.created_at > _ts
+            ),
+            '[]'::jsonb
+        ),
+        'updated',
+        COALESCE(
+            jsonb_agg(to_jsonb(t)) FILTER (
+                WHERE t.deleted_at IS NULL
+                    AND t.created_at <= _ts
+                    AND t.updated_at > _ts
+            ),
+            '[]'::jsonb
+        ),
+        'deleted',
+        COALESCE(
+            jsonb_agg(to_jsonb(t.id)) FILTER (
+                WHERE t.deleted_at > _ts
+            ),
+            '[]'::jsonb
+        )
+    ) INTO _stars
+FROM stars t;
 RETURN jsonb_build_object(
     'changes',
     jsonb_build_object(
@@ -163,7 +192,9 @@ RETURN jsonb_build_object(
         'stacks',
         _stacks,
         'picks',
-        _picks
+        _picks,
+        'stars',
+        _stars
     ),
     'timestamp',
     EXTRACT(

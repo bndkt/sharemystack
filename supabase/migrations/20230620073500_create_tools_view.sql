@@ -14,11 +14,21 @@ select tools.id,
         ELSE tools.updated_at
     END as updated_at
 from tools
-    left join categorizations on (categorizations.tool_id = tools.id)
-    left join categories on (categorizations.category_id = categories.id)
-    left join picks on (picks.tool_id = tools.id)
+    left join categorizations on (
+        categorizations.tool_id = tools.id
+        AND categorizations.deleted_at IS NULL
+    )
+    left join categories on (
+        categorizations.category_id = categories.id
+        AND categories.deleted_at IS NULL
+    )
+    left join picks on (
+        picks.tool_id = tools.id
+        AND picks.deleted_at IS NULL
+    )
     left join stacks on (
         picks.stack_id = stacks.id
         and stacks.user_id = auth.uid()
+        AND stacks.deleted_at IS NULL
     )
 group by (tools.id);

@@ -29,7 +29,9 @@ export function useObservableStacks({
     }
 
     if (starred) {
-      stacksQuery = stacksQuery.extend(Q.where("is_starred", true));
+      stacksQuery = stacksQuery.extend(
+        Q.on(TableName.STARS, "user_id", Q.notEq(null))
+      );
     }
 
     if (updated) {

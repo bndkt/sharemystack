@@ -6,6 +6,7 @@ export enum TableName {
   CATEGORIZATIONS = "categorizations",
   STACKS = "stacks",
   PICKS = "picks",
+  STARS = "stars",
 }
 
 export const schema = appSchema({
@@ -69,6 +70,13 @@ export const schema = appSchema({
         { name: "category_id", type: "string", isIndexed: true },
         { name: "created_at", type: "number" },
         { name: "updated_at", type: "number" },
+      ],
+    }),
+    tableSchema({
+      name: TableName.STARS,
+      columns: [
+        { name: "stack_id", type: "string", isIndexed: true },
+        { name: "user_id", type: "string", isIndexed: true },
       ],
     }),
   ],

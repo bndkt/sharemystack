@@ -1,7 +1,6 @@
 import { AuthUser, AuthSession } from "@supabase/supabase-js";
 import { ReactNode, createContext, useEffect, useState } from "react";
 
-import { useRefresh } from "@/hooks/useRefresh";
 import { updateOneSignalProfile } from "@/lib/onesignal";
 import { supabase } from "@/lib/supabase";
 
@@ -26,7 +25,6 @@ export const AuthContext = createContext<{
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [session, setSession] = useState<AuthSession | null>(null);
   const [user, setUser] = useState<AuthUser | null>(null);
-  const { refresh } = useRefresh();
 
   async function signIn({
     session,
@@ -38,7 +36,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setSession(session);
     setUser(user);
     user && updateOneSignalProfile(user.id, user.email);
-    user && refresh(true);
   }
 
   async function signOut() {

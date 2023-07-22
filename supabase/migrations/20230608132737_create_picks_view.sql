@@ -8,7 +8,6 @@ select picks.stack_id,
     tools.website as tool_website,
     tools.icon as tool_icon,
     tools.color as tool_color
-from picks
-    left join stacks on picks.stack_id = stacks.id
+from picks -- left join stacks on picks.stack_id = stacks.id
     left join tools on picks.tool_id = tools.id
     left join categories on picks.category_id = categories.id;
