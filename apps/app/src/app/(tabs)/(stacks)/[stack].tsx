@@ -6,8 +6,8 @@ import { List } from "@/components/List";
 import { PickItem } from "@/components/stacks/PickItem";
 import { useAuth } from "@/hooks/useAuth";
 import { useObservableStack } from "@/hooks/useObservableStack";
-import { supabase } from "@/lib/supabase";
 import { useRefresh } from "@/hooks/useRefresh";
+import { supabase } from "@/lib/supabase";
 
 export default function Index() {
   const { refresh } = useRefresh();
@@ -20,24 +20,9 @@ export default function Index() {
 
   const { stack, picks } = useObservableStack({ slug, loadPicks: true });
 
-  function addStar() {
-    if (user && stack) {
-      supabase
-        .from("stars")
-        .insert({
-          stack_id: stack.id,
-          user_id: user.id,
-        })
-        .then((result) => {
-          console.log({ result });
-          refresh();
-        });
-    }
-  }
-
   function toggleStar() {
     if (user && stack) {
-      const query = stack.starred
+      const query = stack.isStarred
         ? supabase
             .from("stars")
             .update({
@@ -71,7 +56,7 @@ export default function Index() {
                 icon={
                   <Star
                     color="gray"
-                    fill={stack.starred ? "gray" : "transparent"}
+                    fill={stack.isStarred ? "gray" : "transparent"}
                     size="$1"
                   />
                 }

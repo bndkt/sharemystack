@@ -3,11 +3,19 @@ import { useDatabase } from "@nozbe/watermelondb/hooks";
 import { useEffect, useState } from "react";
 
 import { Category } from "@/model/Category";
+import { Tool } from "@/model/Tool";
 import { TableName } from "@/model/schema";
 
-export function useObservableCategory(slug: string) {
+export function useObservableCategory({
+  slug,
+  loadTools,
+}: {
+  slug: string;
+  loadTools?: boolean;
+}) {
   const database = useDatabase();
   const [category, setCategory] = useState<Category>();
+  const [tools, setTools] = useState<Tool[]>();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -25,7 +33,17 @@ export function useObservableCategory(slug: string) {
     });
 
     return () => subscription.unsubscribe();
-  }, [database, slug, setCategory, setLoading]);
+  }, [database, slug]);
 
-  return { category, loading };
+  useEffect(() => {
+    if (category && loadTools) {
+      const subscription = category.tools.observe().subscribe((newTools) => {
+        setTools(newTools);
+      });
+
+      return () => subscription.unsubscribe();
+    }
+  }, [category, loadTools]);
+
+  return { category, tools, loading };
 }

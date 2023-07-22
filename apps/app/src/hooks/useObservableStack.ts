@@ -41,7 +41,7 @@ export function useObservableStack({ userId, slug, loadPicks }: StackSelector) {
     });
 
     return () => subscription.unsubscribe();
-  }, [database, userId, slug, setStack]);
+  }, [database, userId, slug]);
 
   useEffect(() => {
     if (stack && loadPicks) {
@@ -51,7 +51,7 @@ export function useObservableStack({ userId, slug, loadPicks }: StackSelector) {
 
       return () => subscription.unsubscribe();
     }
-  }, [stack, setPicks, loadPicks]);
+  }, [stack, loadPicks]);
 
   return { stack, picks, loading };
 }

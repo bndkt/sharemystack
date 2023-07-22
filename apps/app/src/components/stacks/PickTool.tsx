@@ -6,26 +6,20 @@ import { ToolIcon } from "../icons/ToolIcon";
 
 import { useMyStack } from "@/hooks/useMyStack";
 import { Category } from "@/model/Category";
-import { Pick } from "@/model/Pick";
 import { Tool } from "@/model/Tool";
 
 export function PickTool({
   category,
   item,
-  picks,
 }: {
   category: Category;
   item: Tool;
-  picks?: Pick[];
 }) {
-  console.log("PickTool", picks?.length);
-  const { addPick, removePick } = useMyStack();
+  const { picks, addPick, removePick } = useMyStack();
 
   const pickId = useMemo(() => {
     return picks?.find((pick) => pick.tool.id === item.id)?.id;
-  }, [picks, item]);
-
-  console.log("pickId", pickId);
+  }, [picks, item.id]);
 
   return (
     <ListItem

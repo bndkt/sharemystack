@@ -31,7 +31,7 @@ export const schema = appSchema({
         { name: "name", type: "string" },
         { name: "slug", type: "string", isIndexed: true },
         { name: "icon", type: "string", isOptional: true },
-        { name: "tools", type: "number" },
+        { name: "number_of_tools", type: "number" },
         { name: "is_coming_soon", type: "boolean" },
         { name: "created_at", type: "number" },
         { name: "updated_at", type: "number" },
