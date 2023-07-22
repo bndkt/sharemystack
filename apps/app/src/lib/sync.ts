@@ -14,14 +14,14 @@ export async function sync(reset = false) {
   await synchronize({
     database,
     pullChanges: async ({ lastPulledAt, schemaVersion, migration }) => {
-      console.log("Pulling changes ...");
+      console.log("🍉 ⬇️ Pulling changes ...");
 
       const { data, error } = await supabase.rpc("pull", {
         last_pulled_at: reset ? undefined : lastPulledAt,
       });
 
       if (error) {
-        throw new Error(error.message);
+        throw new Error("🍉".concat(error.message));
       }
 
       const { changes, timestamp } = data as {
@@ -29,23 +29,25 @@ export async function sync(reset = false) {
         timestamp: number;
       };
 
-      console.log(`Changes pulled at ${new Date(timestamp).toISOString()} UTC`);
+      console.log(
+        `🍉 Changes pulled at ${new Date(timestamp).toISOString()} UTC`
+      );
 
       return { changes, timestamp };
     },
     pushChanges: async ({ changes, lastPulledAt }) => {
-      console.log("Pushing changes ...");
+      console.log("🍉 ⬆️ Pushing changes ...");
       console.log(changes);
-      /* const response = await fetch(
-        `https://my.backend/sync?last_pulled_at=${lastPulledAt}`,
-        {
-          method: "POST",
-          body: JSON.stringify(changes),
-        }
-      );
-      if (!response.ok) {
-        throw new Error(await response.text());
-      } */
+
+      const { data, error } = await supabase.rpc("pull", {
+        last_pulled_at: reset ? undefined : lastPulledAt,
+      });
+
+      if (error) {
+        throw new Error("🍉".concat(error.message));
+      }
+
+      console.log(`🍉 Changes pushed at ${new Date().toISOString()} UTC`);
     },
     // migrationsEnabledAtVersion: 1,
   });

@@ -10,9 +10,11 @@ import { PickItem } from "@/components/stacks/PickItem";
 import { useAuth } from "@/hooks/useAuth";
 import { useObservableStack } from "@/hooks/useObservableStack";
 import { MyStackProvider } from "@/providers/MyStackProvider";
+import { useRefresh } from "@/hooks/useRefresh";
 
 export function MyStack() {
   const { user } = useAuth();
+  const { refresh, refreshing } = useRefresh();
 
   if (!user) throw new Error("User not found");
 
@@ -29,6 +31,8 @@ export function MyStack() {
         <MyStackHeader stack={stack} />
         <List
           data={picks}
+          onRefresh={refresh}
+          refreshing={refreshing}
           placeholder="You have not added any tools to your stack yet."
           renderItem={({ item }) => <PickItem pick={item} editable={true} />}
         />
