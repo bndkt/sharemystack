@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 
 import { Tool } from "@/model/Tool";
 import { TableName } from "@/model/schema";
+import { Q } from "@nozbe/watermelondb";
 
 export function useObservableTools() {
   const database = useDatabase();
@@ -10,7 +11,7 @@ export function useObservableTools() {
 
   useEffect(() => {
     const toolsCollection = database.collections.get<Tool>(TableName.TOOLS);
-    const toolsObservable = toolsCollection.query().observe();
+    const toolsObservable = toolsCollection.query(Q.sortBy("name")).observe();
 
     const subscription = toolsObservable.subscribe((newTools) => {
       setTools(newTools);

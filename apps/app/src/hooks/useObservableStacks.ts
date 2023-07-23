@@ -30,7 +30,8 @@ export function useObservableStacks({
 
     if (starred) {
       stacksQuery = stacksQuery.extend(
-        Q.on(TableName.STARS, "user_id", Q.notEq(null))
+        Q.on(TableName.STARS, "user_id", Q.notEq(null)),
+        Q.sortBy("name")
       );
     }
 
