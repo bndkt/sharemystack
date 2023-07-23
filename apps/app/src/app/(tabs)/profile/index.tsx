@@ -27,7 +27,7 @@ function Profile() {
       <SignOutButton />
       <Button
         // themeInverse
-        marginHorizontal="$3"
+        marginTop="$3"
         onPress={() => refresh(true)}
         backgroundColor="$red10"
         color="$background"
