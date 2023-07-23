@@ -8,7 +8,7 @@ function User() {
   const { user } = useAuth();
 
   return (
-    <YStack>
+    <YStack paddingHorizontal="$3">
       <XStack marginBottom="$3">
         {user?.user_metadata.picture && (
           <Avatar circular size="$3" marginRight="$3">
