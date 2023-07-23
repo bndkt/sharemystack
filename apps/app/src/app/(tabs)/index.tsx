@@ -9,7 +9,7 @@ export default function Index() {
   const router = useRouter();
 
   return (
-    <SafeAreaView>
+    <SafeAreaView edges={["top"]}>
       <YStack height="100%">
         <YStack flexGrow={1}>
           <H3 padding="$3">Welcome to Share My Stack</H3>
