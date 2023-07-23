@@ -162,6 +162,7 @@ SELECT jsonb_build_object(
                     t.tool_id,
                     'category_id',
                     t.category_id,
+                    'created_at',
                     timestamp_to_epoch(t.created_at),
                     'updated_at',
                     timestamp_to_epoch(t.updated_at)
@@ -182,6 +183,7 @@ SELECT jsonb_build_object(
                     t.tool_id,
                     'category_id',
                     t.category_id,
+                    'created_at',
                     timestamp_to_epoch(t.created_at),
                     'updated_at',
                     timestamp_to_epoch(t.updated_at)
@@ -296,6 +298,7 @@ SELECT jsonb_build_object(
                     t.tool_id,
                     'category_id',
                     t.category_id,
+                    'created_at',
                     timestamp_to_epoch(t.created_at),
                     'updated_at',
                     timestamp_to_epoch(t.updated_at)
@@ -318,6 +321,7 @@ SELECT jsonb_build_object(
                     t.tool_id,
                     'category_id',
                     t.category_id,
+                    'created_at',
                     timestamp_to_epoch(t.created_at),
                     'updated_at',
                     timestamp_to_epoch(t.updated_at)
@@ -355,6 +359,7 @@ SELECT jsonb_build_object(
                     t.stack_id,
                     'user_id',
                     t.user_id,
+                    'created_at',
                     timestamp_to_epoch(t.created_at),
                     'updated_at',
                     timestamp_to_epoch(t.updated_at)
@@ -375,6 +380,7 @@ SELECT jsonb_build_object(
                     t.stack_id,
                     'user_id',
                     t.user_id,
+                    'created_at',
                     timestamp_to_epoch(t.created_at),
                     'updated_at',
                     timestamp_to_epoch(t.updated_at)
