@@ -1,11 +1,14 @@
-import { Avatar, Text, XStack, YStack } from "tamagui";
+import { Avatar, Button, Text, XStack, YStack } from "tamagui";
 
 import { SignOutButton } from "@/components/auth/SignOutButton";
 import { withAuth } from "@/components/auth/withAuth";
 import { useAuth } from "@/hooks/useAuth";
+import { Skull } from "@tamagui/lucide-icons";
+import { useRefresh } from "@/hooks/useRefresh";
 
 function Profile() {
   const { user } = useAuth();
+  const { refresh } = useRefresh();
 
   return (
     <YStack padding="$3">
@@ -22,6 +25,16 @@ function Profile() {
         </YStack>
       </XStack>
       <SignOutButton />
+      <Button
+        // themeInverse
+        marginHorizontal="$3"
+        onPress={() => refresh(true)}
+        backgroundColor="$red10"
+        color="$background"
+        icon={Skull}
+      >
+        Nuke Local Database
+      </Button>
     </YStack>
   );
 }

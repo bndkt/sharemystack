@@ -1,3 +1,4 @@
+import { useRefresh } from "@/hooks/useRefresh";
 import { FlashList, ListRenderItem } from "@shopify/flash-list";
 import { RefreshControl } from "react-native-gesture-handler";
 import { Separator, Text } from "tamagui";
@@ -15,6 +16,11 @@ export function List<T>({
   onRefresh?: () => void;
   refreshing?: boolean;
 }) {
+  if (!onRefresh) {
+    onRefresh = useRefresh().refresh;
+    refreshing = useRefresh().refreshing;
+  }
+
   placeholder ??= "No data";
   if (typeof placeholder === "string") {
     placeholder = (

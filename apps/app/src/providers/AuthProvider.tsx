@@ -38,6 +38,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setSession(session);
     setUser(user);
     user && updateOneSignalProfile(user.id, user.email);
+    useRefresh();
   }
 
   async function signOut() {

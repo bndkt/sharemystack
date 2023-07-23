@@ -1,19 +1,13 @@
 import { ReactNode, createContext } from "react";
 
-import { useRefresh } from "@/hooks/useRefresh";
-import { supabase } from "@/lib/supabase";
 import { Pick } from "@/model/Pick";
 import { Stack } from "@/model/Stack";
 
 export const MyStackContext = createContext<{
   stack: Stack | null;
   picks?: Pick[];
-  addPick: (toolId: string, categoryId: string) => void;
-  removePick: (stackId: string) => void;
 }>({
   stack: null,
-  addPick: () => {},
-  removePick: () => {},
 });
 
 export function MyStackProvider({
@@ -25,39 +19,11 @@ export function MyStackProvider({
   picks?: Pick[];
   children: ReactNode;
 }) {
-  const { refresh } = useRefresh();
-
-  function addPick(toolId: string, categoryId: string) {
-    const query = supabase.from("picks").insert({
-      stack_id: stack.id,
-      tool_id: toolId,
-      category_id: categoryId,
-    });
-
-    query.then((result) => {
-      console.log({ result });
-      refresh();
-    });
-  }
-
-  function removePick(pickId: string) {
-    const query = supabase
-      .from("picks")
-      .update({ deleted_at: "NOW()" })
-      .eq("id", pickId);
-    query.then((result) => {
-      console.log({ result });
-      refresh();
-    });
-  }
-
   return (
     <MyStackContext.Provider
       value={{
         stack,
         picks,
-        addPick,
-        removePick,
       }}
     >
       {children}

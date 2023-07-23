@@ -1,27 +1,18 @@
 import { ChevronRight } from "@tamagui/lucide-icons";
 import { Link } from "expo-router";
-import { useEffect } from "react";
 import { ListItem, Text, YStack } from "tamagui";
 
 import { List } from "@/components/List";
 import { CategoryIcon } from "@/components/icons/CategoryIcon";
 import { useObservableCategories } from "@/hooks/useObservableCategories";
-import { useRefresh } from "@/hooks/useRefresh";
 
 export default function Index() {
   const categories = useObservableCategories();
-  const { refresh, refreshing } = useRefresh();
-
-  useEffect(() => {
-    refresh();
-  }, []);
 
   return (
     <YStack fullscreen minHeight={100}>
       <List
         data={categories}
-        onRefresh={refresh}
-        refreshing={refreshing}
         renderItem={({ item }) => {
           return (
             <Link href={`/(tabs)/(stacks)/stacks/my/picks/${item.slug}`}>

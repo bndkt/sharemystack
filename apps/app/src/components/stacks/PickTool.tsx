@@ -1,5 +1,4 @@
 import { Check, Plus } from "@tamagui/lucide-icons";
-import { useMemo } from "react";
 import { ListItem } from "tamagui";
 
 import { ToolIcon } from "../icons/ToolIcon";
@@ -8,7 +7,6 @@ import { useMyStack } from "@/hooks/useMyStack";
 import { Category } from "@/model/Category";
 import { Pick } from "@/model/Pick";
 import { Tool } from "@/model/Tool";
-import { useRefresh } from "@/hooks/useRefresh";
 
 export function PickTool({
   category,
@@ -18,20 +16,15 @@ export function PickTool({
   item: Tool;
 }) {
   const { stack, picks } = useMyStack();
-  const { refresh } = useRefresh();
 
   const pick = picks?.find((pick) => pick.tool.id === item.id);
 
   function add(tool: Tool, category: Category) {
-    // addPick(item.id, category.id);
     stack?.addPick(tool, category);
-    refresh();
   }
 
   function remove(pick: Pick) {
-    // removePick(pick.id);
     stack?.removePick(pick);
-    refresh();
   }
 
   return (

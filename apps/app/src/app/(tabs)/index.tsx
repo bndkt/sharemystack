@@ -4,11 +4,9 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { Button, H3, Text, YStack } from "tamagui";
 
 import { SuggestionButton } from "@/components/SuggestionButton";
-import { useRefresh } from "@/hooks/useRefresh";
 
 export default function Index() {
   const router = useRouter();
-  const { refresh } = useRefresh();
 
   return (
     <SafeAreaView>
@@ -29,16 +27,6 @@ export default function Index() {
         </YStack>
         <YStack>
           <SuggestionButton text="Give Feedback" icon={<MessageSquare />} />
-          <Button
-            // themeInverse
-            marginHorizontal="$3"
-            onPress={() => refresh(true)}
-            backgroundColor="$red10"
-            color="$background"
-            icon={Skull}
-          >
-            Nuke Local Database
-          </Button>
         </YStack>
       </YStack>
     </SafeAreaView>

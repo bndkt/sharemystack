@@ -10,7 +10,6 @@ import { useMyStack } from "@/hooks/useMyStack";
 import { Category } from "@/model/Category";
 import { Pick } from "@/model/Pick";
 import { Tool } from "@/model/Tool";
-import { useRefresh } from "@/hooks/useRefresh";
 
 export function PickItem({
   pick,
@@ -22,7 +21,6 @@ export function PickItem({
   const [tool, setTool] = useState<Tool>();
   const [category, setCategory] = useState<Category>();
   const { stack } = useMyStack();
-  const { refresh } = useRefresh();
 
   useEffect(() => {
     const subscription = pick.tool.observe().subscribe((newTool) => {
@@ -50,7 +48,6 @@ export function PickItem({
                 color: "$red10",
                 onPress: () => {
                   stack?.removePick(pick);
-                  refresh();
                 },
               },
             ]
