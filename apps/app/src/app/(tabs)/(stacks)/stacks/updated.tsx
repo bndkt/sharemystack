@@ -1,8 +1,8 @@
 import { StackList } from "@/components/stacks/StackList";
 import { useObservableStacks } from "@/hooks/useObservableStacks";
 
-export default function FeaturedStacks() {
-  const stacks = useObservableStacks({ updated: true, limit: 20 });
+export default function UpdatedStacks() {
+  const stacks = useObservableStacks({ updated: true });
 
   return <StackList stacks={stacks} />;
 }

@@ -21,6 +21,7 @@ export class Tool extends Model {
   };
 
   @text("name") name!: string;
+  @text("slug") slug!: string;
   @text("icon") icon!: string;
   @text("user_picks") userPicks!: number;
   @text("all_picks") allPicks!: number;

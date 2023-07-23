@@ -25,18 +25,21 @@ export function useObservableStacks({
     let stacksQuery = stacksCollection.query();
 
     if (featured) {
-      stacksQuery = stacksQuery.extend(Q.where("is_featured", true));
+      stacksQuery = stacksQuery.extend(
+        Q.where("is_featured", true),
+        Q.sortBy("updated_at", "desc")
+      );
     }
 
     if (starred) {
       stacksQuery = stacksQuery.extend(
         Q.on(TableName.STARS, "user_id", Q.notEq(null)),
-        Q.sortBy("name")
+        Q.sortBy("name", "asc")
       );
     }
 
     if (updated) {
-      stacksQuery = stacksQuery.extend(Q.sortBy("updated_at", "desc"));
+      stacksQuery = stacksQuery.extend(Q.sortBy("created_at", "desc"));
     }
 
     if (limit) {
