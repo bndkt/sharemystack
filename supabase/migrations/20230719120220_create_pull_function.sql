@@ -12,7 +12,30 @@ _ts := to_timestamp(last_pulled_at / 1000);
 SELECT jsonb_build_object(
         'created',
         COALESCE(
-            jsonb_agg(to_jsonb(t)) FILTER (
+            jsonb_agg(
+                jsonb_build_object(
+                    'id',
+                    t.id,
+                    'name',
+                    t.name,
+                    'slug',
+                    t.slug,
+                    'color',
+                    t.color,
+                    'icon',
+                    t.icon,
+                    'website',
+                    t.website,
+                    'user_picks',
+                    t.user_picks,
+                    'all_picks',
+                    t.all_picks,
+                    'created_at',
+                    timestamp_to_epoch(t.created_at),
+                    'updated_at',
+                    timestamp_to_epoch(t.updated_at)
+                )
+            ) FILTER (
                 WHERE t.deleted_at IS NULL
                     AND t.server_created_at > _ts
             ),
@@ -20,7 +43,30 @@ SELECT jsonb_build_object(
         ),
         'updated',
         COALESCE(
-            jsonb_agg(to_jsonb(t)) FILTER (
+            jsonb_agg(
+                jsonb_build_object(
+                    'id',
+                    t.id,
+                    'name',
+                    t.name,
+                    'slug',
+                    t.slug,
+                    'color',
+                    t.color,
+                    'icon',
+                    t.icon,
+                    'website',
+                    t.website,
+                    'user_picks',
+                    t.user_picks,
+                    'all_picks',
+                    t.all_picks,
+                    'created_at',
+                    timestamp_to_epoch(t.created_at),
+                    'updated_at',
+                    timestamp_to_epoch(t.updated_at)
+                )
+            ) FILTER (
                 WHERE t.deleted_at IS NULL
                     AND t.server_created_at <= _ts
                     AND t.last_modified_at > _ts
@@ -41,7 +87,26 @@ FROM tools_view t;
 SELECT jsonb_build_object(
         'created',
         COALESCE(
-            jsonb_agg(to_jsonb(t)) FILTER (
+            jsonb_agg(
+                jsonb_build_object(
+                    'id',
+                    t.id,
+                    'name',
+                    t.name,
+                    'slug',
+                    t.slug,
+                    'icon',
+                    t.icon,
+                    'number_of_tools',
+                    t.number_of_tools,
+                    'is_coming_soon',
+                    t.is_coming_soon,
+                    'created_at',
+                    timestamp_to_epoch(t.created_at),
+                    'updated_at',
+                    timestamp_to_epoch(t.updated_at)
+                )
+            ) FILTER (
                 WHERE t.deleted_at IS NULL
                     AND t.server_created_at > _ts
             ),
@@ -49,7 +114,26 @@ SELECT jsonb_build_object(
         ),
         'updated',
         COALESCE(
-            jsonb_agg(to_jsonb(t)) FILTER (
+            jsonb_agg(
+                jsonb_build_object(
+                    'id',
+                    t.id,
+                    'name',
+                    t.name,
+                    'slug',
+                    t.slug,
+                    'icon',
+                    t.icon,
+                    'number_of_tools',
+                    t.number_of_tools,
+                    'is_coming_soon',
+                    t.is_coming_soon,
+                    'created_at',
+                    timestamp_to_epoch(t.created_at),
+                    'updated_at',
+                    timestamp_to_epoch(t.updated_at)
+                )
+            ) FILTER (
                 WHERE t.deleted_at IS NULL
                     AND t.server_created_at <= _ts
                     AND t.last_modified_at > _ts
@@ -70,7 +154,19 @@ FROM categories_view t;
 SELECT jsonb_build_object(
         'created',
         COALESCE(
-            jsonb_agg(to_jsonb(t)) FILTER (
+            jsonb_agg(
+                jsonb_build_object(
+                    'id',
+                    t.id,
+                    'tool_id',
+                    t.tool_id,
+                    'category_id',
+                    t.category_id,
+                    timestamp_to_epoch(t.created_at),
+                    'updated_at',
+                    timestamp_to_epoch(t.updated_at)
+                )
+            ) FILTER (
                 WHERE t.deleted_at IS NULL
                     AND t.server_created_at > _ts
             ),
@@ -78,7 +174,19 @@ SELECT jsonb_build_object(
         ),
         'updated',
         COALESCE(
-            jsonb_agg(to_jsonb(t)) FILTER (
+            jsonb_agg(
+                jsonb_build_object(
+                    'id',
+                    t.id,
+                    'tool_id',
+                    t.tool_id,
+                    'category_id',
+                    t.category_id,
+                    timestamp_to_epoch(t.created_at),
+                    'updated_at',
+                    timestamp_to_epoch(t.updated_at)
+                )
+            ) FILTER (
                 WHERE t.deleted_at IS NULL
                     AND t.server_created_at <= _ts
                     AND t.last_modified_at > _ts
@@ -99,7 +207,32 @@ FROM categorizations t;
 SELECT jsonb_build_object(
         'created',
         COALESCE(
-            jsonb_agg(to_jsonb(t)) FILTER (
+            jsonb_agg(
+                jsonb_build_object(
+                    'id',
+                    t.id,
+                    'name',
+                    t.name,
+                    'slug',
+                    t.slug,
+                    'twitter_image_url',
+                    t.twitter_image_url,
+                    'website',
+                    t.website,
+                    'twitter',
+                    t.twitter,
+                    'is_featured',
+                    t.is_featured,
+                    'number_of_stars',
+                    t.number_of_stars,
+                    'user_id',
+                    t.user_id,
+                    'created_at',
+                    timestamp_to_epoch(t.created_at),
+                    'updated_at',
+                    timestamp_to_epoch(t.updated_at)
+                )
+            ) FILTER (
                 WHERE t.deleted_at IS NULL
                     AND t.server_created_at > _ts
             ),
@@ -107,7 +240,32 @@ SELECT jsonb_build_object(
         ),
         'updated',
         COALESCE(
-            jsonb_agg(to_jsonb(t)) FILTER (
+            jsonb_agg(
+                jsonb_build_object(
+                    'id',
+                    t.id,
+                    'name',
+                    t.name,
+                    'slug',
+                    t.slug,
+                    'twitter_image_url',
+                    t.twitter_image_url,
+                    'website',
+                    t.website,
+                    'twitter',
+                    t.twitter,
+                    'is_featured',
+                    t.is_featured,
+                    'number_of_stars',
+                    t.number_of_stars,
+                    'user_id',
+                    t.user_id,
+                    'created_at',
+                    timestamp_to_epoch(t.created_at),
+                    'updated_at',
+                    timestamp_to_epoch(t.updated_at)
+                )
+            ) FILTER (
                 WHERE t.deleted_at IS NULL
                     AND t.server_created_at <= _ts
                     AND t.last_modified_at > _ts
@@ -128,7 +286,21 @@ FROM sync_stacks_view t;
 SELECT jsonb_build_object(
         'created',
         COALESCE(
-            jsonb_agg(to_jsonb(t)) FILTER (
+            jsonb_agg(
+                jsonb_build_object(
+                    'id',
+                    t.id,
+                    'stack_id',
+                    t.stack_id,
+                    'tool_id',
+                    t.tool_id,
+                    'category_id',
+                    t.category_id,
+                    timestamp_to_epoch(t.created_at),
+                    'updated_at',
+                    timestamp_to_epoch(t.updated_at)
+                )
+            ) FILTER (
                 WHERE t.deleted_at IS NULL
                     AND t.server_created_at > _ts
             ),
@@ -136,7 +308,21 @@ SELECT jsonb_build_object(
         ),
         'updated',
         COALESCE(
-            jsonb_agg(to_jsonb(t)) FILTER (
+            jsonb_agg(
+                jsonb_build_object(
+                    'id',
+                    t.id,
+                    'stack_id',
+                    t.stack_id,
+                    'tool_id',
+                    t.tool_id,
+                    'category_id',
+                    t.category_id,
+                    timestamp_to_epoch(t.created_at),
+                    'updated_at',
+                    timestamp_to_epoch(t.updated_at)
+                )
+            ) FILTER (
                 WHERE t.deleted_at IS NULL
                     AND t.server_created_at <= _ts
                     AND t.last_modified_at > _ts
@@ -161,7 +347,19 @@ WHERE stack_id IN (
 SELECT jsonb_build_object(
         'created',
         COALESCE(
-            jsonb_agg(to_jsonb(t)) FILTER (
+            jsonb_agg(
+                jsonb_build_object(
+                    'id',
+                    t.id,
+                    'stack_id',
+                    t.stack_id,
+                    'user_id',
+                    t.user_id,
+                    timestamp_to_epoch(t.created_at),
+                    'updated_at',
+                    timestamp_to_epoch(t.updated_at)
+                )
+            ) FILTER (
                 WHERE t.deleted_at IS NULL
                     AND t.server_created_at > _ts
             ),
@@ -169,7 +367,19 @@ SELECT jsonb_build_object(
         ),
         'updated',
         COALESCE(
-            jsonb_agg(to_jsonb(t)) FILTER (
+            jsonb_agg(
+                jsonb_build_object(
+                    'id',
+                    t.id,
+                    'stack_id',
+                    t.stack_id,
+                    'user_id',
+                    t.user_id,
+                    timestamp_to_epoch(t.created_at),
+                    'updated_at',
+                    timestamp_to_epoch(t.updated_at)
+                )
+            ) FILTER (
                 WHERE t.deleted_at IS NULL
                     AND t.server_created_at <= _ts
                     AND t.last_modified_at > _ts
