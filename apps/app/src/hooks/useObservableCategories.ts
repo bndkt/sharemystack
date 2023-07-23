@@ -1,9 +1,9 @@
+import { Q } from "@nozbe/watermelondb";
 import { useDatabase } from "@nozbe/watermelondb/hooks";
 import { useEffect, useState } from "react";
 
 import { Category } from "@/model/Category";
 import { TableName } from "@/model/schema";
-import { Q } from "@nozbe/watermelondb";
 
 export function useObservableCategories() {
   const database = useDatabase();

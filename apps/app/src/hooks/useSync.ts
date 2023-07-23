@@ -11,10 +11,11 @@ export function useSync() {
   const { user } = useAuth();
 
   const channel = user ? supabase.channel(`user-${user.id}`) : undefined;
+  console.log({ user, channel });
 
   channel
     ?.on("broadcast", { event: "sync" }, (payload) => {
-      console.log(payload);
+      console.log("⏱️ Received sync event");
       refresh();
     })
     .subscribe();
@@ -29,10 +30,15 @@ export function useSync() {
         if (refreshQueued) {
           refresh();
         } else {
-          channel?.send({
-            type: "broadcast",
-            event: "sync",
-          });
+          console.log("⏱️ Sending sync event");
+          channel
+            ?.send({
+              type: "broadcast",
+              event: "sync",
+            })
+            .then((response) => {
+              console.log("⏱️ Sync event sent", response);
+            });
         }
       });
     } else {

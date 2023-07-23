@@ -1,7 +1,30 @@
 import { Home, Layers, Tag, User, Wrench } from "@tamagui/lucide-icons";
 import { Tabs } from "expo-router";
+import { useEffect } from "react";
+
+import { useSync } from "@/hooks/useSync";
+import { database } from "@/lib/watermelon";
 
 export default function Layout() {
+  const { refresh } = useSync();
+
+  useEffect(() => {
+    const subscription = database
+      .withChangesForTables([
+        "tools",
+        "categories",
+        "categorizations",
+        "stacks",
+        "picks",
+        "stars",
+      ])
+      .subscribe((changes) => {
+        refresh();
+      });
+
+    return () => subscription.unsubscribe();
+  }, [database]);
+
   return (
     <Tabs>
       <Tabs.Screen
