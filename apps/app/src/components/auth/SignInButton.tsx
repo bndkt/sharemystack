@@ -77,8 +77,10 @@ export function SignInButton() {
         }}
         backgroundColor={"#1D9BF0"}
         color="#FFFFFF"
-        icon={<Twitter color="#FFFFFF" />}
+        icon={<Twitter color="#FFFFFF" fill="#FFFFFF" />}
         borderRadius={5}
+        height={44}
+        fontSize={16}
       >
         Sign in with Twitter
       </Button>

@@ -20,7 +20,7 @@ export default function Index() {
           <Button
             themeInverse
             margin="$3"
-            onPress={() => router.push("/stacks/my")}
+            onPress={() => router.push("/(tabs)/(stacks)/stacks/my")}
           >
             Go to my stack
           </Button>

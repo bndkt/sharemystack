@@ -1,5 +1,4 @@
 import * as AppleAuthentication from "expo-apple-authentication";
-import { StyleSheet } from "react-native";
 // import * as Crypto from "expo-crypto";
 
 import { useAuth } from "@/hooks/useAuth";
@@ -14,7 +13,9 @@ export function SignInWithApple() {
       buttonType={AppleAuthentication.AppleAuthenticationButtonType.SIGN_IN}
       buttonStyle={AppleAuthentication.AppleAuthenticationButtonStyle.BLACK}
       cornerRadius={5}
-      style={styles.button}
+      style={{
+        height: 44,
+      }}
       onPress={async () => {
         try {
           const credential = await AppleAuthentication.signInAsync({
@@ -49,10 +50,3 @@ export function SignInWithApple() {
     />
   );
 }
-
-const styles = StyleSheet.create({
-  button: {
-    width: "100%",
-    height: 44,
-  },
-});

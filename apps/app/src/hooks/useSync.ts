@@ -1,19 +1,12 @@
-import { RealtimeChannel } from "@supabase/supabase-js";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-import { useAuth } from "./useAuth";
-
-import { supabase } from "@/lib/supabase";
 import { sync } from "@/lib/sync";
 
 export function useSync() {
   const [refreshing, setRefreshing] = useState(false);
   const [refreshQueued, setRefreshQueued] = useState(false);
-  const [channel, setChannel] = useState<RealtimeChannel>();
-  const [broadcast, setBroadcast] = useState(false);
-  const { user } = useAuth();
 
-  useEffect(() => {
+  /* useEffect(() => {
     if (user) {
       const channel = supabase.channel(`user-${user.id}`);
 
@@ -50,7 +43,7 @@ export function useSync() {
         });
       setBroadcast(false);
     }
-  }, [broadcast, channel]);
+  }, [broadcast, channel]); */
 
   function refresh(reset?: boolean) {
     if (!refreshing) {
@@ -58,11 +51,9 @@ export function useSync() {
       setRefreshing(true);
       sync(reset).finally(() => {
         setRefreshing(false);
-        console.log("Refresh finished", { refreshQueued, channel: !!channel });
+        console.log("Refresh finished");
         if (refreshQueued) {
           refresh();
-        } else {
-          setBroadcast(true);
         }
       });
     } else {
