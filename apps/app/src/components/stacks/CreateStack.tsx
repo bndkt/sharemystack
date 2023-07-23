@@ -43,7 +43,7 @@ export function CreateStack() {
   return (
     <YStack padding="$3">
       <Text marginBottom="$3" textAlign="center">
-        You have not yet created your stack. Let's do that now.
+        You haven’t created your profile. Let’s do that now.
       </Text>
       <YStack>
         <XStack alignItems="center">
@@ -97,7 +97,7 @@ export function CreateStack() {
         </XStack>
       </YStack>
       <Button onPress={createStack} marginTop="$3">
-        Create my stack
+        Create my profile
       </Button>
     </YStack>
   );
