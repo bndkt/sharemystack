@@ -1,9 +1,11 @@
-create table stacks (
-  id uuid not null default gen_random_uuid(),
-  primary key (id),
-  created_at timestamp with time zone not null default now(),
-  updated_at timestamp with time zone not null default now(),
-  deleted_at timestamp with time zone default null,
+CREATE TABLE stacks (
+  id uuid NOT NULL default gen_random_uuid(),
+  PRIMARY KEY (id),
+  created_at TIMESTAMP WITH TIME ZONE NOT NULL default NOW(),
+  updated_at TIMESTAMP WITH TIME ZONE NOT NULL default NOW(),
+  deleted_at TIMESTAMP WITH TIME ZONE default NULL,
+  server_created_at TIMESTAMP WITH TIME ZONE default NOW(),
+  last_modified_at TIMESTAMP WITH TIME ZONE default NOW(),
   name character varying null,
   slug character varying not null,
   constraint stacks_slug_key unique (slug),

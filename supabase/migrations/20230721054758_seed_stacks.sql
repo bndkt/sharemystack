@@ -75,14 +75,4 @@ values -- ('fbc5602c-ebef-4282-8754-d56520486498', 'Benedikt Müller', false, '_
         'https://www.yearzero.io/',
         NULL,
         NOW()
-    ) on conflict (id) do
-update
-set name = EXCLUDED.name,
-    slug = EXCLUDED.slug,
-    twitter = EXCLUDED.twitter,
-    twitter_image_url = EXCLUDED.twitter_image_url,
-    website = EXCLUDED.website,
-    user_id = EXCLUDED.user_id,
-    is_featured = EXCLUDED.is_featured,
-    deleted_at = EXCLUDED.deleted_at,
-    updated_at = NOW();
+    );

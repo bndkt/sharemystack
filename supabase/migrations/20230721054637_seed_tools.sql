@@ -3604,11 +3604,4 @@ values (
         </defs>
     </svg>
 '
-    ) on conflict (id) do
-update
-set name = EXCLUDED.name,
-    slug = EXCLUDED.slug,
-    website = EXCLUDED.website,
-    twitter = EXCLUDED.twitter,
-    color = EXCLUDED.color,
-    icon = EXCLUDED.icon;
+    );

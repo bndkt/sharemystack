@@ -14,7 +14,7 @@ SELECT jsonb_build_object(
         COALESCE(
             jsonb_agg(to_jsonb(t)) FILTER (
                 WHERE t.deleted_at IS NULL
-                    AND t.created_at > _ts
+                    AND t.server_created_at > _ts
             ),
             '[]'::jsonb
         ),
@@ -22,15 +22,16 @@ SELECT jsonb_build_object(
         COALESCE(
             jsonb_agg(to_jsonb(t)) FILTER (
                 WHERE t.deleted_at IS NULL
-                    AND t.created_at <= _ts
-                    AND t.updated_at > _ts
+                    AND t.server_created_at <= _ts
+                    AND t.last_modified_at > _ts
             ),
             '[]'::jsonb
         ),
         'deleted',
         COALESCE(
             jsonb_agg(to_jsonb(t.id)) FILTER (
-                WHERE t.deleted_at > _ts
+                WHERE t.deleted_at IS NOT NULL
+                    AND t.last_modified_at > _ts
             ),
             '[]'::jsonb
         )
@@ -42,7 +43,7 @@ SELECT jsonb_build_object(
         COALESCE(
             jsonb_agg(to_jsonb(t)) FILTER (
                 WHERE t.deleted_at IS NULL
-                    AND t.created_at > _ts
+                    AND t.server_created_at > _ts
             ),
             '[]'::jsonb
         ),
@@ -50,15 +51,16 @@ SELECT jsonb_build_object(
         COALESCE(
             jsonb_agg(to_jsonb(t)) FILTER (
                 WHERE t.deleted_at IS NULL
-                    AND t.created_at <= _ts
-                    AND t.updated_at > _ts
+                    AND t.server_created_at <= _ts
+                    AND t.last_modified_at > _ts
             ),
             '[]'::jsonb
         ),
         'deleted',
         COALESCE(
             jsonb_agg(to_jsonb(t.id)) FILTER (
-                WHERE t.deleted_at > _ts
+                WHERE t.deleted_at IS NOT NULL
+                    AND t.last_modified_at > _ts
             ),
             '[]'::jsonb
         )
@@ -70,7 +72,7 @@ SELECT jsonb_build_object(
         COALESCE(
             jsonb_agg(to_jsonb(t)) FILTER (
                 WHERE t.deleted_at IS NULL
-                    AND t.created_at > _ts
+                    AND t.server_created_at > _ts
             ),
             '[]'::jsonb
         ),
@@ -78,15 +80,16 @@ SELECT jsonb_build_object(
         COALESCE(
             jsonb_agg(to_jsonb(t)) FILTER (
                 WHERE t.deleted_at IS NULL
-                    AND t.created_at <= _ts
-                    AND t.updated_at > _ts
+                    AND t.server_created_at <= _ts
+                    AND t.last_modified_at > _ts
             ),
             '[]'::jsonb
         ),
         'deleted',
         COALESCE(
             jsonb_agg(to_jsonb(t.id)) FILTER (
-                WHERE t.deleted_at > _ts
+                WHERE t.deleted_at IS NOT NULL
+                    AND t.last_modified_at > _ts
             ),
             '[]'::jsonb
         )
@@ -98,7 +101,7 @@ SELECT jsonb_build_object(
         COALESCE(
             jsonb_agg(to_jsonb(t)) FILTER (
                 WHERE t.deleted_at IS NULL
-                    AND t.created_at > _ts
+                    AND t.server_created_at > _ts
             ),
             '[]'::jsonb
         ),
@@ -106,15 +109,16 @@ SELECT jsonb_build_object(
         COALESCE(
             jsonb_agg(to_jsonb(t)) FILTER (
                 WHERE t.deleted_at IS NULL
-                    AND t.created_at <= _ts
-                    AND t.updated_at > _ts
+                    AND t.server_created_at <= _ts
+                    AND t.last_modified_at > _ts
             ),
             '[]'::jsonb
         ),
         'deleted',
         COALESCE(
             jsonb_agg(to_jsonb(t.id)) FILTER (
-                WHERE t.deleted_at > _ts
+                WHERE t.deleted_at IS NOT NULL
+                    AND t.last_modified_at > _ts
             ),
             '[]'::jsonb
         )
@@ -126,7 +130,7 @@ SELECT jsonb_build_object(
         COALESCE(
             jsonb_agg(to_jsonb(t)) FILTER (
                 WHERE t.deleted_at IS NULL
-                    AND t.created_at > _ts
+                    AND t.server_created_at > _ts
             ),
             '[]'::jsonb
         ),
@@ -134,15 +138,16 @@ SELECT jsonb_build_object(
         COALESCE(
             jsonb_agg(to_jsonb(t)) FILTER (
                 WHERE t.deleted_at IS NULL
-                    AND t.created_at <= _ts
-                    AND t.updated_at > _ts
+                    AND t.server_created_at <= _ts
+                    AND t.last_modified_at > _ts
             ),
             '[]'::jsonb
         ),
         'deleted',
         COALESCE(
             jsonb_agg(to_jsonb(t.id)) FILTER (
-                WHERE t.deleted_at > _ts
+                WHERE t.deleted_at IS NOT NULL
+                    AND t.last_modified_at > _ts
             ),
             '[]'::jsonb
         )
@@ -158,7 +163,7 @@ SELECT jsonb_build_object(
         COALESCE(
             jsonb_agg(to_jsonb(t)) FILTER (
                 WHERE t.deleted_at IS NULL
-                    AND t.created_at > _ts
+                    AND t.server_created_at > _ts
             ),
             '[]'::jsonb
         ),
@@ -166,15 +171,16 @@ SELECT jsonb_build_object(
         COALESCE(
             jsonb_agg(to_jsonb(t)) FILTER (
                 WHERE t.deleted_at IS NULL
-                    AND t.created_at <= _ts
-                    AND t.updated_at > _ts
+                    AND t.server_created_at <= _ts
+                    AND t.last_modified_at > _ts
             ),
             '[]'::jsonb
         ),
         'deleted',
         COALESCE(
             jsonb_agg(to_jsonb(t.id)) FILTER (
-                WHERE t.deleted_at > _ts
+                WHERE t.deleted_at IS NOT NULL
+                    AND t.last_modified_at > _ts
             ),
             '[]'::jsonb
         )
