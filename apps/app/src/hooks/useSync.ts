@@ -1,10 +1,10 @@
+import { RealtimeChannel } from "@supabase/supabase-js";
 import { useEffect, useState } from "react";
 
 import { useAuth } from "./useAuth";
 
 import { supabase } from "@/lib/supabase";
 import { sync } from "@/lib/sync";
-import { RealtimeChannel } from "@supabase/supabase-js";
 
 export function useSync() {
   const [refreshing, setRefreshing] = useState(false);
