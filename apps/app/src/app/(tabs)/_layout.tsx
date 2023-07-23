@@ -1,4 +1,4 @@
-import { Home, Layers, Tag, User, Wrench } from "@tamagui/lucide-icons";
+import { Home, Layers, Settings, Tag, Wrench } from "@tamagui/lucide-icons";
 import { Tabs } from "expo-router";
 import { useEffect } from "react";
 
@@ -60,11 +60,11 @@ export default function Layout() {
         }}
       />
       <Tabs.Screen
-        name="profile"
+        name="settings"
         options={{
-          title: "My Profile",
+          title: "Settings",
           headerShown: false,
-          tabBarIcon: ({ color }) => <User color={color} />,
+          tabBarIcon: ({ color }) => <Settings color={color} />,
         }}
       />
     </Tabs>

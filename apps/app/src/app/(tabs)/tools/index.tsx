@@ -1,3 +1,4 @@
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { ListItem, YStack } from "tamagui";
 
 import { List } from "@/components/List";
@@ -7,9 +8,10 @@ import { useObservableTools } from "@/hooks/useObservableTools";
 
 export default function Tools() {
   const tools = useObservableTools();
+  const insets = useSafeAreaInsets();
 
   return (
-    <YStack fullscreen>
+    <YStack fullscreen paddingTop={insets.top}>
       <List
         data={tools}
         renderItem={({ item }) => {

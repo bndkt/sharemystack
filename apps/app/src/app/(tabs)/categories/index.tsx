@@ -1,5 +1,6 @@
 import { Link } from "expo-router";
 import { useEffect } from "react";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { ListItem, Text, YStack } from "tamagui";
 
 import { List } from "@/components/List";
@@ -9,6 +10,7 @@ import { useObservableCategories } from "@/hooks/useObservableCategories";
 import { useSync } from "@/hooks/useSync";
 
 export default function Categories() {
+  const insets = useSafeAreaInsets();
   const categories = useObservableCategories();
   const { refresh, refreshing } = useSync();
 
@@ -17,7 +19,7 @@ export default function Categories() {
   }, []);
 
   return (
-    <YStack fullscreen>
+    <YStack fullscreen paddingTop={insets.top}>
       <List
         data={categories}
         onRefresh={refresh}

@@ -1,42 +1,30 @@
-import { Skull } from "@tamagui/lucide-icons";
-import { Avatar, Button, Text, XStack, YStack } from "tamagui";
+import { useRouter } from "expo-router";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { Button, YStack } from "tamagui";
 
-import { SignOutButton } from "@/components/auth/SignOutButton";
-import { withAuth } from "@/components/auth/withAuth";
-import { useAuth } from "@/hooks/useAuth";
-import { useSync } from "@/hooks/useSync";
+import User from "@/components/settings/User";
 
-function Profile() {
-  const { user } = useAuth();
-  const { refresh } = useSync();
+export default function Index() {
+  const insets = useSafeAreaInsets();
+
+  const router = useRouter();
 
   return (
-    <YStack padding="$3">
-      <XStack marginBottom="$3">
-        {user?.user_metadata.picture && (
-          <Avatar circular size="$3" marginRight="$3">
-            <Avatar.Image src={user.user_metadata.picture} />
-            <Avatar.Fallback bc="#f43f5e" delayMs={1000} />
-          </Avatar>
-        )}
-        <YStack>
-          {/* <Text>Username: @{user?.user_metadata.preferred_username}</Text> */}
-          <Text>Email: {user?.email}</Text>
-        </YStack>
-      </XStack>
-      <SignOutButton />
-      <Button
-        // themeInverse
-        marginTop="$3"
-        onPress={() => refresh(true)}
-        backgroundColor="$red10"
-        color="$background"
-        icon={Skull}
-      >
-        Nuke Local Database
-      </Button>
+    <YStack fullscreen paddingTop={insets.top}>
+      <YStack flexGrow={1}>
+        <User />
+      </YStack>
+      <YStack padding="$3">
+        <Button
+          // themeInverse
+          marginTop="$3"
+          onPress={() => router.push("/_dev")}
+          // borderColor="$red10"
+          color="$red10"
+        >
+          Development Settings
+        </Button>
+      </YStack>
     </YStack>
   );
 }
-
-export default withAuth(Profile);
