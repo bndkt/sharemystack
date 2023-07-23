@@ -36,7 +36,7 @@ export function List<T>({
       ListEmptyComponent={placeholder}
       data={data}
       renderItem={renderItem}
-      estimatedItemSize={75}
+      estimatedItemSize={87}
       ItemSeparatorComponent={() => <Separator />}
       onRefresh={onRefresh}
       refreshing={refreshing}
