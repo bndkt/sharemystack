@@ -7,6 +7,8 @@ select tools.id,
     tools.color,
     tools.created_at,
     tools.deleted_at,
+    tools.server_created_at,
+    tools.last_modified_at,
     count(picks) as all_picks,
     count(stacks) as user_picks,
     CASE

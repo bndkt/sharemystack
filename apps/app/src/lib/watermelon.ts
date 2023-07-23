@@ -1,5 +1,7 @@
 import { Database } from "@nozbe/watermelondb";
 import SQLiteAdapter from "@nozbe/watermelondb/adapters/sqlite";
+import { setGenerator } from "@nozbe/watermelondb/utils/common/randomId";
+import * as Crypto from "expo-crypto";
 
 // import { migrations } from "@/model/migrations";
 import { Categorization } from "@/model/Categorization";
@@ -32,3 +34,5 @@ export const database = new Database({
   adapter,
   modelClasses: [Tool, Category, Categorization, Stack, Pick, Star],
 });
+
+setGenerator(() => Crypto.randomUUID());

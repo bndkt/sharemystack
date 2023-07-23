@@ -1,5 +1,11 @@
 import { Model, Q } from "@nozbe/watermelondb";
-import { lazy, text, writer } from "@nozbe/watermelondb/decorators";
+import {
+  date,
+  lazy,
+  readonly,
+  text,
+  writer,
+} from "@nozbe/watermelondb/decorators";
 
 import { Category } from "./Category";
 import { Pick } from "./Pick";
@@ -9,6 +15,9 @@ import { TableName } from "./schema";
 
 export class Stack extends Model {
   static table = TableName.STACKS;
+
+  @readonly @date("created_at") createdAt!: Date;
+  @readonly @date("updated_at") updatedAt!: Date;
 
   static associations = {
     [TableName.PICKS]: {

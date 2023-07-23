@@ -12,14 +12,16 @@ INSERT INTO picks (
         category_id,
         created_at,
         updated_at,
-        last_modified
+        server_created_at,
+        last_modified_at
     )
 SELECT (category->>'id')::uuid,
     (category->>'stack_id')::uuid,
     (category->>'tool_id')::uuid,
     (category->>'category_id')::uuid,
-    (category->>'created_at')::date,
-    (category->>'updated_at')::date,
+    epoch_to_timestamp(category->>'created_at'),
+    epoch_to_timestamp(category->>'updated_at'),
+    NOW(),
     NOW()
 FROM changes_data,
     jsonb_array_elements(picks_created) AS category;
@@ -29,7 +31,7 @@ WITH changes_data AS (
 )
 UPDATE picks
 SET deleted_at = NOW(),
-    last_modified = NOW()
+    last_modified_at = NOW()
 FROM changes_data
 WHERE picks.id = changes_data.deleted;
 -- Insert new stars
@@ -42,13 +44,15 @@ INSERT INTO stars (
         user_id,
         created_at,
         updated_at,
-        last_modified
+        server_created_at,
+        last_modified_at
     )
 SELECT (star->>'id')::uuid,
     (star->>'stack_id')::uuid,
     (star->>'user_id')::uuid,
-    (category->>'created_at')::date,
-    (category->>'updated_at')::date,
+    epoch_to_timestamp(star->>'created_at'),
+    epoch_to_timestamp(star->>'updated_at'),
+    NOW(),
     NOW()
 FROM changes_data,
     jsonb_array_elements(stars_created) AS star;
@@ -58,7 +62,7 @@ WITH changes_data AS (
 )
 UPDATE stars
 SET deleted_at = NOW(),
-    last_modified = NOW()
+    last_modified_at = NOW()
 FROM changes_data
 WHERE stars.id = changes_data.deleted;
 END;

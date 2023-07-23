@@ -25,7 +25,7 @@ export function MyStackHeader({ stack }: { stack: Stack }) {
     if (slug && isValidSlug(slug)) {
       const query = supabase
         .from("stacks")
-        .update({ slug, name, updated_at: "NOW()" })
+        .update({ slug, name, updated_at: "NOW()", last_modified_at: "NOW()" })
         .match({ id: stack.id });
       query.then((result) => {
         console.log({ result });

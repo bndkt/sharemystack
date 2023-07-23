@@ -17,12 +17,10 @@ export function PickTool({
   category: Category;
   item: Tool;
 }) {
-  const { stack, picks, addPick, removePick } = useMyStack();
+  const { stack, picks } = useMyStack();
   const { refresh } = useRefresh();
 
-  const pick = useMemo(() => {
-    return picks?.find((pick) => pick.tool.id === item.id);
-  }, [picks, item.id]);
+  const pick = picks?.find((pick) => pick.tool.id === item.id);
 
   function add(tool: Tool, category: Category) {
     // addPick(item.id, category.id);

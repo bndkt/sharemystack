@@ -6,6 +6,8 @@ SELECT categories.id,
     categories.is_coming_soon,
     categories.created_at,
     categories.deleted_at,
+    categories.server_created_at,
+    categories.last_modified_at,
     COUNT(categorizations) as number_of_tools,
     CASE
         WHEN max(categorizations.updated_at) > categories.updated_at THEN max(categorizations.updated_at)

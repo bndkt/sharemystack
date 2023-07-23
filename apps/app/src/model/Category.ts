@@ -1,11 +1,14 @@
 import { Model, Q } from "@nozbe/watermelondb";
-import { lazy, text } from "@nozbe/watermelondb/decorators";
+import { date, lazy, readonly, text } from "@nozbe/watermelondb/decorators";
 
 import { Tool } from "./Tool";
 import { TableName } from "./schema";
 
 export class Category extends Model {
   static table = TableName.CATEGORIES;
+
+  @readonly @date("created_at") createdAt!: Date;
+  @readonly @date("updated_at") updatedAt!: Date;
 
   static associations = {
     [TableName.CATEGORIZATIONS]: {

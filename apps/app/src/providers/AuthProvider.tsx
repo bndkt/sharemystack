@@ -3,6 +3,7 @@ import { ReactNode, createContext, useEffect, useState } from "react";
 
 import { updateOneSignalProfile } from "@/lib/onesignal";
 import { supabase } from "@/lib/supabase";
+import { useRefresh } from "@/hooks/useRefresh";
 
 export const AuthContext = createContext<{
   session: AuthSession | null;
@@ -25,6 +26,7 @@ export const AuthContext = createContext<{
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [session, setSession] = useState<AuthSession | null>(null);
   const [user, setUser] = useState<AuthUser | null>(null);
+  const { refresh } = useRefresh();
 
   async function signIn({
     session,
@@ -42,6 +44,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const { error } = await supabase.auth.signOut();
     setSession(null);
     setUser(null);
+    refresh(true);
 
     if (error) {
       console.error(error);

@@ -1,5 +1,9 @@
 import { Model, Relation } from "@nozbe/watermelondb";
-import { immutableRelation } from "@nozbe/watermelondb/decorators";
+import {
+  date,
+  immutableRelation,
+  readonly,
+} from "@nozbe/watermelondb/decorators";
 
 import { Category } from "./Category";
 import { Stack } from "./Stack";
@@ -8,6 +12,9 @@ import { TableName } from "./schema";
 
 export class Pick extends Model {
   static table = TableName.PICKS;
+
+  @readonly @date("created_at") createdAt!: Date;
+  @readonly @date("updated_at") updatedAt!: Date;
 
   static associations = {
     [TableName.TOOLS]: { type: "belongs_to" as const, key: "tool_id" },
@@ -19,9 +26,4 @@ export class Pick extends Model {
   @immutableRelation(TableName.TOOLS, "tool_id") tool!: Relation<Tool>;
   @immutableRelation(TableName.CATEGORIES, "category_id")
   category!: Relation<Category>;
-
-  // @text("tool_id") toolId!: string;
-  // @text("tool_name") toolName!: string;
-  // @text("tool_icon") toolIcon!: string;
-  // @text("category_name") categoryName!: string;
 }

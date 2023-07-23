@@ -37,17 +37,16 @@ export async function sync(reset = false) {
     },
     pushChanges: async ({ changes, lastPulledAt }) => {
       console.log("🍉 ⬆️ Pushing changes ...");
-      console.log(changes);
+      console.log("CHANGES", (changes as any)?.picks.created);
 
-      const { data, error } = await supabase.rpc("pull", {
-        last_pulled_at: reset ? undefined : lastPulledAt,
-      });
+      const { data, error } = await supabase.rpc("push", { changes });
 
       if (error) {
         throw new Error("🍉".concat(error.message));
       }
 
       console.log(`🍉 Changes pushed at ${new Date().toISOString()} UTC`);
+      console.log("🍉", { data });
     },
     // migrationsEnabledAtVersion: 1,
   });
