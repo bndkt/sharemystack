@@ -37,42 +37,72 @@ export interface Database {
       categories: {
         Row: {
           created_at: string
+          deleted_at: string | null
           icon: string
           id: string
+          is_coming_soon: boolean
+          last_modified_at: string | null
           name: string
+          server_created_at: string | null
           slug: string
-          soon: boolean
+          updated_at: string
         }
         Insert: {
           created_at?: string
+          deleted_at?: string | null
           icon: string
           id?: string
+          is_coming_soon?: boolean
+          last_modified_at?: string | null
           name: string
+          server_created_at?: string | null
           slug: string
-          soon?: boolean
+          updated_at?: string
         }
         Update: {
           created_at?: string
+          deleted_at?: string | null
           icon?: string
           id?: string
+          is_coming_soon?: boolean
+          last_modified_at?: string | null
           name?: string
+          server_created_at?: string | null
           slug?: string
-          soon?: boolean
+          updated_at?: string
         }
         Relationships: []
       }
       categorizations: {
         Row: {
-          category_id: string
-          tool_id: string
+          category_id: string | null
+          created_at: string
+          deleted_at: string | null
+          id: string
+          last_modified_at: string | null
+          server_created_at: string | null
+          tool_id: string | null
+          updated_at: string
         }
         Insert: {
-          category_id: string
-          tool_id: string
+          category_id?: string | null
+          created_at?: string
+          deleted_at?: string | null
+          id?: string
+          last_modified_at?: string | null
+          server_created_at?: string | null
+          tool_id?: string | null
+          updated_at?: string
         }
         Update: {
-          category_id?: string
-          tool_id?: string
+          category_id?: string | null
+          created_at?: string
+          deleted_at?: string | null
+          id?: string
+          last_modified_at?: string | null
+          server_created_at?: string | null
+          tool_id?: string | null
+          updated_at?: string
         }
         Relationships: [
           {
@@ -86,12 +116,6 @@ export interface Database {
             columns: ["category_id"]
             referencedRelation: "categories_view"
             referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "categorizations_category_id_fkey"
-            columns: ["category_id"]
-            referencedRelation: "tools_view"
-            referencedColumns: ["category_id"]
           },
           {
             foreignKeyName: "categorizations_tool_id_fkey"
@@ -109,19 +133,37 @@ export interface Database {
       }
       picks: {
         Row: {
-          category_id: string
-          stack_id: string
-          tool_id: string
+          category_id: string | null
+          created_at: string
+          deleted_at: string | null
+          id: string
+          last_modified_at: string | null
+          server_created_at: string | null
+          stack_id: string | null
+          tool_id: string | null
+          updated_at: string
         }
         Insert: {
-          category_id: string
-          stack_id: string
-          tool_id: string
+          category_id?: string | null
+          created_at?: string
+          deleted_at?: string | null
+          id?: string
+          last_modified_at?: string | null
+          server_created_at?: string | null
+          stack_id?: string | null
+          tool_id?: string | null
+          updated_at?: string
         }
         Update: {
-          category_id?: string
-          stack_id?: string
-          tool_id?: string
+          category_id?: string | null
+          created_at?: string
+          deleted_at?: string | null
+          id?: string
+          last_modified_at?: string | null
+          server_created_at?: string | null
+          stack_id?: string | null
+          tool_id?: string | null
+          updated_at?: string
         }
         Relationships: [
           {
@@ -135,12 +177,6 @@ export interface Database {
             columns: ["category_id"]
             referencedRelation: "categories_view"
             referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "picks_category_id_fkey"
-            columns: ["category_id"]
-            referencedRelation: "tools_view"
-            referencedColumns: ["category_id"]
           },
           {
             foreignKeyName: "picks_stack_id_fkey"
@@ -171,9 +207,12 @@ export interface Database {
       stacks: {
         Row: {
           created_at: string
-          featured: boolean
+          deleted_at: string | null
           id: string
+          is_featured: boolean
+          last_modified_at: string | null
           name: string | null
+          server_created_at: string | null
           slug: string
           twitter: string | null
           twitter_image_url: string | null
@@ -183,10 +222,13 @@ export interface Database {
         }
         Insert: {
           created_at?: string
-          featured?: boolean
+          deleted_at?: string | null
           id?: string
+          is_featured?: boolean
+          last_modified_at?: string | null
           name?: string | null
-          slug?: string
+          server_created_at?: string | null
+          slug: string
           twitter?: string | null
           twitter_image_url?: string | null
           updated_at?: string
@@ -195,9 +237,12 @@ export interface Database {
         }
         Update: {
           created_at?: string
-          featured?: boolean
+          deleted_at?: string | null
           id?: string
+          is_featured?: boolean
+          last_modified_at?: string | null
           name?: string | null
+          server_created_at?: string | null
           slug?: string
           twitter?: string | null
           twitter_image_url?: string | null
@@ -217,23 +262,38 @@ export interface Database {
       stars: {
         Row: {
           category_id: string | null
+          created_at: string
+          deleted_at: string | null
           id: string
+          last_modified_at: string | null
+          server_created_at: string | null
           stack_id: string | null
           tool_id: string | null
+          updated_at: string
           user_id: string | null
         }
         Insert: {
           category_id?: string | null
+          created_at?: string
+          deleted_at?: string | null
           id?: string
+          last_modified_at?: string | null
+          server_created_at?: string | null
           stack_id?: string | null
           tool_id?: string | null
+          updated_at?: string
           user_id?: string | null
         }
         Update: {
           category_id?: string | null
+          created_at?: string
+          deleted_at?: string | null
           id?: string
+          last_modified_at?: string | null
+          server_created_at?: string | null
           stack_id?: string | null
           tool_id?: string | null
+          updated_at?: string
           user_id?: string | null
         }
         Relationships: [
@@ -248,12 +308,6 @@ export interface Database {
             columns: ["category_id"]
             referencedRelation: "categories_view"
             referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "stars_category_id_fkey"
-            columns: ["category_id"]
-            referencedRelation: "tools_view"
-            referencedColumns: ["category_id"]
           },
           {
             foreignKeyName: "stars_stack_id_fkey"
@@ -291,31 +345,43 @@ export interface Database {
         Row: {
           color: string | null
           created_at: string
+          deleted_at: string | null
           icon: string | null
           id: string
+          last_modified_at: string | null
           name: string
+          server_created_at: string | null
           slug: string
           twitter: string | null
+          updated_at: string
           website: string | null
         }
         Insert: {
           color?: string | null
           created_at?: string
+          deleted_at?: string | null
           icon?: string | null
           id?: string
+          last_modified_at?: string | null
           name: string
+          server_created_at?: string | null
           slug: string
           twitter?: string | null
+          updated_at?: string
           website?: string | null
         }
         Update: {
           color?: string | null
           created_at?: string
+          deleted_at?: string | null
           icon?: string | null
           id?: string
+          last_modified_at?: string | null
           name?: string
+          server_created_at?: string | null
           slug?: string
           twitter?: string | null
+          updated_at?: string
           website?: string | null
         }
         Relationships: []
@@ -325,12 +391,16 @@ export interface Database {
       categories_view: {
         Row: {
           created_at: string | null
+          deleted_at: string | null
           icon: string | null
           id: string | null
+          is_coming_soon: boolean | null
+          last_modified_at: string | null
           name: string | null
+          number_of_tools: number | null
+          server_created_at: string | null
           slug: string | null
-          soon: boolean | null
-          tools: number | null
+          updated_at: string | null
         }
         Relationships: []
       }
@@ -376,12 +446,16 @@ export interface Database {
       stacks_view: {
         Row: {
           created_at: string | null
-          featured: boolean | null
+          deleted_at: string | null
           id: string | null
+          is_featured: boolean | null
+          is_starred: boolean | null
+          last_modified_at: string | null
           name: string | null
+          number_of_picks: number | null
+          number_of_stars: number | null
+          server_created_at: string | null
           slug: string | null
-          starred: boolean | null
-          stars: number | null
           twitter: string | null
           twitter_image_url: string | null
           updated_at: string | null
@@ -397,19 +471,122 @@ export interface Database {
           }
         ]
       }
+      stars_view: {
+        Row: {
+          category_id: string | null
+          created_at: string | null
+          deleted_at: string | null
+          id: string | null
+          last_modified_at: string | null
+          server_created_at: string | null
+          stack_id: string | null
+          tool_id: string | null
+          updated_at: string | null
+          user_id: string | null
+        }
+        Insert: {
+          category_id?: string | null
+          created_at?: string | null
+          deleted_at?: string | null
+          id?: string | null
+          last_modified_at?: string | null
+          server_created_at?: string | null
+          stack_id?: string | null
+          tool_id?: string | null
+          updated_at?: string | null
+          user_id?: string | null
+        }
+        Update: {
+          category_id?: string | null
+          created_at?: string | null
+          deleted_at?: string | null
+          id?: string | null
+          last_modified_at?: string | null
+          server_created_at?: string | null
+          stack_id?: string | null
+          tool_id?: string | null
+          updated_at?: string | null
+          user_id?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "stars_category_id_fkey"
+            columns: ["category_id"]
+            referencedRelation: "categories"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "stars_category_id_fkey"
+            columns: ["category_id"]
+            referencedRelation: "categories_view"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "stars_stack_id_fkey"
+            columns: ["stack_id"]
+            referencedRelation: "stacks"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "stars_stack_id_fkey"
+            columns: ["stack_id"]
+            referencedRelation: "stacks_view"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "stars_tool_id_fkey"
+            columns: ["tool_id"]
+            referencedRelation: "tools"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "stars_tool_id_fkey"
+            columns: ["tool_id"]
+            referencedRelation: "tools_view"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "stars_user_id_fkey"
+            columns: ["user_id"]
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
+      sync_stacks_view: {
+        Row: {
+          created_at: string | null
+          deleted_at: string | null
+          id: string | null
+          is_featured: boolean | null
+          is_starred: boolean | null
+          last_modified_at: string | null
+          name: string | null
+          number_of_picks: number | null
+          number_of_stars: number | null
+          server_created_at: string | null
+          slug: string | null
+          twitter: string | null
+          twitter_image_url: string | null
+          updated_at: string | null
+          user_id: string | null
+          website: string | null
+        }
+        Relationships: []
+      }
       tools_view: {
         Row: {
           all_picks: number | null
-          category_id: string | null
-          category_name: string | null
-          category_slug: string | null
           color: string | null
           created_at: string | null
+          deleted_at: string | null
           icon: string | null
           id: string | null
+          last_modified_at: string | null
           name: string | null
+          server_created_at: string | null
           slug: string | null
-          twitter: string | null
+          updated_at: string | null
           user_picks: number | null
           website: string | null
         }
@@ -417,7 +594,30 @@ export interface Database {
       }
     }
     Functions: {
-      [_ in never]: never
+      epoch_to_timestamp: {
+        Args: {
+          epoch: string
+        }
+        Returns: string
+      }
+      pull: {
+        Args: {
+          last_pulled_at?: number
+        }
+        Returns: Json
+      }
+      push: {
+        Args: {
+          changes: Json
+        }
+        Returns: undefined
+      }
+      timestamp_to_epoch: {
+        Args: {
+          ts: string
+        }
+        Returns: number
+      }
     }
     Enums: {
       [_ in never]: never
