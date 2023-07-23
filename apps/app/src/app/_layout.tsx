@@ -19,6 +19,7 @@ import config from "@/tamagui.config";
 
 export default function Layout() {
   const colorScheme = useColorScheme();
+  console.log({ colorScheme });
 
   const [loaded] = useFonts({
     Inter: require("@tamagui/font-inter/otf/Inter-Medium.otf"),
@@ -31,7 +32,7 @@ export default function Layout() {
 
   return (
     <TamaguiProvider config={config}>
-      <Theme name={colorScheme}>
+      <Theme name={"light"}>
         <NavigationThemeProvider>
           <SafeAreaProvider>
             <DatabaseProvider database={database}>
