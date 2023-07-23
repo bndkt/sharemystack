@@ -1,7 +1,8 @@
-import { useRefresh } from "@/hooks/useRefresh";
 import { FlashList, ListRenderItem } from "@shopify/flash-list";
 import { RefreshControl } from "react-native-gesture-handler";
 import { Separator, Text } from "tamagui";
+
+import { useSync } from "@/hooks/useSync";
 
 export function List<T>({
   data,
@@ -17,8 +18,8 @@ export function List<T>({
   refreshing?: boolean;
 }) {
   if (!onRefresh) {
-    onRefresh = useRefresh().refresh;
-    refreshing = useRefresh().refreshing;
+    onRefresh = useSync().refresh;
+    refreshing = useSync().refreshing;
   }
 
   placeholder ??= "No data";

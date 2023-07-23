@@ -1,9 +1,9 @@
+import { Q } from "@nozbe/watermelondb";
 import { useDatabase } from "@nozbe/watermelondb/hooks";
 import { useEffect, useState } from "react";
 
 import { Tool } from "@/model/Tool";
 import { TableName } from "@/model/schema";
-import { Q } from "@nozbe/watermelondb";
 
 export function useObservableTools() {
   const database = useDatabase();

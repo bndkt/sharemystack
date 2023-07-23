@@ -1,4 +1,4 @@
-import { MessageSquare, Skull } from "@tamagui/lucide-icons";
+import { MessageSquare } from "@tamagui/lucide-icons";
 import { useRouter } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Button, H3, Text, YStack } from "tamagui";

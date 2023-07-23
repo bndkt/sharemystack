@@ -1,7 +1,7 @@
 import BottomSheet from "@gorhom/bottom-sheet";
 import { Stack, useRouter } from "expo-router";
 import { useCallback, useMemo, useRef } from "react";
-import { YStack, useTheme } from "tamagui";
+import { useTheme } from "tamagui";
 
 import { HeaderRight } from "@/components/stacks/HeaderRight";
 

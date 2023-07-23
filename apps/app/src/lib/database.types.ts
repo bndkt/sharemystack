@@ -594,6 +594,12 @@ export interface Database {
       }
     }
     Functions: {
+      epoch_to_timestamp: {
+        Args: {
+          epoch: string
+        }
+        Returns: string
+      }
       pull: {
         Args: {
           last_pulled_at?: number
@@ -605,6 +611,12 @@ export interface Database {
           changes: Json
         }
         Returns: undefined
+      }
+      timestamp_to_epoch: {
+        Args: {
+          ts: string
+        }
+        Returns: number
       }
     }
     Enums: {

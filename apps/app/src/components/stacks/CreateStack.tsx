@@ -3,7 +3,7 @@ import { TextInput } from "react-native";
 import { Button, Input, Text, XStack, YStack } from "tamagui";
 
 import { useAuth } from "@/hooks/useAuth";
-import { useRefresh } from "@/hooks/useRefresh";
+import { useSync } from "@/hooks/useSync";
 import { supabase } from "@/lib/supabase";
 import { isValidSlug } from "@/lib/validation";
 
@@ -18,7 +18,7 @@ export function CreateStack() {
   const [validate, setValidate] = useState(false);
   const nameRef = useRef<TextInput>(null);
   const slugRef = useRef<TextInput>(null);
-  const { refresh } = useRefresh();
+  const { refresh } = useSync();
 
   async function createStack() {
     nameRef.current?.blur();

@@ -9,12 +9,12 @@ import { MyStackHeader } from "@/components/stacks/MyStackHeader";
 import { PickItem } from "@/components/stacks/PickItem";
 import { useAuth } from "@/hooks/useAuth";
 import { useObservableStack } from "@/hooks/useObservableStack";
+import { useSync } from "@/hooks/useSync";
 import { MyStackProvider } from "@/providers/MyStackProvider";
-import { useRefresh } from "@/hooks/useRefresh";
 
 export function MyStack() {
   const { user } = useAuth();
-  const { refresh, refreshing } = useRefresh();
+  const { refresh, refreshing } = useSync();
 
   if (!user) throw new Error("User not found");
 

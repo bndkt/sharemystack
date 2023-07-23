@@ -1,14 +1,14 @@
+import { Skull } from "@tamagui/lucide-icons";
 import { Avatar, Button, Text, XStack, YStack } from "tamagui";
 
 import { SignOutButton } from "@/components/auth/SignOutButton";
 import { withAuth } from "@/components/auth/withAuth";
 import { useAuth } from "@/hooks/useAuth";
-import { Skull } from "@tamagui/lucide-icons";
-import { useRefresh } from "@/hooks/useRefresh";
+import { useSync } from "@/hooks/useSync";
 
 function Profile() {
   const { user } = useAuth();
-  const { refresh } = useRefresh();
+  const { refresh } = useSync();
 
   return (
     <YStack padding="$3">

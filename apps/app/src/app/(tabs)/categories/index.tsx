@@ -6,11 +6,11 @@ import { List } from "@/components/List";
 import { SuggestionButton } from "@/components/SuggestionButton";
 import { CategoryIcon } from "@/components/icons/CategoryIcon";
 import { useObservableCategories } from "@/hooks/useObservableCategories";
-import { useRefresh } from "@/hooks/useRefresh";
+import { useSync } from "@/hooks/useSync";
 
 export default function Categories() {
   const categories = useObservableCategories();
-  const { refresh, refreshing } = useRefresh();
+  const { refresh, refreshing } = useSync();
 
   useEffect(() => {
     refresh();

@@ -14,15 +14,15 @@ import "@/lib/vexo";
 import "@/lib/mixpanel";
 import "@/lib/onesignal";
 import { Loading } from "@/components/Loading";
+import { useSync } from "@/hooks/useSync";
 import { database } from "@/lib/watermelon";
 import { AuthProvider } from "@/providers/AuthProvider";
 import { NavigationThemeProvider } from "@/providers/NavigationThemeProvider";
 import config from "@/tamagui.config";
-import { useRefresh } from "@/hooks/useRefresh";
 
 export default function Layout() {
   // const colorScheme = useColorScheme();
-  const { refresh } = useRefresh();
+  const { refresh } = useSync();
 
   const [loaded] = useFonts({
     Inter: require("@tamagui/font-inter/otf/Inter-Medium.otf"),

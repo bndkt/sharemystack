@@ -3,7 +3,7 @@ import { useRef, useState } from "react";
 import { TextInput, Share } from "react-native";
 import { Button, H3, H4, Input, XStack, YStack } from "tamagui";
 
-import { useRefresh } from "@/hooks/useRefresh";
+import { useSync } from "@/hooks/useSync";
 import { config } from "@/lib/config";
 import { supabase } from "@/lib/supabase";
 import { isValidSlug } from "@/lib/validation";
@@ -16,7 +16,7 @@ export function MyStackHeader({ stack }: { stack: Stack }) {
   const [validate, setValidate] = useState(false);
   const nameRef = useRef<TextInput>(null);
   const slugRef = useRef<TextInput>(null);
-  const { refresh } = useRefresh();
+  const { refresh } = useSync();
 
   function save() {
     nameRef.current?.blur();
