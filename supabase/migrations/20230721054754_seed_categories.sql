@@ -11,7 +11,7 @@ values (
         'f899b6d5-a1e1-48fe-96c2-ec45e00425bc',
         'Browser',
         'browser',
-        '',
+        'AppWindow',
         false
     ),
     (
@@ -23,8 +23,8 @@ values (
     ),
     (
         'a53d4fba-35a4-49e6-baf3-0e7bf2a1188b',
-        'IDE',
-        'ide',
+        'Integrated Development Environment',
+        'integrated-development-environment',
         'TerminalSquare',
         true
     ),
@@ -111,4 +111,39 @@ values (
         'task-management',
         'CheckSquare',
         false
+    ),
+    (
+        '8f2566f3-c252-4029-b152-306134ba2ed8',
+        'Social Networking',
+        'social-networking',
+        'ThumbsUp',
+        true
+    ),
+    (
+        'b3b7392d-5c6d-4111-ac4d-f4e1dfbd90ea',
+        'Artificial Intelligence',
+        'artificial-intelligence',
+        'Sparkles',
+        true
+    ),
+    (
+        '2257e2d6-4cb8-4203-be6a-425491d785d2',
+        'Collaboration',
+        'collaboration',
+        'Users',
+        true
+    ),
+    (
+        '13084829-b026-4ac9-bfe0-94b8e02a3714',
+        'Bookmarking',
+        'bookmarking',
+        'Bookmark',
+        true
+    ),
+    (
+        '4be9b0a6-d220-401a-badc-00d0a4ee0c30',
+        'Read-it-later',
+        'read-it-later',
+        'Newspaper',
+        true
     );
