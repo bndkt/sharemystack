@@ -3,6 +3,7 @@ import { H3, Text, XStack, YStack } from "tamagui";
 
 import { List } from "@/components/List";
 import { PickItem } from "@/components/stacks/PickItem";
+import { StackHeader } from "@/components/stacks/StackHeader";
 import { Star } from "@/components/stacks/Star";
 import { useObservableStack } from "@/hooks/useObservableStack";
 
@@ -19,7 +20,14 @@ export default function Index() {
 
   return stack ? (
     <>
-      <Stack.Screen options={{ headerShown: true, title: stack.name ?? "" }} />
+      <Stack.Screen
+        options={{
+          headerShown: true,
+          // title: stack.name ?? "",
+          // headerTitle: (props) => <StackHeader stack={stack} />,
+          // headerBackVisible: true,
+        }}
+      />
       <YStack fullscreen>
         <XStack padding="$3">
           <YStack flexGrow={1}>

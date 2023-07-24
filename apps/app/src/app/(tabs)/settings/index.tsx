@@ -1,7 +1,9 @@
+import { MessageSquare } from "@tamagui/lucide-icons";
 import { useRouter } from "expo-router";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { Button, YStack } from "tamagui";
 
+import { SuggestionButton } from "@/components/SuggestionButton";
 import User from "@/components/settings/User";
 
 export default function Index() {
@@ -14,10 +16,12 @@ export default function Index() {
       <YStack flexGrow={1}>
         <User />
       </YStack>
-      <YStack padding="$3">
+      <YStack>
+        <SuggestionButton text="Give Feedback" icon={<MessageSquare />} />
         <Button
           // themeInverse
-          marginTop="$3"
+          marginHorizontal="$3"
+          marginBottom="$3"
           onPress={() => router.push("/_dev")}
           // borderColor="$red10"
           color="$red10"
