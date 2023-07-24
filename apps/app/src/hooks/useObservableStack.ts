@@ -25,8 +25,6 @@ export function useObservableStack({ slug, userId, loadPicks }: StackSelector) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!slug && !userId) return setLoading(false);
-
     const stacksCollection = database.collections.get<Stack>(TableName.STACKS);
 
     const args: Q.Clause[] = [];

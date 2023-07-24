@@ -32,7 +32,7 @@ export const AuthContext = createContext<{
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [session, setSession] = useState<AuthSession | null>(null);
   const [user, setUser] = useState<AuthUser | null>(null);
-  const { refresh } = useSync();
+  const { sync } = useSync();
   const {
     stack,
     picks,
@@ -59,7 +59,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const { error } = await supabase.auth.signOut();
     setSession(null);
     setUser(null);
-    refresh(true);
+    sync(true);
 
     if (error) {
       console.error(error);

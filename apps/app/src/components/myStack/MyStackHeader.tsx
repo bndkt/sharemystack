@@ -16,7 +16,7 @@ export function MyStackHeader({ stack }: { stack: Stack }) {
   const [validate, setValidate] = useState(false);
   const nameRef = useRef<TextInput>(null);
   const slugRef = useRef<TextInput>(null);
-  const { refresh } = useSync();
+  const { sync } = useSync();
 
   function save() {
     nameRef.current?.blur();
@@ -30,7 +30,7 @@ export function MyStackHeader({ stack }: { stack: Stack }) {
       query.then((result) => {
         console.log({ result });
         setEditing(false);
-        refresh();
+        sync();
       });
     }
   }

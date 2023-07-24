@@ -6,19 +6,15 @@ import { SuggestionButton } from "@/components/SuggestionButton";
 import { CategoryIcon } from "@/components/icons/CategoryIcon";
 import { List } from "@/components/list";
 import { useObservableCategories } from "@/hooks/useObservableCategories";
-import { useSync } from "@/hooks/useSync";
 
 export default function Categories() {
   const insets = useSafeAreaInsets();
   const categories = useObservableCategories({ includeComingSoon: true });
-  const { refresh, refreshing } = useSync();
 
   return (
     <YStack fullscreen paddingTop={insets.top}>
       <List
         data={categories}
-        onRefresh={refresh}
-        refreshing={refreshing}
         renderItem={({ item }) => {
           return (
             <Link

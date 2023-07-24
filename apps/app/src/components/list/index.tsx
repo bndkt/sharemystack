@@ -18,8 +18,8 @@ export function List<T>({
   refreshing?: boolean;
 }) {
   if (!onRefresh) {
-    onRefresh = useSync().refresh;
-    refreshing = useSync().refreshing;
+    onRefresh = useSync().sync;
+    refreshing = useSync().isSyncing;
   }
 
   placeholder ??= "No data";

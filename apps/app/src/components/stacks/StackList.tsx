@@ -23,7 +23,7 @@ export function StackList({
         refreshing={refreshing}
         renderItem={({ item }) => {
           return (
-            <Link href={`/(stacks)/@${item.slug}`}>
+            <Link href={`/(tabs)/(stacks)/@${item.slug}`}>
               <ListItem
                 title={item.name}
                 subTitle={`@${item.slug}`}

@@ -18,7 +18,7 @@ export function CreateStack() {
   const [validate, setValidate] = useState(false);
   const nameRef = useRef<TextInput>(null);
   const slugRef = useRef<TextInput>(null);
-  const { refresh } = useSync();
+  const { sync } = useSync();
 
   async function createStack() {
     nameRef.current?.blur();
@@ -35,7 +35,7 @@ export function CreateStack() {
           user_id: user.id,
         })
         .then(() => {
-          refresh();
+          sync();
         });
     }
   }
