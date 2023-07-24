@@ -2,9 +2,9 @@ import { Link } from "expo-router";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { ListItem, Text, YStack } from "tamagui";
 
-import { List } from "@/components/List";
 import { SuggestionButton } from "@/components/SuggestionButton";
 import { CategoryIcon } from "@/components/icons/CategoryIcon";
+import { List } from "@/components/list";
 import { useObservableCategories } from "@/hooks/useObservableCategories";
 import { useSync } from "@/hooks/useSync";
 

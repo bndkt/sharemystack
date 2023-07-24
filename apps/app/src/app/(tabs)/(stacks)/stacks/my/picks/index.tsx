@@ -2,8 +2,8 @@ import { ChevronRight } from "@tamagui/lucide-icons";
 import { Link } from "expo-router";
 import { ListItem, Text, YStack } from "tamagui";
 
-import { List } from "@/components/List";
 import { CategoryIcon } from "@/components/icons/CategoryIcon";
+import { List } from "@/components/list";
 import { useObservableCategories } from "@/hooks/useObservableCategories";
 
 export default function Index() {

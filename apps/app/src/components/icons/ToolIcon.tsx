@@ -1,6 +1,7 @@
-import { Tool } from "@/model/Tool";
 import { BoxSelect } from "@tamagui/lucide-icons";
 import { SvgXml } from "react-native-svg";
+
+import { Tool } from "@/model/Tool";
 
 export function ToolIcon({
   tool,

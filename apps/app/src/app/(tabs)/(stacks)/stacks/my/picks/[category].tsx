@@ -1,8 +1,8 @@
 import { Stack, useLocalSearchParams } from "expo-router";
 import { YStack } from "tamagui";
 
-import { List } from "@/components/List";
 import { Loading } from "@/components/Loading";
+import { List } from "@/components/list";
 import { PickTool } from "@/components/stacks/PickTool";
 import { useObservableCategory } from "@/hooks/useObservableCategory";
 

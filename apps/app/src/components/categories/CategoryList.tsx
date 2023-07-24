@@ -1,8 +1,8 @@
 import { Link } from "expo-router";
 import { ListItem, Text } from "tamagui";
 
-import { List } from "@/components/List";
 import { CategoryIcon } from "@/components/icons/CategoryIcon";
+import { List } from "@/components/list";
 import { CategoriesResponse } from "@/lib/database/getCategories";
 
 export function CategoryList({

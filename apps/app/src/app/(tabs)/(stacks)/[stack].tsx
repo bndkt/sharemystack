@@ -1,10 +1,9 @@
 import { Stack, useLocalSearchParams } from "expo-router";
-import { H3, Text, XStack, YStack } from "tamagui";
+import { YStack } from "tamagui";
 
-import { List } from "@/components/List";
+import { List } from "@/components/list";
 import { PickItem } from "@/components/stacks/PickItem";
-import { StackHeader } from "@/components/stacks/StackHeader";
-import { Star } from "@/components/stacks/Star";
+import { StackHeaderRight } from "@/components/stacks/StackHeaderRight";
 import { useObservableStack } from "@/hooks/useObservableStack";
 
 export default function Index() {
@@ -23,19 +22,14 @@ export default function Index() {
       <Stack.Screen
         options={{
           headerShown: true,
-          // title: stack.name ?? "",
+          title: stack.name,
           // headerTitle: (props) => <StackHeader stack={stack} />,
           // headerBackVisible: true,
+          headerRight: () => <StackHeaderRight stack={stack} />,
+          // header: (props) => <StackHeader stack={stack} />,
         }}
       />
       <YStack fullscreen>
-        <XStack padding="$3">
-          <YStack flexGrow={1}>
-            <H3>{stack.name}</H3>
-            <Text>@{stack.slug}</Text>
-          </YStack>
-          <Star stack={stack} />
-        </XStack>
         <List
           data={picks}
           renderItem={({ item }) => <PickItem pick={item} />}

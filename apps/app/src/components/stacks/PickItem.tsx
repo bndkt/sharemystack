@@ -3,8 +3,8 @@ import { useEffect, useState } from "react";
 import { ListItem } from "tamagui";
 
 import { Loading } from "../Loading";
-import { SwipeableRow } from "../SwipeableRow";
 import { ToolIcon } from "../icons/ToolIcon";
+import { SwipeableRow } from "../list/SwipeableRow";
 
 import { useAuth } from "@/hooks/useAuth";
 import { Category } from "@/model/Category";

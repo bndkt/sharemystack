@@ -1,9 +1,9 @@
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { ListItem, YStack } from "tamagui";
 
-import { List } from "@/components/List";
 import { SuggestionButton } from "@/components/SuggestionButton";
 import { ToolIcon } from "@/components/icons/ToolIcon";
+import { List } from "@/components/list";
 import { useObservableTools } from "@/hooks/useObservableTools";
 
 export default function Tools() {

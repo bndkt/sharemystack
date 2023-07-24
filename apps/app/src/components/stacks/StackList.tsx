@@ -2,8 +2,8 @@ import { ChevronRight } from "@tamagui/lucide-icons";
 import { Link } from "expo-router";
 import { ListItem, YStack } from "tamagui";
 
-import { List } from "@/components/List";
-import { ImageIcon } from "@/components/icons/StackIcon";
+import { StackIcon } from "@/components/icons/StackIcon";
+import { List } from "@/components/list";
 import { Stack } from "@/model/Stack";
 
 export function StackList({
@@ -27,7 +27,7 @@ export function StackList({
               <ListItem
                 title={item.name}
                 subTitle={`@${item.slug}`}
-                icon={<ImageIcon src={item.twitterImageUrl} />}
+                icon={<StackIcon stack={item} />}
                 iconAfter={<ChevronRight size="$1" />}
               />
             </Link>

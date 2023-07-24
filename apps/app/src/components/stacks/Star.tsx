@@ -35,13 +35,7 @@ export function Star({ stack }: { stack: Stack }) {
     ) : (
       <YStack justifyContent="center">
         <Button
-          icon={
-            <StarIcon
-              color="gray"
-              fill={isStarred ? "gray" : "transparent"}
-              size="$1"
-            />
-          }
+          icon={<StarIcon fill={isStarred ? "black" : undefined} size="$1" />}
           unstyled
           onPress={toggleStar}
         />

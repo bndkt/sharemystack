@@ -1,9 +1,9 @@
 import { Slot } from "expo-router";
 import { YStack } from "tamagui";
 
-import { List } from "@/components/List";
 import { Loading } from "@/components/Loading";
 import { withAuth } from "@/components/auth/withAuth";
+import { List } from "@/components/list";
 import { CreateStack } from "@/components/stacks/CreateStack";
 import { MyStackHeader } from "@/components/stacks/MyStackHeader";
 import { PickItem } from "@/components/stacks/PickItem";
