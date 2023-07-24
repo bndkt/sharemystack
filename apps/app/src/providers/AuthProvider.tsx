@@ -1,9 +1,12 @@
 import { AuthUser, AuthSession } from "@supabase/supabase-js";
 import { ReactNode, createContext, useEffect, useState } from "react";
 
+import { useObservableStack } from "@/hooks/useObservableStack";
 import { useSync } from "@/hooks/useSync";
 import { updateOneSignalProfile } from "@/lib/onesignal";
 import { supabase } from "@/lib/supabase";
+import { Pick } from "@/model/Pick";
+import { Stack } from "@/model/Stack";
 
 export const AuthContext = createContext<{
   session: AuthSession | null;
@@ -16,6 +19,9 @@ export const AuthContext = createContext<{
     user: AuthUser | null;
   }) => void;
   signOut: () => void;
+  stack?: Stack | undefined;
+  picks?: Pick[] | undefined;
+  isLoadingStack?: boolean;
 }>({
   session: null,
   user: null,
@@ -27,6 +33,14 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [session, setSession] = useState<AuthSession | null>(null);
   const [user, setUser] = useState<AuthUser | null>(null);
   const { refresh } = useSync();
+  const {
+    stack,
+    picks,
+    loading: isLoadingStack,
+  } = useObservableStack({
+    userId: user?.id ?? null,
+    loadPicks: true,
+  });
 
   async function signIn({
     session,
@@ -88,6 +102,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         user,
         signIn,
         signOut,
+        stack,
+        picks,
+        isLoadingStack,
       }}
     >
       {children}

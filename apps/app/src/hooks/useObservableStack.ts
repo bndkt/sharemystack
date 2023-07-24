@@ -8,23 +8,25 @@ import { TableName } from "@/model/schema";
 
 type StackSelector =
   | {
-      userId: string;
       slug?: never;
+      userId: string | null;
       loadPicks?: boolean;
     }
   | {
-      userId?: never;
       slug: string;
+      userId?: never;
       loadPicks?: boolean;
     };
 
-export function useObservableStack({ userId, slug, loadPicks }: StackSelector) {
+export function useObservableStack({ slug, userId, loadPicks }: StackSelector) {
   const database = useDatabase();
   const [stack, setStack] = useState<Stack>();
   const [picks, setPicks] = useState<Pick[]>();
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    if (!slug && !userId) return setLoading(false);
+
     const stacksCollection = database.collections.get<Stack>(TableName.STACKS);
 
     const args: Q.Clause[] = [];

@@ -3,7 +3,7 @@ import { ListItem } from "tamagui";
 
 import { ToolIcon } from "../icons/ToolIcon";
 
-import { useMyStack } from "@/hooks/useMyStack";
+import { useAuth } from "@/hooks/useAuth";
 import { Category } from "@/model/Category";
 import { Pick } from "@/model/Pick";
 import { Tool } from "@/model/Tool";
@@ -15,7 +15,7 @@ export function PickTool({
   category: Category;
   item: Tool;
 }) {
-  const { stack, picks } = useMyStack();
+  const { stack, picks } = useAuth();
 
   const pick = picks?.find((pick) => pick.tool.id === item.id);
 

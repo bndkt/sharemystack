@@ -6,7 +6,7 @@ import { Loading } from "../Loading";
 import { SwipeableRow } from "../SwipeableRow";
 import { ToolIcon } from "../icons/ToolIcon";
 
-import { useMyStack } from "@/hooks/useMyStack";
+import { useAuth } from "@/hooks/useAuth";
 import { Category } from "@/model/Category";
 import { Pick } from "@/model/Pick";
 import { Tool } from "@/model/Tool";
@@ -20,7 +20,7 @@ export function PickItem({
 }) {
   const [tool, setTool] = useState<Tool>();
   const [category, setCategory] = useState<Category>();
-  const { stack } = useMyStack();
+  const { stack } = useAuth();
 
   useEffect(() => {
     const subscription = pick.tool.observe().subscribe((newTool) => {

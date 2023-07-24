@@ -5,7 +5,11 @@ import { useEffect, useState } from "react";
 import { Category } from "@/model/Category";
 import { TableName } from "@/model/schema";
 
-export function useObservableCategories() {
+export function useObservableCategories({
+  includeComingSoon,
+}: {
+  includeComingSoon?: boolean;
+} = {}) {
   const database = useDatabase();
   const [categories, setCategories] = useState<Category[]>([]);
 
@@ -13,9 +17,16 @@ export function useObservableCategories() {
     const categoriesCollection = database.collections.get<Category>(
       TableName.CATEGORIES
     );
-    const categoriesObservable = categoriesCollection
-      .query(Q.sortBy("name"))
-      .observe();
+
+    let categoriesQuery = categoriesCollection.query(Q.sortBy("name"));
+
+    if (!includeComingSoon) {
+      categoriesQuery = categoriesQuery.extend(
+        Q.where("is_coming_soon", false)
+      );
+    }
+
+    const categoriesObservable = categoriesQuery.observe();
 
     const subscription = categoriesObservable.subscribe((newCategories) => {
       setCategories(newCategories);

@@ -11,12 +11,8 @@ import { useSync } from "@/hooks/useSync";
 
 export default function Categories() {
   const insets = useSafeAreaInsets();
-  const categories = useObservableCategories();
+  const categories = useObservableCategories({ includeComingSoon: true });
   const { refresh, refreshing } = useSync();
-
-  useEffect(() => {
-    refresh();
-  }, []);
 
   return (
     <YStack fullscreen paddingTop={insets.top}>

@@ -21,7 +21,14 @@ export default function Tools() {
               subTitle={`Included in ${item.allPicks} stack`.concat(
                 item.allPicks !== 1 ? "s" : ""
               )}
-              icon={<ToolIcon svgXml={item.icon} width="24" height="24" />}
+              icon={
+                <ToolIcon
+                  svgXml={item.icon}
+                  color={item.color}
+                  width="24"
+                  height="24"
+                />
+              }
             />
           );
         }}
