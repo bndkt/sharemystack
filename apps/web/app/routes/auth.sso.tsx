@@ -12,8 +12,8 @@ export const loader = async ({ request, context }: LoaderArgs) => {
   const redirectUrl = url.searchParams.get("redirect");
 
   const supabase = createServerClient<Database>(
-    context.SUPABASE_URL as string,
-    context.SUPABASE_ANON_KEY as string,
+    context.env.SUPABASE_URL,
+    context.env.SUPABASE_ANON_KEY,
     { request, response }
   );
 
