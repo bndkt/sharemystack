@@ -294,10 +294,22 @@ SELECT jsonb_build_object(
                     t.id,
                     'stack_id',
                     t.stack_id,
+                    'stack_name',
+                    t.stack_name,
+                    'stack_slug',
+                    t.stack_slug,
                     'tool_id',
                     t.tool_id,
+                    'tool_name',
+                    t.tool_name,
+                    'tool_slug',
+                    t.tool_slug,
                     'category_id',
                     t.category_id,
+                    'category_name',
+                    t.category_name,
+                    'category_slug',
+                    t.category_slug,
                     'created_at',
                     timestamp_to_epoch(t.created_at),
                     'updated_at',
@@ -317,10 +329,22 @@ SELECT jsonb_build_object(
                     t.id,
                     'stack_id',
                     t.stack_id,
+                    'stack_name',
+                    t.stack_name,
+                    'stack_slug',
+                    t.stack_slug,
                     'tool_id',
                     t.tool_id,
+                    'tool_name',
+                    t.tool_name,
+                    'tool_slug',
+                    t.tool_slug,
                     'category_id',
                     t.category_id,
+                    'category_name',
+                    t.category_name,
+                    'category_slug',
+                    t.category_slug,
                     'created_at',
                     timestamp_to_epoch(t.created_at),
                     'updated_at',
@@ -342,11 +366,7 @@ SELECT jsonb_build_object(
             '[]'::jsonb
         )
     ) INTO _picks
-FROM picks t
-WHERE stack_id IN (
-        SELECT id
-        FROM sync_stacks_view
-    );
+FROM sync_picks_view t;
 --- Stars
 SELECT jsonb_build_object(
         'created',

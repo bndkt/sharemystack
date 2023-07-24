@@ -3,6 +3,7 @@ import {
   date,
   immutableRelation,
   readonly,
+  text,
 } from "@nozbe/watermelondb/decorators";
 
 import { Category } from "./Category";
@@ -21,6 +22,13 @@ export class Pick extends Model {
     [TableName.CATEGORIES]: { type: "belongs_to" as const, key: "category_id" },
     [TableName.STACKS]: { type: "belongs_to" as const, key: "stack_id" },
   };
+
+  @text("stack_name") stackName!: string;
+  @text("stack_slug") stackSlug!: string;
+  @text("tool_name") toolName!: string;
+  @text("tool_slug") toolSlug!: string;
+  @text("category_name") categoryName!: string;
+  @text("category_slug") categorySlug!: string;
 
   @immutableRelation(TableName.STACKS, "stack_id") stack!: Relation<Stack>;
   @immutableRelation(TableName.TOOLS, "tool_id") tool!: Relation<Tool>;

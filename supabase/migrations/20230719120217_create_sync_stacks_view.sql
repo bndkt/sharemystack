@@ -1,16 +1,25 @@
-create view sync_stacks_view as
-select *
-from stacks_view
-where user_id = auth.uid()
-union
-select *
-from (
-        select *
-        from stacks_view
-        order by updated_at desc
-        limit 100
-    ) as updated_query
-union
-select *
-from stacks_view
-where is_starred is true
+CREATE view sync_stacks_view AS
+SELECT *
+FROM stacks_view
+WHERE user_id = auth.uid()
+UNION
+SELECT *
+FROM (
+        SELECT *
+        FROM stacks_view
+        ORDER BY updated_at DESC
+        LIMIT 100
+    ) AS updated_query
+UNION
+SELECT *
+FROM stacks_view
+WHERE is_starred IS true
+UNION
+SELECT *
+FROM stacks_view
+WHERE id IN (
+        SELECT stack_id
+        FROM picks
+        ORDER BY updated_at DESC
+        LIMIT 25
+    );
