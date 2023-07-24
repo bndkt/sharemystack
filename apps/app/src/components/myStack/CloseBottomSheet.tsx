@@ -2,7 +2,7 @@ import { X } from "@tamagui/lucide-icons";
 import { useRouter } from "expo-router";
 import { Button } from "tamagui";
 
-export function HeaderRight() {
+export function CloseBottomSheet() {
   const router = useRouter();
 
   return (

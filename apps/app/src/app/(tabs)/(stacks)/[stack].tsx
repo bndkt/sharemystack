@@ -2,8 +2,8 @@ import { Stack, useLocalSearchParams } from "expo-router";
 import { YStack } from "tamagui";
 
 import { List } from "@/components/list";
-import { PickItem } from "@/components/stacks/PickItem";
 import { StackHeaderRight } from "@/components/stacks/StackHeaderRight";
+import { StackPick } from "@/components/stacks/StackPick";
 import { useObservableStack } from "@/hooks/useObservableStack";
 
 export default function Index() {
@@ -32,7 +32,7 @@ export default function Index() {
       <YStack fullscreen>
         <List
           data={picks}
-          renderItem={({ item }) => <PickItem pick={item} />}
+          renderItem={({ item }) => <StackPick pick={item} />}
         />
       </YStack>
     </>

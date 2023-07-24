@@ -3,7 +3,7 @@ import { YStack } from "tamagui";
 
 import { Loading } from "@/components/Loading";
 import { List } from "@/components/list";
-import { PickTool } from "@/components/stacks/PickTool";
+import { PickTool } from "@/components/myStack/PickTool";
 import { useObservableCategory } from "@/hooks/useObservableCategory";
 
 export default function Tools() {

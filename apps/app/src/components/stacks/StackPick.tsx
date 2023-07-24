@@ -11,7 +11,7 @@ import { Category } from "@/model/Category";
 import { Pick } from "@/model/Pick";
 import { Tool } from "@/model/Tool";
 
-export function PickItem({
+export function StackPick({
   pick,
   editable,
 }: {

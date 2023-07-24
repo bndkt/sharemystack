@@ -1,12 +1,10 @@
 import * as AppleAuthentication from "expo-apple-authentication";
-// import * as Crypto from "expo-crypto";
 
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/lib/supabase";
 
 export function SignInWithApple() {
   const { signIn } = useAuth();
-  // const nonce = Crypto.randomUUID();
 
   return (
     <AppleAuthentication.AppleAuthenticationButton
@@ -19,7 +17,6 @@ export function SignInWithApple() {
       onPress={async () => {
         try {
           const credential = await AppleAuthentication.signInAsync({
-            // nonce,
             requestedScopes: [
               AppleAuthentication.AppleAuthenticationScope.FULL_NAME,
               AppleAuthentication.AppleAuthenticationScope.EMAIL,
@@ -30,7 +27,6 @@ export function SignInWithApple() {
             const { data, error } = await supabase.auth.signInWithIdToken({
               provider: "apple",
               token: credential.identityToken,
-              // nonce,
             });
 
             if (error) {

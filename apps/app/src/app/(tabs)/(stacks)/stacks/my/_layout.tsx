@@ -4,9 +4,9 @@ import { YStack } from "tamagui";
 import { Loading } from "@/components/Loading";
 import { withAuth } from "@/components/auth/withAuth";
 import { List } from "@/components/list";
-import { CreateStack } from "@/components/stacks/CreateStack";
-import { MyStackHeader } from "@/components/stacks/MyStackHeader";
-import { PickItem } from "@/components/stacks/PickItem";
+import { CreateStack } from "@/components/myStack/CreateStack";
+import { MyStackHeader } from "@/components/myStack/MyStackHeader";
+import { StackPick } from "@/components/stacks/StackPick";
 import { useAuth } from "@/hooks/useAuth";
 import { useSync } from "@/hooks/useSync";
 
@@ -24,7 +24,7 @@ export function MyStack() {
         onRefresh={refresh}
         refreshing={refreshing}
         placeholder="You have not added any tools to your stack yet."
-        renderItem={({ item }) => <PickItem pick={item} editable={true} />}
+        renderItem={({ item }) => <StackPick pick={item} editable={true} />}
       />
       <Slot />
     </YStack>
