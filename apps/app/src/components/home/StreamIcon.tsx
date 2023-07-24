@@ -17,5 +17,5 @@ export function StreamIcon({ pick }: { pick: Pick }) {
     return () => subscription.unsubscribe();
   }, [pick]);
 
-  return tool ? <ToolIcon svgXml={tool.icon} color={tool.color} /> : <Avatar />;
+  return tool ? <ToolIcon tool={tool} /> : <Avatar />;
 }

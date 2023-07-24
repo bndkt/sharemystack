@@ -1,21 +1,20 @@
+import { Tool } from "@/model/Tool";
 import { BoxSelect } from "@tamagui/lucide-icons";
 import { SvgXml } from "react-native-svg";
 
 export function ToolIcon({
-  svgXml,
-  color,
-  width = "20",
-  height = "20",
+  tool,
+  width = "24",
+  height = "24",
 }: {
-  svgXml?: string | null;
-  color?: string | null;
+  tool: Tool;
   width?: string;
   height?: string;
 }) {
-  color ??= "$color";
+  tool.color ??= "black";
 
-  return svgXml ? (
-    <SvgXml xml={svgXml} color={color} width={width} height={height} />
+  return tool.icon ? (
+    <SvgXml xml={tool.icon} color={tool.color} width={width} height={height} />
   ) : (
     <BoxSelect color="$gray5" width={width} height={height} />
   );

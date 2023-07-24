@@ -1,5 +1,4 @@
 import { Link } from "expo-router";
-import { useEffect } from "react";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { ListItem, Text, YStack } from "tamagui";
 

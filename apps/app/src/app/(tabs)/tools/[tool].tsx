@@ -1,23 +1,23 @@
 import { Stack, useLocalSearchParams } from "expo-router";
-import { useEffect, useState } from "react";
-import { H2, Text, XStack, YStack } from "tamagui";
+import { useState } from "react";
+import { H2, XStack, YStack } from "tamagui";
 
 import { Loading } from "@/components/Loading";
 import { ToolIcon } from "@/components/icons/ToolIcon";
-import { ToolResponse, getTool } from "@/lib/database/getTool";
+import { Tool } from "@/model/Tool";
 
 export default function Index() {
   const { tool: slug } = useLocalSearchParams<{ tool: string }>();
   const [isLoading, setLoading] = useState(true);
-  const [tool, setTool] = useState<ToolResponse["data"]>(null);
+  const [tool, setTool] = useState<Tool>();
 
-  useEffect(() => {
+  /* useEffect(() => {
     slug &&
       getTool({ slug }).then(({ data }) => {
         setTool(data);
         setLoading(false);
       });
-  }, [getTool, setTool]);
+  }, [getTool, setTool]); */
 
   // Color
   // Icon
@@ -29,16 +29,9 @@ export default function Index() {
     <>
       <Stack.Screen options={{ headerShown: true, title: tool.name }} />
       <XStack alignItems="center" padding="$3">
-        <ToolIcon
-          svgXml={tool.icon}
-          color={tool.color}
-          width="24"
-          height="24"
-        />
+        <ToolIcon tool={tool} />
         <YStack marginLeft="$3">
           <H2>{tool.name}</H2>
-          <Text>Website: {tool.website}</Text>
-          <Text>Twitter: {tool.twitter}</Text>
         </YStack>
       </XStack>
     </>

@@ -47,9 +47,12 @@ export function useObservableStack({ slug, userId, loadPicks }: StackSelector) {
 
   useEffect(() => {
     if (stack && loadPicks) {
-      const subscription = stack.picks.observe().subscribe((newPicks) => {
-        setPicks(newPicks);
-      });
+      const subscription = stack.picks
+        .extend(Q.sortBy("updated_at", "desc"))
+        .observe()
+        .subscribe((newPicks) => {
+          setPicks(newPicks);
+        });
 
       return () => subscription.unsubscribe();
     }

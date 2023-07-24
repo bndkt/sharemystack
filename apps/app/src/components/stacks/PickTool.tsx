@@ -17,7 +17,9 @@ export function PickTool({
 }) {
   const { stack, picks } = useAuth();
 
-  const pick = picks?.find((pick) => pick.tool.id === item.id);
+  const pick = picks?.find(
+    (pick) => pick.tool.id === item.id && pick.category.id === category.id
+  );
 
   function add(tool: Tool, category: Category) {
     stack?.addPick(tool, category);
@@ -30,7 +32,7 @@ export function PickTool({
   return (
     <ListItem
       title={item.name}
-      icon={<ToolIcon svgXml={item.icon} width="24" height="24" />}
+      icon={<ToolIcon tool={item} width="24" height="24" />}
       iconAfter={pick ? <Check color="gray" size="$1" /> : <Plus size="$1" />}
       onPress={() => (pick ? remove(pick) : add(item, category))}
     />

@@ -57,7 +57,7 @@ export function PickItem({
       <ListItem
         title={tool.name}
         subTitle={category.name}
-        icon={<ToolIcon svgXml={tool.icon} width="36" height="36" />}
+        icon={<ToolIcon tool={tool} width="36" height="36" />}
       />
     </SwipeableRow>
   ) : (
