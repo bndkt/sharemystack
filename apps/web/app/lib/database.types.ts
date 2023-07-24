@@ -406,17 +406,38 @@ export interface Database {
       }
       picks_view: {
         Row: {
+          category_id: string | null
           category_name: string | null
           category_slug: string | null
+          created_at: string | null
+          deleted_at: string | null
+          id: string | null
+          last_modified_at: string | null
+          server_created_at: string | null
           stack_id: string | null
+          stack_name: string | null
+          stack_slug: string | null
           tool_color: string | null
           tool_icon: string | null
           tool_id: string | null
           tool_name: string | null
           tool_slug: string | null
           tool_website: string | null
+          updated_at: string | null
         }
         Relationships: [
+          {
+            foreignKeyName: "picks_category_id_fkey"
+            columns: ["category_id"]
+            referencedRelation: "categories"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "picks_category_id_fkey"
+            columns: ["category_id"]
+            referencedRelation: "categories_view"
+            referencedColumns: ["id"]
+          },
           {
             foreignKeyName: "picks_stack_id_fkey"
             columns: ["stack_id"]
@@ -552,6 +573,29 @@ export interface Database {
             referencedColumns: ["id"]
           }
         ]
+      }
+      sync_picks_view: {
+        Row: {
+          category_id: string | null
+          category_name: string | null
+          category_slug: string | null
+          created_at: string | null
+          deleted_at: string | null
+          id: string | null
+          last_modified_at: string | null
+          server_created_at: string | null
+          stack_id: string | null
+          stack_name: string | null
+          stack_slug: string | null
+          tool_color: string | null
+          tool_icon: string | null
+          tool_id: string | null
+          tool_name: string | null
+          tool_slug: string | null
+          tool_website: string | null
+          updated_at: string | null
+        }
+        Relationships: []
       }
       sync_stacks_view: {
         Row: {
