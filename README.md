@@ -11,6 +11,17 @@
 - Supabase
 - React Native Bottom Sheet
 
+## Messaging
+
+- OneSignal
+
+## Analytics
+
+- Sentry
+- Vexo
+- Mixpanel
+- PostHog
+
 ## Here is a list of "stuff" I plan to demonstrate with this app (in no particular order):
 
 - [ ] iOS App Clips (using https://github.com/bndkt/react-native-app-clip)

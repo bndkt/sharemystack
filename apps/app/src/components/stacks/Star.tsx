@@ -1,4 +1,5 @@
 import { Star as StarIcon } from "@tamagui/lucide-icons";
+import { usePostHog } from "posthog-react-native";
 import { useEffect, useState } from "react";
 import { Button, Spinner, YStack } from "tamagui";
 
@@ -9,12 +10,14 @@ export function Star({ stack }: { stack: Stack }) {
   const [isLoading, setIsLoading] = useState(true);
   const [isStarred, setIsStarred] = useState(false);
   const { user, session } = useAuth();
+  const posthog = usePostHog();
 
   function toggleStar() {
     if (isStarred) {
       stack.removeStar();
     } else {
-      user && stack?.addStar(user.id);
+      user && stack.addStar(user.id);
+      posthog?.capture("Stack starred", { stack: stack.id });
     }
   }
 

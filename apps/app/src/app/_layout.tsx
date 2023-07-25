@@ -3,6 +3,7 @@ import "react-native-gesture-handler";
 import DatabaseProvider from "@nozbe/watermelondb/DatabaseProvider";
 import { useFonts } from "expo-font";
 import { Slot } from "expo-router";
+import { PostHogProvider } from "posthog-react-native";
 import { LogBox, useColorScheme } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { TamaguiProvider, Theme } from "tamagui";
@@ -37,20 +38,27 @@ export default function Layout() {
   }
 
   return (
-    <TamaguiProvider config={config}>
-      <Theme name={"light"}>
-        <NavigationThemeProvider>
-          <SafeAreaProvider>
-            <DatabaseProvider database={database}>
-              <AuthProvider>
-                <SyncProvider>
-                  <Slot />
-                </SyncProvider>
-              </AuthProvider>
-            </DatabaseProvider>
-          </SafeAreaProvider>
-        </NavigationThemeProvider>
-      </Theme>
-    </TamaguiProvider>
+    <PostHogProvider
+      apiKey={process.env.EXPO_PUBLIC_POSTHOG_API_KEY}
+      options={{
+        host: "https://app.posthog.com",
+      }}
+    >
+      <TamaguiProvider config={config}>
+        <Theme name={"light"}>
+          <NavigationThemeProvider>
+            <SafeAreaProvider>
+              <DatabaseProvider database={database}>
+                <AuthProvider>
+                  <SyncProvider>
+                    <Slot />
+                  </SyncProvider>
+                </AuthProvider>
+              </DatabaseProvider>
+            </SafeAreaProvider>
+          </NavigationThemeProvider>
+        </Theme>
+      </TamaguiProvider>
+    </PostHogProvider>
   );
 }

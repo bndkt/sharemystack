@@ -1,4 +1,5 @@
 import { AuthUser, AuthSession } from "@supabase/supabase-js";
+import { usePostHog } from "posthog-react-native";
 import { ReactNode, createContext, useEffect, useState } from "react";
 
 import { useObservableStack } from "@/hooks/useObservableStack";
@@ -39,6 +40,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     userId: user?.id ?? null,
     loadPicks: true,
   });
+  const posthog = usePostHog();
 
   async function signIn({
     session,
@@ -50,6 +52,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setSession(session);
     setUser(user);
     oneSignalLogin(user?.id, user?.email);
+    posthog?.capture("Sign in", { user: user?.id });
   }
 
   async function signOut() {
@@ -57,6 +60,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     oneSignalLogout();
     setSession(null);
     setUser(null);
+    posthog?.capture("Sign out");
 
     if (error) {
       console.error(error);
