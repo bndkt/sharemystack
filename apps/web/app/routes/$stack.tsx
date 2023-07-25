@@ -22,7 +22,9 @@ export default function Stack() {
   return (
     <div className="content-center text-center pt-16 text-white">
       <div className="mx-auto pb-1 w-24"></div>
-      <h2>@{data.stack}</h2>
+      <h2>
+        <a href={link}>@{data.stack}</a>
+      </h2>
       <div className="pt-16">
         Please note that Share My Stack
         <br /> is currently only available on iOS.
