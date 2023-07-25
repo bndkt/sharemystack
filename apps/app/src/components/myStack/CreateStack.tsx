@@ -29,7 +29,7 @@ export function CreateStack() {
         .from("stacks")
         .insert({
           name,
-          slug,
+          slug: slug.toLowerCase(),
           twitter: user.user_metadata.preferred_username,
           twitter_image_url: user.user_metadata.avatar_url,
           user_id: user.id,

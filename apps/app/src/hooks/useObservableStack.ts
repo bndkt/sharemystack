@@ -29,7 +29,7 @@ export function useObservableStack({ slug, userId, loadPicks }: StackSelector) {
 
     const args: Q.Clause[] = [];
     userId && args.push(Q.where("user_id", userId));
-    slug && args.push(Q.where("slug", slug));
+    slug && args.push(Q.where("slug", Q.like(slug)));
     args.push(Q.take(1));
 
     const stacksQuery = stacksCollection.query(args);
