@@ -2,7 +2,6 @@ import { AuthUser, AuthSession } from "@supabase/supabase-js";
 import { ReactNode, createContext, useEffect, useState } from "react";
 
 import { useObservableStack } from "@/hooks/useObservableStack";
-import { useSync } from "@/hooks/useSync";
 import { oneSignalLogin, oneSignalLogout } from "@/lib/onesignal";
 import { supabase } from "@/lib/supabase";
 import { Pick } from "@/model/Pick";
@@ -32,7 +31,6 @@ export const AuthContext = createContext<{
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [session, setSession] = useState<AuthSession | null>(null);
   const [user, setUser] = useState<AuthUser | null>(null);
-  const { sync } = useSync();
   const {
     stack,
     picks,
@@ -52,7 +50,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setSession(session);
     setUser(user);
     oneSignalLogin(user?.id, user?.email);
-    sync();
   }
 
   async function signOut() {
@@ -60,7 +57,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     oneSignalLogout();
     setSession(null);
     setUser(null);
-    sync(true);
 
     if (error) {
       console.error(error);

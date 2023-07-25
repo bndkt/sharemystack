@@ -46,7 +46,7 @@ export function SyncProvider({ children }: { children: ReactNode }) {
             );
           }
 
-          if (changedRecords?.length) {
+          if (changedRecords?.length && !isSyncing) {
             const debouncedSync = debounce(() => sync(), 1000);
             debouncedSync();
           }
@@ -57,6 +57,9 @@ export function SyncProvider({ children }: { children: ReactNode }) {
     console.log("♻️ Subscribed to database changes", {
       closed: subscription.closed,
     });
+
+    console.log("♻️ Syncing on mount");
+    sync();
 
     return () => {
       subscription.unsubscribe();

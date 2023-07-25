@@ -1,4 +1,6 @@
 import { SyncDatabaseChangeSet, synchronize } from "@nozbe/watermelondb/sync";
+// import SyncLogger from "@nozbe/watermelondb/sync/SyncLogger";
+// const logger = new SyncLogger(10 /* limit of sync logs to keep in memory */);
 
 import { supabase } from "./supabase";
 import { database } from "./watermelon";
@@ -17,7 +19,7 @@ export async function sync(reset = false) {
       console.log("🍉 ⬇️ Pulling changes ...", { lastPulledAt });
 
       const { data, error } = await supabase.rpc("pull", {
-        last_pulled_at: reset ? undefined : lastPulledAt,
+        last_pulled_at: reset || !lastPulledAt ? undefined : lastPulledAt,
       });
 
       if (error) {
@@ -37,7 +39,6 @@ export async function sync(reset = false) {
     },
     pushChanges: async ({ changes, lastPulledAt }) => {
       console.log("🍉 ⬆️ Pushing changes ...");
-      console.log("CHANGES", (changes as any)?.picks.created);
 
       const { data, error } = await supabase.rpc("push", { changes });
 
@@ -49,5 +50,6 @@ export async function sync(reset = false) {
       console.log("🍉", { data });
     },
     // migrationsEnabledAtVersion: 1,
+    // log: logger.newLog(),
   });
 }
