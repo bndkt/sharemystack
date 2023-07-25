@@ -14,7 +14,7 @@ export async function sync(reset = false) {
   await synchronize({
     database,
     pullChanges: async ({ lastPulledAt, schemaVersion, migration }) => {
-      console.log("🍉 ⬇️ Pulling changes ...");
+      console.log("🍉 ⬇️ Pulling changes ...", { lastPulledAt });
 
       const { data, error } = await supabase.rpc("pull", {
         last_pulled_at: reset ? undefined : lastPulledAt,

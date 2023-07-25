@@ -2,6 +2,7 @@ import { ReactNode, createContext, useEffect, useState } from "react";
 
 import { sync as watermelonSync } from "@/lib/sync";
 import { database } from "@/lib/watermelon";
+import { debounce } from "tamagui";
 
 export const SyncContext = createContext<{
   isSyncing: boolean;
@@ -25,31 +26,57 @@ export function SyncProvider({ children }: { children: ReactNode }) {
         "picks",
         "stars",
       ])
-      .subscribe((changes) => {
-        sync();
+      .subscribe({
+        next: (changes) => {
+          const changedRecords = changes?.filter(
+            (c) => c.record.syncStatus !== "synced"
+          );
+
+          if (changes?.length || changedRecords?.length) {
+            console.log(
+              "♻️ Database changes",
+              changes?.length,
+              changedRecords?.length
+            );
+          }
+
+          if (changedRecords?.length) {
+            const debouncedSync = debounce(() => sync(), 1000);
+            debouncedSync();
+          }
+        },
+        error: (error) => console.error("♻️ Database changes error", error),
       });
 
     console.log("♻️ Subscribed to database changes", {
       closed: subscription.closed,
     });
 
-    return () => subscription.unsubscribe();
+    return () => {
+      subscription.unsubscribe();
+      console.log("Unsubscribed from database changes");
+    };
   }, [database]);
 
   function sync(reset?: boolean) {
     if (!isSyncing) {
       console.log("♻️ Starting sync");
       setIsSyncing(true);
-      watermelonSync(reset).finally(() => {
-        console.log("♻️ Sync finished");
-        if (isSyncQueued) {
-          console.log("♻️ Starting queued sync");
-          setIsSyncQueued(false);
-          sync();
-        } else {
+      watermelonSync(reset)
+        .then(() => {
+          console.log("♻️ Sync succeeded");
+        })
+        .catch((reason) => {
+          console.log("♻️ Sync failed", reason);
+        })
+        .finally(() => {
           setIsSyncing(false);
-        }
-      });
+          if (isSyncQueued) {
+            console.log("♻️ Starting queued sync");
+            setIsSyncQueued(false);
+            // sync();
+          }
+        });
     } else {
       console.log("♻️ Already syncing, queueing sync");
       setIsSyncQueued(true);
