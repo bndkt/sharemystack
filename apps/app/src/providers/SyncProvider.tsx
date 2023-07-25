@@ -70,6 +70,7 @@ export function SyncProvider({ children }: { children: ReactNode }) {
       const subscription = channel
         .on("broadcast", { event: "sync" }, (payload) => {
           console.log("Broadcast received", payload);
+          sync();
         })
         .subscribe();
 
