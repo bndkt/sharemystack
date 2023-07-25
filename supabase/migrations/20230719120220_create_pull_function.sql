@@ -38,6 +38,7 @@ SELECT jsonb_build_object(
             ) FILTER (
                 WHERE t.deleted_at IS NULL
                     AND t.server_created_at > _ts
+                    AND t.last_modified_at > _ts
             ),
             '[]'::jsonb
         ),
@@ -109,6 +110,7 @@ SELECT jsonb_build_object(
             ) FILTER (
                 WHERE t.deleted_at IS NULL
                     AND t.server_created_at > _ts
+                    AND t.last_modified_at > _ts
             ),
             '[]'::jsonb
         ),
@@ -170,6 +172,7 @@ SELECT jsonb_build_object(
             ) FILTER (
                 WHERE t.deleted_at IS NULL
                     AND t.server_created_at > _ts
+                    AND t.last_modified_at > _ts
             ),
             '[]'::jsonb
         ),
@@ -237,6 +240,7 @@ SELECT jsonb_build_object(
             ) FILTER (
                 WHERE t.deleted_at IS NULL
                     AND t.server_created_at > _ts
+                    AND t.last_modified_at > _ts
             ),
             '[]'::jsonb
         ),
@@ -318,6 +322,7 @@ SELECT jsonb_build_object(
             ) FILTER (
                 WHERE t.deleted_at IS NULL
                     AND t.server_created_at > _ts
+                    AND t.last_modified_at > _ts
             ),
             '[]'::jsonb
         ),
@@ -387,6 +392,7 @@ SELECT jsonb_build_object(
             ) FILTER (
                 WHERE t.deleted_at IS NULL
                     AND t.server_created_at > _ts
+                    AND t.last_modified_at > _ts
             ),
             '[]'::jsonb
         ),
@@ -439,10 +445,7 @@ RETURN jsonb_build_object(
         _stars
     ),
     'timestamp',
-    EXTRACT(
-        EPOCH
-        FROM NOW() AT TIME ZONE 'UTC'
-    ) * 1000
+    timestamp_to_epoch(NOW())
 );
 END;
 $$ LANGUAGE plpgsql;
