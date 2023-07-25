@@ -1,13 +1,7 @@
-import { Stack, useLocalSearchParams } from "expo-router";
-import { useEffect, useState } from "react";
-import { H2, XStack, YStack } from "tamagui";
-
-import { Loading } from "@/components/Loading";
-import { CategoryIcon } from "@/components/icons/CategoryIcon";
-import { CategoryResponse, getCategory } from "@/lib/database/getCategory";
-
 export default function Category() {
-  const { category: slug } = useLocalSearchParams<{ category: string }>();
+  return null;
+
+  /* const { category: slug } = useLocalSearchParams<{ category: string }>();
   const [isLoading, setLoading] = useState(true);
   const [category, setCategory] = useState<CategoryResponse["data"]>(null);
 
@@ -33,5 +27,5 @@ export default function Category() {
         </YStack>
       </XStack>
     </>
-  ) : null;
+  ) : null; */
 }
