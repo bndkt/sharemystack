@@ -3,7 +3,7 @@ import { ReactNode, createContext, useEffect, useState } from "react";
 
 import { useObservableStack } from "@/hooks/useObservableStack";
 import { useSync } from "@/hooks/useSync";
-import { updateOneSignalProfile } from "@/lib/onesignal";
+import { oneSignalLogin, oneSignalLogout } from "@/lib/onesignal";
 import { supabase } from "@/lib/supabase";
 import { Pick } from "@/model/Pick";
 import { Stack } from "@/model/Stack";
@@ -51,12 +51,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }) {
     setSession(session);
     setUser(user);
-    user && updateOneSignalProfile(user.id, user.email);
-    useSync();
+    oneSignalLogin(user?.id, user?.email);
+    sync();
   }
 
   async function signOut() {
     const { error } = await supabase.auth.signOut();
+    oneSignalLogout();
     setSession(null);
     setUser(null);
     sync(true);

@@ -1,9 +1,9 @@
 import { FlashList, ListRenderItem } from "@shopify/flash-list";
 // import { RefreshControl } from "react-native-gesture-handler";
+import { useEffect, useState } from "react";
 import { Separator, Text } from "tamagui";
 
 import { useSync } from "@/hooks/useSync";
-import { useEffect, useState } from "react";
 
 export function List<T>({
   data,

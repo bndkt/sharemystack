@@ -1,8 +1,8 @@
 import { ReactNode, createContext, useEffect, useState } from "react";
+import { debounce } from "tamagui";
 
 import { sync as watermelonSync } from "@/lib/sync";
 import { database } from "@/lib/watermelon";
-import { debounce } from "tamagui";
 
 export const SyncContext = createContext<{
   isSyncing: boolean;
