@@ -1,7 +1,8 @@
-import { useSync } from "@/hooks/useSync";
 import { Home, Layers, Settings, Tag, Wrench } from "@tamagui/lucide-icons";
 import { Tabs } from "expo-router";
 import { useEffect } from "react";
+
+import { useSync } from "@/hooks/useSync";
 
 export default function Layout() {
   const { sync } = useSync();
