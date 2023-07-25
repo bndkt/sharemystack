@@ -3,6 +3,7 @@ import "react-native-gesture-handler";
 import DatabaseProvider from "@nozbe/watermelondb/DatabaseProvider";
 import { useFonts } from "expo-font";
 import { Slot } from "expo-router";
+import { StatusBar } from "expo-status-bar";
 import { PostHogProvider } from "posthog-react-native";
 import { LogBox, useColorScheme } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
@@ -59,6 +60,7 @@ export default function Layout() {
           </NavigationThemeProvider>
         </Theme>
       </TamaguiProvider>
+      <StatusBar style="auto" />
     </PostHogProvider>
   );
 }
