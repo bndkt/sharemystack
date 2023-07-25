@@ -1,3 +1,4 @@
+import { Layers } from "@tamagui/lucide-icons";
 import { useRouter } from "expo-router";
 import { ListItem } from "tamagui";
 
@@ -22,6 +23,7 @@ export function Stream() {
             title={`${item.stackName} (@${item.stackSlug})`}
             subTitle={`added ${item.toolName} in ${item.categoryName}`}
             onPress={() => router.push(`/(tabs)/(stacks)/@${item.stackSlug}`)}
+            iconAfter={<Layers size="$1" />}
           />
         );
       }}
