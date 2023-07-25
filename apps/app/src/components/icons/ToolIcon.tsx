@@ -12,11 +12,11 @@ export function ToolIcon({
   width?: string;
   height?: string;
 }) {
-  tool.color ??= "black";
+  const color = tool.color.length > 0 ? tool.color : "black";
 
   return tool.icon ? (
-    <SvgXml xml={tool.icon} color={tool.color} width={width} height={height} />
+    <SvgXml xml={tool.icon} color={color} width={width} height={height} />
   ) : (
-    <BoxSelect color="$gray5" width={width} height={height} />
+    <BoxSelect color={color} width={width} height={height} />
   );
 }

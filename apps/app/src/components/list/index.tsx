@@ -1,26 +1,21 @@
 import { FlashList, ListRenderItem } from "@shopify/flash-list";
-import { RefreshControl } from "react-native-gesture-handler";
+// import { RefreshControl } from "react-native-gesture-handler";
 import { Separator, Text } from "tamagui";
 
 import { useSync } from "@/hooks/useSync";
+import { useEffect, useState } from "react";
 
 export function List<T>({
   data,
   renderItem,
   placeholder,
-  onRefresh,
-  refreshing,
 }: {
   data?: readonly T[] | null;
   renderItem?: ListRenderItem<T> | null;
   placeholder?: JSX.Element | string;
-  onRefresh?: () => void;
-  refreshing?: boolean;
 }) {
-  if (!onRefresh) {
-    onRefresh = useSync().sync;
-    refreshing = useSync().isSyncing;
-  }
+  const { sync, isSyncing } = useSync();
+  const [isRefreshing, setIsRefreshing] = useState(false);
 
   placeholder ??= "No data";
   if (typeof placeholder === "string") {
@@ -31,6 +26,17 @@ export function List<T>({
     );
   }
 
+  function refresh() {
+    setIsRefreshing(true);
+    sync();
+  }
+
+  useEffect(() => {
+    if (!isSyncing) {
+      setIsRefreshing(false);
+    }
+  }, [isSyncing]);
+
   return (
     <FlashList
       ListEmptyComponent={placeholder}
@@ -38,16 +44,11 @@ export function List<T>({
       renderItem={renderItem}
       estimatedItemSize={87}
       ItemSeparatorComponent={() => <Separator />}
-      onRefresh={onRefresh}
-      refreshing={refreshing}
-      refreshControl={
-        onRefresh ? (
-          <RefreshControl
-            refreshing={refreshing ?? false}
-            onRefresh={onRefresh}
-          />
-        ) : undefined
-      }
+      onRefresh={refresh}
+      refreshing={isRefreshing}
+      /* refreshControl={
+        <RefreshControl refreshing={isRefreshing} onRefresh={refresh} />
+      } */
     />
   );
 }
