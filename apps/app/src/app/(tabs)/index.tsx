@@ -10,8 +10,8 @@ export default function Index() {
     <YStack fullscreen paddingTop={insets.top}>
       <YStack>
         <H3 padding="$3">Share My Stack</H3>
-        <Text padding="$3" paddingTop="$0">
-          Curate your personal productivity stack to share it with the world and
+        <Text padding="$3" paddingTop="$0" fontSize="$5">
+          Curate your personal productivity stack, share it with the world, and
           discover which tools others are using.
         </Text>
       </YStack>

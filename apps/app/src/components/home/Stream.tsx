@@ -7,7 +7,9 @@ import { List } from "../list";
 import { useObservablePicks } from "@/hooks/useObservablePicks";
 
 export function Stream() {
-  const picks = useObservablePicks();
+  const picks = useObservablePicks().filter(
+    (pick) => pick.toolName && pick.stackName && pick.stackSlug
+  );
   const router = useRouter();
 
   return (
@@ -17,8 +19,8 @@ export function Stream() {
         return (
           <ListItem
             icon={<StreamIcon pick={item} />}
-            title={`@${item.stackSlug} added ${item.toolName}`}
-            subTitle={`in ${item.categoryName}`}
+            title={`${item.stackName} (@${item.stackSlug})`}
+            subTitle={`added ${item.toolName} in ${item.categoryName}`}
             onPress={() => router.push(`/(tabs)/(stacks)/@${item.stackSlug}`)}
           />
         );
