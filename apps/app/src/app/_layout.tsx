@@ -42,11 +42,11 @@ export default function Layout() {
         <NavigationThemeProvider>
           <SafeAreaProvider>
             <DatabaseProvider database={database}>
-              <SyncProvider>
-                <AuthProvider>
+              <AuthProvider>
+                <SyncProvider>
                   <Slot />
-                </AuthProvider>
-              </SyncProvider>
+                </SyncProvider>
+              </AuthProvider>
             </DatabaseProvider>
           </SafeAreaProvider>
         </NavigationThemeProvider>

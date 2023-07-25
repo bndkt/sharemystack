@@ -3,6 +3,9 @@ import { debounce } from "tamagui";
 
 import { sync as watermelonSync } from "@/lib/sync";
 import { database } from "@/lib/watermelon";
+import { supabase } from "@/lib/supabase";
+import { useAuth } from "@/hooks/useAuth";
+import { RealtimeChannel } from "@supabase/supabase-js";
 
 export const SyncContext = createContext<{
   isSyncing: boolean;
@@ -15,6 +18,9 @@ export const SyncContext = createContext<{
 export function SyncProvider({ children }: { children: ReactNode }) {
   const [isSyncing, setIsSyncing] = useState(false);
   const [isSyncQueued, setIsSyncQueued] = useState(false);
+  const [channel, setChannel] = useState<RealtimeChannel>();
+  const [shouldBroadcast, setShouldBroadcast] = useState(false);
+  const { user } = useAuth();
 
   useEffect(() => {
     const subscription = database
@@ -58,13 +64,52 @@ export function SyncProvider({ children }: { children: ReactNode }) {
     };
   }, [database]);
 
+  useEffect(() => {
+    if (user) {
+      const channel = supabase.channel(`sync-${user.id}`);
+      const subscription = channel
+        .on("broadcast", { event: "sync" }, (payload) => {
+          console.log("Broadcast received", payload);
+        })
+        .subscribe();
+
+      console.log("Subscribed to broadcast", subscription.state);
+
+      setChannel(channel);
+
+      return () => {
+        subscription.unsubscribe();
+        console.log("Unsubscribed from broadcast");
+      };
+    }
+  }, [supabase, user]);
+
+  useEffect(() => {
+    if (channel && shouldBroadcast) {
+      console.log("♻️ Sending broadcast");
+      channel
+        .send({
+          type: "broadcast",
+          event: "sync",
+          payload: {
+            message: "hello, world",
+          },
+        })
+        .then((response) => {
+          console.log("♻️ Broadcast sent", response);
+        });
+      setShouldBroadcast(false);
+    }
+  }, [channel, shouldBroadcast]);
+
   function sync(reset?: boolean) {
     if (!isSyncing) {
       console.log("♻️ Starting sync");
       setIsSyncing(true);
       watermelonSync(reset)
         .then(() => {
-          console.log("♻️ Sync succeeded");
+          console.log("♻️ Sync succeeded", channel?.state);
+          setShouldBroadcast(true);
         })
         .catch((reason) => {
           console.log("♻️ Sync failed", reason);
