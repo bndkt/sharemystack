@@ -13,7 +13,7 @@ export function CreateStack() {
     user?.user_metadata.full_name
   );
   const [slug, setSlug] = useState<string | null | undefined>(
-    user?.user_metadata.preferred_username
+    user?.user_metadata?.preferred_username?.toLowerCase()
   );
   const [validate, setValidate] = useState(false);
   const nameRef = useRef<TextInput>(null);
