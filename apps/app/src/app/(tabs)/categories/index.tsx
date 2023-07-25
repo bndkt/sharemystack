@@ -1,5 +1,4 @@
 import { Link } from "expo-router";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { ListItem, Text, YStack } from "tamagui";
 
 import { SuggestionButton } from "@/components/SuggestionButton";
@@ -8,11 +7,10 @@ import { List } from "@/components/list";
 import { useObservableCategories } from "@/hooks/useObservableCategories";
 
 export default function Categories() {
-  const insets = useSafeAreaInsets();
   const categories = useObservableCategories({ includeComingSoon: true });
 
   return (
-    <YStack fullscreen paddingTop={insets.top}>
+    <YStack fullscreen>
       <List
         data={categories}
         renderItem={({ item }) => {
