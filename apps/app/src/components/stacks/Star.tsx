@@ -2,9 +2,9 @@ import { Star as StarIcon } from "@tamagui/lucide-icons";
 import { useEffect, useState } from "react";
 import { Button, Spinner, YStack } from "tamagui";
 
+import { useAnalytics } from "@/hooks/useAnalytics";
 import { useAuth } from "@/hooks/useAuth";
 import { Stack } from "@/model/Stack";
-import { useAnalytics } from "@/hooks/useAnalytics";
 
 export function Star({ stack }: { stack: Stack }) {
   const [isLoading, setIsLoading] = useState(true);

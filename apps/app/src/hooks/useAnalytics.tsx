@@ -1,7 +1,7 @@
 import { usePostHog } from "posthog-react-native";
+import OneSignal from "react-native-onesignal";
 import vexo from "vexo-analytics";
 // import { OneSignal } from "react-native-onesignal"; // SDK v5
-import OneSignal from "react-native-onesignal";
 
 export function useAnalytics() {
   const posthog = usePostHog();

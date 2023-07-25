@@ -1,11 +1,11 @@
 import { AuthUser, AuthSession } from "@supabase/supabase-js";
 import { ReactNode, createContext, useEffect, useState } from "react";
 
+import { useAnalytics } from "@/hooks/useAnalytics";
 import { useObservableStack } from "@/hooks/useObservableStack";
 import { supabase } from "@/lib/supabase";
 import { Pick } from "@/model/Pick";
 import { Stack } from "@/model/Stack";
-import { useAnalytics } from "@/hooks/useAnalytics";
 
 export const AuthContext = createContext<{
   session: AuthSession | null;

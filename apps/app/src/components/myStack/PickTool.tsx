@@ -3,11 +3,11 @@ import { ListItem } from "tamagui";
 
 import { ToolIcon } from "../icons/ToolIcon";
 
+import { useAnalytics } from "@/hooks/useAnalytics";
 import { useAuth } from "@/hooks/useAuth";
 import { Category } from "@/model/Category";
 import { Pick } from "@/model/Pick";
 import { Tool } from "@/model/Tool";
-import { useAnalytics } from "@/hooks/useAnalytics";
 
 export function PickTool({
   category,
