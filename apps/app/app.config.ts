@@ -59,6 +59,10 @@ const config: ExpoConfig = {
       "activitycontinuation:sharemystack.com",
     ],
     appStoreUrl: "https://apps.apple.com/us/app/share-my-stack/id6450111644",
+    infoPlist: {
+      NSLocationWhenInUseUsageDescription:
+        "We use your location to help you connect with other users nearby and to show you relevant local content.", // Note: The app doesn't use location information, but this has to be included because the OneSignal plugin includes location access logic
+    },
   },
   experiments: {
     tsconfigPaths: true,

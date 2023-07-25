@@ -1,5 +1,7 @@
 import OneSignal from "react-native-onesignal";
 
+OneSignal.setLocationShared(false);
+
 // OneSignal Initialization
 OneSignal.setAppId(process.env.EXPO_PUBLIC_ONESIGNAL_APP_ID as string);
 
