@@ -1,5 +1,4 @@
 import { Check, Plus } from "@tamagui/lucide-icons";
-import { usePostHog } from "posthog-react-native";
 import { ListItem } from "tamagui";
 
 import { ToolIcon } from "../icons/ToolIcon";
@@ -8,6 +7,7 @@ import { useAuth } from "@/hooks/useAuth";
 import { Category } from "@/model/Category";
 import { Pick } from "@/model/Pick";
 import { Tool } from "@/model/Tool";
+import { useAnalytics } from "@/hooks/useAnalytics";
 
 export function PickTool({
   category,
@@ -17,7 +17,7 @@ export function PickTool({
   item: Tool;
 }) {
   const { stack, picks } = useAuth();
-  const posthog = usePostHog();
+  const { capture } = useAnalytics();
 
   const pick = picks?.find(
     (pick) => pick.tool.id === item.id && pick.category.id === category.id
@@ -25,7 +25,7 @@ export function PickTool({
 
   function add(tool: Tool, category: Category) {
     stack?.addPick(tool, category);
-    posthog?.capture("Add pick", {
+    capture("Add pick", {
       tool: tool.slug,
       category: category.slug,
       stack: stack?.id,
@@ -34,7 +34,7 @@ export function PickTool({
 
   function remove(pick: Pick) {
     stack?.removePick(pick);
-    posthog?.capture("Remove pick");
+    capture("Remove pick");
   }
 
   return (

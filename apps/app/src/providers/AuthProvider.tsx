@@ -1,12 +1,11 @@
 import { AuthUser, AuthSession } from "@supabase/supabase-js";
-import { usePostHog } from "posthog-react-native";
 import { ReactNode, createContext, useEffect, useState } from "react";
 
 import { useObservableStack } from "@/hooks/useObservableStack";
-import { oneSignalLogin, oneSignalLogout } from "@/lib/onesignal";
 import { supabase } from "@/lib/supabase";
 import { Pick } from "@/model/Pick";
 import { Stack } from "@/model/Stack";
+import { useAnalytics } from "@/hooks/useAnalytics";
 
 export const AuthContext = createContext<{
   session: AuthSession | null;
@@ -40,7 +39,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     userId: user?.id ?? null,
     loadPicks: true,
   });
-  const posthog = usePostHog();
+  const { identify, logout, capture } = useAnalytics();
 
   async function signIn({
     session,
@@ -51,16 +50,16 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }) {
     setSession(session);
     setUser(user);
-    oneSignalLogin(user?.id, user?.email);
-    posthog?.capture("Sign in", { user: user?.id });
+    identify(user?.id, user?.email);
+    capture("Sign in", { user: user?.id });
   }
 
   async function signOut() {
     const { error } = await supabase.auth.signOut();
-    oneSignalLogout();
+    logout();
     setSession(null);
     setUser(null);
-    posthog?.capture("Sign out");
+    capture("Sign out");
 
     if (error) {
       console.error(error);
