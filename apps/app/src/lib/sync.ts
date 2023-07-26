@@ -51,5 +51,6 @@ export async function sync(reset = false) {
     },
     // migrationsEnabledAtVersion: 1,
     // log: logger.newLog(),
+    sendCreatedAsUpdated: true,
   });
 }
