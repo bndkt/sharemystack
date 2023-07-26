@@ -13,9 +13,11 @@ import { Tool } from "@/model/Tool";
 export function PickTool({
   category,
   item,
+  compact,
 }: {
   category: Category;
   item: Tool;
+  compact?: boolean;
 }) {
   const { stack, picks, user } = useAuth();
   const { capture } = useAnalytics();
@@ -44,7 +46,14 @@ export function PickTool({
   return (
     <ListItem
       title={item.name}
-      icon={<ToolIcon tool={item} width="24" height="24" />}
+      subTitle={
+        compact
+          ? undefined
+          : `Included in ${item.allPicks} stack`.concat(
+              item.allPicks !== 1 ? "s" : ""
+            )
+      }
+      icon={<ToolIcon tool={item} size={compact ? undefined : 36} />}
       iconAfter={
         user ? (
           pick ? (

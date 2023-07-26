@@ -24,7 +24,7 @@ export default function Category() {
       {loading ? (
         <Loading message="Loading tools" />
       ) : (
-        <ToolList category={category} tools={tools} />
+        <ToolList category={category} tools={tools} compact={true} />
       )}
     </>
   );

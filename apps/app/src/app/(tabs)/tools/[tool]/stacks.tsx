@@ -1,4 +1,4 @@
-import { Stack, useLocalSearchParams } from "expo-router";
+import { useGlobalSearchParams } from "expo-router";
 import { ListItem } from "tamagui";
 
 import { Loading } from "@/components/Loading";
@@ -6,9 +6,9 @@ import { List } from "@/components/list";
 import { useObservableTool } from "@/hooks/useObservableTool";
 
 export default function Category() {
-  const { tool: slug } = useLocalSearchParams<{ tool: string }>();
+  const { tool: slug } = useGlobalSearchParams<{ tool: string }>();
 
-  if (!slug) throw new Error("No tool slug provided");
+  if (!slug) return null;
 
   const { tool, picks, loading } = useObservableTool({
     slug,
@@ -21,7 +21,6 @@ export default function Category() {
 
   return (
     <>
-      <Stack.Screen options={{ title: tool.name ?? "" }} />
       {loading ? (
         <Loading message="Loading stacks" />
       ) : (
