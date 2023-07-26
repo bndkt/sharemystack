@@ -62,6 +62,7 @@ const config: ExpoConfig = {
     infoPlist: {
       NSLocationWhenInUseUsageDescription:
         "We use your location to help you connect with other users nearby and to show you relevant local content.", // Note: The app doesn't use location information, but this has to be included because the OneSignal plugin includes location access logic
+      LSApplicationQueriesSchemes: ["itms", "itms-apps"],
     },
   },
   experiments: {
