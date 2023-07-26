@@ -1,39 +1,40 @@
 import { Stack, useLocalSearchParams } from "expo-router";
-import { useState } from "react";
-import { H2, XStack, YStack } from "tamagui";
+import { ListItem } from "tamagui";
 
 import { Loading } from "@/components/Loading";
-import { ToolIcon } from "@/components/icons/ToolIcon";
-import { Tool } from "@/model/Tool";
+import { List } from "@/components/list";
+import { useObservableTool } from "@/hooks/useObservableTool";
 
-export default function Index() {
+export default function Category() {
   const { tool: slug } = useLocalSearchParams<{ tool: string }>();
-  const [isLoading, setLoading] = useState(true);
-  const [tool, setTool] = useState<Tool>();
 
-  /* useEffect(() => {
-    slug &&
-      getTool({ slug }).then(({ data }) => {
-        setTool(data);
-        setLoading(false);
-      });
-  }, [getTool, setTool]); */
+  if (!slug) throw new Error("No tool slug provided");
 
-  // Color
-  // Icon
-  // Users
-  // Category
-  return isLoading ? (
-    <Loading />
-  ) : tool ? (
+  const { tool, picks, loading } = useObservableTool({
+    slug,
+    loadPicks: true,
+  });
+
+  if (!tool) {
+    return <Loading message="Loading tool" />;
+  }
+
+  return (
     <>
-      <Stack.Screen options={{ headerShown: true, title: tool.name }} />
-      <XStack alignItems="center" padding="$3">
-        <ToolIcon tool={tool} />
-        <YStack marginLeft="$3">
-          <H2>{tool.name}</H2>
-        </YStack>
-      </XStack>
+      <Stack.Screen options={{ title: tool.name ?? "" }} />
+      {loading ? (
+        <Loading message="Loading stacks" />
+      ) : (
+        <List
+          data={picks}
+          renderItem={({ item }) => (
+            <ListItem
+              title={item.stackName}
+              subTitle={`in ${item.categoryName}`}
+            />
+          )}
+        />
+      )}
     </>
-  ) : null;
+  );
 }

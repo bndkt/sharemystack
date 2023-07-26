@@ -1,3 +1,4 @@
+import { ChevronRight } from "@tamagui/lucide-icons";
 import { Link } from "expo-router";
 import { ListItem, Text, YStack } from "tamagui";
 
@@ -5,7 +6,6 @@ import { SuggestionButton } from "@/components/SuggestionButton";
 import { CategoryIcon } from "@/components/icons/CategoryIcon";
 import { List } from "@/components/list";
 import { useObservableCategories } from "@/hooks/useObservableCategories";
-import { ChevronRight } from "@tamagui/lucide-icons";
 
 export default function Categories() {
   const categories = useObservableCategories({ includeComingSoon: true });

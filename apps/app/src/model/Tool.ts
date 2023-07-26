@@ -1,6 +1,7 @@
 import { Model, Q } from "@nozbe/watermelondb";
 import { date, lazy, readonly, text } from "@nozbe/watermelondb/decorators";
 
+import { Pick } from "./Pick";
 import { TableName } from "./schema";
 
 export class Tool extends Model {
@@ -31,4 +32,9 @@ export class Tool extends Model {
   categories = this.collections
     .get("categories")
     .query(Q.on("categorizations", "tool_id", this.id));
+
+  @lazy
+  picks = this.collections
+    .get<Pick>(TableName.PICKS)
+    .query(Q.where("tool_id", this.id));
 }

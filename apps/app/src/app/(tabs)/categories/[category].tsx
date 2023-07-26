@@ -1,8 +1,8 @@
 import { Stack, useLocalSearchParams } from "expo-router";
 
 import { Loading } from "@/components/Loading";
-import { useObservableCategory } from "@/hooks/useObservableCategory";
 import { ToolList } from "@/components/tools/ToolList";
+import { useObservableCategory } from "@/hooks/useObservableCategory";
 
 export default function Category() {
   const { category: slug } = useLocalSearchParams<{ category: string }>();

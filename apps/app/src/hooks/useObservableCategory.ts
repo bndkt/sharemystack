@@ -24,7 +24,7 @@ export function useObservableCategory({
     );
 
     const categoriesObservable = categoriesCollection
-      .query(Q.where("slug", slug), Q.take(1))
+      .query(Q.where("slug", Q.like(slug)), Q.take(1))
       .observe();
 
     const subscription = categoriesObservable.subscribe((newCategories) => {
