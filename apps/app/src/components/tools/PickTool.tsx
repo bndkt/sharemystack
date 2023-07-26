@@ -17,7 +17,7 @@ export function PickTool({
   category: Category;
   item: Tool;
 }) {
-  const { stack, picks } = useAuth();
+  const { stack, picks, user } = useAuth();
   const { capture } = useAnalytics();
   const { sync } = useSync();
 
@@ -45,8 +45,18 @@ export function PickTool({
     <ListItem
       title={item.name}
       icon={<ToolIcon tool={item} width="24" height="24" />}
-      iconAfter={pick ? <Check color="gray" size="$1" /> : <Plus size="$1" />}
-      onPress={() => (pick ? remove(pick) : add(item, category))}
+      iconAfter={
+        user ? (
+          pick ? (
+            <Check color="gray" size="$1" />
+          ) : (
+            <Plus size="$1" />
+          )
+        ) : undefined
+      }
+      onPress={
+        user ? () => (pick ? remove(pick) : add(item, category)) : undefined
+      }
     />
   );
 }

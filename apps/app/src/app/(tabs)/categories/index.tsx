@@ -5,6 +5,7 @@ import { SuggestionButton } from "@/components/SuggestionButton";
 import { CategoryIcon } from "@/components/icons/CategoryIcon";
 import { List } from "@/components/list";
 import { useObservableCategories } from "@/hooks/useObservableCategories";
+import { ChevronRight } from "@tamagui/lucide-icons";
 
 export default function Categories() {
   const categories = useObservableCategories({ includeComingSoon: true });
@@ -17,7 +18,7 @@ export default function Categories() {
           return (
             <Link
               href={
-                "/categories" // || item.soon ? "/categories" : `/categories/${item.slug}`
+                item.isComingSoon ? "/categories" : `/categories/${item.slug}`
               }
             >
               <ListItem
@@ -43,7 +44,9 @@ export default function Categories() {
                     color={item.isComingSoon ? "$gray8" : undefined}
                   />
                 }
-                // iconAfter={item.soon ? undefined : <ChevronRight size="$1" />}
+                iconAfter={
+                  item.isComingSoon ? undefined : <ChevronRight size="$1" />
+                }
               />
             </Link>
           );

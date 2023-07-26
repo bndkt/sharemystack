@@ -1,12 +1,10 @@
 import { Stack, useLocalSearchParams } from "expo-router";
-import { YStack } from "tamagui";
 
 import { Loading } from "@/components/Loading";
-import { List } from "@/components/list";
-import { PickTool } from "@/components/myStack/PickTool";
 import { useObservableCategory } from "@/hooks/useObservableCategory";
+import { ToolList } from "@/components/tools/ToolList";
 
-export default function Tools() {
+export default function Category() {
   const { category: slug } = useLocalSearchParams<{ category: string }>();
 
   if (!slug) throw new Error("No category slug provided");
@@ -26,14 +24,7 @@ export default function Tools() {
       {loading ? (
         <Loading message="Loading tools" />
       ) : (
-        <YStack fullscreen minHeight={100}>
-          <List
-            data={tools}
-            renderItem={({ item }) => (
-              <PickTool category={category} item={item} />
-            )}
-          />
-        </YStack>
+        <ToolList category={category} tools={tools} />
       )}
     </>
   );

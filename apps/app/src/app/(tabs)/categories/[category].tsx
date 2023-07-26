@@ -1,31 +1,31 @@
+import { Stack, useLocalSearchParams } from "expo-router";
+
+import { Loading } from "@/components/Loading";
+import { useObservableCategory } from "@/hooks/useObservableCategory";
+import { ToolList } from "@/components/tools/ToolList";
+
 export default function Category() {
-  return null;
+  const { category: slug } = useLocalSearchParams<{ category: string }>();
 
-  /* const { category: slug } = useLocalSearchParams<{ category: string }>();
-  const [isLoading, setLoading] = useState(true);
-  const [category, setCategory] = useState<CategoryResponse["data"]>(null);
+  if (!slug) throw new Error("No category slug provided");
 
-  useEffect(() => {
-    slug &&
-      getCategory({ slug }).then(({ data }) => {
-        setCategory(data);
-        setLoading(false);
-      });
-  }, [getCategory, setCategory]);
+  const { category, tools, loading } = useObservableCategory({
+    slug,
+    loadTools: true,
+  });
 
-  return isLoading ? (
-    <Loading />
-  ) : category ? (
+  if (!category) {
+    return <Loading message="Loading category" />;
+  }
+
+  return (
     <>
-      <Stack.Screen
-        options={{ headerShown: true, title: category.name ?? "" }}
-      />
-      <XStack alignItems="center" padding="$3">
-        <CategoryIcon name={category.icon} width="24" height="24" />
-        <YStack marginLeft="$3">
-          <H2>{category.name}</H2>
-        </YStack>
-      </XStack>
+      <Stack.Screen options={{ title: category.name ?? "" }} />
+      {loading ? (
+        <Loading message="Loading tools" />
+      ) : (
+        <ToolList category={category} tools={tools} />
+      )}
     </>
-  ) : null; */
+  );
 }
