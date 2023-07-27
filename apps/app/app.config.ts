@@ -118,6 +118,19 @@ const config: ExpoConfig = {
         },
       },
     ],
+    [
+      "expo-media-library",
+      {
+        photosPermission: "Allow $(PRODUCT_NAME) to access your photos.",
+        savePhotosPermission: "Allow $(PRODUCT_NAME) to save photos.",
+      },
+    ],
+    [
+      "@config-plugins/ffmpeg-kit-react-native",
+      {
+        package: "min-gpl",
+      },
+    ],
   ],
   hooks,
   runtimeVersion: {
