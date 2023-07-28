@@ -11,7 +11,13 @@ const appConfig = createTamagui({
   defaultTheme: "dark",
   shouldAddPrefersColorThemes: false,
   themeClassNameOnRoot: false,
-  tokens,
+  tokens: {
+    ...tokens,
+    color: {
+      ...tokens.color,
+      sms: "#f43f5e",
+    },
+  },
   shorthands,
   fonts: {
     heading: headingFont,
