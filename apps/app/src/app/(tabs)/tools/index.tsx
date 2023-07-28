@@ -23,7 +23,7 @@ export default function Tools() {
                   item.allPicks !== 1 ? "s" : ""
                 )}
                 icon={<ToolIcon tool={item} />}
-                iconAfter={<ChevronRight size="$1" />}
+                iconAfter={<ChevronRight size="$1.5" />}
               />
             </Link>
           );

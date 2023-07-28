@@ -7,7 +7,7 @@ export function CloseBottomSheet() {
 
   return (
     <Button
-      icon={<X size="$1" />}
+      icon={<X size="$1.5" />}
       onPress={() => {
         console.log("close bottom sheet");
         router.push("/(tabs)/(stacks)/stacks/my/tmp");

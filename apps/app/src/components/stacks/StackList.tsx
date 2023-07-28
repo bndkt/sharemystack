@@ -18,7 +18,7 @@ export function StackList({ stacks }: { stacks: Stack[] }) {
                 title={item.name}
                 subTitle={`@${item.slug}`}
                 icon={<StackIcon stack={item} />}
-                iconAfter={<ChevronRight size="$1" />}
+                iconAfter={<ChevronRight size="$1.5" />}
               />
             </Link>
           );

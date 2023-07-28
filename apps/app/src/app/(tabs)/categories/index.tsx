@@ -45,7 +45,7 @@ export default function Categories() {
                   />
                 }
                 iconAfter={
-                  item.isComingSoon ? undefined : <ChevronRight size="$1" />
+                  item.isComingSoon ? undefined : <ChevronRight size="$1.5" />
                 }
               />
             </Link>

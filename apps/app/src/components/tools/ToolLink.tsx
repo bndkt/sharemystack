@@ -18,19 +18,19 @@ export function ToolLink({ tool }: { tool: Tool }) {
   if (tool.affiliateLink) {
     return (
       <Button onPress={() => Linking.openURL(tool.affiliateLink)} themeInverse>
-        {`Get ${tool.name} now`}
+        {`Get ${tool.name}`}
       </Button>
     );
   } else if (tool.appStore) {
     return (
       <Button onPress={() => appStore(tool.appStore)} themeInverse>
-        {`Get ${tool.name} now`}
+        {`Get ${tool.name}`}
       </Button>
     );
   } else if (tool.website) {
     return (
       <Button onPress={() => Linking.openURL(tool.website)} themeInverse>
-        {`Get ${tool.name} now`}
+        {`Get ${tool.name}`}
       </Button>
     );
   }

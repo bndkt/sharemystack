@@ -23,7 +23,7 @@ export function Stream() {
             title={`${item.stackName} (@${item.stackSlug})`}
             subTitle={`added ${item.toolName} in ${item.categoryName}`}
             onPress={() => router.push(`/(tabs)/(stacks)/@${item.stackSlug}`)}
-            iconAfter={<Layers size="$1" />}
+            iconAfter={<Layers size="$1.5" />}
           />
         );
       }}

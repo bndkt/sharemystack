@@ -1,6 +1,6 @@
 import { Check, ChevronRight, Plus } from "@tamagui/lucide-icons";
 import { useRouter } from "expo-router";
-import { ListItem } from "tamagui";
+import { Button, ListItem, XStack } from "tamagui";
 
 import { ToolIcon } from "../icons/ToolIcon";
 
@@ -13,12 +13,14 @@ import { Tool } from "@/model/Tool";
 
 export function ToolListItem({
   category,
-  item,
+  tool,
   compact,
+  toolPage,
 }: {
   category: Category;
-  item: Tool;
+  tool: Tool;
   compact?: boolean;
+  toolPage?: boolean;
 }) {
   const { stack, picks, user } = useAuth();
   const { capture } = useAnalytics();
@@ -26,7 +28,7 @@ export function ToolListItem({
   const router = useRouter();
 
   const pick = picks?.find(
-    (pick) => pick.tool.id === item.id && pick.category.id === category.id
+    (pick) => pick.tool.id === tool.id && pick.category.id === category.id
   );
 
   function add(tool: Tool, category: Category) {
@@ -45,38 +47,54 @@ export function ToolListItem({
     capture("Remove pick");
   }
 
-  return (
-    <ListItem
-      title={item.name}
-      subTitle={
-        compact
-          ? undefined
-          : `Included in ${item.allPicks} stack`.concat(
-              item.allPicks !== 1 ? "s" : ""
-            )
-      }
-      icon={<ToolIcon tool={item} size={compact ? undefined : 36} />}
-      iconAfter={
-        user && compact ? (
-          pick ? (
-            <Check color="gray" size="$1" />
-          ) : (
-            <Plus size="$1" />
-          )
-        ) : (
-          <ChevronRight size="$1" />
-        )
-      }
-      onPress={
-        compact
-          ? user
-            ? () => (pick ? remove(pick) : add(item, category))
-            : undefined
-          : () =>
-              router.push(
-                `/(tabs)/categories/${category.slug}/tools/${item.slug}`
+  if (toolPage) {
+    if (user) {
+      return (
+        <Button
+          unstyled
+          icon={
+            pick ? <Check color="gray" size="$1.5" /> : <Plus size="$1.5" />
+          }
+          onPress={() => (pick ? remove(pick) : add(tool, category))}
+        />
+      );
+    } else {
+      return null;
+    }
+  } else {
+    return (
+      <ListItem
+        title={tool.name}
+        subTitle={
+          compact
+            ? undefined
+            : `Included in ${tool.allPicks} stack`.concat(
+                tool.allPicks !== 1 ? "s" : ""
               )
-      }
-    />
-  );
+        }
+        icon={<ToolIcon tool={tool} size={compact ? undefined : 36} />}
+        iconAfter={
+          user && compact ? (
+            pick ? (
+              <Check color="gray" size="$1.5" />
+            ) : (
+              <Plus size="$1.5" />
+            )
+          ) : (
+            <ChevronRight size="$1.5" />
+          )
+        }
+        onPress={
+          compact
+            ? user
+              ? () => (pick ? remove(pick) : add(tool, category))
+              : undefined
+            : () =>
+                router.push(
+                  `/(tabs)/categories/${category.slug}/tools/${tool.slug}`
+                )
+        }
+      />
+    );
+  }
 }

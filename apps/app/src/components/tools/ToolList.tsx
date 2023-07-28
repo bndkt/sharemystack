@@ -20,7 +20,7 @@ export function ToolList({
       <List
         data={tools}
         renderItem={({ item }) => (
-          <ToolListItem category={category} item={item} compact={compact} />
+          <ToolListItem category={category} tool={item} compact={compact} />
         )}
       />
     </YStack>

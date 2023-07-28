@@ -39,7 +39,7 @@ export default function Index() {
                     color={item.isComingSoon ? "$gray8" : undefined}
                   />
                 }
-                iconAfter={<ChevronRight size="$1" />}
+                iconAfter={<ChevronRight size="$1.5" />}
               />
             </Link>
           );

@@ -5,18 +5,34 @@ import { Loading } from "@/components/Loading";
 import { MaterialTopTabs } from "@/components/MaterialTopTabs";
 import { ToolIcon } from "@/components/icons/ToolIcon";
 import { useObservableTool } from "@/hooks/useObservableTool";
+import { ToolListItem } from "@/components/tools/ToolListItem";
+import { useObservableCategory } from "@/hooks/useObservableCategory";
 
 export default function Layout() {
-  const { tool: slug } = useLocalSearchParams<{ tool: string }>();
+  const { category: categorySlug } = useLocalSearchParams<{
+    category: string;
+  }>();
 
-  if (!slug) throw new Error("No tool slug provided");
+  if (!categorySlug) throw new Error("No category slug provided");
+
+  const { category } = useObservableCategory({
+    slug: categorySlug,
+  });
+
+  const { tool: toolSlug } = useLocalSearchParams<{ tool: string }>();
+
+  if (!toolSlug) throw new Error("No tool slug provided");
 
   const { tool } = useObservableTool({
-    slug,
+    slug: toolSlug,
   });
 
   if (!tool) {
     return <Loading message="Loading tool" />;
+  }
+
+  if (!category) {
+    return <Loading message="Loading category" />;
   }
 
   return (
@@ -26,7 +42,10 @@ export default function Layout() {
       <YStack fullscreen>
         <XStack padding="$3" alignItems="center">
           <ToolIcon tool={tool} size={36} />
-          <H3 marginLeft="$3">{tool.name}</H3>
+          <H3 marginLeft="$3" flexGrow={1}>
+            {tool.name}
+          </H3>
+          <ToolListItem category={category} tool={tool} toolPage={true} />
         </XStack>
         <MaterialTopTabs>
           <MaterialTopTabs.Screen name="index" options={{ title: "Home" }} />
