@@ -35,7 +35,9 @@ export class Stack extends Model {
   @text("twitter_image_url") twitterImageUrl!: string;
   @text("website") website!: string;
   @text("twitter") twitter!: string;
-  // @text("is_starred") isStarred!: boolean;
+  @text("youtube") youtube!: string;
+  @text("description") description!: string;
+  @text("image") image!: string;
   @text("is_featured") isFeatured!: boolean;
   @text("number_of_stars") numberOfStars!: number;
   @text("user_id") user!: string;
