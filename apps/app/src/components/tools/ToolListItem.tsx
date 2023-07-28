@@ -72,7 +72,7 @@ export function ToolListItem({
                 tool.allPicks !== 1 ? "s" : ""
               )
         }
-        icon={<ToolIcon tool={tool} size={compact ? undefined : 36} />}
+        icon={<ToolIcon tool={tool} size={compact ? "$1.5" : "$3"} />}
         iconAfter={
           user && compact ? (
             pick ? (

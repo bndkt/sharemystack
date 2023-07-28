@@ -24,7 +24,7 @@ export default function Layout() {
       <Stack.Screen options={{ title: tool.name ?? "" }} />
       <YStack fullscreen>
         <XStack padding="$3" alignItems="center">
-          <ToolIcon tool={tool} size={36} />
+          <ToolIcon tool={tool} size="$3" />
           <H3 marginLeft="$3">{tool.name}</H3>
         </XStack>
         <MaterialTopTabs>

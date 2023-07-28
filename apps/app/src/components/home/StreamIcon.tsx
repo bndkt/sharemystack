@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Avatar } from "tamagui";
+import { Avatar, useTheme } from "tamagui";
 
 import { ToolIcon } from "../icons/ToolIcon";
 
@@ -17,5 +17,5 @@ export function StreamIcon({ pick }: { pick: Pick }) {
     return () => subscription.unsubscribe();
   }, [pick]);
 
-  return tool ? <ToolIcon tool={tool} /> : <Avatar />;
+  return tool ? <ToolIcon tool={tool} size="$1.5" /> : <Avatar />;
 }
