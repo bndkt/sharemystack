@@ -208,7 +208,9 @@ export interface Database {
         Row: {
           created_at: string
           deleted_at: string | null
+          description: string | null
           id: string
+          image: string | null
           is_featured: boolean
           last_modified_at: string | null
           name: string | null
@@ -219,11 +221,14 @@ export interface Database {
           updated_at: string
           user_id: string | null
           website: string | null
+          youtube: string | null
         }
         Insert: {
           created_at?: string
           deleted_at?: string | null
+          description?: string | null
           id?: string
+          image?: string | null
           is_featured?: boolean
           last_modified_at?: string | null
           name?: string | null
@@ -234,11 +239,14 @@ export interface Database {
           updated_at?: string
           user_id?: string | null
           website?: string | null
+          youtube?: string | null
         }
         Update: {
           created_at?: string
           deleted_at?: string | null
+          description?: string | null
           id?: string
+          image?: string | null
           is_featured?: boolean
           last_modified_at?: string | null
           name?: string | null
@@ -249,6 +257,7 @@ export interface Database {
           updated_at?: string
           user_id?: string | null
           website?: string | null
+          youtube?: string | null
         }
         Relationships: [
           {
@@ -343,6 +352,7 @@ export interface Database {
       }
       tools: {
         Row: {
+          affiliate_link: string | null
           color: string | null
           created_at: string
           deleted_at: string | null
@@ -357,6 +367,7 @@ export interface Database {
           website: string | null
         }
         Insert: {
+          affiliate_link?: string | null
           color?: string | null
           created_at?: string
           deleted_at?: string | null
@@ -371,6 +382,7 @@ export interface Database {
           website?: string | null
         }
         Update: {
+          affiliate_link?: string | null
           color?: string | null
           created_at?: string
           deleted_at?: string | null
@@ -468,7 +480,9 @@ export interface Database {
         Row: {
           created_at: string | null
           deleted_at: string | null
+          description: string | null
           id: string | null
+          image: string | null
           is_featured: boolean | null
           is_starred: boolean | null
           last_modified_at: string | null
@@ -482,6 +496,7 @@ export interface Database {
           updated_at: string | null
           user_id: string | null
           website: string | null
+          youtube: string | null
         }
         Relationships: [
           {
@@ -601,7 +616,9 @@ export interface Database {
         Row: {
           created_at: string | null
           deleted_at: string | null
+          description: string | null
           id: string | null
+          image: string | null
           is_featured: boolean | null
           is_starred: boolean | null
           last_modified_at: string | null
@@ -615,11 +632,13 @@ export interface Database {
           updated_at: string | null
           user_id: string | null
           website: string | null
+          youtube: string | null
         }
         Relationships: []
       }
       tools_view: {
         Row: {
+          affiliate_link: string | null
           all_picks: number | null
           color: string | null
           created_at: string | null
