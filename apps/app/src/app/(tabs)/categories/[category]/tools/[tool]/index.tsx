@@ -1,24 +1,29 @@
-import * as Linking from "expo-linking";
-import { Button, Text, YStack } from "tamagui";
+import { useLocalSearchParams } from "expo-router";
+import { Text, YStack } from "tamagui";
+
+import { Loading } from "@/components/Loading";
+import { ToolLink } from "@/components/tools/ToolLink";
+import { useObservableTool } from "@/hooks/useObservableTool";
 
 export default function Index() {
-  function appStore() {
-    const link =
-      "itms-apps://apps.apple.com/us/app/1password-password-manager/id1511601750";
-    Linking.canOpenURL(link).then(
-      (supported) => {
-        supported && Linking.openURL(link);
-      },
-      (err) => console.log(err)
-    );
+  const { tool: slug } = useLocalSearchParams<{ tool: string }>();
+
+  if (!slug) throw new Error("No tool slug provided");
+
+  const { tool } = useObservableTool({
+    slug,
+  });
+
+  if (!tool) {
+    return <Loading message="Loading tool" />;
   }
 
   return (
     <YStack fullscreen padding="$3">
-      <Text textAlign="center" marginTop="$6">
-        Coming soon …
+      <Text textAlign="center" paddingVertical="$6">
+        More content coming soon.
       </Text>
-      <Button onPress={appStore}>App Store</Button>
+      <ToolLink tool={tool} />
     </YStack>
   );
 }

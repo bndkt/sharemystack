@@ -11,6 +11,7 @@ CREATE TABLE tools (
   CONSTRAINT tools_slug_key unique (slug),
   color CHARACTER varying NULL,
   affiliate_link CHARACTER varying NULL,
+  app_store CHARACTER varying NULL,
   icon TEXT NULL,
   website CHARACTER varying NULL,
   twitter CHARACTER varying NULL

@@ -7,7 +7,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        sharemystack: "#f43f5e",
+        sms: "#f43f5e",
       },
     },
   },

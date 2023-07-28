@@ -20,6 +20,8 @@ export const schema = appSchema({
         { name: "color", type: "string", isOptional: true },
         { name: "icon", type: "string", isOptional: true },
         { name: "website", type: "string", isOptional: true },
+        { name: "affiliate_link", type: "string", isOptional: true },
+        { name: "app_store", type: "string", isOptional: true },
         { name: "user_picks", type: "number" },
         { name: "all_picks", type: "number" },
         { name: "created_at", type: "number" },

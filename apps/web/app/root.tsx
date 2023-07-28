@@ -96,7 +96,7 @@ export default function App() {
           </>
         )}
       </head>
-      <body className="bg-sharemystack">
+      <body className="bg-sms">
         <Header />
         <Outlet context={{ supabase }} />
         <ScrollRestoration />
