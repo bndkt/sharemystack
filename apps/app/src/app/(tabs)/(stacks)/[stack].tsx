@@ -1,13 +1,13 @@
-import { Stack, useLocalSearchParams } from "expo-router";
-import { Button, H3, H4, Separator, Text, XStack, YStack } from "tamagui";
+import { Globe, Twitter, Youtube } from "@tamagui/lucide-icons";
 import { Image } from "expo-image";
 import * as Linking from "expo-linking";
+import { useLocalSearchParams } from "expo-router";
+import { Button, H3, H4, Text, XStack, YStack } from "tamagui";
 
 import { List } from "@/components/list";
 import { StackHeaderRight } from "@/components/stacks/StackHeaderRight";
 import { StackPick } from "@/components/stacks/StackPick";
 import { useObservableStack } from "@/hooks/useObservableStack";
-import { Globe, Twitter, Youtube } from "@tamagui/lucide-icons";
 
 export default function Index() {
   let { stack: slug } = useLocalSearchParams<{ stack: string }>();

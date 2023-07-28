@@ -1,4 +1,4 @@
-import { Check, Plus } from "@tamagui/lucide-icons";
+import { Check, ChevronRight, Plus } from "@tamagui/lucide-icons";
 import { ListItem } from "tamagui";
 
 import { ToolIcon } from "../icons/ToolIcon";
@@ -9,8 +9,9 @@ import { useSync } from "@/hooks/useSync";
 import { Category } from "@/model/Category";
 import { Pick } from "@/model/Pick";
 import { Tool } from "@/model/Tool";
+import { useRouter } from "expo-router";
 
-export function PickTool({
+export function ToolListItem({
   category,
   item,
   compact,
@@ -22,6 +23,7 @@ export function PickTool({
   const { stack, picks, user } = useAuth();
   const { capture } = useAnalytics();
   const { sync } = useSync();
+  const router = useRouter();
 
   const pick = picks?.find(
     (pick) => pick.tool.id === item.id && pick.category.id === category.id
@@ -55,16 +57,25 @@ export function PickTool({
       }
       icon={<ToolIcon tool={item} size={compact ? undefined : 36} />}
       iconAfter={
-        user ? (
+        user && compact ? (
           pick ? (
             <Check color="gray" size="$1" />
           ) : (
             <Plus size="$1" />
           )
-        ) : undefined
+        ) : (
+          <ChevronRight size="$1" />
+        )
       }
       onPress={
-        user ? () => (pick ? remove(pick) : add(item, category)) : undefined
+        compact
+          ? user
+            ? () => (pick ? remove(pick) : add(item, category))
+            : undefined
+          : () =>
+              router.push(
+                `/(tabs)/categories/${category.slug}/tools/${item.slug}`
+              )
       }
     />
   );

@@ -1,9 +1,9 @@
 import { YStack } from "tamagui";
 
 import { List } from "@/components/list";
-import { PickTool } from "@/components/tools/PickTool";
 import { Category } from "@/model/Category";
 import { Tool } from "@/model/Tool";
+import { ToolListItem } from "./ToolListItem";
 
 export function ToolList({
   category,
@@ -19,7 +19,7 @@ export function ToolList({
       <List
         data={tools}
         renderItem={({ item }) => (
-          <PickTool category={category} item={item} compact={compact} />
+          <ToolListItem category={category} item={item} compact={compact} />
         )}
       />
     </YStack>

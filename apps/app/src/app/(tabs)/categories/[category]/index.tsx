@@ -20,7 +20,7 @@ export default function Category() {
 
   return (
     <>
-      <Stack.Screen options={{ title: category.name ?? "" }} />
+      <Stack.Screen name="../../" options={{ title: category.name ?? "" }} />
       {loading ? (
         <Loading message="Loading tools" />
       ) : (
