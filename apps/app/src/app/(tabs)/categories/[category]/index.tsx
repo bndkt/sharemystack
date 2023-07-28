@@ -1,10 +1,10 @@
 import { Stack, useLocalSearchParams } from "expo-router";
+import { YStack } from "tamagui";
 
 import { Loading } from "@/components/Loading";
+import { SuggestionButton } from "@/components/SuggestionButton";
 import { ToolList } from "@/components/tools/ToolList";
 import { useObservableCategory } from "@/hooks/useObservableCategory";
-import { SuggestionButton } from "@/components/SuggestionButton";
-import { YStack } from "tamagui";
 
 export default function Category() {
   const { category: slug } = useLocalSearchParams<{ category: string }>();

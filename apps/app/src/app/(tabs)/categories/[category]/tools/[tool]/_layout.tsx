@@ -4,9 +4,9 @@ import { H3, XStack, YStack } from "tamagui";
 import { Loading } from "@/components/Loading";
 import { MaterialTopTabs } from "@/components/MaterialTopTabs";
 import { ToolIcon } from "@/components/icons/ToolIcon";
-import { useObservableTool } from "@/hooks/useObservableTool";
 import { ToolListItem } from "@/components/tools/ToolListItem";
 import { useObservableCategory } from "@/hooks/useObservableCategory";
+import { useObservableTool } from "@/hooks/useObservableTool";
 
 export default function Layout() {
   const { category: categorySlug } = useLocalSearchParams<{

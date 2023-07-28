@@ -1,6 +1,6 @@
 import { Check, ChevronRight, Plus } from "@tamagui/lucide-icons";
 import { useRouter } from "expo-router";
-import { Button, ListItem, XStack } from "tamagui";
+import { Button, ListItem } from "tamagui";
 
 import { ToolIcon } from "../icons/ToolIcon";
 
