@@ -9,13 +9,12 @@ import { Stack } from "@/model/Stack";
 
 export function StackHeaderRight({ stack }: { stack: Stack }) {
   return (
-    <XStack>
+    <XStack space="$3">
       <Star stack={stack} />
       <Button
-        icon={<ShareIcon size="$1" />}
+        icon={<ShareIcon size="$1.5" />}
         unstyled
         justifyContent="center"
-        padding="$3"
         onPress={async () => {
           await Share.share({
             url: `${config.domain}/@${stack.slug}`,
