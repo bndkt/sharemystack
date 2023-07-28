@@ -7,7 +7,8 @@ insert into public.tools (
         twitter,
         color,
         icon,
-        affiliate_link
+        affiliate_link,
+        app_store
     )
 values (
         '0115cd3b-869d-4058-94e1-a67863eb6045',
@@ -32,6 +33,7 @@ values (
             fill="#8758FF" />
     </svg>
 ',
+        NULL,
         NULL
     ),
     (
@@ -48,6 +50,7 @@ values (
             fill="currentColor" />
     </svg>
 ',
+        NULL,
         NULL
     ),
     (
@@ -64,6 +67,7 @@ values (
             fill="currentColor" />
     </svg>
 ',
+        NULL,
         NULL
     ),
     (
@@ -116,6 +120,7 @@ values (
             fill="black" fill-opacity="0.4" />
     </svg>
 ',
+        NULL,
         NULL
     ),
     (
@@ -132,6 +137,7 @@ values (
             fill="#DD2222" />
     </svg>
 ',
+        NULL,
         NULL
     ),
     (
@@ -148,6 +154,7 @@ values (
             fill="#00A82D" />
     </svg>
 ',
+        NULL,
         NULL
     ),
     (
@@ -164,6 +171,7 @@ values (
             fill="currentColor" />
     </svg>
 ',
+        NULL,
         NULL
     ),
     (
@@ -181,6 +189,7 @@ values (
         <path d="M24.072 24.0719H13.106V13.1059H24.072V24.0719Z" fill="#FFB900" />
     </svg>
 ',
+        NULL,
         NULL
     ),
     (
@@ -2467,6 +2476,7 @@ values (
         </defs>
     </svg>
 ',
+        NULL,
         NULL
     ),
     (
@@ -2548,6 +2558,7 @@ values (
         </defs>
     </svg>
 ',
+        NULL,
         NULL
     ),
     (
@@ -2593,7 +2604,8 @@ values (
         </defs>
     </svg>
 ',
-        NULL
+        NULL,
+        'id535886823'
     ),
     (
         '324d5413-cde6-4151-a71d-8dad2c7c05e0',
@@ -2609,6 +2621,7 @@ values (
             fill="currentColor" />
     </svg>
 ',
+        NULL,
         NULL
     ),
     (
@@ -2625,6 +2638,7 @@ values (
             fill="#25D366" />
     </svg>
 ',
+        NULL,
         NULL
     ),
     (
@@ -2641,6 +2655,7 @@ values (
             fill="#3A76F0" />
     </svg>
 ',
+        NULL,
         NULL
     ),
     (
@@ -2668,6 +2683,7 @@ values (
         </defs>
     </svg>
 ',
+        NULL,
         NULL
     ),
     (
@@ -2684,6 +2700,7 @@ values (
             fill="#DD4C4F" />
     </svg>
 ',
+        NULL,
         NULL
     ),
     (
@@ -2707,6 +2724,7 @@ values (
             fill="#2C3B4A" />
     </svg>
 ',
+        NULL,
         NULL
     ),
     (
@@ -2732,6 +2750,7 @@ values (
             fill="white" />
     </svg>
 ',
+        NULL,
         NULL
     ),
     (
@@ -2748,6 +2767,7 @@ values (
             fill="#0D9DDA" />
     </svg>
 ',
+        NULL,
         NULL
     ),
     (
@@ -2764,6 +2784,7 @@ values (
             fill="currentColor" />
     </svg>
 ',
+        NULL,
         NULL
     ),
     (
@@ -2780,6 +2801,7 @@ values (
             fill="currentColor" />
     </svg>
 ',
+        NULL,
         NULL
     ),
     (
@@ -2838,6 +2860,7 @@ values (
             fill="#FF536A" />
     </svg>
 ',
+        NULL,
         NULL
     ),
     (
@@ -2860,6 +2883,7 @@ values (
         </g>
     </svg>
 ',
+        NULL,
         NULL
     ),
     (
@@ -2876,6 +2900,7 @@ values (
             fill="#506CF7" />
     </svg>
 ',
+        NULL,
         NULL
     ),
     (
@@ -2892,6 +2917,7 @@ values (
             fill="#4EC1FC" />
     </svg>
 ',
+        NULL,
         NULL
     ),
     (
@@ -2908,6 +2934,7 @@ values (
             fill="#175DDC" />
     </svg>
 ',
+        NULL,
         NULL
     ),
     (
@@ -2930,6 +2957,7 @@ values (
             fill="#85C8C8" />
     </svg>
 ',
+        NULL,
         NULL
     ),
     (
@@ -2952,6 +2980,7 @@ values (
             fill="currentColor" />
     </svg>
 ',
+        NULL,
         NULL
     ),
     (
@@ -2989,6 +3018,7 @@ values (
             fill="#ECB22E" />
     </svg>
 ',
+        NULL,
         NULL
     ),
     (
@@ -3005,6 +3035,7 @@ values (
             fill="currentColor" />
     </svg>
 ',
+        NULL,
         NULL
     ),
     (
@@ -3021,6 +3052,7 @@ values (
             fill="#3DDB85" />
     </svg>
 ',
+        NULL,
         NULL
     ),
     (
@@ -3037,6 +3069,7 @@ values (
             fill="currentColor" />
     </svg>
 ',
+        NULL,
         NULL
     ),
     (
@@ -3066,6 +3099,7 @@ values (
         </defs>
     </svg>
 ',
+        NULL,
         NULL
     ),
     (
@@ -3091,6 +3125,7 @@ values (
             fill="#EA4335" />
     </svg>
 ',
+        NULL,
         NULL
     ),
     (
@@ -3112,6 +3147,7 @@ values (
             fill="#C5221F" />
     </svg>
 ',
+        NULL,
         NULL
     ),
     (
@@ -3187,6 +3223,7 @@ values (
         </defs>
     </svg>
 ',
+        NULL,
         NULL
     ),
     (
@@ -3262,6 +3299,7 @@ values (
         </defs>
     </svg>
 ',
+        NULL,
         NULL
     ),
     (
@@ -3287,6 +3325,7 @@ values (
             fill="#28A8EA" />
     </svg>
 ',
+        NULL,
         NULL
     ),
     (
@@ -3334,6 +3373,7 @@ values (
         </defs>
     </svg>
 ',
+        NULL,
         NULL
     ),
     (
@@ -3395,6 +3435,7 @@ values (
         </defs>
     </svg>
 ',
+        NULL,
         NULL
     ),
     (
@@ -3418,6 +3459,7 @@ values (
         <path d="M58 76L76 58H58V76Z" fill="#EA4335" />
     </svg>
 ',
+        NULL,
         NULL
     ),
     (
@@ -3440,6 +3482,7 @@ values (
         <path d="M64 0H21V20.5H50V36L70 19.425V6C70 2.685 67.315 0 64 0Z" fill="#FFBA00" />
     </svg>
 ',
+        NULL,
         NULL
     ),
     (
@@ -3471,6 +3514,7 @@ values (
             fill="#FFBA00" />
     </svg>
 ',
+        NULL,
         NULL
     ),
     (
@@ -3493,6 +3537,7 @@ values (
             fill="currentColor" />
     </svg>
 ',
+        NULL,
         NULL
     ),
     (
@@ -3509,6 +3554,7 @@ values (
             fill="currentColor" />
     </svg>
 ',
+        NULL,
         NULL
     ),
     (
@@ -3536,6 +3582,7 @@ values (
         </defs>
     </svg>
 ',
+        NULL,
         NULL
     ),
     (
@@ -3659,6 +3706,7 @@ values (
         </defs>
     </svg>
 ',
+        NULL,
         NULL
     ),
     (
@@ -3675,7 +3723,8 @@ values (
             fill="#DA3940" />
     </svg>
 ',
-        'https://www.expressvpn.com/affiliate'
+        'https://www.expressvpn.com/affiliate',
+        NULL
     ),
     (
         '71291614-55cc-4b3e-b18f-35b6c0bbec2f',
@@ -3698,6 +3747,7 @@ values (
     </defs>
 </svg>
 ',
+        NULL,
         NULL
     ),
     (
@@ -3714,6 +3764,7 @@ values (
         fill="#4687FF" />
 </svg>
 ',
+        NULL,
         NULL
     ),
     (
@@ -3753,6 +3804,7 @@ values (
     </defs>
 </svg>
 ',
+        NULL,
         NULL
     ),
     (
@@ -3772,5 +3824,6 @@ values (
         fill="#F9F9F9" />
 </svg>
 ',
+        NULL,
         NULL
     );
