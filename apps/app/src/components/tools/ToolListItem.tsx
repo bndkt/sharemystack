@@ -1,4 +1,5 @@
 import { Check, ChevronRight, Plus } from "@tamagui/lucide-icons";
+import { useRouter } from "expo-router";
 import { ListItem } from "tamagui";
 
 import { ToolIcon } from "../icons/ToolIcon";
@@ -9,7 +10,6 @@ import { useSync } from "@/hooks/useSync";
 import { Category } from "@/model/Category";
 import { Pick } from "@/model/Pick";
 import { Tool } from "@/model/Tool";
-import { useRouter } from "expo-router";
 
 export function ToolListItem({
   category,

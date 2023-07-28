@@ -1,9 +1,10 @@
 import { YStack } from "tamagui";
 
+import { ToolListItem } from "./ToolListItem";
+
 import { List } from "@/components/list";
 import { Category } from "@/model/Category";
 import { Tool } from "@/model/Tool";
-import { ToolListItem } from "./ToolListItem";
 
 export function ToolList({
   category,
