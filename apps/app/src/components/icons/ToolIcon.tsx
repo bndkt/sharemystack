@@ -1,11 +1,13 @@
-import { Token, getTokenValue } from "@tamagui/core";
+import { Token, getTokenValue, useTheme } from "@tamagui/core";
 import { BoxSelect } from "@tamagui/lucide-icons";
 import { SvgXml } from "react-native-svg";
 
 import { Tool } from "@/model/Tool";
 
 export function ToolIcon({ tool, size = "$1.5" }: { tool: Tool; size: Token }) {
-  const color = tool.color.length > 0 ? tool.color : "black";
+  const theme = useTheme();
+
+  const color = tool.color?.length ? tool.color : theme.color.val;
 
   const width = getTokenValue(size, "size");
 

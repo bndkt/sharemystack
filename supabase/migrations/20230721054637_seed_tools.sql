@@ -42,7 +42,7 @@ values (
         'notion',
         'https://notion.so/',
         '',
-        '#000000',
+        NULL,
         '
     <svg viewBox="0 0 35 37" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path fill-rule="evenodd" clip-rule="evenodd"

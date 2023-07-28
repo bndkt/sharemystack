@@ -23,11 +23,11 @@ export class Tool extends Model {
 
   @text("name") name!: string;
   @text("slug") slug!: string;
-  @text("icon") icon!: string;
-  @text("color") color!: string;
-  @text("affiliate_link") affiliateLink!: string;
-  @text("app_store") appStore!: string;
-  @text("website") website!: string;
+  @text("icon") icon?: string;
+  @text("color") color?: string;
+  @text("affiliate_link") affiliateLink?: string;
+  @text("app_store") appStore?: string;
+  @text("website") website?: string;
   @text("user_picks") userPicks!: number;
   @text("all_picks") allPicks!: number;
 
