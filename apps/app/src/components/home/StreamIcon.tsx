@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Avatar, useTheme } from "tamagui";
+import { Avatar } from "tamagui";
 
 import { ToolIcon } from "../icons/ToolIcon";
 

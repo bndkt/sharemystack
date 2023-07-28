@@ -1,7 +1,7 @@
 import { ThemeProvider, Theme } from "@react-navigation/native";
+import { useTheme } from "@tamagui/core";
 import { ReactNode } from "react";
 import { useColorScheme } from "react-native";
-import { useTheme } from "tamagui";
 
 export const NavigationThemeProvider = ({
   children,
