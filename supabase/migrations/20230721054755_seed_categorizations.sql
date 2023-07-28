@@ -229,10 +229,16 @@ values -- Note-taking
     (
         'af495155-60b7-425c-871f-28917d91c586',
         '86f3c1ef-3cfb-46e4-841d-3f2e1d9d1843'
-    ) -- Dropbox
+    ),
+    -- Dropbox
     -- ('3526b556-c5da-4902-854b-267a5c71b942', ''), Salesforce
     -- ('94eba581-26a2-466b-aa06-6f84b5202cc6', ''), Discord
     -- ('98d9d7de-0ae1-440c-a708-2955b82bfbf1', ''), Superhuman
     -- ('da0f681a-763a-4fe1-9785-8d9f6d7a47e0', ''), Day One
     -- ('a1587dcb-2676-4408-acb5-147a446d1435', ''), Slack
-;
+    -- VPN
+    -- ExpressVPN
+    (
+        '35ecc3eb-1c52-49fd-8b8d-209c0801d9cb',
+        '05915bf6-137b-4e40-8e42-c9c453426ed2'
+    );

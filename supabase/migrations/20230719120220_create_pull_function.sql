@@ -28,6 +28,8 @@ SELECT jsonb_build_object(
                     t.icon,
                     'website',
                     t.website,
+                    'affiliate_link',
+                    t.affiliate_link,
                     'user_picks',
                     t.user_picks,
                     'all_picks',

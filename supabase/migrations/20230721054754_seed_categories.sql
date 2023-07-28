@@ -23,8 +23,8 @@ values (
     ),
     (
         'a53d4fba-35a4-49e6-baf3-0e7bf2a1188b',
-        'Integrated Development Environment',
-        'integrated-development-environment',
+        'IDE',
+        'ide',
         'TerminalSquare',
         true
     ),
@@ -146,4 +146,11 @@ values (
         'read-it-later',
         'Newspaper',
         true
+    ),
+    (
+        '05915bf6-137b-4e40-8e42-c9c453426ed2',
+        'VPN',
+        'vpn',
+        'Shield',
+        false
     );
