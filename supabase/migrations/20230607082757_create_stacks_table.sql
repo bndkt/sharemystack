@@ -13,6 +13,9 @@ CREATE TABLE stacks (
   twitter character varying null,
   twitter_image_url character varying null,
   website character varying null,
+  description character varying null,
+  youtube character varying null,
+  image character varying null,
   is_featured boolean not null default false
 );
 alter table stacks enable row level security;
