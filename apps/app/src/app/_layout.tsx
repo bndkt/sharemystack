@@ -45,20 +45,23 @@ export default function Layout() {
         host: "https://app.posthog.com",
       }}
     >
-      <TamaguiProvider config={config}>
-        <Theme name={"light"}>
-          <NavigationThemeProvider>
-            <SafeAreaProvider>
-              <DatabaseProvider database={database}>
-                <AuthProvider>
-                  <SyncProvider>
-                    <Slot />
-                  </SyncProvider>
-                </AuthProvider>
-              </DatabaseProvider>
-            </SafeAreaProvider>
-          </NavigationThemeProvider>
-        </Theme>
+      <TamaguiProvider
+        config={config}
+        disableInjectCSS
+        disableRootThemeClass
+        defaultTheme={colorScheme === "dark" ? "dark" : "light"}
+      >
+        <NavigationThemeProvider>
+          <SafeAreaProvider>
+            <DatabaseProvider database={database}>
+              <AuthProvider>
+                <SyncProvider>
+                  <Slot />
+                </SyncProvider>
+              </AuthProvider>
+            </DatabaseProvider>
+          </SafeAreaProvider>
+        </NavigationThemeProvider>
       </TamaguiProvider>
       <StatusBar style="auto" />
     </PostHogProvider>
