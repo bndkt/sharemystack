@@ -17,7 +17,7 @@ module.exports = function (api) {
         {
           components: ["tamagui"],
           config: "./src/tamagui.config.ts",
-          logTimings: true,
+          disable: true,
         },
       ],
       // NOTE: this is only necessary if you are using reanimated for animations
