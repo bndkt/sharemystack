@@ -1,41 +1,40 @@
-CREATE view stacks_view AS
-SELECT stacks.id,
-    stacks.name,
-    stacks.slug,
-    stacks.created_at,
-    stacks.deleted_at,
-    stacks.is_featured,
-    stacks.twitter,
-    stacks.twitter_image_url,
-    stacks.youtube,
-    stacks.description,
-    stacks.image,
-    stacks.website,
-    stacks.user_id,
-    stacks.server_created_at,
-    COUNT(all_stars.stack_id) AS number_of_stars,
-    COUNT(user_stars.stack_id) > 0 AS is_starred,
-    COUNT(picks.stack_id) AS number_of_picks,
-    CASE
-        WHEN max(picks.updated_at) > stacks.updated_at THEN max(picks.updated_at)
-        ELSE stacks.updated_at
-    END AS updated_at,
-    CASE
-        WHEN max(user_stars.last_modified_at) > stacks.last_modified_at THEN max(user_stars.last_modified_at)
-        ELSE stacks.last_modified_at
-    END AS last_modified_at
-FROM stacks
-    LEFT JOIN stars AS all_stars ON (
-        all_stars.stack_id = stacks.id
-        AND all_stars.deleted_at IS NULL
+create view profiles_view as
+select profiles.id,
+    profiles.created_at,
+    profiles.deleted_at,
+    profiles.server_created_at,
+    profiles.name,
+    profiles.slug,
+    profiles.description,
+    profiles.image,
+    profiles.website,
+    profiles.twitter,
+    profiles.twitter_image_url,
+    profiles.youtube,
+    profiles.is_featured,
+    count(all_stars.profile_id) as number_of_stars,
+    count(user_stars.profile_id) > 0 as is_starred,
+    count(stacks_view.profile_id) as number_of_stacks,
+    case
+        when max(stacks_view.updated_at) > profiles.updated_at then max(stacks_view.updated_at)
+        else profiles.updated_at
+    end as updated_at,
+    case
+        when max(stacks_view.last_modified_at) > profiles.last_modified_at then max(stacks_view.last_modified_at)
+        else profiles.last_modified_at
+    end as last_modified_at
+from profiles
+    left join stars as all_stars on (
+        all_stars.profile_id = profiles.id
+        and all_stars.deleted_at is null
     )
-    LEFT JOIN stars as user_stars ON (
-        user_stars.stack_id = stacks.id
-        AND user_stars.user_id = auth.uid()
-        AND user_stars.deleted_at IS NULL
+    left join stars as user_stars on (
+        user_stars.profile_id = profiles.id
+        and user_stars.user_id = auth.uid()
+        and user_stars.deleted_at is null
     )
-    LEFT JOIN picks ON (
-        picks.stack_id = stacks.id
-        AND picks.deleted_at IS NULL
+    left join stacks_view on (
+        stacks_view.profile_id = profiles.id
+        and stacks_view.deleted_at is null
     )
-GROUP BY stacks.id;
+group by profiles.id;

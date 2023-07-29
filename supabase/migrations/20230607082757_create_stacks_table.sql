@@ -1,27 +1,34 @@
-CREATE TABLE stacks (
-  id uuid NOT NULL default gen_random_uuid(),
-  PRIMARY KEY (id),
-  created_at TIMESTAMP WITH TIME ZONE NOT NULL default NOW(),
-  updated_at TIMESTAMP WITH TIME ZONE NOT NULL default NOW(),
-  deleted_at TIMESTAMP WITH TIME ZONE default NULL,
-  server_created_at TIMESTAMP WITH TIME ZONE default NOW(),
-  last_modified_at TIMESTAMP WITH TIME ZONE default NOW(),
-  name character varying null,
-  slug character varying not null,
-  constraint stacks_slug_key unique (slug),
-  user_id uuid references auth.users,
-  twitter character varying null,
-  twitter_image_url character varying null,
-  website character varying null,
-  description character varying null,
-  youtube character varying null,
-  image character varying null,
-  is_featured boolean not null default false
+create table stacks (
+  id uuid not null default gen_random_uuid(),
+  primary key (id),
+  created_at timestamp with time zone not null default now(),
+  updated_at timestamp with time zone not null default now(),
+  deleted_at timestamp with time zone default null,
+  server_created_at timestamp with time zone not null default now(),
+  last_modified_at timestamp with time zone not null default now(),
+  profile_id uuid references profiles on delete cascade,
+  stack_type_id uuid references stack_types on delete cascade
 );
+create unique index unique_index_stacks on stacks (profile_id, stack_type_id)
+where deleted_at is null;
 alter table stacks enable row level security;
 create policy "Stacks are viewable by everyone." on stacks for
 select using (true);
 create policy "Users can insert their own stack." on stacks for
-insert with check (auth.uid() = user_id);
+insert with check (
+    (
+      select count(*)
+      from profiles
+      where profiles.id = stacks.profile_id
+        and profiles.user_id = auth.uid()
+    ) > 0
+  );
 create policy "Users can update their own stack." on stacks for
-update using (auth.uid() = user_id);
+update using (
+    (
+      select count(*)
+      from profiles
+      where profiles.id = stacks.profile_id
+        and profiles.user_id = auth.uid()
+    ) > 0
+  );

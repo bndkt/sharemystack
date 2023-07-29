@@ -1,14 +1,14 @@
-CREATE TABLE categories (
-  id uuid NOT NULL default gen_random_uuid(),
-  PRIMARY KEY (id),
-  created_at TIMESTAMP WITH TIME ZONE NOT NULL default NOW(),
-  updated_at TIMESTAMP WITH TIME ZONE NOT NULL default NOW(),
-  deleted_at TIMESTAMP WITH TIME ZONE default NULL,
-  server_created_at TIMESTAMP WITH TIME ZONE default NOW(),
-  last_modified_at TIMESTAMP WITH TIME ZONE default NOW(),
+create table categories (
+  id uuid not null default gen_random_uuid(),
+  primary key (id),
+  created_at timestamp with time zone not null default now(),
+  updated_at timestamp with time zone not null default now(),
+  deleted_at timestamp with time zone default null,
+  server_created_at timestamp with time zone not null default now(),
+  last_modified_at timestamp with time zone not null default now(),
   name character varying not null,
   slug character varying not null,
-  constraint categories_slug_key unique (slug),
+  unique (slug),
   icon character varying not null,
   is_coming_soon boolean not null default false
 );

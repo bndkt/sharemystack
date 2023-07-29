@@ -1,15 +1,15 @@
-CREATE TABLE stars (
-  id uuid NOT NULL default gen_random_uuid(),
-  PRIMARY KEY (id),
-  created_at TIMESTAMP WITH TIME ZONE NOT NULL default NOW(),
-  updated_at TIMESTAMP WITH TIME ZONE NOT NULL default NOW(),
-  deleted_at TIMESTAMP WITH TIME ZONE default NULL,
-  server_created_at TIMESTAMP WITH TIME ZONE default NOW(),
-  last_modified_at TIMESTAMP WITH TIME ZONE default NOW(),
-  user_id uuid references auth.users,
-  stack_id uuid references stacks,
-  tool_id uuid references tools,
-  category_id uuid references categories
+create table stars (
+  id uuid not null default gen_random_uuid(),
+  primary key (id),
+  created_at timestamp with time zone not null default now(),
+  updated_at timestamp with time zone not null default now(),
+  deleted_at timestamp with time zone default null,
+  server_created_at timestamp with time zone not null default now(),
+  last_modified_at timestamp with time zone not null default now(),
+  user_id uuid references auth.users on delete cascade,
+  profile_id uuid references profiles on delete cascade,
+  tool_id uuid references tools on delete cascade,
+  category_id uuid references categories on delete cascade
 );
 alter table stars enable row level security;
 create policy "Stars are viewable by everyone." on stars for

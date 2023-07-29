@@ -1,5 +1,5 @@
-CREATE view categories_view AS
-SELECT categories.id,
+create view categories_view as
+select categories.id,
     categories.name,
     categories.slug,
     categories.icon,
@@ -8,11 +8,11 @@ SELECT categories.id,
     categories.deleted_at,
     categories.server_created_at,
     categories.last_modified_at,
-    COUNT(categorizations) as number_of_tools,
-    CASE
-        WHEN max(categorizations.updated_at) > categories.updated_at THEN max(categorizations.updated_at)
-        ELSE categories.updated_at
-    END AS updated_at
-FROM categories
-    LEFT JOIN categorizations ON (categorizations.category_id = categories.id)
-GROUP BY categories.id;
+    count(categorizations) as number_of_tools,
+    case
+        when max(categorizations.updated_at) > categories.updated_at then max(categorizations.updated_at)
+        else categories.updated_at
+    end as updated_at
+from categories
+    left join categorizations on (categorizations.category_id = categories.id)
+group by categories.id;
