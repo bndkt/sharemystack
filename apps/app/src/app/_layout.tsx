@@ -3,7 +3,7 @@ import "react-native-gesture-handler";
 import DatabaseProvider from "@nozbe/watermelondb/DatabaseProvider";
 import { TamaguiProvider } from "@tamagui/core";
 import { useFonts } from "expo-font";
-import { Stack } from "expo-router";
+import { Slot } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { PostHogProvider } from "posthog-react-native";
 import { LogBox, useColorScheme } from "react-native";
@@ -56,7 +56,7 @@ export default function Layout() {
             <DatabaseProvider database={database}>
               <AuthProvider>
                 <SyncProvider>
-                  <Stack />
+                  <Slot />
                 </SyncProvider>
               </AuthProvider>
             </DatabaseProvider>
