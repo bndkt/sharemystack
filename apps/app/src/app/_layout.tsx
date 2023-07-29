@@ -1,7 +1,7 @@
 import "expo-dev-client";
 import "react-native-gesture-handler";
 import DatabaseProvider from "@nozbe/watermelondb/DatabaseProvider";
-import { TamaguiProvider } from "@tamagui/core";
+import { TamaguiProvider, Theme } from "@tamagui/core";
 import { useFonts } from "expo-font";
 import { Slot } from "expo-router";
 import { StatusBar } from "expo-status-bar";
@@ -45,23 +45,20 @@ export default function Layout() {
         host: "https://app.posthog.com",
       }}
     >
-      <TamaguiProvider
-        config={config}
-        disableInjectCSS
-        disableRootThemeClass
-        defaultTheme={colorScheme === "dark" ? "dark" : "light"}
-      >
-        <NavigationThemeProvider>
-          <SafeAreaProvider>
-            <DatabaseProvider database={database}>
-              <AuthProvider>
-                <SyncProvider>
-                  <Slot />
-                </SyncProvider>
-              </AuthProvider>
-            </DatabaseProvider>
-          </SafeAreaProvider>
-        </NavigationThemeProvider>
+      <TamaguiProvider config={config}>
+        <Theme name={"light"}>
+          <NavigationThemeProvider>
+            <SafeAreaProvider>
+              <DatabaseProvider database={database}>
+                <AuthProvider>
+                  <SyncProvider>
+                    <Slot />
+                  </SyncProvider>
+                </AuthProvider>
+              </DatabaseProvider>
+            </SafeAreaProvider>
+          </NavigationThemeProvider>
+        </Theme>
       </TamaguiProvider>
       <StatusBar style="auto" />
     </PostHogProvider>
