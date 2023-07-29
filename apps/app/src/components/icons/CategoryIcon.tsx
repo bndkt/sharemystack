@@ -16,5 +16,5 @@ export function CategoryIcon({
 
   const Component = icons[name as keyof typeof icons];
 
-  return <Component color={color} size="$2" />;
+  return <Component color={color} size="$1.5" />;
 }
