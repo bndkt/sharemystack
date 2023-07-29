@@ -11,6 +11,10 @@ const scheme =
   process.env.APP_VARIANT === "production"
     ? "sharemystack"
     : "sharemystack-dev";
+const sentryProject =
+  process.env.APP_VARIANT === "production"
+    ? "sharemystack"
+    : "sharemystack-dev";
 
 const hooks: ExpoConfig["hooks"] = { postPublish: [] };
 
@@ -19,7 +23,8 @@ if (process.env.SENTRY_AUTH_TOKEN) {
     file: "sentry-expo/upload-sourcemaps",
     config: {
       organization: "feldapp",
-      project: "sharemystack",
+      project: sentryProject,
+      setCommits: true,
     },
   });
 }
