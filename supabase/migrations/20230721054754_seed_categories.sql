@@ -1,4 +1,3 @@
--- gen_random_uuid()
 insert into public.categories (id, name, slug, icon, is_coming_soon)
 values (
         '6a9095b4-132e-4625-891d-8286e92e8f92',
