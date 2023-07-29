@@ -37,6 +37,7 @@ export default function Index() {
                   <CategoryIcon
                     name={item.icon}
                     color={item.isComingSoon ? "$gray8" : undefined}
+                    size={"$1.5"}
                   />
                 }
                 iconAfter={<ChevronRight size="$1.5" />}

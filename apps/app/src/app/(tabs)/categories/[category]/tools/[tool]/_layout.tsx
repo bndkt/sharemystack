@@ -38,10 +38,9 @@ export default function Layout() {
   return (
     <>
       <Stack.Screen name="../../" options={{ title: tool.name ?? "" }} />
-      {/* <Stack.Screen name="../../../" options={{ headerShown: false }} /> */}
       <YStack fullscreen>
         <XStack padding="$3" alignItems="center">
-          <ToolIcon tool={tool} size={36} />
+          <ToolIcon tool={tool} size="$3" />
           <H3 marginLeft="$3" flexGrow={1}>
             {tool.name}
           </H3>
