@@ -6,8 +6,8 @@ import {
   text,
 } from "@nozbe/watermelondb/decorators";
 
-import { TableName } from "./schema";
 import { Profile } from "./Profile";
+import { TableName } from "./schema";
 
 export class Star extends Model {
   static table = TableName.STARS;

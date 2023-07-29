@@ -6,8 +6,8 @@ import {
 } from "@nozbe/watermelondb/decorators";
 
 import { Category } from "./Category";
-import { TableName } from "./schema";
 import { StackType } from "./StackType";
+import { TableName } from "./schema";
 
 export class StackTypeCategory extends Model {
   static table = TableName.STACK_TYPE_CATEGORIES;

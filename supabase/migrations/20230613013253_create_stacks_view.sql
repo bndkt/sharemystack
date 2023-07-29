@@ -1,8 +1,9 @@
 create view stacks_view as
 select stacks.id,
+    stacks.profile_id,
+    stacks.stack_type_id,
     profiles.created_at,
     profiles.deleted_at,
-    profiles.id as profile_id,
     profiles.name as profile_name,
     profiles.slug as profile_slug,
     stack_types.name as stack_type_name,

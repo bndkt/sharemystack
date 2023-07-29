@@ -1,9 +1,8 @@
 import { Model, Q } from "@nozbe/watermelondb";
 import { date, lazy, readonly, text } from "@nozbe/watermelondb/decorators";
 
-import { Tool } from "./Tool";
-import { TableName } from "./schema";
 import { Category } from "./Category";
+import { TableName } from "./schema";
 
 export class StackType extends Model {
   static table = TableName.STACK_TYPES;

@@ -7,12 +7,9 @@ import {
   writer,
 } from "@nozbe/watermelondb/decorators";
 
-import { Category } from "./Category";
-import { Pick } from "./Pick";
-import { Star } from "./Star";
-import { Tool } from "./Tool";
-import { TableName } from "./schema";
 import { Stack } from "./Stack";
+import { Star } from "./Star";
+import { TableName } from "./schema";
 
 export class Profile extends Model {
   static table = TableName.PROFILES;

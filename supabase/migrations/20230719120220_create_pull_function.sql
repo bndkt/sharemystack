@@ -1,6 +1,9 @@
 create or replace function pull(last_pulled_at bigint default 0) returns jsonb as $$
 declare _ts timestamp with time zone;
 _tools jsonb;
+_profiles jsonb;
+_stack_types jsonb;
+_stack_type_categories jsonb;
 _categories jsonb;
 _categorizations jsonb;
 _stacks jsonb;
@@ -32,8 +35,6 @@ select jsonb_build_object(
                     t.affiliate_link,
                     'app_store',
                     t.app_store,
-                    'user_picks',
-                    t.user_picks,
                     'all_picks',
                     t.all_picks,
                     'created_at',
@@ -133,7 +134,7 @@ select jsonb_build_object(
         )
     ) into _categorizations
 from categorizations t;
---- stacks
+--- profiles
 select jsonb_build_object(
         'created',
         '[]'::jsonb,
@@ -147,24 +148,59 @@ select jsonb_build_object(
                     t.name,
                     'slug',
                     t.slug,
-                    'twitter_image_url',
-                    t.twitter_image_url,
-                    'website',
-                    t.website,
-                    'twitter',
-                    t.twitter,
-                    'youtube',
-                    t.youtube,
                     'description',
                     t.description,
                     'image',
                     t.image,
+                    'website',
+                    t.website,
+                    'twitter',
+                    t.twitter,
+                    'twitter_image_url',
+                    t.twitter_image_url,
+                    'youtube',
+                    t.youtube,
                     'is_featured',
                     t.is_featured,
                     'number_of_stars',
                     t.number_of_stars,
                     'user_id',
                     t.user_id,
+                    'created_at',
+                    timestamp_to_epoch(t.created_at),
+                    'updated_at',
+                    timestamp_to_epoch(t.updated_at)
+                )
+            ) filter (
+                where t.deleted_at is null
+                    and t.last_modified_at > _ts
+            ),
+            '[]'::jsonb
+        ),
+        'deleted',
+        coalesce(
+            jsonb_agg(to_jsonb(t.id)) filter (
+                where t.deleted_at is not null
+                    and t.last_modified_at > _ts
+            ),
+            '[]'::jsonb
+        )
+    ) into _profiles
+from sync_profiles_view t;
+--- stacks
+select jsonb_build_object(
+        'created',
+        '[]'::jsonb,
+        'updated',
+        coalesce(
+            jsonb_agg(
+                jsonb_build_object(
+                    'id',
+                    t.id,
+                    'stack_type_id',
+                    t.stack_type_id,
+                    'profile_id',
+                    t.profile_id,
                     'created_at',
                     timestamp_to_epoch(t.created_at),
                     'updated_at',
@@ -198,10 +234,16 @@ select jsonb_build_object(
                     t.id,
                     'stack_id',
                     t.stack_id,
-                    'stack_name',
-                    t.stack_name,
-                    'stack_slug',
-                    t.stack_slug,
+                    'profile_name',
+                    t.profile_name,
+                    'profile_slug',
+                    t.profile_slug,
+                    'stack_type_name',
+                    t.stack_type_name,
+                    'stack_type_slug',
+                    t.stack_type_slug,
+                    'stack_type_icon',
+                    t.stack_type_icon,
                     'tool_id',
                     t.tool_id,
                     'tool_name',
@@ -245,8 +287,8 @@ select jsonb_build_object(
                 jsonb_build_object(
                     'id',
                     t.id,
-                    'stack_id',
-                    t.stack_id,
+                    'profile_id',
+                    t.profile_id,
                     'user_id',
                     t.user_id,
                     'created_at',
@@ -291,3 +333,4 @@ return jsonb_build_object(
 );
 end;
 $$ language plpgsql;
+select pull();
