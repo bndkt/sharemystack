@@ -1,25 +1,16 @@
-create view sync_stacks_view as -- user's own stacks
+create view sync_profiles_view as -- user's own profiles
 select *
-from stacks_view
-where user_id = auth.uid()
+from profiles_view
+where user_id = auth.uid() -- recently updated profiles
 union
 select *
 from (
         select *
-        from stacks_view
+        from profiles_view
         order by updated_at desc
         limit 100
-    ) as updated_query
+    ) as updated_profiles -- starred profiles
 union
 select *
-from stacks_view
-where is_starred is true
-union
-select *
-from stacks_view
-where id in (
-        select stack_id
-        from picks
-        order by updated_at desc
-        limit 25
-    );
+from profiles_view
+where is_starred is true;

@@ -1,15 +1,4 @@
-CREATE view sync_picks_view AS
-SELECT *
-FROM (
-        SELECT *
-        FROM picks_view
-        ORDER BY updated_at DESC
-        LIMIT 25
-    ) AS updated_query
-UNION
-SELECT *
-FROM picks_view
-WHERE stack_id IN (
-        SELECT id
-        FROM sync_stacks_view
-    );
+create view sync_picks_view as
+select picks_view.*
+from picks_view
+    left join sync_stacks_view on (sync_stacks_view.id = picks_view.stack_id);

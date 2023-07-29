@@ -1,11 +1,11 @@
-CREATE OR REPLACE FUNCTION epoch_to_timestamp(epoch TEXT) RETURNS TIMESTAMP WITH TIME ZONE AS $$ BEGIN RETURN TIMESTAMP WITH TIME ZONE 'epoch' + ((epoch::BIGINT) / 1000) * INTERVAL '1 second';
-END;
-$$ LANGUAGE plpgsql;
-CREATE OR REPLACE FUNCTION timestamp_to_epoch(ts TIMESTAMP WITH TIME ZONE) RETURNS BIGINT AS $$ BEGIN RETURN (
-        EXTRACT(
-            EPOCH
-            FROM ts
+create or replace function epoch_to_timestamp(epoch text) returns timestamp with time zone as $$ begin return timestamp with time zone 'epoch' + ((epoch::bigint) / 1000) * interval '1 second';
+end;
+$$ language plpgsql;
+create or replace function timestamp_to_epoch(ts timestamp with time zone) returns bigint as $$ begin return (
+        extract(
+            epoch
+            from ts
         ) * 1000
-    )::BIGINT;
-END;
-$$ LANGUAGE plpgsql;
+    )::bigint;
+end;
+$$ language plpgsql;

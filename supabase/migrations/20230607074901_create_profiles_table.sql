@@ -6,7 +6,7 @@ create table profiles (
   deleted_at timestamp with time zone default null,
   server_created_at timestamp with time zone not null default now(),
   last_modified_at timestamp with time zone not null default now(),
-  user_id uuid not null references auth.users on delete cascade,
+  user_id uuid null default null references auth.users on delete cascade,
   name character varying null,
   slug character varying not null,
   unique (slug),

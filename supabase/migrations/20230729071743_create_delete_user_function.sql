@@ -1,5 +1,5 @@
-CREATE OR REPLACE FUNCTION delete_user() RETURNS VOID AS $$ BEGIN
-DELETE FROM auth.users
-WHERE id = auth.uid();
-END;
-$$ LANGUAGE plpgsql SECURITY DEFINER;
+create or replace function delete_user() returns void as $$ begin
+delete from auth.users
+where id = auth.uid();
+end;
+$$ language plpgsql security definer;

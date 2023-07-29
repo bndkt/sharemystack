@@ -1,98 +1,31 @@
-INSERT INTO public.stacks (
-        id,
-        name,
-        is_featured,
-        slug,
-        twitter,
-        twitter_image_url,
-        website,
-        description,
-        youtube,
-        image,
-        user_id,
-        deleted_at
-    )
-VALUES (
+INSERT INTO public.stacks (id, profile_id)
+VALUES -- Nick Milo
+    (
         '4abd2df7-bd61-457f-8297-47aa33910cc8',
-        'Nick Milo',
-        true,
-        'nickmilo',
-        'NickMilo',
-        'https://pbs.twimg.com/profile_images/1674146602355924992/S1Ys-6VE_400x400.jpg',
-        'https://www.linkingyourthinking.com/',
-        'Nick Milo is a prominent figure in the knowledge management field, best known for his approach to using Obsidian, a popular note-taking app. As the creator of "Linking Your Thinking," he provides in-depth guidance on creating more connected and valuable digital notes, thereby shaping contemporary ideas on personal knowledge management.',
-        'linkingyourthinking',
-        'nickmilo.webp',
-        NULL,
-        NULL
+        'bab77da3-e12d-4a70-8154-91ef366f2302'
     ),
+    -- Ali Abdaal
     (
         '7eef57cd-dfb6-481d-967e-7d3a024f19d2',
-        'Ali Abdaal',
-        true,
-        'aliabdaal',
-        'aliabdaal',
-        'https://pbs.twimg.com/profile_images/1496857274165436420/yjDjLCDh_400x400.jpg',
-        'https://aliabdaal.com/',
-        'Ali Abdaal is a UK - based doctor and popular YouTuber known for his advice on productivity and technology. Drawing from his medical school experiences, he offers practical tips to boost efficiency in work and study, earning millions of views globally.',
-        'aliabdaal',
-        'aliabdaal.webp',
-        NULL,
-        NULL
+        '5f797356-74cb-458d-aedc-18d9f42cbaf1'
     ),
+    -- Tiago Forte
     (
         '211b7b6b-4117-4151-b6bc-cb64214227fd',
-        'Tiago Forte',
-        true,
-        'fortelabs',
-        'fortelabs',
-        'https://pbs.twimg.com/profile_images/1527701676521672707/YXvJP3ac_400x400.jpg',
-        'https://fortelabs.com/',
-        'Tiago Forte is a productivity consultant and founder of Forte Labs, renowned for his method of "Building a Second Brain" which integrates digital tools to enhance productivity. His innovative approach to knowledge management has made him a leading figure in the realm of personal productivity.',
-        'TiagoForte',
-        'tiagoforte.webp',
-        NULL,
-        NULL
+        'dfb8002f-cf56-4134-bfc5-c4137b5a1be0'
     ),
+    -- Thomas Frank
     (
         'c7e04ef0-f3bd-4532-a33f-029c924c0e05',
-        'Thomas Frank',
-        true,
-        'tomfrankly',
-        'TomFrankly',
-        'https://pbs.twimg.com/profile_images/1011750442135678976/pjQtLPdD_400x400.jpg',
-        'https://thomasjfrank.com/',
-        'Thomas Frank is an acclaimed YouTuber and entrepreneur who offers strategic advice on productivity, study tactics, and personal development. Using his own experiences as a student, he''s gained a substantial following by providing viewers with actionable tips for better learning and time management.',
-        'Thomasfrank',
-        'thomasfrank.webp',
-        NULL,
-        NULL
+        '2a2600ae-68a2-4e52-bbeb-ab9862c9e60b'
     ),
+    -- Marie Poulin
     (
         'aeb47866-c97a-4c7a-9967-b98e0d2fea7c',
-        'Marie Poulin',
-        true,
-        'mariepoulin',
-        'mariepoulin',
-        'https://pbs.twimg.com/profile_images/1680058634678714368/uiHqRHdq_400x400.jpg',
-        'https://mariepoulin.com/',
-        'Marie Poulin is a digital strategist and productivity expert, well-known for her innovative use of the note-taking app, Notion. As a Notion specialist, she shares insights on task management, personal organization, and productivity, empowering individuals to effectively manage their digital workspaces.',
-        'MariePoulin',
-        'mariepoulin.webp',
-        NULL,
-        NULL
+        '9ca0529f-aa71-4365-a5a8-024301d547b8'
     ),
+    -- August Bradley
     (
         '061bce7c-3ee1-4660-ad34-4157d79a85ac',
-        'August Bradley',
-        true,
-        'augustbradley',
-        'AugustBradley',
-        'https://pbs.twimg.com/profile_images/1087478571059240960/LoZXD4aY_400x400.jpg',
-        'https://www.yearzero.io/',
-        'August Bradley is a strategic consultant and thought leader in the realm of digital productivity tools, most notably Notion. He has gained a significant following through his comprehensive tutorials and life operating system strategies, helping individuals optimize their productivity and personal growth using technology.',
-        'augustbradley',
-        NULL,
-        NULL,
-        NULL
+        'a1c64b4f-4041-4fa6-a874-9d05dfbc69ee'
     );
