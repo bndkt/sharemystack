@@ -12,7 +12,10 @@
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "update": "pnpm update -i -r -L",
-    "manypkg": "npx @manypkg/cli@latest check"
+    "manypkg": "npx @manypkg/cli@latest check",
+    "dump": "npx supabase db dump -f supabase/exports/dump.sql --data-only -s public",
+    "export": "psql -h db.ltmpiwwmhypfxvbihxdn.supabase.co -p 5432 -d postgres -U postgres -f ./supabase/scripts/export.sql",
+    "import": "PGPASSWORD=postgres psql -h localhost -p 54322 -d postgres -U postgres -f ./supabase/scripts/import.sql"
   },
   "dependencies": {
     "esbuild": "^0.18.17",
