@@ -59,7 +59,9 @@ export default function Index() {
             )}
             {stack.twitter && (
               <Button
-                onPress={() => Linking.openURL(stack.twitter)}
+                onPress={() =>
+                  Linking.openURL(`https://twitter.com/${stack.twitter}`)
+                }
                 icon={<Twitter size="$1.5" color="#1DA1F2" />}
                 unstyled
                 // marginLeft="$3"
@@ -67,7 +69,9 @@ export default function Index() {
             )}
             {stack.youtube && (
               <Button
-                onPress={() => Linking.openURL(stack.youtube)}
+                onPress={() =>
+                  Linking.openURL(`https://youtube.com/${stack.youtube}`)
+                }
                 icon={<Youtube size="$1.5" color="#FF0000" />}
                 unstyled
                 // marginLeft="$3"
