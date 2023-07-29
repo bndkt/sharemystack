@@ -61,7 +61,9 @@ const config: ExpoConfig = {
     appStoreUrl: "https://apps.apple.com/us/app/share-my-stack/id6450111644",
     infoPlist: {
       NSLocationWhenInUseUsageDescription:
-        "We use your location to help you connect with other users nearby and to show you relevant local content.", // Note: The app doesn't use location information, but this has to be included because the OneSignal plugin includes location access logic
+        "Share My Stack uses your location to help you connect with other users nearby and to show you relevant local content.", // Note: The app doesn't use location information, but this has to be included because the OneSignal plugin includes location access logic
+      NSCameraUsageDescription:
+        "Share My Stack app requires access to your photo library to save generated graphics, enabling you to view and share them at your convenience.",
       LSApplicationQueriesSchemes: ["itms", "itms-apps"],
     },
   },
