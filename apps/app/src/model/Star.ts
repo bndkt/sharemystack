@@ -6,8 +6,8 @@ import {
   text,
 } from "@nozbe/watermelondb/decorators";
 
-import { Stack } from "./Stack";
 import { TableName } from "./schema";
+import { Profile } from "./Profile";
 
 export class Star extends Model {
   static table = TableName.STARS;
@@ -16,10 +16,11 @@ export class Star extends Model {
   @readonly @date("updated_at") updatedAt!: Date;
 
   static associations = {
-    [TableName.STACKS]: { type: "belongs_to" as const, key: "stack_id" },
+    [TableName.PROFILES]: { type: "belongs_to" as const, key: "profile_id" },
   };
 
-  @immutableRelation(TableName.STACKS, "stack_id") stack!: Relation<Stack>;
+  @immutableRelation(TableName.PROFILES, "profile_id")
+  profile!: Relation<Profile>;
 
   @text("user_id") userId!: string;
 }

@@ -32,7 +32,7 @@ export class Tool extends Model {
 
   @lazy
   categories = this.collections
-    .get("categories")
+    .get(TableName.CATEGORIES)
     .query(Q.on("categorizations", "tool_id", this.id));
 
   @lazy

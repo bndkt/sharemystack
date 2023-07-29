@@ -3,6 +3,7 @@ import { date, lazy, readonly, text } from "@nozbe/watermelondb/decorators";
 
 import { Tool } from "./Tool";
 import { TableName } from "./schema";
+import { StackType } from "./StackType";
 
 export class Category extends Model {
   static table = TableName.CATEGORIES;
@@ -19,6 +20,10 @@ export class Category extends Model {
       type: "has_many" as const,
       foreignKey: "category_id",
     },
+    [TableName.STACK_TYPES]: {
+      type: "has_many" as const,
+      foreignKey: "category_id",
+    },
   };
 
   @text("name") name!: string;
@@ -29,6 +34,11 @@ export class Category extends Model {
 
   @lazy
   tools = this.collections
-    .get<Tool>("tools")
+    .get<Tool>(TableName.TOOLS)
     .query(Q.on("categorizations", "category_id", this.id));
+
+  @lazy
+  stackTypes = this.collections
+    .get<StackType>(TableName.STACK_TYPES)
+    .query(Q.on("stack_type_categories", "category_id", this.id));
 }
