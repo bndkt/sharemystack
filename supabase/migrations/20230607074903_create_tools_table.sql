@@ -12,7 +12,7 @@ create table tools (
   color character varying null,
   affiliate_link character varying null,
   app_store character varying null,
-  icon text null,
+  icon_svg text null,
   website character varying null,
   twitter character varying null
 );

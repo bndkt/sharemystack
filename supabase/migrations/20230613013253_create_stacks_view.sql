@@ -8,7 +8,7 @@ select stacks.id,
     profiles.slug as profile_slug,
     stack_types.name as stack_type_name,
     stack_types.slug as stack_type_slug,
-    stack_types.icon as stack_type_icon,
+    stack_types.icon_name as stack_type_icon_name,
     count(picks.stack_id) as number_of_picks,
     case
         when max(picks.updated_at) > stacks.updated_at then max(picks.updated_at)

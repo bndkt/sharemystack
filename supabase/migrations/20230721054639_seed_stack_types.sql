@@ -2,7 +2,7 @@ insert into public.stack_types (
         id,
         name,
         slug,
-        icon,
+        icon_name,
         is_coming_soon
     )
 values (

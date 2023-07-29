@@ -27,8 +27,8 @@ select jsonb_build_object(
                     t.slug,
                     'color',
                     t.color,
-                    'icon',
-                    t.icon,
+                    'icon_svg',
+                    t.icon_svg,
                     'website',
                     t.website,
                     'affiliate_link',
@@ -72,8 +72,8 @@ select jsonb_build_object(
                     t.name,
                     'slug',
                     t.slug,
-                    'icon',
-                    t.icon,
+                    'icon_name',
+                    t.icon_name,
                     'number_of_tools',
                     t.number_of_tools,
                     'is_coming_soon',
@@ -164,6 +164,8 @@ select jsonb_build_object(
                     t.is_featured,
                     'number_of_stars',
                     t.number_of_stars,
+                    'is_starred',
+                    t.is_starred,
                     'user_id',
                     t.user_id,
                     'created_at',
@@ -242,8 +244,8 @@ select jsonb_build_object(
                     t.stack_type_name,
                     'stack_type_slug',
                     t.stack_type_slug,
-                    'stack_type_icon',
-                    t.stack_type_icon,
+                    'stack_type_icon_name',
+                    t.stack_type_icon_name,
                     'tool_id',
                     t.tool_id,
                     'tool_name',
@@ -312,6 +314,78 @@ select jsonb_build_object(
         )
     ) into _stars
 from stars t;
+--- stack types
+select jsonb_build_object(
+        'created',
+        '[]'::jsonb,
+        'updated',
+        coalesce(
+            jsonb_agg(
+                jsonb_build_object(
+                    'id',
+                    t.id,
+                    'name',
+                    t.name,
+                    'slug',
+                    t.slug,
+                    'icon_name',
+                    t.icon_name,
+                    'created_at',
+                    timestamp_to_epoch(t.created_at),
+                    'updated_at',
+                    timestamp_to_epoch(t.updated_at)
+                )
+            ) filter (
+                where t.deleted_at is null
+                    and t.last_modified_at > _ts
+            ),
+            '[]'::jsonb
+        ),
+        'deleted',
+        coalesce(
+            jsonb_agg(to_jsonb(t.id)) filter (
+                where t.deleted_at is not null
+                    and t.last_modified_at > _ts
+            ),
+            '[]'::jsonb
+        )
+    ) into _stack_types
+from stack_types t;
+--- stack type categories
+select jsonb_build_object(
+        'created',
+        '[]'::jsonb,
+        'updated',
+        coalesce(
+            jsonb_agg(
+                jsonb_build_object(
+                    'id',
+                    t.id,
+                    'stack_type_id',
+                    t.stack_type_id,
+                    'category_id',
+                    t.category_id,
+                    'created_at',
+                    timestamp_to_epoch(t.created_at),
+                    'updated_at',
+                    timestamp_to_epoch(t.updated_at)
+                )
+            ) filter (
+                where t.deleted_at is null
+                    and t.last_modified_at > _ts
+            ),
+            '[]'::jsonb
+        ),
+        'deleted',
+        coalesce(
+            jsonb_agg(to_jsonb(t.id)) filter (
+                where t.deleted_at is not null
+                    and t.last_modified_at > _ts
+            ),
+            '[]'::jsonb
+        )
+    ) into _stack_type_categories
+from stack_type_categories t;
 return jsonb_build_object(
     'changes',
     jsonb_build_object(
@@ -326,11 +400,16 @@ return jsonb_build_object(
         'picks',
         _picks,
         'stars',
-        _stars
+        _stars,
+        'stack_types',
+        _stack_types,
+        'stack_type_categories',
+        _stack_type_categories,
+        'profiles',
+        _profiles
     ),
     'timestamp',
     timestamp_to_epoch(now())
 );
 end;
 $$ language plpgsql;
-select pull();

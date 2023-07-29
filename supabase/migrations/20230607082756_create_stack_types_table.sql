@@ -9,7 +9,7 @@ create table stack_types (
   name character varying not null,
   slug character varying not null,
   unique (slug),
-  icon character varying not null,
+  icon_name character varying not null,
   is_coming_soon boolean not null default false
 );
 alter table stack_types enable row level security;

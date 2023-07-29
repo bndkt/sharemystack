@@ -6,7 +6,7 @@ insert into public.tools (
         website,
         twitter,
         color,
-        icon,
+        icon_svg,
         affiliate_link,
         app_store
     )
@@ -3827,7 +3827,7 @@ values (
         NULL,
         NULL
     ),
-(
+    (
         'a8315775-aabe-4eec-a4f4-952fa2c402fc',
         'Figma',
         'figma',

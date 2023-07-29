@@ -4,13 +4,13 @@ select picks.*,
     profiles.slug as profile_slug,
     stack_types.name as stack_type_name,
     stack_types.slug as stack_type_slug,
-    stack_types.icon as stack_type_icon,
+    stack_types.icon_name as stack_type_icon_name,
     categories.name as category_name,
     categories.slug as category_slug,
-    categories.icon as category_icon,
+    categories.icon_name as category_icon_name,
     tools.name as tool_name,
     tools.slug as tool_slug,
-    tools.icon as tool_icon,
+    tools.icon_svg as tool_icon_svg,
     tools.color as tool_color
 from picks
     left join stacks on stacks.id = picks.stack_id

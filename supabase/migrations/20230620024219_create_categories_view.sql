@@ -2,7 +2,7 @@ create view categories_view as
 select categories.id,
     categories.name,
     categories.slug,
-    categories.icon,
+    categories.icon_name,
     categories.is_coming_soon,
     categories.created_at,
     categories.deleted_at,
