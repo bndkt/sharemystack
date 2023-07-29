@@ -11,6 +11,9 @@ import { Stack } from "@/model/Stack";
 import { Star } from "@/model/Star";
 import { Tool } from "@/model/Tool";
 import { schema } from "@/model/schema";
+import { Profile } from "@/model/Profile";
+import { StackType } from "@/model/StackType";
+import { StackTypeCategory } from "@/model/StackTypeCategory";
 
 // First, create the adapter to the underlying database:
 const adapter = new SQLiteAdapter({
@@ -32,7 +35,17 @@ const adapter = new SQLiteAdapter({
 // Then, make a Watermelon database from it!
 export const database = new Database({
   adapter,
-  modelClasses: [Tool, Category, Categorization, Stack, Pick, Star],
+  modelClasses: [
+    Profile,
+    Tool,
+    Category,
+    Categorization,
+    StackType,
+    StackTypeCategory,
+    Stack,
+    Pick,
+    Star,
+  ],
 });
 
 setGenerator(() => Crypto.randomUUID());

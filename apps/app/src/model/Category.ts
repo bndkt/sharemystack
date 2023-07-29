@@ -28,7 +28,7 @@ export class Category extends Model {
 
   @text("name") name!: string;
   @text("slug") slug!: string;
-  @text("icon") icon!: string;
+  @text("icon_name") iconName!: string;
   @text("is_coming_soon") isComingSoon!: boolean;
   @text("number_of_tools") numberOfTools!: number;
 

@@ -23,7 +23,7 @@ export class Tool extends Model {
 
   @text("name") name!: string;
   @text("slug") slug!: string;
-  @text("icon") icon?: string;
+  @text("icon_svg") iconSvg?: string;
   @text("color") color?: string;
   @text("affiliate_link") affiliateLink?: string;
   @text("app_store") appStore?: string;
