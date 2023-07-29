@@ -1,5 +1,7 @@
 import { Avatar, Text, XStack, YStack } from "tamagui";
 
+import { DeleteUserButton } from "./DeleteUserButton";
+
 import { SignOutButton } from "@/components/auth/SignOutButton";
 import { withAuth } from "@/components/auth/withAuth";
 import { useAuth } from "@/hooks/useAuth";
@@ -9,7 +11,7 @@ function User() {
 
   return (
     <YStack padding="$3">
-      <XStack marginBottom="$3">
+      <XStack>
         {user?.user_metadata.picture && (
           <Avatar circular size="$3" marginRight="$3">
             <Avatar.Image src={user.user_metadata.picture} />
@@ -21,6 +23,7 @@ function User() {
           <Text>Email: {user?.email}</Text>
         </YStack>
       </XStack>
+      <DeleteUserButton />
       <SignOutButton />
     </YStack>
   );

@@ -353,6 +353,7 @@ export interface Database {
       tools: {
         Row: {
           affiliate_link: string | null
+          app_store: string | null
           color: string | null
           created_at: string
           deleted_at: string | null
@@ -368,6 +369,7 @@ export interface Database {
         }
         Insert: {
           affiliate_link?: string | null
+          app_store?: string | null
           color?: string | null
           created_at?: string
           deleted_at?: string | null
@@ -383,6 +385,7 @@ export interface Database {
         }
         Update: {
           affiliate_link?: string | null
+          app_store?: string | null
           color?: string | null
           created_at?: string
           deleted_at?: string | null
@@ -640,6 +643,7 @@ export interface Database {
         Row: {
           affiliate_link: string | null
           all_picks: number | null
+          app_store: string | null
           color: string | null
           created_at: string | null
           deleted_at: string | null
@@ -657,6 +661,10 @@ export interface Database {
       }
     }
     Functions: {
+      delete_user: {
+        Args: Record<PropertyKey, never>
+        Returns: undefined
+      }
       epoch_to_timestamp: {
         Args: {
           epoch: string
