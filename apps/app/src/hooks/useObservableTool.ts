@@ -10,7 +10,7 @@ export function useObservableTool({
   slug,
   loadPicks,
 }: {
-  slug: string;
+  slug?: string;
   loadPicks?: boolean;
 }) {
   const database = useDatabase();
@@ -19,20 +19,22 @@ export function useObservableTool({
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const toolsCollection = database.collections.get<Tool>(TableName.TOOLS);
+    if (slug) {
+      const toolsCollection = database.collections.get<Tool>(TableName.TOOLS);
 
-    const toolsQuery = toolsCollection.query(
-      Q.where("slug", Q.like(slug)),
-      Q.take(1)
-    );
-    const toolsObservable = toolsQuery.observe();
+      const toolsQuery = toolsCollection.query(
+        Q.where("slug", Q.like(slug)),
+        Q.take(1)
+      );
+      const toolsObservable = toolsQuery.observe();
 
-    const subscription = toolsObservable.subscribe((newTools) => {
-      setTool(newTools[0]);
-      setLoading(false);
-    });
+      const subscription = toolsObservable.subscribe((newTools) => {
+        setTool(newTools[0]);
+        setLoading(false);
+      });
 
-    return () => subscription.unsubscribe();
+      return () => subscription.unsubscribe();
+    }
   }, [database, slug]);
 
   useEffect(() => {

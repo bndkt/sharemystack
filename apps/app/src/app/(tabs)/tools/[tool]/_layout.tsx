@@ -1,18 +1,16 @@
 import { Stack, useLocalSearchParams } from "expo-router";
-import { H3, XStack, YStack } from "tamagui";
 
 import { Loading } from "@/components/Loading";
-import { MaterialTopTabs } from "@/components/MaterialTopTabs";
-import { ToolIcon } from "@/components/icons/ToolIcon";
+import { ToolLayout } from "@/components/tools/tool/ToolLayout";
 import { useObservableTool } from "@/hooks/useObservableTool";
 
 export default function Layout() {
-  const { tool: slug } = useLocalSearchParams<{ tool: string }>();
+  const { tool: toolSlug } = useLocalSearchParams<{ tool: string }>();
 
-  if (!slug) throw new Error("No tool slug provided");
+  if (!toolSlug) throw new Error("No tool slug provided");
 
   const { tool } = useObservableTool({
-    slug,
+    slug: toolSlug,
   });
 
   if (!tool) {
@@ -21,17 +19,8 @@ export default function Layout() {
 
   return (
     <>
-      <Stack.Screen options={{ title: tool.name ?? "" }} />
-      <YStack fullscreen>
-        <XStack padding="$3" alignItems="center">
-          <ToolIcon tool={tool} size="$3" />
-          <H3 marginLeft="$3">{tool.name}</H3>
-        </XStack>
-        <MaterialTopTabs>
-          <MaterialTopTabs.Screen name="index" options={{ title: "Home" }} />
-          <MaterialTopTabs.Screen name="stacks" options={{ title: "Stacks" }} />
-        </MaterialTopTabs>
-      </YStack>
+      <Stack.Screen name="../" options={{ title: tool.name ?? "" }} />
+      <ToolLayout tool={tool} />
     </>
   );
 }
