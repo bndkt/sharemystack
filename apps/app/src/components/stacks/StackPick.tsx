@@ -57,7 +57,7 @@ export function StackPick({
       <ListItem
         title={tool.name}
         subTitle={category.name}
-        icon={<ToolIcon tool={tool} size={36} />}
+        icon={<ToolIcon tool={tool} size="$3" />}
       />
     </SwipeableRow>
   ) : (
