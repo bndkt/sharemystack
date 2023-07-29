@@ -18,7 +18,7 @@ export function SuggestionButton({
       onPress={() => {
         WebBrowser.openBrowserAsync(config.feedbackLink);
       }}
-      icon={icon ?? <PlusCircle />}
+      icon={icon ?? <PlusCircle size="$1" />}
       margin="$3"
     >
       {text ?? `Suggest new ${suggestion}`}
