@@ -2,8 +2,8 @@ import { Stack, useLocalSearchParams } from "expo-router";
 
 import { Loading } from "@/components/Loading";
 import { ToolLayout } from "@/components/tools/tool/ToolLayout";
-import { useObservableCategory } from "@/hooks/useObservableCategory";
-import { useObservableTool } from "@/hooks/useObservableTool";
+import { useCategory } from "@/hooks/data/useCategory";
+import { useTool } from "@/hooks/data/useTool";
 
 export default function Layout() {
   const { category: categorySlug } = useLocalSearchParams<{
@@ -12,7 +12,7 @@ export default function Layout() {
 
   if (!categorySlug) throw new Error("No category slug provided");
 
-  const { category } = useObservableCategory({
+  const { category } = useCategory({
     slug: categorySlug,
   });
 
@@ -20,7 +20,7 @@ export default function Layout() {
 
   if (!toolSlug) throw new Error("No tool slug provided");
 
-  const { tool } = useObservableTool({
+  const { tool } = useTool({
     slug: toolSlug,
   });
 

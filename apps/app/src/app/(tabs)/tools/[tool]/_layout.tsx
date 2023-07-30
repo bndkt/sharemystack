@@ -2,14 +2,14 @@ import { Stack, useLocalSearchParams } from "expo-router";
 
 import { Loading } from "@/components/Loading";
 import { ToolLayout } from "@/components/tools/tool/ToolLayout";
-import { useObservableTool } from "@/hooks/useObservableTool";
+import { useTool } from "@/hooks/data/useTool";
 
 export default function Layout() {
   const { tool: toolSlug } = useLocalSearchParams<{ tool: string }>();
 
   if (!toolSlug) throw new Error("No tool slug provided");
 
-  const { tool } = useObservableTool({
+  const { tool } = useTool({
     slug: toolSlug,
   });
 

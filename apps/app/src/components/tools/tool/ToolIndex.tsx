@@ -3,14 +3,14 @@ import { Text, YStack } from "tamagui";
 
 import { Loading } from "@/components/Loading";
 import { ToolLink } from "@/components/tools/ToolLink";
-import { useObservableTool } from "@/hooks/useObservableTool";
+import { useTool } from "@/hooks/data/useTool";
 
 export function ToolIndex() {
   const { tool: slug } = useLocalSearchParams<{ tool: string }>();
 
   if (!slug) throw new Error("No tool slug provided");
 
-  const { tool } = useObservableTool({
+  const { tool } = useTool({
     slug,
   });
 

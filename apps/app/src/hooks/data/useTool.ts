@@ -5,20 +5,21 @@ import { useEffect, useState } from "react";
 import { Tool } from "@/model/Tool";
 import { TableName } from "@/model/schema";
 
-export function useObservableTools() {
+export function useTool({ slug }: { slug: string }) {
   const database = useDatabase();
-  const [tools, setTools] = useState<Tool[]>([]);
+  const [tool, setTool] = useState<Tool>();
+
+  const categoriesQuery = database.collections
+    .get<Tool>(TableName.TOOLS)
+    .query(Q.where("slug", slug), Q.take(1));
 
   useEffect(() => {
-    const toolsCollection = database.collections.get<Tool>(TableName.TOOLS);
-    const toolsObservable = toolsCollection.query(Q.sortBy("name")).observe();
-
-    const subscription = toolsObservable.subscribe((newTools) => {
-      setTools(newTools);
+    const subscription = categoriesQuery.observe().subscribe((data) => {
+      setTool(data[0] ?? null);
     });
 
     return () => subscription.unsubscribe();
   }, [database]);
 
-  return tools;
+  return { tool };
 }

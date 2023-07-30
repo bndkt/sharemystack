@@ -20,7 +20,9 @@ export default function CategoryTools() {
 
   return (
     <>
-      <Stack.Screen options={{ title: category?.name ?? "" }} />
+      <Stack.Screen
+        options={{ title: category?.name ?? "", headerBackTitle: "Categories" }}
+      />
       <CustomSuspense
         data={stack}
         name="stack"
