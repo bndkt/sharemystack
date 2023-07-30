@@ -25,8 +25,6 @@ export const loader = async ({ request, context }: LoaderArgs) => {
   });
 
   if (data.url) {
-    console.log("Redirect", data.url);
-
     return redirect(data.url, {
       headers: response.headers,
     });

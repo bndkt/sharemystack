@@ -54,8 +54,6 @@ declare module "@remix-run/server-runtime" {
 }
 
 export const loader: LoaderFunction = async ({ context }) => {
-  console.log("LOADER", context.env);
-
   return json<LoaderData>({
     measurementId: context.env.MEASUREMENT_ID,
     supabaseUrl: context.env.SUPABASE_URL,

@@ -15,7 +15,6 @@ export async function loader({ params }: LoaderArgs) {
 
 export default function Stack() {
   const data = useLoaderData<typeof loader>();
-  console.log({ data });
 
   const link = `https://${config.domain}/@${data.stack}`;
 
