@@ -25,7 +25,7 @@ values (
         'IDE',
         'ide',
         'TerminalSquare',
-        true
+        false
     ),
     (
         'cf44a840-289b-4667-8ce5-39a705c9725f',

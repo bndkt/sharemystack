@@ -18,7 +18,7 @@ export function Stream() {
         return (
           <ListItem
             title={`${item.profileName} (@${item.profileSlug})`}
-            subTitle={`added ${item.toolName} in ${item.categoryName}`}
+            subTitle={`added ${item.toolName} to their ${item.stackTypeName} stack`}
             onPress={() =>
               router.push(`/@${item.profileSlug}/${item.stackTypeSlug}`)
             }

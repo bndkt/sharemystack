@@ -20,7 +20,7 @@ export class Category extends Model {
       type: "has_many" as const,
       foreignKey: "category_id",
     },
-    [TableName.STACK_TYPES]: {
+    [TableName.STACK_TYPE_CATEGORIES]: {
       type: "has_many" as const,
       foreignKey: "category_id",
     },
@@ -35,10 +35,10 @@ export class Category extends Model {
   @lazy
   tools = this.collections
     .get<Tool>(TableName.TOOLS)
-    .query(Q.on("categorizations", "category_id", this.id));
+    .query(Q.on(TableName.CATEGORIZATIONS, "category_id", this.id));
 
   @lazy
   stackTypes = this.collections
     .get<StackType>(TableName.STACK_TYPES)
-    .query(Q.on("stack_type_categories", "category_id", this.id));
+    .query(Q.on(TableName.STACK_TYPE_CATEGORIES, "category_id", this.id));
 }

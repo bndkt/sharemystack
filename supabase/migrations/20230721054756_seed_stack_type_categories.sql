@@ -100,10 +100,10 @@ values -- Productivity
         '4f3010d8-c537-40fc-9499-287ffbe1fcca',
         '05915bf6-137b-4e40-8e42-c9c453426ed2'
     ),
-    -- Developer
+    -- Development
     -- Terminal
     (
-        '4f3010d8-c537-40fc-9499-287ffbe1fcca',
+        '1efd287a-3f0c-4c02-9e13-b596b99b259e',
         'cf44a840-289b-4667-8ce5-39a705c9725f'
     ),
     -- IDE

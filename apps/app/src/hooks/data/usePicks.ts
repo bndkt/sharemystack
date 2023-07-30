@@ -12,7 +12,7 @@ export function usePicks() {
 
   const picksQuery = database.collections
     .get<Pick>(TableName.PICKS)
-    .query(Q.sortBy("updated_at"));
+    .query(Q.sortBy("updated_at", "desc"));
 
   useEffect(() => {
     const subscription = picksQuery.observe().subscribe((data) => {

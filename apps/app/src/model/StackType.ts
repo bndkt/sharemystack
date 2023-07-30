@@ -30,5 +30,5 @@ export class StackType extends Model {
   @lazy
   categories = this.collections
     .get<Category>(TableName.CATEGORIES)
-    .query(Q.on("stack_type_categories", "stack_type_id", this.id));
+    .query(Q.on(TableName.STACK_TYPE_CATEGORIES, "stack_type_id", this.id));
 }
