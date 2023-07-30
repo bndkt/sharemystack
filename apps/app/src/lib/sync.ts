@@ -47,7 +47,6 @@ export async function sync(reset = false) {
       }
 
       console.log(`🍉 Changes pushed at ${new Date().toISOString()} UTC`);
-      console.log("🍉", { data });
     },
     // migrationsEnabledAtVersion: 1,
     // log: logger.newLog(),

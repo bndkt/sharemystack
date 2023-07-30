@@ -8,9 +8,10 @@ export function CategoryIcon({
 }: {
   name?: string | null;
   color?: string | null;
-  size: Token;
+  size?: Token;
 }) {
   color ??= "$color";
+  size ??= "$1.5";
 
   const iconNames = Object.keys(icons);
   if (!name || !iconNames.includes(name)) {

@@ -2,7 +2,7 @@ import { Check, ChevronRight, Plus } from "@tamagui/lucide-icons";
 import { useRouter } from "expo-router";
 import { Button, ListItem } from "tamagui";
 
-import { ToolIcon } from "../icons/ToolIcon";
+import { ToolIcon } from "./ToolIcon";
 
 import { useAnalytics } from "@/hooks/useAnalytics";
 import { useAuth } from "@/hooks/useAuth";

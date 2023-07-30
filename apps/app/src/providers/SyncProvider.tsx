@@ -31,6 +31,9 @@ export function SyncProvider({ children }: { children: ReactNode }) {
         "stacks",
         "picks",
         "stars",
+        "profiles",
+        "stack_types",
+        "stack_type_categories",
       ])
       .subscribe({
         next: (changes) => {

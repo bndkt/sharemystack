@@ -2,9 +2,9 @@ import { AuthUser, AuthSession } from "@supabase/supabase-js";
 import { ReactNode, createContext, useEffect, useState } from "react";
 
 import { useAnalytics } from "@/hooks/useAnalytics";
-import { useObservableStack } from "@/hooks/useObservableStack";
 import { supabase } from "@/lib/supabase";
-import { Pick } from "@/model/Pick";
+import { Profile } from "@/model/Profile";
+import { useProfile } from "@/hooks/data/useProfile";
 import { Stack } from "@/model/Stack";
 
 export const AuthContext = createContext<{
@@ -18,9 +18,15 @@ export const AuthContext = createContext<{
     user: AuthUser | null;
   }) => void;
   signOut: () => void;
-  stack?: Stack | undefined;
-  picks?: Pick[] | undefined;
-  isLoadingStack?: boolean;
+  profile?: Profile | null | undefined;
+  createProfile?: ({
+    name,
+    slug,
+  }: {
+    name: string;
+    slug: string;
+  }) => Promise<void>;
+  stacks?: Stack[];
 }>({
   session: null,
   user: null,
@@ -31,14 +37,7 @@ export const AuthContext = createContext<{
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [session, setSession] = useState<AuthSession | null>(null);
   const [user, setUser] = useState<AuthUser | null>(null);
-  const {
-    stack,
-    picks,
-    loading: isLoadingStack,
-  } = useObservableStack({
-    userId: user?.id ?? null,
-    loadPicks: true,
-  });
+  const { profile, createProfile, stacks } = useProfile({ user });
   const { identify, logout, capture } = useAnalytics();
 
   async function signIn({
@@ -102,9 +101,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         user,
         signIn,
         signOut,
-        stack,
-        picks,
-        isLoadingStack,
+        profile,
+        createProfile,
+        stacks,
       }}
     >
       {children}
