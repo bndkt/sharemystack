@@ -23,6 +23,8 @@ export class StackTypeCategory extends Model {
     [TableName.CATEGORIES]: { type: "belongs_to" as const, key: "category_id" },
   };
 
-  @immutableRelation("stack", "stack_type_id") tool!: Relation<StackType>;
-  @immutableRelation("categories", "category_id") category!: Relation<Category>;
+  @immutableRelation(TableName.STACK_TYPES, "stack_type_id")
+  tool!: Relation<StackType>;
+  @immutableRelation(TableName.CATEGORIES, "category_id")
+  category!: Relation<Category>;
 }

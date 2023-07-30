@@ -14,15 +14,15 @@ values (
     ),
     (
         '1efd287a-3f0c-4c02-9e13-b596b99b259e',
-        'Developer',
-        'developer',
+        'Development',
+        'development',
         'Code',
         false
     ),
     (
         'cb9ceb1e-f02a-4ffb-b0ab-9540c496fbf6',
-        'Teacher',
-        'teacher',
+        'School',
+        'school',
         'School2',
         false
     );

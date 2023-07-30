@@ -4,10 +4,17 @@ insert into public.stacks (
         stack_type_id
     )
 values -- Nick Milo
+    -- Productivity
     (
         '4abd2df7-bd61-457f-8297-47aa33910cc8',
         'bab77da3-e12d-4a70-8154-91ef366f2302',
         '4f3010d8-c537-40fc-9499-287ffbe1fcca'
+    ),
+    -- Developer
+    (
+        gen_random_uuid(),
+        'bab77da3-e12d-4a70-8154-91ef366f2302',
+        '1efd287a-3f0c-4c02-9e13-b596b99b259e'
     ),
     -- Ali Abdaal
     (

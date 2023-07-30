@@ -20,6 +20,7 @@ export class Categorization extends Model {
     [TableName.CATEGORIES]: { type: "belongs_to" as const, key: "category_id" },
   };
 
-  @immutableRelation("tools", "tool_id") tool!: Relation<Tool>;
-  @immutableRelation("categories", "category_id") category!: Relation<Category>;
+  @immutableRelation(TableName.TOOLS, "tool_id") tool!: Relation<Tool>;
+  @immutableRelation(TableName.CATEGORIES, "category_id")
+  category!: Relation<Category>;
 }

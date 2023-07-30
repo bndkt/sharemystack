@@ -7,8 +7,7 @@ create table stacks (
   server_created_at timestamp with time zone not null default now(),
   last_modified_at timestamp with time zone not null default now(),
   profile_id uuid references profiles on delete cascade,
-  stack_type_id uuid references stack_types on delete cascade,
-  is_primary boolean not null default false
+  stack_type_id uuid references stack_types on delete cascade
 );
 create unique index unique_index_stacks on stacks (profile_id, stack_type_id)
 where deleted_at is null;

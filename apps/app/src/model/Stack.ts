@@ -1,6 +1,7 @@
-import { Model, Q } from "@nozbe/watermelondb";
+import { Model, Q, Relation } from "@nozbe/watermelondb";
 import {
   date,
+  immutableRelation,
   lazy,
   readonly,
   text,
@@ -11,6 +12,7 @@ import { Category } from "./Category";
 import { Pick } from "./Pick";
 import { Tool } from "./Tool";
 import { TableName } from "./schema";
+import { StackType } from "./StackType";
 
 export class Stack extends Model {
   static table = TableName.STACKS;
@@ -29,7 +31,12 @@ export class Stack extends Model {
     },
   };
 
-  @text("is_primary") isPrimary!: boolean;
+  @text("stack_type_name") stackTypeName!: string;
+  @text("stack_type_slug") stackTypeSlug!: string;
+  @text("stack_type_icon_name") stackTypeIconName!: string;
+
+  @immutableRelation(TableName.STACK_TYPES, "stack_type_id")
+  stackType!: Relation<StackType>;
 
   @lazy
   picks = this.collections

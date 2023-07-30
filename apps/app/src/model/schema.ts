@@ -85,6 +85,9 @@ export const schema = appSchema({
       columns: [
         { name: "profile_id", type: "string", isIndexed: true },
         { name: "stack_type_id", type: "string", isIndexed: true },
+        { name: "stack_type_slug", type: "string", isIndexed: true },
+        { name: "stack_type_name", type: "string" },
+        { name: "stack_type_icon_name", type: "string" },
         { name: "created_at", type: "number" },
         { name: "updated_at", type: "number" },
       ],
