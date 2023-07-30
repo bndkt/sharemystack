@@ -5,19 +5,21 @@ import { Loading } from "@/components/Loading";
 import { withAuth } from "@/components/auth/withAuth";
 import { List } from "@/components/list";
 import { useAuth } from "@/hooks/useAuth";
-import { CreateProfile } from "@/components/profiles/CreateProfile";
-import { MyProfileHeader } from "@/components/profiles/MyProfileHeader";
+import { CreateProfile } from "@/components/my/CreateProfile";
+import { MyProfileHeader } from "@/components/my/MyProfileHeader";
+import { MyStacks } from "@/components/my/MyStacks";
+import { CustomSuspense } from "@/components/loading/CustomSuspense";
 
-export function MyStack() {
+export function MyProfile() {
   const { profile, stacks } = useAuth();
 
   return profile ? (
     <YStack fullscreen>
       <MyProfileHeader profile={profile} />
-      <List
+      <CustomSuspense
         data={stacks}
-        placeholder="You have not added any stacks to your profile yet."
-        renderItem={({ item }) => <ListItem title={item.id} />}
+        name="stacks"
+        component={(stacks) => <MyStacks profile={profile} stacks={stacks} />}
       />
       {/* <Slot /> */}
     </YStack>
@@ -28,4 +30,4 @@ export function MyStack() {
   );
 }
 
-export default withAuth(MyStack);
+export default withAuth(MyProfile);

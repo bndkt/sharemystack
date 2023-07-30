@@ -13,6 +13,7 @@ import { Pick } from "./Pick";
 import { Tool } from "./Tool";
 import { TableName } from "./schema";
 import { StackType } from "./StackType";
+import { Profile } from "./Profile";
 
 export class Stack extends Model {
   static table = TableName.STACKS;
@@ -35,6 +36,8 @@ export class Stack extends Model {
   @text("stack_type_slug") stackTypeSlug!: string;
   @text("stack_type_icon_name") stackTypeIconName!: string;
 
+  @immutableRelation(TableName.PROFILES, "profile_id")
+  profile!: Relation<Profile>;
   @immutableRelation(TableName.STACK_TYPES, "stack_type_id")
   stackType!: Relation<StackType>;
 

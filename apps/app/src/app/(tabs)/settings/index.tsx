@@ -11,7 +11,10 @@ export default function Index() {
         <User />
       </YStack>
       <YStack>
-        <SuggestionButton text="Give Feedback" icon={<MessageSquare />} />
+        <SuggestionButton
+          text="Give Feedback"
+          icon={<MessageSquare size="$1" />}
+        />
       </YStack>
     </YStack>
   );

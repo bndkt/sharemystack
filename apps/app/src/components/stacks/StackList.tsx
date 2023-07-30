@@ -26,7 +26,7 @@ export function StackList({
             <CustomSuspense
               promise={item.tool.fetch()}
               name="tool"
-              component={(tool) => <ToolIcon tool={tool} />}
+              component={(tool) => <ToolIcon tool={tool} size="$1.5" />}
             />
           }
         />

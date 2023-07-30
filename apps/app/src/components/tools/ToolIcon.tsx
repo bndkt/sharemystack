@@ -4,11 +4,10 @@ import { SvgXml } from "react-native-svg";
 
 import { Tool } from "@/model/Tool";
 
-export function ToolIcon({ tool, size }: { tool: Tool; size?: Token }) {
+export function ToolIcon({ tool, size }: { tool: Tool; size: Token }) {
   const theme = useTheme();
 
   const color = tool.color?.length ? tool.color : theme.color.val;
-  size ??= "$1.5";
 
   const width = getTokenValue(size, "size");
 

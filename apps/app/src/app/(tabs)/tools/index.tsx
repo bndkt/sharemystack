@@ -5,10 +5,10 @@ import { ListItem, YStack } from "tamagui";
 import { SuggestionButton } from "@/components/SuggestionButton";
 import { ToolIcon } from "@/components/tools/ToolIcon";
 import { List } from "@/components/list";
-import { useObservableTools } from "@/hooks/useObservableTools";
+import { useTools } from "@/hooks/data/useTools";
 
 export default function Tools() {
-  const tools = useObservableTools();
+  const { tools } = useTools();
 
   return (
     <YStack fullscreen>

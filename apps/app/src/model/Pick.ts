@@ -23,10 +23,13 @@ export class Pick extends Model {
     [TableName.STACKS]: { type: "belongs_to" as const, key: "stack_id" },
   };
 
-  @text("stack_name") stackName!: string;
-  @text("stack_slug") stackSlug!: string;
+  @text("profile_name") profileName!: string;
+  @text("profile_slug") profileSlug!: string;
   @text("tool_name") toolName!: string;
   @text("tool_slug") toolSlug!: string;
+  @text("stack_type_name") stackTypeName!: string;
+  @text("stack_type_slug") stackTypeSlug!: string;
+  @text("stack_type_icon_name") stackTypeIconName!: string;
   @text("category_name") categoryName!: string;
   @text("category_slug") categorySlug!: string;
   @text("is_featured") isFeatured!: boolean;

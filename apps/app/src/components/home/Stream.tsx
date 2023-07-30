@@ -2,15 +2,13 @@ import { Layers } from "@tamagui/lucide-icons";
 import { useRouter } from "expo-router";
 import { ListItem } from "tamagui";
 
-import { StreamIcon } from "./StreamIcon";
 import { List } from "../list";
-
-import { useObservablePicks } from "@/hooks/useObservablePicks";
+import { usePicks } from "@/hooks/data/usePicks";
+import { CustomSuspense } from "../loading/CustomSuspense";
+import { ToolIcon } from "../tools/ToolIcon";
 
 export function Stream() {
-  const picks = useObservablePicks().filter(
-    (pick) => pick.toolName && pick.stackName && pick.stackSlug
-  );
+  const { picks } = usePicks();
   const router = useRouter();
 
   return (
@@ -19,11 +17,19 @@ export function Stream() {
       renderItem={({ item }) => {
         return (
           <ListItem
-            icon={<StreamIcon pick={item} />}
-            title={`${item.stackName} (@${item.stackSlug})`}
+            title={`${item.profileName} (@${item.profileSlug})`}
             subTitle={`added ${item.toolName} in ${item.categoryName}`}
-            onPress={() => router.push(`/(tabs)/stacks/@${item.stackSlug}`)}
+            onPress={() =>
+              router.push(`/@${item.profileSlug}/${item.stackTypeSlug}`)
+            }
             iconAfter={<Layers size="$1.5" />}
+            icon={
+              <CustomSuspense
+                promise={item.tool.fetch()}
+                name="tool"
+                component={(tool) => <ToolIcon tool={tool} size="$1.5" />}
+              />
+            }
           />
         );
       }}

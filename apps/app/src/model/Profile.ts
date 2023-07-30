@@ -10,6 +10,7 @@ import {
 import { Stack } from "./Stack";
 import { Star } from "./Star";
 import { TableName } from "./schema";
+import { StackType } from "./StackType";
 
 export class Profile extends Model {
   static table = TableName.PROFILES;
@@ -51,15 +52,30 @@ export class Profile extends Model {
     .query(Q.where("stack_id", this.id));
 
   @writer async addStar(userId: string) {
-    const star = await this.collections.get<Star>("stars").create((star) => {
-      star.profile.set(this);
-      star.userId = userId;
-    });
+    const star = await this.collections
+      .get<Star>(TableName.STARS)
+      .create((star) => {
+        star.profile.set(this);
+        star.userId = userId;
+      });
 
     return star;
   }
 
   @writer async removeStar() {
     await this.stars.markAllAsDeleted();
+  }
+
+  @writer async addStack(stackType: StackType) {
+    const newStack = await this.collections
+      .get<Stack>(TableName.STACKS)
+      .create((stack) => {
+        stack.profile.set(this);
+        stack.stackType.set(stackType);
+        stack.stackTypeName = stackType.name;
+        stack.stackTypeSlug = stackType.slug;
+        stack.stackTypeIconName = stackType.iconName;
+      });
+    return newStack;
   }
 }
