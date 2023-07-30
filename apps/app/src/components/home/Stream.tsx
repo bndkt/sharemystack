@@ -3,9 +3,10 @@ import { useRouter } from "expo-router";
 import { ListItem } from "tamagui";
 
 import { List } from "../list";
-import { usePicks } from "@/hooks/data/usePicks";
 import { CustomSuspense } from "../loading/CustomSuspense";
 import { ToolIcon } from "../tools/ToolIcon";
+
+import { usePicks } from "@/hooks/data/usePicks";
 
 export function Stream() {
   const { picks } = usePicks();

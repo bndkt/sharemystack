@@ -4,9 +4,9 @@ import { ListItem, Text, YStack } from "tamagui";
 
 import { CategoryIcon } from "@/components/categories/CategoryIcon";
 import { List } from "@/components/list";
-import { useAuth } from "@/hooks/useAuth";
 import { useProfile } from "@/hooks/data/useProfile";
 import { useStackType } from "@/hooks/data/useStackType";
+import { useAuth } from "@/hooks/useAuth";
 
 export default function Index() {
   const { stackType: slug } = useLocalSearchParams<{

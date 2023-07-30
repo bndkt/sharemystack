@@ -1,9 +1,9 @@
+import { Q } from "@nozbe/watermelondb";
 import { useDatabase } from "@nozbe/watermelondb/hooks";
 import { useEffect, useState } from "react";
 
-import { TableName } from "@/model/schema";
 import { StackType } from "@/model/StackType";
-import { Q } from "@nozbe/watermelondb";
+import { TableName } from "@/model/schema";
 
 export function useStackTypes() {
   const database = useDatabase();

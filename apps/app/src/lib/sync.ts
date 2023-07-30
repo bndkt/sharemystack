@@ -40,7 +40,7 @@ export async function sync(reset = false) {
     pushChanges: async ({ changes, lastPulledAt }) => {
       console.log("🍉 ⬆️ Pushing changes ...");
 
-      const { data, error } = await supabase.rpc("push", { changes });
+      const { error } = await supabase.rpc("push", { changes });
 
       if (error) {
         throw new Error("🍉".concat(error.message));

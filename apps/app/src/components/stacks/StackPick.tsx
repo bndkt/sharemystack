@@ -3,10 +3,9 @@ import { useEffect, useState } from "react";
 import { ListItem } from "tamagui";
 
 import { Loading } from "../Loading";
-import { ToolIcon } from "../tools/ToolIcon";
 import { SwipeableRow } from "../list/SwipeableRow";
+import { ToolIcon } from "../tools/ToolIcon";
 
-import { useAuth } from "@/hooks/useAuth";
 import { Category } from "@/model/Category";
 import { Pick } from "@/model/Pick";
 import { Tool } from "@/model/Tool";

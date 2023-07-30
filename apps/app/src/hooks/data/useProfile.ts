@@ -1,12 +1,12 @@
 import { Q } from "@nozbe/watermelondb";
 import { useDatabase } from "@nozbe/watermelondb/hooks";
+import { AuthUser } from "@supabase/supabase-js";
 import { useEffect, useState } from "react";
 
-import { TableName } from "@/model/schema";
-import { Profile } from "@/model/Profile";
-import { AuthUser } from "@supabase/supabase-js";
-import { Stack } from "@/model/Stack";
 import { Pick } from "@/model/Pick";
+import { Profile } from "@/model/Profile";
+import { Stack } from "@/model/Stack";
+import { TableName } from "@/model/schema";
 
 type ProfileSelector =
   | {
@@ -47,7 +47,7 @@ export function useProfile({ user, slug, stackTypeSlug }: ProfileSelector) {
     : undefined;
 
   // Query profile by user id or slug
-  let profilesQuery = user
+  const profilesQuery = user
     ? profilesCollection.query([Q.where("user_id", user.id), Q.take(1)])
     : slug
     ? profilesCollection.query([Q.where("slug", Q.like(slug)), Q.take(1)])

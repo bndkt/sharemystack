@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+
 import { LoadingMessage } from "./LoadingMessage";
 
 type CustomSuspenseProps<T> = {

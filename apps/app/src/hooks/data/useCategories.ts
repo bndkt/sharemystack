@@ -1,8 +1,8 @@
 import { useDatabase } from "@nozbe/watermelondb/hooks";
 import { useEffect, useState } from "react";
 
-import { TableName } from "@/model/schema";
 import { Category } from "@/model/Category";
+import { TableName } from "@/model/schema";
 
 export function useCategories() {
   const database = useDatabase();

@@ -2,7 +2,7 @@ import { H3, XStack, YStack } from "tamagui";
 
 import { MaterialTopTabs } from "@/components/MaterialTopTabs";
 import { ToolIcon } from "@/components/tools/ToolIcon";
-import { ToolListItem } from "@/components/tools/ToolListItem";
+// import { ToolListItem } from "@/components/tools/ToolListItem";
 import { Category } from "@/model/Category";
 import { Tool } from "@/model/Tool";
 

@@ -2,8 +2,8 @@ import { Q } from "@nozbe/watermelondb";
 import { useDatabase } from "@nozbe/watermelondb/hooks";
 import { useEffect, useState } from "react";
 
-import { TableName } from "@/model/schema";
 import { Profile } from "@/model/Profile";
+import { TableName } from "@/model/schema";
 
 type ProfilesSelector =
   | {

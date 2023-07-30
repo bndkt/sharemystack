@@ -1,10 +1,10 @@
+import { Q } from "@nozbe/watermelondb";
 import { useDatabase } from "@nozbe/watermelondb/hooks";
 import { useEffect, useState } from "react";
 
-import { TableName } from "@/model/schema";
 import { Category } from "@/model/Category";
-import { Q } from "@nozbe/watermelondb";
 import { Tool } from "@/model/Tool";
+import { TableName } from "@/model/schema";
 
 export function useCategory({ slug }: { slug: string }) {
   const database = useDatabase();

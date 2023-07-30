@@ -1,10 +1,10 @@
+import { Q } from "@nozbe/watermelondb";
 import { useDatabase } from "@nozbe/watermelondb/hooks";
 import { useEffect, useState } from "react";
 
-import { TableName } from "@/model/schema";
 import { Category } from "@/model/Category";
-import { Q } from "@nozbe/watermelondb";
 import { StackType } from "@/model/StackType";
+import { TableName } from "@/model/schema";
 
 export function useStackType({
   slug,
@@ -17,7 +17,7 @@ export function useStackType({
   const [stackType, setStackType] = useState<StackType>();
   const [categories, setCategories] = useState<Category[]>();
 
-  let stackTypesQuery = database.collections
+  const stackTypesQuery = database.collections
     .get<StackType>(TableName.STACK_TYPES)
     .query(Q.where("slug", slug), Q.take(1));
 

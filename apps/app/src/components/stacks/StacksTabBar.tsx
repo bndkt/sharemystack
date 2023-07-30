@@ -1,9 +1,11 @@
+import { MaterialTopTabBarProps } from "@react-navigation/material-top-tabs";
+import { useGlobalSearchParams, useRouter } from "expo-router";
+import { Button, Text, XStack } from "tamagui";
+
+import { CategoryIcon } from "../categories/CategoryIcon";
+
 import { Profile } from "@/model/Profile";
 import { Stack } from "@/model/Stack";
-import { Button, Text, XStack } from "tamagui";
-import { CategoryIcon } from "../categories/CategoryIcon";
-import { useGlobalSearchParams, useRouter } from "expo-router";
-import { MaterialTopTabBarProps } from "@react-navigation/material-top-tabs";
 
 export function StacksTabBar({
   tabBarProps,
@@ -15,7 +17,7 @@ export function StacksTabBar({
   stacks: Stack[];
 }) {
   const router = useRouter();
-  let { stackType: slug } = useGlobalSearchParams<{ stackType: string }>();
+  const { stackType: slug } = useGlobalSearchParams<{ stackType: string }>();
 
   return (
     <XStack borderBottomColor="$borderColor" borderBottomWidth="$1">

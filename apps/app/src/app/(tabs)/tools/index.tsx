@@ -3,8 +3,8 @@ import { Link } from "expo-router";
 import { ListItem, YStack } from "tamagui";
 
 import { SuggestionButton } from "@/components/SuggestionButton";
-import { ToolIcon } from "@/components/tools/ToolIcon";
 import { List } from "@/components/list";
+import { ToolIcon } from "@/components/tools/ToolIcon";
 import { useTools } from "@/hooks/data/useTools";
 
 export default function Tools() {

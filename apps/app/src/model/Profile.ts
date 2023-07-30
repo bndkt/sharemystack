@@ -8,9 +8,9 @@ import {
 } from "@nozbe/watermelondb/decorators";
 
 import { Stack } from "./Stack";
+import { StackType } from "./StackType";
 import { Star } from "./Star";
 import { TableName } from "./schema";
-import { StackType } from "./StackType";
 
 export class Profile extends Model {
   static table = TableName.PROFILES;

@@ -1,10 +1,12 @@
+import { ListItem } from "tamagui";
+
+import { List } from "../list";
+import { CustomSuspense } from "../loading/CustomSuspense";
+import { ToolIcon } from "../tools/ToolIcon";
+
+import { Pick } from "@/model/Pick";
 import { Profile } from "@/model/Profile";
 import { Stack } from "@/model/Stack";
-import { ListItem, Text } from "tamagui";
-import { List } from "../list";
-import { Pick } from "@/model/Pick";
-import { ToolIcon } from "../tools/ToolIcon";
-import { CustomSuspense } from "../loading/CustomSuspense";
 
 export function StackList({
   profile,

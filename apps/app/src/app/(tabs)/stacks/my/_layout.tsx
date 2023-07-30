@@ -3,11 +3,11 @@ import { YStack } from "tamagui";
 
 import { Loading } from "@/components/Loading";
 import { withAuth } from "@/components/auth/withAuth";
-import { useAuth } from "@/hooks/useAuth";
+import { CustomSuspense } from "@/components/loading/CustomSuspense";
 import { CreateProfile } from "@/components/my/CreateProfile";
 import { MyProfileHeader } from "@/components/my/MyProfileHeader";
 import { MyStacks } from "@/components/my/MyStacks";
-import { CustomSuspense } from "@/components/loading/CustomSuspense";
+import { useAuth } from "@/hooks/useAuth";
 
 export function MyProfile() {
   const { profile, stacks } = useAuth();

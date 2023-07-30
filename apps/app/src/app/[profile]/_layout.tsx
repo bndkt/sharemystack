@@ -1,11 +1,11 @@
 import { Stack, useLocalSearchParams } from "expo-router";
+import { YStack } from "tamagui";
 
-import { useProfile } from "@/hooks/data/useProfile";
+import { MaterialTopTabs } from "@/components/MaterialTopTabs";
 import { CustomSuspense } from "@/components/loading/CustomSuspense";
 import { ProfileView } from "@/components/profiles/ProfileView";
-import { MaterialTopTabs } from "@/components/MaterialTopTabs";
-import { YStack } from "tamagui";
 import { StacksTabBar } from "@/components/stacks/StacksTabBar";
+import { useProfile } from "@/hooks/data/useProfile";
 
 export default function Profile() {
   let { profile: slug } = useLocalSearchParams<{ profile: string }>();

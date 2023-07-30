@@ -7,13 +7,13 @@ import * as Crypto from "expo-crypto";
 import { Categorization } from "@/model/Categorization";
 import { Category } from "@/model/Category";
 import { Pick } from "@/model/Pick";
+import { Profile } from "@/model/Profile";
 import { Stack } from "@/model/Stack";
+import { StackType } from "@/model/StackType";
+import { StackTypeCategory } from "@/model/StackTypeCategory";
 import { Star } from "@/model/Star";
 import { Tool } from "@/model/Tool";
 import { schema } from "@/model/schema";
-import { Profile } from "@/model/Profile";
-import { StackType } from "@/model/StackType";
-import { StackTypeCategory } from "@/model/StackTypeCategory";
 
 // First, create the adapter to the underlying database:
 const adapter = new SQLiteAdapter({

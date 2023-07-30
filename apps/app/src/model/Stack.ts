@@ -10,10 +10,10 @@ import {
 
 import { Category } from "./Category";
 import { Pick } from "./Pick";
+import { Profile } from "./Profile";
+import { StackType } from "./StackType";
 import { Tool } from "./Tool";
 import { TableName } from "./schema";
-import { StackType } from "./StackType";
-import { Profile } from "./Profile";
 
 export class Stack extends Model {
   static table = TableName.STACKS;

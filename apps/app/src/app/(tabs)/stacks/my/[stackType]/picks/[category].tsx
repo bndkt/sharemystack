@@ -1,10 +1,10 @@
 import { Stack, useLocalSearchParams } from "expo-router";
 
-import { useCategory } from "@/hooks/data/useCategory";
 import { CustomSuspense } from "@/components/loading/CustomSuspense";
+import { UpdatePicksList } from "@/components/picks/UpdatePicksList";
+import { useCategory } from "@/hooks/data/useCategory";
 import { useProfile } from "@/hooks/data/useProfile";
 import { useAuth } from "@/hooks/useAuth";
-import { UpdatePicksList } from "@/components/picks/UpdatePicksList";
 
 export default function CategoryTools() {
   const { category: slug, stackType: stackTypeSlug } = useLocalSearchParams<{

@@ -1,13 +1,15 @@
+import { Check, Plus } from "@tamagui/lucide-icons";
 import { ListItem, YStack } from "tamagui";
+
 import { List } from "../list";
+import { ToolIcon } from "../tools/ToolIcon";
+
+import { useAnalytics } from "@/hooks/useAnalytics";
+import { sync } from "@/lib/sync";
+import { Category } from "@/model/Category";
+import { Pick } from "@/model/Pick";
 import { Stack } from "@/model/Stack";
 import { Tool } from "@/model/Tool";
-import { Category } from "@/model/Category";
-import { sync } from "@/lib/sync";
-import { useAnalytics } from "@/hooks/useAnalytics";
-import { Pick } from "@/model/Pick";
-import { ToolIcon } from "../tools/ToolIcon";
-import { Check, Plus } from "@tamagui/lucide-icons";
 
 export function UpdatePicksList({
   tools,

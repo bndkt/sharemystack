@@ -1,14 +1,10 @@
+import { Globe, Twitter, Youtube } from "@tamagui/lucide-icons";
+import { Image } from "expo-image";
+import * as Linking from "expo-linking";
+import { Button, Text, XStack, YStack } from "tamagui";
+
 import { Profile as ProfileModel } from "@/model/Profile";
 import { Stack as StackModel } from "@/model/Stack";
-import { Image } from "expo-image";
-import { Button, H3, H4, Text, XStack, YStack } from "tamagui";
-import * as Linking from "expo-linking";
-import { Globe, Twitter, Youtube } from "@tamagui/lucide-icons";
-import { ProfileStacks } from "../stacks/ProfileStacks";
-import { CustomSuspense } from "../loading/CustomSuspense";
-import { Stack } from "expo-router";
-import { MaterialTopTabs } from "../MaterialTopTabs";
-import { StacksTabBar } from "../stacks/StacksTabBar";
 
 export function ProfileView({
   profile,

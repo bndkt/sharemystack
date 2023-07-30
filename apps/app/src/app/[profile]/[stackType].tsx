@@ -1,7 +1,8 @@
+import { useLocalSearchParams } from "expo-router";
+
 import { CustomSuspense } from "@/components/loading/CustomSuspense";
 import { StackList } from "@/components/stacks/StackList";
 import { useProfile } from "@/hooks/data/useProfile";
-import { useLocalSearchParams } from "expo-router";
 
 export default function StackType() {
   const { stackType: stackTypeSlug } = useLocalSearchParams<{

@@ -1,10 +1,10 @@
 import { AuthUser, AuthSession } from "@supabase/supabase-js";
 import { ReactNode, createContext, useEffect, useState } from "react";
 
+import { useProfile } from "@/hooks/data/useProfile";
 import { useAnalytics } from "@/hooks/useAnalytics";
 import { supabase } from "@/lib/supabase";
 import { Profile } from "@/model/Profile";
-import { useProfile } from "@/hooks/data/useProfile";
 import { Stack } from "@/model/Stack";
 
 export const AuthContext = createContext<{

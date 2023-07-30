@@ -1,9 +1,11 @@
-import { Stack } from "@/model/Stack";
-import { List } from "../list";
-import { ListItem } from "tamagui";
-import { CategoryIcon } from "../categories/CategoryIcon";
 import { useRouter } from "expo-router";
+import { ListItem } from "tamagui";
+
+import { CategoryIcon } from "../categories/CategoryIcon";
+import { List } from "../list";
+
 import { Profile } from "@/model/Profile";
+import { Stack } from "@/model/Stack";
 
 export function ProfileStacks({
   profile,

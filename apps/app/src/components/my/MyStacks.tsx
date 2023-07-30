@@ -1,12 +1,14 @@
-import { useStackTypes } from "@/hooks/data/useStackTypes";
-import { H5, ListItem } from "tamagui";
-import { CategoryIcon } from "../categories/CategoryIcon";
-import { StackType } from "@/model/StackType";
 import { ChevronRight, Plus } from "@tamagui/lucide-icons";
-import { List } from "../list";
-import { Stack } from "@/model/Stack";
-import { Profile } from "@/model/Profile";
 import { useRouter } from "expo-router";
+import { H5, ListItem } from "tamagui";
+
+import { CategoryIcon } from "../categories/CategoryIcon";
+import { List } from "../list";
+
+import { useStackTypes } from "@/hooks/data/useStackTypes";
+import { Profile } from "@/model/Profile";
+import { Stack } from "@/model/Stack";
+import { StackType } from "@/model/StackType";
 
 export function MyStacks({
   profile,

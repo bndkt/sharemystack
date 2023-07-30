@@ -2,9 +2,10 @@ import { ChevronRight } from "@tamagui/lucide-icons";
 import { Link } from "expo-router";
 import { ListItem, YStack } from "tamagui";
 
+import { ProfileIcon } from "./ProfileIcon";
+
 import { List } from "@/components/list";
 import { Profile } from "@/model/Profile";
-import { ProfileIcon } from "./ProfileIcon";
 
 export function ProfilesList({
   profiles,

@@ -1,7 +1,8 @@
 import { Text, YStack } from "tamagui";
 
-import { useAuth } from "@/hooks/useAuth";
 import { MyProfileForm } from "./MyProfileForm";
+
+import { useAuth } from "@/hooks/useAuth";
 
 export function CreateProfile() {
   const { user, createProfile } = useAuth();
