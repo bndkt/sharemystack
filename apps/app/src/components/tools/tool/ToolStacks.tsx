@@ -4,13 +4,12 @@ import { ListItem } from "tamagui";
 
 import { Loading } from "@/components/Loading";
 import { List } from "@/components/list";
-import { useObservableTool } from "@/hooks/useObservableTool";
 
 export function ToolStacks() {
   const { tool: slug } = useGlobalSearchParams<{ tool: string }>();
   const router = useRouter();
 
-  const { tool, picks, loading } = useObservableTool({
+  /* const { tool, picks, loading } = useObservableTool({
     slug,
     loadPicks: true,
   });
@@ -37,5 +36,5 @@ export function ToolStacks() {
         />
       )}
     </>
-  );
+  ); */
 }
