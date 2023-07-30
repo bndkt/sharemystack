@@ -1,7 +1,7 @@
 import { usePostHog } from "posthog-react-native";
 import OneSignal from "react-native-onesignal";
 import * as Sentry from "sentry-expo";
-import vexo from "vexo-analytics";
+import { identifyDevice } from "vexo-analytics";
 // import { OneSignal } from "react-native-onesignal"; // SDK v5
 
 export function useAnalytics() {
@@ -12,7 +12,7 @@ export function useAnalytics() {
     externalId && OneSignal.setExternalUserId(externalId);
     // email && OneSignal.User.addEmail(email); // SDK v5
     email && OneSignal.setEmail(email);
-    externalId && vexo.identifyDevice(externalId);
+    externalId && identifyDevice(externalId);
     externalId && posthog?.identify(externalId, { email });
     Sentry.React.setUser({ id: externalId, email });
   }
