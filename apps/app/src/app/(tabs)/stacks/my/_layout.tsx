@@ -1,31 +1,30 @@
 import { Slot } from "expo-router";
-import { YStack } from "tamagui";
+import { ListItem, YStack } from "tamagui";
 
 import { Loading } from "@/components/Loading";
 import { withAuth } from "@/components/auth/withAuth";
 import { List } from "@/components/list";
-import { CreateStack } from "@/components/myStack/CreateStack";
-import { MyStackHeader } from "@/components/myStack/MyStackHeader";
-import { StackPick } from "@/components/stacks/StackPick";
 import { useAuth } from "@/hooks/useAuth";
+import { CreateProfile } from "@/components/profiles/CreateProfile";
+import { MyProfileHeader } from "@/components/profiles/MyProfileHeader";
 
 export function MyStack() {
-  const { stack, picks, isLoadingStack } = useAuth();
+  const { profile, stacks } = useAuth();
 
-  return isLoadingStack ? (
-    <Loading message="Loading stack" />
-  ) : stack ? (
+  return profile ? (
     <YStack fullscreen>
-      <MyStackHeader stack={stack} />
+      <MyProfileHeader profile={profile} />
       <List
-        data={picks}
-        placeholder="You have not added any tools to your stack yet."
-        renderItem={({ item }) => <StackPick pick={item} editable={true} />}
+        data={stacks}
+        placeholder="You have not added any stacks to your profile yet."
+        renderItem={({ item }) => <ListItem title={item.id} />}
       />
-      <Slot />
+      {/* <Slot /> */}
     </YStack>
+  ) : profile === null ? (
+    <CreateProfile />
   ) : (
-    <CreateStack />
+    <Loading message="Loading profile" />
   );
 }
 

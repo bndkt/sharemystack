@@ -30,7 +30,7 @@ export default function Debug() {
   async function onResetDatabase() {
     setIsResettingDatabase(true);
     await sync(true);
-    Updates.reloadAsync();
+    // Updates.reloadAsync();
     setIsResettingDatabase(false);
   }
 

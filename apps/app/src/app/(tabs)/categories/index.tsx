@@ -3,7 +3,7 @@ import { Link } from "expo-router";
 import { ListItem, Text, YStack } from "tamagui";
 
 import { SuggestionButton } from "@/components/SuggestionButton";
-import { CategoryIcon } from "@/components/icons/CategoryIcon";
+import { CategoryIcon } from "@/components/categories/CategoryIcon";
 import { List } from "@/components/list";
 import { useObservableCategories } from "@/hooks/useObservableCategories";
 

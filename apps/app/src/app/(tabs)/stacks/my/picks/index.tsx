@@ -2,7 +2,7 @@ import { ChevronRight } from "@tamagui/lucide-icons";
 import { Link } from "expo-router";
 import { ListItem, Text, YStack } from "tamagui";
 
-import { CategoryIcon } from "@/components/icons/CategoryIcon";
+import { CategoryIcon } from "@/components/categories/CategoryIcon";
 import { List } from "@/components/list";
 import { useObservableCategories } from "@/hooks/useObservableCategories";
 
@@ -15,7 +15,7 @@ export default function Index() {
         data={categories}
         renderItem={({ item }) => {
           return (
-            <Link href={`/(tabs)/(stacks)/stacks/my/picks/${item.slug}`}>
+            <Link href={`/(tabs)/stacks/my/picks/${item.slug}`}>
               <ListItem
                 title={
                   item.isComingSoon ? (

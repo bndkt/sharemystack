@@ -23,7 +23,7 @@ export default function Layout() {
       snapPoints={snapPoints}
       onChange={handleSheetChanges}
       enablePanDownToClose={true}
-      onClose={() => router.push("/(tabs)/(stacks)/stacks/my/tmp")}
+      onClose={() => router.push("/(tabs)/stacks/my/tmp")}
       style={{
         shadowColor: theme.color.val,
         shadowOffset: {

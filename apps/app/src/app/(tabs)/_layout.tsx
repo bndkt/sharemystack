@@ -13,7 +13,7 @@ export default function Layout() {
         }}
       />
       <Tabs.Screen
-        name="(stacks)"
+        name="stacks"
         options={{
           title: "Stacks",
           headerShown: false,

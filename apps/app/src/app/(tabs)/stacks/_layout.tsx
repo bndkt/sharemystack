@@ -10,7 +10,7 @@ export default function Layout() {
       <MaterialTopTabs.Screen name="index" options={{ title: "Featured" }} />
       <MaterialTopTabs.Screen name="updated" options={{ title: "Updated" }} />
       <MaterialTopTabs.Screen name="starred" options={{ title: "Starred" }} />
-      <MaterialTopTabs.Screen name="my" options={{ title: "My Stack" }} />
+      <MaterialTopTabs.Screen name="my" options={{ title: "My Stacks" }} />
     </MaterialTopTabs>
   );
 }

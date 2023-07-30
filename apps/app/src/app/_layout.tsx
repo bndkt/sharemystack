@@ -3,7 +3,7 @@ import "react-native-gesture-handler";
 import DatabaseProvider from "@nozbe/watermelondb/DatabaseProvider";
 import { TamaguiProvider, Theme } from "@tamagui/core";
 import { useFonts } from "expo-font";
-import { Slot } from "expo-router";
+import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { PostHogProvider } from "posthog-react-native";
 import { LogBox, useColorScheme } from "react-native";
@@ -52,7 +52,16 @@ export default function Layout() {
               <DatabaseProvider database={database}>
                 <AuthProvider>
                   <SyncProvider>
-                    <Slot />
+                    <Stack>
+                      <Stack.Screen
+                        name="(tabs)"
+                        options={{ title: "Home", headerShown: false }}
+                      />
+                      <Stack.Screen
+                        name="[profile]"
+                        options={{ headerShown: true }}
+                      />
+                    </Stack>
                   </SyncProvider>
                 </AuthProvider>
               </DatabaseProvider>

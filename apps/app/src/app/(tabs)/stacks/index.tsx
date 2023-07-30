@@ -1,8 +1,16 @@
-import { StackList } from "@/components/stacks/StackList";
-import { useObservableStacks } from "@/hooks/useObservableStacks";
+import { CustomSuspense } from "@/components/loading/CustomSuspense";
+import { ProfilesList } from "@/components/profiles/ProfilesList";
+
+import { useProfiles } from "@/hooks/data/useProfiles";
 
 export default function FeaturedStacks() {
-  const stacks = useObservableStacks({ featured: true });
+  const { profiles } = useProfiles({ featured: true });
 
-  return <StackList stacks={stacks} />;
+  return (
+    <CustomSuspense
+      data={profiles}
+      name="profiles"
+      component={(loadedProfiles) => <ProfilesList profiles={loadedProfiles} />}
+    />
+  );
 }

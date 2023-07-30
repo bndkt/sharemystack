@@ -1,11 +1,19 @@
 import { withAuth } from "@/components/auth/withAuth";
-import { StackList } from "@/components/stacks/StackList";
-import { useObservableStacks } from "@/hooks/useObservableStacks";
+import { CustomSuspense } from "@/components/loading/CustomSuspense";
+import { ProfilesList } from "@/components/profiles/ProfilesList";
 
-export function StarredStacks() {
-  const stacks = useObservableStacks({ starred: true });
+import { useProfiles } from "@/hooks/data/useProfiles";
 
-  return <StackList stacks={stacks} />;
+function StarredStacks() {
+  const { profiles } = useProfiles({ starred: true });
+
+  return (
+    <CustomSuspense
+      data={profiles}
+      name="profiles"
+      component={(loadedProfiles) => <ProfilesList profiles={loadedProfiles} />}
+    />
+  );
 }
 
 export default withAuth(StarredStacks);

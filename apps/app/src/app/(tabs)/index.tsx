@@ -1,7 +1,7 @@
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { H3, Text, YStack } from "tamagui";
 
-import { Stream } from "@/components/home/Stream";
+// import { Stream } from "@/components/home/Stream";
 
 export default function Index() {
   const insets = useSafeAreaInsets();
@@ -15,9 +15,7 @@ export default function Index() {
           discover which tools others are using.
         </Text>
       </YStack>
-      <YStack flexGrow={1}>
-        <Stream />
-      </YStack>
+      <YStack flexGrow={1}>{/* <Stream /> */}</YStack>
     </YStack>
   );
 }
