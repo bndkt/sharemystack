@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { ListItem } from "tamagui";
 
 import { Loading } from "../Loading";
-import { ToolIcon } from "../icons/ToolIcon";
+import { ToolIcon } from "../tools/ToolIcon";
 import { SwipeableRow } from "../list/SwipeableRow";
 
 import { useAuth } from "@/hooks/useAuth";
@@ -20,7 +20,7 @@ export function StackPick({
 }) {
   const [tool, setTool] = useState<Tool>();
   const [category, setCategory] = useState<Category>();
-  const { stack } = useAuth();
+  // const { stack } = useAuth();
 
   useEffect(() => {
     const subscription = pick.tool.observe().subscribe((newTool) => {
@@ -47,7 +47,7 @@ export function StackPick({
                 text: <Trash2 color="white" />,
                 color: "$red10",
                 onPress: () => {
-                  stack?.removePick(pick);
+                  // stack?.removePick(pick);
                 },
               },
             ]

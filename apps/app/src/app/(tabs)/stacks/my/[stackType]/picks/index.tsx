@@ -1,5 +1,5 @@
 import { ChevronRight } from "@tamagui/lucide-icons";
-import { Link } from "expo-router";
+import { Link, useLocalSearchParams } from "expo-router";
 import { ListItem, Text, YStack } from "tamagui";
 
 import { CategoryIcon } from "@/components/categories/CategoryIcon";
@@ -8,6 +8,9 @@ import { useObservableCategories } from "@/hooks/useObservableCategories";
 
 export default function Index() {
   const categories = useObservableCategories();
+  const { stackType: stackTypeSlug } = useLocalSearchParams<{
+    stackType: string;
+  }>();
 
   return (
     <YStack fullscreen minHeight={100}>
@@ -15,7 +18,9 @@ export default function Index() {
         data={categories}
         renderItem={({ item }) => {
           return (
-            <Link href={`/(tabs)/stacks/my/picks/${item.slug}`}>
+            <Link
+              href={`/(tabs)/stacks/my/${stackTypeSlug}/picks/${item.slug}`}
+            >
               <ListItem
                 title={
                   item.isComingSoon ? (
@@ -35,7 +40,7 @@ export default function Index() {
                 }
                 icon={
                   <CategoryIcon
-                    name={item.icon}
+                    name={item.iconName}
                     color={item.isComingSoon ? "$gray8" : undefined}
                     size={"$1.5"}
                   />

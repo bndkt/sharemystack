@@ -1,3 +1,5 @@
+import { List } from "@/components/list";
+import { StackPick } from "@/components/stacks/StackPick";
 import { useProfile } from "@/hooks/data/useProfile";
 import { useAuth } from "@/hooks/useAuth";
 import { Slot, Stack, useLocalSearchParams } from "expo-router";
@@ -14,7 +16,12 @@ export default function Layout() {
 
   return (
     <>
-      <Stack.Screen options={{ title: stack?.stackTypeName }} />
+      <Stack.Screen options={{ title: `${stack?.stackTypeName} Stack` }} />
+      <List
+        data={picks}
+        placeholder="You have not selected any tools for this stack"
+        renderItem={({ item }) => <StackPick pick={item} />}
+      />
       <Slot />
     </>
   );

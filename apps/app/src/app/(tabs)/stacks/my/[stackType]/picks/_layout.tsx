@@ -1,6 +1,6 @@
 import BottomSheet from "@gorhom/bottom-sheet";
 import { useTheme } from "@tamagui/core";
-import { Stack, useRouter } from "expo-router";
+import { Stack, useLocalSearchParams, useRouter } from "expo-router";
 import { useCallback, useMemo, useRef } from "react";
 
 import { CloseBottomSheet } from "@/components/myStack/CloseBottomSheet";
@@ -9,6 +9,9 @@ export default function Layout() {
   const bottomSheetRef = useRef<BottomSheet>(null);
   const theme = useTheme();
   const router = useRouter();
+  const { stackType: stackTypeSlug } = useLocalSearchParams<{
+    stackType: string;
+  }>();
 
   const snapPoints = useMemo(() => ["50%"], []); // "25%", "50%", "75%"
 
@@ -23,7 +26,7 @@ export default function Layout() {
       snapPoints={snapPoints}
       onChange={handleSheetChanges}
       enablePanDownToClose={true}
-      onClose={() => router.push("/(tabs)/stacks/my/tmp")}
+      onClose={() => router.push(`/(tabs)/stacks/my/${stackTypeSlug}/_tmp`)}
       style={{
         shadowColor: theme.color.val,
         shadowOffset: {
@@ -43,7 +46,11 @@ export default function Layout() {
       }}
       backgroundStyle={{ backgroundColor: theme.background.val }}
     >
-      <Stack screenOptions={{ headerRight: () => <CloseBottomSheet /> }}>
+      <Stack
+        screenOptions={{
+          headerRight: () => <CloseBottomSheet stackTypeSlug={stackTypeSlug} />,
+        }}
+      >
         <Stack.Screen name="index" options={{ title: "Categories" }} />
         <Stack.Screen name="[category]" options={{ title: "Tools" }} />
       </Stack>
