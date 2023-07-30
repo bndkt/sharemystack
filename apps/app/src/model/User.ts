@@ -11,7 +11,7 @@ import { Stack } from "./Stack";
 import { Star } from "./Star";
 import { TableName } from "./schema";
 
-export class Profile extends Model {
+export class User extends Model {
   static table = TableName.PROFILES;
 
   @readonly @date("created_at") createdAt!: Date;
@@ -38,7 +38,7 @@ export class Profile extends Model {
   @text("youtube") youtube!: string;
   @text("is_featured") isFeatured!: boolean;
   @text("number_of_stars") numberOfStars!: number;
-  @text("user_id") userId!: string;
+  @text("user_id") user!: string;
 
   @lazy
   stacks = this.collections

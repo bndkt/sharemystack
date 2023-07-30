@@ -8,7 +8,8 @@ create table picks (
   last_modified_at timestamp with time zone not null default now(),
   stack_id uuid references stacks on delete cascade,
   tool_id uuid references tools on delete cascade,
-  category_id uuid references categories on delete cascade
+  category_id uuid references categories on delete cascade,
+  is_featured boolean not null default false
 );
 alter table picks enable row level security;
 create policy "Picks are viewable by everyone." on picks for

@@ -29,6 +29,7 @@ export class Pick extends Model {
   @text("tool_slug") toolSlug!: string;
   @text("category_name") categoryName!: string;
   @text("category_slug") categorySlug!: string;
+  @text("is_featured") isFeatured!: boolean;
 
   @immutableRelation(TableName.STACKS, "stack_id") stack!: Relation<Stack>;
   @immutableRelation(TableName.TOOLS, "tool_id") tool!: Relation<Tool>;

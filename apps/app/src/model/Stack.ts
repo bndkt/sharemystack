@@ -1,5 +1,11 @@
 import { Model, Q } from "@nozbe/watermelondb";
-import { date, lazy, readonly, writer } from "@nozbe/watermelondb/decorators";
+import {
+  date,
+  lazy,
+  readonly,
+  text,
+  writer,
+} from "@nozbe/watermelondb/decorators";
 
 import { Category } from "./Category";
 import { Pick } from "./Pick";
@@ -22,6 +28,8 @@ export class Stack extends Model {
       key: "stack_type_id",
     },
   };
+
+  @text("is_primary") isPrimary!: boolean;
 
   @lazy
   picks = this.collections
