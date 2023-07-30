@@ -15,7 +15,7 @@ export default function Index() {
 
   if (!slug) throw new Error("No stack type slug provided");
 
-  const { stackType, categories } = useStackType({ slug });
+  const { categories } = useStackType({ slug });
   const { user } = useAuth();
 
   const { stack } = useProfile({ user, stackTypeSlug: slug });

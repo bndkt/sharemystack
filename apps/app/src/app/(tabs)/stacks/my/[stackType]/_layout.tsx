@@ -10,7 +10,7 @@ export default function Layout() {
     stackType: string;
   }>();
   const { user } = useAuth();
-  const { profile, stack, picks } = useProfile({
+  const { stack, picks } = useProfile({
     user,
     stackTypeSlug,
   });
