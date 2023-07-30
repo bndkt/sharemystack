@@ -67,6 +67,37 @@ SET deleted_at = NOW(),
     last_modified_at = NOW()
 FROM changes_data
 WHERE picks.id = changes_data.deleted;
+-- Insert new stacks
+WITH changes_data AS (
+    SELECT (changes->'stacks'->'created') AS stacks_created
+)
+INSERT INTO stacks (
+        id,
+        profile_id,
+        stack_type_id,
+        created_at,
+        updated_at,
+        server_created_at,
+        last_modified_at
+    )
+SELECT (stack->>'id')::uuid,
+    (stack->>'profile_id')::uuid,
+    (stack->>'stack_type_id')::uuid,
+    epoch_to_timestamp(stack->>'created_at'),
+    epoch_to_timestamp(stack->>'updated_at'),
+    NOW(),
+    NOW()
+FROM changes_data,
+    jsonb_array_elements(stacks_created) AS stack;
+-- Delete stacks
+WITH changes_data AS (
+    SELECT jsonb_array_elements_text(changes->'stacks'->'deleted')::uuid AS deleted
+)
+UPDATE stacks
+SET deleted_at = NOW(),
+    last_modified_at = NOW()
+FROM changes_data
+WHERE stacks.id = changes_data.deleted;
 -- Insert new stars
 WITH changes_data AS (
     SELECT (changes->'stars'->'created') AS stars_created
