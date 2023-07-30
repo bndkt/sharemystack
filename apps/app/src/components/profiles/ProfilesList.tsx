@@ -6,11 +6,18 @@ import { List } from "@/components/list";
 import { Profile } from "@/model/Profile";
 import { ProfileIcon } from "./ProfileIcon";
 
-export function ProfilesList({ profiles }: { profiles: Profile[] }) {
+export function ProfilesList({
+  profiles,
+  placeholder,
+}: {
+  profiles: Profile[];
+  placeholder?: string;
+}) {
   return (
     <YStack fullscreen>
       <List
         data={profiles}
+        placeholder={placeholder}
         renderItem={({ item }) => {
           return (
             <Link href={`/@${item.slug}`}>

@@ -11,7 +11,12 @@ function StarredStacks() {
     <CustomSuspense
       data={profiles}
       name="profiles"
-      component={(loadedProfiles) => <ProfilesList profiles={loadedProfiles} />}
+      component={(loadedProfiles) => (
+        <ProfilesList
+          profiles={loadedProfiles}
+          placeholder="You have not starred any profiles yet"
+        />
+      )}
     />
   );
 }

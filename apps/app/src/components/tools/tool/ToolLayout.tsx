@@ -20,9 +20,9 @@ export function ToolLayout({
         <H3 marginLeft="$3" flexGrow={1}>
           {tool.name}
         </H3>
-        {category && (
+        {/* category && (
           <ToolListItem category={category} tool={tool} toolPage={true} />
-        )}
+        ) */}
       </XStack>
       <MaterialTopTabs>
         <MaterialTopTabs.Screen name="index" options={{ title: "Home" }} />

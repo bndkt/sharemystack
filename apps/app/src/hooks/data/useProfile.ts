@@ -27,8 +27,6 @@ export function useProfile({ user, slug, stackTypeSlug }: ProfileSelector) {
   const [stack, setStack] = useState<Stack | null>();
   const [picks, setPicks] = useState<Pick[] | null>();
 
-  console.log("name", profile?.name);
-
   const profilesCollection = database.collections.get<Profile>(
     TableName.PROFILES
   );
