@@ -1,14 +1,21 @@
-import { useRouter } from "expo-router";
-import { Button, YStack } from "tamagui";
+import { CustomSuspense } from "@/components/loading/CustomSuspense";
+import { MyStacks } from "@/components/my/MyStacks";
+import { useAuth } from "@/hooks/useAuth";
 
 export default function Index() {
-  const router = useRouter();
+  const { profile, stacks } = useAuth();
 
   return (
-    <YStack padding="$3">
-      <Button onPress={() => router.push("/(tabs)/stacks/my/picks")}>
-        Add tools to my stack
-      </Button>
-    </YStack>
+    <CustomSuspense
+      data={profile}
+      name="profile"
+      component={(profile) => (
+        <CustomSuspense
+          data={stacks}
+          name="stacks"
+          component={(stacks) => <MyStacks profile={profile} stacks={stacks} />}
+        />
+      )}
+    />
   );
 }

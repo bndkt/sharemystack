@@ -1,9 +1,8 @@
-import { Slot } from "expo-router";
-import { ListItem, YStack } from "tamagui";
+import { Slot, Stack } from "expo-router";
+import { YStack } from "tamagui";
 
 import { Loading } from "@/components/Loading";
 import { withAuth } from "@/components/auth/withAuth";
-import { List } from "@/components/list";
 import { useAuth } from "@/hooks/useAuth";
 import { CreateProfile } from "@/components/my/CreateProfile";
 import { MyProfileHeader } from "@/components/my/MyProfileHeader";
@@ -16,12 +15,17 @@ export function MyProfile() {
   return profile ? (
     <YStack fullscreen>
       <MyProfileHeader profile={profile} />
-      <CustomSuspense
-        data={stacks}
-        name="stacks"
-        component={(stacks) => <MyStacks profile={profile} stacks={stacks} />}
-      />
-      {/* <Slot /> */}
+
+      <Stack>
+        <Stack.Screen
+          name="index"
+          options={{ title: "My Stacks", headerShown: false }}
+        />
+        <Stack.Screen
+          name="[stackType]"
+          options={{ title: "Stack", headerBackTitle: "My Stacks" }}
+        />
+      </Stack>
     </YStack>
   ) : profile === null ? (
     <CreateProfile />

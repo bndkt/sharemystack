@@ -1,9 +1,7 @@
 import { useRouter } from "expo-router";
 import { Button, YStack } from "tamagui";
 
-// TODO: Temporary workaround to be able to close the bottom modal (navigating to index doesn't work)
-
-export default function Tmp() {
+export default function Index() {
   const router = useRouter();
 
   return (

@@ -6,6 +6,7 @@ import { ChevronRight, Plus } from "@tamagui/lucide-icons";
 import { List } from "../list";
 import { Stack } from "@/model/Stack";
 import { Profile } from "@/model/Profile";
+import { useRouter } from "expo-router";
 
 export function MyStacks({
   profile,
@@ -15,6 +16,7 @@ export function MyStacks({
   stacks: Stack[];
 }) {
   const { stackTypes } = useStackTypes();
+  const router = useRouter();
 
   function handleCreateStack(stackType: StackType) {
     console.log("Create stack", stackType.name);
@@ -26,14 +28,16 @@ export function MyStacks({
       {stacks.length > 0 && (
         <>
           <H5 paddingHorizontal="$3" marginBottom="$3">
-            Your stacks
+            My stacks
           </H5>
           <List
             data={stacks}
             renderItem={({ item }) => {
               return (
                 <ListItem
-                  // onPress={() => handleCreateStack(item)}
+                  onPress={() =>
+                    router.push(`/stacks/my/${item.stackTypeSlug}`)
+                  }
                   title={item.stackTypeName}
                   icon={
                     <CategoryIcon name={item.stackTypeIconName} size="$1.5" />
