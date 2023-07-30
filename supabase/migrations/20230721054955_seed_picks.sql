@@ -5,6 +5,12 @@ values -- Nick Milo, Obsidian
         'bf4fb3cd-38d9-4135-abc7-7f291c498366',
         '0115cd3b-869d-4058-94e1-a67863eb6045'
     ),
+    -- Nick Milo, VS Code
+    (
+        'caa6f339-3f19-4fc0-8d70-c38f7341961f',
+        'a53d4fba-35a4-49e6-baf3-0e7bf2a1188b',
+        '68c52f82-7755-434d-bc07-1eee6bfe982f'
+    ),
     -- Ali Abdaal, Notion
     (
         '7eef57cd-dfb6-481d-967e-7d3a024f19d2',

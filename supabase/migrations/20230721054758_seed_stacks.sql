@@ -12,7 +12,7 @@ values -- Nick Milo
     ),
     -- Developer
     (
-        gen_random_uuid(),
+        'caa6f339-3f19-4fc0-8d70-c38f7341961f',
         'bab77da3-e12d-4a70-8154-91ef366f2302',
         '1efd287a-3f0c-4c02-9e13-b596b99b259e'
     ),
