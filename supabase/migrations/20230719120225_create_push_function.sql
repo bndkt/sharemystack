@@ -1,10 +1,43 @@
 --SELECT (changes->'picks'->'created') AS picks_created,
 --(changes->'picks'->'deleted') AS picks_deleted,
 --(changes->'picks'->'updated') AS picks_updated
-CREATE OR REPLACE FUNCTION push(changes JSONB) RETURNS VOID AS $$ BEGIN -- Insert new picks
+CREATE OR REPLACE FUNCTION push(changes JSONB) RETURNS VOID AS $$ BEGIN -- Insert new profiles
     WITH changes_data AS (
-        SELECT (changes->'picks'->'created') AS picks_created
+        SELECT (changes->'profiles'->'created') AS profiles_created
     )
+INSERT INTO profiles (
+        id,
+        user_id,
+        name,
+        slug,
+        created_at,
+        updated_at,
+        server_created_at,
+        last_modified_at
+    )
+SELECT (profile->>'id')::uuid,
+    auth.uid(),
+    (profile->>'name'),
+    (profile->>'slug'),
+    epoch_to_timestamp(profile->>'created_at'),
+    epoch_to_timestamp(profile->>'updated_at'),
+    NOW(),
+    NOW()
+FROM changes_data,
+    jsonb_array_elements(profiles_created) AS profile;
+-- Delete profiles
+WITH changes_data AS (
+    SELECT jsonb_array_elements_text(changes->'profiles'->'deleted')::uuid AS deleted
+)
+UPDATE profiles
+SET deleted_at = NOW(),
+    last_modified_at = NOW()
+FROM changes_data
+WHERE profiles.id = changes_data.deleted;
+-- Insert new picks
+WITH changes_data AS (
+    SELECT (changes->'picks'->'created') AS picks_created
+)
 INSERT INTO picks (
         id,
         stack_id,
@@ -40,7 +73,7 @@ WITH changes_data AS (
 )
 INSERT INTO stars (
         id,
-        stack_id,
+        profile_id,
         user_id,
         created_at,
         updated_at,
@@ -48,7 +81,7 @@ INSERT INTO stars (
         last_modified_at
     )
 SELECT (star->>'id')::uuid,
-    (star->>'stack_id')::uuid,
+    (star->>'profile_id')::uuid,
     (star->>'user_id')::uuid,
     epoch_to_timestamp(star->>'created_at'),
     epoch_to_timestamp(star->>'updated_at'),
