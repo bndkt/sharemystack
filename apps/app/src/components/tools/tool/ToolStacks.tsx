@@ -1,4 +1,4 @@
-import { Layers } from "@tamagui/lucide-icons";
+import { ChevronRight } from "@tamagui/lucide-icons";
 import { useGlobalSearchParams, useRouter } from "expo-router";
 import { ListItem } from "tamagui";
 
@@ -36,7 +36,7 @@ export function ToolStacks() {
                   onPress={() =>
                     router.push(`/@${profile.slug}/${stack.stackTypeSlug}`)
                   }
-                  iconAfter={<Layers size="$1.5" />}
+                  iconAfter={<ChevronRight size="$1.5" />}
                 />
               )}
             />

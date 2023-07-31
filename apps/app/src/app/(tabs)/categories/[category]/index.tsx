@@ -2,11 +2,10 @@ import { Stack, useLocalSearchParams } from "expo-router";
 import { ListItem, YStack } from "tamagui";
 
 import { SuggestionButton } from "@/components/SuggestionButton";
-import { CustomSuspense } from "@/components/loading/CustomSuspense";
-import { ToolList } from "@/components/tools/ToolList";
-import { useCategory } from "@/hooks/data/useCategory";
 import { List } from "@/components/list";
+import { CustomSuspense } from "@/components/loading/CustomSuspense";
 import { ToolIcon } from "@/components/tools/ToolIcon";
+import { useCategory } from "@/hooks/data/useCategory";
 
 export default function Category() {
   const { category: slug } = useLocalSearchParams<{ category: string }>();

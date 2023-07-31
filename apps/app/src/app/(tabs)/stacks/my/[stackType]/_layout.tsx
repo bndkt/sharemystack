@@ -1,11 +1,10 @@
 import { Slot, Stack, useLocalSearchParams } from "expo-router";
 
 import { List } from "@/components/list";
-import { StackPick } from "@/components/stacks/StackPick";
+import { CustomSuspense } from "@/components/loading/CustomSuspense";
+import { PicksListItem } from "@/components/picks/PicksListItem";
 import { useProfile } from "@/hooks/data/useProfile";
 import { useAuth } from "@/hooks/useAuth";
-import { PicksListItem } from "@/components/picks/PicksListItem";
-import { CustomSuspense } from "@/components/loading/CustomSuspense";
 
 export default function Layout() {
   const { stackType: stackTypeSlug } = useLocalSearchParams<{

@@ -1,4 +1,4 @@
-import { Layers } from "@tamagui/lucide-icons";
+import { ChevronRight } from "@tamagui/lucide-icons";
 import { useRouter } from "expo-router";
 import { ListItem } from "tamagui";
 
@@ -23,7 +23,6 @@ export function Stream() {
             onPress={() =>
               router.push(`/@${item.profileSlug}/${item.stackTypeSlug}`)
             }
-            iconAfter={<Layers size="$1.5" />}
             icon={
               <CustomSuspense
                 promise={item.tool.fetch()}
@@ -31,6 +30,7 @@ export function Stream() {
                 component={(tool) => <ToolIcon tool={tool} size="$1.5" />}
               />
             }
+            iconAfter={<ChevronRight size="$1.5" />}
           />
         );
       }}

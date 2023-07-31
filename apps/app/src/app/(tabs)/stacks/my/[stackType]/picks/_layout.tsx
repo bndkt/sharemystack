@@ -3,7 +3,6 @@ import { useTheme } from "@tamagui/core";
 import { X } from "@tamagui/lucide-icons";
 import { Stack, useLocalSearchParams, useRouter } from "expo-router";
 import { useCallback, useMemo, useRef } from "react";
-
 import { Button } from "tamagui";
 
 export default function Layout() {

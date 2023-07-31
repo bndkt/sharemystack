@@ -1,9 +1,11 @@
-import { Pick } from "@/model/Pick";
-import { ListItem } from "tamagui";
-import { ToolIcon } from "../tools/ToolIcon";
-import { CustomSuspense } from "../loading/CustomSuspense";
-import { SwipeableRow } from "../list/SwipeableRow";
 import { Trash2 } from "@tamagui/lucide-icons";
+import { ListItem } from "tamagui";
+
+import { SwipeableRow } from "../list/SwipeableRow";
+import { CustomSuspense } from "../loading/CustomSuspense";
+import { ToolIcon } from "../tools/ToolIcon";
+
+import { Pick } from "@/model/Pick";
 import { Stack } from "@/model/Stack";
 
 export function PicksListItem({ stack, pick }: { stack: Stack; pick: Pick }) {

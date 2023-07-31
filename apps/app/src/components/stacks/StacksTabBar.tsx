@@ -29,7 +29,9 @@ export function StacksTabBar({
               router.push(`/@${profile?.slug}/${stack.stackTypeSlug}`);
             }}
             unstyled
-            // backgroundColor={slug === stack.stackTypeSlug ? "red" : "blue"}
+            backgroundColor={
+              slug === stack.stackTypeSlug ? "$gray5" : "transparent"
+            }
           >
             <XStack padding="$3" alignItems="center">
               <CategoryIcon name={stack.stackTypeIconName} />
