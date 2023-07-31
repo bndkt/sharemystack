@@ -46,7 +46,7 @@ export default function Layout() {
       }}
     >
       <TamaguiProvider config={config}>
-        <Theme name={"light"}>
+        <Theme name={colorScheme}>
           <NavigationThemeProvider>
             <SafeAreaProvider>
               <DatabaseProvider database={database}>
