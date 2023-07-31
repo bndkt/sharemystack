@@ -5,14 +5,16 @@ import { StackList } from "@/components/stacks/StackList";
 import { useProfile } from "@/hooks/data/useProfile";
 
 export default function StackType() {
-  const { stackType: stackTypeSlug } = useLocalSearchParams<{
-    stackType: string;
-  }>();
+  const { profile: profileSlug, stackType: stackTypeSlug } =
+    useLocalSearchParams<{
+      profile: string;
+      stackType: string;
+    }>();
 
-  // if (!slug) throw new Error("No profile provided");
+  const slug = "nickmilo"; // profileSlug ?? null;
 
   const { profile, stack, picks } = useProfile({
-    slug: "nickmilo", // TODO: Hardcoded for now
+    slug, // "nickmilo", // TODO: Hardcoded for now
     stackTypeSlug,
   });
 

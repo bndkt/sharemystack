@@ -16,7 +16,7 @@ type ProfileSelector =
     }
   | {
       user?: never;
-      slug: string;
+      slug: string | null;
       stackTypeSlug?: string;
     };
 
@@ -46,15 +46,15 @@ export function useProfile({ user, slug, stackTypeSlug }: ProfileSelector) {
       }
     : undefined;
 
-  // Query profile by user id or slug
-  const profilesQuery = user
-    ? profilesCollection.query([Q.where("user_id", user.id), Q.take(1)])
-    : slug
-    ? profilesCollection.query([Q.where("slug", Q.like(slug)), Q.take(1)])
-    : undefined;
-
   // Load profile
   useEffect(() => {
+    // Query profile by user id or slug
+    const profilesQuery = user
+      ? profilesCollection.query([Q.where("user_id", user.id), Q.take(1)])
+      : slug
+      ? profilesCollection.query([Q.where("slug", Q.like(slug)), Q.take(1)])
+      : undefined;
+
     if (profilesQuery) {
       const subscription = profilesQuery.observe().subscribe((data) => {
         setProfile(data[0] ?? null);
@@ -62,7 +62,7 @@ export function useProfile({ user, slug, stackTypeSlug }: ProfileSelector) {
 
       return () => subscription.unsubscribe();
     }
-  }, [database, profilesQuery]);
+  }, [database, user, slug]);
 
   // If profile is loaded, load stacks
   useEffect(() => {
@@ -81,7 +81,6 @@ export function useProfile({ user, slug, stackTypeSlug }: ProfileSelector) {
   // If profile is loaded, load stack (either using stack type slug or the most recently updated stack)
   useEffect(() => {
     if (profile) {
-      console.log("Loading stack");
       const subscription = profile.stacks
         .extend(
           stackTypeSlug
