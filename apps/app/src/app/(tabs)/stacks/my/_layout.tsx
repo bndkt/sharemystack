@@ -13,7 +13,6 @@ export function MyProfile() {
   return profile ? (
     <YStack fullscreen>
       <MyProfileHeader profile={profile} />
-
       <Stack>
         <Stack.Screen
           name="index"

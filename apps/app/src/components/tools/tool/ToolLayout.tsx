@@ -2,7 +2,6 @@ import { H3, XStack, YStack } from "tamagui";
 
 import { MaterialTopTabs } from "@/components/MaterialTopTabs";
 import { ToolIcon } from "@/components/tools/ToolIcon";
-// import { ToolListItem } from "@/components/tools/ToolListItem";
 import { Category } from "@/model/Category";
 import { Tool } from "@/model/Tool";
 
@@ -20,9 +19,6 @@ export function ToolLayout({
         <H3 marginLeft="$3" flexGrow={1}>
           {tool.name}
         </H3>
-        {/* category && (
-          <ToolListItem category={category} tool={tool} toolPage={true} />
-        ) */}
       </XStack>
       <MaterialTopTabs>
         <MaterialTopTabs.Screen name="index" options={{ title: "Home" }} />

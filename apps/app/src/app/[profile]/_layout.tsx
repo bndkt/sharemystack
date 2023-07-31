@@ -40,7 +40,6 @@ export default function Profile() {
               />
             )}
           >
-            {/* <MaterialTopTabs.Screen name="index" options={{ title: "Index" }} /> */}
             <MaterialTopTabs.Screen
               name="[stackType]"
               options={{ title: "Stack Type" }}

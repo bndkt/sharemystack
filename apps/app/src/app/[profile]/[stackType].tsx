@@ -12,7 +12,7 @@ export default function StackType() {
   // if (!slug) throw new Error("No profile provided");
 
   const { profile, stack, picks } = useProfile({
-    slug: "nickmilo",
+    slug: "nickmilo", // TODO: Hardcoded for now
     stackTypeSlug,
   });
 

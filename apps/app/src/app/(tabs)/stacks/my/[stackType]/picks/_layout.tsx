@@ -1,9 +1,10 @@
 import BottomSheet from "@gorhom/bottom-sheet";
 import { useTheme } from "@tamagui/core";
+import { X } from "@tamagui/lucide-icons";
 import { Stack, useLocalSearchParams, useRouter } from "expo-router";
 import { useCallback, useMemo, useRef } from "react";
 
-import { CloseBottomSheet } from "@/components/myStack/CloseBottomSheet";
+import { Button } from "tamagui";
 
 export default function Layout() {
   const bottomSheetRef = useRef<BottomSheet>(null);
@@ -48,7 +49,15 @@ export default function Layout() {
     >
       <Stack
         screenOptions={{
-          headerRight: () => <CloseBottomSheet stackTypeSlug={stackTypeSlug} />,
+          headerRight: () => (
+            <Button
+              icon={<X size="$1.5" />}
+              onPress={() => {
+                router.push(`/(tabs)/stacks/my/${stackTypeSlug}/_tmp`);
+              }}
+              unstyled
+            />
+          ),
         }}
       >
         <Stack.Screen name="index" options={{ title: "Categories" }} />

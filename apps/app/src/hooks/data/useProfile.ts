@@ -68,7 +68,7 @@ export function useProfile({ user, slug, stackTypeSlug }: ProfileSelector) {
   useEffect(() => {
     if (profile) {
       const subscription = profile.stacks
-        .extend(Q.sortBy("updated_at", "desc"))
+        .extend(Q.sortBy("created_at", "desc"))
         .observe()
         .subscribe((data) => {
           setStacks(data ?? null);

@@ -25,48 +25,64 @@ export function MyStacks({
     profile.addStack(stackType);
   }
 
+  const filteredStackTypes =
+    stackTypes?.filter(
+      (stackType) =>
+        !stacks.some((stack) => stack.stackTypeSlug === stackType.slug)
+    ) ?? [];
+
+  const items: (
+    | string
+    | (() => React.JSX.Element)
+    | Stack
+    | StackType
+    | undefined
+  )[] = [
+    "My stacks",
+    ...stacks,
+    stacks.length === 0
+      ? () => <ListItem title="You have not created any stacks yet" />
+      : undefined,
+    stacks.length > 0
+      ? "Add a new stack to your profile"
+      : "Create your first stack now",
+    ...filteredStackTypes,
+  ];
+
   return (
-    <>
-      {stacks.length > 0 && (
-        <>
-          <H5 paddingHorizontal="$3" marginBottom="$3">
-            My stacks
-          </H5>
-          <List
-            data={stacks}
-            renderItem={({ item }) => {
-              return (
-                <ListItem
-                  onPress={() =>
-                    router.push(`/stacks/my/${item.stackTypeSlug}`)
-                  }
-                  title={item.stackTypeName}
-                  icon={
-                    <CategoryIcon name={item.stackTypeIconName} size="$1.5" />
-                  }
-                  iconAfter={<ChevronRight size="$1.5" />}
-                />
-              );
-            }}
-          />
-        </>
-      )}
-      <H5 paddingHorizontal="$3" marginBottom="$3">
-        {stacks.length > 0
-          ? "Add a new stack to your profile"
-          : "Create your first stack now"}
-      </H5>
-      <List
-        data={stackTypes}
-        renderItem={({ item }) => (
-          <ListItem
-            onPress={() => handleCreateStack(item)}
-            title={item.name}
-            icon={<CategoryIcon name={item.iconName} size="$1.5" />}
-            iconAfter={<Plus size="$1.5" />}
-          />
-        )}
-      />
-    </>
+    <List
+      data={items}
+      renderItem={({ item }) => {
+        if (typeof item === "string") {
+          return (
+            <H5 paddingHorizontal="$3" paddingVertical="$3">
+              {item}
+            </H5>
+          );
+        } else if (typeof item === "function") {
+          return item();
+        } else if (item instanceof StackType) {
+          return (
+            <ListItem
+              onPress={() => handleCreateStack(item)}
+              title={item.name}
+              icon={<CategoryIcon name={item.iconName} size="$1.5" />}
+              iconAfter={<Plus size="$1.5" />}
+            />
+          );
+        } else if (item instanceof Stack) {
+          return (
+            <ListItem
+              onPress={() => router.push(`/stacks/my/${item.stackTypeSlug}`)}
+              title={item.stackTypeName}
+              icon={<CategoryIcon name={item.stackTypeIconName} size="$1.5" />}
+              iconAfter={<ChevronRight size="$1.5" />}
+            />
+          );
+        } else {
+          return <></>;
+        }
+      }}
+    />
   );
 }

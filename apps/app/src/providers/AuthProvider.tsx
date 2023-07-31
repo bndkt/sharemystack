@@ -26,7 +26,7 @@ export const AuthContext = createContext<{
     name: string;
     slug: string;
   }) => Promise<void>;
-  stacks?: Stack[];
+  stacks?: Stack[] | null | undefined;
 }>({
   session: null,
   user: null,
