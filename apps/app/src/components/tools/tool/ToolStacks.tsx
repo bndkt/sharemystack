@@ -2,39 +2,47 @@ import { Layers } from "@tamagui/lucide-icons";
 import { useGlobalSearchParams, useRouter } from "expo-router";
 import { ListItem } from "tamagui";
 
-import { Loading } from "@/components/Loading";
+import { CategoryIcon } from "@/components/categories/CategoryIcon";
 import { List } from "@/components/list";
+import { CustomSuspense } from "@/components/loading/CustomSuspense";
+import { useTool } from "@/hooks/data/useTool";
 
 export function ToolStacks() {
   const { tool: slug } = useGlobalSearchParams<{ tool: string }>();
   const router = useRouter();
 
-  /* const { tool, picks, loading } = useObservableTool({
-    slug,
-    loadPicks: true,
-  });
+  const { picks } = useTool({ slug });
 
-  if (!tool) {
-    return <Loading message="Loading tool" />;
-  }
+  if (!slug) return null;
 
   return (
-    <>
-      {loading ? (
-        <Loading message="Loading stacks" />
-      ) : (
-        <List
-          data={picks}
-          renderItem={({ item }) => (
-            <ListItem
-              title={item.stackName}
-              subTitle={`in ${item.categoryName}`}
-              onPress={() => router.push(`/(tabs)/(stacks)/@${item.stackSlug}`)}
-              iconAfter={<Layers size="$1.5" />}
+    <List
+      data={picks}
+      renderItem={({ item }) => (
+        <CustomSuspense
+          promise={item.stack.fetch()}
+          name="stack"
+          component={(stack) => (
+            <CustomSuspense
+              promise={stack.profile.fetch()}
+              name="stack"
+              component={(profile) => (
+                <ListItem
+                  title={`${profile.name}`}
+                  subTitle={`in their ${item.stackTypeName} stack`}
+                  icon={
+                    <CategoryIcon name={item.stackTypeIconName} size="$1.5" />
+                  }
+                  onPress={() =>
+                    router.push(`/@${profile.slug}/${stack.stackTypeSlug}`)
+                  }
+                  iconAfter={<Layers size="$1.5" />}
+                />
+              )}
             />
           )}
         />
       )}
-    </>
-  ); */
+    />
+  );
 }
