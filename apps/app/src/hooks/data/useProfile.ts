@@ -13,11 +13,13 @@ type ProfileSelector =
       user: AuthUser | null;
       slug?: never;
       stackTypeSlug?: string;
+      debug?: string;
     }
   | {
       user?: never;
       slug: string | null;
       stackTypeSlug?: string;
+      debug?: string;
     };
 
 export function useProfile({ user, slug, stackTypeSlug }: ProfileSelector) {
@@ -31,7 +33,8 @@ export function useProfile({ user, slug, stackTypeSlug }: ProfileSelector) {
     TableName.PROFILES
   );
 
-  const createProfile = user
+  const createProfile = () => null;
+  /* user
     ? async ({ name, slug }: { name: string; slug: string }) => {
         await database.write(async () => {
           const profile = await profilesCollection.create((profile) => {
@@ -44,7 +47,7 @@ export function useProfile({ user, slug, stackTypeSlug }: ProfileSelector) {
           setProfile(profile);
         });
       }
-    : undefined;
+    : undefined; */
 
   // Load profile
   useEffect(() => {

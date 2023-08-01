@@ -1,10 +1,10 @@
-// import { FlashList, ListRenderItem } from "@shopify/flash-list";
+import { FlashList, ListRenderItem } from "@shopify/flash-list";
+// import { FlatList, ListRenderItem } from "react-native";
 // import { RefreshControl } from "react-native-gesture-handler";
 import { useEffect, useState } from "react";
 import { Separator, Text } from "tamagui";
 
 import { useSync } from "@/hooks/useSync";
-import { FlatList, ListRenderItem } from "react-native";
 
 export function List<T>({
   data,
@@ -39,11 +39,11 @@ export function List<T>({
   }, [isSyncing]);
 
   return (
-    <FlatList
+    <FlashList
       ListEmptyComponent={placeholder}
       data={data}
       renderItem={renderItem}
-      // estimatedItemSize={87}
+      estimatedItemSize={87}
       ItemSeparatorComponent={() => <Separator />}
       onRefresh={refresh}
       refreshing={isRefreshing}

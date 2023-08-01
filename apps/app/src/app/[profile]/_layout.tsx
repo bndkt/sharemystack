@@ -43,6 +43,9 @@ export default function Profile() {
             <MaterialTopTabs.Screen
               name="[stackType]"
               options={{ title: "Stack Type" }}
+              initialParams={{
+                primaryStackTypeSlug: "productivity",
+              }}
             />
           </MaterialTopTabs>
         </YStack>
