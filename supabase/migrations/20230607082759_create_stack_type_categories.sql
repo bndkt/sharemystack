@@ -10,5 +10,5 @@ create table stack_type_categories (
   category_id uuid references categories on delete cascade
 );
 alter table stack_type_categories enable row level security;
-create policy "Stack type categories are viewable by everyone." on stack_type_categories for
+create policy "stack type categories are viewable by everyone." on stack_type_categories for
 select using (true);

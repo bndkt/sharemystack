@@ -13,5 +13,5 @@ create table stack_types (
   is_coming_soon boolean not null default false
 );
 alter table stack_types enable row level security;
-create policy "Stack types are viewable by everyone." on stack_types for
+create policy "stack types are viewable by everyone." on stack_types for
 select using (true);

@@ -1,4 +1,5 @@
 create or replace function create_profile(
+        profile_id uuid,
         profile_name character varying,
         profile_slug character varying,
         profile_created_at timestamp with time zone,
@@ -10,6 +11,7 @@ suffix text;
 new_id uuid;
 begin for i in 1..retries loop begin -- attempt to insert the value
 insert into profiles (
+        id,
         name,
         slug,
         user_id,
@@ -19,16 +21,17 @@ insert into profiles (
         last_modified_at
     )
 values (
+        profile_id,
         profile_name,
         profile_slug,
         auth.uid(),
         profile_created_at,
         profile_updated_at,
-        NOW(),
-        now() + INTERVAL '1 microsecond'
+        now(),
+        now() + interval '1 microsecond'
     )
-RETURNING id INTO new_id;
-RETURN new_id;
+returning id into new_id;
+return new_id;
 exception
 when unique_violation then -- if a unique violation occurs, append a random string and try again
 suffix := substr(md5(random()::text), 1, 5);

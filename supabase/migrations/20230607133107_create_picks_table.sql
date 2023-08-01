@@ -12,9 +12,9 @@ create table picks (
   is_featured boolean not null default false
 );
 alter table picks enable row level security;
-create policy "Picks are viewable by everyone." on picks for
+create policy "picks are viewable by everyone." on picks for
 select using (true);
-create policy "Users can insert picks for their own stack." on picks for
+create policy "users can insert picks for their own stack." on picks for
 insert with check (
     (
       select count(*)
@@ -24,7 +24,7 @@ insert with check (
         and profiles.user_id = auth.uid()
     ) > 0
   );
-create policy "Users can update picks for their own stack." on picks for
+create policy "users can update picks for their own stack." on picks for
 update using (
     (
       select count(*)
@@ -42,7 +42,7 @@ update using (
         and profiles.user_id = auth.uid()
     ) > 0
   );
-create policy "Users can delete picks from their own stack." on picks for delete using (
+create policy "users can delete picks from their own stack." on picks for delete using (
   (
     select count(*)
     from profiles

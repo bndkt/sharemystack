@@ -17,5 +17,5 @@ create table tools (
   twitter character varying null
 );
 alter table tools enable row level security;
-create policy "Tools are viewable by everyone." on tools for
+create policy "tools are viewable by everyone." on tools for
 select using (true);

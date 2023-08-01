@@ -13,5 +13,5 @@ create table categories (
   is_coming_soon boolean not null default false
 );
 alter table categories enable row level security;
-create policy "Categories are viewable by everyone." on categories for
+create policy "categories are viewable by everyone." on categories for
 select using (true);

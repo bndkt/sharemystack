@@ -14,9 +14,9 @@ set name = profile_name,
     slug = profile_slug,
     primary_stack_id = profile_primary_stack_id,
     updated_at = profile_updated_at,
-    last_modified_at = NOW()
+    last_modified_at = now()
 where id = profile_id;
-RETURN profile_id;
+return profile_id;
 exception
 when unique_violation then -- if a unique violation occurs, append a random string and try again
 suffix := substr(md5(random()::text), 1, 5);

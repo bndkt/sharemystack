@@ -19,9 +19,9 @@ create table profiles (
   is_featured boolean not null default false
 );
 alter table profiles enable row level security;
-create policy "Profiles are viewable by everyone." on profiles for
+create policy "profiles are viewable by everyone." on profiles for
 select using (true);
-create policy "Users can insert their own profile." on profiles for
+create policy "users can insert their own profile." on profiles for
 insert with check (auth.uid() = user_id);
-create policy "Users can update their own profile." on profiles for
+create policy "users can update their own profile." on profiles for
 update using (auth.uid() = user_id);

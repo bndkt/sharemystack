@@ -12,9 +12,9 @@ create table stacks (
 create unique index unique_index_stacks on stacks (profile_id, stack_type_id)
 where deleted_at is null;
 alter table stacks enable row level security;
-create policy "Stacks are viewable by everyone." on stacks for
+create policy "stacks are viewable by everyone." on stacks for
 select using (true);
-create policy "Users can insert their own stack." on stacks for
+create policy "users can insert their own stack." on stacks for
 insert with check (
     (
       select count(*)
@@ -23,7 +23,7 @@ insert with check (
         and profiles.user_id = auth.uid()
     ) > 0
   );
-create policy "Users can update their own stack." on stacks for
+create policy "users can update their own stack." on stacks for
 update using (
     (
       select count(*)

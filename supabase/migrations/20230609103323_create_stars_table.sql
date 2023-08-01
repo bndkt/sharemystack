@@ -12,10 +12,10 @@ create table stars (
   category_id uuid references categories on delete cascade
 );
 alter table stars enable row level security;
-create policy "Stars are viewable by everyone." on stars for
+create policy "stars are viewable by everyone." on stars for
 select using (true);
-create policy "Users can insert their own stars." on stars for
+create policy "users can insert their own stars." on stars for
 insert with check (auth.uid() = user_id);
-create policy "Users can delete their own stars." on stars for delete using (auth.uid() = user_id);
-create policy "Users can update their own stars." on stars for
+create policy "users can delete their own stars." on stars for delete using (auth.uid() = user_id);
+create policy "users can update their own stars." on stars for
 update using (auth.uid() = user_id);
