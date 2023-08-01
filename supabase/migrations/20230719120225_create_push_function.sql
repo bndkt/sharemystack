@@ -129,5 +129,18 @@ SET deleted_at = NOW(),
     last_modified_at = NOW()
 FROM changes_data
 WHERE stars.id = changes_data.deleted;
+-- Update profiles
+WITH changes_data AS (
+    SELECT (changes->'profiles'->'updated') AS profiles_updated
+)
+UPDATE profiles
+SET name = (profile->>'name'),
+    slug = (profile->>'slug'),
+    primary_stack_id = (profile->>'primary_stack_id')::uuid,
+    updated_at = epoch_to_timestamp(profile->>'updated_at'),
+    last_modified_at = NOW()
+FROM changes_data,
+    jsonb_array_elements(profiles_updated) AS profile
+WHERE id = (profile->>'id')::uuid;
 END;
 $$ LANGUAGE plpgsql;
