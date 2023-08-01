@@ -76,6 +76,7 @@ export const schema = appSchema({
         { name: "is_featured", type: "boolean" },
         { name: "is_starred", type: "boolean" },
         { name: "number_of_stars", type: "number" },
+        { name: "primary_stack_id", type: "number" },
         { name: "created_at", type: "number" },
         { name: "updated_at", type: "number" },
       ],

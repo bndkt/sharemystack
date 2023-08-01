@@ -166,6 +166,8 @@ select jsonb_build_object(
                     t.number_of_stars,
                     'is_starred',
                     t.is_starred,
+                    'primary_stack_id',
+                    t.primary_stack_id,
                     'user_id',
                     t.user_id,
                     'created_at',

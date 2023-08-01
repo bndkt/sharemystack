@@ -1,6 +1,7 @@
-import { Model, Q } from "@nozbe/watermelondb";
+import { Model, Q, Relation } from "@nozbe/watermelondb";
 import {
   date,
+  relation,
   lazy,
   readonly,
   text,
@@ -28,6 +29,8 @@ export class Profile extends Model {
       foreignKey: "profile_id",
     },
   };
+
+  @relation(TableName.STACKS, "primary_stack_id") stack!: Relation<Stack>;
 
   @text("name") name!: string;
   @text("slug") slug!: string;
