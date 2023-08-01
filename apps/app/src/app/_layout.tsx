@@ -55,7 +55,10 @@ export default function Layout() {
                     <Stack>
                       <Stack.Screen
                         name="(tabs)"
-                        options={{ title: "Home", headerShown: false }}
+                        options={{
+                          title: "Home",
+                          headerShown: false,
+                        }}
                       />
                       <Stack.Screen
                         name="[profile]"
