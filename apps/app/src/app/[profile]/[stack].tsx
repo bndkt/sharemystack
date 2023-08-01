@@ -1,23 +1,23 @@
 import { useGlobalSearchParams } from "expo-router";
 
 import { CustomSuspense } from "@/components/loading/CustomSuspense";
-import { StackList } from "@/components/stacks/StackList";
+import { PicksList } from "@/components/picks/PicksList";
 import { useProfile } from "@/hooks/data/useProfile";
 
 export default function StackType() {
   const {
     profile: profileSlug,
-    stackType: stackTypeSlug,
-    primaryStackTypeSlug,
+    stack: stackId,
+    primaryStackId,
   } = useGlobalSearchParams<{
     profile: string;
-    stackType: string;
-    primaryStackTypeSlug: string;
+    stack: string;
+    primaryStackId: string;
   }>();
 
   const { profile, stack, picks } = useProfile({
-    slug: profileSlug?.toLowerCase().substring(1) ?? null, // "nickmilo", // TODO: Hardcoded for now
-    stackTypeSlug: stackTypeSlug ?? primaryStackTypeSlug,
+    slug: profileSlug?.toLowerCase().substring(1) ?? null,
+    stackId: stackId ?? primaryStackId,
   });
 
   return (
@@ -33,7 +33,7 @@ export default function StackType() {
               data={picks}
               name="picks"
               component={(picks) => (
-                <StackList profile={profile} stack={stack} picks={picks} />
+                <PicksList profile={profile} stack={stack} picks={picks} />
               )}
             />
           )}

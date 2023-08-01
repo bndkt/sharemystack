@@ -7,13 +7,13 @@ import { useProfile } from "@/hooks/data/useProfile";
 import { useAuth } from "@/hooks/useAuth";
 
 export default function Layout() {
-  const { stackType: stackTypeSlug } = useLocalSearchParams<{
-    stackType: string;
+  const { stack: stackId } = useLocalSearchParams<{
+    stack: string;
   }>();
   const { user } = useAuth();
   const { stack, picks } = useProfile({
     user,
-    stackTypeSlug,
+    stackId,
   });
 
   return (

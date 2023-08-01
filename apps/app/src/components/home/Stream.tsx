@@ -21,7 +21,7 @@ export function Stream() {
             title={`${item.profileName} (@${item.profileSlug})`}
             subTitle={`added ${item.toolName} to their ${item.stackTypeName} stack`}
             onPress={() =>
-              router.push(`/@${item.profileSlug}/${item.stackTypeSlug}`)
+              router.push(`/@${item.profileSlug}/${item.stack.id}`)
             }
             icon={
               <CustomSuspense

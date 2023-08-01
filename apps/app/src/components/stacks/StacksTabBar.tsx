@@ -17,7 +17,8 @@ export function StacksTabBar({
   stacks: Stack[];
 }) {
   const router = useRouter();
-  const { stackType: slug } = useGlobalSearchParams<{ stackType: string }>();
+  let { stack: stackId } = useGlobalSearchParams<{ stack: string }>();
+  stackId ??= profile.primaryStackId;
 
   return (
     <XStack borderBottomColor="$borderColor" borderBottomWidth="$1">
@@ -26,12 +27,10 @@ export function StacksTabBar({
           <Button
             key={stack.stackTypeSlug}
             onPress={() => {
-              router.push(`/@${profile?.slug}/${stack.stackTypeSlug}`);
+              router.push(`/@${profile?.slug}/${stack.id}`);
             }}
             unstyled
-            backgroundColor={
-              slug === stack.stackTypeSlug ? "$gray5" : "transparent"
-            }
+            backgroundColor={stackId === stack.id ? "$gray5" : "transparent"}
           >
             <XStack padding="$3" alignItems="center">
               <CategoryIcon name={stack.stackTypeIconName} />

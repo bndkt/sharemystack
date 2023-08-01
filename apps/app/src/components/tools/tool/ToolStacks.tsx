@@ -33,9 +33,7 @@ export function ToolStacks() {
                   icon={
                     <CategoryIcon name={item.stackTypeIconName} size="$1.5" />
                   }
-                  onPress={() =>
-                    router.push(`/@${profile.slug}/${stack.stackTypeSlug}`)
-                  }
+                  onPress={() => router.push(`/@${profile.slug}/${stack.id}`)}
                   iconAfter={<ChevronRight size="$1.5" />}
                 />
               )}

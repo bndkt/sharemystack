@@ -41,10 +41,10 @@ export default function Profile() {
             )}
           >
             <MaterialTopTabs.Screen
-              name="[stackType]"
+              name="[stack]"
               options={{ title: "Stack Type" }}
               initialParams={{
-                primaryStackTypeSlug: "productivity",
+                primaryStackId: profile.primaryStackId,
               }}
             />
           </MaterialTopTabs>

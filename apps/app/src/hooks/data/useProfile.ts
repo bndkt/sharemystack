@@ -12,17 +12,17 @@ type ProfileSelector =
   | {
       user: AuthUser | null;
       slug?: never;
-      stackTypeSlug?: string;
+      stackId?: string;
       debug?: string;
     }
   | {
       user?: never;
       slug: string | null;
-      stackTypeSlug?: string;
+      stackId?: string;
       debug?: string;
     };
 
-export function useProfile({ user, slug, stackTypeSlug }: ProfileSelector) {
+export function useProfile({ user, slug, stackId }: ProfileSelector) {
   const database = useDatabase();
   const [profile, setProfile] = useState<Profile | null>();
   const [stacks, setStacks] = useState<Stack[] | null>();
@@ -33,8 +33,7 @@ export function useProfile({ user, slug, stackTypeSlug }: ProfileSelector) {
     TableName.PROFILES
   );
 
-  const createProfile = () => null;
-  /* user
+  const createProfile = user
     ? async ({ name, slug }: { name: string; slug: string }) => {
         await database.write(async () => {
           const profile = await profilesCollection.create((profile) => {
@@ -47,7 +46,7 @@ export function useProfile({ user, slug, stackTypeSlug }: ProfileSelector) {
           setProfile(profile);
         });
       }
-    : undefined; */
+    : undefined;
 
   // Load profile
   useEffect(() => {
@@ -81,16 +80,11 @@ export function useProfile({ user, slug, stackTypeSlug }: ProfileSelector) {
     }
   }, [profile]);
 
-  // If profile is loaded, load stack (either using stack type slug or the most recently updated stack)
+  // If profile is loaded and stackId is set, load stack
   useEffect(() => {
-    if (profile) {
+    if (profile && stackId) {
       const subscription = profile.stacks
-        .extend(
-          stackTypeSlug
-            ? Q.where("stack_type_slug", Q.eq(stackTypeSlug))
-            : Q.sortBy("updated_at", "desc"),
-          Q.take(1)
-        )
+        .extend(Q.where("id", Q.eq(stackId)), Q.take(1))
         .observe()
         .subscribe((data) => {
           setStack(data[0] ?? null);
@@ -98,7 +92,7 @@ export function useProfile({ user, slug, stackTypeSlug }: ProfileSelector) {
 
       return () => subscription.unsubscribe();
     }
-  }, [profile, stackTypeSlug]);
+  }, [profile, stackId]);
 
   // If stack is loaded, load picks
   useEffect(() => {

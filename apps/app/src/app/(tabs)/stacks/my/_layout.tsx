@@ -19,7 +19,7 @@ export function MyProfile() {
           options={{ title: "My Stacks", headerShown: false }}
         />
         <Stack.Screen
-          name="[stackType]"
+          name="[stack]"
           options={{ title: "Stack", headerBackTitle: "My Stacks" }}
         />
       </Stack>

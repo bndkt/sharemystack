@@ -8,7 +8,7 @@ import { Pick } from "@/model/Pick";
 import { Profile } from "@/model/Profile";
 import { Stack } from "@/model/Stack";
 
-export function StackList({
+export function PicksList({
   profile,
   stack,
   picks,

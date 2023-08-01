@@ -30,8 +30,6 @@ export class Profile extends Model {
     },
   };
 
-  @relation(TableName.STACKS, "primary_stack_id") stack!: Relation<Stack>;
-
   @text("name") name!: string;
   @text("slug") slug!: string;
   @text("description") description!: string;
@@ -43,6 +41,7 @@ export class Profile extends Model {
   @text("is_featured") isFeatured!: boolean;
   @text("number_of_stars") numberOfStars!: number;
   @text("user_id") userId!: string;
+  @text("primary_stack_id") primaryStackId!: string; // Could be a relations as well
 
   @lazy
   stacks = this.collections
@@ -79,6 +78,14 @@ export class Profile extends Model {
         stack.stackTypeSlug = stackType.slug;
         stack.stackTypeIconName = stackType.iconName;
       });
+
+    // If there is no primary stack set yet, set the new one as primary
+    if (!this.primaryStackId) {
+      await this.update((profile) => {
+        profile.primaryStackId = newStack.id;
+      });
+    }
+
     return newStack;
   }
 }
