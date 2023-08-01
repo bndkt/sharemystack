@@ -20,8 +20,6 @@ module.exports = function (api) {
           disable: true,
         },
       ],
-      // NOTE: this is only necessary if you are using reanimated for animations
-      "@babel/plugin-proposal-export-namespace-from",
       "react-native-reanimated/plugin",
     ],
   };
