@@ -1,8 +1,9 @@
-import { useSync } from "@/hooks/useSync";
 import { DatabaseBackup, DownloadCloud } from "@tamagui/lucide-icons";
 import * as Updates from "expo-updates";
 import { useState } from "react";
 import { Button, Spinner, YStack } from "tamagui";
+
+import { useSync } from "@/hooks/useSync";
 
 export default function Debug() {
   const [isFetchingUpdate, setIsFetchingUpdate] = useState(false);

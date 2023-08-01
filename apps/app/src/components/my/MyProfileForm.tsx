@@ -2,8 +2,8 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { TextInput } from "react-native";
 import { Button, Input, XStack, YStack, debounce } from "tamagui";
 
-import { isValidName, isValidSlug, sanitizeSlug } from "@/lib/validation";
 import { supabase } from "@/lib/supabase";
+import { isValidName, isValidSlug, sanitizeSlug } from "@/lib/validation";
 
 export function MyProfileForm({
   initialName,

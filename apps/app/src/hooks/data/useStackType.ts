@@ -3,9 +3,9 @@ import { useDatabase } from "@nozbe/watermelondb/hooks";
 import { useEffect, useState } from "react";
 
 import { Category } from "@/model/Category";
+import { Stack } from "@/model/Stack";
 import { StackType } from "@/model/StackType";
 import { TableName } from "@/model/schema";
-import { Stack } from "@/model/Stack";
 
 export function useStackType({
   stack,

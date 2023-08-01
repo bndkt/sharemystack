@@ -1,18 +1,13 @@
 import { ChevronRight } from "@tamagui/lucide-icons";
-import {
-  Link,
-  Stack,
-  useGlobalSearchParams,
-  useLocalSearchParams,
-} from "expo-router";
+import { Link, Stack, useLocalSearchParams } from "expo-router";
 import { ListItem, Text, YStack } from "tamagui";
 
 import { CategoryIcon } from "@/components/categories/CategoryIcon";
 import { List } from "@/components/list";
+import { CustomSuspense } from "@/components/loading/CustomSuspense";
 import { useProfile } from "@/hooks/data/useProfile";
 import { useStackType } from "@/hooks/data/useStackType";
 import { useAuth } from "@/hooks/useAuth";
-import { CustomSuspense } from "@/components/loading/CustomSuspense";
 
 export default function Index() {
   const { stack: stackId } = useLocalSearchParams<{

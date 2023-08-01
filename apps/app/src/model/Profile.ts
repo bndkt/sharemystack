@@ -1,7 +1,6 @@
-import { Model, Q, Relation } from "@nozbe/watermelondb";
+import { Model, Q } from "@nozbe/watermelondb";
 import {
   date,
-  relation,
   lazy,
   readonly,
   text,

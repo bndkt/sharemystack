@@ -1,10 +1,10 @@
+import { useIsFocused } from "@react-navigation/native"; // TODO: @react-navigation/native is not a dependency
+import { StatusBar } from "expo-status-bar";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { H3, Text, XStack, YStack } from "tamagui";
-import { useIsFocused } from "@react-navigation/native"; // TODO: @react-navigation/native is not a dependency
 
-import { Stream } from "@/components/home/Stream";
 import { Logo } from "@/components/Logo";
-import { StatusBar } from "expo-status-bar";
+import { Stream } from "@/components/home/Stream";
 
 export default function Index() {
   const insets = useSafeAreaInsets();
