@@ -1,8 +1,9 @@
-import { useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { TextInput } from "react-native";
-import { Button, Input, XStack, YStack } from "tamagui";
+import { Button, Input, XStack, YStack, debounce } from "tamagui";
 
 import { isValidName, isValidSlug, sanitizeSlug } from "@/lib/validation";
+import { supabase } from "@/lib/supabase";
 
 export function MyProfileForm({
   initialName,
@@ -32,6 +33,21 @@ export function MyProfileForm({
     } else {
       setValidate(true);
     }
+  }
+
+  async function slugExists(slug: string) {
+    const { data } = await supabase.rpc("slug_exists", { input_slug: slug });
+    return data;
+  }
+
+  const doCallbackWithDebounce = useMemo(() => {
+    const callback = (slug: string) => slugExists(slug);
+    return debounce(callback, 100);
+  }, [slug]);
+
+  function handleSlugChange(text: string) {
+    setSlug(sanitizeSlug(text));
+    doCallbackWithDebounce(text);
   }
 
   return (
@@ -67,7 +83,7 @@ export function MyProfileForm({
           />
           <Input
             value={slug ?? ""}
-            onChangeText={(text) => setSlug(sanitizeSlug(text))}
+            onChangeText={handleSlugChange}
             borderLeftWidth={0}
             borderTopWidth={0}
             borderTopStartRadius={0}

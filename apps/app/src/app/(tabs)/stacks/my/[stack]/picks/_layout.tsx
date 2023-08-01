@@ -9,8 +9,8 @@ export default function Layout() {
   const bottomSheetRef = useRef<BottomSheet>(null);
   const theme = useTheme();
   const router = useRouter();
-  const { stackType: stackTypeSlug } = useLocalSearchParams<{
-    stackType: string;
+  const { stack: stackId } = useLocalSearchParams<{
+    stack: string;
   }>();
 
   const snapPoints = useMemo(() => ["50%"], []); // "25%", "50%", "75%"
@@ -26,7 +26,7 @@ export default function Layout() {
       snapPoints={snapPoints}
       onChange={handleSheetChanges}
       enablePanDownToClose={true}
-      onClose={() => router.push(`/(tabs)/stacks/my/${stackTypeSlug}/_tmp`)}
+      onClose={() => router.push(`/(tabs)/stacks/my/${stackId}/_tmp`)}
       style={{
         shadowColor: theme.color.val,
         shadowOffset: {
@@ -52,7 +52,7 @@ export default function Layout() {
             <Button
               icon={<X size="$1.5" />}
               onPress={() => {
-                router.push(`/(tabs)/stacks/my/${stackTypeSlug}/_tmp`);
+                router.push(`/(tabs)/stacks/my/${stackId}/_tmp`);
               }}
               unstyled
             />

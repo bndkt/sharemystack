@@ -51,6 +51,13 @@ export class Stack extends Model {
       pick.stack.set(this);
       pick.tool.set(tool);
       pick.category.set(category);
+      pick.toolName = tool.name;
+      pick.toolSlug = tool.slug;
+      pick.stackTypeIconName = this.stackTypeIconName;
+      pick.stackTypeName = this.stackTypeName;
+      pick.stackTypeSlug = this.stackTypeSlug;
+      pick.categoryName = category.name;
+      pick.categorySlug = category.slug;
     });
     return newPick;
   }

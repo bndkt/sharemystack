@@ -5,29 +5,32 @@ import { useEffect, useState } from "react";
 import { Category } from "@/model/Category";
 import { StackType } from "@/model/StackType";
 import { TableName } from "@/model/schema";
+import { Stack } from "@/model/Stack";
 
 export function useStackType({
-  slug,
+  stack,
   includeComingSoon,
 }: {
-  slug: string;
+  stack?: Stack | null;
   includeComingSoon?: boolean;
 }) {
   const database = useDatabase();
   const [stackType, setStackType] = useState<StackType>();
   const [categories, setCategories] = useState<Category[]>();
 
-  const stackTypesQuery = database.collections
-    .get<StackType>(TableName.STACK_TYPES)
-    .query(Q.where("slug", slug), Q.take(1));
-
   useEffect(() => {
-    const subscription = stackTypesQuery.observe().subscribe((data) => {
-      setStackType(data[0] ?? null);
-    });
+    if (stack) {
+      const stackTypesQuery = database.collections
+        .get<StackType>(TableName.STACK_TYPES)
+        .query(Q.where("id", stack.stackType.id), Q.take(1));
 
-    return () => subscription.unsubscribe();
-  }, [database]);
+      const subscription = stackTypesQuery.observe().subscribe((data) => {
+        setStackType(data[0] ?? null);
+      });
+
+      return () => subscription.unsubscribe();
+    }
+  }, [database, stack]);
 
   useEffect(() => {
     if (stackType) {

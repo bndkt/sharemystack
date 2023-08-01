@@ -7,16 +7,16 @@ import { useProfile } from "@/hooks/data/useProfile";
 import { useAuth } from "@/hooks/useAuth";
 
 export default function CategoryTools() {
-  const { category: slug, stackType: stackTypeSlug } = useLocalSearchParams<{
+  const { category: slug, stack: stackId } = useLocalSearchParams<{
     category: string;
-    stackType: string;
+    stack: string;
   }>();
   const { user } = useAuth();
 
   if (!slug) throw new Error("No category slug provided");
 
   const { category, tools } = useCategory({ slug });
-  const { stack, picks } = useProfile({ user, stackTypeSlug });
+  const { stack, picks } = useProfile({ user, stackId });
 
   return (
     <>

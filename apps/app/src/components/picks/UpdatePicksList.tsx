@@ -5,11 +5,11 @@ import { List } from "../list";
 import { ToolIcon } from "../tools/ToolIcon";
 
 import { useAnalytics } from "@/hooks/useAnalytics";
-import { sync } from "@/lib/sync";
 import { Category } from "@/model/Category";
 import { Pick } from "@/model/Pick";
 import { Stack } from "@/model/Stack";
 import { Tool } from "@/model/Tool";
+import { useSync } from "@/hooks/useSync";
 
 export function UpdatePicksList({
   tools,
@@ -23,6 +23,7 @@ export function UpdatePicksList({
   stack: Stack;
 }) {
   const { capture } = useAnalytics();
+  const { sync } = useSync();
 
   function addPick({
     stack,

@@ -3,13 +3,16 @@ import { Text, YStack } from "tamagui";
 import { MyProfileForm } from "./MyProfileForm";
 
 import { useAuth } from "@/hooks/useAuth";
+import { useSync } from "@/hooks/useSync";
 
 export function CreateProfile() {
   const { user, createProfile } = useAuth();
+  const { sync } = useSync();
 
   async function handleSubmit({ name, slug }: { name: string; slug: string }) {
     if (createProfile) {
       await createProfile({ name, slug });
+      sync();
     }
   }
 
