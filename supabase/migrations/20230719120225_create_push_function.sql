@@ -1,30 +1,18 @@
 --SELECT (changes->'picks'->'created') AS picks_created,
 --(changes->'picks'->'deleted') AS picks_deleted,
 --(changes->'picks'->'updated') AS picks_updated
-CREATE OR REPLACE FUNCTION push(changes JSONB) RETURNS VOID AS $$ BEGIN -- Insert new profiles
-    WITH changes_data AS (
-        SELECT (changes->'profiles'->'created') AS profiles_created
-    )
-INSERT INTO profiles (
-        id,
-        user_id,
-        name,
-        slug,
-        created_at,
-        updated_at,
-        server_created_at,
-        last_modified_at
-    )
-SELECT (profile->>'id')::uuid,
-    auth.uid(),
-    (profile->>'name'),
-    (profile->>'slug'),
-    epoch_to_timestamp(profile->>'created_at'),
-    epoch_to_timestamp(profile->>'updated_at'),
-    NOW(),
-    NOW()
-FROM changes_data,
-    jsonb_array_elements(profiles_created) AS profile;
+CREATE OR REPLACE FUNCTION push(changes JSONB) RETURNS VOID AS $$
+DECLARE new_profile JSONB;
+DECLARE updated_profile JSONB;
+BEGIN -- Insert new profiles
+FOR new_profile IN
+SELECT jsonb_array_elements((changes->'profiles'->'created')) LOOP PERFORM create_profile(
+        (new_profile->>'name'),
+        (new_profile->>'slug'),
+        epoch_to_timestamp(new_profile->>'created_at'),
+        epoch_to_timestamp(new_profile->>'updated_at')
+    );
+END LOOP;
 -- Delete profiles
 WITH changes_data AS (
     SELECT jsonb_array_elements_text(changes->'profiles'->'deleted')::uuid AS deleted
@@ -130,17 +118,14 @@ SET deleted_at = NOW(),
 FROM changes_data
 WHERE stars.id = changes_data.deleted;
 -- Update profiles
-WITH changes_data AS (
-    SELECT (changes->'profiles'->'updated') AS profiles_updated
-)
-UPDATE profiles
-SET name = (profile->>'name'),
-    slug = (profile->>'slug'),
-    primary_stack_id = (profile->>'primary_stack_id')::uuid,
-    updated_at = epoch_to_timestamp(profile->>'updated_at'),
-    last_modified_at = NOW()
-FROM changes_data,
-    jsonb_array_elements(profiles_updated) AS profile
-WHERE id = (profile->>'id')::uuid;
+FOR updated_profile IN
+SELECT jsonb_array_elements((changes->'profiles'->'updated')) LOOP PERFORM update_profile(
+        (updated_profile->>'id')::uuid,
+        (updated_profile->>'name'),
+        (updated_profile->>'slug'),
+        (updated_profile->>'primary_stack_id')::uuid,
+        epoch_to_timestamp(updated_profile->>'updated_at')
+    );
+END LOOP;
 END;
 $$ LANGUAGE plpgsql;
