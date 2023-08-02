@@ -8,8 +8,8 @@ import {
 } from "@nozbe/watermelondb/decorators";
 
 import { Pick } from "./Pick";
-import { TableName } from "./schema";
 import { ToolIcon } from "./ToolIcon";
+import { TableName } from "./schema";
 
 export class Tool extends Model {
   static table = TableName.TOOLS;

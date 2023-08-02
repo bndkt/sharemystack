@@ -13,8 +13,8 @@ import { StackType } from "@/model/StackType";
 import { StackTypeCategory } from "@/model/StackTypeCategory";
 import { Star } from "@/model/Star";
 import { Tool } from "@/model/Tool";
-import { schema } from "@/model/schema";
 import { ToolIcon } from "@/model/ToolIcon";
+import { schema } from "@/model/schema";
 
 // First, create the adapter to the underlying database:
 const adapter = new SQLiteAdapter({

@@ -40,7 +40,7 @@ export class Profile extends Model {
   @text("is_featured") isFeatured!: boolean;
   @text("number_of_stars") numberOfStars!: number;
   @text("user_id") userId!: string;
-  @text("primary_stack_id") primaryStackId!: string; // Could be a relations as well
+  @text("primary_stack_id") primaryStackId?: string; // Could be a relation as well
 
   @lazy
   stacks = this.collections
