@@ -2,7 +2,11 @@ import { supabase } from "./supabase.js";
 import { categories } from "./data.js";
 import { RecordIds } from "../types/types.js";
 
-export async function createCategories(stackTypeRecordIds: RecordIds) {
+export async function createCategories({
+  stackTypeRecordIds,
+}: {
+  stackTypeRecordIds: RecordIds;
+}) {
   const categoryRecordIds: RecordIds = {};
 
   for (const slug of Object.keys(categories)) {

@@ -2,10 +2,13 @@ import { supabase } from "./supabase.js";
 import { tools } from "./data.js";
 import { RecordIds } from "../types/types.js";
 
-export async function createTools(
-  toolIconRecordIds: RecordIds,
-  categoryRecordIds: RecordIds
-) {
+export async function createTools({
+  toolIconRecordIds,
+  categoryRecordIds,
+}: {
+  toolIconRecordIds: RecordIds;
+  categoryRecordIds: RecordIds;
+}) {
   const toolRecordIds: RecordIds = {};
 
   for (const slug of Object.keys(tools)) {
@@ -32,7 +35,7 @@ export async function createTools(
     if (error) console.error(error);
 
     if (toolRecords) {
-      const toolRecord = toolRecords[0].id;
+      const toolRecord = toolRecords[0];
       toolRecordIds[slug] = toolRecord.id;
 
       for (const categorySlug of tool.categories) {

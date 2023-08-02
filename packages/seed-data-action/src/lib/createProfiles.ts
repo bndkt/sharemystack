@@ -2,11 +2,15 @@ import { supabase } from "./supabase.js";
 import { profiles } from "./data.js";
 import { RecordIds } from "../types/types.js";
 
-export async function createProfiles(
-  stackTypeRecordIds: RecordIds,
-  toolRecordIds: RecordIds,
-  categoryRecordIds: RecordIds
-) {
+export async function createProfiles({
+  stackTypeRecordIds,
+  toolRecordIds,
+  categoryRecordIds,
+}: {
+  stackTypeRecordIds: RecordIds;
+  toolRecordIds: RecordIds;
+  categoryRecordIds: RecordIds;
+}) {
   const profileRecordIds: RecordIds = {};
 
   for (const slug of Object.keys(profiles)) {

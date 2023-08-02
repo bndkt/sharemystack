@@ -12,16 +12,17 @@ async function run(): Promise<void> {
 
     const toolIconRecordIds = await createToolIcons();
     const stackTypeRecordIds = await createStackTypes();
-    const categoryRecordIds = await createCategories(stackTypeRecordIds);
-    const toolRecordIds = await createTools(
+    const categoryRecordIds = await createCategories({ stackTypeRecordIds });
+    const toolRecordIds = await createTools({
       toolIconRecordIds,
-      categoryRecordIds
-    );
-    const profileRecordIds = await createProfiles(
+      categoryRecordIds,
+    });
+    console.log({ toolRecordIds });
+    const profileRecordIds = await createProfiles({
       stackTypeRecordIds,
       toolRecordIds,
-      categoryRecordIds
-    );
+      categoryRecordIds,
+    });
 
     // core.debug(new Date().toTimeString());
     // await wait(parseInt(ms, 10));
