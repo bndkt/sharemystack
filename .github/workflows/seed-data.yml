@@ -3,21 +3,14 @@ name: Seed Data
 on:
   workflow_dispatch:
     inputs:
-      profile:
-        description: "Profile"
+      environment:
+        description: "Environment"
         type: choice
-        default: simulator
+        default: staging
         required: true
         options:
-          - simulator
-          - development
-          - preview
+          - staging
           - production
-      submit:
-        description: "Submit to AppStore"
-        type: boolean
-        required: true
-        default: false
 
 jobs:
   update:
@@ -31,3 +24,9 @@ jobs:
         uses: ./.github/actions/setup-monorepo
       - name: Build
         run: pnpm build
+      - name: Seed Data
+        uses: ./packages/seed-data-action
+        with:
+          environment: ${{ github.event.inputs.environment }}
+          supabaseUrl: ${{ secrets.GH_SUPABASE_URL }}
+          supabaseKey: ${{ secrets.GH_SUPABASE_KEY }}

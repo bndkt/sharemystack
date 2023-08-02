@@ -1,11 +1,15 @@
-name: "Your name here"
-description: "Provide a description here"
-author: "Your name or organization here"
+name: "Seed Data"
+description: "Seeds data into the Supabase (Postgres) database"
+author: "Benedikt Müller"
 inputs:
-  milliseconds: # change this
+  environment:
     required: true
-    description: "input description here"
-    default: "default value if applicable"
+    description: "Whether to run in staging or production"
+    default: "staging"
+  supabaseUrl:
+    required: true
+  supabaseKey:
+    required: true
 runs:
-  using: "node16"
+  using: "node18"
   main: "dist/index.js"
