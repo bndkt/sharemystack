@@ -16,7 +16,6 @@ async function run(): Promise<void> {
       toolIconRecordIds,
       categoryRecordIds,
     });
-    console.log({ toolRecordIds });
     const profileRecordIds = await createProfiles({
       stackTypeRecordIds,
       toolRecordIds,
