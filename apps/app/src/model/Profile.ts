@@ -87,4 +87,11 @@ export class Profile extends Model {
 
     return newStack;
   }
+
+  @writer async updateProfile({ name, slug }: { name: string; slug: string }) {
+    this.update((profile) => {
+      profile.name = name;
+      profile.slug = slug;
+    });
+  }
 }

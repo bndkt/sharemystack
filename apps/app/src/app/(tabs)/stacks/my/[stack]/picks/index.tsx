@@ -13,8 +13,6 @@ export default function Index() {
   const { stack: stackId } = useLocalSearchParams<{
     stack: string;
   }>();
-  console.log({ stackId });
-
   const { user } = useAuth();
 
   const { stack } = useProfile({ user, stackId });

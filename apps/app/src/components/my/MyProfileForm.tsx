@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { TextInput } from "react-native";
 import { Button, Input, XStack, YStack, debounce } from "tamagui";
 
@@ -8,13 +8,15 @@ import { isValidName, isValidSlug, sanitizeSlug } from "@/lib/validation";
 export function MyProfileForm({
   initialName,
   initialSlug,
-  label,
+  update = false,
   onSubmit,
+  onCancel,
 }: {
   initialName: string;
   initialSlug: string;
-  label: string;
+  update?: boolean;
   onSubmit: ({ name, slug }: { name: string; slug: string }) => void;
+  onCancel?: () => void;
 }) {
   const [name, setName] = useState<string | undefined>(initialName);
   const [slug, setSlug] = useState<string | undefined>(
@@ -101,9 +103,21 @@ export function MyProfileForm({
           />
         </XStack>
       </YStack>
-      <Button onPress={handleSubmit} marginTop="$3" themeInverse>
-        {label}
-      </Button>
+      <XStack>
+        {update && (
+          <Button
+            onPress={onCancel}
+            marginTop="$3"
+            flexGrow={1}
+            marginRight="$3"
+          >
+            Cancel
+          </Button>
+        )}
+        <Button onPress={handleSubmit} marginTop="$3" themeInverse flexGrow={1}>
+          {update ? "Update Profile" : "Create Profile"}
+        </Button>
+      </XStack>
     </YStack>
   );
 }

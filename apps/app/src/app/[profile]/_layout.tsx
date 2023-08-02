@@ -20,35 +20,35 @@ export default function Profile() {
       data={profile}
       name="profile"
       component={(profile) => (
-        <YStack fullscreen>
-          <Stack.Screen
-            options={{ title: `${profile.name} (@${profile.slug})` }}
-          />
-          <ProfileView profile={profile} />
-          <MaterialTopTabs
-            tabBar={(props) => (
-              <CustomSuspense
-                data={stacks}
-                name="stacks"
-                component={(stacks) => (
+        <CustomSuspense
+          data={stacks}
+          name="stacks"
+          component={(stacks) => (
+            <YStack fullscreen>
+              <Stack.Screen
+                options={{ title: `${profile.name} (@${profile.slug})` }}
+              />
+              <ProfileView profile={profile} />
+              <MaterialTopTabs
+                tabBar={(props) => (
                   <StacksTabBar
                     tabBarProps={props}
                     profile={profile}
                     stacks={stacks}
                   />
                 )}
-              />
-            )}
-          >
-            <MaterialTopTabs.Screen
-              name="[stack]"
-              options={{ title: "Stack Type" }}
-              initialParams={{
-                primaryStackId: profile.primaryStackId,
-              }}
-            />
-          </MaterialTopTabs>
-        </YStack>
+              >
+                <MaterialTopTabs.Screen
+                  name="[stack]"
+                  options={{ title: "Stack Type" }}
+                  initialParams={{
+                    primaryStackId: profile.primaryStackId ?? stacks[0].id,
+                  }}
+                />
+              </MaterialTopTabs>
+            </YStack>
+          )}
+        />
       )}
     />
   );

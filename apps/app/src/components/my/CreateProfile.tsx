@@ -24,7 +24,6 @@ export function CreateProfile() {
       <MyProfileForm
         initialName={user?.user_metadata?.full_name}
         initialSlug={user?.user_metadata?.preferred_username}
-        label="Create Profile"
         onSubmit={handleSubmit}
       />
     </YStack>
