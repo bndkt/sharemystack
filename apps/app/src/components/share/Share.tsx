@@ -1,4 +1,4 @@
-import { Text, XStack, YStack } from "tamagui";
+import { Text, XStack } from "tamagui";
 
 import { CustomSuspense } from "../loading/CustomSuspense";
 import { ToolIcon } from "../tools/ToolIcon";
