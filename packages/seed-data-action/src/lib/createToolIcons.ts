@@ -1,9 +1,13 @@
 import { promises as fs } from "fs";
 import path from "path";
+
 import { supabase } from "./supabase.js";
 
 export async function createToolIcons() {
-  const iconsPath = "../../assets/icons";
+  const iconsPath =
+    process.env.GITHUB_ACTIONS === "true"
+      ? "./assets/icons"
+      : "../../assets/icons";
 
   const files = await fs.readdir(iconsPath, {});
 
