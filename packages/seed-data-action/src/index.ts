@@ -1,3 +1,4 @@
+import "dotenv/config";
 import * as core from "@actions/core";
 
 import { createStackTypes } from "./lib/createStackTypes.js";
