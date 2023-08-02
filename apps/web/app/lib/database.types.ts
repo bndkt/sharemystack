@@ -38,36 +38,36 @@ export interface Database {
         Row: {
           created_at: string
           deleted_at: string | null
-          icon: string
+          icon_name: string
           id: string
           is_coming_soon: boolean
-          last_modified_at: string | null
+          last_modified_at: string
           name: string
-          server_created_at: string | null
+          server_created_at: string
           slug: string
           updated_at: string
         }
         Insert: {
           created_at?: string
           deleted_at?: string | null
-          icon: string
+          icon_name: string
           id?: string
           is_coming_soon?: boolean
-          last_modified_at?: string | null
+          last_modified_at?: string
           name: string
-          server_created_at?: string | null
+          server_created_at?: string
           slug: string
           updated_at?: string
         }
         Update: {
           created_at?: string
           deleted_at?: string | null
-          icon?: string
+          icon_name?: string
           id?: string
           is_coming_soon?: boolean
-          last_modified_at?: string | null
+          last_modified_at?: string
           name?: string
-          server_created_at?: string | null
+          server_created_at?: string
           slug?: string
           updated_at?: string
         }
@@ -79,8 +79,9 @@ export interface Database {
           created_at: string
           deleted_at: string | null
           id: string
-          last_modified_at: string | null
-          server_created_at: string | null
+          last_modified_at: string
+          server_created_at: string
+          slug: string
           tool_id: string | null
           updated_at: string
         }
@@ -89,8 +90,9 @@ export interface Database {
           created_at?: string
           deleted_at?: string | null
           id?: string
-          last_modified_at?: string | null
-          server_created_at?: string | null
+          last_modified_at?: string
+          server_created_at?: string
+          slug: string
           tool_id?: string | null
           updated_at?: string
         }
@@ -99,8 +101,9 @@ export interface Database {
           created_at?: string
           deleted_at?: string | null
           id?: string
-          last_modified_at?: string | null
-          server_created_at?: string | null
+          last_modified_at?: string
+          server_created_at?: string
+          slug?: string
           tool_id?: string | null
           updated_at?: string
         }
@@ -137,8 +140,10 @@ export interface Database {
           created_at: string
           deleted_at: string | null
           id: string
-          last_modified_at: string | null
-          server_created_at: string | null
+          is_featured: boolean
+          last_modified_at: string
+          server_created_at: string
+          slug: string | null
           stack_id: string | null
           tool_id: string | null
           updated_at: string
@@ -148,8 +153,10 @@ export interface Database {
           created_at?: string
           deleted_at?: string | null
           id?: string
-          last_modified_at?: string | null
-          server_created_at?: string | null
+          is_featured?: boolean
+          last_modified_at?: string
+          server_created_at?: string
+          slug?: string | null
           stack_id?: string | null
           tool_id?: string | null
           updated_at?: string
@@ -159,8 +166,10 @@ export interface Database {
           created_at?: string
           deleted_at?: string | null
           id?: string
-          last_modified_at?: string | null
-          server_created_at?: string | null
+          is_featured?: boolean
+          last_modified_at?: string
+          server_created_at?: string
+          slug?: string | null
           stack_id?: string | null
           tool_id?: string | null
           updated_at?: string
@@ -188,6 +197,12 @@ export interface Database {
             foreignKeyName: "picks_stack_id_fkey"
             columns: ["stack_id"]
             referencedRelation: "stacks_view"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "picks_stack_id_fkey"
+            columns: ["stack_id"]
+            referencedRelation: "sync_stacks_view"
             referencedColumns: ["id"]
           },
           {
@@ -204,57 +219,236 @@ export interface Database {
           }
         ]
       }
-      stacks: {
+      profiles: {
         Row: {
           created_at: string
           deleted_at: string | null
+          description: string | null
           id: string
+          image: string | null
           is_featured: boolean
-          last_modified_at: string | null
+          last_modified_at: string
           name: string | null
-          server_created_at: string | null
+          primary_stack_id: string | null
+          server_created_at: string
           slug: string
           twitter: string | null
           twitter_image_url: string | null
           updated_at: string
           user_id: string | null
           website: string | null
+          youtube: string | null
         }
         Insert: {
           created_at?: string
           deleted_at?: string | null
+          description?: string | null
           id?: string
+          image?: string | null
           is_featured?: boolean
-          last_modified_at?: string | null
+          last_modified_at?: string
           name?: string | null
-          server_created_at?: string | null
+          primary_stack_id?: string | null
+          server_created_at?: string
           slug: string
           twitter?: string | null
           twitter_image_url?: string | null
           updated_at?: string
           user_id?: string | null
           website?: string | null
+          youtube?: string | null
         }
         Update: {
           created_at?: string
           deleted_at?: string | null
+          description?: string | null
           id?: string
+          image?: string | null
           is_featured?: boolean
-          last_modified_at?: string | null
+          last_modified_at?: string
           name?: string | null
-          server_created_at?: string | null
+          primary_stack_id?: string | null
+          server_created_at?: string
           slug?: string
           twitter?: string | null
           twitter_image_url?: string | null
           updated_at?: string
           user_id?: string | null
           website?: string | null
+          youtube?: string | null
         }
         Relationships: [
           {
-            foreignKeyName: "stacks_user_id_fkey"
+            foreignKeyName: "profiles_primary_stack_id_fkey"
+            columns: ["primary_stack_id"]
+            referencedRelation: "stacks"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "profiles_primary_stack_id_fkey"
+            columns: ["primary_stack_id"]
+            referencedRelation: "stacks_view"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "profiles_primary_stack_id_fkey"
+            columns: ["primary_stack_id"]
+            referencedRelation: "sync_stacks_view"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "profiles_user_id_fkey"
             columns: ["user_id"]
             referencedRelation: "users"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
+      stack_type_categories: {
+        Row: {
+          category_id: string | null
+          created_at: string
+          deleted_at: string | null
+          id: string
+          last_modified_at: string
+          server_created_at: string
+          slug: string
+          stack_type_id: string | null
+          updated_at: string
+        }
+        Insert: {
+          category_id?: string | null
+          created_at?: string
+          deleted_at?: string | null
+          id?: string
+          last_modified_at?: string
+          server_created_at?: string
+          slug: string
+          stack_type_id?: string | null
+          updated_at?: string
+        }
+        Update: {
+          category_id?: string | null
+          created_at?: string
+          deleted_at?: string | null
+          id?: string
+          last_modified_at?: string
+          server_created_at?: string
+          slug?: string
+          stack_type_id?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "stack_type_categories_category_id_fkey"
+            columns: ["category_id"]
+            referencedRelation: "categories"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "stack_type_categories_category_id_fkey"
+            columns: ["category_id"]
+            referencedRelation: "categories_view"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "stack_type_categories_stack_type_id_fkey"
+            columns: ["stack_type_id"]
+            referencedRelation: "stack_types"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
+      stack_types: {
+        Row: {
+          created_at: string
+          deleted_at: string | null
+          icon_name: string
+          id: string
+          is_coming_soon: boolean
+          last_modified_at: string
+          name: string
+          server_created_at: string
+          slug: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          deleted_at?: string | null
+          icon_name: string
+          id?: string
+          is_coming_soon?: boolean
+          last_modified_at?: string
+          name: string
+          server_created_at?: string
+          slug: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          deleted_at?: string | null
+          icon_name?: string
+          id?: string
+          is_coming_soon?: boolean
+          last_modified_at?: string
+          name?: string
+          server_created_at?: string
+          slug?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      stacks: {
+        Row: {
+          created_at: string
+          deleted_at: string | null
+          id: string
+          last_modified_at: string
+          profile_id: string | null
+          server_created_at: string
+          slug: string | null
+          stack_type_id: string | null
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          deleted_at?: string | null
+          id?: string
+          last_modified_at?: string
+          profile_id?: string | null
+          server_created_at?: string
+          slug?: string | null
+          stack_type_id?: string | null
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          deleted_at?: string | null
+          id?: string
+          last_modified_at?: string
+          profile_id?: string | null
+          server_created_at?: string
+          slug?: string | null
+          stack_type_id?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "stacks_profile_id_fkey"
+            columns: ["profile_id"]
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "stacks_profile_id_fkey"
+            columns: ["profile_id"]
+            referencedRelation: "profiles_view"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "stacks_stack_type_id_fkey"
+            columns: ["stack_type_id"]
+            referencedRelation: "stack_types"
             referencedColumns: ["id"]
           }
         ]
@@ -265,9 +459,9 @@ export interface Database {
           created_at: string
           deleted_at: string | null
           id: string
-          last_modified_at: string | null
-          server_created_at: string | null
-          stack_id: string | null
+          last_modified_at: string
+          profile_id: string | null
+          server_created_at: string
           tool_id: string | null
           updated_at: string
           user_id: string | null
@@ -277,9 +471,9 @@ export interface Database {
           created_at?: string
           deleted_at?: string | null
           id?: string
-          last_modified_at?: string | null
-          server_created_at?: string | null
-          stack_id?: string | null
+          last_modified_at?: string
+          profile_id?: string | null
+          server_created_at?: string
           tool_id?: string | null
           updated_at?: string
           user_id?: string | null
@@ -289,9 +483,9 @@ export interface Database {
           created_at?: string
           deleted_at?: string | null
           id?: string
-          last_modified_at?: string | null
-          server_created_at?: string | null
-          stack_id?: string | null
+          last_modified_at?: string
+          profile_id?: string | null
+          server_created_at?: string
           tool_id?: string | null
           updated_at?: string
           user_id?: string | null
@@ -310,15 +504,15 @@ export interface Database {
             referencedColumns: ["id"]
           },
           {
-            foreignKeyName: "stars_stack_id_fkey"
-            columns: ["stack_id"]
-            referencedRelation: "stacks"
+            foreignKeyName: "stars_profile_id_fkey"
+            columns: ["profile_id"]
+            referencedRelation: "profiles"
             referencedColumns: ["id"]
           },
           {
-            foreignKeyName: "stars_stack_id_fkey"
-            columns: ["stack_id"]
-            referencedRelation: "stacks_view"
+            foreignKeyName: "stars_profile_id_fkey"
+            columns: ["profile_id"]
+            referencedRelation: "profiles_view"
             referencedColumns: ["id"]
           },
           {
@@ -341,50 +535,96 @@ export interface Database {
           }
         ]
       }
+      tool_icons: {
+        Row: {
+          created_at: string
+          deleted_at: string | null
+          icon_svg: string | null
+          id: string
+          last_modified_at: string
+          server_created_at: string
+          slug: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          deleted_at?: string | null
+          icon_svg?: string | null
+          id?: string
+          last_modified_at?: string
+          server_created_at?: string
+          slug: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          deleted_at?: string | null
+          icon_svg?: string | null
+          id?: string
+          last_modified_at?: string
+          server_created_at?: string
+          slug?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       tools: {
         Row: {
+          affiliate_link: string | null
+          app_store: string | null
           color: string | null
           created_at: string
           deleted_at: string | null
-          icon: string | null
           id: string
-          last_modified_at: string | null
+          last_modified_at: string
           name: string
-          server_created_at: string | null
+          server_created_at: string
           slug: string
+          tool_icon_id: string | null
           twitter: string | null
           updated_at: string
           website: string | null
         }
         Insert: {
+          affiliate_link?: string | null
+          app_store?: string | null
           color?: string | null
           created_at?: string
           deleted_at?: string | null
-          icon?: string | null
           id?: string
-          last_modified_at?: string | null
+          last_modified_at?: string
           name: string
-          server_created_at?: string | null
+          server_created_at?: string
           slug: string
+          tool_icon_id?: string | null
           twitter?: string | null
           updated_at?: string
           website?: string | null
         }
         Update: {
+          affiliate_link?: string | null
+          app_store?: string | null
           color?: string | null
           created_at?: string
           deleted_at?: string | null
-          icon?: string | null
           id?: string
-          last_modified_at?: string | null
+          last_modified_at?: string
           name?: string
-          server_created_at?: string | null
+          server_created_at?: string
           slug?: string
+          tool_icon_id?: string | null
           twitter?: string | null
           updated_at?: string
           website?: string | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "tools_tool_icon_id_fkey"
+            columns: ["tool_icon_id"]
+            referencedRelation: "tool_icons"
+            referencedColumns: ["id"]
+          }
+        ]
       }
     }
     Views: {
@@ -392,7 +632,7 @@ export interface Database {
         Row: {
           created_at: string | null
           deleted_at: string | null
-          icon: string | null
+          icon_name: string | null
           id: string | null
           is_coming_soon: boolean | null
           last_modified_at: string | null
@@ -406,23 +646,27 @@ export interface Database {
       }
       picks_view: {
         Row: {
+          category_icon_name: string | null
           category_id: string | null
           category_name: string | null
           category_slug: string | null
           created_at: string | null
           deleted_at: string | null
           id: string | null
+          is_featured: boolean | null
           last_modified_at: string | null
+          profile_name: string | null
+          profile_slug: string | null
           server_created_at: string | null
+          slug: string | null
           stack_id: string | null
-          stack_name: string | null
-          stack_slug: string | null
+          stack_type_icon_name: string | null
+          stack_type_name: string | null
+          stack_type_slug: string | null
           tool_color: string | null
-          tool_icon: string | null
           tool_id: string | null
           tool_name: string | null
           tool_slug: string | null
-          tool_website: string | null
           updated_at: string | null
         }
         Relationships: [
@@ -448,6 +692,12 @@ export interface Database {
             foreignKeyName: "picks_stack_id_fkey"
             columns: ["stack_id"]
             referencedRelation: "stacks_view"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "picks_stack_id_fkey"
+            columns: ["stack_id"]
+            referencedRelation: "sync_stacks_view"
             referencedColumns: ["id"]
           },
           {
@@ -464,17 +714,20 @@ export interface Database {
           }
         ]
       }
-      stacks_view: {
+      profiles_view: {
         Row: {
           created_at: string | null
           deleted_at: string | null
+          description: string | null
           id: string | null
+          image: string | null
           is_featured: boolean | null
           is_starred: boolean | null
           last_modified_at: string | null
           name: string | null
-          number_of_picks: number | null
+          number_of_stacks: number | null
           number_of_stars: number | null
+          primary_stack_id: string | null
           server_created_at: string | null
           slug: string | null
           twitter: string | null
@@ -482,12 +735,68 @@ export interface Database {
           updated_at: string | null
           user_id: string | null
           website: string | null
+          youtube: string | null
         }
         Relationships: [
           {
-            foreignKeyName: "stacks_user_id_fkey"
+            foreignKeyName: "profiles_primary_stack_id_fkey"
+            columns: ["primary_stack_id"]
+            referencedRelation: "stacks"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "profiles_primary_stack_id_fkey"
+            columns: ["primary_stack_id"]
+            referencedRelation: "stacks_view"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "profiles_primary_stack_id_fkey"
+            columns: ["primary_stack_id"]
+            referencedRelation: "sync_stacks_view"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "profiles_user_id_fkey"
             columns: ["user_id"]
             referencedRelation: "users"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
+      stacks_view: {
+        Row: {
+          created_at: string | null
+          deleted_at: string | null
+          id: string | null
+          last_modified_at: string | null
+          number_of_picks: number | null
+          profile_id: string | null
+          profile_name: string | null
+          profile_slug: string | null
+          stack_type_icon_name: string | null
+          stack_type_id: string | null
+          stack_type_name: string | null
+          stack_type_slug: string | null
+          updated_at: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "stacks_profile_id_fkey"
+            columns: ["profile_id"]
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "stacks_profile_id_fkey"
+            columns: ["profile_id"]
+            referencedRelation: "profiles_view"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "stacks_stack_type_id_fkey"
+            columns: ["stack_type_id"]
+            referencedRelation: "stack_types"
             referencedColumns: ["id"]
           }
         ]
@@ -499,8 +808,8 @@ export interface Database {
           deleted_at: string | null
           id: string | null
           last_modified_at: string | null
+          profile_id: string | null
           server_created_at: string | null
-          stack_id: string | null
           tool_id: string | null
           updated_at: string | null
           user_id: string | null
@@ -511,8 +820,8 @@ export interface Database {
           deleted_at?: string | null
           id?: string | null
           last_modified_at?: string | null
+          profile_id?: string | null
           server_created_at?: string | null
-          stack_id?: string | null
           tool_id?: string | null
           updated_at?: string | null
           user_id?: string | null
@@ -523,8 +832,8 @@ export interface Database {
           deleted_at?: string | null
           id?: string | null
           last_modified_at?: string | null
+          profile_id?: string | null
           server_created_at?: string | null
-          stack_id?: string | null
           tool_id?: string | null
           updated_at?: string | null
           user_id?: string | null
@@ -543,15 +852,15 @@ export interface Database {
             referencedColumns: ["id"]
           },
           {
-            foreignKeyName: "stars_stack_id_fkey"
-            columns: ["stack_id"]
-            referencedRelation: "stacks"
+            foreignKeyName: "stars_profile_id_fkey"
+            columns: ["profile_id"]
+            referencedRelation: "profiles"
             referencedColumns: ["id"]
           },
           {
-            foreignKeyName: "stars_stack_id_fkey"
-            columns: ["stack_id"]
-            referencedRelation: "stacks_view"
+            foreignKeyName: "stars_profile_id_fkey"
+            columns: ["profile_id"]
+            referencedRelation: "profiles_view"
             referencedColumns: ["id"]
           },
           {
@@ -576,24 +885,96 @@ export interface Database {
       }
       sync_picks_view: {
         Row: {
+          category_icon_name: string | null
           category_id: string | null
           category_name: string | null
           category_slug: string | null
           created_at: string | null
           deleted_at: string | null
           id: string | null
+          is_featured: boolean | null
           last_modified_at: string | null
+          profile_name: string | null
+          profile_slug: string | null
           server_created_at: string | null
+          slug: string | null
           stack_id: string | null
-          stack_name: string | null
-          stack_slug: string | null
+          stack_type_icon_name: string | null
+          stack_type_name: string | null
+          stack_type_slug: string | null
           tool_color: string | null
-          tool_icon: string | null
           tool_id: string | null
           tool_name: string | null
           tool_slug: string | null
-          tool_website: string | null
           updated_at: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "picks_category_id_fkey"
+            columns: ["category_id"]
+            referencedRelation: "categories"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "picks_category_id_fkey"
+            columns: ["category_id"]
+            referencedRelation: "categories_view"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "picks_stack_id_fkey"
+            columns: ["stack_id"]
+            referencedRelation: "stacks"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "picks_stack_id_fkey"
+            columns: ["stack_id"]
+            referencedRelation: "stacks_view"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "picks_stack_id_fkey"
+            columns: ["stack_id"]
+            referencedRelation: "sync_stacks_view"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "picks_tool_id_fkey"
+            columns: ["tool_id"]
+            referencedRelation: "tools"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "picks_tool_id_fkey"
+            columns: ["tool_id"]
+            referencedRelation: "tools_view"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
+      sync_profiles_view: {
+        Row: {
+          created_at: string | null
+          deleted_at: string | null
+          description: string | null
+          id: string | null
+          image: string | null
+          is_featured: boolean | null
+          is_starred: boolean | null
+          last_modified_at: string | null
+          name: string | null
+          number_of_stacks: number | null
+          number_of_stars: number | null
+          primary_stack_id: string | null
+          server_created_at: string | null
+          slug: string | null
+          twitter: string | null
+          twitter_image_url: string | null
+          updated_at: string | null
+          user_id: string | null
+          website: string | null
+          youtube: string | null
         }
         Relationships: []
       }
@@ -602,42 +983,80 @@ export interface Database {
           created_at: string | null
           deleted_at: string | null
           id: string | null
-          is_featured: boolean | null
-          is_starred: boolean | null
           last_modified_at: string | null
-          name: string | null
           number_of_picks: number | null
-          number_of_stars: number | null
-          server_created_at: string | null
-          slug: string | null
-          twitter: string | null
-          twitter_image_url: string | null
+          profile_id: string | null
+          profile_name: string | null
+          profile_slug: string | null
+          stack_type_icon_name: string | null
+          stack_type_id: string | null
+          stack_type_name: string | null
+          stack_type_slug: string | null
           updated_at: string | null
-          user_id: string | null
-          website: string | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "stacks_profile_id_fkey"
+            columns: ["profile_id"]
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "stacks_profile_id_fkey"
+            columns: ["profile_id"]
+            referencedRelation: "profiles_view"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "stacks_stack_type_id_fkey"
+            columns: ["stack_type_id"]
+            referencedRelation: "stack_types"
+            referencedColumns: ["id"]
+          }
+        ]
       }
       tools_view: {
         Row: {
+          affiliate_link: string | null
           all_picks: number | null
+          app_store: string | null
           color: string | null
           created_at: string | null
           deleted_at: string | null
-          icon: string | null
           id: string | null
           last_modified_at: string | null
           name: string | null
           server_created_at: string | null
           slug: string | null
+          tool_icon_id: string | null
           updated_at: string | null
-          user_picks: number | null
           website: string | null
         }
-        Relationships: []
+        Relationships: [
+          {
+            foreignKeyName: "tools_tool_icon_id_fkey"
+            columns: ["tool_icon_id"]
+            referencedRelation: "tool_icons"
+            referencedColumns: ["id"]
+          }
+        ]
       }
     }
     Functions: {
+      create_profile: {
+        Args: {
+          profile_id: string
+          profile_name: string
+          profile_slug: string
+          profile_created_at: string
+          profile_updated_at: string
+        }
+        Returns: string
+      }
+      delete_user: {
+        Args: Record<PropertyKey, never>
+        Returns: undefined
+      }
       epoch_to_timestamp: {
         Args: {
           epoch: string
@@ -656,11 +1075,27 @@ export interface Database {
         }
         Returns: undefined
       }
+      slug_exists: {
+        Args: {
+          input_slug: string
+        }
+        Returns: boolean
+      }
       timestamp_to_epoch: {
         Args: {
           ts: string
         }
         Returns: number
+      }
+      update_profile: {
+        Args: {
+          profile_id: string
+          profile_name: string
+          profile_slug: string
+          profile_primary_stack_id: string
+          profile_updated_at: string
+        }
+        Returns: string
       }
     }
     Enums: {
