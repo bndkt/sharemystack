@@ -41,10 +41,367 @@
     "appStore": "",
     "categories": ["note-taking"]
   },
-  "slug": {
-    "name": "",
+  "macos": {
+    "name": "macOS",
     "color": "",
-    "website": "",
+    "website": "https://apple.com/macos/",
+    "appStore": "",
+    "categories": ["operating-system"]
+  },
+  "windows": {
+    "name": "Windows",
+    "color": "",
+    "website": "https://microsoft.com/windows/",
+    "appStore": "",
+    "categories": ["operating-system"]
+  },
+  "linux": {
+    "name": "Linux",
+    "color": "",
+    "website": "https://www.linuxfoundation.org/",
+    "appStore": "",
+    "categories": ["operating-system"]
+  },
+  "vs-code": {
+    "name": "VS Code",
+    "color": "",
+    "website": "https://code.visualstudio.com/",
+    "appStore": "",
+    "categories": ["ide"]
+  },
+  "google-chrome": {
+    "name": "Google Chrome",
+    "color": "",
+    "website": "https://www.google.com/chrome/",
+    "appStore": "",
+    "categories": ["browser"]
+  },
+  "apple-icloud-mail": {
+    "name": "Apple iCloud Mail",
+    "color": "",
+    "website": "https://www.apple.com/",
+    "appStore": "",
+    "categories": ["email-service"]
+  },
+  "whatsapp": {
+    "name": "WhatsApp",
+    "color": "",
+    "website": "https://www.whatsapp.com/",
+    "appStore": "",
+    "categories": ["instant-messaging"]
+  },
+  "signal": {
+    "name": "Signal",
+    "color": "",
+    "website": "https://www.signal.com/",
+    "appStore": "",
+    "categories": ["instant-messaging"]
+  },
+  "telegram": {
+    "name": "Telegram",
+    "color": "",
+    "website": "https://www.telegram.com/",
+    "appStore": "",
+    "categories": ["instant-messaging"]
+  },
+  "bear": {
+    "name": "Bear",
+    "color": "",
+    "website": "https://www.bear.app/",
+    "appStore": "",
+    "categories": ["note-taking"]
+  },
+  "things": {
+    "name": "Things",
+    "color": "",
+    "website": "https://culturedcode.com/things/",
+    "appStore": "",
+    "categories": ["task-management"]
+  },
+  "todoist": {
+    "name": "Todoist",
+    "color": "",
+    "website": "https://todoist.com/",
+    "appStore": "",
+    "categories": ["task-management"]
+  },
+  "salesforce": {
+    "name": "Salesforce",
+    "color": "",
+    "website": "https://salesforce.com/",
+    "appStore": "",
+    "categories": ["crm"]
+  },
+  "discord": {
+    "name": "Discord",
+    "color": "",
+    "website": "https://discord.com/",
+    "appStore": "",
+    "categories": ["collaboration"]
+  },
+  "cron": {
+    "name": "Cron",
+    "color": "",
+    "website": "https://cron.com/",
+    "appStore": "",
+    "categories": ["calendar"]
+  },
+  "arc": {
+    "name": "Arc",
+    "color": "",
+    "website": "https://arc.net/",
+    "appStore": "",
+    "categories": ["browser"]
+  },
+  "superhuman": {
+    "name": "Superhuman",
+    "color": "",
+    "website": "https://superhuman.com/",
+    "appStore": "",
+    "categories": ["email-client"]
+  },
+  "remnote": {
+    "name": "RemNote",
+    "color": "",
+    "website": "https://remnote.com/",
+    "appStore": "",
+    "categories": ["note-taking"]
+  },
+  "day-one": {
+    "name": "Day One",
+    "color": "",
+    "website": "https://dayoneapp.com/",
+    "appStore": "",
+    "categories": ["journaling"]
+  },
+  "bitwarden": {
+    "name": "Bitwarden",
+    "color": "",
+    "website": "https://bitwarden.com/",
+    "appStore": "",
+    "categories": ["password-management"]
+  },
+  "logseq": {
+    "name": "Logseq",
+    "color": "",
+    "website": "https://logseq.com/",
+    "appStore": "",
+    "categories": ["note-taking"]
+  },
+  "tana": {
+    "name": "Tana",
+    "color": "",
+    "website": "https://tana.inc/",
+    "appStore": "",
+    "categories": ["note-taking"]
+  },
+  "slack": {
+    "name": "Slack",
+    "color": "",
+    "website": "https://slack.com/",
+    "appStore": "",
+    "categories": ["collaboration"]
+  },
+  "ios": {
+    "name": "iOS",
+    "color": "",
+    "website": "https://www.apple.com/ios/",
+    "appStore": "",
+    "categories": ["mobile-operating-system"]
+  },
+  "android": {
+    "name": "Android",
+    "color": "",
+    "website": "https://www.android.com/",
+    "appStore": "",
+    "categories": ["mobile-operating-system"]
+  },
+  "safari": {
+    "name": "Safari",
+    "color": "",
+    "website": "https://www.apple.com/safari/",
+    "appStore": "",
+    "categories": ["browser"]
+  },
+  "microsoft-to-do": {
+    "name": "Microsoft To Do",
+    "color": "",
+    "website": "https://todo.microsoft.com/",
+    "appStore": "",
+    "categories": ["task-management"]
+  },
+  "google-tasks": {
+    "name": "Google Tasks",
+    "color": "",
+    "website": "https://google.com/",
+    "appStore": "",
+    "categories": ["task-management"]
+  },
+  "google-mail": {
+    "name": "Google Mail",
+    "color": "",
+    "website": "https://google.com/",
+    "appStore": "",
+    "categories": ["email-client", "email-service"]
+  },
+  "outlook-com": {
+    "name": "Outlook.com",
+    "color": "",
+    "website": "https://outlook.com/",
+    "appStore": "",
+    "categories": ["email-service"]
+  },
+  "microsoft-outlook": {
+    "name": "Microsoft Outlook",
+    "color": "",
+    "website": "https://outlook.com/",
+    "appStore": "",
+    "categories": ["email-client"]
+  },
+  "microsoft-onedrive": {
+    "name": "Microsoft OneDrive",
+    "color": "",
+    "website": "https://www.onedrive.com/",
+    "appStore": "",
+    "categories": ["file-hosting"]
+  },
+  "microsoft-onenote": {
+    "name": "Microsoft OneNote",
+    "color": "",
+    "website": "https://onenote.com/",
+    "appStore": "",
+    "categories": ["note-taking"]
+  },
+  "microsoft-teams": {
+    "name": "Microsoft Teams",
+    "color": "",
+    "website": "https://www.microsoft.com/microsoft-teams/",
+    "appStore": "",
+    "categories": ["collaboration"]
+  },
+  "google-calendar": {
+    "name": "Google Calendar",
+    "color": "",
+    "website": "https://google.com/",
+    "appStore": "",
+    "categories": ["calendar"]
+  },
+  "google-meet": {
+    "name": "Google Meet",
+    "color": "",
+    "website": "https://google.com/",
+    "appStore": "",
+    "categories": ["video-conferencing"]
+  },
+  "google-drive": {
+    "name": "Google Drive",
+    "color": "",
+    "website": "https://drive.google.com/",
+    "appStore": "",
+    "categories": ["file-hosting"]
+  },
+  "dropbox": {
+    "name": "Dropbox",
+    "color": "",
+    "website": "https://dropbox.com/",
+    "appStore": "",
+    "categories": ["file-hosting"]
+  },
+  "box": {
+    "name": "Box",
+    "color": "",
+    "website": "https://box.com/",
+    "appStore": "",
+    "categories": ["file-hosting"]
+  },
+  "zoom": {
+    "name": "Zoom",
+    "color": "",
+    "website": "https://zoom.com/",
+    "appStore": "",
+    "categories": ["video-conferencing"]
+  },
+  "firefox": {
+    "name": "Firefox",
+    "color": "",
+    "website": "https://www.mozilla.org/firefox/",
+    "appStore": "",
+    "categories": ["browser"]
+  },
+  "expressvpn": {
+    "name": "ExpressVPN",
+    "color": "",
+    "website": "https://www.expressvpn.com/",
+    "appStore": "",
+    "categories": ["vpn"]
+  },
+  "hey": {
+    "name": "Hey",
+    "color": "",
+    "website": "https://hey.com/",
+    "appStore": "",
+    "categories": ["email-service"]
+  },
+  "nordvpn": {
+    "name": "NordVPN",
+    "color": "",
+    "website": "https://nordvpn.com/",
+    "appStore": "",
+    "categories": ["vpn"]
+  },
+  "protonvpn": {
+    "name": "ProtonVPN",
+    "color": "",
+    "website": "https://protonvpn/",
+    "appStore": "",
+    "categories": ["vpn"]
+  },
+  "surfshark": {
+    "name": "Surfshark",
+    "color": "",
+    "website": "https://surfshark.com/",
+    "appStore": "",
+    "categories": ["vpn"]
+  },
+  "figma": {
+    "name": "Figma",
+    "color": "",
+    "website": "https://figma.com/",
+    "appStore": "",
+    "categories": []
+  },
+  "photoshop": {
+    "name": "Photoshop",
+    "color": "",
+    "website": "https://www.adobe.com/products/photoshop.html",
+    "appStore": "",
+    "categories": []
+  },
+  "indesign": {
+    "name": "InDesign",
+    "color": "",
+    "website": "https://www.adobe.com/products/indesign.html",
+    "appStore": "",
+    "categories": []
+  },
+  "classlist": {
+    "name": "Classlist",
+    "color": "",
+    "website": "https://www.classlist.com/",
+    "appStore": "",
+    "categories": []
+  },
+  "veracross": {
+    "name": "Veracross",
+    "color": "",
+    "website": "https://www.veracross.com/",
+    "appStore": "",
+    "categories": []
+  },
+  "seesaw": {
+    "name": "Seesaw",
+    "color": "",
+    "website": "https://web.seesaw.me/",
     "appStore": "",
     "categories": []
   }
