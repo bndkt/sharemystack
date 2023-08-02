@@ -1,4 +1,4 @@
-create table tools (
+create table tool_icons (
   id uuid not null default gen_random_uuid(),
   primary key (id),
   created_at timestamp with time zone not null default now(),
@@ -9,13 +9,8 @@ create table tools (
   name character varying not null,
   slug character varying not null,
   unique (slug),
-  tool_icon_id uuid references tool_icons null,
-  color character varying null,
-  affiliate_link character varying null,
-  app_store character varying null,
-  website character varying null,
-  twitter character varying null
+  icon_svg text null
 );
-alter table tools enable row level security;
-create policy "tools are viewable by everyone." on tools for
+alter table tool_icons enable row level security;
+create policy "tool icons are viewable by everyone." on tool_icons for
 select using (true);

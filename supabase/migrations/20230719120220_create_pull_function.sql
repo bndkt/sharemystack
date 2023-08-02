@@ -1,6 +1,7 @@
 create or replace function pull(last_pulled_at bigint default 0) returns jsonb as $$
 declare _ts timestamp with time zone;
 _tools jsonb;
+_tool_icons jsonb;
 _profiles jsonb;
 _stack_types jsonb;
 _stack_type_categories jsonb;
@@ -27,8 +28,6 @@ select jsonb_build_object(
                     t.slug,
                     'color',
                     t.color,
-                    'icon_svg',
-                    t.icon_svg,
                     'website',
                     t.website,
                     'affiliate_link',
@@ -58,6 +57,41 @@ select jsonb_build_object(
         )
     ) into _tools
 from tools_view t;
+-- tool icons
+select jsonb_build_object(
+        'created',
+        '[]'::jsonb,
+        'updated',
+        coalesce(
+            jsonb_agg(
+                jsonb_build_object(
+                    'id',
+                    t.id,
+                    'icon_svg',
+                    t.icon_svg,
+                    'tool_id',
+                    t.tool_id,
+                    'created_at',
+                    timestamp_to_epoch(t.created_at),
+                    'updated_at',
+                    timestamp_to_epoch(t.updated_at)
+                )
+            ) filter (
+                where t.deleted_at is null
+                    and t.last_modified_at > _ts
+            ),
+            '[]'::jsonb
+        ),
+        'deleted',
+        coalesce(
+            jsonb_agg(to_jsonb(t.id)) filter (
+                where t.deleted_at is not null
+                    and t.last_modified_at > _ts
+            ),
+            '[]'::jsonb
+        )
+    ) into _tool_icons
+from tool_icons t;
 --- categories
 select jsonb_build_object(
         'created',
@@ -401,6 +435,8 @@ return jsonb_build_object(
     jsonb_build_object(
         'tools',
         _tools,
+        'tool_icons',
+        _tool_icons,
         'categories',
         _categories,
         'categorizations',

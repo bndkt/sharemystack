@@ -10,7 +10,6 @@ select picks.*,
     categories.icon_name as category_icon_name,
     tools.name as tool_name,
     tools.slug as tool_slug,
-    tools.icon_svg as tool_icon_svg,
     tools.color as tool_color
 from picks
     left join stacks on stacks.id = picks.stack_id

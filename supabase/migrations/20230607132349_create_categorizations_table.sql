@@ -7,7 +7,9 @@ create table categorizations (
   server_created_at timestamp with time zone not null default now(),
   last_modified_at timestamp with time zone not null default now(),
   tool_id uuid references tools on delete cascade,
-  category_id uuid references categories on delete cascade
+  category_id uuid references categories on delete cascade,
+  slug character varying not null,
+  unique (slug)
 );
 alter table categorizations enable row level security;
 create policy "categorizations are viewable by everyone." on categorizations for
