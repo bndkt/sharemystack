@@ -53,10 +53,6 @@ export async function createProfiles(
           for (const pick of stack.picks) {
             const stackRecord = stackRecords[0];
 
-            console.log(
-              `${slug}-${stack.stackType}-${pick.category}-${pick.tool}`
-            );
-
             const { data: pickRecords, error } = await supabase
               .from("picks")
               .upsert(
@@ -69,8 +65,6 @@ export async function createProfiles(
                 { onConflict: "slug" }
               )
               .select();
-
-            console.log({ error });
           }
         }
       }
