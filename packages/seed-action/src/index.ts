@@ -1,9 +1,16 @@
 import * as core from "@actions/core";
 
+import { createStackTypes } from "./lib/createStackTypes.js";
+import { createCategories } from "./lib/createCategories.js";
+import { createTools } from "./lib/createTools.js";
+
 async function run(): Promise<void> {
   try {
     const ms: string = core.getInput("milliseconds");
-    core.debug(`Waiting ${ms} milliseconds ...`); // debug is only output if you set the secret `ACTIONS_STEP_DEBUG` to true
+
+    createStackTypes();
+    createCategories();
+    createTools();
 
     core.debug(new Date().toTimeString());
     // await wait(parseInt(ms, 10));
