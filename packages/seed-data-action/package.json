@@ -7,12 +7,13 @@
     "types": "supabase gen types typescript --local > src/types/database.types.ts",
     "build": "tsc",
     "dev": "tsc --watch",
-    "start": "GH_SUPABASE_URL=http://localhost:54321 GH_SUPABASE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImV4cCI6MTk4MzgxMjk5Nn0.EGIM96RAZx35lJzdJsyH-qQwv8Hdp7fsn3W0YpN81IU node dist/index.js",
+    "start": "INPUT_SUPABASEURL=http://localhost:54321 INPUT_SUPABASEKEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImV4cCI6MTk4MzgxMjk5Nn0.EGIM96RAZx35lJzdJsyH-qQwv8Hdp7fsn3W0YpN81IU node dist/index.js",
     "lint": "eslint src/**/*.ts"
   },
   "dependencies": {
     "@actions/core": "^1.10.0",
     "@supabase/supabase-js": "^2.31.0",
+    "dotenv": "^16.3.1",
     "svgo": "^3.0.2"
   },
   "devDependencies": {
