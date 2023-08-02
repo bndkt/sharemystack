@@ -11,8 +11,6 @@ export async function createTools(
   for (const slug of Object.keys(tools)) {
     const tool = tools[slug];
 
-    const iconSvg = "tbd";
-
     const { data: toolRecords, error } = await supabase
       .from("tools")
       .upsert(
@@ -31,9 +29,10 @@ export async function createTools(
       )
       .select();
 
-    if (error) console.error(error);
-
     if (toolRecords) {
+      const toolRecord = toolRecords[0].id;
+      toolRecordIds[slug] = toolRecord.id;
+
       for (const categorySlug of tool.categories) {
         const stackTypesSlug = `${categorySlug}-${slug}`;
 
@@ -44,7 +43,7 @@ export async function createTools(
               {
                 slug: stackTypesSlug,
                 category_id: categoryRecordIds[categorySlug],
-                tool_id: toolRecords[0].id,
+                tool_id: toolRecord.id,
                 updated_at: "now()",
                 last_modified_at: "now()",
               },
@@ -56,4 +55,6 @@ export async function createTools(
       }
     }
   }
+
+  return toolRecordIds;
 }

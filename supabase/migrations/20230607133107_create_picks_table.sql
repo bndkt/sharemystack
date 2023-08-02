@@ -9,7 +9,9 @@ create table picks (
   stack_id uuid references stacks on delete cascade,
   tool_id uuid references tools on delete cascade,
   category_id uuid references categories on delete cascade,
-  is_featured boolean not null default false
+  is_featured boolean not null default false,
+  slug character varying null,
+  unique (slug)
 );
 alter table picks enable row level security;
 create policy "picks are viewable by everyone." on picks for

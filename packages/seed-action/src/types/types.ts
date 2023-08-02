@@ -21,15 +21,34 @@ export type Categories = {
 
 export type Tool = {
   name: string;
-  color?: string;
-  website?: string;
-  appStore?: string;
+  color: string | null;
+  website: string | null;
+  appStore: string | null;
   affiliateLink?: string;
   categories: (keyof Categories)[];
 };
 
 export type Tools = {
   [slug: string]: Tool;
+};
+
+export type Profile = {
+  name: string;
+  description: string;
+  image: string | null;
+  website: string;
+  twitter: string;
+  twitter_image_url: string;
+  youtube: string;
+  is_featured: boolean;
+  stacks?: {
+    stackType: keyof StackTypes;
+    picks: { category: keyof Categories; tool: keyof Tools }[];
+  }[];
+};
+
+export type Profiles = {
+  [slug: string]: Profile;
 };
 
 export type RecordIds = { [slug: string]: string };
