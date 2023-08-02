@@ -1,4 +1,6 @@
-import { Slot, Stack, useLocalSearchParams } from "expo-router";
+import { Share } from "@tamagui/lucide-icons";
+import { Slot, Stack, useLocalSearchParams, useRouter } from "expo-router";
+import { Button } from "tamagui";
 
 import { List } from "@/components/list";
 import { CustomSuspense } from "@/components/loading/CustomSuspense";
@@ -7,6 +9,7 @@ import { useProfile } from "@/hooks/data/useProfile";
 import { useAuth } from "@/hooks/useAuth";
 
 export default function Layout() {
+  const router = useRouter();
   const { stack: stackId } = useLocalSearchParams<{
     stack: string;
   }>();
@@ -18,7 +21,20 @@ export default function Layout() {
 
   return (
     <>
-      <Stack.Screen options={{ title: `${stack?.stackTypeName} Stack` }} />
+      <Stack.Screen
+        options={{
+          title: `${stack?.stackTypeName} Stack`,
+          /* headerRight: () => (
+            <Button
+              icon={<Share size="$1.5" />}
+              onPress={() => {
+                router.push(`/(tabs)/stacks/my/${stackId}/share`);
+              }}
+              unstyled
+            />
+          ), */
+        }}
+      />
       <CustomSuspense
         data={stack}
         name="stack"
