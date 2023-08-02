@@ -12,7 +12,7 @@ export async function createProfiles(
   for (const slug of Object.keys(profiles)) {
     const profile = profiles[slug];
 
-    const { data: profileRecords, error } = await supabase
+    const { data: profileRecords } = await supabase
       .from("profiles")
       .upsert(
         {
@@ -37,7 +37,7 @@ export async function createProfiles(
       profileRecordIds[slug] = profileRecord.id;
 
       for (const stack of profile.stacks) {
-        const { data: stackRecords, error } = await supabase
+        const { data: stackRecords } = await supabase
           .from("stacks")
           .upsert(
             {
@@ -53,7 +53,7 @@ export async function createProfiles(
           for (const pick of stack.picks) {
             const stackRecord = stackRecords[0];
 
-            const { data: pickRecords, error } = await supabase
+            await supabase
               .from("picks")
               .upsert(
                 {

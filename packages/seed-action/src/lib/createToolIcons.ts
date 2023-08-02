@@ -29,6 +29,8 @@ export async function createToolIcons() {
         )
         .select();
 
+      if (error) console.error(error);
+
       if (categoryRecords) {
         for (const categoryRecord of categoryRecords) {
           toolIconRecordIds[categoryRecord.slug] = categoryRecord.id;

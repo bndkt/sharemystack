@@ -29,6 +29,8 @@ export async function createTools(
       )
       .select();
 
+    if (error) console.error(error);
+
     if (toolRecords) {
       const toolRecord = toolRecords[0].id;
       toolRecordIds[slug] = toolRecord.id;
@@ -37,7 +39,7 @@ export async function createTools(
         const stackTypesSlug = `${categorySlug}-${slug}`;
 
         if (categoryRecordIds[categorySlug]) {
-          const { data: categorizationRecord, error } = await supabase
+          await supabase
             .from("categorizations")
             .upsert(
               {
@@ -50,7 +52,6 @@ export async function createTools(
               { onConflict: "slug" }
             )
             .select();
-          if (error) console.error(error);
         }
       }
     }

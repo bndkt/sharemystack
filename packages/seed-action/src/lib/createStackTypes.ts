@@ -23,6 +23,8 @@ export async function createStackTypes() {
       )
       .select();
 
+    if (error) console.error(error);
+
     if (stackTypeRecords) {
       for (const stackTypeRecord of stackTypeRecords) {
         stackTypeRecordIds[stackTypeRecord.slug] = stackTypeRecord.id;

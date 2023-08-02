@@ -23,6 +23,8 @@ export async function createCategories(stackTypeRecordIds: RecordIds) {
       )
       .select();
 
+    if (error) console.error(error);
+
     if (categoryRecords) {
       for (const categoryRecord of categoryRecords) {
         categoryRecordIds[categoryRecord.slug] = categoryRecord.id;
@@ -31,7 +33,7 @@ export async function createCategories(stackTypeRecordIds: RecordIds) {
           const stackTypesSlug = `${stackTypeSlug}-${slug}`;
 
           if (stackTypeRecordIds[slug]) {
-            const { data: stackTypeCategoryRecords, error } = await supabase
+            await supabase
               .from("stack_type_categories")
               .upsert(
                 {
@@ -44,7 +46,6 @@ export async function createCategories(stackTypeRecordIds: RecordIds) {
                 { onConflict: "slug" }
               )
               .select();
-            if (error) console.error(error);
           }
         }
       }
