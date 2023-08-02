@@ -1,19 +1,25 @@
 import { supabase } from "./supabase.js";
 import { tools } from "./data.js";
+import { RecordIds } from "../types/types.js";
 
-export function createTools() {
-  Object.keys(tools).forEach(async (slug) => {
+export async function createTools(
+  toolIconRecordIds: RecordIds,
+  categoryRecordIds: RecordIds
+) {
+  const toolRecordIds: RecordIds = {};
+
+  for (const slug of Object.keys(tools)) {
     const tool = tools[slug];
 
     const iconSvg = "tbd";
 
-    const { data: toolRecord, error } = await supabase
+    const { data: toolRecords, error } = await supabase
       .from("tools")
       .upsert(
         {
           slug,
           name: tool.name,
-          icon_svg: iconSvg,
+          tool_icon_id: toolIconRecordIds[slug] ?? null,
           color: tool.color,
           website: tool.website,
           app_store: tool.appStore,
@@ -27,24 +33,18 @@ export function createTools() {
 
     if (error) console.error(error);
 
-    if (toolRecord) {
-      tool.categories.forEach(async (categorySlug) => {
+    if (toolRecords) {
+      for (const categorySlug of tool.categories) {
         const stackTypesSlug = `${categorySlug}-${slug}`;
-        console.log(stackTypesSlug);
-        const { data: categoryRecord, error } = await supabase
-          .from("categories")
-          .select("id")
-          .eq("slug", categorySlug);
-        if (error) console.error(error);
 
-        if (categoryRecord) {
+        if (categoryRecordIds[categorySlug]) {
           const { data: categorizationRecord, error } = await supabase
             .from("categorizations")
             .upsert(
               {
                 slug: stackTypesSlug,
-                category_id: categoryRecord[0].id,
-                tool_id: toolRecord[0].id,
+                category_id: categoryRecordIds[categorySlug],
+                tool_id: toolRecords[0].id,
                 updated_at: "now()",
                 last_modified_at: "now()",
               },
@@ -53,7 +53,7 @@ export function createTools() {
             .select();
           if (error) console.error(error);
         }
-      });
+      }
     }
-  });
+  }
 }

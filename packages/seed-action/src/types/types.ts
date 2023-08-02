@@ -31,3 +31,5 @@ export type Tool = {
 export type Tools = {
   [slug: string]: Tool;
 };
+
+export type RecordIds = { [slug: string]: string };

@@ -1,11 +1,14 @@
 import { supabase } from "./supabase.js";
 import { categories } from "./data.js";
+import { RecordIds } from "../types/types.js";
 
-export function createCategories() {
-  Object.keys(categories).forEach(async (slug) => {
+export async function createCategories(stackTypeRecordIds: RecordIds) {
+  const categoryRecordIds: RecordIds = {};
+
+  for (const slug of Object.keys(categories)) {
     const category = categories[slug];
 
-    const { data: categoryRecord, error } = await supabase
+    const { data: categoryRecords, error } = await supabase
       .from("categories")
       .upsert(
         {
@@ -20,34 +23,33 @@ export function createCategories() {
       )
       .select();
 
-    if (error) console.error(error);
+    if (categoryRecords) {
+      for (const categoryRecord of categoryRecords) {
+        categoryRecordIds[categoryRecord.slug] = categoryRecord.id;
 
-    if (categoryRecord) {
-      category.stackTypes.forEach(async (stackTypeSlug) => {
-        const stackTypesSlug = `${stackTypeSlug}-${slug}`;
-        const { data: stackTypeRecord, error } = await supabase
-          .from("stack_types")
-          .select("id")
-          .eq("slug", stackTypeSlug);
-        if (error) console.error(error);
+        for (const stackTypeSlug of category.stackTypes) {
+          const stackTypesSlug = `${stackTypeSlug}-${slug}`;
 
-        if (stackTypeRecord) {
-          const { data: stackTypeCategoryRecord, error } = await supabase
-            .from("stack_type_categories")
-            .upsert(
-              {
-                slug: stackTypesSlug,
-                stack_type_id: stackTypeRecord[0].id,
-                category_id: categoryRecord[0].id,
-                updated_at: "now()",
-                last_modified_at: "now()",
-              },
-              { onConflict: "slug" }
-            )
-            .select();
-          if (error) console.error(error);
+          if (stackTypeRecordIds[slug]) {
+            const { data: stackTypeCategoryRecords, error } = await supabase
+              .from("stack_type_categories")
+              .upsert(
+                {
+                  slug: stackTypesSlug,
+                  stack_type_id: stackTypeRecordIds[slug],
+                  category_id: categoryRecord.id,
+                  updated_at: "now()",
+                  last_modified_at: "now()",
+                },
+                { onConflict: "slug" }
+              )
+              .select();
+            if (error) console.error(error);
+          }
         }
-      });
+      }
     }
-  });
+  }
+
+  return categoryRecordIds;
 }

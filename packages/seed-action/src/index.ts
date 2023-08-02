@@ -3,14 +3,19 @@ import * as core from "@actions/core";
 import { createStackTypes } from "./lib/createStackTypes.js";
 import { createCategories } from "./lib/createCategories.js";
 import { createTools } from "./lib/createTools.js";
+import { createToolIcons } from "./lib/createToolIcons.js";
 
 async function run(): Promise<void> {
   try {
     const ms: string = core.getInput("milliseconds");
 
-    createStackTypes();
-    createCategories();
-    createTools();
+    const toolIconRecordIds = await createToolIcons();
+    const stackTypeRecordIds = await createStackTypes();
+    const categoryRecordIds = await createCategories(stackTypeRecordIds);
+    const toolRecordIds = await createTools(
+      toolIconRecordIds,
+      categoryRecordIds
+    );
 
     core.debug(new Date().toTimeString());
     // await wait(parseInt(ms, 10));

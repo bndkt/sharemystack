@@ -1,11 +1,14 @@
 import { supabase } from "./supabase.js";
 import { stackTypes } from "./data.js";
+import { RecordIds } from "../types/types.js";
 
-export function createStackTypes() {
-  Object.keys(stackTypes).forEach(async (slug) => {
+export async function createStackTypes() {
+  const stackTypeRecordIds: RecordIds = {};
+
+  for (const slug of Object.keys(stackTypes)) {
     const stackType = stackTypes[slug];
 
-    await supabase
+    const { data: stackTypeRecords, error } = await supabase
       .from("stack_types")
       .upsert(
         {
@@ -19,5 +22,13 @@ export function createStackTypes() {
         { onConflict: "slug" }
       )
       .select();
-  });
+
+    if (stackTypeRecords) {
+      for (const stackTypeRecord of stackTypeRecords) {
+        stackTypeRecordIds[stackTypeRecord.slug] = stackTypeRecord.id;
+      }
+    }
+  }
+
+  return stackTypeRecordIds;
 }
