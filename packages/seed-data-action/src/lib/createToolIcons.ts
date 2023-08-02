@@ -1,5 +1,6 @@
 import { promises as fs } from "fs";
 import path from "path";
+import { optimize } from "svgo";
 
 import { supabase } from "./supabase.js";
 
@@ -17,6 +18,9 @@ export async function createToolIcons() {
     if (path.extname(file) === ".svg") {
       const filePath = path.join(iconsPath, file);
       const svgContent = await fs.readFile(filePath, "utf-8");
+      const { data: optimizedSvg } = optimize(svgContent, {
+        multipass: true,
+      });
 
       const slug = path.basename(file, ".svg");
 
@@ -25,7 +29,7 @@ export async function createToolIcons() {
         .upsert(
           {
             slug,
-            icon_svg: svgContent,
+            icon_svg: optimizedSvg,
             updated_at: "now()",
             last_modified_at: "now()",
           },
