@@ -1,0 +1,33 @@
+name: Seed Data
+
+on:
+  workflow_dispatch:
+    inputs:
+      profile:
+        description: "Profile"
+        type: choice
+        default: simulator
+        required: true
+        options:
+          - simulator
+          - development
+          - preview
+          - production
+      submit:
+        description: "Submit to AppStore"
+        type: boolean
+        required: true
+        default: false
+
+jobs:
+  update:
+    name: Seed Data
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🚚 Checkout
+        uses: actions/checkout@v3
+      - name: 🏗 Setup monorepo
+        uses: ./.github/actions/setup-monorepo
+      - name: Build
+        run: pnpm build
