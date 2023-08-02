@@ -24,17 +24,7 @@ export function SyncProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     const subscription = database
-      .withChangesForTables([
-        "tools",
-        "categories",
-        "categorizations",
-        "stacks",
-        "picks",
-        "stars",
-        "profiles",
-        "stack_types",
-        "stack_type_categories",
-      ])
+      .withChangesForTables(["stacks", "picks", "stars", "profiles"])
       .subscribe({
         next: (changes) => {
           const changedRecords = changes?.filter(

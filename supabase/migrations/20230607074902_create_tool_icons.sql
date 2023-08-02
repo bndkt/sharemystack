@@ -6,7 +6,6 @@ create table tool_icons (
   deleted_at timestamp with time zone default null,
   server_created_at timestamp with time zone not null default now(),
   last_modified_at timestamp with time zone not null default now(),
-  name character varying not null,
   slug character varying not null,
   unique (slug),
   icon_svg text null

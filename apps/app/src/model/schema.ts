@@ -2,6 +2,7 @@ import { appSchema, tableSchema } from "@nozbe/watermelondb";
 
 export enum TableName {
   TOOLS = "tools",
+  TOOL_ICONS = "tool_icons",
   CATEGORIES = "categories",
   CATEGORIZATIONS = "categorizations",
   PROFILES = "profiles",
@@ -16,12 +17,20 @@ export const schema = appSchema({
   version: 1,
   tables: [
     tableSchema({
+      name: TableName.TOOL_ICONS,
+      columns: [
+        { name: "icon_svg", type: "string" },
+        { name: "created_at", type: "number" },
+        { name: "updated_at", type: "number" },
+      ],
+    }),
+    tableSchema({
       name: TableName.TOOLS,
       columns: [
         { name: "name", type: "string" },
         { name: "slug", type: "string", isIndexed: true },
+        { name: "tool_id", type: "string", isOptional: true },
         { name: "color", type: "string", isOptional: true },
-        { name: "icon_svg", type: "string", isOptional: true },
         { name: "website", type: "string", isOptional: true },
         { name: "affiliate_link", type: "string", isOptional: true },
         { name: "app_store", type: "string", isOptional: true },

@@ -1,8 +1,15 @@
-import { Model, Q } from "@nozbe/watermelondb";
-import { date, lazy, readonly, text } from "@nozbe/watermelondb/decorators";
+import { Model, Q, Relation } from "@nozbe/watermelondb";
+import {
+  date,
+  lazy,
+  readonly,
+  relation,
+  text,
+} from "@nozbe/watermelondb/decorators";
 
 import { Pick } from "./Pick";
 import { TableName } from "./schema";
+import { ToolIcon } from "./ToolIcon";
 
 export class Tool extends Model {
   static table = TableName.TOOLS;
@@ -21,9 +28,11 @@ export class Tool extends Model {
     },
   };
 
+  @relation(TableName.TOOL_ICONS, "tool_icon_id")
+  toolIcon?: Relation<ToolIcon>;
+
   @text("name") name!: string;
   @text("slug") slug!: string;
-  @text("icon_svg") iconSvg?: string;
   @text("color") color?: string;
   @text("affiliate_link") affiliateLink?: string;
   @text("app_store") appStore?: string;

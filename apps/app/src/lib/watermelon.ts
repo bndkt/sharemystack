@@ -14,6 +14,7 @@ import { StackTypeCategory } from "@/model/StackTypeCategory";
 import { Star } from "@/model/Star";
 import { Tool } from "@/model/Tool";
 import { schema } from "@/model/schema";
+import { ToolIcon } from "@/model/ToolIcon";
 
 // First, create the adapter to the underlying database:
 const adapter = new SQLiteAdapter({
@@ -38,6 +39,7 @@ export const database = new Database({
   modelClasses: [
     Profile,
     Tool,
+    ToolIcon,
     Category,
     Categorization,
     StackType,

@@ -81,6 +81,7 @@ export interface Database {
           id: string
           last_modified_at: string
           server_created_at: string
+          slug: string
           tool_id: string | null
           updated_at: string
         }
@@ -91,6 +92,7 @@ export interface Database {
           id?: string
           last_modified_at?: string
           server_created_at?: string
+          slug: string
           tool_id?: string | null
           updated_at?: string
         }
@@ -101,6 +103,7 @@ export interface Database {
           id?: string
           last_modified_at?: string
           server_created_at?: string
+          slug?: string
           tool_id?: string | null
           updated_at?: string
         }
@@ -306,6 +309,7 @@ export interface Database {
           id: string
           last_modified_at: string
           server_created_at: string
+          slug: string
           stack_type_id: string | null
           updated_at: string
         }
@@ -316,6 +320,7 @@ export interface Database {
           id?: string
           last_modified_at?: string
           server_created_at?: string
+          slug: string
           stack_type_id?: string | null
           updated_at?: string
         }
@@ -326,6 +331,7 @@ export interface Database {
           id?: string
           last_modified_at?: string
           server_created_at?: string
+          slug?: string
           stack_type_id?: string | null
           updated_at?: string
         }
@@ -523,6 +529,58 @@ export interface Database {
           }
         ]
       }
+      tool_icons: {
+        Row: {
+          created_at: string
+          deleted_at: string | null
+          icon_svg: string | null
+          id: string
+          last_modified_at: string
+          name: string
+          server_created_at: string
+          slug: string
+          tool_id: string | null
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          deleted_at?: string | null
+          icon_svg?: string | null
+          id?: string
+          last_modified_at?: string
+          name: string
+          server_created_at?: string
+          slug: string
+          tool_id?: string | null
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          deleted_at?: string | null
+          icon_svg?: string | null
+          id?: string
+          last_modified_at?: string
+          name?: string
+          server_created_at?: string
+          slug?: string
+          tool_id?: string | null
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "tool_icons_tool_id_fkey"
+            columns: ["tool_id"]
+            referencedRelation: "tools"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "tool_icons_tool_id_fkey"
+            columns: ["tool_id"]
+            referencedRelation: "tools_view"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
       tools: {
         Row: {
           affiliate_link: string | null
@@ -530,7 +588,6 @@ export interface Database {
           color: string | null
           created_at: string
           deleted_at: string | null
-          icon_svg: string | null
           id: string
           last_modified_at: string
           name: string
@@ -546,7 +603,6 @@ export interface Database {
           color?: string | null
           created_at?: string
           deleted_at?: string | null
-          icon_svg?: string | null
           id?: string
           last_modified_at?: string
           name: string
@@ -562,7 +618,6 @@ export interface Database {
           color?: string | null
           created_at?: string
           deleted_at?: string | null
-          icon_svg?: string | null
           id?: string
           last_modified_at?: string
           name?: string
@@ -611,7 +666,6 @@ export interface Database {
           stack_type_name: string | null
           stack_type_slug: string | null
           tool_color: string | null
-          tool_icon_svg: string | null
           tool_id: string | null
           tool_name: string | null
           tool_slug: string | null
@@ -850,7 +904,6 @@ export interface Database {
           stack_type_name: string | null
           stack_type_slug: string | null
           tool_color: string | null
-          tool_icon_svg: string | null
           tool_id: string | null
           tool_name: string | null
           tool_slug: string | null
@@ -971,7 +1024,6 @@ export interface Database {
           color: string | null
           created_at: string | null
           deleted_at: string | null
-          icon_svg: string | null
           id: string | null
           last_modified_at: string | null
           name: string | null
