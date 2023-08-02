@@ -9,8 +9,6 @@ import { createProfiles } from "./lib/createProfiles.js";
 
 async function run(): Promise<void> {
   try {
-    // const ms: string = core.getInput("milliseconds");
-
     const toolIconRecordIds = await createToolIcons();
     const stackTypeRecordIds = await createStackTypes();
     const categoryRecordIds = await createCategories({ stackTypeRecordIds });
@@ -24,11 +22,6 @@ async function run(): Promise<void> {
       toolRecordIds,
       categoryRecordIds,
     });
-
-    // core.debug(new Date().toTimeString());
-    // await wait(parseInt(ms, 10));
-    // core.debug(new Date().toTimeString());
-    // core.setOutput("time", new Date().toTimeString());
   } catch (error) {
     if (error instanceof Error) core.setFailed(error.message);
   }

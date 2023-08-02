@@ -2,10 +2,6 @@ name: "Seed Data"
 description: "Seeds data into the Supabase (Postgres) database"
 author: "Benedikt Müller"
 inputs:
-  environment:
-    required: true
-    description: "Whether to run in staging or production"
-    default: "staging"
   supabaseUrl:
     required: true
   supabaseKey:
