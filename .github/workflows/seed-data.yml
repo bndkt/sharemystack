@@ -11,6 +11,11 @@ on:
         options:
           - staging
           - production
+      confirm:
+        description: "Confirm production seeding"
+        type: boolean
+        required: true
+        default: false
 
 jobs:
   update:
@@ -32,7 +37,7 @@ jobs:
           supabaseKey: ${{ secrets.SUPABASE_KEY_STAGING }}
       - name: 🌱 Seed data into production
         uses: ./packages/seed-data-action
-        if: ${{ inputs.environment == 'production' }}
+        if: ${{ inputs.confirm && inputs.environment == 'production' }}
         with:
           supabaseUrl: ${{ secrets.EXPO_PUBLIC_SUPABASE_URL_PRODUCTION }}
           supabaseKey: ${{ secrets.SUPABASE_KEY_PRODUCTION }}
