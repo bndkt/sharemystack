@@ -1,4 +1,4 @@
-name: App - Build
+name: EAS Build
 
 on:
   workflow_dispatch:
@@ -14,7 +14,7 @@ on:
           - preview
           - production
       submit:
-        description: "Submit to AppStore"
+        description: "Submit to App Store"
         type: boolean
         required: true
         default: false
