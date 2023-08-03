@@ -29,7 +29,7 @@ jobs:
         uses: ./.github/actions/setup-monorepo
         with:
           expo-token: ${{ secrets.EXPO_TOKEN }}
-      - name: 📢 Publish update (production)
+      - name: 📢 Publish update (preview)
         run: eas update --non-interactive -p ios --branch=${{ inputs.branch }} --message=${{ github.sha }}
         working-directory: ./apps/app
         if: ${{ inputs.branch != 'production' }}
