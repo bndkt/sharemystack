@@ -1,3 +1,4 @@
+import { config } from "@/lib/config";
 import { ExpoConfig } from "expo/config";
 
 const projectId = "53d833b3-4c35-4d8f-8b61-123faf914be3";
@@ -31,7 +32,7 @@ if (process.env.SENTRY_AUTH_TOKEN) {
   });
 }
 
-const config: ExpoConfig = {
+const expoConfig: ExpoConfig = {
   name,
   slug: "sharemystack",
   scheme,
@@ -97,7 +98,7 @@ const config: ExpoConfig = {
     [
       "expo-router",
       {
-        origin: "https://sharemystack.com",
+        origin: config.domain,
         // asyncRoutes: "development",
       },
     ],
@@ -147,4 +148,4 @@ const config: ExpoConfig = {
   },
 };
 
-export default config;
+export default expoConfig;
