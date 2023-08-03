@@ -34,14 +34,14 @@ export async function createCategories({
       categoryRecordIds[categoryRecord.slug] = categoryRecord.id;
 
       for (const stackTypeSlug of category.stackTypes) {
-        const stackTypesSlug = `${stackTypeSlug}-${slug}`;
+        const stackTypeCategorySlug = `${stackTypeSlug}-${slug}`;
 
-        if (stackTypeRecordIds[slug]) {
+        if (stackTypeRecordIds[stackTypeSlug]) {
           await supabase
             .from("stack_type_categories")
             .upsert(
               {
-                slug: stackTypesSlug,
+                slug: stackTypeCategorySlug,
                 stack_type_id: stackTypeRecordIds[stackTypeSlug],
                 category_id: categoryRecord.id,
                 updated_at: "now()",
