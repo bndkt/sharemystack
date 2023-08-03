@@ -1,4 +1,3 @@
-import { config } from "@/lib/config";
 import { ExpoConfig } from "expo/config";
 
 const projectId = "53d833b3-4c35-4d8f-8b61-123faf914be3";
@@ -98,7 +97,7 @@ const expoConfig: ExpoConfig = {
     [
       "expo-router",
       {
-        origin: config.domain,
+        origin: "https://sharemystack.com",
         // asyncRoutes: "development",
       },
     ],
