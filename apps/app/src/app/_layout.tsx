@@ -13,11 +13,12 @@ import "@/lib/sentry";
 import "@/lib/vexo";
 import "@/lib/mixpanel";
 import "@/lib/onesignal";
+import { config } from "@/lib/config";
 import { database } from "@/lib/watermelon";
 import { AuthProvider } from "@/providers/AuthProvider";
 import { NavigationThemeProvider } from "@/providers/NavigationThemeProvider";
 import { SyncProvider } from "@/providers/SyncProvider";
-import config from "@/tamagui.config";
+import tamaguiConfig from "@/tamagui.config";
 
 // TODO: Temporarily remove warnings
 LogBox.ignoreLogs([
@@ -39,12 +40,12 @@ export default function Layout() {
 
   return (
     <PostHogProvider
-      apiKey={process.env.EXPO_PUBLIC_POSTHOG_API_KEY}
+      apiKey={config.posthogApiKey}
       options={{
         host: "https://app.posthog.com",
       }}
     >
-      <TamaguiProvider config={config}>
+      <TamaguiProvider config={tamaguiConfig}>
         <Theme name={colorScheme}>
           <NavigationThemeProvider>
             <SafeAreaProvider>

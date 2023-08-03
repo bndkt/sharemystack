@@ -1,11 +1,11 @@
 import { Token, getTokenValue, useTheme } from "@tamagui/core";
 import { BoxSelect } from "@tamagui/lucide-icons";
 import { SvgXml } from "react-native-svg";
+import { Spinner } from "tamagui";
 
 import { CustomSuspense } from "../loading/CustomSuspense";
 
 import { Tool } from "@/model/Tool";
-import { Spinner } from "tamagui";
 
 export function ToolIcon({ tool, size }: { tool: Tool; size: Token }) {
   const theme = useTheme();

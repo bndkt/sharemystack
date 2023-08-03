@@ -7,10 +7,10 @@ import {
   text,
 } from "@nozbe/watermelondb/decorators";
 
+import { Category } from "./Category";
 import { Pick } from "./Pick";
 import { ToolIcon } from "./ToolIcon";
 import { TableName } from "./schema";
-import { Category } from "./Category";
 
 export class Tool extends Model {
   static table = TableName.TOOLS;

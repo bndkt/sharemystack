@@ -1,7 +1,6 @@
 import { Mixpanel } from "mixpanel-react-native";
 
-const mixpanel = new Mixpanel(
-  process.env.EXPO_PUBLIC_MIXPANEL_TOKEN as string,
-  true
-);
+import { config } from "./config";
+
+const mixpanel = new Mixpanel(config.mixpanelToken, true);
 mixpanel.init();

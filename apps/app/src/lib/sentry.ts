@@ -1,7 +1,9 @@
 import * as Sentry from "sentry-expo";
 
+import { config } from "./config";
+
 Sentry.init({
-  dsn: process.env.EXPO_PUBLIC_SENTRY_DSN,
+  dsn: config.sentryDsn,
   enableInExpoDevelopment: false,
   debug: false,
 });

@@ -3,9 +3,11 @@ import { Image } from "expo-image";
 import * as Linking from "expo-linking";
 import { Button, Text, Unspaced, XStack, YStack } from "tamagui";
 
+import { ProfileActions } from "./ProfileActions";
+
+import { config } from "@/lib/config";
 import { Profile as ProfileModel } from "@/model/Profile";
 import { Stack as StackModel } from "@/model/Stack";
-import { ProfileActions } from "./ProfileActions";
 
 export function ProfileView({
   profile,
@@ -15,7 +17,7 @@ export function ProfileView({
   stacks?: StackModel[] | null;
 }) {
   const imageUrl = profile.image
-    ? `${process.env.EXPO_PUBLIC_SUPABASE_URL}/storage/v1/object/public/stack-images/creators/${profile.image}`
+    ? `${config.supabaseUrl}/storage/v1/object/public/stack-images/creators/${profile.image}`
     : undefined;
 
   return (

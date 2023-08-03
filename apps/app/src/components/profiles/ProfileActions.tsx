@@ -1,11 +1,11 @@
 import { Share as ShareIcon, Star } from "@tamagui/lucide-icons";
+import { useEffect, useState } from "react";
 import { Share } from "react-native";
 import { Button, XStack } from "tamagui";
 
+import { useAuth } from "@/hooks/useAuth";
 import { config } from "@/lib/config";
 import { Profile } from "@/model/Profile";
-import { useEffect, useState } from "react";
-import { useAuth } from "@/hooks/useAuth";
 
 export function ProfileActions({ profile }: { profile: Profile }) {
   const { user } = useAuth();
