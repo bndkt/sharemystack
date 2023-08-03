@@ -1,6 +1,6 @@
 import { ExpoConfig } from "expo/config";
 
-const projectId = "c68d7a2f-d33a-4220-b4c3-148177066a75";
+const projectId = "53d833b3-4c35-4d8f-8b61-123faf914be3";
 const name =
   process.env.APP_VARIANT === "production" ? "Share My Stack" : "SMS Dev";
 const bundleIdentifier =
@@ -33,7 +33,7 @@ const config: ExpoConfig = {
   name,
   slug: "sharemystack",
   scheme,
-  owner: "mueller",
+  owner: "feldapp",
   version: "1.0.0",
   orientation: "portrait",
   icon: "./assets/icon.png",
