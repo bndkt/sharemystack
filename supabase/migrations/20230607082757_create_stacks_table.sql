@@ -6,8 +6,8 @@ create table stacks (
   deleted_at timestamp with time zone default null,
   server_created_at timestamp with time zone not null default now(),
   last_modified_at timestamp with time zone not null default now(),
-  profile_id uuid references profiles on delete cascade,
-  stack_type_id uuid references stack_types on delete cascade,
+  profile_id uuid references profiles,
+  stack_type_id uuid references stack_types,
   slug character varying null,
   unique (slug)
 );

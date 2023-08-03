@@ -6,10 +6,10 @@ create table stars (
   deleted_at timestamp with time zone default null,
   server_created_at timestamp with time zone not null default now(),
   last_modified_at timestamp with time zone not null default now(),
-  user_id uuid references auth.users on delete cascade,
-  profile_id uuid references profiles on delete cascade,
-  tool_id uuid references tools on delete cascade,
-  category_id uuid references categories on delete cascade
+  user_id uuid references auth.users,
+  profile_id uuid references profiles,
+  tool_id uuid references tools,
+  category_id uuid references categories
 );
 alter table stars enable row level security;
 create policy "stars are viewable by everyone." on stars for
