@@ -10,7 +10,7 @@
       "developmentClient": true,
       "distribution": "internal",
       "env": {
-        "APP_VARIANT": "development"
+        "EXPO_PUBLIC_APP_VARIANT": "development"
       }
     },
     "simulator": {
@@ -21,7 +21,10 @@
     },
     "preview": {
       "channel": "preview",
-      "distribution": "internal"
+      "distribution": "internal",
+      "env": {
+        "EXPO_PUBLIC_APP_VARIANT": "preview"
+      }
     },
     "production": {
       "channel": "production",
@@ -29,7 +32,7 @@
         "autoIncrement": "buildNumber"
       },
       "env": {
-        "APP_VARIANT": "production"
+        "EXPO_PUBLIC_APP_VARIANT": "production"
       }
     }
   },

@@ -2,17 +2,19 @@ import { ExpoConfig } from "expo/config";
 
 const projectId = "53d833b3-4c35-4d8f-8b61-123faf914be3";
 const name =
-  process.env.APP_VARIANT === "production" ? "Share My Stack" : "SMS Dev";
+  process.env.EXPO_PUBLIC_APP_VARIANT === "production"
+    ? "Share My Stack"
+    : "SMS Dev";
 const bundleIdentifier =
-  process.env.APP_VARIANT === "production"
+  process.env.EXPO_PUBLIC_APP_VARIANT === "production"
     ? "com.sharemystack"
     : "com.sharemystack.dev";
 const scheme =
-  process.env.APP_VARIANT === "production"
+  process.env.EXPO_PUBLIC_APP_VARIANT === "production"
     ? "sharemystack"
     : "sharemystack-dev";
 const sentryProject =
-  process.env.APP_VARIANT === "production"
+  process.env.EXPO_PUBLIC_APP_VARIANT === "production"
     ? "sharemystack"
     : "sharemystack-dev";
 
@@ -105,7 +107,7 @@ const config: ExpoConfig = {
       "onesignal-expo-plugin",
       {
         mode:
-          process.env.APP_VARIANT === "production"
+          process.env.EXPO_PUBLIC_APP_VARIANT === "production"
             ? "production"
             : "development",
       },
