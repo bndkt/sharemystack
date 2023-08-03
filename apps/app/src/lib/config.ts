@@ -1,7 +1,7 @@
 export const config = {
   domain: "https://sharemystack.com",
   feedbackLink: "https://sharemystack.canny.io/",
-  posthogApiKey: process.env.EXPO_PUBLIC_POSTHOG_API_KEY as string,
+  posthogApiKey: process.env.EXPO_PUBLIC_POSTHOG_API_KEY,
   mixpanelToken: process.env.EXPO_PUBLIC_MIXPANEL_TOKEN as string,
   oneSignalAppId: process.env.EXPO_PUBLIC_ONESIGNAL_APP_ID as string,
   sentryDsn: process.env.EXPO_PUBLIC_SENTRY_DSN as string,
