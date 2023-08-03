@@ -9,7 +9,6 @@ import { PostHogProvider } from "posthog-react-native";
 import { LogBox, useColorScheme } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
-import "@/lib/polyfill";
 import "@/lib/sentry";
 import "@/lib/vexo";
 import "@/lib/mixpanel";
