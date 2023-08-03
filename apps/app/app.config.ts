@@ -31,7 +31,7 @@ if (process.env.SENTRY_AUTH_TOKEN) {
   });
 }
 
-const expoConfig: ExpoConfig = {
+const config: ExpoConfig = {
   name,
   slug: "sharemystack",
   scheme,
@@ -147,4 +147,4 @@ const expoConfig: ExpoConfig = {
   },
 };
 
-export default expoConfig;
+export default config;
