@@ -109,6 +109,7 @@ export const schema = appSchema({
         { name: "name", type: "string" },
         { name: "slug", type: "string", isIndexed: true },
         { name: "icon_name", type: "string", isOptional: true },
+        { name: "is_coming_soon", type: "boolean" },
       ],
     }),
     tableSchema({

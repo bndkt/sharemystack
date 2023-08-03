@@ -374,6 +374,8 @@ select jsonb_build_object(
                     t.slug,
                     'icon_name',
                     t.icon_name,
+                    'is_coming_soon',
+                    t.is_coming_soon,
                     'created_at',
                     timestamp_to_epoch(t.created_at),
                     'updated_at',

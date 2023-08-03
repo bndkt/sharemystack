@@ -11,7 +11,7 @@ export function useStackTypes() {
 
   const stackTypesQuery = database.collections
     .get<StackType>(TableName.STACK_TYPES)
-    .query(Q.sortBy("name"));
+    .query(Q.sortBy("is_coming_soon"), Q.sortBy("name"));
 
   useEffect(() => {
     const subscription = stackTypesQuery.observe().subscribe((data) => {

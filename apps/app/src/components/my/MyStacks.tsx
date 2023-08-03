@@ -1,6 +1,6 @@
 import { ChevronRight, Plus } from "@tamagui/lucide-icons";
 import { useRouter } from "expo-router";
-import { H5, ListItem } from "tamagui";
+import { H5, ListItem, Text } from "tamagui";
 
 import { CategoryIcon } from "../categories/CategoryIcon";
 import { List } from "../list";
@@ -64,10 +64,27 @@ export function MyStacks({
         } else if (item instanceof StackType) {
           return (
             <ListItem
-              onPress={() => handleCreateStack(item)}
-              title={item.name}
-              icon={<CategoryIcon name={item.iconName} size="$1.5" />}
-              iconAfter={<Plus size="$1.5" />}
+              onPress={
+                item.isComingSoon ? undefined : () => handleCreateStack(item)
+              }
+              title={
+                <Text color={item.isComingSoon ? "$gray10" : undefined}>
+                  {item.name} {item.isComingSoon && " (coming soon)"}
+                </Text>
+              }
+              icon={
+                <CategoryIcon
+                  name={item.iconName}
+                  size="$1.5"
+                  color={item.isComingSoon ? "$gray10" : undefined}
+                />
+              }
+              iconAfter={
+                <Plus
+                  size="$1.5"
+                  color={item.isComingSoon ? "$gray10" : undefined}
+                />
+              }
             />
           );
         } else if (item instanceof Stack) {
