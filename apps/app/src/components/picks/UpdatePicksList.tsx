@@ -25,15 +25,7 @@ export function UpdatePicksList({
   const { capture } = useAnalytics();
   const { sync } = useSync();
 
-  function addPick({
-    stack,
-    tool,
-    category,
-  }: {
-    stack: Stack;
-    tool: Tool;
-    category: Category;
-  }) {
+  function addPick({ stack, tool }: { stack: Stack; tool: Tool }) {
     console.log("Add", tool.name, "in", category.name);
     stack.addPick(tool, category);
     // TODO: (Workaround) Sync manually, because otherwise an immediate deletion after adding would not work
@@ -50,17 +42,22 @@ export function UpdatePicksList({
     capture("Remove pick");
   }
 
+  function matchPick(tool: Tool) {
+    return picks?.find(
+      (pick) =>
+        pick.tool.id === tool.id &&
+        pick.category.id === category.id &&
+        pick.stack.id === stack.id
+    );
+  }
+
   return (
     <YStack fullscreen minHeight={100}>
       <List
         data={tools}
+        extraData={picks}
         renderItem={({ item }) => {
-          const pick = picks?.find(
-            (pick) =>
-              pick.tool.id === item.id &&
-              pick.category.id === category.id &&
-              pick.stack.id === stack.id
-          );
+          const pick = matchPick(item);
 
           return (
             <ListItem
@@ -72,7 +69,7 @@ export function UpdatePicksList({
               onPress={() =>
                 pick
                   ? removePick({ stack, pick })
-                  : addPick({ stack, tool: item, category })
+                  : addPick({ stack, tool: item })
               }
             />
           );

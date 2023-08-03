@@ -9,10 +9,10 @@ import { TableName } from "@/model/schema";
 
 export function useStackType({
   stack,
-  includeComingSoon,
+  includeCategoriesComingSoon,
 }: {
   stack?: Stack | null;
-  includeComingSoon?: boolean;
+  includeCategoriesComingSoon?: boolean;
 }) {
   const database = useDatabase();
   const [stackType, setStackType] = useState<StackType>();

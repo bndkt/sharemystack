@@ -10,6 +10,7 @@ import {
 import { Pick } from "./Pick";
 import { ToolIcon } from "./ToolIcon";
 import { TableName } from "./schema";
+import { Category } from "./Category";
 
 export class Tool extends Model {
   static table = TableName.TOOLS;
@@ -41,7 +42,7 @@ export class Tool extends Model {
 
   @lazy
   categories = this.collections
-    .get(TableName.CATEGORIES)
+    .get<Category>(TableName.CATEGORIES)
     .query(Q.on(TableName.CATEGORIZATIONS, "tool_id", this.id));
 
   @lazy

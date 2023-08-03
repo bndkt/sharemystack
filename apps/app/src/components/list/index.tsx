@@ -10,10 +10,12 @@ export function List<T>({
   data,
   renderItem,
   placeholder,
+  extraData,
 }: {
   data?: readonly T[] | null;
   renderItem?: ListRenderItem<T> | null;
   placeholder?: JSX.Element | string;
+  extraData?: any;
 }) {
   const { sync, isSyncing } = useSync();
   const [isRefreshing, setIsRefreshing] = useState(false);
@@ -42,6 +44,7 @@ export function List<T>({
     <FlashList
       ListEmptyComponent={placeholder}
       data={data}
+      extraData={extraData}
       renderItem={renderItem}
       estimatedItemSize={87}
       ItemSeparatorComponent={() => <Separator />}
