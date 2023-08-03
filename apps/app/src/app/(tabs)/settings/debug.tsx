@@ -7,7 +7,7 @@ import { useSync } from "@/hooks/useSync";
 
 export default function Debug() {
   const [isFetchingUpdate, setIsFetchingUpdate] = useState(false);
-  const { initialSync } = useSync();
+  const { queueSync } = useSync();
 
   async function onFetchUpdateAsync() {
     setIsFetchingUpdate(true);
@@ -36,7 +36,10 @@ export default function Debug() {
       >
         Check for updates
       </Button>
-      <Button onPress={initialSync} icon={<DatabaseBackup size="$1" />}>
+      <Button
+        onPress={() => queueSync(true)}
+        icon={<DatabaseBackup size="$1" />}
+      >
         Reset local database
       </Button>
     </YStack>

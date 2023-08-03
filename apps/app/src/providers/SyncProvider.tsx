@@ -10,33 +10,26 @@ import { database } from "@/lib/watermelon";
 
 export const SyncContext = createContext<{
   isSyncing: boolean;
-  initialSync: () => void;
-  queueSync: () => void;
+  queueSync: (reset?: boolean) => void;
 }>({
   isSyncing: false,
-  initialSync: () => {},
   queueSync: () => {},
 });
 
 export function SyncProvider({ children }: { children: ReactNode }) {
-  const [isInitiated, setIsInitiated] = useState(false);
+  const [isResetting, setIsResetting] = useState(false);
   const [isSyncing, setIsSyncing] = useState(false);
   const [isSyncQueued, setIsSyncQueued] = useState(false);
   const [channel, setChannel] = useState<RealtimeChannel>();
   const [shouldBroadcast, setShouldBroadcast] = useState(false);
   const { user } = useAuth();
 
-  async function initialSync(reset?: boolean) {
-    setIsInitiated(false);
-    queueSync(reset);
-  }
+  useEffect(() => {
+    queueSync();
+  }, []);
 
   useEffect(() => {
-    !isInitiated && initialSync();
-  }, [isInitiated]);
-
-  useEffect(() => {
-    if (isInitiated) {
+    if (isResetting) {
       const subscription = database
         .withChangesForTables(["stacks", "picks", "stars", "profiles"])
         .subscribe({
@@ -70,7 +63,7 @@ export function SyncProvider({ children }: { children: ReactNode }) {
         console.log("Unsubscribed from database changes");
       };
     }
-  }, [database, isInitiated]);
+  }, [database, isResetting]);
 
   useEffect(() => {
     if (user) {
@@ -112,13 +105,14 @@ export function SyncProvider({ children }: { children: ReactNode }) {
   }, [channel, shouldBroadcast]);
 
   function queueSync(reset?: boolean) {
-    if (!isSyncing) {
+    if (!isSyncing ?? reset) {
       console.log("♻️ Starting sync");
       setIsSyncing(true);
+      setIsResetting(reset ?? false);
       sync(reset)
         .then(() => {
           console.log("♻️ Sync succeeded");
-          setIsInitiated(true);
+          setIsResetting(false);
           setShouldBroadcast(true);
         })
         .catch((reason) => {
@@ -138,17 +132,16 @@ export function SyncProvider({ children }: { children: ReactNode }) {
     }
   }
 
-  return isInitiated ? (
+  return isResetting ? (
+    <Loading message="Syncing" />
+  ) : (
     <SyncContext.Provider
       value={{
         isSyncing,
-        initialSync,
         queueSync,
       }}
     >
       {children}
     </SyncContext.Provider>
-  ) : (
-    <Loading message="Syncing" />
   );
 }
