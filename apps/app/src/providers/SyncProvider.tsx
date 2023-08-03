@@ -32,8 +32,8 @@ export function SyncProvider({ children }: { children: ReactNode }) {
   }
 
   useEffect(() => {
-    queueSync();
-  }, []);
+    !isInitiated && initialSync();
+  }, [isInitiated]);
 
   useEffect(() => {
     if (isInitiated) {
