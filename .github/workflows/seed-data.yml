@@ -28,11 +28,11 @@ jobs:
         uses: ./packages/seed-data-action
         if: ${{ inputs.environment == 'staging' }}
         with:
-          supabaseUrl: ${{ secrets.GH_SUPABASE_URL_STAGING }}
-          supabaseKey: ${{ secrets.GH_SUPABASE_KEY_STAGING }}
+          supabaseUrl: ${{ secrets.EXPO_PUBLIC_SUPABASE_URL_STAGING }}
+          supabaseKey: ${{ secrets.SUPABASE_KEY_STAGING }}
       - name: 🌱 Seed data into production
         uses: ./packages/seed-data-action
         if: ${{ inputs.environment == 'production' }}
         with:
-          supabaseUrl: ${{ secrets.GH_SUPABASE_URL_PRODUCTION }}
-          supabaseKey: ${{ secrets.GH_SUPABASE_KEY_PRODUCTION }}
+          supabaseUrl: ${{ secrets.EXPO_PUBLIC_SUPABASE_URL_PRODUCTION }}
+          supabaseKey: ${{ secrets.SUPABASE_KEY_PRODUCTION }}
