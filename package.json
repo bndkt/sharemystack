@@ -17,7 +17,8 @@
     "export": "psql -h db.ltmpiwwmhypfxvbihxdn.supabase.co -p 5432 -d postgres -U postgres -f ./supabase/scripts/export.sql",
     "import": "PGPASSWORD=postgres psql -h localhost -p 54322 -d postgres -U postgres -f ./supabase/scripts/import.sql",
     "size": "PGPASSWORD=postgres psql -h localhost -p 54322 -d postgres -U postgres -c \"SELECT pg_size_pretty(pg_total_relation_size('tool_icons'));\"",
-    "import:remote": "psql -h db.ltmpiwwmhypfxvbihxdn.supabase.co -p 5432 -d postgres -U postgres -f ./supabase/scripts/import.sql"
+    "import:staging": "psql -h db.vmbhbonhvzmoafvxinfj.supabase.co -p 5432 -d postgres -U postgres -f ./supabase/scripts/import.sql",
+    "import:production": "psql -h db.ltmpiwwmhypfxvbihxdn.supabase.co -p 5432 -d postgres -U postgres -f ./supabase/scripts/import.sql"
   },
   "dependencies": {
     "esbuild": "^0.18.17",
