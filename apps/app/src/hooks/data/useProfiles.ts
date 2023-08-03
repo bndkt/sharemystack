@@ -53,7 +53,10 @@ export function useProfiles({
   }
 
   if (updated) {
-    profilesQuery = profilesQuery.extend(Q.sortBy("updated_at", "desc"));
+    profilesQuery = profilesQuery.extend(
+      Q.sortBy("updated_at", "desc"),
+      Q.where("is_featured", false)
+    );
   }
 
   if (limit) {
