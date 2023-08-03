@@ -25,6 +25,7 @@ export type Tool = {
   website: string | null;
   appStore: string | null;
   affiliateLink?: string;
+  icon?: string;
   categories: (keyof Categories)[];
 };
 

@@ -11,7 +11,7 @@ export function ToolIcon({ tool, size }: { tool: Tool; size: Token }) {
   const color = tool.color?.length ? tool.color : theme.color.val;
   const width = getTokenValue(size, "size");
 
-  return tool.toolIcon ? (
+  return tool.toolIcon?.id ? (
     <CustomSuspense
       promise={tool.toolIcon.fetch()}
       name="icon"

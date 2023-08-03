@@ -20,7 +20,10 @@ export async function createTools({
         {
           slug,
           name: tool.name,
-          tool_icon_id: toolIconRecordIds[slug] ?? null,
+          tool_icon_id:
+            (tool.icon
+              ? toolIconRecordIds[tool.icon]
+              : toolIconRecordIds[slug]) ?? null,
           color: tool.color,
           website: tool.website,
           app_store: tool.appStore,
