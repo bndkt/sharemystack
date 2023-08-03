@@ -105,7 +105,7 @@ export function SyncProvider({ children }: { children: ReactNode }) {
       setIsSyncing(true);
       watermelonSync(reset)
         .then(() => {
-          console.log("♻️ Sync succeeded", channel?.state);
+          console.log("♻️ Sync succeeded");
           setShouldBroadcast(true);
         })
         .catch((reason) => {
