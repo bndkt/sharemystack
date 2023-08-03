@@ -30,27 +30,26 @@ export async function createCategories({
     if (error) console.error(error);
 
     if (categoryRecords) {
-      for (const categoryRecord of categoryRecords) {
-        categoryRecordIds[categoryRecord.slug] = categoryRecord.id;
+      const categoryRecord = categoryRecords[0];
+      categoryRecordIds[categoryRecord.slug] = categoryRecord.id;
 
-        for (const stackTypeSlug of category.stackTypes) {
-          const stackTypesSlug = `${stackTypeSlug}-${slug}`;
+      for (const stackTypeSlug of category.stackTypes) {
+        const stackTypesSlug = `${stackTypeSlug}-${slug}`;
 
-          if (stackTypeRecordIds[slug]) {
-            await supabase
-              .from("stack_type_categories")
-              .upsert(
-                {
-                  slug: stackTypesSlug,
-                  stack_type_id: stackTypeRecordIds[slug],
-                  category_id: categoryRecord.id,
-                  updated_at: "now()",
-                  last_modified_at: "now()",
-                },
-                { onConflict: "slug" }
-              )
-              .select();
-          }
+        if (stackTypeRecordIds[slug]) {
+          await supabase
+            .from("stack_type_categories")
+            .upsert(
+              {
+                slug: stackTypesSlug,
+                stack_type_id: stackTypeRecordIds[stackTypeSlug],
+                category_id: categoryRecord.id,
+                updated_at: "now()",
+                last_modified_at: "now()",
+              },
+              { onConflict: "slug" }
+            )
+            .select();
         }
       }
     }
