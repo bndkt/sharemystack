@@ -23,13 +23,13 @@ export function UpdatePicksList({
   stack: Stack;
 }) {
   const { capture } = useAnalytics();
-  const { sync } = useSync();
+  const { queueSync } = useSync();
 
   function addPick({ stack, tool }: { stack: Stack; tool: Tool }) {
     console.log("Add", tool.name, "in", category.name);
     stack.addPick(tool, category);
     // TODO: (Workaround) Sync manually, because otherwise an immediate deletion after adding would not work
-    sync();
+    queueSync();
     capture("Add pick", {
       tool: tool.slug,
       category: category.slug,

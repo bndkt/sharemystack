@@ -50,8 +50,8 @@ export default function Layout() {
           <NavigationThemeProvider>
             <SafeAreaProvider>
               <DatabaseProvider database={database}>
-                <AuthProvider>
-                  <SyncProvider>
+                <SyncProvider>
+                  <AuthProvider>
                     <Stack>
                       <Stack.Screen
                         name="(tabs)"
@@ -65,8 +65,8 @@ export default function Layout() {
                         options={{ headerShown: true }}
                       />
                     </Stack>
-                  </SyncProvider>
-                </AuthProvider>
+                  </AuthProvider>
+                </SyncProvider>
               </DatabaseProvider>
             </SafeAreaProvider>
           </NavigationThemeProvider>

@@ -2,63 +2,75 @@ import { RealtimeChannel } from "@supabase/supabase-js";
 import { ReactNode, createContext, useEffect, useState } from "react";
 import { debounce } from "tamagui";
 
+import { Loading } from "@/components/Loading";
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/lib/supabase";
-import { sync as watermelonSync } from "@/lib/sync";
+import { sync } from "@/lib/sync";
 import { database } from "@/lib/watermelon";
 
 export const SyncContext = createContext<{
   isSyncing: boolean;
-  sync: (reset?: boolean) => void;
+  initialSync: () => void;
+  queueSync: () => void;
 }>({
   isSyncing: false,
-  sync: () => {},
+  initialSync: () => {},
+  queueSync: () => {},
 });
 
 export function SyncProvider({ children }: { children: ReactNode }) {
+  const [isInitiated, setIsInitiated] = useState(false);
   const [isSyncing, setIsSyncing] = useState(false);
   const [isSyncQueued, setIsSyncQueued] = useState(false);
   const [channel, setChannel] = useState<RealtimeChannel>();
   const [shouldBroadcast, setShouldBroadcast] = useState(false);
   const { user } = useAuth();
 
+  async function initialSync(reset?: boolean) {
+    setIsInitiated(false);
+    queueSync(reset);
+  }
+
   useEffect(() => {
-    const subscription = database
-      .withChangesForTables(["stacks", "picks", "stars", "profiles"])
-      .subscribe({
-        next: (changes) => {
-          const changedRecords = changes?.filter(
-            (c) => c.record.syncStatus !== "synced"
-          );
+    queueSync();
+  }, []);
 
-          if (changes?.length || changedRecords?.length) {
-            console.log(
-              "♻️ Database changes",
-              changes?.length,
-              changedRecords?.length
+  useEffect(() => {
+    if (isInitiated) {
+      const subscription = database
+        .withChangesForTables(["stacks", "picks", "stars", "profiles"])
+        .subscribe({
+          next: (changes) => {
+            const changedRecords = changes?.filter(
+              (c) => c.record.syncStatus !== "synced"
             );
-          }
 
-          if (changedRecords?.length && !isSyncing) {
-            const debouncedSync = debounce(() => sync(), 1000);
-            debouncedSync();
-          }
-        },
-        error: (error) => console.error("♻️ Database changes error", error),
+            if (changes?.length || changedRecords?.length) {
+              console.log(
+                "♻️ Database changes",
+                changes?.length,
+                changedRecords?.length
+              );
+            }
+
+            if (changedRecords?.length && !isSyncing) {
+              const debouncedSync = debounce(() => sync(), 1000);
+              debouncedSync();
+            }
+          },
+          error: (error) => console.error("♻️ Database changes error", error),
+        });
+
+      console.log("♻️ Subscribed to database changes", {
+        closed: subscription.closed,
       });
 
-    console.log("♻️ Subscribed to database changes", {
-      closed: subscription.closed,
-    });
-
-    console.log("♻️ Syncing on mount");
-    sync();
-
-    return () => {
-      subscription.unsubscribe();
-      console.log("Unsubscribed from database changes");
-    };
-  }, [database]);
+      return () => {
+        subscription.unsubscribe();
+        console.log("Unsubscribed from database changes");
+      };
+    }
+  }, [database, isInitiated]);
 
   useEffect(() => {
     if (user) {
@@ -99,13 +111,14 @@ export function SyncProvider({ children }: { children: ReactNode }) {
     }
   }, [channel, shouldBroadcast]);
 
-  function sync(reset?: boolean) {
+  function queueSync(reset?: boolean) {
     if (!isSyncing) {
       console.log("♻️ Starting sync");
       setIsSyncing(true);
-      watermelonSync(reset)
+      sync(reset)
         .then(() => {
           console.log("♻️ Sync succeeded");
+          setIsInitiated(true);
           setShouldBroadcast(true);
         })
         .catch((reason) => {
@@ -125,14 +138,17 @@ export function SyncProvider({ children }: { children: ReactNode }) {
     }
   }
 
-  return (
+  return isInitiated ? (
     <SyncContext.Provider
       value={{
         isSyncing,
-        sync,
+        initialSync,
+        queueSync,
       }}
     >
       {children}
     </SyncContext.Provider>
+  ) : (
+    <Loading message="Syncing" />
   );
 }

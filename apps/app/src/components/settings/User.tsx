@@ -1,6 +1,6 @@
 import { Avatar, Text, XStack, YStack } from "tamagui";
 
-import { DeleteUserButton } from "./DeleteUserButton";
+// import { DeleteUserButton } from "./DeleteUserButton";
 
 import { SignOutButton } from "@/components/auth/SignOutButton";
 import { withAuth } from "@/components/auth/withAuth";
@@ -23,7 +23,7 @@ function User() {
           <Text>Email: {user?.email}</Text>
         </YStack>
       </XStack>
-      <DeleteUserButton />
+      {/* <DeleteUserButton /> */}
       <SignOutButton />
     </YStack>
   );

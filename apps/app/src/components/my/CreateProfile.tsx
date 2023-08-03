@@ -7,12 +7,12 @@ import { useSync } from "@/hooks/useSync";
 
 export function CreateProfile() {
   const { user, createProfile } = useAuth();
-  const { sync } = useSync();
+  const { queueSync } = useSync();
 
   async function handleSubmit({ name, slug }: { name: string; slug: string }) {
     if (createProfile) {
       await createProfile({ name, slug });
-      sync();
+      queueSync();
     }
   }
 

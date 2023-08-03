@@ -14,7 +14,7 @@ export enum TableName {
 }
 
 export const schema = appSchema({
-  version: 1,
+  version: 2,
   tables: [
     tableSchema({
       name: TableName.TOOL_ICONS,

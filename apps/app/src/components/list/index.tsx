@@ -17,7 +17,7 @@ export function List<T>({
   placeholder?: JSX.Element | string;
   extraData?: any;
 }) {
-  const { sync, isSyncing } = useSync();
+  const { queueSync, isSyncing } = useSync();
   const [isRefreshing, setIsRefreshing] = useState(false);
 
   placeholder ??= "No data";
@@ -31,7 +31,7 @@ export function List<T>({
 
   function refresh() {
     setIsRefreshing(true);
-    sync();
+    queueSync();
   }
 
   useEffect(() => {

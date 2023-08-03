@@ -7,8 +7,7 @@ import { useSync } from "@/hooks/useSync";
 
 export default function Debug() {
   const [isFetchingUpdate, setIsFetchingUpdate] = useState(false);
-  const [isResettingDatabase, setIsResettingDatabase] = useState(false);
-  const { sync } = useSync();
+  const { initialSync } = useSync();
 
   async function onFetchUpdateAsync() {
     setIsFetchingUpdate(true);
@@ -28,13 +27,6 @@ export default function Debug() {
     }
   }
 
-  async function onResetDatabase() {
-    setIsResettingDatabase(true);
-    await sync(true);
-    // Updates.reloadAsync();
-    setIsResettingDatabase(false);
-  }
-
   return (
     <YStack fullscreen padding="$3" space="$3">
       <Button
@@ -44,11 +36,7 @@ export default function Debug() {
       >
         Check for updates
       </Button>
-      <Button
-        onPress={onResetDatabase}
-        disabled={isResettingDatabase}
-        icon={isResettingDatabase ? <Spinner /> : <DatabaseBackup size="$1" />}
-      >
+      <Button onPress={initialSync} icon={<DatabaseBackup size="$1" />}>
         Reset local database
       </Button>
     </YStack>
