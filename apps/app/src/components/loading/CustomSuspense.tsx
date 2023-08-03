@@ -5,7 +5,8 @@ import { LoadingMessage } from "./LoadingMessage";
 type CustomSuspenseProps<T> = {
   data?: T;
   promise?: Promise<T>;
-  name: string;
+  fallback?: JSX.Element;
+  name?: string;
   passEmpty?: boolean;
   component: (data: NonNullable<T>) => JSX.Element;
 };
@@ -13,6 +14,7 @@ type CustomSuspenseProps<T> = {
 export function CustomSuspense<T, C = T | T[]>({
   data,
   promise,
+  fallback,
   name,
   passEmpty = true,
   component,
@@ -34,6 +36,6 @@ export function CustomSuspense<T, C = T | T[]>({
   } else if (promiseResult) {
     return component(promiseResult);
   } else {
-    return <LoadingMessage message={`Loading ${name}`} />;
+    return fallback ?? <LoadingMessage message={`Loading ${name}`} />;
   }
 }

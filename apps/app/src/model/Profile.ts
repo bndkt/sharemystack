@@ -50,7 +50,13 @@ export class Profile extends Model {
   @lazy
   stars = this.collections
     .get<Star>(TableName.STARS)
-    .query(Q.where("stack_id", this.id));
+    .query(Q.where("profile_id", this.id));
+
+  @lazy
+  isStarred = this.collections
+    .get<Star>(TableName.STARS)
+    .query(Q.where("profile_id", this.id))
+    .observeCount();
 
   @writer async addStar(userId: string) {
     const star = await this.collections

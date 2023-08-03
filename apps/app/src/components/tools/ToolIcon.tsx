@@ -5,6 +5,7 @@ import { SvgXml } from "react-native-svg";
 import { CustomSuspense } from "../loading/CustomSuspense";
 
 import { Tool } from "@/model/Tool";
+import { Spinner } from "tamagui";
 
 export function ToolIcon({ tool, size }: { tool: Tool; size: Token }) {
   const theme = useTheme();
@@ -14,7 +15,7 @@ export function ToolIcon({ tool, size }: { tool: Tool; size: Token }) {
   return tool.toolIcon?.id ? (
     <CustomSuspense
       promise={tool.toolIcon.fetch()}
-      name="icon"
+      fallback={<Spinner width={width} height={width} />}
       component={(icon) => (
         <SvgXml xml={icon.iconSvg} color={color} width={width} height={width} />
       )}

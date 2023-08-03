@@ -1,10 +1,11 @@
 import { Globe, Twitter, Youtube } from "@tamagui/lucide-icons";
 import { Image } from "expo-image";
 import * as Linking from "expo-linking";
-import { Button, Text, XStack, YStack } from "tamagui";
+import { Button, Text, Unspaced, XStack, YStack } from "tamagui";
 
 import { Profile as ProfileModel } from "@/model/Profile";
 import { Stack as StackModel } from "@/model/Stack";
+import { ProfileActions } from "./ProfileActions";
 
 export function ProfileView({
   profile,
@@ -30,16 +31,17 @@ export function ProfileView({
           <H4>@{profile.slug}</H4>
         </YStack> */}
         {imageUrl && (
-          <Image
-            // style={styles.image}
-            source={imageUrl}
-            // placeholder={blurhash}
-            contentFit="cover"
-            transition={1000}
-            style={{ width: "100%", height: 200 }}
-          />
+          <Unspaced>
+            <Image
+              // style={styles.image}
+              source={imageUrl}
+              // placeholder={blurhash}
+              contentFit="cover"
+              style={{ width: "100%", height: 200 }}
+            />
+          </Unspaced>
         )}
-        <XStack paddingHorizontal="$3">
+        <XStack paddingHorizontal="$3" marginTop="$3">
           <XStack flexGrow={1} space="$3">
             {profile.website && (
               <Button
@@ -67,7 +69,7 @@ export function ProfileView({
               />
             )}
           </XStack>
-          {/* <StackHeaderRight stack={stack} /> */}
+          <ProfileActions profile={profile} />
         </XStack>
 
         {profile.description && (
