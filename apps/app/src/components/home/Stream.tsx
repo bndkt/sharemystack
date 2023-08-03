@@ -9,7 +9,7 @@ import { ToolIcon } from "../tools/ToolIcon";
 import { usePicks } from "@/hooks/data/usePicks";
 
 export function Stream() {
-  const { picks } = usePicks();
+  const { picks } = usePicks({ stream: true });
   const router = useRouter();
 
   return (
