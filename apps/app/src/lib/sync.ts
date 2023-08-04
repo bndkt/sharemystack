@@ -20,7 +20,7 @@ export async function sync(reset = false) {
       console.log("🍉 ⬇️ Pulling changes ...", { lastPulledAt });
 
       const { data, error } = await supabase.rpc("pull", {
-        last_pulled_at: reset ? undefined : lastPulledAt,
+        last_pulled_at: reset || !lastPulledAt ? undefined : lastPulledAt,
       });
 
       if (error) {
@@ -67,7 +67,7 @@ export async function nativeSync(reset = false) {
         {
           syncId,
           // Pass whatever information your plugin needs to make the request
-          lastPulledAt: reset ? undefined : lastPulledAt,
+          lastPulledAt: reset || !lastPulledAt ? undefined : lastPulledAt,
           schemaVersion,
           migration,
         }
