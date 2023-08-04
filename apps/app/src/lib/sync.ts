@@ -4,6 +4,7 @@ import { SyncDatabaseChangeSet, synchronize } from "@nozbe/watermelondb/sync";
 
 import { supabase } from "./supabase";
 import { database } from "./watermelon";
+// import { pullSyncChanges } from "native-sync";
 
 export async function sync(reset = false) {
   if (reset) {
@@ -19,7 +20,7 @@ export async function sync(reset = false) {
       console.log("🍉 ⬇️ Pulling changes ...", { lastPulledAt });
 
       const { data, error } = await supabase.rpc("pull", {
-        last_pulled_at: reset || !lastPulledAt ? undefined : lastPulledAt,
+        last_pulled_at: reset ? undefined : lastPulledAt,
       });
 
       if (error) {
@@ -37,6 +38,44 @@ export async function sync(reset = false) {
 
       return { changes, timestamp };
     },
+    pushChanges: async ({ changes, lastPulledAt }) => {
+      console.log("🍉 ⬆️ Pushing changes ...");
+
+      const { error } = await supabase.rpc("push", { changes });
+
+      if (error) {
+        throw new Error("🍉".concat(error.message));
+      }
+
+      console.log(`🍉 Changes pushed at ${new Date().toISOString()} UTC`);
+    },
+    // migrationsEnabledAtVersion: 1,
+    // log: logger.newLog(),
+    sendCreatedAsUpdated: true,
+  });
+}
+
+// Native Sync (https://watermelondb.dev/docs/Sync/Frontend#advanced-adopting-turbo-login)
+export async function nativeSync(reset = false) {
+  await synchronize({
+    database,
+    pullChanges: async ({ lastPulledAt, schemaVersion, migration }) => {
+      const syncId = Math.floor(Math.random() * 1000000000);
+
+      /* await pullSyncChanges(
+        // Pass the id
+        {
+          syncId,
+          // Pass whatever information your plugin needs to make the request
+          lastPulledAt: reset ? undefined : lastPulledAt,
+          schemaVersion,
+          migration,
+        }
+      ); */
+
+      return { syncJsonId: syncId };
+    },
+    unsafeTurbo: reset,
     pushChanges: async ({ changes, lastPulledAt }) => {
       console.log("🍉 ⬆️ Pushing changes ...");
 

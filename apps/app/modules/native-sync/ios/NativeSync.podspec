@@ -10,6 +10,9 @@ Pod::Spec.new do |s|
   s.static_framework = true
 
   s.dependency 'ExpoModulesCore'
+  
+  # Supabase
+  s.dependency 'supabase-swift', :git => 'https://github.com/supabase/supabase-swift.git'
 
   # Swift/Objective-C compatibility
   s.pod_target_xcconfig = {
