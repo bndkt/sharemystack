@@ -12,6 +12,19 @@ import {
   ChangeEventPayload,
   NativeSyncViewProps,
 } from "./src/NativeSync.types";
+import { MigrationSyncChanges } from "@nozbe/watermelondb/Schema/migrations/getSyncChanges";
+
+export async function pullSyncChanges({
+  syncId,
+  lastPulledAt,
+  schemaVersion,
+  migration,
+}: {
+  syncId: number;
+  lastPulledAt?: number;
+  schemaVersion: number;
+  migration: MigrationSyncChanges;
+}): Promise<void> {}
 
 // Get the native constant value.
 export const PI = NativeSyncModule.PI;
