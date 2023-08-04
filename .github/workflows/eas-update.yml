@@ -42,6 +42,7 @@ jobs:
           EXPO_PUBLIC_VEXO_API_KEY: ${{ secrets.EXPO_PUBLIC_VEXO_API_KEY_STAGING }}
           EXPO_PUBLIC_SUPABASE_URL: ${{ secrets.EXPO_PUBLIC_SUPABASE_URL_STAGING }}
           EXPO_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.EXPO_PUBLIC_SUPABASE_ANON_KEY_STAGING }}
+          EXPO_PUBLIC_APP_VARIANT: development
       - name: 📢 Publish update (production)
         run: eas update --non-interactive -p ios --branch=production --message=${{ github.sha }}
         working-directory: ./apps/app
@@ -55,3 +56,4 @@ jobs:
           EXPO_PUBLIC_VEXO_API_KEY: ${{ secrets.EXPO_PUBLIC_VEXO_API_KEY_PRODUCTION }}
           EXPO_PUBLIC_SUPABASE_URL: ${{ secrets.EXPO_PUBLIC_SUPABASE_URL_PRODUCTION }}
           EXPO_PUBLIC_SUPABASE_ANON_KEY: ${{ secrets.EXPO_PUBLIC_SUPABASE_ANON_KEY_PRODUCTION }}
+          EXPO_PUBLIC_APP_VARIANT: production
