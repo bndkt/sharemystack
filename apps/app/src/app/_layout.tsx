@@ -6,7 +6,8 @@ import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { PostHogProvider } from "posthog-react-native";
-import { LogBox, useColorScheme } from "react-native";
+import { useEffect, useRef, useState } from "react";
+import { AppState, LogBox, useColorScheme } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
 import "@/lib/sentry";
@@ -27,7 +28,27 @@ LogBox.ignoreLogs([
 ]);
 
 export default function Layout() {
+  const appState = useRef(AppState.currentState);
+  const [appStateVisible, setAppStateVisible] = useState(appState.current);
   const colorScheme = useColorScheme();
+  const [activeColorScheme, setActiveColorScheme] = useState(colorScheme);
+
+  useEffect(() => {
+    if (appStateVisible === "active") {
+      setActiveColorScheme(colorScheme);
+    }
+  }, [appStateVisible, colorScheme]);
+
+  useEffect(() => {
+    const subscription = AppState.addEventListener("change", (nextAppState) => {
+      appState.current = nextAppState;
+      setAppStateVisible(appState.current);
+    });
+
+    return () => {
+      subscription.remove();
+    };
+  }, []);
 
   const [loaded] = useFonts({
     Inter: require("@tamagui/font-inter/otf/Inter-Medium.otf"),
@@ -46,7 +67,7 @@ export default function Layout() {
       }}
     >
       <TamaguiProvider config={tamaguiConfig}>
-        <Theme name={colorScheme}>
+        <Theme name={activeColorScheme}>
           <NavigationThemeProvider>
             <SafeAreaProvider>
               <DatabaseProvider database={database}>
