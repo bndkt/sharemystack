@@ -32,7 +32,8 @@ export class Profile extends Model {
   @text("name") name!: string;
   @text("slug") slug!: string;
   @text("description") description!: string;
-  @text("image") image!: string;
+  @text("image") image?: string;
+  @text("blurhash") blurhash?: string;
   @text("website") website!: string;
   @text("twitter") twitter!: string;
   @text("twitter_image_url") twitterImageUrl!: string;

@@ -14,7 +14,7 @@ export enum TableName {
 }
 
 export const schema = appSchema({
-  version: 2,
+  version: 3,
   tables: [
     tableSchema({
       name: TableName.TOOL_ICONS,
@@ -79,6 +79,7 @@ export const schema = appSchema({
         { name: "slug", type: "string", isIndexed: true },
         { name: "description", type: "string", isOptional: true },
         { name: "image", type: "string", isOptional: true },
+        { name: "blurhash", type: "string", isOptional: true },
         { name: "website", type: "string", isOptional: true },
         { name: "twitter", type: "string", isOptional: true },
         { name: "twitter_image_url", type: "string", isOptional: true },

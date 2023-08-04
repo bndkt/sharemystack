@@ -37,7 +37,7 @@ export function ProfileView({
             <Image
               // style={styles.image}
               source={imageUrl}
-              // placeholder={blurhash}
+              placeholder={profile.blurhash}
               contentFit="cover"
               style={{ width: "100%", height: 200 }}
             />
