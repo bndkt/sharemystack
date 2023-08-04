@@ -1,6 +1,6 @@
-import * as React from 'react';
+import * as React from "react";
 
-import { NativeSyncViewProps } from './NativeSync.types';
+import { NativeSyncViewProps } from "./NativeSync.types";
 
 export default function NativeSyncView(props: NativeSyncViewProps) {
   return (
