@@ -25,7 +25,7 @@ export async function createProfileImages({
       const imageFile = await fs.readFile(filePath, "utf-8");
       const slug = path.basename(file, ".webp");
 
-      const { data, error } = await supabase.storage
+      const { error } = await supabase.storage
         .from("public-images")
         .upload(`profiles/${file}`, imageFile, {
           cacheControl: "3600",
