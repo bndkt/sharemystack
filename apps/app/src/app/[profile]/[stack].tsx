@@ -1,9 +1,9 @@
 import { useGlobalSearchParams } from "expo-router";
+import { Text } from "tamagui";
 
 import { CustomSuspense } from "@/components/loading/CustomSuspense";
 import { PicksList } from "@/components/picks/PicksList";
 import { useProfile } from "@/hooks/data/useProfile";
-import { Text } from "tamagui";
 
 export default function StackType() {
   let {
