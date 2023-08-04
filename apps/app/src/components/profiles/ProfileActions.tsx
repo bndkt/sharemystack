@@ -1,7 +1,7 @@
 import { Share as ShareIcon, Star } from "@tamagui/lucide-icons";
 import { useEffect, useState } from "react";
 import { Share } from "react-native";
-import { Button, XStack } from "tamagui";
+import { Button, XStack, useTheme } from "tamagui";
 
 import { useAuth } from "@/hooks/useAuth";
 import { config } from "@/lib/config";
@@ -10,6 +10,7 @@ import { Profile } from "@/model/Profile";
 export function ProfileActions({ profile }: { profile: Profile }) {
   const { user } = useAuth();
   const [isStarred, setIsStarred] = useState(false);
+  const theme = useTheme();
 
   useEffect(() => {
     profile.isStarred.subscribe((stars) => {
@@ -29,7 +30,12 @@ export function ProfileActions({ profile }: { profile: Profile }) {
     <XStack space="$3">
       {user && (
         <Button
-          icon={<Star fill={isStarred ? "black" : "transparent"} size="$1.5" />}
+          icon={
+            <Star
+              fill={isStarred ? theme.color.val : "transparent"}
+              size="$1.5"
+            />
+          }
           unstyled
           onPress={toggleStar}
         />
