@@ -20,9 +20,9 @@ export function MyStacks({
   const { stackTypes } = useStackTypes();
   const router = useRouter();
 
-  function handleCreateStack(stackType: StackType) {
+  async function handleCreateStack(stackType: StackType) {
     console.log("Create stack", stackType.name);
-    profile.addStack(stackType);
+    await profile.addStack(stackType);
   }
 
   const filteredStackTypes =

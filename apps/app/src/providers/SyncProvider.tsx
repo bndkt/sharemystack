@@ -29,7 +29,7 @@ export function SyncProvider({ children }: { children: ReactNode }) {
   }, []);
 
   useEffect(() => {
-    if (isResetting) {
+    if (!isResetting) {
       const subscription = database
         .withChangesForTables(["stacks", "picks", "stars", "profiles"])
         .subscribe({
