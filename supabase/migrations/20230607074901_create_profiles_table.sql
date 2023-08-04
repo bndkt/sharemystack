@@ -7,6 +7,7 @@ create table profiles (
   server_created_at timestamp with time zone not null default now(),
   last_modified_at timestamp with time zone not null default now(),
   user_id uuid null default null references auth.users,
+  unique (user_id),
   name character varying null,
   slug character varying not null,
   unique (slug),
