@@ -186,6 +186,8 @@ select jsonb_build_object(
                     t.description,
                     'image',
                     t.image,
+                    'blurhash',
+                    t.blurhash,
                     'website',
                     t.website,
                     'twitter',

@@ -12,6 +12,7 @@ create table profiles (
   unique (slug),
   description character varying null,
   image character varying null,
+  blurhash character varying null,
   website character varying null,
   twitter character varying null,
   twitter_image_url character varying null,
