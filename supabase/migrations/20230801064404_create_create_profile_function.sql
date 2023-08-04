@@ -1,5 +1,6 @@
 create or replace function create_profile(
         profile_id uuid,
+        profile_user_id uuid,
         profile_name character varying,
         profile_slug character varying,
         profile_created_at timestamp with time zone,
@@ -24,7 +25,7 @@ values (
         profile_id,
         profile_name,
         profile_slug,
-        auth.uid(),
+        profile_user_id,
         profile_created_at,
         profile_updated_at,
         now(),

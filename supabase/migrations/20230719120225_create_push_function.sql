@@ -8,6 +8,7 @@ begin -- insert new profiles
 for new_profile in
 select jsonb_array_elements((changes->'profiles'->'created')) loop perform create_profile(
         (new_profile->>'id')::uuid,
+        (new_profile->>'user_id')::uuid,
         (new_profile->>'name'),
         (new_profile->>'slug'),
         epoch_to_timestamp(new_profile->>'created_at'),
