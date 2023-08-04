@@ -123,6 +123,12 @@ const config: ExpoConfig = {
               path: "../../../node_modules/@nozbe/simdjson",
               modular_headers: true,
             },
+            {
+              name: "Supabase",
+              configurations: ["Debug", "Release"],
+              git: "https://github.com/bndkt/supabase-swift.git",
+              modular_headers: true,
+            },
           ],
         },
       },
