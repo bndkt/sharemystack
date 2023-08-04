@@ -23,31 +23,35 @@ export default function Profile() {
         <CustomSuspense
           data={stacks}
           name="stacks"
-          component={(stacks) => (
-            <YStack fullscreen>
-              <Stack.Screen
-                options={{ title: `${profile.name} (@${profile.slug})` }}
-              />
-              <ProfileView profile={profile} />
-              <MaterialTopTabs
-                tabBar={(props) => (
-                  <StacksTabBar
-                    tabBarProps={props}
-                    profile={profile}
-                    stacks={stacks}
-                  />
-                )}
-              >
-                <MaterialTopTabs.Screen
-                  name="[stack]"
-                  options={{ title: "Stack Type" }}
-                  initialParams={{
-                    primaryStackId: profile.primaryStackId ?? stacks[0].id,
-                  }}
+          component={(stacks) => {
+            const primaryStackId =
+              profile.primaryStackId ?? stacks[0] ? stacks[0].id : undefined;
+            return (
+              <YStack fullscreen>
+                <Stack.Screen
+                  options={{ title: `${profile.name} (@${profile.slug})` }}
                 />
-              </MaterialTopTabs>
-            </YStack>
-          )}
+                <ProfileView profile={profile} />
+                <MaterialTopTabs
+                  tabBar={(props) => (
+                    <StacksTabBar
+                      tabBarProps={props}
+                      profile={profile}
+                      stacks={stacks}
+                    />
+                  )}
+                >
+                  <MaterialTopTabs.Screen
+                    name="[stack]"
+                    options={{ title: "Stack Type" }}
+                    initialParams={{
+                      primaryStackId,
+                    }}
+                  />
+                </MaterialTopTabs>
+              </YStack>
+            );
+          }}
         />
       )}
     />

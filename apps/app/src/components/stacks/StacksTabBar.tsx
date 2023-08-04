@@ -18,9 +18,9 @@ export function StacksTabBar({
 }) {
   const router = useRouter();
   let { stack: stackId } = useGlobalSearchParams<{ stack: string }>();
-  stackId ??= profile.primaryStackId ?? stacks[0].id;
+  stackId ??= profile.primaryStackId ?? stacks[0] ? stacks[0].id : undefined;
 
-  return (
+  return stacks.length > 0 ? (
     <XStack borderBottomColor="$borderColor" borderBottomWidth="$1">
       {stacks.map((stack) => {
         return (
@@ -40,5 +40,5 @@ export function StacksTabBar({
         );
       })}
     </XStack>
-  );
+  ) : null;
 }

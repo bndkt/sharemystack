@@ -3,9 +3,10 @@ import { useGlobalSearchParams } from "expo-router";
 import { CustomSuspense } from "@/components/loading/CustomSuspense";
 import { PicksList } from "@/components/picks/PicksList";
 import { useProfile } from "@/hooks/data/useProfile";
+import { Text } from "tamagui";
 
 export default function StackType() {
-  const {
+  let {
     profile: profileSlug,
     stack: stackId,
     primaryStackId,
@@ -15,12 +16,14 @@ export default function StackType() {
     primaryStackId: string;
   }>();
 
+  stackId ??= primaryStackId;
+
   const { profile, stack, picks } = useProfile({
     slug: profileSlug?.toLowerCase().substring(1) ?? null,
-    stackId: stackId ?? primaryStackId,
+    stackId,
   });
 
-  return (
+  return stackId && stackId !== "undefined" ? (
     <CustomSuspense
       data={profile}
       name="profile"
@@ -40,5 +43,9 @@ export default function StackType() {
         />
       )}
     />
+  ) : (
+    <Text textAlign="center" padding="$3">
+      This user has not created any stacks yet.
+    </Text>
   );
 }
