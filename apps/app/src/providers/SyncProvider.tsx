@@ -1,5 +1,6 @@
 import { RealtimeChannel } from "@supabase/supabase-js";
 import { ReactNode, createContext, useEffect, useState } from "react";
+import { AppState } from "react-native";
 import { debounce } from "tamagui";
 
 import { Loading } from "@/components/Loading";
@@ -26,6 +27,16 @@ export function SyncProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     queueSync();
+  }, []);
+
+  useEffect(() => {
+    const subscription = AppState.addEventListener("change", () => {
+      queueSync();
+    });
+
+    return () => {
+      subscription.remove();
+    };
   }, []);
 
   useEffect(() => {
