@@ -22,12 +22,13 @@ export async function createProfileImages({
     if (path.extname(file) === ".webp") {
       const filePath = path.join(imagesPath, file);
 
-      const imageFile = await fs.readFile(filePath, "utf-8");
+      const imageFile = await fs.readFile(filePath);
       const slug = path.basename(file, ".webp");
 
       const { error } = await supabase.storage
         .from("public-images")
         .upload(`profiles/${file}`, imageFile, {
+          contentType: "image/webp",
           cacheControl: "3600",
           upsert: true,
         });
