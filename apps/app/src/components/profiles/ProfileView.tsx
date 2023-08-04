@@ -17,7 +17,7 @@ export function ProfileView({
   stacks?: StackModel[] | null;
 }) {
   const imageUrl = profile.image
-    ? `${config.supabaseUrl}/storage/v1/object/public/stack-images/creators/${profile.image}`
+    ? `${config.supabaseUrl}/storage/v1/object/public/public-images/profiles/${profile.image}`
     : undefined;
 
   return (
