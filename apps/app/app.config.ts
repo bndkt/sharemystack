@@ -123,12 +123,12 @@ const config: ExpoConfig = {
               path: "../../../node_modules/@nozbe/simdjson",
               modular_headers: true,
             },
-            {
-              name: "Supabase",
+            /* {
+              name: "PostgREST",
               configurations: ["Debug", "Release"],
-              git: "https://github.com/bndkt/supabase-swift.git",
+              git: "https://github.com/bndkt/postgrest-swift.git",
               modular_headers: true,
-            },
+            }, */
           ],
         },
       },
