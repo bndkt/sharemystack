@@ -252,9 +252,6 @@ importers:
       '@remix-run/cloudflare-pages':
         specifier: ^1.19.2
         version: 1.19.2(@cloudflare/workers-types@3.19.0)
-      '@remix-run/css-bundle':
-        specifier: ^1.19.2
-        version: 1.19.2
       '@remix-run/react':
         specifier: ^1.19.2
         version: 1.19.2(react-dom@18.2.0)(react@18.2.0)
@@ -3807,11 +3804,6 @@ packages:
       '@cloudflare/kv-asset-handler': 0.1.3
       '@cloudflare/workers-types': 3.19.0
       '@remix-run/server-runtime': 1.19.2
-    dev: false
-
-  /@remix-run/css-bundle@1.19.2:
-    resolution: {integrity: sha512-+gmGzKXwo13vnCMjjfXXSIxJlrN1VVtUvvX4o803ifIyFIJr8/Hp9cuiZDlimcjmKyEKjFiyiVmdKvK7qeOBEA==}
-    engines: {node: '>=14.0.0'}
     dev: false
 
   /@remix-run/dev@1.19.2:
