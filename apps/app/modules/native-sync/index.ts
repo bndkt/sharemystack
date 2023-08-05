@@ -33,6 +33,7 @@ export async function pullSyncChanges({
     schemaVersion, // Not implemented yet
     migration, // Not implemented yet
   });
+  lastPulledAt ??= 0;
   NativeSyncModule.pullSyncChanges(
     config.supabaseUrl,
     config.supabaseAnonKey,

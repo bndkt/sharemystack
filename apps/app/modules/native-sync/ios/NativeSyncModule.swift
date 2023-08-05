@@ -56,7 +56,7 @@ public class NativeSyncModule: Module {
                 schema: "public"
             )
             let params = Params(lastPulledAt: lastPulledAt)
-            await client.rpc("pull", params)
+            await client.rpc(fn: "pull", params: params)
             // extern void watermelondbProvideSyncJson(int id, NSData *json, NSError **errorPtr);
             // watermelondbProvideSyncJson(syncId, data, &error)
         }

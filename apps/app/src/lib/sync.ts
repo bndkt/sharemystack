@@ -41,6 +41,8 @@ export async function sync({
           }
         );
 
+        console.log(`🍉 Changes pulled via native-sync, syncId ${syncId}`);
+
         return { syncJsonId: syncId };
       } else {
         const { data, error } = await supabase.rpc("pull", {
@@ -74,7 +76,7 @@ export async function sync({
 
       console.log(`🍉 Changes pushed at ${new Date().toISOString()} UTC`);
     },
-    // unsafeTurbo: reset,
+    unsafeTurbo: false,
     // migrationsEnabledAtVersion: 1,
     // log: logger.newLog(),
     sendCreatedAsUpdated: true,
