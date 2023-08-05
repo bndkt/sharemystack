@@ -1,12 +1,18 @@
 import { SyncDatabaseChangeSet, synchronize } from "@nozbe/watermelondb/sync";
 // import SyncLogger from "@nozbe/watermelondb/sync/SyncLogger";
 // const logger = new SyncLogger(10 /* limit of sync logs to keep in memory */);
+import { pullSyncChanges } from "native-sync";
 
 import { supabase } from "./supabase";
 import { database } from "./watermelon";
-// import { pullSyncChanges } from "native-sync";
 
-export async function sync(reset = false) {
+export async function sync({
+  reset,
+  native,
+}: {
+  reset?: boolean;
+  native?: boolean;
+} = {}) {
   if (reset) {
     await database.write(async () => {
       await database.unsafeResetDatabase();
@@ -19,24 +25,43 @@ export async function sync(reset = false) {
     pullChanges: async ({ lastPulledAt, schemaVersion, migration }) => {
       console.log("🍉 ⬇️ Pulling changes ...", { lastPulledAt });
 
-      const { data, error } = await supabase.rpc("pull", {
-        last_pulled_at: reset || !lastPulledAt ? undefined : lastPulledAt,
-      });
+      lastPulledAt = reset || !lastPulledAt ? undefined : lastPulledAt;
 
-      if (error) {
-        throw new Error("🍉".concat(error.message));
+      if (native) {
+        const syncId = Math.floor(Math.random() * 1000000000);
+
+        await pullSyncChanges(
+          // Pass the id
+          {
+            syncId,
+            // Pass whatever information your plugin needs to make the request
+            lastPulledAt,
+            schemaVersion,
+            migration,
+          }
+        );
+
+        return { syncJsonId: syncId };
+      } else {
+        const { data, error } = await supabase.rpc("pull", {
+          last_pulled_at: lastPulledAt,
+        });
+
+        if (error) {
+          throw new Error("🍉".concat(error.message));
+        }
+
+        const { changes, timestamp } = data as {
+          changes: SyncDatabaseChangeSet;
+          timestamp: number;
+        };
+
+        console.log(
+          `🍉 Changes pulled at ${new Date(timestamp).toISOString()} UTC`
+        );
+
+        return { changes, timestamp };
       }
-
-      const { changes, timestamp } = data as {
-        changes: SyncDatabaseChangeSet;
-        timestamp: number;
-      };
-
-      console.log(
-        `🍉 Changes pulled at ${new Date(timestamp).toISOString()} UTC`
-      );
-
-      return { changes, timestamp };
     },
     pushChanges: async ({ changes, lastPulledAt }) => {
       console.log("🍉 ⬆️ Pushing changes ...");
@@ -49,6 +74,7 @@ export async function sync(reset = false) {
 
       console.log(`🍉 Changes pushed at ${new Date().toISOString()} UTC`);
     },
+    // unsafeTurbo: reset,
     // migrationsEnabledAtVersion: 1,
     // log: logger.newLog(),
     sendCreatedAsUpdated: true,
@@ -62,7 +88,7 @@ export async function nativeSync(reset = false) {
     pullChanges: async ({ lastPulledAt, schemaVersion, migration }) => {
       const syncId = Math.floor(Math.random() * 1000000000);
 
-      /* await pullSyncChanges(
+      await pullSyncChanges(
         // Pass the id
         {
           syncId,
@@ -71,7 +97,7 @@ export async function nativeSync(reset = false) {
           schemaVersion,
           migration,
         }
-      ); */
+      );
 
       return { syncJsonId: syncId };
     },

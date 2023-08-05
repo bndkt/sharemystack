@@ -13,6 +13,7 @@ import {
   NativeSyncViewProps,
 } from "./src/NativeSync.types";
 import { MigrationSyncChanges } from "@nozbe/watermelondb/Schema/migrations/getSyncChanges";
+import { config } from "@/lib/config";
 
 export async function pullSyncChanges({
   syncId,
@@ -24,7 +25,20 @@ export async function pullSyncChanges({
   lastPulledAt?: number;
   schemaVersion: number;
   migration: MigrationSyncChanges;
-}): Promise<void> {}
+}): Promise<void> {
+  console.log("native-sync", "pullSyncChanges", {
+    syncId,
+    lastPulledAt,
+    schemaVersion, // Not implemented yet
+    migration, // Not implemented yet
+  });
+  NativeSyncModule.pullSyncChanges(
+    config.supabaseUrl,
+    config.supabaseAnonKey,
+    syncId,
+    lastPulledAt
+  );
+}
 
 // Get the native constant value.
 export const PI = NativeSyncModule.PI;

@@ -54,7 +54,7 @@ export function SyncProvider({ children }: { children: ReactNode }) {
             }
 
             if (changedRecords?.length && !isSyncing) {
-              const debouncedSync = debounce(() => sync(), 1000);
+              const debouncedSync = debounce(() => sync(), 1000); // TODO: Use queueSync instead?
               debouncedSync();
             }
           },
@@ -77,7 +77,7 @@ export function SyncProvider({ children }: { children: ReactNode }) {
       console.log("♻️ Starting sync");
       setIsSyncing(true);
       setIsResetting(reset ?? false);
-      sync(reset)
+      sync({ reset })
         .then(() => {
           console.log("♻️ Sync succeeded");
           setIsResetting(false);
