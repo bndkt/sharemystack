@@ -1,4 +1,3 @@
-import { RealtimeChannel } from "@supabase/supabase-js";
 import { ReactNode, createContext, useEffect, useState } from "react";
 import { AppState } from "react-native";
 import { debounce } from "tamagui";
