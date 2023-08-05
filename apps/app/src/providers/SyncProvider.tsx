@@ -4,32 +4,29 @@ import { AppState } from "react-native";
 import { debounce } from "tamagui";
 
 import { Loading } from "@/components/Loading";
-import { useAuth } from "@/hooks/useAuth";
-import { supabase } from "@/lib/supabase";
 import { sync } from "@/lib/sync";
 import { database } from "@/lib/watermelon";
 
 export const SyncContext = createContext<{
   isSyncing: boolean;
   queueSync: (reset?: boolean) => void;
+  shouldBroadcast?: boolean;
+  handleBroadcastSent: () => void;
 }>({
   isSyncing: false,
   queueSync: () => {},
+  handleBroadcastSent: () => {},
 });
 
 export function SyncProvider({ children }: { children: ReactNode }) {
   const [isResetting, setIsResetting] = useState(false);
   const [isSyncing, setIsSyncing] = useState(false);
   const [isSyncQueued, setIsSyncQueued] = useState(false);
-  const [channel, setChannel] = useState<RealtimeChannel>();
   const [shouldBroadcast, setShouldBroadcast] = useState(false);
-  const { user } = useAuth();
 
   useEffect(() => {
     queueSync();
-  }, []);
 
-  useEffect(() => {
     const subscription = AppState.addEventListener("change", () => {
       queueSync();
     });
@@ -76,45 +73,6 @@ export function SyncProvider({ children }: { children: ReactNode }) {
     }
   }, [database, isResetting]);
 
-  useEffect(() => {
-    if (user) {
-      const channel = supabase.channel(`sync-${user.id}`);
-      const subscription = channel
-        .on("broadcast", { event: "sync" }, (payload) => {
-          console.log("Broadcast received", payload);
-          sync();
-        })
-        .subscribe();
-
-      console.log("Subscribed to broadcast", subscription.state);
-
-      setChannel(channel);
-
-      return () => {
-        subscription.unsubscribe();
-        console.log("Unsubscribed from broadcast");
-      };
-    }
-  }, [supabase, user]);
-
-  useEffect(() => {
-    if (channel && shouldBroadcast) {
-      console.log("♻️ Sending broadcast");
-      channel
-        .send({
-          type: "broadcast",
-          event: "sync",
-          payload: {
-            message: "hello, world",
-          },
-        })
-        .then((response) => {
-          console.log("♻️ Broadcast sent", response);
-        });
-      setShouldBroadcast(false);
-    }
-  }, [channel, shouldBroadcast]);
-
   function queueSync(reset?: boolean) {
     if (!isSyncing ?? reset) {
       console.log("♻️ Starting sync");
@@ -150,6 +108,8 @@ export function SyncProvider({ children }: { children: ReactNode }) {
       value={{
         isSyncing,
         queueSync,
+        shouldBroadcast,
+        handleBroadcastSent: () => setShouldBroadcast(false),
       }}
     >
       {children}
