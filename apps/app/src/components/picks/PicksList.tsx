@@ -1,3 +1,5 @@
+import { ChevronRight } from "@tamagui/lucide-icons";
+import { useRouter } from "expo-router";
 import { ListItem } from "tamagui";
 
 import { List } from "../list";
@@ -17,20 +19,26 @@ export function PicksList({
   stack: Stack;
   picks: Pick[];
 }) {
+  const router = useRouter();
+
   return (
     <List
       data={picks}
       renderItem={({ item }) => (
-        <ListItem
-          title={item.toolName}
-          subTitle={item.categoryName}
-          icon={
-            <CustomSuspense
-              promise={item.tool.fetch()}
-              name="tool"
-              component={(tool) => <ToolIcon tool={tool} size="$1.5" />}
+        <CustomSuspense
+          promise={item.tool.fetch()}
+          name="tool"
+          component={(tool) => (
+            <ListItem
+              title={item.toolName}
+              subTitle={item.categoryName}
+              icon={<ToolIcon tool={tool} size="$1.5" />}
+              // iconAfter={<ChevronRight size="$1.5" />}
+              /* onPress={() => {
+                router.push(`/tools/${tool.slug}`);
+              }} */
             />
-          }
+          )}
         />
       )}
     />

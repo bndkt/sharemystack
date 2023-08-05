@@ -26,7 +26,7 @@ export default function Layout() {
       snapPoints={snapPoints}
       onChange={handleSheetChanges}
       enablePanDownToClose={true}
-      onClose={() => router.push(`/(tabs)/stacks/my/${stackId}/_tmp`)}
+      onClose={() => router.push(`/(tabs)/stacks/my/${stackId}/_tmp`)} // TODO: Workaround
       style={{
         shadowColor: theme.color.val,
         shadowOffset: {
@@ -52,7 +52,7 @@ export default function Layout() {
             <Button
               icon={<X size="$1.5" />}
               onPress={() => {
-                router.push(`/(tabs)/stacks/my/${stackId}/_tmp`);
+                router.push(`/(tabs)/stacks/my/${stackId}/_tmp`); // TODO: Workaround
               }}
               unstyled
             />
