@@ -11,7 +11,7 @@
     "prebuild": "expo prebuild --platform ios --clean",
     "build:local": "eas build --profile simulator --platform ios --local --non-interactive",
     "types": "supabase gen types typescript --local > src/lib/database.types.ts",
-    "lint": "eslint src",
+    "lint": "eslint src modules",
     "eas-build-pre-install": "corepack enable && corepack prepare pnpm@latest-8 --activate"
   },
   "dependencies": {

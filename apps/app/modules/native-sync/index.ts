@@ -1,3 +1,4 @@
+import { MigrationSyncChanges } from "@nozbe/watermelondb/Schema/migrations/getSyncChanges";
 import {
   NativeModulesProxy,
   EventEmitter,
@@ -6,13 +7,13 @@ import {
 
 // Import the native module. On web, it will be resolved to NativeSync.web.ts
 // and on native platforms to NativeSync.ts
-import NativeSyncModule from "./src/NativeSyncModule";
-import NativeSyncView from "./src/NativeSyncView";
 import {
   ChangeEventPayload,
   NativeSyncViewProps,
 } from "./src/NativeSync.types";
-import { MigrationSyncChanges } from "@nozbe/watermelondb/Schema/migrations/getSyncChanges";
+import NativeSyncModule from "./src/NativeSyncModule";
+import NativeSyncView from "./src/NativeSyncView";
+
 import { config } from "@/lib/config";
 
 export async function pullSyncChanges({
