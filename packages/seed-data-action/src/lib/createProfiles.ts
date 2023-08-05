@@ -23,7 +23,7 @@ export async function createProfiles({
           slug,
           name: profile.name,
           description: profile.description,
-          image: profile.image,
+          // image: profile.image,
           website: profile.website,
           twitter: profile.twitter,
           twitter_image_url: profile.twitter_image_url,

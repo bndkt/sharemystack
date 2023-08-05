@@ -18,43 +18,46 @@ export async function createProfileImages({
 
   const files = await fs.readdir(imagesPath, {});
 
+  const imageFileExtensions = [".webp", ".jpg", ".png"];
+
   for (const file of files) {
-    if (path.extname(file) === ".webp") {
+    if (imageFileExtensions.includes(path.extname(file))) {
       const filePath = path.join(imagesPath, file);
 
-      const imageFile = await fs.readFile(filePath);
-      const slug = path.basename(file, ".webp");
+      const slug = path.basename(file, path.extname(file));
+      const image = `${slug}.webp`;
 
-      const { error } = await supabase.storage
-        .from("public-images")
-        .upload(`profiles/${file}`, imageFile, {
-          contentType: "image/webp",
-          cacheControl: "3600",
-          upsert: true,
-        });
+      const sharpImage = sharp(filePath);
 
-      const { width, height } = await sharp(filePath).metadata();
-      const buffer = await sharp(filePath)
-        .raw()
-        .ensureAlpha()
-        // .resize(metadata.width, metadata.height, { fit: "inside" })
-        .toBuffer();
-      const blurhash = encode(
-        new Uint8ClampedArray(buffer),
-        width ?? 800,
-        height ?? 600,
-        4,
-        4
-      );
+      const webpImage = sharpImage.resize(430).webp();
 
-      if (blurhash && profileRecordIds[slug]) {
-        await supabase
-          .from("profiles")
-          .update({ blurhash })
-          .match({ id: profileRecordIds[slug] });
-      }
+      webpImage.toBuffer(async (err, data, info) => {
+        const { error } = await supabase.storage
+          .from("public-images")
+          .upload(`profiles/${image}`, data, {
+            contentType: "image/webp",
+            cacheControl: "3600",
+            upsert: true,
+          });
+        (error || err) && console.error(error, err);
 
-      error && console.error(error);
+        const blurhash = encode(
+          new Uint8ClampedArray(
+            await sharpImage.raw().ensureAlpha().toBuffer()
+          ),
+          info.width,
+          info.height,
+          4,
+          4
+        );
+
+        if (blurhash && profileRecordIds[slug]) {
+          await supabase
+            .from("profiles")
+            .update({ image, blurhash })
+            .match({ id: profileRecordIds[slug] });
+        }
+      });
     }
   }
 
