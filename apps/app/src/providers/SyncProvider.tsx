@@ -23,6 +23,8 @@ export const SyncContext = createContext<{
   handleBroadcastSent: () => {},
 });
 
+const syncDelay = 0;
+
 export function SyncProvider({ children }: { children: ReactNode }) {
   const [isResetting, setIsResetting] = useState(false);
   const [isSyncing, setIsSyncing] = useState(false);
@@ -59,8 +61,8 @@ export function SyncProvider({ children }: { children: ReactNode }) {
               );
             }
 
-            if (changedRecords?.length && !isSyncing) {
-              const debouncedSync = debounce(() => sync(), 1000); // TODO: Use queueSync instead?
+            if (changedRecords?.length) {
+              const debouncedSync = debounce(() => queueSync(), syncDelay); // TODO: Use queueSync instead?
               debouncedSync();
             }
           },
@@ -79,13 +81,13 @@ export function SyncProvider({ children }: { children: ReactNode }) {
   }, [database, isResetting]);
 
   function queueSync({
-    reset,
+    reset = false,
     broadcast = true,
   }: { reset?: boolean; broadcast?: boolean } = {}) {
     if (!isSyncing ?? reset) {
       console.log("♻️ Starting sync");
       setIsSyncing(true);
-      setIsResetting(reset ?? false);
+      setIsResetting(reset);
       sync({ reset })
         .then(() => {
           console.log("♻️ Sync succeeded");
@@ -100,7 +102,7 @@ export function SyncProvider({ children }: { children: ReactNode }) {
           if (isSyncQueued) {
             console.log("♻️ Starting queued sync");
             setIsSyncQueued(false);
-            // sync();
+            queueSync();
           }
         });
     } else {
