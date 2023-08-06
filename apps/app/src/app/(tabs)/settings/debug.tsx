@@ -39,7 +39,7 @@ export default function Debug() {
         Check for updates
       </Button>
       <Button
-        onPress={() => queueSync(true)}
+        onPress={() => queueSync({ reset: true })}
         icon={<DatabaseBackup size="$1" />}
       >
         Reset local database

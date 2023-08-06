@@ -1,12 +1,12 @@
+import { usePostHog } from "posthog-react-native";
+import { useState } from "react";
 import { Button, Label, Switch, Text, XStack, YStack } from "tamagui";
 
 // import { DeleteUserButton } from "./DeleteUserButton";
 
 import { withAuth } from "@/components/auth/withAuth";
 import { useAuth } from "@/hooks/useAuth";
-import { useState } from "react";
 import { storage } from "@/lib/storage";
-import { usePostHog } from "posthog-react-native";
 
 function User() {
   const { user, signOut } = useAuth();

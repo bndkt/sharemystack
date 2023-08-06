@@ -8,7 +8,13 @@ import { database } from "@/lib/watermelon";
 
 export const SyncContext = createContext<{
   isSyncing: boolean;
-  queueSync: (reset?: boolean) => void;
+  queueSync: ({
+    reset,
+    broadcast = true,
+  }: {
+    reset?: boolean;
+    broadcast?: boolean;
+  }) => void;
   shouldBroadcast?: boolean;
   handleBroadcastSent: () => void;
 }>({
@@ -72,7 +78,10 @@ export function SyncProvider({ children }: { children: ReactNode }) {
     }
   }, [database, isResetting]);
 
-  function queueSync(reset?: boolean) {
+  function queueSync({
+    reset,
+    broadcast = true,
+  }: { reset?: boolean; broadcast?: boolean } = {}) {
     if (!isSyncing ?? reset) {
       console.log("♻️ Starting sync");
       setIsSyncing(true);
@@ -81,7 +90,7 @@ export function SyncProvider({ children }: { children: ReactNode }) {
         .then(() => {
           console.log("♻️ Sync succeeded");
           setIsResetting(false);
-          setShouldBroadcast(true);
+          setShouldBroadcast(broadcast);
         })
         .catch((reason) => {
           console.log("♻️ Sync failed", reason);

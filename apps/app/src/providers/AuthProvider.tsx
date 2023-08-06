@@ -108,7 +108,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       const subscription = channel
         .on("broadcast", { event: "sync" }, (payload) => {
           console.log("Broadcast received", payload);
-          queueSync();
+          queueSync({ broadcast: false });
         })
         .subscribe();
 
