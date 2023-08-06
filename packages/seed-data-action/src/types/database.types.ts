@@ -1051,6 +1051,7 @@ export interface Database {
       create_profile: {
         Args: {
           profile_id: string
+          profile_user_id: string
           profile_name: string
           profile_slug: string
           profile_created_at: string

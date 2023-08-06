@@ -52,7 +52,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }) {
     setSession(session);
     setUser(user);
-    identify(user?.id, user?.email);
+    identify({
+      externalId: user?.id,
+      email: user?.email,
+      handle: profile?.slug,
+    });
     capture("Sign in", { user: user?.id });
   }
 

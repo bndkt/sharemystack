@@ -48,7 +48,6 @@ export async function sync({
         const { data, error } = await supabase.rpc("pull", {
           last_pulled_at: lastPulledAt,
         });
-
         if (error) {
           throw new Error("🍉".concat(error.message));
         }

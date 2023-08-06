@@ -1,7 +1,7 @@
 import * as Sharing from "expo-sharing";
 import { useRef, useState } from "react";
 import ViewShot, { releaseCapture } from "react-native-view-shot";
-import { Button, YStack } from "tamagui";
+import { Button, XStack, YStack } from "tamagui";
 
 import { ShareOptions } from "./ShareOptions";
 import { Template1 } from "./templates/Template1";
@@ -50,9 +50,14 @@ export function Share({
       </YStack>
       <YStack>
         <ShareOptions options={options} setOptions={setOptions} />
-        <Button marginTop="$1" themeInverse onPress={handleShare}>
-          Share my stack
-        </Button>
+        <XStack>
+          <Button marginTop="$1" themeInverse onPress={handleShare}>
+            Share my stack
+          </Button>
+          <Button marginTop="$1" themeInverse onPress={handleShare}>
+            Share my stack
+          </Button>
+        </XStack>
       </YStack>
     </YStack>
   );
