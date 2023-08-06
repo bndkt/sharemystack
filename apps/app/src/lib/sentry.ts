@@ -4,6 +4,6 @@ import { config } from "./config";
 
 Sentry.init({
   dsn: config.sentryDsn,
-  enableInExpoDevelopment: false,
+  enableInExpoDevelopment: true,
   debug: false,
 });
