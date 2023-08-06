@@ -36,3 +36,9 @@ export const loader = async ({ request, context }: LoaderArgs) => {
     });
   } */
 };
+
+export default function Sso() {
+  return (
+    <div>Please open this from within the app. This will be improved soon.</div>
+  );
+}
