@@ -1,0 +1,1 @@
+../../apps/app/src/lib/database.types.ts
