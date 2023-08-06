@@ -1,25 +1,84 @@
-// Follow this setup guide to integrate the Deno language server with your editor:
-// https://deno.land/manual/getting_started/setup_your_environment
-// This enables autocomplete, go to definition, etc.
+import { serve } from "https://deno.land/std@0.177.0/http/server.ts";
+import {
+  UserResponse,
+  createClient,
+} from "https://esm.sh/@supabase/supabase-js@2.31.0";
+import { create } from "https://deno.land/x/djwt@v2.9.1/mod.ts";
 
-import { serve } from "https://deno.land/std@0.168.0/http/server.ts"
+import { Database } from "../database.types.ts";
 
-console.log("Hello from Functions!")
+async function createCannyToken(
+  user: NonNullable<NonNullable<UserResponse["data"]>["user"]>,
+  profile: { twitter_image_url?: string | null; name?: string | null }
+) {
+  const userData = {
+    id: user.id,
+    email: user.email,
+    name: profile?.name,
+    avatarURL: profile?.twitter_image_url,
+  };
 
-serve(async (req) => {
-  const { name } = await req.json()
-  const data = {
-    message: `Hello ${name}!`,
+  const enc = new TextEncoder();
+  const rawKey = enc.encode(Deno.env.get("CANNY_PRIVATE_KEY") ?? "");
+  const algorithm = {
+    name: "HMAC",
+    hash: { name: "SHA-256" },
+  };
+  const key = await crypto.subtle.importKey("raw", rawKey, algorithm, false, [
+    "sign",
+  ]);
+
+  const jwt = await create({ alg: "HS256", typ: "JWT" }, userData, key);
+
+  return jwt;
+}
+
+serve(async (req: Request) => {
+  try {
+    const supabaseClient = createClient<Database>(
+      Deno.env.get("SUPABASE_URL") as string,
+      Deno.env.get("SUPABASE_ANON_KEY") as string,
+      {
+        global: {
+          headers: { Authorization: req.headers.get("Authorization")! },
+        },
+        auth: { persistSession: false },
+      }
+    );
+    const {
+      data: { user },
+    } = await supabaseClient.auth.getUser();
+
+    if (user) {
+      const { data: profile } = await supabaseClient
+        .from("profiles")
+        .select()
+        .eq("user_id", user.id)
+        .maybeSingle();
+
+      if (profile) {
+        const jwt = await createCannyToken(user, profile);
+
+        return new Response(JSON.stringify({ jwt }), {
+          headers: { "Content-Type": "application/json" },
+          status: 200,
+        });
+      } else {
+        return new Response(JSON.stringify({ error: "No profile" }), {
+          headers: { "Content-Type": "application/json" },
+          status: 200,
+        });
+      }
+    } else {
+      return new Response(JSON.stringify({ error: "Unauthorized" }), {
+        headers: { "Content-Type": "application/json" },
+        status: 401,
+      });
+    }
+  } catch (error) {
+    return new Response(JSON.stringify({ error: error.message }), {
+      headers: { "Content-Type": "application/json" },
+      status: 400,
+    });
   }
-
-  return new Response(
-    JSON.stringify(data),
-    { headers: { "Content-Type": "application/json" } },
-  )
-})
-
-// To invoke:
-// curl -i --location --request POST 'http://localhost:54321/functions/v1/' \
-//   --header 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS1kZW1vIiwicm9sZSI6ImFub24iLCJleHAiOjE5ODM4MTI5OTZ9.CRXP1A7WOeoJeXxjNni43kdQwgnWNReilDMblYTn_I0' \
-//   --header 'Content-Type: application/json' \
-//   --data '{"name":"Functions"}'
+});
