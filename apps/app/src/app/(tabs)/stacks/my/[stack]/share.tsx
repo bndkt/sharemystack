@@ -1,7 +1,9 @@
 import BottomSheet from "@gorhom/bottom-sheet";
 import { useTheme, Text } from "@tamagui/core";
-import { useLocalSearchParams, useRouter } from "expo-router";
+import { X } from "@tamagui/lucide-icons";
+import { Stack, useLocalSearchParams, useRouter } from "expo-router";
 import { useCallback, useMemo, useRef } from "react";
+import { Button } from "tamagui";
 
 import { CustomSuspense } from "@/components/loading/CustomSuspense";
 import { Share } from "@/components/share/Share";
@@ -17,7 +19,7 @@ export default function ShareRoute() {
   }>();
 
   const { user } = useAuth();
-  const { stack, picks } = useProfile({ user, stackId });
+  const { profile, stack, picks } = useProfile({ user, stackId });
 
   const snapPoints = useMemo(() => ["75%"], []); // "25%", "50%", "75%"
 
@@ -54,9 +56,23 @@ export default function ShareRoute() {
         backgroundStyle={{ backgroundColor: theme.background.val }}
       >
         <CustomSuspense
-          data={picks}
-          name="picks"
-          component={(picks) => <Share picks={picks} />}
+          data={profile}
+          name="profile"
+          component={(profile) => (
+            <CustomSuspense
+              data={picks}
+              name="picks"
+              component={(picks) => (
+                <CustomSuspense
+                  data={stack}
+                  name="stack"
+                  component={(stack) => (
+                    <Share profile={profile} stack={stack} picks={picks} />
+                  )}
+                />
+              )}
+            />
+          )}
         />
       </BottomSheet>
     </>

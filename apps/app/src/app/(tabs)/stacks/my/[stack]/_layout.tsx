@@ -1,5 +1,6 @@
 import { Share } from "@tamagui/lucide-icons";
 import { Slot, Stack, useLocalSearchParams, useRouter } from "expo-router";
+import { useFeatureFlag } from "posthog-react-native";
 import { Button } from "tamagui";
 
 import { List } from "@/components/list";
@@ -18,21 +19,23 @@ export default function Layout() {
     user,
     stackId,
   });
+  const stackSharingFeature = useFeatureFlag("stack-sharing");
 
   return (
     <>
       <Stack.Screen
         options={{
           title: `${stack?.stackTypeName} Stack`,
-          /* headerRight: () => (
-            <Button
-              icon={<Share size="$1.5" />}
-              onPress={() => {
-                router.push(`/(tabs)/stacks/my/${stackId}/share`);
-              }}
-              unstyled
-            />
-          ), */
+          headerRight: () =>
+            stackSharingFeature && (
+              <Button
+                icon={<Share size="$1.5" />}
+                onPress={() => {
+                  router.push(`/(tabs)/stacks/my/${stackId}/share`);
+                }}
+                unstyled
+              />
+            ),
         }}
       />
       <CustomSuspense
