@@ -22,7 +22,7 @@ export const loader: LoaderFunction = async ({ request, context }) => {
   const url = new URL(request.url);
 
   const code = url.searchParams.get("code");
-  const companyID = url.searchParams.get("companyID");
+  const companyId = url.searchParams.get("companyID");
   const cannyRedirect = url.searchParams.get("redirectUrl");
 
   if (code) {
@@ -55,7 +55,7 @@ export const loader: LoaderFunction = async ({ request, context }) => {
 
       const redirectUrl =
         "https://canny.io/api/redirects/sso?companyID=" +
-        companyID +
+        companyId +
         "&ssoToken=" +
         ssoToken +
         "&redirect=" +

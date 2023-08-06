@@ -5,7 +5,9 @@ import { config } from "~/lib/config";
 import { Database } from "~/lib/database.types";
 
 export const loader = async ({ request, context }: LoaderArgs) => {
-  const response = new Response();
+  return null;
+
+  /* const response = new Response();
   const url = new URL(request.url);
 
   const companyId = url.searchParams.get("companyID");
@@ -32,5 +34,5 @@ export const loader = async ({ request, context }: LoaderArgs) => {
     return redirect("/", {
       headers: response.headers,
     });
-  }
+  } */
 };
