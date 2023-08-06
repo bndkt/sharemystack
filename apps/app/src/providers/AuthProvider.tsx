@@ -53,9 +53,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setSession(session);
     setUser(user);
     identify({
-      externalId: user?.id,
+      id: user?.id,
       email: user?.email,
-      handle: profile?.slug,
+      username: profile?.slug,
     });
     capture("Sign in", { user: user?.id });
   }

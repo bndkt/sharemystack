@@ -8,26 +8,26 @@ export function useAnalytics() {
   const postHog = usePostHog();
 
   function identify({
-    externalId,
+    id,
     email,
-    handle,
+    username,
   }: {
-    externalId?: string;
+    id?: string;
     email?: string;
-    handle?: string;
+    username?: string;
   }) {
-    // externalId && OneSignal.login(externalId); // SDK v5
-    externalId && OneSignal.setExternalUserId(externalId);
+    // externalId && OneSignal.login(id); // SDK v5
+    id && OneSignal.setExternalUserId(id);
     // email && OneSignal.User.addEmail(email); // SDK v5
     email && OneSignal.setEmail(email);
-    externalId && identifyDevice(externalId);
-    externalId && postHog?.identify(externalId, { email, handle });
-    Sentry.React.setUser({ id: externalId, email });
+    id && identifyDevice(id);
+    id && postHog?.identify(id, { email, username });
+    Sentry.Native.setUser({ id, email, username });
   }
 
   function logout() {
     // OneSignal.logout(); // SDK v5
-    Sentry.React.setUser(null);
+    Sentry.Native.setUser(null);
   }
 
   function capture(event: string, properties?: Record<string, any>) {
