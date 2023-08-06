@@ -43,9 +43,12 @@ public class NativeSyncModule: Module {
         }
         
         // https://watermelondb.dev/docs/Sync/Frontend#advanced-adopting-turbo-login
-        AsyncFunction("pullSyncChanges") { (url: String, apiKey: String, syncId: Int, lastPulledAt: Int) in
+        AsyncFunction("pullSyncChanges") { (url: String, apiKey: String, syncId: Int, lastPulledAt: Int) -> Data? in
+            let logger = Logger()
+            logger.info("pullSyncChanges NATIVE 3")
+
             struct Params: Encodable {
-                let lastPulledAt: Int
+                let last_pulled_at: Int
             }
             let client = PostgrestClient(
                 url: URL(string: "http://localhost:54321/rest/v1")!,
@@ -55,8 +58,24 @@ public class NativeSyncModule: Module {
                 ],
                 schema: "public"
             )
-            let params = Params(lastPulledAt: lastPulledAt)
-            await client.rpc(fn: "pull", params: params)
+            let params = Params(last_pulled_at: lastPulledAt)
+            do {
+                let result = try await client.rpc(fn: "pull", params: params).execute();
+                logger.info(result.underlyingResponse.data)
+
+                // extern void watermelondbProvideSyncJson(int id, NSData *json, NSError **errorPtr);
+                var error: NSError?
+                watermelondbProvideSyncJson(syncId, result.underlyingResponse.data, &error)
+                
+                return result.underlyingResponse.data
+            } catch {
+                logger.info("An error occurred: \(error)")
+            }
+            logger.info("after exec")
+            
+            return nil
+           
+            // return result
             // extern void watermelondbProvideSyncJson(int id, NSData *json, NSError **errorPtr);
             // watermelondbProvideSyncJson(syncId, data, &error)
         }
