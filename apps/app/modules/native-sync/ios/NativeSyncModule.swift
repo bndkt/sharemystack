@@ -1,5 +1,7 @@
 import ExpoModulesCore
 import PostgREST
+import Foundation
+// import WatermelonDB
 
 public class NativeSyncModule: Module {
     // Each module class must implement the definition function. The definition consists of components
@@ -43,10 +45,10 @@ public class NativeSyncModule: Module {
         }
         
         // https://watermelondb.dev/docs/Sync/Frontend#advanced-adopting-turbo-login
-        AsyncFunction("pullSyncChanges") { (url: String, apiKey: String, syncId: Int, lastPulledAt: Int) -> Data? in
+        AsyncFunction("pullSyncChanges") { (url: String, apiKey: String, syncId: Int32, lastPulledAt: Int) -> Data? in
             let logger = Logger()
-            logger.info("pullSyncChanges NATIVE 3")
-
+            logger.info("pullSyncChanges")
+            
             struct Params: Encodable {
                 let last_pulled_at: Int
             }
@@ -62,10 +64,12 @@ public class NativeSyncModule: Module {
             do {
                 let result = try await client.rpc(fn: "pull", params: params).execute();
                 logger.info(result.underlyingResponse.data)
-
-                // extern void watermelondbProvideSyncJson(int id, NSData *json, NSError **errorPtr);
-                var error: NSError?
-                watermelondbProvideSyncJson(syncId, result.underlyingResponse.data, &error)
+                
+                // Call function
+                // var error: NSError?
+                // watermelondbProvideSyncJson(syncId, result.underlyingResponse.data, &error);
+                
+                
                 
                 return result.underlyingResponse.data
             } catch {
@@ -74,7 +78,7 @@ public class NativeSyncModule: Module {
             logger.info("after exec")
             
             return nil
-           
+            
             // return result
             // extern void watermelondbProvideSyncJson(int id, NSData *json, NSError **errorPtr);
             // watermelondbProvideSyncJson(syncId, data, &error)

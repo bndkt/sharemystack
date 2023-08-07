@@ -27,19 +27,21 @@ export async function pullSyncChanges({
   schemaVersion: number;
   migration: MigrationSyncChanges;
 }): Promise<void> {
-  console.log("native-sync", "pullSyncChanges", {
+  console.log("🍉🍉🍉 native-sync", "pullSyncChanges", {
     syncId,
     lastPulledAt,
     schemaVersion, // Not implemented yet
     migration, // Not implemented yet
   });
   lastPulledAt ??= 0;
-  NativeSyncModule.pullSyncChanges(
+
+  const result = await NativeSyncModule.pullSyncChanges(
     config.supabaseUrl,
     config.supabaseAnonKey,
     syncId,
     lastPulledAt
   );
+  console.log("🍉🍉🍉 native-sync", { result });
 }
 
 // Get the native constant value.

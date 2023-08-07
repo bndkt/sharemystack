@@ -11,6 +11,7 @@ Pod::Spec.new do |s|
 
   s.dependency 'ExpoModulesCore'
   s.dependency 'PostgREST'
+  s.dependency 'WatermelonDB'
 
   # Swift/Objective-C compatibility
   s.pod_target_xcconfig = {
