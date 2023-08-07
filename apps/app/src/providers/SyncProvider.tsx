@@ -1,13 +1,13 @@
+import { RealtimeChannel } from "@supabase/supabase-js";
 import { ReactNode, createContext, useEffect, useState } from "react";
 import { AppState } from "react-native";
 import { debounce } from "tamagui";
 
 import { Loading } from "@/components/Loading";
-import { sync } from "@/lib/sync";
-import { database } from "@/lib/watermelon";
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/lib/supabase";
-import { RealtimeChannel } from "@supabase/supabase-js";
+import { sync } from "@/lib/sync";
+import { database } from "@/lib/watermelon";
 
 export const SyncContext = createContext<{
   isSyncing: boolean;

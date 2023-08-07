@@ -1,5 +1,5 @@
 import { DatabaseBackup, DownloadCloud } from "@tamagui/lucide-icons";
-import Constants from "expo-constants";
+import * as Application from "expo-application";
 import * as Linking from "expo-linking";
 import * as Updates from "expo-updates";
 import { useState } from "react";
@@ -51,9 +51,9 @@ export default function Debug() {
             {Updates.channel && `(${Updates.channel})`}
           </Text>
         )}
-        {Constants.IOSManifest?.buildNumber && (
+        {Application.nativeBuildVersion && (
           <Text textAlign="center" color="$gray10">
-            Build: {Constants.IOSManifest?.buildNumber}
+            Build: {Application.nativeBuildVersion}
           </Text>
         )}
         {Updates.updateId && (

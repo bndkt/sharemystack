@@ -20,7 +20,7 @@ export function MyProfile() {
       <Stack.Screen
         name="share"
         options={{
-          title: "Share",
+          headerShown: false,
           presentation: "modal",
         }}
       />

@@ -1,8 +1,9 @@
+import { YStack } from "tamagui";
+
 import { CustomSuspense } from "@/components/loading/CustomSuspense";
 import { MyProfileHeader } from "@/components/my/MyProfileHeader";
 import { MyStacks } from "@/components/my/MyStacks";
 import { useAuth } from "@/hooks/useAuth";
-import { YStack } from "tamagui";
 
 export default function Index() {
   const { profile, stacks } = useAuth();

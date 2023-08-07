@@ -1,8 +1,9 @@
+import { Instagram } from "@tamagui/lucide-icons";
 import * as Sharing from "expo-sharing";
 import { useRef, useState } from "react";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
 import ViewShot, { releaseCapture } from "react-native-view-shot";
 import { Button, XStack, YStack } from "tamagui";
-import Share, { ShareSingleOptions, Social } from "react-native-share";
 
 import { ShareOptions } from "./ShareOptions";
 import { Template1 } from "./templates/Template1";
@@ -10,7 +11,6 @@ import { Template1 } from "./templates/Template1";
 import { Pick } from "@/model/Pick";
 import { Profile } from "@/model/Profile";
 import { Stack } from "@/model/Stack";
-import { Instagram } from "@tamagui/lucide-icons";
 
 export function ShareStack({
   profile,
@@ -23,6 +23,7 @@ export function ShareStack({
 }) {
   const viewShotRef = useRef<ViewShot>(null);
   const [options, setOptions] = useState<ShareOptions>({ showTitle: true });
+  const insets = useSafeAreaInsets();
 
   function handleShare(callback: (uri: string) => void) {
     console.log("Sharing ...");
@@ -35,7 +36,7 @@ export function ShareStack({
   }
 
   return (
-    <YStack fullscreen padding="$3">
+    <YStack fullscreen padding="$3" paddingBottom={insets.bottom}>
       <YStack flexGrow={1}>
         <ViewShot
           ref={viewShotRef}
@@ -60,19 +61,7 @@ export function ShareStack({
           <Button
             marginTop="$1"
             themeInverse
-            onPress={() =>
-              handleShare(async (uri) => {
-                uri = uri.replace(/(\r\n|\n|\r)/gm, "");
-                const shareOptions: ShareSingleOptions = {
-                  social: Share.Social["INSTAGRAM"] as Social,
-                  url: `data:image/png;base64,${uri}`,
-                  type: "image/*",
-                };
-                const shareResponse = await Share.shareSingle(shareOptions);
-                shareOptions.url = shareOptions.url?.substring(0, 25);
-                console.log({ shareOptions });
-              })
-            }
+            onPress={() => {}}
             icon={<Instagram size="$1.5" />}
           />
           <Button

@@ -1,4 +1,5 @@
 import { Edit, Share as ShareIcon } from "@tamagui/lucide-icons";
+import { useRouter } from "expo-router";
 import { useState } from "react";
 import { Share } from "react-native";
 import { Button, H3, H4, XStack, YStack } from "tamagui";
@@ -7,7 +8,6 @@ import { MyProfileForm } from "./MyProfileForm";
 
 import { config } from "@/lib/config";
 import { Profile } from "@/model/Profile";
-import { useRouter } from "expo-router";
 
 export function MyProfileHeader({ profile }: { profile: Profile }) {
   const [isEditing, setIsEditing] = useState<boolean>(false);

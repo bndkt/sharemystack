@@ -1,7 +1,7 @@
 import { CustomSuspense } from "@/components/loading/CustomSuspense";
+import { ShareProfile } from "@/components/share/ShareProfile";
 import { useProfile } from "@/hooks/data/useProfile";
 import { useAuth } from "@/hooks/useAuth";
-import { ShareProfile } from "@/components/share/ShareProfile";
 
 export default function ShareIndex() {
   const { user } = useAuth();
