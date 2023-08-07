@@ -17,7 +17,7 @@ export function ShareOptions({
   };
 
   return (
-    <XStack space="$3" alignItems="center" paddingVertical="$3">
+    <XStack space="$3" alignItems="center" padding="$3">
       <Switch
         id="showTitleSwitch"
         size="$1"

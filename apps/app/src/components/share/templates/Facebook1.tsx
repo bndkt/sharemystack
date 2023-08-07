@@ -1,39 +1,27 @@
 import { useState } from "react";
 import { H5, Separator, Square, Text, XStack, YStack } from "tamagui";
 
-import { ShareOptions } from "../ShareOptions";
+import { TemplateProps } from ".";
 
 import { CustomSuspense } from "@/components/loading/CustomSuspense";
 import { ToolIcon } from "@/components/tools/ToolIcon";
-import { Pick } from "@/model/Pick";
-import { Profile } from "@/model/Profile";
-import { Stack as StackModel } from "@/model/Stack";
 
-export function Template1({
+export function Facebook1({
   profile,
   stack,
   picks,
   options = {},
-}: {
-  profile: Profile;
-  stack: StackModel;
-  picks: Pick[];
-  options: ShareOptions;
-}) {
-  const [fixedHeight, setFixedHeight] = useState<number>();
+  width,
+}: TemplateProps) {
+  const ratio = 1.91;
 
-  console.log({ fixedHeight });
   return (
     <Square
       paddingHorizontal="$3"
       backgroundColor="white"
       alignItems="center"
-      onLayout={(event) => {
-        const { x, y, width, height } = event.nativeEvent.layout;
-        console.log({ x, y, width, height });
-        setFixedHeight(width);
-      }}
-      height={fixedHeight}
+      width={width}
+      height={width / ratio}
     >
       {options.showTitle && (
         <H5 textAlign="center" marginTop="$3">

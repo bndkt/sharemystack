@@ -7,8 +7,8 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import ViewShot, { releaseCapture } from "react-native-view-shot";
 import { Button, XStack, YStack } from "tamagui";
 
+import { Carousel } from "./Carousel";
 import { ShareOptions } from "./ShareOptions";
-import { Template1 } from "./templates/Template1";
 
 import { Pick } from "@/model/Pick";
 import { Profile } from "@/model/Profile";
@@ -53,30 +53,27 @@ export function ShareStack({
   }
 
   return (
-    <YStack fullscreen padding="$3" paddingBottom={insets.bottom}>
+    <YStack fullscreen paddingBottom={insets.bottom}>
       <YStack flexGrow={1}>
-        <YStack
-          shadowOffset={{ width: 2, height: 2 }}
-          shadowColor={"$shadowColor"}
-        >
-          <ViewShot
-            ref={viewShotRef}
-            options={{
-              format: "png",
-              fileName: "sharemystack.png",
-              // result: "base64",
-            }}
-          >
-            <Template1
-              profile={profile}
-              stack={stack}
-              picks={picks}
-              options={options}
-            />
-          </ViewShot>
-        </YStack>
+        <Carousel templateProps={{ profile, stack, picks, options }} />
       </YStack>
-      <YStack>
+      <ShareOptions options={options} setOptions={setOptions} />
+      {/* <ViewShot
+          ref={viewShotRef}
+          options={{
+            format: "png",
+            fileName: "sharemystack.png",
+            // result: "base64",
+          }}
+        >
+          <Template1
+            profile={profile}
+            stack={stack}
+            picks={picks}
+            options={options}
+          />
+        </ViewShot>
+      <YStack padding="$3">
         <ShareOptions options={options} setOptions={setOptions} />
         <XStack space="$3">
           <Button
@@ -99,7 +96,7 @@ export function ShareStack({
             icon={<Share size="$1.5" />}
           />
         </XStack>
-      </YStack>
+      </YStack> */}
     </YStack>
   );
 }
