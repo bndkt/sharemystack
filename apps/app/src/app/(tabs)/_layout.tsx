@@ -4,6 +4,7 @@ import {
   Settings,
   Tag,
   User,
+  UserCircle,
   Wrench,
 } from "@tamagui/lucide-icons";
 import { Tabs } from "expo-router";
@@ -22,9 +23,9 @@ export default function Layout() {
       <Tabs.Screen
         name="my"
         options={{
-          title: "My",
+          title: "Profile",
           headerShown: false,
-          tabBarIcon: ({ color }) => <User color={color} />,
+          tabBarIcon: ({ color }) => <UserCircle color={color} />,
         }}
       />
       <Tabs.Screen

@@ -3,7 +3,6 @@ import { ReactNode, createContext, useEffect, useState } from "react";
 
 import { useProfile } from "@/hooks/data/useProfile";
 import { useAnalytics } from "@/hooks/useAnalytics";
-import { useSync } from "@/hooks/useSync";
 import { supabase } from "@/lib/supabase";
 import { Profile } from "@/model/Profile";
 import { Stack } from "@/model/Stack";
@@ -40,8 +39,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<AuthUser | null>(null);
   const { profile, createProfile, stacks } = useProfile({ user });
   const { identify, logout, capture } = useAnalytics();
-  const [channel, setChannel] = useState<RealtimeChannel>();
-  const { shouldBroadcast, queueSync, handleBroadcastSent } = useSync();
 
   async function signIn({
     session,
@@ -100,44 +97,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     if (!session) getSession();
     if (session && !user) getUser();
   }, [session, user]);
-
-  // Subscribe to broadcasts
-  useEffect(() => {
-    if (user) {
-      const channel = supabase.channel(`sync-${user.id}`);
-      const subscription = channel
-        .on("broadcast", { event: "sync" }, (payload) => {
-          console.log("Broadcast received", payload);
-          queueSync({ broadcast: false });
-        })
-        .subscribe();
-
-      console.log("Subscribed to broadcast", `sync-${user.id}`);
-
-      setChannel(channel);
-
-      return () => {
-        subscription.unsubscribe();
-        console.log("Unsubscribed from broadcast");
-      };
-    }
-  }, [user]);
-
-  // Send broadcast
-  useEffect(() => {
-    if (channel && shouldBroadcast) {
-      console.log("♻️ Sending broadcast");
-      channel
-        .send({
-          type: "broadcast",
-          event: "sync",
-        })
-        .then((response) => {
-          console.log("♻️ Broadcast sent", response);
-        });
-      handleBroadcastSent();
-    }
-  }, [channel, shouldBroadcast]);
 
   return (
     <AuthContext.Provider

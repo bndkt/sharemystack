@@ -5,6 +5,9 @@ import { debounce } from "tamagui";
 import { Loading } from "@/components/Loading";
 import { sync } from "@/lib/sync";
 import { database } from "@/lib/watermelon";
+import { useAuth } from "@/hooks/useAuth";
+import { supabase } from "@/lib/supabase";
+import { RealtimeChannel } from "@supabase/supabase-js";
 
 export const SyncContext = createContext<{
   isSyncing: boolean;
@@ -15,12 +18,9 @@ export const SyncContext = createContext<{
     reset?: boolean;
     broadcast?: boolean;
   }) => void;
-  shouldBroadcast?: boolean;
-  handleBroadcastSent: () => void;
 }>({
   isSyncing: false,
   queueSync: () => {},
-  handleBroadcastSent: () => {},
 });
 
 const syncDelay = 0;
@@ -29,7 +29,39 @@ export function SyncProvider({ children }: { children: ReactNode }) {
   const [isResetting, setIsResetting] = useState(false);
   const [isSyncing, setIsSyncing] = useState(false);
   const [isSyncQueued, setIsSyncQueued] = useState(false);
-  const [shouldBroadcast, setShouldBroadcast] = useState(false);
+  const [channel, setChannel] = useState<RealtimeChannel>();
+  const { user } = useAuth();
+
+  // Subscribe to broadcasts
+  useEffect(() => {
+    if (user) {
+      const channel = supabase.channel(`sync-${user.id}`);
+      const subscription = channel
+        .on("broadcast", { event: "sync" }, (payload) => {
+          console.log("Broadcast received", payload);
+          queueSync({ broadcast: false });
+        })
+        .subscribe();
+
+      console.log("Subscribed to broadcast", `sync-${user.id}`);
+
+      setChannel(channel);
+
+      return () => {
+        subscription.unsubscribe();
+        console.log("Unsubscribed from broadcast");
+      };
+    }
+  }, [user]);
+
+  function sendBroadcast(payload: { [key: string]: any; type: string }) {
+    if (channel) {
+      console.log("♻️ Sending broadcast");
+      channel.send(payload).then((response) => {
+        console.log("♻️ Broadcast sent", response);
+      });
+    }
+  }
 
   useEffect(() => {
     queueSync();
@@ -92,7 +124,11 @@ export function SyncProvider({ children }: { children: ReactNode }) {
         .then(() => {
           console.log("♻️ Sync succeeded");
           setIsResetting(false);
-          setShouldBroadcast(broadcast);
+          // setShouldBroadcast(broadcast);
+          sendBroadcast({
+            type: "broadcast",
+            event: "sync",
+          });
         })
         .catch((reason) => {
           console.log("♻️ Sync failed", reason);
@@ -118,8 +154,6 @@ export function SyncProvider({ children }: { children: ReactNode }) {
       value={{
         isSyncing,
         queueSync,
-        shouldBroadcast,
-        handleBroadcastSent: () => setShouldBroadcast(false),
       }}
     >
       {children}

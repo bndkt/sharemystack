@@ -33,9 +33,11 @@ export function PicksList({
               title={item.toolName}
               subTitle={item.categoryName}
               icon={<ToolIcon tool={tool} size="$1.5" />}
-              // iconAfter={<ChevronRight size="$1.5" />}
-              /* onPress={() => {
-                router.push(`/tools/${tool.slug}`);
+              /* iconAfter={<ChevronRight size="$1.5" />}
+              onPress={() => {
+                router.push(
+                  `/(tabs)/categories/${item.categorySlug}/tools/${tool.slug}`
+                );
               }} */
             />
           )}
