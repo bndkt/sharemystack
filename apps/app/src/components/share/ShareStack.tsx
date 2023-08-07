@@ -1,11 +1,11 @@
 import { Instagram, Share } from "@tamagui/lucide-icons";
+import * as Linking from "expo-linking";
+import * as MediaLibrary from "expo-media-library";
 import * as Sharing from "expo-sharing";
 import { useRef, useState } from "react";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import ViewShot, { releaseCapture } from "react-native-view-shot";
 import { Button, XStack, YStack } from "tamagui";
-import * as MediaLibrary from "expo-media-library";
-import * as Linking from "expo-linking";
 
 import { ShareOptions } from "./ShareOptions";
 import { Template1 } from "./templates/Template1";

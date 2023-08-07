@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { H5, Separator, Square, Text, XStack, YStack } from "tamagui";
 
 import { ShareOptions } from "../ShareOptions";
@@ -7,7 +8,6 @@ import { ToolIcon } from "@/components/tools/ToolIcon";
 import { Pick } from "@/model/Pick";
 import { Profile } from "@/model/Profile";
 import { Stack as StackModel } from "@/model/Stack";
-import { useState } from "react";
 
 export function Template1({
   profile,
@@ -29,7 +29,7 @@ export function Template1({
       backgroundColor="white"
       alignItems="center"
       onLayout={(event) => {
-        var { x, y, width, height } = event.nativeEvent.layout;
+        const { x, y, width, height } = event.nativeEvent.layout;
         console.log({ x, y, width, height });
         setFixedHeight(width);
       }}
