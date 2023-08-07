@@ -7,9 +7,11 @@ import { MyProfileForm } from "./MyProfileForm";
 
 import { config } from "@/lib/config";
 import { Profile } from "@/model/Profile";
+import { useRouter } from "expo-router";
 
 export function MyProfileHeader({ profile }: { profile: Profile }) {
   const [isEditing, setIsEditing] = useState<boolean>(false);
+  const router = useRouter();
 
   function handleEdit() {
     console.log("Edit");
@@ -27,9 +29,10 @@ export function MyProfileHeader({ profile }: { profile: Profile }) {
   }
 
   async function handleShare() {
-    await Share.share({
+    router.push("/(tabs)/my/share");
+    /* await Share.share({
       url: `${config.domain}/@${profile.slug}`,
-    });
+    }); */
   }
 
   return isEditing ? (
@@ -50,11 +53,11 @@ export function MyProfileHeader({ profile }: { profile: Profile }) {
       </YStack>
       <XStack padding="$3" space="$3">
         <Button icon={<Edit size="$1.5" />} unstyled onPress={handleEdit} />
-        {/* <Button
+        <Button
           icon={<ShareIcon size="$1.5" />}
           unstyled
           onPress={handleShare}
-        /> */}
+        />
       </XStack>
     </XStack>
   );

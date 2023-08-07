@@ -31,7 +31,7 @@ export default function Layout() {
               <Button
                 icon={<Share size="$1.5" />}
                 onPress={() => {
-                  router.push(`/(tabs)/stacks/my/${stackId}/share`);
+                  router.push(`/(tabs)/my/share`); // ${stackId}
                 }}
                 unstyled
               />

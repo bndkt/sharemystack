@@ -22,7 +22,7 @@ export default function Layout() {
       <Tabs.Screen
         name="my"
         options={{
-          title: "My Stacks",
+          title: "My",
           headerShown: false,
           tabBarIcon: ({ color }) => <User color={color} />,
         }}

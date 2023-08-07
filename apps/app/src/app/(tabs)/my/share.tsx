@@ -14,7 +14,7 @@ export default function ShareRoute() {
   }>();
 
   const { user } = useAuth();
-  const { profile, stack, picks } = useProfile({ user, stackId });
+  const { profile, stacks, stack, picks } = useProfile({ user });
 
   return (
     <>
@@ -25,13 +25,13 @@ export default function ShareRoute() {
         name="profile"
         component={(profile) => (
           <CustomSuspense
-            data={picks}
-            name="picks"
-            component={(picks) => (
+            data={stack}
+            name="stack"
+            component={(stack) => (
               <CustomSuspense
-                data={stack}
-                name="stack"
-                component={(stack) => (
+                data={picks}
+                name="picks"
+                component={(picks) => (
                   <ShareView profile={profile} stack={stack} picks={picks} />
                 )}
               />

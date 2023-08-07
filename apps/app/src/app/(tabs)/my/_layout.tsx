@@ -17,6 +17,13 @@ export function MyProfile() {
           title: "Stack",
         }}
       />
+      <Stack.Screen
+        name="share"
+        options={{
+          title: "Share",
+          presentation: "modal",
+        }}
+      />
     </Stack>
   ) : profile === null ? (
     <CreateProfile />
@@ -25,4 +32,4 @@ export function MyProfile() {
   );
 }
 
-export default withAuth(MyProfile);
+export default withAuth(MyProfile, true);
