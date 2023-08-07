@@ -32,9 +32,7 @@ export default function Index() {
               data={categories}
               renderItem={({ item }) => {
                 return item.isComingSoon ? null : (
-                  <Link
-                    href={`/(tabs)/stacks/my/${stack.id}/picks/${item.slug}`}
-                  >
+                  <Link href={`/(tabs)/my/${stack.id}/picks/${item.slug}`}>
                     <ListItem
                       title={
                         item.isComingSoon ? (
