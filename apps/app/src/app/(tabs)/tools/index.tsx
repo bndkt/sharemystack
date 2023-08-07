@@ -16,11 +16,7 @@ export default function Categories() {
         data={categories}
         renderItem={({ item }) => {
           return (
-            <Link
-              href={
-                item.isComingSoon ? "/categories" : `/categories/${item.slug}`
-              }
-            >
+            <Link href={item.isComingSoon ? {} : `/(tabs)/tools/${item.slug}`}>
               <ListItem
                 title={
                   item.isComingSoon ? (

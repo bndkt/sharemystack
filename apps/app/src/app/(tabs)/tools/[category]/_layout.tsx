@@ -4,7 +4,7 @@ export default function Layout() {
   return (
     <Stack>
       <Stack.Screen name="index" options={{ headerShown: false }} />
-      <Stack.Screen name="tools" options={{ headerShown: true }} />
+      <Stack.Screen name="[tool]" options={{ headerShown: false }} />
     </Stack>
   );
 }

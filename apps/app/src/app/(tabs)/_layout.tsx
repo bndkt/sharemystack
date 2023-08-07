@@ -37,7 +37,7 @@ export default function Layout() {
         }}
       />
       <Tabs.Screen
-        name="categories"
+        name="tools"
         options={{
           title: "Tools",
           headerShown: false,
