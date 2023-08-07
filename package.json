@@ -21,7 +21,7 @@
     "import:production": "psql -h db.ltmpiwwmhypfxvbihxdn.supabase.co -p 5432 -d postgres -U postgres -f ./supabase/scripts/import.sql"
   },
   "dependencies": {
-    "esbuild": "^0.18.18",
+    "esbuild": "^0.18.19",
     "prettier": "^2.8.8",
     "supabase": "^1.82.6",
     "turbo": "^1.10.12"
