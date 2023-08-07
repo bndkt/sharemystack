@@ -17,10 +17,10 @@ export function ShareOptions({
   };
 
   return (
-    <XStack space="$3" alignItems="center" padding="$3">
+    <XStack space="$3" alignItems="center" paddingVertical="$3">
       <Switch
         id="showTitleSwitch"
-        size="$4"
+        size="$1"
         native
         checked={options.showTitle}
         onCheckedChange={() => updateOptions({ showTitle: !options.showTitle })}
@@ -35,7 +35,7 @@ export function ShareOptions({
       </Label>
       <Switch
         id="includeHandleSwitch"
-        size="$4"
+        size="$1"
         native
         checked={options.includeHandle}
         onCheckedChange={() =>

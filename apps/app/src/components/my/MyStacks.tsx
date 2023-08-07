@@ -90,7 +90,7 @@ export function MyStacks({
         } else if (item instanceof Stack) {
           return (
             <ListItem
-              onPress={() => router.push(`/stacks/my/${item.id}`)}
+              onPress={() => router.push(`/my/${item.id}`)}
               title={item.stackTypeName}
               icon={<CategoryIcon name={item.stackTypeIconName} size="$1.5" />}
               iconAfter={<ChevronRight size="$1.5" />}

@@ -50,11 +50,11 @@ export function MyProfileHeader({ profile }: { profile: Profile }) {
       </YStack>
       <XStack padding="$3" space="$3">
         <Button icon={<Edit size="$1.5" />} unstyled onPress={handleEdit} />
-        <Button
+        {/* <Button
           icon={<ShareIcon size="$1.5" />}
           unstyled
           onPress={handleShare}
-        />
+        /> */}
       </XStack>
     </XStack>
   );

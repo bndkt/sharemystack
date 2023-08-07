@@ -13,7 +13,7 @@ export default function Layout() {
     stack: string;
   }>();
 
-  const snapPoints = useMemo(() => ["50%"], []); // "25%", "50%", "75%"
+  const snapPoints = useMemo(() => ["75%"], []); // "25%", "50%", "75%"
 
   const handleSheetChanges = useCallback((index: number) => {
     console.log("handleSheetChanges", index);
@@ -26,7 +26,7 @@ export default function Layout() {
       snapPoints={snapPoints}
       onChange={handleSheetChanges}
       enablePanDownToClose={true}
-      onClose={() => router.push(`/(tabs)/stacks/my/${stackId}/_tmp`)} // TODO: Workaround
+      onClose={() => router.push(`/(tabs)/my/${stackId}/_tmp`)} // TODO: Workaround
       style={{
         shadowColor: theme.color.val,
         shadowOffset: {
@@ -52,9 +52,10 @@ export default function Layout() {
             <Button
               icon={<X size="$1.5" />}
               onPress={() => {
-                router.push(`/(tabs)/stacks/my/${stackId}/_tmp`); // TODO: Workaround
+                router.push(`/(tabs)/my/${stackId}/_tmp`); // TODO: Workaround
               }}
               unstyled
+              color="$gray10"
             />
           ),
         }}

@@ -1,4 +1,11 @@
-import { Home, Layers, Settings, Tag, Wrench } from "@tamagui/lucide-icons";
+import {
+  Home,
+  Layers,
+  Settings,
+  Tag,
+  User,
+  Wrench,
+} from "@tamagui/lucide-icons";
 import { Tabs } from "expo-router";
 
 export default function Layout() {
@@ -13,6 +20,14 @@ export default function Layout() {
         }}
       />
       <Tabs.Screen
+        name="my"
+        options={{
+          title: "My Stacks",
+          headerShown: false,
+          tabBarIcon: ({ color }) => <User color={color} />,
+        }}
+      />
+      <Tabs.Screen
         name="stacks"
         options={{
           title: "Stacks",
@@ -21,19 +36,11 @@ export default function Layout() {
         }}
       />
       <Tabs.Screen
-        name="tools"
+        name="categories"
         options={{
           title: "Tools",
           headerShown: false,
           tabBarIcon: ({ color }) => <Wrench color={color} />,
-        }}
-      />
-      <Tabs.Screen
-        name="categories"
-        options={{
-          title: "Categories",
-          headerShown: false,
-          tabBarIcon: ({ color }) => <Tag color={color} />,
         }}
       />
       <Tabs.Screen

@@ -11,7 +11,7 @@ export default function Index() {
   return (
     <YStack padding="$3">
       <Button
-        onPress={() => router.push(`/(tabs)/stacks/my/${stackId}/picks`)}
+        onPress={() => router.push(`/(tabs)/my/${stackId}/picks`)}
         icon={<PlusCircle size="$1" />}
       >
         Add tools to this stack
