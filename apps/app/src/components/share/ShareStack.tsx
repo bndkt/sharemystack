@@ -12,7 +12,7 @@ import { Profile } from "@/model/Profile";
 import { Stack } from "@/model/Stack";
 import { Instagram } from "@tamagui/lucide-icons";
 
-export function ShareView({
+export function ShareStack({
   profile,
   stack,
   picks,

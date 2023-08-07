@@ -29,10 +29,10 @@ export function MyProfileHeader({ profile }: { profile: Profile }) {
   }
 
   async function handleShare() {
-    router.push("/(tabs)/my/share");
-    /* await Share.share({
+    // router.push("/(tabs)/my/share");
+    await Share.share({
       url: `${config.domain}/@${profile.slug}`,
-    }); */
+    });
   }
 
   return isEditing ? (

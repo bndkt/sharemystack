@@ -1,44 +1,25 @@
-import { useTheme } from "@tamagui/core";
-import { Stack, useLocalSearchParams, useRouter } from "expo-router";
-
 import { CustomSuspense } from "@/components/loading/CustomSuspense";
-import { ShareView } from "@/components/share/ShareView";
 import { useProfile } from "@/hooks/data/useProfile";
 import { useAuth } from "@/hooks/useAuth";
+import { ShareProfile } from "@/components/share/ShareProfile";
 
-export default function ShareRoute() {
-  const theme = useTheme();
-  const router = useRouter();
-  const { stack: stackId } = useLocalSearchParams<{
-    stack: string;
-  }>();
-
+export default function ShareIndex() {
   const { user } = useAuth();
-  const { profile, stacks, stack, picks } = useProfile({ user });
+  const { profile, stacks } = useProfile({ user });
 
   return (
-    <>
-      <Stack.Screen options={{ presentation: "modal" }} />
-
-      <CustomSuspense
-        data={profile}
-        name="profile"
-        component={(profile) => (
-          <CustomSuspense
-            data={stack}
-            name="stack"
-            component={(stack) => (
-              <CustomSuspense
-                data={picks}
-                name="picks"
-                component={(picks) => (
-                  <ShareView profile={profile} stack={stack} picks={picks} />
-                )}
-              />
-            )}
-          />
-        )}
-      />
-    </>
+    <CustomSuspense
+      data={profile}
+      name="profile"
+      component={(profile) => (
+        <CustomSuspense
+          data={stacks}
+          name="stacks"
+          component={(stacks) => (
+            <ShareProfile profile={profile} stacks={stacks} />
+          )}
+        />
+      )}
+    />
   );
 }
