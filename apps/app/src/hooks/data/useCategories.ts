@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 
 import { Category } from "@/model/Category";
 import { TableName } from "@/model/schema";
+import { Q } from "@nozbe/watermelondb";
 
 export function useCategories() {
   const database = useDatabase();
@@ -10,7 +11,7 @@ export function useCategories() {
 
   const categoriesQuery = database.collections
     .get<Category>(TableName.CATEGORIES)
-    .query();
+    .query(Q.sortBy("name"));
 
   useEffect(() => {
     const subscription = categoriesQuery.observe().subscribe((data) => {

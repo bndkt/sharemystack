@@ -34,7 +34,7 @@ export default function Layout() {
 
   return (
     <>
-      <Stack.Screen name="../../" options={{ title: tool.name ?? "" }} />
+      <Stack.Screen name="../" options={{ title: tool.name ?? "" }} />
       <ToolLayout tool={tool} category={category} />
     </>
   );
