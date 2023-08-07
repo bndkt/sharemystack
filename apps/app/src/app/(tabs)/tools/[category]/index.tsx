@@ -1,3 +1,4 @@
+import { ChevronRight } from "@tamagui/lucide-icons";
 import { Link, Stack, useLocalSearchParams } from "expo-router";
 import { ListItem, YStack } from "tamagui";
 
@@ -6,7 +7,6 @@ import { List } from "@/components/list";
 import { CustomSuspense } from "@/components/loading/CustomSuspense";
 import { ToolIcon } from "@/components/tools/ToolIcon";
 import { useCategory } from "@/hooks/data/useCategory";
-import { ChevronRight } from "@tamagui/lucide-icons";
 
 export default function Category() {
   const { category: slug } = useLocalSearchParams<{ category: string }>();
