@@ -14,7 +14,7 @@ export const SyncContext = createContext<{
   queueSync: ({
     reset,
     broadcast = true,
-  }: {
+  }?: {
     reset?: boolean;
     broadcast?: boolean;
   }) => void;
@@ -129,17 +129,17 @@ export function SyncProvider({ children }: { children: ReactNode }) {
             type: "broadcast",
             event: "sync",
           });
+          if (isSyncQueued) {
+            console.log("♻️ Starting queued sync");
+            setIsSyncQueued(false);
+            queueSync();
+          }
         })
         .catch((reason) => {
           console.log("♻️ Sync failed", reason);
         })
         .finally(() => {
           setIsSyncing(false);
-          if (isSyncQueued) {
-            console.log("♻️ Starting queued sync");
-            setIsSyncQueued(false);
-            queueSync();
-          }
         });
     } else {
       console.log("♻️ Already syncing, queueing sync");
