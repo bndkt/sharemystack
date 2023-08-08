@@ -9,7 +9,7 @@ import { useSync } from "@/hooks/useSync";
 
 export default function Debug() {
   const [isFetchingUpdate, setIsFetchingUpdate] = useState(false);
-  const { queueSync } = useSync();
+  const { reset } = useSync();
 
   async function onFetchUpdateAsync() {
     setIsFetchingUpdate(true);
@@ -38,22 +38,14 @@ export default function Debug() {
       >
         Check for updates
       </Button>
-      <Button
-        onPress={() => queueSync({ reset: true })}
-        icon={<DatabaseBackup size="$1" />}
-      >
+      <Button onPress={() => reset()} icon={<DatabaseBackup size="$1" />}>
         Reset local database
       </Button>
       <YStack space="$3" flexGrow={1}>
-        {Updates.runtimeVersion && (
-          <Text textAlign="center" color="$gray10">
-            Runtime: {Updates.runtimeVersion}{" "}
-            {Updates.channel && `(${Updates.channel})`}
-          </Text>
-        )}
         {Application.nativeBuildVersion && (
           <Text textAlign="center" color="$gray10">
-            Build: {Application.nativeBuildVersion}
+            Build: {Application.nativeBuildVersion} ({Updates.runtimeVersion}
+            {Updates.channel && `, ${Updates.channel}`})
           </Text>
         )}
         {Updates.updateId && (

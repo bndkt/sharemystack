@@ -16,11 +16,12 @@ export async function createProfiles({
   for (const slug of Object.keys(profiles)) {
     const profile = profiles[slug];
 
-    const { data: profileRecords } = await supabase
+    const { data: profileRecords, error } = await supabase
       .from("profiles")
       .upsert(
         {
           slug,
+          import_slug: slug,
           name: profile.name,
           description: profile.description,
           // image: profile.image,
@@ -32,9 +33,11 @@ export async function createProfiles({
           updated_at: "now()",
           last_modified_at: "now()",
         },
-        { onConflict: "slug" }
+        { onConflict: "import_slug" }
       )
       .select();
+
+    error && console.error(error);
 
     if (profileRecords && profile.stacks) {
       const profileRecord = profileRecords[0];

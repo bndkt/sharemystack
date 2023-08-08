@@ -1,7 +1,7 @@
 import { RealtimeChannel } from "@supabase/supabase-js";
 import { ReactNode, createContext, useEffect, useState } from "react";
 import { AppState } from "react-native";
-import { debounce } from "tamagui";
+import { YStack, debounce } from "tamagui";
 
 import { Loading } from "@/components/Loading";
 import { useAuth } from "@/hooks/useAuth";
@@ -18,15 +18,18 @@ export const SyncContext = createContext<{
     reset?: boolean;
     broadcast?: boolean;
   }) => void;
+  reset: () => void;
 }>({
   isSyncing: false,
   queueSync: () => {},
+  reset: () => {},
 });
 
 const syncDelay = 0;
 
 export function SyncProvider({ children }: { children: ReactNode }) {
   const [isResetting, setIsResetting] = useState(false);
+  const [isReadyToReset, setIsReadyToReset] = useState(false);
   const [isSyncing, setIsSyncing] = useState(false);
   const [isSyncQueued, setIsSyncQueued] = useState(false);
   const [channel, setChannel] = useState<RealtimeChannel>();
@@ -147,13 +150,33 @@ export function SyncProvider({ children }: { children: ReactNode }) {
     }
   }
 
+  function reset() {
+    setIsResetting(true);
+  }
+
+  useEffect(() => {
+    if (isReadyToReset) {
+      console.log("sending queueSync({ reset: true });");
+      queueSync({ reset: true });
+      setIsReadyToReset(false);
+    }
+  }, [isReadyToReset]);
+
   return isResetting ? (
-    <Loading message="Syncing" />
+    <YStack
+      fullscreen
+      onLayout={() => {
+        setIsReadyToReset(true);
+      }}
+    >
+      <Loading message="Syncing" />
+    </YStack>
   ) : (
     <SyncContext.Provider
       value={{
         isSyncing,
         queueSync,
+        reset,
       }}
     >
       {children}

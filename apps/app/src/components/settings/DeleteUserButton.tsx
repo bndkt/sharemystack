@@ -3,9 +3,11 @@ import { Button } from "tamagui";
 
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/lib/supabase";
+import { useSync } from "@/hooks/useSync";
 
 export function DeleteUserButton() {
   const { signOut } = useAuth();
+  const { reset } = useSync();
 
   async function deleteUser() {
     Alert.prompt(
@@ -22,6 +24,7 @@ export function DeleteUserButton() {
               const result = await supabase.rpc("delete_user");
               console.log(result);
               signOut();
+              reset();
             } else {
               Alert.alert(
                 "Confirmation failed",

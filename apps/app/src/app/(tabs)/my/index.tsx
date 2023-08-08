@@ -4,11 +4,13 @@ import { CustomSuspense } from "@/components/loading/CustomSuspense";
 import { MyProfileHeader } from "@/components/my/MyProfileHeader";
 import { MyStacks } from "@/components/my/MyStacks";
 import { useAuth } from "@/hooks/useAuth";
+import { CreateProfile } from "@/components/my/CreateProfile";
+import { Loading } from "@/components/Loading";
 
 export default function Index() {
   const { profile, stacks } = useAuth();
 
-  return (
+  return profile ? (
     <YStack fullscreen>
       <CustomSuspense
         data={profile}
@@ -27,5 +29,9 @@ export default function Index() {
         )}
       />
     </YStack>
+  ) : profile === null ? (
+    <CreateProfile />
+  ) : (
+    <Loading message="Loading profile" />
   );
 }
