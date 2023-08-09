@@ -5,10 +5,12 @@ import { CustomSuspense } from "@/components/loading/CustomSuspense";
 import { CreateProfile } from "@/components/my/CreateProfile";
 import { MyProfileHeader } from "@/components/my/MyProfileHeader";
 import { MyStacks } from "@/components/my/MyStacks";
-import { useProfile } from "@/hooks/useProfile";
+import { useProfile } from "@/hooks/data/useProfile";
+import { useAuth } from "@/hooks/useAuth";
 
 export default function Index() {
-  const { profile, stacks } = useProfile();
+  const { user } = useAuth();
+  const { profile, stacks } = useProfile({ user });
 
   return profile ? (
     <YStack fullscreen>

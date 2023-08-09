@@ -9,6 +9,10 @@ import { supabase } from "@/lib/supabase";
 import { sync } from "@/lib/sync";
 import { database } from "@/lib/watermelon";
 
+function delay(ms: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
 export const SyncContext = createContext<{
   isSyncing: boolean;
   queueSync: ({
@@ -42,7 +46,7 @@ export function SyncProvider({ children }: { children: ReactNode }) {
       const subscription = channel
         .on("broadcast", { event: "sync" }, (payload) => {
           console.log("Broadcast received", payload);
-          queueSync({ broadcast: false });
+          queueSync();
         })
         .subscribe();
 
@@ -57,6 +61,7 @@ export function SyncProvider({ children }: { children: ReactNode }) {
     }
   }, [user]);
 
+  // Send broadcast
   function sendBroadcast(payload: { [key: string]: any; type: string }) {
     if (channel) {
       console.log("♻️ Sending broadcast");
@@ -66,7 +71,9 @@ export function SyncProvider({ children }: { children: ReactNode }) {
     }
   }
 
+  // On initial load, queue sync and liste for app state changes
   useEffect(() => {
+    console.log("Initial sync");
     queueSync();
 
     const subscription = AppState.addEventListener("change", () => {
@@ -78,6 +85,7 @@ export function SyncProvider({ children }: { children: ReactNode }) {
     };
   }, []);
 
+  // Listen for db events as along as we're not resetting
   useEffect(() => {
     if (!isResetting) {
       const subscription = database
@@ -97,7 +105,7 @@ export function SyncProvider({ children }: { children: ReactNode }) {
             }
 
             if (changedRecords?.length) {
-              const debouncedSync = debounce(() => queueSync(), syncDelay); // TODO: Use queueSync instead?
+              const debouncedSync = debounce(() => queueSync(), syncDelay);
               debouncedSync();
             }
           },
@@ -115,40 +123,34 @@ export function SyncProvider({ children }: { children: ReactNode }) {
     }
   }, [database, isResetting]);
 
-  function queueSync({
-    reset = false,
-    broadcast = true,
-  }: { reset?: boolean; broadcast?: boolean } = {}) {
-    if (!isSyncing ?? reset) {
-      console.log("♻️ Starting sync");
-      setIsSyncing(true);
-      setIsResetting(reset);
-      sync({ reset })
+  function queueSync() {
+    setIsSyncQueued(true);
+    console.log("queueSync", { isSyncing, isSyncQueued });
+  }
+
+  /* useEffect(() => {
+    if (!isSyncing && isSyncQueued) {
+      sync()
         .then(() => {
           console.log("♻️ Sync succeeded");
-          setIsResetting(false);
-          // setShouldBroadcast(broadcast);
           sendBroadcast({
             type: "broadcast",
             event: "sync",
           });
-          setIsSyncing(false);
         })
         .catch((reason) => {
           console.log("♻️ Sync failed", reason);
+        })
+        .finally(() => {
           setIsSyncing(false);
         });
-    } else {
-      console.log("♻️ Already syncing, queueing sync");
-      setIsSyncQueued(true);
     }
-  }
+  }, [isSyncing, isSyncQueued]); */
 
-  // If not syncing but sync is queued, start sync
+  // If not syncing but sync is queued, execute sync
   useEffect(() => {
-    if (isSyncing && isSyncQueued) {
-      setIsSyncQueued(false);
-      queueSync();
+    if (!isSyncing && isSyncQueued) {
+      executeSync();
     }
   }, [isSyncing, isSyncQueued]);
 
@@ -157,13 +159,38 @@ export function SyncProvider({ children }: { children: ReactNode }) {
     setIsResetting(true);
   }
 
+  // If ready to reset and not syncing, execute sync
   useEffect(() => {
-    if (isReadyToReset) {
-      console.log("sending queueSync({ reset: true });");
-      queueSync({ reset: true });
-      setIsReadyToReset(false);
+    if (isReadyToReset && !isSyncing) {
+      console.log("Ready to reset");
+      executeSync(true);
     }
-  }, [isReadyToReset]);
+  }, [isReadyToReset, isSyncing]);
+
+  async function executeSync(reset?: boolean) {
+    reset && setIsReadyToReset(false);
+    setIsSyncQueued(false);
+    setIsSyncing(true);
+    // If this is a reset, delay sync call by one second to give the app time to umount all screens
+    if (reset) {
+      await delay(1000);
+    }
+    sync({ reset })
+      .then(() => {
+        console.log("♻️ Sync succeeded", { reset });
+        sendBroadcast({
+          type: "broadcast",
+          event: "sync",
+        });
+      })
+      .catch((reason) => {
+        console.log("♻️ Sync failed", { reset, reason });
+      })
+      .finally(() => {
+        setIsSyncing(false);
+        reset && setIsResetting(false);
+      });
+  }
 
   return isResetting ? (
     <YStack

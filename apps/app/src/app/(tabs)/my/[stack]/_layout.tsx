@@ -19,7 +19,7 @@ export default function Layout() {
     user,
     stackId,
   });
-  const stackSharingFeature = true; // useFeatureFlag("stack-sharing");
+  const stackSharingFeature = useFeatureFlag("stack-sharing");
 
   return (
     <>
