@@ -13,6 +13,7 @@ import { ShareOptions } from "./ShareOptions";
 import { Pick } from "@/model/Pick";
 import { Profile } from "@/model/Profile";
 import { Stack } from "@/model/Stack";
+import { Target } from "./templates";
 
 export function ShareStack({
   profile,
@@ -37,25 +38,49 @@ export function ShareStack({
       const res = await MediaLibrary.createAssetAsync(uri);
       console.log({ res });
       const shareUrl = `instagram://library?LocalIdentifier=${res.id}`;
-      Linking.openURL(shareUrl);
+      await Linking.openURL(shareUrl).catch(async () => {
+        await Sharing.shareAsync(uri);
+      });
+    } else {
+      await Sharing.shareAsync(uri);
     }
   }
 
-  async function handleCapture(callback: (uri: string) => Promise<void>) {
-    console.log("Sharing ...");
+  async function shareToFacebook(uri: string) {
+    if (!permissionResponse?.granted) {
+      await requestPermission();
+    }
 
-    viewShotRef.current?.capture &&
-      viewShotRef.current?.capture().then(async (uri: string) => {
-        console.log(uri);
-        await callback(uri);
-        releaseCapture(uri);
+    if (permissionResponse?.granted) {
+      const res = await MediaLibrary.createAssetAsync(uri);
+      console.log({ res });
+      const shareUrl = `fb://library?LocalIdentifier=${res.id}`;
+      await Linking.openURL(shareUrl).catch(async () => {
+        await Sharing.shareAsync(uri);
       });
+    } else {
+      await Sharing.shareAsync(uri);
+    }
+  }
+
+  async function handleShare({ uri, target }: { uri: string; target: Target }) {
+    console.log("Share!", { uri, target });
+    switch (target) {
+      case "instagram":
+        await shareToInstagram(uri);
+        break;
+      default:
+        await Sharing.shareAsync(uri);
+    }
   }
 
   return (
     <YStack fullscreen paddingBottom={insets.bottom}>
       <YStack flexGrow={1}>
-        <Carousel templateProps={{ profile, stack, picks, options }} />
+        <Carousel
+          templateProps={{ profile, stack, picks, options }}
+          onShare={handleShare}
+        />
       </YStack>
       <ShareOptions options={options} setOptions={setOptions} />
       {/* <ViewShot

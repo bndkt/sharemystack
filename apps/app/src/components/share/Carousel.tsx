@@ -1,21 +1,25 @@
 import { useRef, useState } from "react";
 import { FlatList } from "react-native";
-import { YStack } from "tamagui";
+import { Button, YStack } from "tamagui";
 
 import { TemplateSelector } from "./TemplateSelector";
-import { Template, TemplateProps, templates } from "./templates";
+import { Target, Template, TemplateProps, templates } from "./templates";
+import ViewShot, { releaseCapture } from "react-native-view-shot";
 
 const THUMB_SIZE = 80;
 
 export function Carousel({
   templateProps,
+  onShare,
 }: {
   templateProps: Omit<TemplateProps, "width">;
+  onShare: ({ uri, target }: { uri: string; target: Target }) => Promise<void>;
 }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const maxRef = useRef<FlatList>(null);
   const thumbRef = useRef<FlatList>(null);
   const [width, setWidth] = useState(0);
+  const viewShotRef = useRef<ViewShot>(null);
 
   const scrollToIndex = (index: number) => {
     if (index === activeIndex) {
@@ -41,6 +45,16 @@ export function Carousel({
     setActiveIndex(index);
   };
 
+  function handleShare() {
+    const target = templates[activeIndex].target;
+
+    viewShotRef.current?.capture &&
+      viewShotRef.current?.capture().then(async (uri: string) => {
+        await onShare({ target, uri });
+        releaseCapture(uri);
+      });
+  }
+
   return (
     <YStack
       space="$3"
@@ -59,10 +73,23 @@ export function Carousel({
         onMomentumScrollEnd={(ev) => {
           scrollToIndex(Math.floor(ev.nativeEvent.contentOffset.x / width));
         }}
-        renderItem={({ item }: { item: Template }) => {
+        renderItem={({ item, index }: { item: Template; index: number }) => {
           const newTemplateProps = { ...templateProps, width };
           const Component = () => item.component(newTemplateProps);
-          return <Component />;
+          return index === activeIndex ? (
+            <ViewShot
+              ref={viewShotRef}
+              options={{
+                format: "png",
+                fileName: "sharemystack.png",
+                // result: "base64",
+              }}
+            >
+              <Component />
+            </ViewShot>
+          ) : (
+            <Component />
+          );
         }}
         contentContainerStyle={{ alignItems: "center" }}
       />
@@ -72,7 +99,7 @@ export function Carousel({
         horizontal
         showsHorizontalScrollIndicator={false}
         keyExtractor={(item) => item.id.toString()}
-        renderItem={({ item, index }) => {
+        renderItem={({ item, index }: { item: Template; index: number }) => {
           return (
             <TemplateSelector
               active={index === activeIndex}
@@ -84,6 +111,14 @@ export function Carousel({
           );
         }}
       />
+      <Button
+        marginHorizontal="$3"
+        backgroundColor="$sms"
+        color="white"
+        onPress={handleShare}
+      >
+        Share My Stack
+      </Button>
     </YStack>
   );
 }

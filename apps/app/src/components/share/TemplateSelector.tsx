@@ -5,7 +5,7 @@ import {
   Share,
   Twitter,
 } from "@tamagui/lucide-icons";
-import { Button, XStack } from "tamagui";
+import { Button, Token, styled } from "tamagui";
 
 import { Target } from "./templates";
 
@@ -18,31 +18,43 @@ export function TemplateSelector({
   active: boolean;
   onPress: () => void;
 }) {
-  let icon = <Share size="$1.5" />;
+  let Icon = Instagram;
 
   switch (target) {
     case "instagram":
-      icon = <Instagram size="$1" />;
+      Icon = Instagram;
       break;
     case "facebook":
-      icon = <Facebook size="$1" />;
+      Icon = Facebook;
       break;
     case "twitter":
-      icon = <Twitter size="$1" />;
+      Icon = Twitter;
       break;
     case "linkedin":
-      icon = <Linkedin size="$1" />;
+      Icon = Linkedin;
       break;
   }
 
+  const TemplateButton = styled(Button, {
+    marginLeft: "$3",
+    padding: "$3",
+    variants: {
+      active: {
+        true: {
+          backgroundColor: "$sms",
+        },
+        false: {
+          backgroundColor: "$gray10",
+        },
+      },
+    },
+  });
+
   return (
-    <Button
+    <TemplateButton
       onPress={onPress}
-      themeInverse
-      backgroundColor={active ? "#ff7a00" : "$gray10"}
-      icon={icon}
-      marginLeft="$3"
-      padding="$3"
+      active={active}
+      icon={<Icon size="$1.5" color="white" />}
     />
   );
 }

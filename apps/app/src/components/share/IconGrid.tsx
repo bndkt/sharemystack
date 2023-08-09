@@ -27,7 +27,7 @@ export function IconGrid({
 
   let iconSize: Token = "$3";
   sortedIconSizes.forEach((value, key) => {
-    if (key <= picks.length) {
+    if (picks.length < key) {
       iconSize = value;
     }
   });
