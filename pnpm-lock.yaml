@@ -23,9 +23,6 @@ importers:
 
   apps/app:
     dependencies:
-      '@config-plugins/ffmpeg-kit-react-native':
-        specifier: ^6.0.0
-        version: 6.0.0(expo@49.0.6)
       '@gorhom/bottom-sheet':
         specifier: 5.0.0-alpha.3
         version: 5.0.0-alpha.3(@types/react@18.2.19)(react-native-gesture-handler@2.12.0)(react-native-reanimated@3.3.0)(react-native@0.72.3)(react@18.2.0)
@@ -143,12 +140,6 @@ importers:
       expo-web-browser:
         specifier: ~12.3.2
         version: 12.3.2(expo@49.0.6)
-      ffmpeg-kit-react-native:
-        specifier: ^5.1.0
-        version: 5.1.0(react-native@0.72.3)(react@18.2.0)
-      mixpanel-react-native:
-        specifier: ^2.3.1
-        version: 2.3.1
       onesignal-expo-plugin:
         specifier: ^1.3.2
         version: 1.3.2
@@ -206,9 +197,6 @@ importers:
       react-native-web:
         specifier: ~0.19.7
         version: 0.19.7(react-dom@18.2.0)(react@18.2.0)
-      remotion:
-        specifier: ^4.0.19
-        version: 4.0.19(react-dom@18.2.0)(react@18.2.0)
       sentry-expo:
         specifier: ~7.0.1
         version: 7.0.1(expo-application@5.3.0)(expo-constants@14.4.2)(expo-device@5.4.0)(expo@49.0.6)(react-native@0.72.3)(react@18.2.0)
@@ -1850,15 +1838,6 @@ packages:
 
   /@cloudflare/workers-types@3.19.0:
     resolution: {integrity: sha512-0FRcsz7Ea3jT+gc5gKPIYciykm1bbAaTpygdzpCwGt0RL+V83zWnYN30NWDW4rIHj/FHtz+MIuBKS61C8l7AzQ==}
-
-  /@config-plugins/ffmpeg-kit-react-native@6.0.0(expo@49.0.6):
-    resolution: {integrity: sha512-lGYw70bR2xN/JQkKKxwJXwHwikrs1OiNwH6SNaiXltS1CgZ7bO/pdpM8Dtg9Ve/MFvXxJJ7eTsjzyR8QKgDHkA==}
-    peerDependencies:
-      expo: ^49
-    dependencies:
-      expo: 49.0.6(@babel/core@7.22.10)
-      semver: 7.5.4
-    dev: false
 
   /@egjs/hammerjs@2.0.17:
     resolution: {integrity: sha512-XQsZgjm2EcVUiZQf11UBJQfmZeEmOW8DpI1gsFeln6w0ae0ii4dMQEQ0kjl6DspdWX1aGY1/loyXnP0JS06e/A==}
@@ -9427,16 +9406,6 @@ packages:
     resolution: {integrity: sha512-e6eB7zN6UBSwGVwrbWVH+gdLnkW9WwHhmq2YDK1Sh30pzx1onRVGBvogTlUeWxwTa+L86NYdo4hFkh7O8ZjSnA==}
     dev: false
 
-  /ffmpeg-kit-react-native@5.1.0(react-native@0.72.3)(react@18.2.0):
-    resolution: {integrity: sha512-WGuF7wm18vvhr1oCMLRfHIDCwKrmBezWgVtzim6Z3cbDiHeYvDjpm7KJwrvBMwOgekQtP4R4zI9W0ZByoXjMnQ==}
-    peerDependencies:
-      react: '*'
-      react-native: '*'
-    dependencies:
-      react: 18.2.0
-      react-native: 0.72.3(@babel/core@7.22.10)(@babel/preset-env@7.22.10)(react@18.2.0)
-    dev: false
-
   /figures@3.2.0:
     resolution: {integrity: sha512-yaduQFRKLXYOGgEn6AZau90j3ggSOyiqXU0F9JZfeXYhNa+Jk4X+s45A2zg5jns87GAFa34BBm2kXw4XpNcbdg==}
     engines: {node: '>=8'}
@@ -12391,10 +12360,6 @@ packages:
       minipass: 3.3.6
       yallist: 4.0.0
 
-  /mixpanel-react-native@2.3.1:
-    resolution: {integrity: sha512-BfkZNkokPIttPW0uTEivm6B8iPUO+pwASFz1IEzyVDSNqaUYOXi66RL0K/ouHPqXJc80rnIuNnDjZ3FtFV9CVQ==}
-    dev: false
-
   /mkdirp-classic@0.5.3:
     resolution: {integrity: sha512-gKLcREMhtuZRwRAfqP3RFW+TK4JqApVBtOIftVgjuABpAtpxhPGaDcfvbhNvD0B8iD1oUr/txX35NjcaY6Ns/A==}
 
@@ -14172,16 +14137,6 @@ packages:
       mdast-util-to-hast: 11.3.0
       unified: 10.1.2
     dev: true
-
-  /remotion@4.0.19(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-lmcL/kieZn3v0l3eiH0DWzYw5vJmr207YTNGeilyxBoXVNAKqp/UDBdqoFfb1m3NXlMtTEPk4M89Mk8WT2A7oA==}
-    peerDependencies:
-      react: '>=16.8.0'
-      react-dom: '>=16.8.0'
-    dependencies:
-      react: 18.2.0
-      react-dom: 18.2.0(react@18.2.0)
-    dev: false
 
   /remove-trailing-slash@0.1.1:
     resolution: {integrity: sha512-o4S4Qh6L2jpnCy83ysZDau+VORNvnFw07CKSAymkd6ICNVEPisMyzlc00KlvvicsxKck94SEwhDnMNdICzO+tA==}
