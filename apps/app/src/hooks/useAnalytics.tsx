@@ -7,22 +7,14 @@ import { identifyDevice } from "vexo-analytics";
 export function useAnalytics() {
   const postHog = usePostHog();
 
-  function identify({
-    id,
-    email,
-    username,
-  }: {
-    id?: string;
-    email?: string;
-    username?: string;
-  }) {
+  function identify({ id, email }: { id?: string; email?: string }) {
     // externalId && OneSignal.login(id); // SDK v5
     id && OneSignal.setExternalUserId(id);
     // email && OneSignal.User.addEmail(email); // SDK v5
     email && OneSignal.setEmail(email);
     id && identifyDevice(id);
-    id && postHog?.identify(id, { email, username });
-    Sentry.Native.setUser({ id, email, username });
+    id && postHog?.identify(id, { email });
+    Sentry.Native.setUser({ id, email });
   }
 
   function logout() {
