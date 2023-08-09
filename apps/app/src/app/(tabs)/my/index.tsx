@@ -1,14 +1,14 @@
 import { YStack } from "tamagui";
 
+import { Loading } from "@/components/Loading";
 import { CustomSuspense } from "@/components/loading/CustomSuspense";
+import { CreateProfile } from "@/components/my/CreateProfile";
 import { MyProfileHeader } from "@/components/my/MyProfileHeader";
 import { MyStacks } from "@/components/my/MyStacks";
-import { useAuth } from "@/hooks/useAuth";
-import { CreateProfile } from "@/components/my/CreateProfile";
-import { Loading } from "@/components/Loading";
+import { useProfile } from "@/hooks/useProfile";
 
 export default function Index() {
-  const { profile, stacks } = useAuth();
+  const { profile, stacks } = useProfile();
 
   return profile ? (
     <YStack fullscreen>

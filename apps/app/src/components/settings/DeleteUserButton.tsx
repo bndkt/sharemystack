@@ -2,8 +2,8 @@ import { Alert } from "react-native";
 import { Button } from "tamagui";
 
 import { useAuth } from "@/hooks/useAuth";
-import { supabase } from "@/lib/supabase";
 import { useSync } from "@/hooks/useSync";
+import { supabase } from "@/lib/supabase";
 
 export function DeleteUserButton() {
   const { signOut } = useAuth();

@@ -132,16 +132,10 @@ export function SyncProvider({ children }: { children: ReactNode }) {
             type: "broadcast",
             event: "sync",
           });
-          if (isSyncQueued) {
-            console.log("♻️ Starting queued sync");
-            setIsSyncQueued(false);
-            queueSync();
-          }
+          setIsSyncing(false);
         })
         .catch((reason) => {
           console.log("♻️ Sync failed", reason);
-        })
-        .finally(() => {
           setIsSyncing(false);
         });
     } else {
@@ -150,6 +144,15 @@ export function SyncProvider({ children }: { children: ReactNode }) {
     }
   }
 
+  // If not syncing but sync is queued, start sync
+  useEffect(() => {
+    if (isSyncing && isSyncQueued) {
+      setIsSyncQueued(false);
+      queueSync();
+    }
+  }, [isSyncing, isSyncQueued]);
+
+  // To reset, set isResetting to true, which will unmount all screens and set isReadyToReset to true via onLayout
   function reset() {
     setIsResetting(true);
   }

@@ -6,22 +6,22 @@ import { DeleteUserButton } from "./DeleteUserButton";
 
 import { withAuth } from "@/components/auth/withAuth";
 import { useAuth } from "@/hooks/useAuth";
-import { storage } from "@/lib/storage";
+import { supabase } from "@/lib/supabase";
 
 function User() {
   const { user, signOut } = useAuth();
   const postHog = usePostHog();
   const [isBetaUser, setIsBetaUser] = useState<boolean>(
-    storage.getBoolean("isBetaUser") || false
+    user?.user_metadata?.is_beta_user ?? false
   );
 
-  function toggleIsBetaUser() {
-    setIsBetaUser((prev) => {
-      postHog?.capture("toggle_beta_user", { $set: { is_beta_user: !prev } });
-      storage.set("isBetaUser", !prev);
-
-      return !prev;
+  async function toggleIsBetaUser() {
+    const is_beta_user = !isBetaUser;
+    postHog?.capture("toggle_beta_user", { $set: { is_beta_user } });
+    await supabase.auth.updateUser({
+      data: { is_beta_user },
     });
+    setIsBetaUser(is_beta_user);
   }
 
   return (

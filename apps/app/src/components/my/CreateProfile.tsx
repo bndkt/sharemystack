@@ -2,11 +2,13 @@ import { Text, YStack } from "tamagui";
 
 import { MyProfileForm } from "./MyProfileForm";
 
+import { useProfile } from "@/hooks/data/useProfile";
 import { useAuth } from "@/hooks/useAuth";
 import { useSync } from "@/hooks/useSync";
 
 export function CreateProfile() {
-  const { user, createProfile } = useAuth();
+  const { user } = useAuth();
+  const { createProfile } = useProfile({ user });
   const { queueSync } = useSync();
 
   async function handleSubmit({ name, slug }: { name: string; slug: string }) {

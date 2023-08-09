@@ -3,6 +3,7 @@ import * as WebBrowser from "expo-web-browser";
 import { Alert } from "react-native";
 import { Button } from "tamagui";
 
+import { useProfile } from "@/hooks/data/useProfile";
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/lib/supabase";
 
@@ -15,7 +16,8 @@ export function SuggestionButton({
   text?: string;
   icon?: JSX.Element;
 }) {
-  const { user, profile } = useAuth();
+  const { user } = useAuth();
+  const { profile } = useProfile({ user });
 
   async function getCannyUrl() {
     const { data, error } = await supabase.functions.invoke<{

@@ -1,11 +1,8 @@
-import { AuthUser, AuthSession, RealtimeChannel } from "@supabase/supabase-js";
+import { AuthUser, AuthSession } from "@supabase/supabase-js";
 import { ReactNode, createContext, useEffect, useState } from "react";
 
-import { useProfile } from "@/hooks/data/useProfile";
 import { useAnalytics } from "@/hooks/useAnalytics";
 import { supabase } from "@/lib/supabase";
-import { Profile } from "@/model/Profile";
-import { Stack } from "@/model/Stack";
 
 export const AuthContext = createContext<{
   session: AuthSession | null;
@@ -18,15 +15,6 @@ export const AuthContext = createContext<{
     user: AuthUser | null;
   }) => void;
   signOut: () => void;
-  profile?: Profile | null | undefined;
-  createProfile?: ({
-    name,
-    slug,
-  }: {
-    name: string;
-    slug: string;
-  }) => Promise<void>;
-  stacks?: Stack[] | null | undefined;
 }>({
   session: null,
   user: null,
@@ -37,7 +25,6 @@ export const AuthContext = createContext<{
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [session, setSession] = useState<AuthSession | null>(null);
   const [user, setUser] = useState<AuthUser | null>(null);
-  const { profile, createProfile, stacks } = useProfile({ user });
   const { identify, logout, capture } = useAnalytics();
 
   async function signIn({
@@ -52,7 +39,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     identify({
       id: user?.id,
       email: user?.email,
-      username: profile?.slug,
     });
     capture("Sign in", { user: user?.id });
   }
@@ -105,9 +91,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         user,
         signIn,
         signOut,
-        profile,
-        createProfile,
-        stacks,
       }}
     >
       {children}
