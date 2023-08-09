@@ -102,6 +102,10 @@ const config: ExpoConfig = {
   },
   plugins: [
     "sentry-expo",
+    /* [
+      "react-native-app-clip",
+      { name: "Share My Stack", exclude: ["ffmpeg-kit-react-native"] },
+    ], */
     [
       "expo-router",
       {
@@ -158,12 +162,6 @@ const config: ExpoConfig = {
       {
         photosPermission: "Allow $(PRODUCT_NAME) to access your photos.",
         savePhotosPermission: "Allow $(PRODUCT_NAME) to save photos.",
-      },
-    ],
-    [
-      "@config-plugins/ffmpeg-kit-react-native",
-      {
-        package: "min-gpl",
       },
     ],
   ],
