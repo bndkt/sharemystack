@@ -1,9 +1,6 @@
-import { serve } from "https://deno.land/std@0.197.0/http/server.ts";
-import {
-  UserResponse,
-  createClient,
-} from "https://esm.sh/@supabase/supabase-js@2.31.0";
-import { create } from "https://deno.land/x/djwt@v2.9.1/mod.ts";
+import { serve } from "std/server";
+import { UserResponse, createClient } from "@supabase/supabase-js";
+import { create } from "djwt";
 
 import { Database } from "../database.types.ts";
 
