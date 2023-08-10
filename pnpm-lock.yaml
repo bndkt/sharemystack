@@ -42,8 +42,8 @@ importers:
         specifier: ^2.32.0
         version: 2.32.0
       '@tamagui/animations-react-native':
-        specifier: ^1.52.0
-        version: 1.52.0(react-native@0.72.3)(react@18.2.0)
+        specifier: ^1.52.2
+        version: 1.52.2(react-native@0.72.3)(react@18.2.0)
       '@tamagui/babel-plugin':
         specifier: ^1.52.0
         version: 1.52.0(react-dom@18.2.0)(react@18.2.0)
@@ -4079,7 +4079,7 @@ packages:
       eslint: 8.46.0
       eslint-import-resolver-node: 0.3.7
       eslint-import-resolver-typescript: 3.6.0(@typescript-eslint/parser@5.62.0)(eslint-import-resolver-node@0.3.7)(eslint-plugin-import@2.28.0)(eslint@8.46.0)
-      eslint-plugin-import: 2.28.0(@typescript-eslint/parser@5.62.0)(eslint@8.46.0)
+      eslint-plugin-import: 2.28.0(@typescript-eslint/parser@5.62.0)(eslint-import-resolver-typescript@3.6.0)(eslint@8.46.0)
       eslint-plugin-jest: 26.9.0(@typescript-eslint/eslint-plugin@5.62.0)(eslint@8.46.0)(typescript@5.1.6)
       eslint-plugin-jest-dom: 4.0.3(eslint@8.46.0)
       eslint-plugin-jsx-a11y: 6.7.1(eslint@8.46.0)
@@ -4576,6 +4576,18 @@ packages:
       react-native: 0.72.3(@babel/core@7.22.10)(@babel/preset-env@7.22.10)(react@18.2.0)
     dev: false
 
+  /@tamagui/animations-react-native@1.52.2(react-native@0.72.3)(react@18.2.0):
+    resolution: {integrity: sha512-1HNL0ZPoX+bJwaB+Jgk9aE4kJDs83Uv7ZN/5LhD7A0MIBANWc8nX/MRC6f5Ro3ITlveyAKjNHDBDnvXFvAnMwg==}
+    peerDependencies:
+      react: '*'
+      react-native: '*'
+    dependencies:
+      '@tamagui/use-presence': 1.52.2(react@18.2.0)
+      '@tamagui/web': 1.52.2(react@18.2.0)
+      react: 18.2.0
+      react-native: 0.72.3(@babel/core@7.22.10)(@babel/preset-env@7.22.10)(react@18.2.0)
+    dev: false
+
   /@tamagui/aria-hidden@1.52.0(react@18.2.0):
     resolution: {integrity: sha512-J1mSZ/YE8Ojpv3d5JYNEuvZTWx2aaQb0jOqbdMpRiwjaWSOy0z53USdFicQ9ivFIi8o4v9O+1ECTceniMIuQyg==}
     peerDependencies:
@@ -4724,6 +4736,14 @@ packages:
       react: 18.2.0
     dev: false
 
+  /@tamagui/compose-refs@1.52.2(react@18.2.0):
+    resolution: {integrity: sha512-r5T+BgMtZsLlSbZoJyRYRoUa8c7Wrntn/wRmrvKHNZf/NCp6ri9suFMmIh8N7HZdoqUIqSr+5H53O2qz6EsRXA==}
+    peerDependencies:
+      react: '*'
+    dependencies:
+      react: 18.2.0
+    dev: false
+
   /@tamagui/config-default-node@1.52.0(react@18.2.0):
     resolution: {integrity: sha512-IAy9JBreqkOn8YU2paFJkP4y1kMswRSDIJn3LTkM6L+Rk3po4yydjtAxNy3vQdGk9GA4dY4dW6TmIB7x8qYPDw==}
     dependencies:
@@ -4752,6 +4772,14 @@ packages:
 
   /@tamagui/constants@1.52.0(react@18.2.0):
     resolution: {integrity: sha512-59X04wlUP4BEA3hIAyB/1rIE6Z+bwMvdg39ZCD4k3rETkFL53z/zRa/l2BT95iQ6OO/Rw+0Ggoaz1Ozt0mqagA==}
+    peerDependencies:
+      react: '*'
+    dependencies:
+      react: 18.2.0
+    dev: false
+
+  /@tamagui/constants@1.52.2(react@18.2.0):
+    resolution: {integrity: sha512-0whWAAnF5s9C6f0RkSmhDFA7tjiD3IQIuH+DGy4N5sq63twXgGa2YXfBwiPzlBugBTTut/Ca9R+gryGc9L3WJw==}
     peerDependencies:
       react: '*'
     dependencies:
@@ -5019,6 +5047,15 @@ packages:
       - react
     dev: false
 
+  /@tamagui/helpers@1.52.2(react@18.2.0):
+    resolution: {integrity: sha512-SqJEql8TW/GB1DOxBsj+L0AAg7huAlQBsFo0YQQHSZPGg1RmO07ezGCA6jrFKHHU+rAVv2rDu84KPDc6JobVwg==}
+    dependencies:
+      '@tamagui/constants': 1.52.2(react@18.2.0)
+      '@tamagui/simple-hash': 1.52.2
+    transitivePeerDependencies:
+      - react
+    dev: false
+
   /@tamagui/image@1.52.0(react-native@0.72.3)(react@18.2.0):
     resolution: {integrity: sha512-6baUpdxuOY9ILzDmz9UOzkyIRum8V3mu6vEkrd86YJagfy8EEQ5aAjbiR1jy0Cp3d6iqnh0eFB55PrG442AK7Q==}
     peerDependencies:
@@ -5087,6 +5124,10 @@ packages:
 
   /@tamagui/normalize-css-color@1.52.0:
     resolution: {integrity: sha512-mZDxn5Pm8b5xIKny17Vc4+8xzxepZQhReVf8omEQ14TWM1/+5PtAZWsW/CCThGlV+Y87I4hpRMAa/37p+9Mg8w==}
+    dev: false
+
+  /@tamagui/normalize-css-color@1.52.2:
+    resolution: {integrity: sha512-a7430ZGrD4ijsV0tVccttHN9pSau69F/ShquVtxHKebDg8HG1FS7Z8MUvI5zIRKCatOkztXoRCVzYiyyMVNsZg==}
     dev: false
 
   /@tamagui/polyfill-dev@1.52.0:
@@ -5344,6 +5385,10 @@ packages:
     resolution: {integrity: sha512-+ylu9lgzQKGp4Uo0T/Lxjv1VCbf5nze497xTzVcdWoFDJuoxUEGeNUzdsvsKVmKd5gJu3QrHAXmJODzumsCUjQ==}
     dev: false
 
+  /@tamagui/simple-hash@1.52.2:
+    resolution: {integrity: sha512-H5UXETn4s55DYuQPKAwGoYZuHhLV3lhqUzhfhotUZdNiFfz7T/Gw8gYIRHNnylibXJovFQYUC6mA14t91YlV2g==}
+    dev: false
+
   /@tamagui/slider@1.52.0(react-native@0.72.3)(react@18.2.0):
     resolution: {integrity: sha512-rO+MdRCxsgxUf8UbkIa30HqnjsoThfHlOik8dn+ew/p9eEuFn3zbNl/1mLxedZGDCvGw698LFe17aTkLVoyn5w==}
     peerDependencies:
@@ -5493,6 +5538,10 @@ packages:
     resolution: {integrity: sha512-ze9e4Rv+MmSZod84VCeytAURrcVAFTWIdBfgQKyaONFw9R4j3S33ZHwlGp9amPglOUWdZIFw+LN7jfHu7IO5lw==}
     dev: false
 
+  /@tamagui/timer@1.52.2:
+    resolution: {integrity: sha512-PgQH+za32TQIY9VUSXvKTvNaSsQMwIu+DdidY46x0TTcudRFpGK+9XBFM5IGfYutZbRVR8oX0Qxa87tun/1NYQ==}
+    dev: false
+
   /@tamagui/toast@1.52.0(burnt@0.11.7)(react-native@0.72.3)(react@18.2.0):
     resolution: {integrity: sha512-Q0VTnmlHXNF+RdkmWSFy4UkAeMGM9Qx2F9v0XK2PPZqKidUfk0USRJfhCPQteU6/hcqGMWcSK9kWU++883nmzg==}
     peerDependencies:
@@ -5606,6 +5655,15 @@ packages:
       react: 18.2.0
     dev: false
 
+  /@tamagui/use-did-finish-ssr@1.52.2(react@18.2.0):
+    resolution: {integrity: sha512-AnzR8SINnByW/OQXoRRq53ICDDiT10y5ece71O5lhVRU2LLYTTBcowTvtGXMmc0rUNxSlRcVz2li2NtxyKzIXg==}
+    peerDependencies:
+      react: '*'
+    dependencies:
+      '@tamagui/constants': 1.52.2(react@18.2.0)
+      react: 18.2.0
+    dev: false
+
   /@tamagui/use-direction@1.52.0(react@18.2.0):
     resolution: {integrity: sha512-4ZpjyKoBdXtqBt8rRGQui+jpoC0f7hFiEt55uEyM1MLMAnMtPF7w0LAcxChr6NQ0Rjmdg4wXqtRYO+3XUHfniw==}
     peerDependencies:
@@ -5628,8 +5686,24 @@ packages:
       react: 18.2.0
     dev: false
 
+  /@tamagui/use-event@1.52.2(react@18.2.0):
+    resolution: {integrity: sha512-ZDNQwampoBeZ/RqUNlk23biKWESzBsT2PCoPb80ODhTpCkTipj13aFb6ntpwiPgxILU3v5F012fOsBB0+O844g==}
+    peerDependencies:
+      react: '*'
+    dependencies:
+      react: 18.2.0
+    dev: false
+
   /@tamagui/use-force-update@1.52.0(react@18.2.0):
     resolution: {integrity: sha512-Dv0Q8LCPesHa2D3zRBTnwLmSkkYK9yK3XkiKHmVj3klTYSOnpXkf+DZ9Yzjc/HcFu6S2yI+2F5bn0onM4MDRNQ==}
+    peerDependencies:
+      react: '*'
+    dependencies:
+      react: 18.2.0
+    dev: false
+
+  /@tamagui/use-force-update@1.52.2(react@18.2.0):
+    resolution: {integrity: sha512-ZkRinK2Tb4NyNAlJ9q5txKTk5uHgLOirw6h43sszeOecw2Tp8Oq+W/3m0t/s0e/3lO1DNWXDzQzrMaSMi43WDg==}
     peerDependencies:
       react: '*'
     dependencies:
@@ -5652,6 +5726,15 @@ packages:
       react: '*'
     dependencies:
       '@tamagui/web': 1.52.0(react@18.2.0)
+      react: 18.2.0
+    dev: false
+
+  /@tamagui/use-presence@1.52.2(react@18.2.0):
+    resolution: {integrity: sha512-EVNkwSo+x0sK3hmn5WvfBzX0KovjBuuUTnLdwQbPCQIwx7k4HwWgo7288mw3L2/vCL13b77AARLxNvCbrVN5Ww==}
+    peerDependencies:
+      react: '*'
+    dependencies:
+      '@tamagui/web': 1.52.2(react@18.2.0)
       react: 18.2.0
     dev: false
 
@@ -5692,6 +5775,22 @@ packages:
       '@tamagui/use-did-finish-ssr': 1.52.0(react@18.2.0)
       '@tamagui/use-event': 1.52.0(react@18.2.0)
       '@tamagui/use-force-update': 1.52.0(react@18.2.0)
+      react: 18.2.0
+    dev: false
+
+  /@tamagui/web@1.52.2(react@18.2.0):
+    resolution: {integrity: sha512-CtELyi450DBqLhl6xM6yTcdzVlU0ihZtZ+RTqhgy+OiuVAuAmK9XsEaQ/R+xmVcYH/26gmy9/rMxi+O3Rm1USQ==}
+    peerDependencies:
+      react: '*'
+    dependencies:
+      '@tamagui/compose-refs': 1.52.2(react@18.2.0)
+      '@tamagui/constants': 1.52.2(react@18.2.0)
+      '@tamagui/helpers': 1.52.2(react@18.2.0)
+      '@tamagui/normalize-css-color': 1.52.2
+      '@tamagui/timer': 1.52.2
+      '@tamagui/use-did-finish-ssr': 1.52.2(react@18.2.0)
+      '@tamagui/use-event': 1.52.2(react@18.2.0)
+      '@tamagui/use-force-update': 1.52.2(react@18.2.0)
       react: 18.2.0
     dev: false
 
@@ -8294,7 +8393,7 @@ packages:
       '@typescript-eslint/parser': 5.62.0(eslint@8.46.0)(typescript@5.1.6)
       eslint: 8.46.0
       eslint-config-prettier: 8.10.0(eslint@8.46.0)
-      eslint-plugin-import: 2.28.0(@typescript-eslint/parser@5.62.0)(eslint@8.46.0)
+      eslint-plugin-import: 2.28.0(@typescript-eslint/parser@5.62.0)(eslint-import-resolver-typescript@3.6.0)(eslint@8.46.0)
       eslint-plugin-node: 11.1.0(eslint@8.46.0)
       eslint-plugin-prettier: 4.2.1(eslint-config-prettier@8.10.0)(eslint@8.46.0)(prettier@2.8.8)
       eslint-plugin-react: 7.33.1(eslint@8.46.0)
@@ -8338,7 +8437,7 @@ packages:
       enhanced-resolve: 5.15.0
       eslint: 8.46.0
       eslint-module-utils: 2.8.0(@typescript-eslint/parser@5.62.0)(eslint-import-resolver-node@0.3.7)(eslint-import-resolver-typescript@3.6.0)(eslint@8.46.0)
-      eslint-plugin-import: 2.28.0(@typescript-eslint/parser@5.62.0)(eslint@8.46.0)
+      eslint-plugin-import: 2.28.0(@typescript-eslint/parser@5.62.0)(eslint-import-resolver-typescript@3.6.0)(eslint@8.46.0)
       fast-glob: 3.3.1
       get-tsconfig: 4.6.2
       is-core-module: 2.13.0
@@ -8380,7 +8479,7 @@ packages:
       - supports-color
     dev: true
 
-  /eslint-module-utils@2.8.0(@typescript-eslint/parser@5.62.0)(eslint-import-resolver-node@0.3.9)(eslint@8.46.0):
+  /eslint-module-utils@2.8.0(@typescript-eslint/parser@5.62.0)(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.0)(eslint@8.46.0):
     resolution: {integrity: sha512-aWajIYfsqCKRDgUfjEXNN/JlrzauMuSEy5sbd7WXbtW3EH6A6MpwEh42c7qD+MqQo9QMJ6fWLAeIJynx0g6OAw==}
     engines: {node: '>=4'}
     peerDependencies:
@@ -8405,6 +8504,7 @@ packages:
       debug: 3.2.7
       eslint: 8.46.0
       eslint-import-resolver-node: 0.3.9
+      eslint-import-resolver-typescript: 3.6.0(@typescript-eslint/parser@5.62.0)(eslint-import-resolver-node@0.3.7)(eslint-plugin-import@2.28.0)(eslint@8.46.0)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -8420,7 +8520,7 @@ packages:
       regexpp: 3.2.0
     dev: true
 
-  /eslint-plugin-import@2.28.0(@typescript-eslint/parser@5.62.0)(eslint@8.46.0):
+  /eslint-plugin-import@2.28.0(@typescript-eslint/parser@5.62.0)(eslint-import-resolver-typescript@3.6.0)(eslint@8.46.0):
     resolution: {integrity: sha512-B8s/n+ZluN7sxj9eUf7/pRFERX0r5bnFA2dCaLHy2ZeaQEAz0k+ZZkFWRFHJAqxfxQDx6KLv9LeIki7cFdwW+Q==}
     engines: {node: '>=4'}
     peerDependencies:
@@ -8439,7 +8539,7 @@ packages:
       doctrine: 2.1.0
       eslint: 8.46.0
       eslint-import-resolver-node: 0.3.9
-      eslint-module-utils: 2.8.0(@typescript-eslint/parser@5.62.0)(eslint-import-resolver-node@0.3.9)(eslint@8.46.0)
+      eslint-module-utils: 2.8.0(@typescript-eslint/parser@5.62.0)(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.0)(eslint@8.46.0)
       has: 1.0.3
       is-core-module: 2.13.0
       is-glob: 4.0.3
