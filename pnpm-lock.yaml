@@ -238,14 +238,14 @@ importers:
         specifier: ^2.0.18
         version: 2.0.18(react@18.2.0)
       '@remix-run/cloudflare':
-        specifier: ^1.19.2
-        version: 1.19.2(@cloudflare/workers-types@3.19.0)
+        specifier: ^1.19.3
+        version: 1.19.3(@cloudflare/workers-types@4.20230807.0)
       '@remix-run/cloudflare-pages':
-        specifier: ^1.19.2
-        version: 1.19.2(@cloudflare/workers-types@3.19.0)
+        specifier: ^1.19.3
+        version: 1.19.3(@cloudflare/workers-types@4.20230807.0)
       '@remix-run/react':
-        specifier: ^1.19.2
-        version: 1.19.2(react-dom@18.2.0)(react@18.2.0)
+        specifier: ^1.19.3
+        version: 1.19.3(react-dom@18.2.0)(react@18.2.0)
       '@supabase/auth-helpers-remix':
         specifier: ^0.2.1
         version: 0.2.1(@supabase/supabase-js@2.32.0)
@@ -263,14 +263,14 @@ importers:
         version: 18.2.0(react@18.2.0)
     devDependencies:
       '@cloudflare/workers-types':
-        specifier: ^3.19.0
-        version: 3.19.0
+        specifier: ^4.20230807.0
+        version: 4.20230807.0
       '@remix-run/dev':
-        specifier: ^1.19.2
-        version: 1.19.2
+        specifier: ^1.19.3
+        version: 1.19.3
       '@remix-run/eslint-config':
-        specifier: ^1.19.2
-        version: 1.19.2(eslint@8.46.0)(react@18.2.0)(typescript@5.1.6)
+        specifier: ^1.19.3
+        version: 1.19.3(eslint@8.46.0)(react@18.2.0)(typescript@5.1.6)
       '@tailwindcss/typography':
         specifier: ^0.5.9
         version: 0.5.9(tailwindcss@3.3.3)
@@ -1836,8 +1836,8 @@ packages:
     dev: true
     optional: true
 
-  /@cloudflare/workers-types@3.19.0:
-    resolution: {integrity: sha512-0FRcsz7Ea3jT+gc5gKPIYciykm1bbAaTpygdzpCwGt0RL+V83zWnYN30NWDW4rIHj/FHtz+MIuBKS61C8l7AzQ==}
+  /@cloudflare/workers-types@4.20230807.0:
+    resolution: {integrity: sha512-gQczWuGE2rxmpzOCNn0zLbx8Xz0gqspdE9S7tu4Xax39q1csgO/E9flcS+KG3GHB522ugOh84inmABDhpeJnvQ==}
 
   /@egjs/hammerjs@2.0.17:
     resolution: {integrity: sha512-XQsZgjm2EcVUiZQf11UBJQfmZeEmOW8DpI1gsFeln6w0ae0ii4dMQEQ0kjl6DspdWX1aGY1/loyXnP0JS06e/A==}
@@ -3958,33 +3958,33 @@ packages:
       nanoid: 3.3.6
     dev: false
 
-  /@remix-run/cloudflare-pages@1.19.2(@cloudflare/workers-types@3.19.0):
-    resolution: {integrity: sha512-6olgNula8E1PJnGBE6d3OVMqaVvgHREBNsb9CPKiGnxxNQlhpqDJQ2MIZEfcRpi+RsrjDGUESzk0UXW1cT9EQw==}
+  /@remix-run/cloudflare-pages@1.19.3(@cloudflare/workers-types@4.20230807.0):
+    resolution: {integrity: sha512-Vie5pUjtq+V2JIU/zHp/SR1DgvaLI+xW54wd2F4l6PA9BqebfO/BqDpGOrLZZK3y5Ah5/qkQf/hAK3JnrBgGXw==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       '@cloudflare/workers-types': ^3.0.0
     dependencies:
-      '@cloudflare/workers-types': 3.19.0
-      '@remix-run/cloudflare': 1.19.2(@cloudflare/workers-types@3.19.0)
+      '@cloudflare/workers-types': 4.20230807.0
+      '@remix-run/cloudflare': 1.19.3(@cloudflare/workers-types@4.20230807.0)
     dev: false
 
-  /@remix-run/cloudflare@1.19.2(@cloudflare/workers-types@3.19.0):
-    resolution: {integrity: sha512-VPG2qAhzV2Mo4NQpCBWIXKoTx8LOdZ29xV6yG2z7bI043bvCXY1Aor5Lxn5tIvDSnlBAlhvT4NiQ37wfHdETxw==}
+  /@remix-run/cloudflare@1.19.3(@cloudflare/workers-types@4.20230807.0):
+    resolution: {integrity: sha512-/0x3ww6XjUtR5qs0jcgIa2ELv2tdlFrUE1Q/JuHr0WUtS/xq0GDRjwBF9HPxq0S4VljfHPguDfbycFOORDee2A==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       '@cloudflare/workers-types': ^2.0.0 || ^3.0.0
     dependencies:
       '@cloudflare/kv-asset-handler': 0.1.3
-      '@cloudflare/workers-types': 3.19.0
-      '@remix-run/server-runtime': 1.19.2
+      '@cloudflare/workers-types': 4.20230807.0
+      '@remix-run/server-runtime': 1.19.3
     dev: false
 
-  /@remix-run/dev@1.19.2:
-    resolution: {integrity: sha512-wAY3AN0xPJB01wi9RqHG1mV3W0M915XgudcLtJlWDbVppY3kGr7gP0/1sAz5onyEX8Z/+1vvVVU9jn59G8PIcA==}
+  /@remix-run/dev@1.19.3:
+    resolution: {integrity: sha512-Yh733OI0AxR7QbPaJbocujxSF1S5CToDmfZnmv5SlTTIXEw5KfnbCceHy9qhUp0nrkz2YT7pd1zbTEVYIi/Vug==}
     engines: {node: '>=14.0.0'}
     hasBin: true
     peerDependencies:
-      '@remix-run/serve': ^1.19.2
+      '@remix-run/serve': ^1.19.3
     peerDependenciesMeta:
       '@remix-run/serve':
         optional: true
@@ -3999,7 +3999,7 @@ packages:
       '@babel/traverse': 7.22.10
       '@babel/types': 7.22.10
       '@npmcli/package-json': 2.0.0
-      '@remix-run/server-runtime': 1.19.2
+      '@remix-run/server-runtime': 1.19.3
       '@vanilla-extract/integration': 6.2.1
       arg: 5.0.2
       cacache: 15.3.0
@@ -4059,8 +4059,8 @@ packages:
       - utf-8-validate
     dev: true
 
-  /@remix-run/eslint-config@1.19.2(eslint@8.46.0)(react@18.2.0)(typescript@5.1.6):
-    resolution: {integrity: sha512-YvB3uulbSdwsvkcQSUPXtZG2AbVq1v49jVf5IsPj0xApNcRMtkk4Y/6cethbtHJOIpHhbAnJyPtoHOVvlRWQHQ==}
+  /@remix-run/eslint-config@1.19.3(eslint@8.46.0)(react@18.2.0)(typescript@5.1.6):
+    resolution: {integrity: sha512-8yvPtsJj1hBKp6ypTTDhHmJ2ftoPmBV1xPPOIqhMLDQ1fwmzocwnkz9RHTeMYkdNSzUuqGnpGaMTHgrT3WfckQ==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     peerDependencies:
       eslint: ^8.0.0
@@ -4079,7 +4079,7 @@ packages:
       eslint: 8.46.0
       eslint-import-resolver-node: 0.3.7
       eslint-import-resolver-typescript: 3.6.0(@typescript-eslint/parser@5.62.0)(eslint-import-resolver-node@0.3.7)(eslint-plugin-import@2.28.0)(eslint@8.46.0)
-      eslint-plugin-import: 2.28.0(@typescript-eslint/parser@5.62.0)(eslint@8.46.0)
+      eslint-plugin-import: 2.28.0(@typescript-eslint/parser@5.62.0)(eslint-import-resolver-typescript@3.6.0)(eslint@8.46.0)
       eslint-plugin-jest: 26.9.0(@typescript-eslint/eslint-plugin@5.62.0)(eslint@8.46.0)(typescript@5.1.6)
       eslint-plugin-jest-dom: 4.0.3(eslint@8.46.0)
       eslint-plugin-jsx-a11y: 6.7.1(eslint@8.46.0)
@@ -4095,8 +4095,8 @@ packages:
       - supports-color
     dev: true
 
-  /@remix-run/react@1.19.2(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-Q3abYOR02+8wg3mNGYHafGqZUwVv19Et+2ti/8CKTOvY+/rIRppEhDqPCYaiAvNJ7kMcvTdCYKbCi6bU9ElV0g==}
+  /@remix-run/react@1.19.3(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-iP37MZ+oG1n4kv4rX77pKT/knra51lNwKo5tinPPF0SuNJhF3+XjWo5nwEjvisKTXLZ/OHeicinhgX2JHHdDvA==}
     engines: {node: '>=14.0.0'}
     peerDependencies:
       react: '>=16.8.0'
@@ -4112,8 +4112,8 @@ packages:
     resolution: {integrity: sha512-7Lcn7IqGMV+vizMPoEl5F0XDshcdDYtMI6uJLQdQz5CfZAwy3vvGKYSUk789qndt5dEC4HfSjviSYlSoHGL2+A==}
     engines: {node: '>=14'}
 
-  /@remix-run/server-runtime@1.19.2:
-    resolution: {integrity: sha512-d+oOaQlBPFHPum1nstJCntRgwgi4fzijW51yPCo3ljUxIrjlDjutX2GCQ72Apd6Ffpd11/6nEq+B90EY+Ala9Q==}
+  /@remix-run/server-runtime@1.19.3:
+    resolution: {integrity: sha512-KzQ+htUsKqpBgKE2tWo7kIIGy3MyHP58Io/itUPvV+weDjApwr9tQr9PZDPA3yAY6rAzLax7BU0NMSYCXWFY5A==}
     engines: {node: '>=14.0.0'}
     dependencies:
       '@remix-run/router': 1.7.2
@@ -8294,7 +8294,7 @@ packages:
       '@typescript-eslint/parser': 5.62.0(eslint@8.46.0)(typescript@5.1.6)
       eslint: 8.46.0
       eslint-config-prettier: 8.10.0(eslint@8.46.0)
-      eslint-plugin-import: 2.28.0(@typescript-eslint/parser@5.62.0)(eslint@8.46.0)
+      eslint-plugin-import: 2.28.0(@typescript-eslint/parser@5.62.0)(eslint-import-resolver-typescript@3.6.0)(eslint@8.46.0)
       eslint-plugin-node: 11.1.0(eslint@8.46.0)
       eslint-plugin-prettier: 4.2.1(eslint-config-prettier@8.10.0)(eslint@8.46.0)(prettier@2.8.8)
       eslint-plugin-react: 7.33.1(eslint@8.46.0)
@@ -8338,7 +8338,7 @@ packages:
       enhanced-resolve: 5.15.0
       eslint: 8.46.0
       eslint-module-utils: 2.8.0(@typescript-eslint/parser@5.62.0)(eslint-import-resolver-node@0.3.7)(eslint-import-resolver-typescript@3.6.0)(eslint@8.46.0)
-      eslint-plugin-import: 2.28.0(@typescript-eslint/parser@5.62.0)(eslint@8.46.0)
+      eslint-plugin-import: 2.28.0(@typescript-eslint/parser@5.62.0)(eslint-import-resolver-typescript@3.6.0)(eslint@8.46.0)
       fast-glob: 3.3.1
       get-tsconfig: 4.6.2
       is-core-module: 2.13.0
@@ -8380,7 +8380,7 @@ packages:
       - supports-color
     dev: true
 
-  /eslint-module-utils@2.8.0(@typescript-eslint/parser@5.62.0)(eslint-import-resolver-node@0.3.9)(eslint@8.46.0):
+  /eslint-module-utils@2.8.0(@typescript-eslint/parser@5.62.0)(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.0)(eslint@8.46.0):
     resolution: {integrity: sha512-aWajIYfsqCKRDgUfjEXNN/JlrzauMuSEy5sbd7WXbtW3EH6A6MpwEh42c7qD+MqQo9QMJ6fWLAeIJynx0g6OAw==}
     engines: {node: '>=4'}
     peerDependencies:
@@ -8405,6 +8405,7 @@ packages:
       debug: 3.2.7
       eslint: 8.46.0
       eslint-import-resolver-node: 0.3.9
+      eslint-import-resolver-typescript: 3.6.0(@typescript-eslint/parser@5.62.0)(eslint-import-resolver-node@0.3.7)(eslint-plugin-import@2.28.0)(eslint@8.46.0)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -8420,7 +8421,7 @@ packages:
       regexpp: 3.2.0
     dev: true
 
-  /eslint-plugin-import@2.28.0(@typescript-eslint/parser@5.62.0)(eslint@8.46.0):
+  /eslint-plugin-import@2.28.0(@typescript-eslint/parser@5.62.0)(eslint-import-resolver-typescript@3.6.0)(eslint@8.46.0):
     resolution: {integrity: sha512-B8s/n+ZluN7sxj9eUf7/pRFERX0r5bnFA2dCaLHy2ZeaQEAz0k+ZZkFWRFHJAqxfxQDx6KLv9LeIki7cFdwW+Q==}
     engines: {node: '>=4'}
     peerDependencies:
@@ -8439,7 +8440,7 @@ packages:
       doctrine: 2.1.0
       eslint: 8.46.0
       eslint-import-resolver-node: 0.3.9
-      eslint-module-utils: 2.8.0(@typescript-eslint/parser@5.62.0)(eslint-import-resolver-node@0.3.9)(eslint@8.46.0)
+      eslint-module-utils: 2.8.0(@typescript-eslint/parser@5.62.0)(eslint-import-resolver-node@0.3.9)(eslint-import-resolver-typescript@3.6.0)(eslint@8.46.0)
       has: 1.0.3
       is-core-module: 2.13.0
       is-glob: 4.0.3
@@ -9855,7 +9856,7 @@ packages:
       '@types/glob': 7.2.0
       array-union: 2.1.0
       dir-glob: 3.0.1
-      fast-glob: 3.2.11
+      fast-glob: 3.3.1
       glob: 7.2.3
       ignore: 5.2.4
       merge2: 1.4.1
