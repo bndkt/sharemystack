@@ -1,16 +1,17 @@
 import { Avatar } from "tamagui";
 
 import { Profile } from "@/model/Profile";
+import { Identicon } from "./Identicon";
 
 export function ProfileIcon({ profile }: { profile: Profile }) {
   return (
-    <Avatar circular size="$3">
-      {profile.twitterImageUrl && (
-        <Avatar.Image
-          source={{ uri: profile.twitterImageUrl, width: 400, height: 400 }}
-        />
+    <Avatar circular size="$3" backgroundColor="$color">
+      {profile.twitterImageUrl ? (
+        <Avatar.Image source={{ uri: profile.twitterImageUrl }} />
+      ) : (
+        <Identicon slug={profile.slug} width={30} />
       )}
-      <Avatar.Fallback backgroundColor="$sms" delayMs={1000} />
+      {/* <Avatar.Fallback backgroundColor="$sms" delayMs={1000} /> */}
     </Avatar>
   );
 }
