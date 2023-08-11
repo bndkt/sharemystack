@@ -5,15 +5,15 @@ import * as Sharing from "expo-sharing";
 import { useRef, useState } from "react";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
 import ViewShot, { releaseCapture } from "react-native-view-shot";
-import { Button, XStack, YStack } from "tamagui";
+import { Button, XStack, YStack, useThemeName } from "tamagui";
 
 import { Carousel } from "./Carousel";
 import { ShareOptions } from "./ShareOptions";
+import { Target } from "./templates";
 
 import { Pick } from "@/model/Pick";
 import { Profile } from "@/model/Profile";
 import { Stack } from "@/model/Stack";
-import { Target } from "./templates";
 
 export function ShareStack({
   profile,
@@ -24,8 +24,13 @@ export function ShareStack({
   stack: Stack;
   picks: Pick[];
 }) {
+  const themeName = useThemeName();
+
   const viewShotRef = useRef<ViewShot>(null);
-  const [options, setOptions] = useState<ShareOptions>({ showTitle: true });
+  const [options, setOptions] = useState<ShareOptions>({
+    showTitle: true,
+    darkMode: themeName === "dark",
+  });
   const insets = useSafeAreaInsets();
   const [permissionResponse, requestPermission] = MediaLibrary.usePermissions();
 

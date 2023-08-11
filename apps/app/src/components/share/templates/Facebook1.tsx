@@ -1,5 +1,4 @@
 import { TemplateProps } from ".";
-
 import { Grid1 } from "./Grid1";
 
 export function Facebook1(templateProps: TemplateProps) {

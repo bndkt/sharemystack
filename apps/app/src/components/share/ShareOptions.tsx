@@ -3,6 +3,7 @@ import { Label, Switch, XStack } from "tamagui";
 export type ShareOptions = {
   showTitle?: boolean;
   includeHandle?: boolean;
+  darkMode?: boolean;
 };
 
 export function ShareOptions({
@@ -17,39 +18,62 @@ export function ShareOptions({
   };
 
   return (
-    <XStack space="$3" alignItems="center" padding="$3">
-      <Switch
-        id="showTitleSwitch"
-        size="$1"
-        native
-        checked={options.showTitle}
-        onCheckedChange={() => updateOptions({ showTitle: !options.showTitle })}
-      />
-      <Label
-        paddingRight="$0"
-        minWidth={90}
-        justifyContent="flex-end"
-        htmlFor="showTitleSwitch"
-      >
-        Include title
-      </Label>
-      <Switch
-        id="includeHandleSwitch"
-        size="$1"
-        native
-        checked={options.includeHandle}
-        onCheckedChange={() =>
-          updateOptions({ includeHandle: !options.includeHandle })
-        }
-      />
-      <Label
-        paddingRight="$0"
-        minWidth={90}
-        justifyContent="flex-end"
-        htmlFor="includeHandleSwitch"
-      >
-        Personalize title
-      </Label>
+    <XStack gap="$3" alignItems="center" padding="$3" flexWrap="wrap">
+      <XStack space="$3" alignItems="center">
+        <Switch
+          id="showTitleSwitch"
+          size="$1"
+          native
+          checked={options.showTitle}
+          onCheckedChange={() =>
+            updateOptions({ showTitle: !options.showTitle })
+          }
+        />
+        <Label
+          paddingRight="$0"
+          minWidth={90}
+          justifyContent="flex-end"
+          htmlFor="showTitleSwitch"
+        >
+          Include title
+        </Label>
+      </XStack>
+      <XStack space="$3" alignItems="center">
+        <Switch
+          id="includeHandleSwitch"
+          size="$1"
+          native
+          checked={options.includeHandle}
+          onCheckedChange={() =>
+            updateOptions({ includeHandle: !options.includeHandle })
+          }
+        />
+        <Label
+          paddingRight="$0"
+          minWidth={90}
+          justifyContent="flex-end"
+          htmlFor="includeHandleSwitch"
+        >
+          Personalize title
+        </Label>
+      </XStack>
+      <XStack space="$3" alignItems="center">
+        <Switch
+          id="darkModeSwitch"
+          size="$1"
+          native
+          checked={options.darkMode}
+          onCheckedChange={() => updateOptions({ darkMode: !options.darkMode })}
+        />
+        <Label
+          paddingRight="$0"
+          minWidth={90}
+          justifyContent="flex-end"
+          htmlFor="darkModeSwitch"
+        >
+          Dark mode
+        </Label>
+      </XStack>
     </XStack>
   );
 }

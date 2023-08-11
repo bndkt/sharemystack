@@ -1,10 +1,10 @@
 import { useRef, useState } from "react";
 import { FlatList } from "react-native";
-import { Button, YStack } from "tamagui";
+import ViewShot, { releaseCapture } from "react-native-view-shot";
+import { Button, Theme, YStack } from "tamagui";
 
 import { TemplateSelector } from "./TemplateSelector";
 import { Target, Template, TemplateProps, templates } from "./templates";
-import ViewShot, { releaseCapture } from "react-native-view-shot";
 
 const THUMB_SIZE = 80;
 
@@ -63,36 +63,38 @@ export function Carousel({
         setWidth(width);
       }}
     >
-      <FlatList
-        ref={maxRef}
-        data={templates}
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        keyExtractor={(item) => item.id.toString()}
-        pagingEnabled
-        onMomentumScrollEnd={(ev) => {
-          scrollToIndex(Math.floor(ev.nativeEvent.contentOffset.x / width));
-        }}
-        renderItem={({ item, index }: { item: Template; index: number }) => {
-          const newTemplateProps = { ...templateProps, width };
-          const Component = () => item.component(newTemplateProps);
-          return index === activeIndex ? (
-            <ViewShot
-              ref={viewShotRef}
-              options={{
-                format: "png",
-                fileName: "sharemystack.png",
-                // result: "base64",
-              }}
-            >
+      <Theme name={templateProps.options.darkMode ? "dark" : "light"}>
+        <FlatList
+          ref={maxRef}
+          data={templates}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          keyExtractor={(item) => item.id.toString()}
+          pagingEnabled
+          onMomentumScrollEnd={(ev) => {
+            scrollToIndex(Math.floor(ev.nativeEvent.contentOffset.x / width));
+          }}
+          renderItem={({ item, index }: { item: Template; index: number }) => {
+            const newTemplateProps = { ...templateProps, width };
+            const Component = () => item.component(newTemplateProps);
+            return index === activeIndex ? (
+              <ViewShot
+                ref={viewShotRef}
+                options={{
+                  format: "png",
+                  fileName: "sharemystack.png",
+                  // result: "base64",
+                }}
+              >
+                <Component />
+              </ViewShot>
+            ) : (
               <Component />
-            </ViewShot>
-          ) : (
-            <Component />
-          );
-        }}
-        contentContainerStyle={{ alignItems: "center" }}
-      />
+            );
+          }}
+          contentContainerStyle={{ alignItems: "center" }}
+        />
+      </Theme>
       <FlatList
         ref={thumbRef}
         data={templates}

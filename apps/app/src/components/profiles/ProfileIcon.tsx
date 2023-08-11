@@ -1,7 +1,8 @@
 import { Avatar } from "tamagui";
 
-import { Profile } from "@/model/Profile";
 import { Identicon } from "./Identicon";
+
+import { Profile } from "@/model/Profile";
 
 export function ProfileIcon({ profile }: { profile: Profile }) {
   return (

@@ -1,7 +1,9 @@
-import { Pick } from "@/model/Pick";
 import { Square, Token, XStack } from "tamagui";
+
 import { CustomSuspense } from "../loading/CustomSuspense";
 import { ToolIcon } from "../tools/ToolIcon";
+
+import { Pick } from "@/model/Pick";
 
 export function IconGrid({
   picks,
@@ -44,10 +46,12 @@ export function IconGrid({
         return (
           <Square
             key={pick.id}
-            backgroundColor="white"
+            backgroundColor="$background"
             padding="$3"
-            // shadowColor="$gray5"
+            // shadowColor="red"
             // shadowOffset={{ width: 3, height: 3 }}
+            borderColor="$borderColor"
+            borderWidth="$1"
             elevation="$3"
             radiused={true}
             // shadowRadius={3}

@@ -1,9 +1,8 @@
+import { useMemo } from "react";
 import { H5, Square, Text, Token, XStack, YStack } from "tamagui";
 
 import { TemplateProps } from ".";
-
 import { IconGrid } from "../IconGrid";
-import { useMemo } from "react";
 
 export function Grid1({
   profile,
@@ -27,7 +26,7 @@ export function Grid1({
   return (
     <Square
       paddingHorizontal="$3"
-      backgroundColor="white"
+      backgroundColor="$background"
       alignItems="center"
       width={width}
       height={width / ratio}

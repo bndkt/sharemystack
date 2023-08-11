@@ -1,12 +1,12 @@
 import { PlusCircle } from "@tamagui/lucide-icons";
 import * as WebBrowser from "expo-web-browser";
+import { useState } from "react";
 import { Alert } from "react-native";
 import { Button, Spinner } from "tamagui";
 
 import { useProfile } from "@/hooks/data/useProfile";
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/lib/supabase";
-import { useState } from "react";
 
 export function SuggestionButton({
   suggestion = "tool",
