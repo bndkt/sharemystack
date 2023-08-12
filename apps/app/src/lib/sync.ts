@@ -1,7 +1,7 @@
 import { SyncDatabaseChangeSet, synchronize } from "@nozbe/watermelondb/sync";
 // import SyncLogger from "@nozbe/watermelondb/sync/SyncLogger";
 // const logger = new SyncLogger(10 /* limit of sync logs to keep in memory */);
-import { pullSyncChanges } from "native-sync";
+// import { pullSyncChanges } from "native-sync";
 
 import { supabase } from "./supabase";
 import { database } from "./watermelon";
@@ -30,7 +30,7 @@ export async function sync({
       if (native) {
         const syncId = Math.floor(Math.random() * 1000000000);
 
-        await pullSyncChanges(
+        /* await pullSyncChanges(
           // Pass the id
           {
             syncId,
@@ -39,7 +39,7 @@ export async function sync({
             schemaVersion,
             migration,
           }
-        );
+        ); */
 
         console.log(`🍉 Changes pulled via native-sync, syncId ${syncId}`);
 
