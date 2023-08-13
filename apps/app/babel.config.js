@@ -3,7 +3,7 @@ module.exports = function (api) {
   return {
     presets: ["babel-preset-expo"],
     plugins: [
-      require.resolve("expo-router/babel"),
+      "expo-router/babel",
       // NOTE: this is required to pass the right environment
       [
         "transform-inline-environment-variables",
