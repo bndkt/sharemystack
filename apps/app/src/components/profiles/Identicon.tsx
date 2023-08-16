@@ -1,4 +1,4 @@
-import { Rect, Svg, SvgXml } from "react-native-svg";
+import { SvgXml } from "react-native-svg";
 
 import { minidenticon } from "./minidenticon";
 
