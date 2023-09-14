@@ -8,10 +8,8 @@ import { database } from "./watermelon";
 
 export async function sync({
   reset,
-  native,
 }: {
   reset?: boolean;
-  native?: boolean;
 } = {}) {
   if (reset) {
     await database.write(async () => {
@@ -27,42 +25,23 @@ export async function sync({
 
       lastPulledAt = reset || !lastPulledAt ? undefined : lastPulledAt;
 
-      if (native) {
-        const syncId = Math.floor(Math.random() * 1000000000);
-
-        /* await pullSyncChanges(
-          // Pass the id
-          {
-            syncId,
-            // Pass whatever information your plugin needs to make the request
-            lastPulledAt,
-            schemaVersion,
-            migration,
-          }
-        ); */
-
-        console.log(`🍉 Changes pulled via native-sync, syncId ${syncId}`);
-
-        return { syncJsonId: syncId };
-      } else {
-        const { data, error } = await supabase.rpc("pull", {
-          last_pulled_at: lastPulledAt,
-        });
-        if (error) {
-          throw new Error("🍉".concat(error.message));
-        }
-
-        const { changes, timestamp } = data as {
-          changes: SyncDatabaseChangeSet;
-          timestamp: number;
-        };
-
-        console.log(
-          `🍉 Changes pulled at ${new Date(timestamp).toISOString()} UTC`
-        );
-
-        return { changes, timestamp };
+      const { data, error } = await supabase.rpc("pull", {
+        last_pulled_at: lastPulledAt,
+      });
+      if (error) {
+        throw new Error("🍉".concat(error.message));
       }
+
+      const { changes, timestamp } = data as {
+        changes: SyncDatabaseChangeSet;
+        timestamp: number;
+      };
+
+      console.log(
+        `🍉 Changes pulled at ${new Date(timestamp).toISOString()} UTC`,
+      );
+
+      return { changes, timestamp };
     },
     pushChanges: async ({ changes, lastPulledAt }) => {
       console.log("🍉 ⬆️ Pushing changes ...");
