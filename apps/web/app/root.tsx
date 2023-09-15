@@ -1,9 +1,4 @@
-import {
-  json,
-  V2_MetaFunction,
-  type LinksFunction,
-  type LoaderFunction,
-} from "@remix-run/cloudflare";
+import { MetaFunction, type LinksFunction } from "@remix-run/cloudflare";
 import {
   Links,
   LiveReload,
@@ -11,30 +6,17 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-  useLoaderData,
 } from "@remix-run/react";
-import { createBrowserClient } from "@supabase/auth-helpers-remix";
-import { useState } from "react";
-import { Database } from "./lib/database.types";
+
 import { Header } from "./components/Header";
 import styles from "./tailwind.css";
 
-type LoaderData = {
-  measurementId: string | undefined;
-  supabaseUrl: string;
-  supabaseAnonKey: string;
-};
-
-export const meta: V2_MetaFunction = () => [
-  {
-    charset: "utf-8",
-  },
+export const meta: MetaFunction = () => [
   {
     name: "title",
     content:
       "Share My Stack - Share your personal productivity stack with the world!",
   },
-  { name: "viewport", content: "width=device-width,initial-scale=1" },
   {
     name: "apple-itunes-app",
     content:
@@ -42,61 +24,20 @@ export const meta: V2_MetaFunction = () => [
   },
 ];
 
-declare module "@remix-run/server-runtime" {
-  export interface AppLoadContext {
-    env: {
-      MEASUREMENT_ID: string;
-      SUPABASE_URL: string;
-      SUPABASE_ANON_KEY: string;
-      CANNY_PRIVATE_KEY: string;
-    };
-  }
-}
-
-export const loader: LoaderFunction = async ({ context }) => {
-  return json<LoaderData>({
-    measurementId: context.env.MEASUREMENT_ID,
-    supabaseUrl: context.env.SUPABASE_URL,
-    supabaseAnonKey: context.env.SUPABASE_ANON_KEY,
-  });
-};
-
 export const links: LinksFunction = () => [{ rel: "stylesheet", href: styles }];
 
 export default function App() {
-  const { measurementId, supabaseUrl, supabaseAnonKey } =
-    useLoaderData<LoaderData>();
-
-  const [supabase] = useState(() =>
-    createBrowserClient<Database>(supabaseUrl, supabaseAnonKey)
-  );
-
   return (
     <html lang="en">
       <head>
         <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
-        {measurementId && (
-          <>
-            <script
-              async
-              src={`https://www.googletagmanager.com/gtag/js?id=${measurementId}`}
-            />
-            <script
-              async
-              id="gtag"
-              dangerouslySetInnerHTML={{
-                __html: `window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', '${measurementId}');`,
-              }}
-            />
-          </>
-        )}
       </head>
       <body className="bg-sms">
         <Header />
-        <Outlet context={{ supabase }} />
+        <Outlet />
         <ScrollRestoration />
         <Scripts />
         <LiveReload />

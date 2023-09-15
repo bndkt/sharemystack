@@ -4,9 +4,6 @@
   "sideEffects": false,
   "type": "module",
   "scripts": {
-    "clear": "rm -rf node_modules .cache functions public/build pnpm-lock.yaml",
-    "update": "pnpm update -i -r -L",
-    "types": "supabase gen types typescript --local > app/lib/database.types.ts",
     "build": "remix build",
     "dev": "remix dev --manual -c \"npm run start\"",
     "start": "wrangler pages dev --compatibility-date=2023-06-21 ./public",
@@ -16,9 +13,9 @@
   "dependencies": {
     "@headlessui/react": "^1.7.17",
     "@heroicons/react": "^2.0.18",
-    "@remix-run/cloudflare": "^1.19.3",
-    "@remix-run/cloudflare-pages": "^1.19.3",
-    "@remix-run/react": "^1.19.3",
+    "@remix-run/cloudflare": "^2.0.0",
+    "@remix-run/cloudflare-pages": "^2.0.0",
+    "@remix-run/react": "^2.0.0",
     "@supabase/auth-helpers-remix": "^0.2.1",
     "@tsndr/cloudflare-worker-jwt": "^2.2.2",
     "isbot": "^3.6.13",
@@ -26,9 +23,9 @@
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^3.19.0",
-    "@remix-run/dev": "^1.19.3",
-    "@remix-run/eslint-config": "^1.19.3",
+    "@cloudflare/workers-types": "4.20230914.0",
+    "@remix-run/dev": "^2.0.0",
+    "@remix-run/eslint-config": "^2.0.0",
     "@tailwindcss/typography": "^0.5.10",
     "@types/react": "^18.2.21",
     "@types/react-dom": "^18.2.7",
