@@ -7,7 +7,7 @@ import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import { PostHogProvider } from "posthog-react-native";
 import { useEffect, useRef, useState } from "react";
-import { AppState, LogBox, useColorScheme } from "react-native";
+import { AppState, useColorScheme } from "react-native";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
 import "@/lib/sentry";
@@ -19,12 +19,6 @@ import { AuthProvider } from "@/providers/AuthProvider";
 import { NavigationThemeProvider } from "@/providers/NavigationThemeProvider";
 import { SyncProvider } from "@/providers/SyncProvider";
 import tamaguiConfig from "@/tamagui.config";
-
-// TODO: Temporarily remove warnings
-LogBox.ignoreLogs([
-  "@supabase/gotrue-js: Stack guards not supported",
-  "The `redirect` prop",
-]);
 
 export default function Layout() {
   const appState = useRef(AppState.currentState);

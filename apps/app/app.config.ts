@@ -102,10 +102,7 @@ const config: ExpoConfig = {
   },
   plugins: [
     "sentry-expo",
-    /* [
-      "react-native-app-clip",
-      { name: "Share My Stack", exclude: ["ffmpeg-kit-react-native"] },
-    ], */
+    // ["react-native-app-clip", { name: "Share My Stack" }],
     [
       "expo-router",
       {
