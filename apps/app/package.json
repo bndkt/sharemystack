@@ -9,7 +9,8 @@
     "web": "expo start --web --clear",
     "doc": "npx expo-doctor@latest",
     "prebuild": "expo prebuild --platform ios --clean",
-    "build:local": "eas build --profile simulator --platform ios --local",
+    "build:simulator": "eas build --profile simulator --platform ios --local",
+    "build:development": "eas build --profile development --platform ios --local",
     "types": "supabase gen types typescript --local > src/lib/database.types.ts",
     "lint": "eslint src"
   },
