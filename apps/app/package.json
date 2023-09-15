@@ -11,7 +11,7 @@
     "prebuild": "expo prebuild --platform ios --clean",
     "build:local": "eas build --profile simulator --platform ios --local",
     "types": "supabase gen types typescript --local > src/lib/database.types.ts",
-    "lint": "eslint src modules"
+    "lint": "eslint src"
   },
   "dependencies": {
     "@gorhom/bottom-sheet": "5.0.0-alpha.4",
