@@ -12,25 +12,3 @@ updates:
       time: "21:00"
     assignees:
       - "bndkt"
-  - package-ecosystem: "npm"
-    directory: "/"
-    schedule:
-      interval: "daily"
-      time: "21:00"
-    assignees:
-      - "bndkt"
-    groups:
-      expo:
-        patterns:
-          - "expo-*"
-          - "@expo/*"
-          - "react-native-pager-view"
-          - "react-native-safe-area-context"
-          - "@types/react"
-          - "@sentry/react-native"
-          - "react-native-svg"
-          - "react-native-web"
-      remix:
-        patterns:
-          - "@remix-run/*"
-          - "@cloudflare/workers-types"
