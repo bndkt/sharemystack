@@ -135,24 +135,6 @@ const config: ExpoConfig = {
               path: "../../../node_modules/@nozbe/simdjson",
               modular_headers: true,
             },
-            /* {
-              name: "Get",
-              configurations: ["Debug", "Release"],
-              git: "https://github.com/bndkt/Get.git",
-              modular_headers: true,
-            },
-            {
-              name: "GetExtensions",
-              configurations: ["Debug", "Release"],
-              git: "https://github.com/bndkt/GetExtensions.git",
-              modular_headers: true,
-            },
-            {
-              name: "PostgREST",
-              configurations: ["Debug", "Release"],
-              git: "https://github.com/bndkt/postgrest-swift.git",
-              modular_headers: true,
-            }, */
           ],
         },
       },

@@ -1,6 +1,6 @@
 import "expo-dev-client";
 import "react-native-gesture-handler";
-import DatabaseProvider from "@nozbe/watermelondb/DatabaseProvider";
+import { DatabaseProvider } from "@nozbe/watermelondb/DatabaseProvider";
 import { TamaguiProvider, Theme } from "@tamagui/core";
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
