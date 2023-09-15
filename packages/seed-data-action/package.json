@@ -7,7 +7,7 @@
     "types": "supabase gen types typescript --local > src/types/database.types.ts",
     "build": "tsc",
     "dev": "tsc --watch",
-    "start": "pnpm run build && node dist/index.js",
+    "start": "bun run src/index.ts",
     "lint": "eslint src"
   },
   "dependencies": {
