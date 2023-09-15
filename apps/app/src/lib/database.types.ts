@@ -227,6 +227,7 @@ export interface Database {
           description: string | null
           id: string
           image: string | null
+          import_slug: string | null
           is_featured: boolean
           last_modified_at: string
           name: string | null
@@ -247,6 +248,7 @@ export interface Database {
           description?: string | null
           id?: string
           image?: string | null
+          import_slug?: string | null
           is_featured?: boolean
           last_modified_at?: string
           name?: string | null
@@ -267,6 +269,7 @@ export interface Database {
           description?: string | null
           id?: string
           image?: string | null
+          import_slug?: string | null
           is_featured?: boolean
           last_modified_at?: string
           name?: string | null
