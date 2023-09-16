@@ -1,5 +1,4 @@
 import "expo-dev-client";
-import "react-native-gesture-handler";
 import { DatabaseProvider } from "@nozbe/watermelondb/DatabaseProvider";
 import { TamaguiProvider, Theme } from "@tamagui/core";
 import { useFonts } from "expo-font";
@@ -8,6 +7,7 @@ import { StatusBar } from "expo-status-bar";
 import { PostHogProvider } from "posthog-react-native";
 import { useEffect, useRef, useState } from "react";
 import { AppState, useColorScheme } from "react-native";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 
 import "@/lib/sentry";
@@ -63,27 +63,29 @@ export default function Layout() {
       <TamaguiProvider config={tamaguiConfig}>
         <Theme name={activeColorScheme}>
           <NavigationThemeProvider>
-            <SafeAreaProvider>
-              <DatabaseProvider database={database}>
-                <AuthProvider>
-                  <SyncProvider>
-                    <Stack>
-                      <Stack.Screen
-                        name="(tabs)"
-                        options={{
-                          title: "Home",
-                          headerShown: false,
-                        }}
-                      />
-                      <Stack.Screen
-                        name="[profile]"
-                        options={{ headerShown: true }}
-                      />
-                    </Stack>
-                  </SyncProvider>
-                </AuthProvider>
-              </DatabaseProvider>
-            </SafeAreaProvider>
+            <GestureHandlerRootView style={{ flex: 1 }}>
+              <SafeAreaProvider>
+                <DatabaseProvider database={database}>
+                  <AuthProvider>
+                    <SyncProvider>
+                      <Stack>
+                        <Stack.Screen
+                          name="(tabs)"
+                          options={{
+                            title: "Home",
+                            headerShown: false,
+                          }}
+                        />
+                        <Stack.Screen
+                          name="[profile]"
+                          options={{ headerShown: true }}
+                        />
+                      </Stack>
+                    </SyncProvider>
+                  </AuthProvider>
+                </DatabaseProvider>
+              </SafeAreaProvider>
+            </GestureHandlerRootView>
           </NavigationThemeProvider>
         </Theme>
       </TamaguiProvider>
