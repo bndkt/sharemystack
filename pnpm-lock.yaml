@@ -249,6 +249,9 @@ importers:
       '@tsndr/cloudflare-worker-jwt':
         specifier: 2.2.2
         version: 2.2.2
+      clsx:
+        specifier: ^2.0.0
+        version: 2.0.0
       isbot:
         specifier: 3.6.13
         version: 3.6.13
@@ -7351,6 +7354,11 @@ packages:
   /clone@2.1.2:
     resolution: {integrity: sha512-3Pe/CF1Nn94hyhIYpjtiLhdCoEoz0DqQ+988E9gmeEdQZlojxnOb74wctFyuwWQHzqyf9X7C7MG8juUpqBJT8w==}
     engines: {node: '>=0.8'}
+    dev: false
+
+  /clsx@2.0.0:
+    resolution: {integrity: sha512-rQ1+kcj+ttHG0MKVGBUXwayCCF1oh39BF5COIpRzuCEv8Mwjv0XucrI2ExNTOn9IlLifGClWQcU9BrZORvtw6Q==}
+    engines: {node: '>=6'}
     dev: false
 
   /cmd-shim@6.0.1:
