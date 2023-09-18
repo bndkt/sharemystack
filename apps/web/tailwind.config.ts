@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import colors from "tailwindcss/colors";
 import typography from "@tailwindcss/typography";
 
 export default {
@@ -7,7 +8,7 @@ export default {
   theme: {
     extend: {
       colors: {
-        sms: "#f43f5e",
+        sms: colors.rose,
       },
     },
   },
