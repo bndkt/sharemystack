@@ -1,11 +1,23 @@
-export default function Index() {
+import { Hero } from "~/components/home/Hero";
+
+/* import { CallToAction } from "@/components/CallToAction";
+import { Faqs } from "@/components/Faqs";
+
+import { Pricing } from "@/components/Pricing";
+import { PrimaryFeatures } from "@/components/PrimaryFeatures";
+import { Reviews } from "@/components/Reviews";
+import { SecondaryFeatures } from "@/components/SecondaryFeatures"; */
+
+export default function Home() {
   return (
-    <div className="pt-16 text-white text-center">
-      Follow us{" "}
-      <a href="https://twitter.com/sharemystack" className="font-bold">
-        @sharemystack
-      </a>{" "}
-      for updates.
-    </div>
+    <>
+      <Hero />
+      {/* <PrimaryFeatures />
+      <SecondaryFeatures />
+      <CallToAction />
+      <Reviews />
+      <Pricing />
+      <Faqs /> */}
+    </>
   );
 }

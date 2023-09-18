@@ -7,8 +7,10 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
+import clsx from "clsx";
 
-import { Header } from "./components/Header";
+import { Header } from "~/components/Header";
+import { Footer } from "~/components/Footer";
 import styles from "./tailwind.css";
 
 export const meta: MetaFunction = () => [
@@ -28,16 +30,22 @@ export const links: LinksFunction = () => [{ rel: "stylesheet", href: styles }];
 
 export default function App() {
   return (
-    <html lang="en">
+    <html lang="en" className={clsx("h-full bg-gray-50 antialiased")}>
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <Meta />
         <Links />
       </head>
-      <body className="bg-sms">
-        <Header />
-        <Outlet />
+      <body className="flex h-full flex-col">
+        <div className="flex min-h-full flex-col">
+          <Header />
+          <main className="flex-auto">
+            <Outlet />
+          </main>
+          <Footer />
+        </div>
+
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
