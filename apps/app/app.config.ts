@@ -102,7 +102,7 @@ const config: ExpoConfig = {
   },
   plugins: [
     "sentry-expo",
-    // ["react-native-app-clip", { name: "Share My Stack" }],
+    ["react-native-app-clip", { name: "Share My Stack" }],
     [
       "expo-router",
       {
