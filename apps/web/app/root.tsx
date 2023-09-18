@@ -12,12 +12,11 @@ import clsx from "clsx";
 import { Header } from "~/components/Header";
 import { Footer } from "~/components/Footer";
 import styles from "./tailwind.css";
+import { config } from "./lib/config";
 
 export const meta: MetaFunction = () => [
   {
-    name: "title",
-    content:
-      "Share My Stack - Share your personal productivity stack with the world!",
+    title: `${config.name} - ${config.tagline}`,
   },
   {
     name: "apple-itunes-app",
