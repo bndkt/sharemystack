@@ -14,6 +14,7 @@ import logoForbes from "~/images/logos/forbes.svg";
 import logoHuffpost from "~/images/logos/huffpost.svg";
 import logoTechcrunch from "~/images/logos/techcrunch.svg";
 import logoWired from "~/images/logos/wired.svg";
+import { config } from "~/lib/config";
 
 function BackgroundIllustration(props: React.ComponentPropsWithoutRef<"div">) {
   let id = useId();
@@ -104,7 +105,7 @@ export function Hero() {
         <div className="lg:grid lg:grid-cols-12 lg:gap-x-8 lg:gap-y-20">
           <div className="relative z-10 mx-auto max-w-2xl lg:col-span-7 lg:max-w-none lg:pt-6 xl:col-span-6">
             <h1 className="text-4xl font-medium tracking-tight text-gray-900">
-              Invest at the perfect time.
+              {config.tagline}
             </h1>
             <p className="mt-6 text-lg text-gray-600">
               By leveraging insights from our network of industry insiders,
@@ -113,12 +114,9 @@ export function Hero() {
             </p>
             <div className="mt-8 flex flex-wrap gap-x-6 gap-y-4">
               <AppStoreLink />
-              <Button
-                to="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-                variant="outline"
-              >
+              <Button to={config.videoLink} variant="outline">
                 <PlayIcon className="h-6 w-6 flex-none" />
-                <span className="ml-2.5">Watch the video</span>
+                <span className="ml-2.5">Watch the demo</span>
               </Button>
             </div>
           </div>
@@ -126,11 +124,11 @@ export function Hero() {
             <BackgroundIllustration className="absolute left-1/2 top-4 h-[1026px] w-[1026px] -translate-x-1/3 stroke-gray-300/70 [mask-image:linear-gradient(to_bottom,white_20%,transparent_75%)] sm:top-16 sm:-translate-x-1/2 lg:-top-16 lg:ml-12 xl:-top-14 xl:ml-0" />
             <div className="-mx-4 h-[448px] px-9 [mask-image:linear-gradient(to_bottom,white_60%,transparent)] sm:mx-0 lg:absolute lg:-inset-x-10 lg:-bottom-20 lg:-top-10 lg:h-auto lg:px-0 lg:pt-10 xl:-bottom-32">
               <PhoneFrame className="mx-auto max-w-[366px]" priority>
-                <AppDemo />
+                <img src="/images/screenshot1.png" />
               </PhoneFrame>
             </div>
           </div>
-          <div className="relative -mt-4 lg:col-span-7 lg:mt-0 xl:col-span-6">
+          {/* <div className="relative -mt-4 lg:col-span-7 lg:mt-0 xl:col-span-6">
             <p className="text-center text-sm font-semibold text-gray-900 lg:text-left">
               As featured in
             </p>
@@ -153,7 +151,7 @@ export function Hero() {
                 </li>
               ))}
             </ul>
-          </div>
+          </div> */}
         </div>
       </Container>
     </div>

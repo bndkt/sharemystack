@@ -2,9 +2,10 @@ import { Link } from "@remix-run/react";
 import { Button } from "~/components/Button";
 import { Container } from "~/components/Container";
 import { TextField } from "~/components/Fields";
-import { Logomark } from "~/components/Logo";
+import { Logo } from "~/components/Logo";
 import { NavLinks } from "~/components/NavLinks";
 import qrCode from "~/images/qr-code.svg";
+import { config } from "~/lib/config";
 
 function QrCodeBorder(props: React.ComponentPropsWithoutRef<"svg">) {
   return (
@@ -25,15 +26,13 @@ export function Footer() {
         <div className="flex flex-col items-start justify-between gap-y-12 pb-6 pt-16 lg:flex-row lg:items-center lg:py-16">
           <div>
             <div className="flex items-center text-gray-900">
-              <Logomark className="h-10 w-10 flex-none fill-sms-500" />
+              <Logo className="h-10 w-10 flex-none text-sms-500" />
               <div className="ml-4">
-                <p className="text-base font-semibold">Pocket</p>
-                <p className="mt-1 text-sm">Invest at the perfect time.</p>
+                <p className="text-base font-semibold">{config.name}</p>
+                <p className="mt-1 text-sm">{config.tagline}</p>
               </div>
             </div>
-            <nav className="mt-11 flex gap-8">
-              <NavLinks />
-            </nav>
+            <nav className="mt-11 flex gap-8">{/* <NavLinks /> */}</nav>
           </div>
           <div className="group relative -mx-4 flex items-center self-stretch p-4 transition-colors hover:bg-gray-100 sm:self-auto sm:rounded-2xl lg:mx-0 lg:self-auto lg:p-6">
             <div className="relative flex h-24 w-24 flex-none items-center justify-center">
@@ -42,7 +41,7 @@ export function Footer() {
             </div>
             <div className="ml-8 lg:w-64">
               <p className="text-base font-semibold text-gray-900">
-                <Link to="#">
+                <Link to={config.appStoreLink}>
                   <span className="absolute inset-0 sm:rounded-2xl" />
                   Download the app
                 </Link>
@@ -54,7 +53,16 @@ export function Footer() {
           </div>
         </div>
         <div className="flex flex-col items-center border-t border-gray-200 pb-12 pt-8 md:flex-row-reverse md:justify-between md:pt-6">
-          <form className="flex w-full justify-center md:w-auto">
+          <form
+            className="flex w-full justify-center md:w-auto"
+            action="https://app.convertkit.com/forms/5438278/subscriptions"
+            method="post"
+            data-sv-form="5438278"
+            data-uid="f260b979da"
+            data-format="inline"
+            data-version="5"
+            data-options='{"settings":{"after_subscribe":{"action":"message","success_message":"Success! Now check your email to confirm your subscription.","redirect_url":""},"analytics":{"google":null,"fathom":null,"facebook":null,"segment":null,"pinterest":null,"sparkloop":null,"googletagmanager":null},"modal":{"trigger":"timer","scroll_percentage":null,"timer":5,"devices":"all","show_once_every":15},"powered_by":{"show":true,"url":"https://convertkit.com/features/forms?utm_campaign=poweredby&amp;utm_content=form&amp;utm_medium=referral&amp;utm_source=dynamic"},"recaptcha":{"enabled":false},"return_visitor":{"action":"show","custom_content":""},"slide_in":{"display_in":"bottom_right","trigger":"timer","scroll_percentage":null,"timer":5,"devices":"all","show_once_every":15},"sticky_bar":{"display_in":"top","trigger":"timer","scroll_percentage":null,"timer":5,"devices":"all","show_once_every":15}},"version":"5"}'
+          >
             <TextField
               type="email"
               aria-label="Email address"
@@ -62,6 +70,7 @@ export function Footer() {
               autoComplete="email"
               required
               className="w-60 min-w-0 shrink"
+              name="email_address"
             />
             <Button type="submit" color="sms" className="ml-4 flex-none">
               <span className="hidden lg:inline">Join our newsletter</span>

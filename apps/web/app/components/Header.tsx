@@ -1,5 +1,3 @@
-"use client";
-
 import { Popover } from "@headlessui/react";
 import { Link } from "@remix-run/react";
 import { AnimatePresence, motion } from "framer-motion";
@@ -8,6 +6,7 @@ import { Button } from "~/components/Button";
 import { Container } from "~/components/Container";
 import { Logo } from "~/components/Logo";
 import { NavLinks } from "~/components/NavLinks";
+import { config } from "~/lib/config";
 
 function MenuIcon(props: React.ComponentPropsWithoutRef<"svg">) {
   return (
@@ -56,8 +55,13 @@ export function Header() {
       <nav>
         <Container className="relative z-50 flex justify-between py-8">
           <div className="relative z-10 flex items-center gap-16">
-            <Link to="/" aria-label="Home">
-              <Logo className="h-10 w-auto" />
+            <Link
+              to="/"
+              aria-label="Home"
+              className="flex items-center text-sms-500"
+            >
+              <Logo className="h-10 w-auto text" />
+              <p className="ml-4 text-base font-semibold">{config.name}</p>
             </Link>
             <div className="hidden lg:flex lg:gap-10">{/* <NavLinks /> */}</div>
           </div>
@@ -113,10 +117,12 @@ export function Header() {
                             <MobileNavLink to="/#faqs">FAQs</MobileNavLink>
                           </div> */}
                           <div className="mt-8 flex flex-col gap-4">
-                            <Button to="/login" variant="outline">
+                            {/* <Button to="/login" variant="outline">
                               Log in
+                            </Button> */}
+                            <Button to={config.appStoreLink}>
+                              Download the app
                             </Button>
-                            <Button to="#">Download the app</Button>
                           </div>
                         </Popover.Panel>
                       </>
@@ -125,10 +131,10 @@ export function Header() {
                 </>
               )}
             </Popover>
-            <Button to="/login" variant="outline" className="hidden lg:block">
+            {/* <Button to="/login" variant="outline" className="hidden lg:block">
               Log in
-            </Button>
-            <Button to="#" className="hidden lg:block">
+            </Button> */}
+            <Button to={config.appStoreLink} className="hidden lg:block">
               Download
             </Button>
           </div>

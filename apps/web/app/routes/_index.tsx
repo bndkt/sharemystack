@@ -1,23 +1,21 @@
 import { Hero } from "~/components/home/Hero";
-
-/* import { CallToAction } from "@/components/CallToAction";
-import { Faqs } from "@/components/Faqs";
-
-import { Pricing } from "@/components/Pricing";
-import { PrimaryFeatures } from "@/components/PrimaryFeatures";
-import { Reviews } from "@/components/Reviews";
-import { SecondaryFeatures } from "@/components/SecondaryFeatures"; */
+import { PrimaryFeatures } from "~/components/home/PrimaryFeatures";
+import { SecondaryFeatures } from "~/components/home/SecondaryFeatures";
+import { Faqs } from "~/components/home/Faqs";
+import { CallToAction } from "~/components/home/CallToAction";
+import { Pricing } from "~/components/home/Pricing";
+import { Reviews } from "~/components/home/Reviews";
 
 export default function Home() {
   return (
     <>
       <Hero />
-      {/* <PrimaryFeatures />
+      <PrimaryFeatures />
       <SecondaryFeatures />
       <CallToAction />
-      <Reviews />
-      <Pricing />
-      <Faqs /> */}
+      {/* <Reviews />
+      <Pricing /> */}
+      <Faqs />
     </>
   );
 }

@@ -1,5 +1,3 @@
-"use client";
-
 import { useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "@remix-run/react";

@@ -1,5 +1,6 @@
 import { Link } from "@remix-run/react";
 import clsx from "clsx";
+import { config } from "~/lib/config";
 
 export function AppStoreLink({
   color = "black",
@@ -8,7 +9,7 @@ export function AppStoreLink({
 }) {
   return (
     <Link
-      to="/"
+      to={config.appStoreLink}
       aria-label="Download on the App Store"
       className={clsx(
         "rounded-lg transition-colors",

@@ -1,5 +1,3 @@
-"use client";
-
 import { useEffect, useMemo, useRef, useState } from "react";
 import clsx from "clsx";
 import { useInView } from "framer-motion";
