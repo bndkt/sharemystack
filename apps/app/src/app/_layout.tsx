@@ -12,7 +12,7 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 
 import "@/lib/sentry";
 import "@/lib/vexo";
-import "@/lib/onesignal";
+// import "@/lib/onesignal";
 import { config } from "@/lib/config";
 import { database } from "@/lib/watermelon";
 import { AuthProvider } from "@/providers/AuthProvider";
