@@ -1,18 +1,31 @@
+import { useMemo } from "react";
+import { Token } from "tamagui";
+
 import { TemplateProps } from ".";
 import { Grid1 } from "./Grid1";
 
-export function Facebook1(templateProps: TemplateProps) {
+import { Pick } from "@/model/Pick";
+
+export function Facebook1({
+  picks,
+  ...templateProps
+}: TemplateProps & { picks: Pick[] }) {
+  const iconGridProps = useMemo(() => {
+    const maxIcons = 10;
+
+    const iconSizes = new Map<number, Token>([
+      [3, "$8"],
+      [10, "$3"],
+    ]);
+
+    return {
+      picks,
+      maxIcons,
+      iconSizes,
+    };
+  }, [picks]);
+
   return (
-    <Grid1
-      {...templateProps}
-      ratio={1.91}
-      maxIcons={10}
-      iconSizes={
-        new Map([
-          [3, "$8"],
-          [10, "$3"],
-        ])
-      }
-    />
+    <Grid1 {...templateProps} ratio={1.91} iconGridProps={iconGridProps} />
   );
 }

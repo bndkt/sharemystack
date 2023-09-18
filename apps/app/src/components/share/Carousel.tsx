@@ -1,23 +1,27 @@
-import { useRef, useState } from "react";
-import { FlatList } from "react-native";
+import { FlashList } from "@shopify/flash-list";
+import { memo, useRef, useState } from "react";
 import ViewShot, { releaseCapture } from "react-native-view-shot";
 import { Button, Theme, YStack } from "tamagui";
 
 import { TemplateSelector } from "./TemplateSelector";
 import { Target, Template, TemplateProps, templates } from "./templates";
 
+import { Pick } from "@/model/Pick";
+
 const THUMB_SIZE = 80;
 
 export function Carousel({
   templateProps,
+  picks,
   onShare,
 }: {
   templateProps: Omit<TemplateProps, "width">;
+  picks: Pick[];
   onShare: ({ uri, target }: { uri: string; target: Target }) => Promise<void>;
 }) {
   const [activeIndex, setActiveIndex] = useState(0);
-  const maxRef = useRef<FlatList>(null);
-  const thumbRef = useRef<FlatList>(null);
+  const maxRef = useRef<FlashList<Template>>(null);
+  const thumbRef = useRef<FlashList<Template>>(null);
   const [width, setWidth] = useState(0);
   const viewShotRef = useRef<ViewShot>(null);
 
@@ -25,6 +29,7 @@ export function Carousel({
     if (index === activeIndex) {
       return;
     }
+
     maxRef?.current?.scrollToOffset({
       offset: index * width,
       animated: true,
@@ -48,79 +53,103 @@ export function Carousel({
   function handleShare() {
     const target = templates[activeIndex].target;
 
-    viewShotRef.current?.capture &&
+    if (viewShotRef.current?.capture) {
       viewShotRef.current?.capture().then(async (uri: string) => {
         await onShare({ target, uri });
         releaseCapture(uri);
       });
+    }
   }
 
   return (
     <YStack
-      space="$3"
       onLayout={(event) => {
         const { width } = event.nativeEvent.layout;
         setWidth(width);
       }}
     >
-      <Theme name={templateProps.options.darkMode ? "dark" : "light"}>
-        <FlatList
-          ref={maxRef}
-          data={templates}
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          keyExtractor={(item) => item.id.toString()}
-          pagingEnabled
-          onMomentumScrollEnd={(ev) => {
-            scrollToIndex(Math.floor(ev.nativeEvent.contentOffset.x / width));
-          }}
-          renderItem={({ item, index }: { item: Template; index: number }) => {
-            const newTemplateProps = { ...templateProps, width };
-            const Component = () => item.component(newTemplateProps);
-            return index === activeIndex ? (
-              <ViewShot
-                ref={viewShotRef}
-                options={{
-                  format: "png",
-                  fileName: "sharemystack.png",
-                  // result: "base64",
+      {width > 0 ? (
+        <YStack space="$3">
+          <YStack height={width} alignItems="center" justifyContent="center">
+            <Theme name={templateProps.options.darkMode ? "dark" : "light"}>
+              <FlashList
+                ref={maxRef}
+                data={templates}
+                horizontal
+                showsHorizontalScrollIndicator={false}
+                keyExtractor={(item) => item.id.toString()}
+                pagingEnabled
+                onMomentumScrollEnd={(ev) => {
+                  scrollToIndex(
+                    Math.floor(ev.nativeEvent.contentOffset.x / width),
+                  );
                 }}
-              >
-                <Component />
-              </ViewShot>
-            ) : (
-              <Component />
-            );
-          }}
-          contentContainerStyle={{ alignItems: "center" }}
-        />
-      </Theme>
-      <FlatList
-        ref={thumbRef}
-        data={templates}
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        keyExtractor={(item) => item.id.toString()}
-        renderItem={({ item, index }: { item: Template; index: number }) => {
-          return (
-            <TemplateSelector
-              active={index === activeIndex}
-              target={item.target}
-              onPress={() => {
-                scrollToIndex(index);
-              }}
-            />
-          );
-        }}
-      />
-      <Button
-        marginHorizontal="$3"
-        backgroundColor="$sms"
-        color="white"
-        onPress={handleShare}
-      >
-        Share My Stack
-      </Button>
+                extraData={templateProps}
+                estimatedItemSize={width}
+                renderItem={({
+                  item,
+                  index,
+                }: {
+                  item: Template;
+                  index: number;
+                }) => {
+                  const newTemplateProps = { ...templateProps, width };
+                  const Component = () =>
+                    item.component(newTemplateProps, picks);
+                  return index === activeIndex ? (
+                    <ViewShot
+                      ref={viewShotRef}
+                      options={{
+                        format: "png",
+                        fileName: "sharemystack.png",
+                        // result: "base64",
+                      }}
+                    >
+                      <Component />
+                    </ViewShot>
+                  ) : (
+                    <Component />
+                  );
+                }}
+              />
+            </Theme>
+          </YStack>
+          <FlashList
+            ref={thumbRef}
+            data={templates}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            keyExtractor={(item) => item.id.toString()}
+            estimatedItemSize={width}
+            extraData={activeIndex}
+            renderItem={({
+              item,
+              index,
+            }: {
+              item: Template;
+              index: number;
+            }) => {
+              return (
+                <TemplateSelector
+                  active={index === activeIndex}
+                  target={item.target}
+                  onPress={() => {
+                    scrollToIndex(index);
+                  }}
+                />
+              );
+            }}
+          />
+          <Button
+            marginHorizontal="$3"
+            backgroundColor="$sms"
+            color="white"
+            onPress={handleShare}
+          >
+            Share My Stack
+          </Button>
+        </YStack>
+      ) : null}
     </YStack>
   );
 }

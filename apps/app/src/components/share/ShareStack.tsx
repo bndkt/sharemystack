@@ -83,7 +83,8 @@ export function ShareStack({
     <YStack fullscreen paddingBottom={insets.bottom}>
       <YStack flexGrow={1}>
         <Carousel
-          templateProps={{ profile, stack, picks, options }}
+          templateProps={{ profile, stack, options }}
+          picks={picks}
           onShare={handleShare}
         />
       </YStack>

@@ -1,32 +1,45 @@
-import { useMemo } from "react";
-import { H5, Square, Text, Token, XStack, YStack } from "tamagui";
+import { H5, Square, Text, Token, XStack, YStack, useThemeName } from "tamagui";
 
 import { TemplateProps } from ".";
 import { IconGrid } from "../IconGrid";
 
+import { Pick } from "@/model/Pick";
+
 export function Grid1({
   profile,
   stack,
-  picks,
   options = {},
   width,
   ratio,
-  maxIcons,
-  iconSizes,
-}: TemplateProps & {
+  iconGridProps,
+}: Omit<TemplateProps, "picks"> & {
   ratio: number;
-  maxIcons?: number;
-  iconSizes?: Map<number, Token>;
+  iconGridProps: {
+    picks: Pick[];
+    maxIcons?: number;
+    iconSizes?: Map<number, Token>;
+  };
 }) {
-  const grid = useMemo(
+  /* const iconGridProps = useMemo(() => {
+    console.log("New props");
+    return {
+      picks,
+      maxIcons,
+      iconSizes,
+    };
+  }, [picks, maxIcons, iconSizes]); */
+
+  /* const grid = useMemo(
     () => <IconGrid picks={picks} maxIcons={maxIcons} iconSizes={iconSizes} />,
-    [picks, maxIcons, iconSizes]
-  );
+    [picks, maxIcons, iconSizes],
+  ); */
+
+  const themeName = useThemeName();
 
   return (
     <Square
       paddingHorizontal="$3"
-      backgroundColor="$background"
+      backgroundColor={themeName === "dark" ? "black" : "white"}
       alignItems="center"
       width={width}
       height={width / ratio}
@@ -38,7 +51,7 @@ export function Grid1({
         </H5>
       )}
       <YStack flexGrow={1} justifyContent="center">
-        {grid}
+        <IconGrid {...iconGridProps} />
       </YStack>
       <XStack alignItems="center" marginTop="$3" paddingBottom="$3">
         <Text marginLeft="$2">sharemystack.com/@{profile.slug}</Text>

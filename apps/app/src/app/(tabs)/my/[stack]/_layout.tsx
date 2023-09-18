@@ -19,23 +19,21 @@ export default function Layout() {
     user,
     stackId,
   });
-  const stackSharingFeature = useFeatureFlag("stack-sharing");
 
   return (
     <>
       <Stack.Screen
         options={{
           title: `${stack?.stackTypeName} Stack`,
-          headerRight: () =>
-            stackSharingFeature && (
-              <Button
-                icon={<Share size="$1.5" />}
-                onPress={() => {
-                  router.push(`/(tabs)/my/share/${stackId}`);
-                }}
-                unstyled
-              />
-            ),
+          headerRight: () => (
+            <Button
+              icon={<Share size="$1.5" />}
+              onPress={() => {
+                router.push(`/(tabs)/my/share/${stackId}`);
+              }}
+              unstyled
+            />
+          ),
         }}
       />
       <CustomSuspense

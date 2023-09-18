@@ -1,9 +1,9 @@
-import { LoaderArgs } from "@remix-run/cloudflare";
+import { LoaderFunctionArgs } from "@remix-run/cloudflare";
 import { useLoaderData } from "@remix-run/react";
 
 import { config } from "~/lib/config";
 
-export async function loader({ params }: LoaderArgs) {
+export async function loader({ params }: LoaderFunctionArgs) {
   if (params.stack?.toLowerCase().substring(0, 1) !== "@") {
     throw new Error("Invalid stack name");
   }

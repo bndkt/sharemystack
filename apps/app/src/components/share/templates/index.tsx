@@ -10,14 +10,13 @@ export type Target = "instagram" | "facebook" | "twitter" | "linkedin";
 
 export type Template = {
   id: string;
-  component: (props: TemplateProps) => React.JSX.Element;
+  component: (templateProps: TemplateProps, picks: Pick[]) => React.JSX.Element;
   target: Target;
 };
 
 export type TemplateProps = {
   profile: Profile;
   stack: Stack;
-  picks: Pick[];
   options: ShareOptions;
   width: number;
 };
@@ -25,27 +24,37 @@ export type TemplateProps = {
 export const templates: Template[] = [
   {
     id: "t1",
-    component: (props: TemplateProps) => <Instagram1 {...props} />,
+    component: (templateProps, picks) => (
+      <Instagram1 {...templateProps} picks={picks} />
+    ),
     target: "instagram",
   },
   {
     id: "t2",
-    component: (props: TemplateProps) => <Facebook1 {...props} />,
+    component: (templateProps, picks) => (
+      <Facebook1 {...templateProps} picks={picks} />
+    ),
     target: "facebook",
   },
   {
     id: "t3",
-    component: (props: TemplateProps) => <Instagram1 {...props} />,
+    component: (templateProps, picks) => (
+      <Instagram1 {...templateProps} picks={picks} />
+    ),
     target: "twitter",
   },
   {
     id: "t4",
-    component: (props: TemplateProps) => <Instagram1 {...props} />,
+    component: (templateProps, picks) => (
+      <Instagram1 {...templateProps} picks={picks} />
+    ),
     target: "linkedin",
   },
   {
     id: "t5",
-    component: (props: TemplateProps) => <Instagram1 {...props} />,
+    component: (templateProps, picks) => (
+      <Instagram1 {...templateProps} picks={picks} />
+    ),
     target: "instagram",
   },
 ];
