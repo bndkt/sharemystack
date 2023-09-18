@@ -10,7 +10,7 @@ import { useAuth } from "@/hooks/useAuth";
 
 export default function Index() {
   const { user } = useAuth();
-  const { profile, stacks } = useProfile({ user });
+  const { profile, stacks } = useProfile({ user, includeEmptyStacks: true });
 
   return profile ? (
     <YStack fullscreen>

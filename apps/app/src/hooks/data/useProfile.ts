@@ -14,15 +14,22 @@ type ProfileSelector =
       slug?: never;
       stackId?: string;
       debug?: string;
+      includeEmptyStacks?: boolean;
     }
   | {
       user?: never;
       slug: string | null;
       stackId?: string;
       debug?: string;
+      includeEmptyStacks?: boolean;
     };
 
-export function useProfile({ user, slug, stackId }: ProfileSelector) {
+export function useProfile({
+  user,
+  slug,
+  stackId,
+  includeEmptyStacks,
+}: ProfileSelector) {
   const database = useDatabase();
   const [profile, setProfile] = useState<Profile | null>();
   const [stacks, setStacks] = useState<Stack[] | null>();
@@ -30,7 +37,7 @@ export function useProfile({ user, slug, stackId }: ProfileSelector) {
   const [picks, setPicks] = useState<Pick[] | null>();
 
   const profilesCollection = database.collections.get<Profile>(
-    TableName.PROFILES
+    TableName.PROFILES,
   );
 
   const createProfile = user
@@ -72,8 +79,20 @@ export function useProfile({ user, slug, stackId }: ProfileSelector) {
       const subscription = profile.stacks
         .extend(Q.sortBy("created_at", "desc"))
         .observe()
-        .subscribe((data) => {
-          setStacks(data ?? null);
+        .subscribe(async (data) => {
+          data = data.filter(async (stack) => (await stack.picks.count) > 0);
+
+          const stacks: Stack[] = [];
+
+          await Promise.all(
+            data.map(async (item) => {
+              if (includeEmptyStacks || (await item.picks.count)) {
+                stacks.push(item);
+              }
+            }),
+          );
+
+          setStacks(stacks ?? null);
         });
 
       return () => subscription.unsubscribe();
