@@ -1,47 +1,47 @@
-import { useId } from 'react'
+import { useId } from "react";
 
-import { Container } from '@/components/Container'
+import { Container } from "~/components/Container";
 
 const features = [
   {
-    name: 'Invest any amount',
+    name: "Invest any amount",
     description:
-      'Whether it’s $1 or $1,000,000, we can put your money to work for you.',
+      "Whether it’s $1 or $1,000,000, we can put your money to work for you.",
     icon: DeviceArrowIcon,
   },
   {
-    name: 'Build a balanced portfolio',
+    name: "Build a balanced portfolio",
     description:
-      'Invest in different industries to find the most opportunities to win huge.',
+      "Invest in different industries to find the most opportunities to win huge.",
     icon: DeviceCardsIcon,
   },
   {
-    name: 'Trade in real-time',
+    name: "Trade in real-time",
     description:
-      'Get insider tips on big stock moves and act on them within seconds.',
+      "Get insider tips on big stock moves and act on them within seconds.",
     icon: DeviceClockIcon,
   },
   {
-    name: 'Profit from your network',
+    name: "Profit from your network",
     description:
-      'Invite new insiders to get tips faster and beat even other Pocket users.',
+      "Invite new insiders to get tips faster and beat even other Pocket users.",
     icon: DeviceListIcon,
   },
   {
-    name: 'Encrypted and anonymized',
+    name: "Encrypted and anonymized",
     description:
-      'Cutting-edge security technology that even the NSA doesn’t know about keeps you hidden.',
+      "Cutting-edge security technology that even the NSA doesn’t know about keeps you hidden.",
     icon: DeviceLockIcon,
   },
   {
-    name: 'Portfolio tracking',
+    name: "Portfolio tracking",
     description:
-      'Watch your investments grow exponentially, leaving other investors in the dust.',
+      "Watch your investments grow exponentially, leaving other investors in the dust.",
     icon: DeviceChartIcon,
   },
-]
+];
 
-function DeviceArrowIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
+function DeviceArrowIcon(props: React.ComponentPropsWithoutRef<"svg">) {
   return (
     <svg viewBox="0 0 32 32" aria-hidden="true" {...props}>
       <path
@@ -58,11 +58,11 @@ function DeviceArrowIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
       />
       <circle cx={16} cy={16} r={16} fill="#A3A3A3" fillOpacity={0.2} />
     </svg>
-  )
+  );
 }
 
-function DeviceCardsIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
-  let id = useId()
+function DeviceCardsIcon(props: React.ComponentPropsWithoutRef<"svg">) {
+  let id = useId();
 
   return (
     <svg viewBox="0 0 32 32" aria-hidden="true" {...props}>
@@ -94,10 +94,10 @@ function DeviceCardsIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
         </linearGradient>
       </defs>
     </svg>
-  )
+  );
 }
 
-function DeviceClockIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
+function DeviceClockIcon(props: React.ComponentPropsWithoutRef<"svg">) {
   return (
     <svg viewBox="0 0 32 32" aria-hidden="true" {...props}>
       <circle cx={16} cy={16} r={16} fill="#A3A3A3" fillOpacity={0.2} />
@@ -114,10 +114,10 @@ function DeviceClockIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
         fill="#171717"
       />
     </svg>
-  )
+  );
 }
 
-function DeviceListIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
+function DeviceListIcon(props: React.ComponentPropsWithoutRef<"svg">) {
   return (
     <svg viewBox="0 0 32 32" fill="none" aria-hidden="true" {...props}>
       <path
@@ -137,10 +137,10 @@ function DeviceListIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
       />
       <circle cx={16} cy={16} r={16} fill="#A3A3A3" fillOpacity={0.2} />
     </svg>
-  )
+  );
 }
 
-function DeviceLockIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
+function DeviceLockIcon(props: React.ComponentPropsWithoutRef<"svg">) {
   return (
     <svg viewBox="0 0 32 32" aria-hidden="true" {...props}>
       <circle cx={16} cy={16} r={16} fill="#A3A3A3" fillOpacity={0.2} />
@@ -157,10 +157,10 @@ function DeviceLockIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
         fill="#171717"
       />
     </svg>
-  )
+  );
 }
 
-function DeviceChartIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
+function DeviceChartIcon(props: React.ComponentPropsWithoutRef<"svg">) {
   return (
     <svg viewBox="0 0 32 32" fill="none" aria-hidden="true" {...props}>
       <path
@@ -183,7 +183,7 @@ function DeviceChartIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
       />
       <circle cx={16} cy={16} r={16} fill="#A3A3A3" fillOpacity={0.2} />
     </svg>
-  )
+  );
 }
 
 export function SecondaryFeatures() {
@@ -222,5 +222,5 @@ export function SecondaryFeatures() {
         </ul>
       </Container>
     </section>
-  )
+  );
 }
