@@ -5,13 +5,20 @@ import { useEffect, useState } from "react";
 import { Tool } from "@/model/Tool";
 import { TableName } from "@/model/schema";
 
-export function useTools() {
+export function useTools({
+  recentlyAdded,
+  limit,
+}: { recentlyAdded?: boolean; limit?: number } = {}) {
   const database = useDatabase();
   const [tools, setTools] = useState<Tool[]>();
 
-  const categoriesQuery = database.collections
+  let categoriesQuery = database.collections
     .get<Tool>(TableName.TOOLS)
-    .query(Q.sortBy("name"));
+    .query(recentlyAdded ? Q.sortBy("created_at", "desc") : Q.sortBy("name"));
+
+  if (limit) {
+    categoriesQuery = categoriesQuery.extend(Q.take(limit));
+  }
 
   useEffect(() => {
     const subscription = categoriesQuery.observe().subscribe((data) => {

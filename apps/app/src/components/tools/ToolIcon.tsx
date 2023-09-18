@@ -7,10 +7,10 @@ import { CustomSuspense } from "../loading/CustomSuspense";
 
 import { Tool } from "@/model/Tool";
 
-export function ToolIcon({ tool, size }: { tool: Tool; size: Token }) {
+export function ToolIcon({ tool, size }: { tool: Tool; size?: Token }) {
   const theme = useTheme();
   const color = tool.color?.length ? tool.color : theme.color.val;
-  const width = getTokenValue(size, "size");
+  const width = size ? getTokenValue(size, "size") : "100%";
 
   return tool.toolIcon?.id ? (
     <CustomSuspense

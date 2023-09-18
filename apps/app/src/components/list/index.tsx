@@ -11,11 +11,13 @@ export function List<T>({
   renderItem,
   placeholder,
   extraData,
+  numColumns,
 }: {
   data?: readonly T[] | null;
   renderItem?: ListRenderItem<T> | null;
   placeholder?: JSX.Element | string;
   extraData?: any;
+  numColumns?: number;
 }) {
   const { queueSync, isSyncing } = useSync();
   const [isRefreshing, setIsRefreshing] = useState(false);
@@ -50,6 +52,7 @@ export function List<T>({
       ItemSeparatorComponent={() => <Separator />}
       onRefresh={refresh}
       refreshing={isRefreshing}
+      numColumns={numColumns}
       /* refreshControl={
         <RefreshControl refreshing={isRefreshing} onRefresh={refresh} />
       } */

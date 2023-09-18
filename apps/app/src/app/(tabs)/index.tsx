@@ -1,9 +1,10 @@
 import { useIsFocused } from "@react-navigation/native"; // TODO: @react-navigation/native is not a dependency
 import { StatusBar } from "expo-status-bar";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import { H3, Text, XStack, YStack } from "tamagui";
+import { H3, XStack, YStack } from "tamagui";
 
 import { Logo } from "@/components/Logo";
+import { NewTools } from "@/components/home/NewTools";
 import { Stream } from "@/components/home/Stream";
 
 export default function Index() {
@@ -19,12 +20,14 @@ export default function Index() {
             Share My Stack
           </H3>
         </XStack>
-        <Text padding="$3" paddingTop="$0" fontSize="$5" color="white">
-          Curate your personal productivity stack, share it with the world, and
-          discover which tools others are using.
-        </Text>
       </YStack>
-      <YStack flexGrow={1} backgroundColor="$background">
+      <YStack
+        flexGrow={1}
+        backgroundColor="$background"
+        borderTopWidth="$1"
+        borderTopColor="$background"
+      >
+        <NewTools />
         <Stream />
       </YStack>
       {isFocused && <StatusBar style="light" />}
