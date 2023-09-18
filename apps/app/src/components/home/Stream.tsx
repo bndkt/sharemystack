@@ -16,7 +16,7 @@ export function Stream() {
     <YStack flexGrow={2}>
       <Text
         backgroundColor="$sms"
-        color="$background"
+        color="white"
         paddingVertical="$3"
         paddingHorizontal="$3"
         fontWeight="bold"

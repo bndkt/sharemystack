@@ -12,7 +12,7 @@ export function NewTools() {
     <YStack flexGrow={1}>
       <Text
         backgroundColor="$sms"
-        color="$background"
+        color="white"
         paddingVertical="$3"
         paddingHorizontal="$3"
         fontWeight="bold"
