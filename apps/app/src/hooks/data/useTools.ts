@@ -16,6 +16,12 @@ export function useTools({
     .get<Tool>(TableName.TOOLS)
     .query(recentlyAdded ? Q.sortBy("created_at", "desc") : Q.sortBy("name"));
 
+  if (recentlyAdded) {
+    categoriesQuery = categoriesQuery.extend(
+      Q.where("tool_icon_id", Q.notEq(null)),
+    );
+  }
+
   if (limit) {
     categoriesQuery = categoriesQuery.extend(Q.take(limit));
   }
