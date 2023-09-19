@@ -3,7 +3,6 @@ import { DatabaseProvider } from "@nozbe/watermelondb/DatabaseProvider";
 import { TamaguiProvider, Theme } from "@tamagui/core";
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
-import { StatusBar } from "expo-status-bar";
 import { PostHogProvider } from "posthog-react-native";
 import { useEffect, useRef, useState } from "react";
 import { AppState, useColorScheme } from "react-native";
@@ -89,7 +88,6 @@ export default function Layout() {
           </NavigationThemeProvider>
         </Theme>
       </TamaguiProvider>
-      <StatusBar style="auto" />
     </PostHogProvider>
   );
 }
