@@ -1,7 +1,6 @@
 import { useId } from "react";
 import clsx from "clsx";
 
-import { AppDemo } from "~/components/home/AppDemo";
 import { AppStoreLink } from "~/components/home/AppStoreLink";
 import { Button } from "~/components/Button";
 import { Container } from "~/components/Container";
@@ -15,6 +14,7 @@ import logoHuffpost from "~/images/logos/huffpost.svg";
 import logoTechcrunch from "~/images/logos/techcrunch.svg";
 import logoWired from "~/images/logos/wired.svg";
 import { config } from "~/lib/config";
+import { ProductHunt } from "./ProductHunt";
 
 function BackgroundIllustration(props: React.ComponentPropsWithoutRef<"div">) {
   let id = useId();
@@ -128,8 +128,9 @@ export function Hero() {
               </PhoneFrame>
             </div>
           </div>
-          {/* <div className="relative -mt-4 lg:col-span-7 lg:mt-0 xl:col-span-6">
-            <p className="text-center text-sm font-semibold text-gray-900 lg:text-left">
+          <div className="relative -mt-4 lg:col-span-7 lg:mt-0 xl:col-span-6">
+            <ProductHunt />
+            {/* <p className="text-center text-sm font-semibold text-gray-900 lg:text-left">
               As featured in
             </p>
             <ul
@@ -150,8 +151,8 @@ export function Hero() {
                   <img src={logo} alt={name} className="h-8" />
                 </li>
               ))}
-            </ul>
-          </div> */}
+            </ul> */}
+          </div>
         </div>
       </Container>
     </div>
