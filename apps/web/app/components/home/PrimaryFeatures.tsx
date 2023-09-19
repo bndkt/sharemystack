@@ -14,21 +14,21 @@ const features = [
     description:
       "For every friend you invite to Pocket, you get insider notifications 5 seconds sooner. And it’s 10 seconds if you invite an insider.",
     icon: DeviceUserIcon,
-    screenshot: "/images/screenshot2.png",
+    screenshot: "/images/screenshot2.webp",
   },
   {
     name: "Notifications on stock dips",
     description:
       "Get a push notification every time we find out something that’s going to lower the share price on your holdings so you can sell before the information hits the public markets.",
     icon: DeviceNotificationIcon,
-    screenshot: "/images/screenshot3.png",
+    screenshot: "/images/screenshot3.webp",
   },
   {
     name: "Invest what you want",
     description:
       "We hide your stock purchases behind thousands of anonymous trading accounts, so suspicious activity can never be traced back to you.",
     icon: DeviceTouchIcon,
-    screenshot: "/images/screenshot4.png",
+    screenshot: "/images/screenshot4.webp",
   },
 ];
 
