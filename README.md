@@ -4,12 +4,13 @@
 
 ## Built with
 
-- Expo SDK 49
-- Expo Router 2
-- React Native 0.72
-- Tamagui
-- Supabase
-- React Native Bottom Sheet
+- [Expo SDK 50](https://github.com/expo/expo/)
+- [Expo Router 3](https://github.com/expo/expo/tree/main/packages/expo-router)
+- [React Native 0.72](https://github.com/facebook/react-native)
+- [Tamagui](https://github.com/tamagui/tamagui)
+- [Supabase](https://github.com/supabase/supabase-js)
+- [React Native Bottom Sheet 5](https://github.com/gorhom/react-native-bottom-sheet)
+- [WatermelonDB](https://github.com/Nozbe/WatermelonDB)
 
 ## Messaging
 
