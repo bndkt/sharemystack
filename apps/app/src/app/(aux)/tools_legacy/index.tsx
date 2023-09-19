@@ -20,7 +20,7 @@ export default function Tools() {
               <ListItem
                 title={item.name}
                 subTitle={`Included in ${item.allPicks} stack`.concat(
-                  item.allPicks !== 1 ? "s" : ""
+                  item.allPicks !== 1 ? "s" : "",
                 )}
                 icon={<ToolIcon tool={item} size="$1.5" />}
                 iconAfter={<ChevronRight size="$1.5" />}

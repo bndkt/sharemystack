@@ -28,13 +28,13 @@ export function DeleteUserButton() {
             } else {
               Alert.alert(
                 "Confirmation failed",
-                "You didn't type DELETE correctly."
+                "You didn't type DELETE correctly.",
               );
             }
           },
         },
       ],
-      "plain-text"
+      "plain-text",
     );
     console.log("deleteUser");
   }

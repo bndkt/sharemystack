@@ -2,9 +2,9 @@ import { ChevronRight } from "@tamagui/lucide-icons";
 import { useGlobalSearchParams, useRouter } from "expo-router";
 import { ListItem } from "tamagui";
 
-import { CategoryIcon } from "@/components/categories/CategoryIcon";
 import { List } from "@/components/list";
 import { CustomSuspense } from "@/components/loading/CustomSuspense";
+import { ProfileIcon } from "@/components/profiles/ProfileIcon";
 import { useTool } from "@/hooks/data/useTool";
 
 export function ToolStacks() {
@@ -30,9 +30,7 @@ export function ToolStacks() {
                 <ListItem
                   title={`${profile.name}`}
                   subTitle={`in their ${item.stackTypeName} stack`}
-                  icon={
-                    <CategoryIcon name={item.stackTypeIconName} size="$1.5" />
-                  }
+                  icon={<ProfileIcon profile={profile} />}
                   onPress={() => router.push(`/@${profile.slug}/${stack.id}`)}
                   iconAfter={<ChevronRight size="$1.5" />}
                 />

@@ -12,7 +12,7 @@ function User() {
   const { user, signOut } = useAuth();
   const postHog = usePostHog();
   const [isBetaUser, setIsBetaUser] = useState<boolean>(
-    user?.user_metadata?.is_beta_user ?? false
+    user?.user_metadata?.is_beta_user ?? false,
   );
 
   async function toggleIsBetaUser() {

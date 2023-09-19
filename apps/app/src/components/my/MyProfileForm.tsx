@@ -20,7 +20,7 @@ export function MyProfileForm({
 }) {
   const [name, setName] = useState<string | undefined>(initialName);
   const [slug, setSlug] = useState<string | undefined>(
-    sanitizeSlug(initialSlug ?? "")
+    sanitizeSlug(initialSlug ?? ""),
   );
   const [validate, setValidate] = useState(false);
   const nameRef = useRef<TextInput>(null);

@@ -41,21 +41,21 @@ export function useProfiles({
   if (featured) {
     profilesQuery = profilesQuery.extend(
       Q.where("is_featured", true),
-      Q.sortBy("updated_at", "desc")
+      Q.sortBy("updated_at", "desc"),
     );
   }
 
   if (starred) {
     profilesQuery = profilesQuery.extend(
       Q.on(TableName.STARS, "profile_id", Q.notEq(null)),
-      Q.sortBy("name", "asc")
+      Q.sortBy("name", "asc"),
     );
   }
 
   if (updated) {
     profilesQuery = profilesQuery.extend(
       Q.sortBy("updated_at", "desc"),
-      Q.where("is_featured", false)
+      Q.where("is_featured", false),
     );
   }
 

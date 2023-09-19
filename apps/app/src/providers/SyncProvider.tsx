@@ -93,14 +93,14 @@ export function SyncProvider({ children }: { children: ReactNode }) {
         .subscribe({
           next: (changes) => {
             const changedRecords = changes?.filter(
-              (c) => c.record.syncStatus !== "synced"
+              (c) => c.record.syncStatus !== "synced",
             );
 
             if (changes?.length || changedRecords?.length) {
               console.log(
                 "♻️ Database changes",
                 changes?.length,
-                changedRecords?.length
+                changedRecords?.length,
               );
             }
 

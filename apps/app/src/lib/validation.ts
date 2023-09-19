@@ -1,6 +1,6 @@
 export function isValidSlug(
   str?: string | null,
-  ignoreLength = false
+  ignoreLength = false,
 ): boolean {
   // Ensure the slug is at least 3 characters long
   if (!str || (str.length < 3 && !ignoreLength)) {
@@ -14,7 +14,7 @@ export function isValidSlug(
 
 export function isValidName(
   str?: string | null,
-  ignoreLength = false
+  ignoreLength = false,
 ): boolean {
   // Ensure the slug is at least 3 characters long
   if (!str || (str.length < 3 && !ignoreLength)) {

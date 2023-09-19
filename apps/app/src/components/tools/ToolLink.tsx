@@ -9,7 +9,7 @@ export function ToolLink({ tool }: { tool: Tool }) {
       (supported) => {
         supported && Linking.openURL(link);
       },
-      (err) => console.log(err)
+      (err) => console.log(err),
     );
   }
 

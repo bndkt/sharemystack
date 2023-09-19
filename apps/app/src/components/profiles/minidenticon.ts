@@ -10,7 +10,7 @@ function simpleHash(str: string) {
       .split("")
       .reduce(
         (hash, char) => (hash ^ char.charCodeAt(0)) * -MAGIC_NUMBER,
-        MAGIC_NUMBER
+        MAGIC_NUMBER,
       ) >>> 2
   ); // 32 bit unsigned integer conversion disregarding last 2 bits for better randomness
 }
@@ -19,7 +19,7 @@ export function minidenticon(
   seed = "",
   saturation = DEFAULT_SATURATION,
   lightness = DEFAULT_LIGHTNESS,
-  hashFn = simpleHash
+  hashFn = simpleHash,
 ) {
   const hash = hashFn(seed);
   const hue = (hash % COLORS_NB) * (360 / COLORS_NB);
@@ -34,7 +34,7 @@ export function minidenticon(
             }" width="1" height="1"/>`
           : acc,
 
-      `<svg viewBox="-1.5 -1.5 8 8"  fill="hsl(${hue} ${saturation}% ${lightness}%)">`
+      `<svg viewBox="-1.5 -1.5 8 8"  fill="hsl(${hue} ${saturation}% ${lightness}%)">`,
     ) + "</svg>"
   );
 }
