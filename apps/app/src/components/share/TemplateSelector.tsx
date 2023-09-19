@@ -1,11 +1,5 @@
-import {
-  Facebook,
-  Instagram,
-  Linkedin,
-  Share,
-  Twitter,
-} from "@tamagui/lucide-icons";
-import { Button, Token, styled } from "tamagui";
+import { Facebook, Instagram, Linkedin, Twitter } from "@tamagui/lucide-icons";
+import { Button, styled } from "tamagui";
 
 import { Target } from "./templates";
 

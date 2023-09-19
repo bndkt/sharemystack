@@ -17,7 +17,7 @@ export function usePicks({ stream }: { stream?: boolean } = {}) {
   if (stream) {
     picksQuery = picksQuery.extend(
       Q.where("profile_name", Q.notEq(null)),
-      Q.where("profile_name", Q.notEq(""))
+      Q.where("profile_name", Q.notEq("")),
     );
   }
 

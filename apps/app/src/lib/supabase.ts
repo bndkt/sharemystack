@@ -18,5 +18,5 @@ export const supabase = createClient<Database>(
     auth: {
       storage: authStorage,
     },
-  }
+  },
 );

@@ -28,7 +28,7 @@ export function MyStacks({
   const filteredStackTypes =
     stackTypes?.filter(
       (stackType) =>
-        !stacks.some((stack) => stack.stackTypeSlug === stackType.slug)
+        !stacks.some((stack) => stack.stackTypeSlug === stackType.slug),
     ) ?? [];
 
   const items: (

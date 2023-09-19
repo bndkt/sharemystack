@@ -47,7 +47,7 @@ export function UpdatePicksList({
       (pick) =>
         pick.tool.id === tool.id &&
         pick.category.id === category.id &&
-        pick.stack.id === stack.id
+        pick.stack.id === stack.id,
     );
   }
 
