@@ -56,7 +56,6 @@ export default function Layout() {
       apiKey={config.postHogApiKey}
       options={{
         host: "https://app.posthog.com",
-        // enable: false,
       }}
     >
       <TamaguiProvider config={tamaguiConfig}>
