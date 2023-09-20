@@ -32,15 +32,15 @@ export function Footer() {
                 <p className="mt-1 text-sm">{config.tagline}</p>
               </div>
             </div>
-            <nav className="mt-11 flex gap-8">
+            <nav className="mt-11 flex gap-8 flex-wrap">
               <NavLinks
                 links={[
-                  ["Support", "https://sharemystack.com/support"],
-                  ["Roadmap", "https://sharemystack.com/roadmap"],
-                  ["Changelog", "https://sharemystack.com/terms"],
-                  ["Imprint", "https://sharemystack.com/imprint"],
-                  ["Privacy", "https://sharemystack.com/privacy"],
-                  ["Terms", "https://sharemystack.com/terms"],
+                  ["Support", "https://feld.app/support"],
+                  ["Roadmap", "https://sharemystack.canny.io"],
+                  ["Changelog", "https://sharemystack.canny.io/changelog"],
+                  ["Imprint", "https://feld.app/imprint"],
+                  ["Privacy", "https://feld.app/privacy"],
+                  ["Terms", "https://feld.app/terms"],
                 ]}
               />
             </nav>
