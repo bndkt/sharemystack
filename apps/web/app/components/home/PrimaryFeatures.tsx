@@ -3,15 +3,16 @@ import { Tab } from "@headlessui/react";
 import clsx from "clsx";
 import { AnimatePresence, motion } from "framer-motion";
 import { useDebouncedCallback } from "use-debounce";
-
-import { CircleBackground } from "~/components/home/CircleBackground";
-import { Container } from "~/components/Container";
-import { PhoneFrame } from "~/components/home/PhoneFrame";
 import {
   ShareIcon,
   Square3Stack3DIcon,
   UserGroupIcon,
 } from "@heroicons/react/24/outline";
+
+import { CircleBackground } from "~/components/home/CircleBackground";
+import { Container } from "~/components/Container";
+import { PhoneFrame } from "~/components/home/PhoneFrame";
+import { config } from "~/lib/config";
 
 const features = [
   /* {
@@ -112,7 +113,10 @@ function FeaturesDesktop() {
       </Tab.List>
       <div className="relative col-span-6">
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
-          <CircleBackground color="#13B5C8" className="animate-spin-slower" />
+          <CircleBackground
+            color={config.color}
+            className="animate-spin-slower"
+          />
         </div>
         <PhoneFrame className="z-10 mx-auto w-full max-w-[366px]">
           <Tab.Panels as={Fragment}>
