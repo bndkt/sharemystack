@@ -1,15 +1,15 @@
-import { ListItem, Text, YStack } from "tamagui";
+import { Text, YStack } from "tamagui";
 
-import { List } from "../list";
-import { ToolIcon } from "../tools/ToolIcon";
+import { CardStack } from "./card/CardStack";
+import { CustomSuspense } from "../loading/CustomSuspense";
 
 import { useTools } from "@/hooks/data/useTools";
 
 export function NewTools() {
-  const { tools } = useTools({ recentlyAdded: true, limit: 16 });
+  const { tools } = useTools({ recentlyAdded: true, limit: 32 });
 
   return (
-    <YStack flexGrow={1}>
+    <YStack height={180}>
       <Text
         backgroundColor="$sms"
         color="white"
@@ -19,20 +19,11 @@ export function NewTools() {
       >
         Recently added tools
       </Text>
-      <YStack flex={1}>
-        <List
+      <YStack flex={1} overflow="hidden" backgroundColor="$sms">
+        <CustomSuspense
           data={tools}
-          numColumns={2}
-          renderItem={({ item, index }) => {
-            return (
-              <ListItem
-                title={`${item.name}`}
-                // subTitle={`added ${item.toolName} to their ${item.stackTypeName} stack`}
-
-                icon={<ToolIcon tool={item} size="$1.5" />}
-              />
-            );
-          }}
+          name="tools"
+          component={(tools) => <CardStack tools={tools} />}
         />
       </YStack>
     </YStack>
