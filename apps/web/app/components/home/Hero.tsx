@@ -108,9 +108,10 @@ export function Hero() {
               {config.tagline}
             </h1>
             <p className="mt-6 text-lg text-gray-600">
-              By leveraging insights from our network of industry insiders,
-              you’ll know exactly when to buy to maximize profit, and exactly
-              when to sell to avoid painful losses.
+              Curate your personal productivity stack or your favorite
+              development stack. Share it within the app or on social media.
+              Discover what other people are using and get inspired to try out
+              new tools.
             </p>
             <div className="mt-8 flex flex-wrap gap-x-6 gap-y-4">
               <AppStoreLink />

@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useId, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import { Tab } from "@headlessui/react";
 import clsx from "clsx";
 import { AnimatePresence, motion } from "framer-motion";
@@ -8,32 +8,44 @@ import { CircleBackground } from "~/components/home/CircleBackground";
 import { Container } from "~/components/Container";
 import { PhoneFrame } from "~/components/home/PhoneFrame";
 import {
+  ShareIcon,
   Square3Stack3DIcon,
-  UserCircleIcon,
   UserGroupIcon,
 } from "@heroicons/react/24/outline";
 
 const features = [
-  {
-    name: "Invite friends for better returns",
-    description:
-      "For every friend you invite to Pocket, you get insider notifications 5 seconds sooner. And it’s 10 seconds if you invite an insider.",
+  /* {
+    name: "Create your profile and add stacks",
+    description: (
+      <>
+        Are you into productivity? Create your <b>productivity stack</b>.
+        Developers can add a <b>development stack</b> to their profile. And even
+        more stacks are coming soon.
+      </>
+    ),
     icon: UserCircleIcon,
     screenshot: "/images/screenshot2.webp",
-  },
+  }, */
   {
-    name: "Notifications on stock dips",
+    name: "Curate your stack",
     description:
-      "Get a push notification every time we find out something that’s going to lower the share price on your holdings so you can sell before the information hits the public markets.",
+      "Add tools to your stack by browsing through the available categories. Are you missing a category or a specific tool? Let us know through the app, we're constantly adding new stuff.",
     icon: Square3Stack3DIcon,
     screenshot: "/images/screenshot3.webp",
   },
   {
     name: "Explore what apps others are using",
     description:
-      "We hide your stock purchases behind thousands of anonymous trading accounts, so suspicious activity can never be traced back to you.",
+      "Take a peek at other people's stacks and get inspired to try out new tool. We even feature stacks of your favorite creators in the productivity and tech spaces.",
     icon: UserGroupIcon,
     screenshot: "/images/screenshot4.webp",
+  },
+  {
+    name: "Share your stack with the world",
+    description:
+      "Create beautiful images of your stack and share them on social media. We will add different templates for this over time.",
+    icon: ShareIcon,
+    screenshot: "/images/screenshot5.webp",
   },
 ];
 
