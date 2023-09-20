@@ -194,7 +194,7 @@ function FeaturesMobile() {
                 <img src={feature.screenshot} alt="" className="w-full" />
               </PhoneFrame>
               <div className="absolute inset-x-0 bottom-0 bg-gray-800/95 p-6 backdrop-blur sm:p-10">
-                <feature.icon className="h-8 w-8" />
+                <feature.icon className="h-8 w-8 text-white" />
                 <h3 className="mt-6 text-sm font-semibold text-white sm:text-lg">
                   {feature.name}
                 </h3>
@@ -241,13 +241,10 @@ export function PrimaryFeatures() {
       <Container>
         <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-3xl">
           <h2 className="text-3xl font-medium tracking-tight text-white">
-            Every feature you need to win. Try it for yourself.
+            {/* TODO: Share to tools you love and discover new ones */}
           </h2>
           <p className="mt-2 text-lg text-gray-400">
-            Pocket was built for investors like you who play by their own rules
-            and aren’t going to let SEC regulations get in the way of their
-            dreams. If other investing tools are afraid to build it, Pocket has
-            it.
+            {/* TODO: Share My Stack was built for people like you who ... */}
           </p>
         </div>
       </Container>

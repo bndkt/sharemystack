@@ -7,7 +7,7 @@ export function AppStoreLink({
 }: {
   color?: "black" | "white";
 }) {
-  return (
+  return config.appStoreLink ? (
     <Link
       to={config.appStoreLink}
       aria-label="Download on the App Store"
@@ -25,5 +25,5 @@ export function AppStoreLink({
         />
       </svg>
     </Link>
-  );
+  ) : null;
 }

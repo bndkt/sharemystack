@@ -115,10 +115,12 @@ export function Hero() {
             </p>
             <div className="mt-8 flex flex-wrap gap-x-6 gap-y-4">
               <AppStoreLink />
-              <Button to={config.videoLink} variant="outline">
-                <PlayIcon className="h-6 w-6 flex-none" />
-                <span className="ml-2.5">Watch the demo</span>
-              </Button>
+              {config.videoLink ? (
+                <Button to={config.videoLink} variant="outline">
+                  <PlayIcon className="h-6 w-6 flex-none" />
+                  <span className="ml-2.5">Watch the demo</span>
+                </Button>
+              ) : null}
             </div>
           </div>
           <div className="relative mt-10 sm:mt-20 lg:col-span-5 lg:row-span-2 lg:mt-0 xl:col-span-6">
@@ -130,7 +132,7 @@ export function Hero() {
             </div>
           </div>
           <div className="relative -mt-4 lg:col-span-7 lg:mt-0 xl:col-span-6">
-            <ProductHunt />
+            {/* <ProductHunt /> */}
             {/* <p className="text-center text-sm font-semibold text-gray-900 lg:text-left">
               As featured in
             </p>
