@@ -39,8 +39,8 @@ importers:
         specifier: 1.6.1
         version: 1.6.1(@babel/runtime@7.22.15)(react-native@0.72.4)(react@18.2.0)
       '@supabase/supabase-js':
-        specifier: 2.33.2
-        version: 2.33.2
+        specifier: 2.34.0
+        version: 2.34.0
       '@tamagui/animations-react-native':
         specifier: 1.68.2
         version: 1.68.2(react-native@0.72.4)(react@18.2.0)
@@ -153,8 +153,8 @@ importers:
         specifier: 0.72.4
         version: 0.72.4(@babel/core@7.22.20)(@babel/preset-env@7.22.20)(react@18.2.0)
       react-native-app-clip:
-        specifier: 0.2.3
-        version: 0.2.3(expo@50.0.0-alpha.5)(react-native@0.72.4)(react@18.2.0)
+        specifier: 0.2.4
+        version: 0.2.4(expo@50.0.0-alpha.5)(react-native@0.72.4)(react@18.2.0)
       react-native-gesture-handler:
         specifier: 2.12.1
         version: 2.12.1(react-native@0.72.4)(react@18.2.0)
@@ -245,7 +245,7 @@ importers:
         version: 2.0.0(react-dom@18.2.0)(react@18.2.0)(typescript@5.2.2)
       '@supabase/auth-helpers-remix':
         specifier: 0.2.2
-        version: 0.2.2(@supabase/supabase-js@2.33.2)
+        version: 0.2.2(@supabase/supabase-js@2.34.0)
       '@tsndr/cloudflare-worker-jwt':
         specifier: 2.2.2
         version: 2.2.2
@@ -256,8 +256,8 @@ importers:
         specifier: ^10.16.4
         version: 10.16.4(react-dom@18.2.0)(react@18.2.0)
       isbot:
-        specifier: 3.6.13
-        version: 3.6.13
+        specifier: 3.7.0
+        version: 3.7.0
       react:
         specifier: 18.2.0
         version: 18.2.0
@@ -305,8 +305,8 @@ importers:
         specifier: 1.10.1
         version: 1.10.1
       '@supabase/supabase-js':
-        specifier: 2.33.2
-        version: 2.33.2
+        specifier: 2.34.0
+        version: 2.34.0
       blurhash:
         specifier: 2.0.5
         version: 2.0.5
@@ -2874,7 +2874,7 @@ packages:
       text-table: 0.2.0
       url-join: 4.0.0
       wrap-ansi: 7.0.0
-      ws: 8.14.1
+      ws: 8.14.2
     transitivePeerDependencies:
       - '@babel/core'
       - bluebird
@@ -4528,21 +4528,21 @@ packages:
       '@sinonjs/commons': 3.0.0
     dev: false
 
-  /@supabase/auth-helpers-remix@0.2.2(@supabase/supabase-js@2.33.2):
+  /@supabase/auth-helpers-remix@0.2.2(@supabase/supabase-js@2.34.0):
     resolution: {integrity: sha512-30/J8Pgc8uvqh8GrTD4kZr4z1CYtj8RROUGvUpp8JgwofsGZDmnLuSavBNQ8RuaRnH+eierb+ivlsVSQZj+ubA==}
     peerDependencies:
       '@supabase/supabase-js': ^2.19.0
     dependencies:
-      '@supabase/auth-helpers-shared': 0.5.0(@supabase/supabase-js@2.33.2)
-      '@supabase/supabase-js': 2.33.2
+      '@supabase/auth-helpers-shared': 0.5.0(@supabase/supabase-js@2.34.0)
+      '@supabase/supabase-js': 2.34.0
     dev: false
 
-  /@supabase/auth-helpers-shared@0.5.0(@supabase/supabase-js@2.33.2):
+  /@supabase/auth-helpers-shared@0.5.0(@supabase/supabase-js@2.34.0):
     resolution: {integrity: sha512-kioUeYDBZ89cfqOTZFOLEFIO7kGczL0XJYZdVv/bKt5efXqhiY14NbzgGWiMvvD9o9Iluo0+YEV2tG3ZZ5W06A==}
     peerDependencies:
       '@supabase/supabase-js': ^2.19.0
     dependencies:
-      '@supabase/supabase-js': 2.33.2
+      '@supabase/supabase-js': 2.34.0
       jose: 4.14.6
     dev: false
 
@@ -4552,8 +4552,8 @@ packages:
       '@supabase/node-fetch': 2.6.14
     dev: false
 
-  /@supabase/gotrue-js@2.52.0:
-    resolution: {integrity: sha512-UFCbydMYFn/LhPW08aeZ9sgFDA3kOQCjA2ieFj/sccye9m8Tv0pimMfnXh3A9TqBJ0/0utpkaGSad3XdpJ+Mbw==}
+  /@supabase/gotrue-js@2.53.0:
+    resolution: {integrity: sha512-GCF8meXaF6fMVciBsWTKN5neSennGgOMrUC3rjVOlSr/0yNi1YnqJyTi6ULaSrG2eyx8f5pv1zB1jD3Thw9Fag==}
     dependencies:
       '@supabase/node-fetch': 2.6.14
     dev: false
@@ -4587,11 +4587,11 @@ packages:
       '@supabase/node-fetch': 2.6.14
     dev: false
 
-  /@supabase/supabase-js@2.33.2:
-    resolution: {integrity: sha512-r+xCaERasxI0fMqOTp4zwur200X6HCjif48WKIcWrZgtzdtyP6CsP6J3rwZWfR/mR5MN0qLdK0SGA0QCgxS3Nw==}
+  /@supabase/supabase-js@2.34.0:
+    resolution: {integrity: sha512-4x+Kkn1NmeA7odSCrwa0J5TN+YrldDVxcPZ/OJuEIOBY4lUM9W/pENlzCEcfS+CetDF6ufFsmjTaVWGxDdZJKQ==}
     dependencies:
       '@supabase/functions-js': 2.1.5
-      '@supabase/gotrue-js': 2.52.0
+      '@supabase/gotrue-js': 2.53.0
       '@supabase/node-fetch': 2.6.14
       '@supabase/postgrest-js': 1.8.4
       '@supabase/realtime-js': 2.7.4
@@ -7009,7 +7009,7 @@ packages:
     hasBin: true
     dependencies:
       caniuse-lite: 1.0.30001538
-      electron-to-chromium: 1.4.523
+      electron-to-chromium: 1.4.525
       node-releases: 2.0.13
       update-browserslist-db: 1.0.11(browserslist@4.21.10)
 
@@ -7672,8 +7672,8 @@ packages:
     engines: {node: '>= 14'}
     dev: false
 
-  /dayjs@1.11.9:
-    resolution: {integrity: sha512-QvzAURSbQ0pKdIye2txOzNaHmxtUBXerpY0FJsFXUMKbIZeFm5ht1LS/jFsrncjnmtv8HsG0W2g6c0zUjZWmpA==}
+  /dayjs@1.11.10:
+    resolution: {integrity: sha512-vjAczensTgRcqDERK0SR2XMwsF/tSvnvlv6VcF2GIhg6Sx4yOIt/irsr1RDJsKiIyBzJDpCoXiWWq28MqH2cnQ==}
     dev: false
 
   /debug@2.6.9:
@@ -7988,8 +7988,8 @@ packages:
   /ee-first@1.1.1:
     resolution: {integrity: sha512-WMwm9LhRUo+WUaRN+vRuETqG89IgZphVSNkdFgeb6sS/E4OrDIN7t48CAewSHXc6C8lefD8KKfr5vY61brQlow==}
 
-  /electron-to-chromium@1.4.523:
-    resolution: {integrity: sha512-9AreocSUWnzNtvLcbpng6N+GkXnCcBR80IQkxRC9Dfdyg4gaWNUPBujAHUpKkiUkoSoR9UlhA4zD/IgBklmhzg==}
+  /electron-to-chromium@1.4.525:
+    resolution: {integrity: sha512-GIZ620hDK4YmIqAWkscG4W6RwY6gOx1y5J6f4JUQwctiJrqH2oxZYU4mXHi35oV32tr630UcepBzSBGJ/WYcZA==}
 
   /emoji-regex@8.0.0:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
@@ -10727,8 +10727,8 @@ packages:
     resolution: {integrity: sha512-xHjhDr3cNBK0BzdUJSPXZntQUx/mwMS5Rw4A7lPJ90XGAO6ISP/ePDNuo0vhqOZU+UD5JoodwCAAoZQd3FeAKw==}
     dev: true
 
-  /isbot@3.6.13:
-    resolution: {integrity: sha512-uoP4uK5Dc2CrabmK+Gue1jTL+scHiCc1c9rblRpJwG8CPxjLIv8jmGyyGRGkbPOweayhkskdZsEQXG6p+QCQrg==}
+  /isbot@3.7.0:
+    resolution: {integrity: sha512-9BcjlI89966BqWJmYdTnRub85sit931MyCthSIPtgoOsTjoW7A2MVa09HzPpYE2+G4vyAxfDvR0AbUGV0FInQg==}
     engines: {node: '>=12'}
     dev: false
 
@@ -11258,7 +11258,7 @@ packages:
     hasBin: true
     dependencies:
       ansi-fragments: 0.2.1
-      dayjs: 1.11.9
+      dayjs: 1.11.10
       yargs: 15.4.1
     dev: false
 
@@ -12524,7 +12524,7 @@ packages:
       stoppable: 1.1.0
       undici: 5.24.0
       workerd: 1.20230904.0
-      ws: 8.14.1
+      ws: 8.14.2
       youch: 3.3.1
       zod: 3.22.2
     transitivePeerDependencies:
@@ -13900,8 +13900,8 @@ packages:
     resolution: {integrity: sha512-xWGDIW6x921xtzPkhiULtthJHoJvBbF3q26fzloPCK0hsvxtPVelvftw3zjbHWSkR2km9Z+4uxbDDK/6Zw9B8w==}
     dev: false
 
-  /react-native-app-clip@0.2.3(expo@50.0.0-alpha.5)(react-native@0.72.4)(react@18.2.0):
-    resolution: {integrity: sha512-RslNZwAPQLzvs5xgBGWWyumNh/iC8idfF9G5/EGVAqQvgC4/WtoWmwOPfyWi2yDxmG6rLzG7eLyb3ZWA3AypbA==}
+  /react-native-app-clip@0.2.4(expo@50.0.0-alpha.5)(react-native@0.72.4)(react@18.2.0):
+    resolution: {integrity: sha512-H90T+hfDlMBwp1vYRT8us7P3RweFiFOuZxvPblMmKmlr48eEuUp37UhXbpKYxnFkrO+yEwEfGh8knxxsh34x6g==}
     peerDependencies:
       expo: '*'
       react: '*'
@@ -15045,7 +15045,7 @@ packages:
     resolution: {integrity: sha512-kN9dJbvnySHULIluDHy32WHRUu3Og7B9sbY7tsFLctQkIqnMh3hErYgdMjTYuqmcXX+lK5T1lnUt3G7zNswmZA==}
     dependencies:
       spdx-expression-parse: 3.0.1
-      spdx-license-ids: 3.0.14
+      spdx-license-ids: 3.0.15
     dev: true
 
   /spdx-exceptions@2.3.0:
@@ -15056,11 +15056,11 @@ packages:
     resolution: {integrity: sha512-cbqHunsQWnJNE6KhVSMsMeH5H/L9EpymbzqTQ3uLwNCLZ1Q481oWaofqH7nO6V07xlXwY6PhQdQ2IedWx/ZK4Q==}
     dependencies:
       spdx-exceptions: 2.3.0
-      spdx-license-ids: 3.0.14
+      spdx-license-ids: 3.0.15
     dev: true
 
-  /spdx-license-ids@3.0.14:
-    resolution: {integrity: sha512-U0eS5wcpu/O2/QZk6PcAMOA8H3ZuvRe4mFHA3Q+LNl1SRDmfQ+mD3RoD6tItqnvqubJ32m/zV2Z/ikSmxccD1Q==}
+  /spdx-license-ids@3.0.15:
+    resolution: {integrity: sha512-lpT8hSQp9jAKp9mhtBU4Xjon8LPGBvLIuBiSVhMEtmLecTh2mO0tlqrAMp47tBXzMr13NJMQ2lf7RpQGLJ3HsQ==}
     dev: true
 
   /split-on-first@1.1.0:
@@ -16642,8 +16642,8 @@ packages:
       utf-8-validate:
         optional: true
 
-  /ws@8.14.1:
-    resolution: {integrity: sha512-4OOseMUq8AzRBI/7SLMUwO+FEDnguetSk7KMb1sHwvF2w2Wv5Hoj0nlifx8vtGsftE/jWHojPy8sMMzYLJ2G/A==}
+  /ws@8.14.2:
+    resolution: {integrity: sha512-wEBG1ftX4jcglPxgFCMJmZ2PLtSbJ2Peg6TmpJFTbe9GZYOQCDPdMYu/Tm0/bGZkw8paZnJY45J4K2PZrLYq8g==}
     engines: {node: '>=10.0.0'}
     peerDependencies:
       bufferutil: ^4.0.1
