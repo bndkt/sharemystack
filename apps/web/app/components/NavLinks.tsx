@@ -2,16 +2,11 @@ import { useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "@remix-run/react";
 
-export function NavLinks() {
+export function NavLinks({ links }: { links: [string, string][] }) {
   let [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   let timeoutRef = useRef<number | null>(null);
 
-  return [
-    ["Features", "/#features"],
-    ["Reviews", "/#reviews"],
-    ["Pricing", "/#pricing"],
-    ["FAQs", "/#faqs"],
-  ].map(([label, to], index) => (
+  return links.map(([label, to], index) => (
     <Link
       key={label}
       to={to}

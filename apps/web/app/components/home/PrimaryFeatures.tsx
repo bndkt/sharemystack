@@ -241,10 +241,13 @@ export function PrimaryFeatures() {
       <Container>
         <div className="mx-auto max-w-2xl lg:mx-0 lg:max-w-3xl">
           <h2 className="text-3xl font-medium tracking-tight text-white">
-            {/* TODO: Share to tools you love and discover new ones */}
+            Do you care about the tools you use?
           </h2>
           <p className="mt-2 text-lg text-gray-400">
-            {/* TODO: Share My Stack was built for people like you who ... */}
+            Have you curated the perfect productivity stack or found the ideal
+            development setup? Share it with the world! Share My Stack lets you
+            curate and share your productivity and development stacks (and other
+            stacks soon).
           </p>
         </div>
       </Container>
