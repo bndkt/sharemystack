@@ -35,11 +35,12 @@ export function Footer() {
             <nav className="mt-11 flex gap-8">
               <NavLinks
                 links={[
+                  ["Support", "https://sharemystack.com/support"],
                   ["Roadmap", "https://sharemystack.com/roadmap"],
                   ["Changelog", "https://sharemystack.com/terms"],
-                  ["Imprint", "https://feld.app/imprint"],
-                  ["Privacy", "https://feld.app/privacy"],
-                  ["Terms", "https://feld.app/terms"],
+                  ["Imprint", "https://sharemystack.com/imprint"],
+                  ["Privacy", "https://sharemystack.com/privacy"],
+                  ["Terms", "https://sharemystack.com/terms"],
                 ]}
               />
             </nav>
