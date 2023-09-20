@@ -70,7 +70,7 @@ export function Header() {
                   ["Features", "/#features"],
                   // ["Reviews", "/#reviews"],
                   // ["Pricing", "/#pricing"],
-                  ["FAQs", "/#faqs"],
+                  // ["FAQs", "/#faqs"],
                 ]}
               />
             </div>
