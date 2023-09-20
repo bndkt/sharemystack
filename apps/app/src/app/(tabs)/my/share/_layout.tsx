@@ -20,8 +20,8 @@ export default function Layout() {
         ),
       }}
     >
-      <Stack.Screen name="index" options={{ title: "Share my profile" }} />
-      <Stack.Screen name="[stack]" options={{ title: "Share my stack" }} />
+      <Stack.Screen name="index" options={{ title: "Share" }} />
+      <Stack.Screen name="[stack]" options={{ title: "Share" }} />
     </Stack>
   );
 }

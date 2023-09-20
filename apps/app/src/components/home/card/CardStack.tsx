@@ -17,7 +17,7 @@ import { Card } from "./Card";
 import { Tool } from "@/model/Tool";
 
 const duration = 500;
-export const maxVisibleItems = 6;
+export const maxVisibleItems = 5;
 
 export function CardStack({ tools }: { tools: Tool[] }) {
   const floatActiveIndex = useSharedValue(0);

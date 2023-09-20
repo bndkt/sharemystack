@@ -9,7 +9,7 @@ export function NewTools() {
   const { tools } = useTools({ recentlyAdded: true, limit: 32 });
 
   return (
-    <YStack height={180}>
+    <YStack height={170}>
       <Text
         backgroundColor="$sms"
         color="white"
