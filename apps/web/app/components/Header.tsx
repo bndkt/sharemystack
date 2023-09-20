@@ -63,7 +63,17 @@ export function Header() {
               <Logo className="h-10 w-auto text" />
               <p className="ml-4 text-base font-semibold">{config.name}</p>
             </Link>
-            <div className="hidden lg:flex lg:gap-10">{/* <NavLinks /> */}</div>
+            <div className="hidden lg:flex lg:gap-10">
+              {" "}
+              <NavLinks
+                links={[
+                  ["Features", "/#features"],
+                  // ["Reviews", "/#reviews"],
+                  // ["Pricing", "/#pricing"],
+                  ["FAQs", "/#faqs"],
+                ]}
+              />
+            </div>
           </div>
           <div className="flex items-center gap-6">
             <Popover className="lg:hidden">
