@@ -23,6 +23,27 @@ export const meta: MetaFunction = () => [
     content:
       "app-id=G76836P2D4.com.sharemystack, app-clip-bundle-id=G76836P2D4.com.sharemystack.Clip, app-clip-display=card",
   },
+  {
+    property: "og:title",
+    content: `${config.name} - ${config.tagline}`,
+  },
+  {
+    property: "og:description",
+    content:
+      "Curate your personal productivity stack or your favorite development stack. Share it within the app or on social media. Discover what other people are using and get inspired to try out new tools.",
+  },
+  {
+    property: "og:image",
+    content: "https://sharemystack.com/og.png",
+  },
+  {
+    property: "twitter:site",
+    content: "@sharemystack",
+  },
+  {
+    property: "twitter:creator",
+    content: "@bndkt",
+  },
 ];
 
 export const links: LinksFunction = () => [

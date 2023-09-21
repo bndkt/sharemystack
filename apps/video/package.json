@@ -1,0 +1,23 @@
+{
+  "name": "video",
+  "version": "0.1.0",
+  "description": "",
+  "type": "module",
+  "scripts": {
+    "dev": "remotion studio",
+    "assets": "remotion still AppIcon ../app/assets/icon.png && remotion still SplashScreen ../app/assets/splash.png",
+    "build": "bun build ./src/index.ts --outdir ./build",
+    "lint": "eslint ./src"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.40",
+    "@remotion/google-fonts": "4.0.40",
+    "remotion": "4.0.40"
+  },
+  "devDependencies": {
+    "@remotion/tailwind": "4.0.40",
+    "tailwindcss": "3.3.3"
+  },
+  "license": "UNLICENSED",
+  "private": "true"
+}
