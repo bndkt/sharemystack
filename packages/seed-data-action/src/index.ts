@@ -7,6 +7,7 @@ import { createTools } from "./lib/createTools.js";
 import { createToolIcons } from "./lib/createToolIcons.js";
 import { createProfiles } from "./lib/createProfiles.js";
 import { createProfileImages } from "./lib/createProfileImages.js";
+import { createAvatarImages } from "./lib/createAvatarImages.js";
 
 async function run(): Promise<void> {
   try {
@@ -23,6 +24,7 @@ async function run(): Promise<void> {
       categoryRecordIds,
     });
     await createProfileImages({ profileRecordIds });
+    await createAvatarImages({ profileRecordIds });
   } catch (error) {
     if (error instanceof Error) core.setFailed(error.message);
   }

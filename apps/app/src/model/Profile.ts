@@ -34,9 +34,10 @@ export class Profile extends Model {
   @text("description") description!: string;
   @text("image") image?: string;
   @text("blurhash") blurhash?: string;
+  @text("avatar_image") avatarImage?: string;
+  @text("avatar_blurhash") avatarBlurhash?: string;
   @text("website") website!: string;
   @text("twitter") twitter!: string;
-  @text("twitter_image_url") twitterImageUrl!: string;
   @text("youtube") youtube!: string;
   @text("is_featured") isFeatured!: boolean;
   @text("number_of_stars") numberOfStars!: number;

@@ -192,8 +192,6 @@ select jsonb_build_object(
                     t.website,
                     'twitter',
                     t.twitter,
-                    'twitter_image_url',
-                    t.twitter_image_url,
                     'youtube',
                     t.youtube,
                     'is_featured',
