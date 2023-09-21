@@ -4,10 +4,7 @@ import { Folder, Still } from "remotion";
 import "./style.css";
 
 import { AppIcon } from "./components/stills/AppIcon";
-import {
-  SplashScreen,
-  splashScreenSchema,
-} from "./components/stills/SplashScreen";
+import { SplashScreen } from "./components/stills/SplashScreen";
 import { TwitterBanner } from "./components/stills/TwitterBanner";
 import { ProductHuntGallery1 } from "./components/stills/ProductHuntGallery1";
 import { ProductHuntGallery2 } from "./components/stills/ProductHuntGallery2";
@@ -28,7 +25,6 @@ export const RemotionRoot: React.FC = () => {
           component={SplashScreen}
           width={1284}
           height={2778}
-          schema={splashScreenSchema}
         />
         <Still id="Favicon" component={AppIcon} width={48} height={48} />
         <Still
