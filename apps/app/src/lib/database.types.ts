@@ -221,6 +221,8 @@ export interface Database {
       }
       profiles: {
         Row: {
+          avatar_blurhash: string | null
+          avatar_image: string | null
           blurhash: string | null
           created_at: string
           deleted_at: string | null
@@ -242,6 +244,8 @@ export interface Database {
           youtube: string | null
         }
         Insert: {
+          avatar_blurhash?: string | null
+          avatar_image?: string | null
           blurhash?: string | null
           created_at?: string
           deleted_at?: string | null
@@ -263,6 +267,8 @@ export interface Database {
           youtube?: string | null
         }
         Update: {
+          avatar_blurhash?: string | null
+          avatar_image?: string | null
           blurhash?: string | null
           created_at?: string
           deleted_at?: string | null
@@ -722,6 +728,8 @@ export interface Database {
       }
       profiles_view: {
         Row: {
+          avatar_blurhash: string | null
+          avatar_image: string | null
           blurhash: string | null
           created_at: string | null
           deleted_at: string | null
