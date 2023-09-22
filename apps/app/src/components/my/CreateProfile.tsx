@@ -3,6 +3,7 @@ import { Text, YStack } from "tamagui";
 import { MyProfileForm } from "./MyProfileForm";
 
 import { useProfile } from "@/hooks/data/useProfile";
+import { useAnalytics } from "@/hooks/useAnalytics";
 import { useAuth } from "@/hooks/useAuth";
 import { useSync } from "@/hooks/useSync";
 
@@ -10,11 +11,14 @@ export function CreateProfile() {
   const { user } = useAuth();
   const { createProfile } = useProfile({ user });
   const { queueSync } = useSync();
+  const { addTag, addTrigger } = useAnalytics();
 
   async function handleSubmit({ name, slug }: { name: string; slug: string }) {
     if (createProfile) {
       await createProfile({ name, slug });
       queueSync();
+      addTag("profile_created", "now()");
+      addTrigger("profile_created", "true");
     }
   }
 

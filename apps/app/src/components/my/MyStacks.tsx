@@ -6,6 +6,7 @@ import { CategoryIcon } from "../categories/CategoryIcon";
 import { List } from "../list";
 
 import { useStackTypes } from "@/hooks/data/useStackTypes";
+import { useAnalytics } from "@/hooks/useAnalytics";
 import { Profile } from "@/model/Profile";
 import { Stack } from "@/model/Stack";
 import { StackType } from "@/model/StackType";
@@ -19,10 +20,15 @@ export function MyStacks({
 }) {
   const { stackTypes } = useStackTypes();
   const router = useRouter();
+  const { capture, addTag, addTrigger } = useAnalytics();
 
   async function handleCreateStack(stackType: StackType) {
-    console.log("Create stack", stackType.name);
     await profile.addStack(stackType);
+    capture("stack_created", {
+      type: stackType.slug,
+    });
+    addTag("stack_created", "now()");
+    addTrigger("stack_created", "true");
   }
 
   const filteredStackTypes =
