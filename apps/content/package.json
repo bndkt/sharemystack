@@ -1,5 +1,5 @@
 {
-  "name": "share-my-stack",
+  "name": "@sharemystack/content",
   "private": true,
   "version": "1.0.0",
   "main": "package.json",
@@ -11,10 +11,8 @@
     "deploy": "sanity deploy",
     "deploy-graphql": "sanity graphql deploy"
   },
-  "keywords": [
-    "sanity"
-  ],
   "dependencies": {
+    "@codemirror/theme-one-dark": "6.1.2",
     "@sanity/icons": "2.1.0",
     "@sanity/ui": "1.2.0",
     "@sanity/vision": "3.16.7",
