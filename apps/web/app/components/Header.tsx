@@ -70,7 +70,7 @@ export function Header() {
                   ["Features", "/#features"],
                   // ["Reviews", "/#reviews"],
                   // ["Pricing", "/#pricing"],
-                  // ["FAQs", "/#faqs"],
+                  ["FAQ", "/#faq"],
                 ]}
               />
             </div>
@@ -124,7 +124,7 @@ export function Header() {
                             <MobileNavLink to="/#pricing">
                               Pricing
                             </MobileNavLink> */}
-                            <MobileNavLink to="/#faqs">FAQs</MobileNavLink>
+                            <MobileNavLink to="/#faq">FAQ</MobileNavLink>
                           </div>
                           <div className="mt-8 flex flex-col gap-4">
                             <Popover.Button

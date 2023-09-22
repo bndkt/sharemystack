@@ -1,70 +1,56 @@
 import { Container } from "~/components/Container";
 
-const faqs = [
+const faq = [
   [
     {
-      question: "How do I know the tips are good?",
+      question: "Is there a version for Android?",
       answer:
-        "Our whole business depends on our tips being good, so it’s in our best interest that they are. The results of our customers speak for themselves, just trust us.",
+        <>Right now, Share My Stack is available for iOS and macOS only. I’m considering to launch an Android version in the future. Feel free to voice your support on the <a href="https://sharemystack.canny.io/feature-requests/p/android" className="underline">roadmap</a>.</>,
     },
     {
-      question: "Isn’t this insider trading?",
+      question: "What’s coming next?",
       answer:
-        "Yes exactly. But at scale! Historically you could only make insider trades with knowledge from your direct network. Pocket brings you insider trading tips from people you don’t even know.",
+        <>Share My Stack will launch on the App Store and Product Hunt on October 8. I’m sure there will be some bugs to fix that I did’t catch during testing, so my first focus is stability and minor improvements. But I also have bigger features planned to add after the launch, starting with adding some statistics (e.g. popularity of tools, similarity of stacks) and more ways to share your stack (e.g. new templates for the generated images of stacks).</>,
+    },
+  ],
+  [
+
+    {
+      question: "I’m missing my favorite tool, can I add it?",
+      answer:
+        <>There is a suggestion button within the app. You can also suggest new categories and tools via the <a href="https://sharemystack.canny.io/content-suggestions" className="underline">roadmap</a>. Submissions are not automated because Share My Stack is meant to be a curation of the most used and loved tools on the market.</>,
     },
     {
-      question: "But isn’t insider trading illegal?",
+      question: `What is your "policy" for adding tools?`,
       answer:
-        "Here’s the thing: you’re the one doing the insider trading, not us. We’re just giving you the tips and some tools to make trades. We’re not doing anything wrong here.",
+        <>This is a difficult question for me. I want Share My Stack to be a curated source of the most used and most loved tools on the market. This means I don’t want to overcrowd the categories with longs lists of very niche tools. The general approach should be to include the 20 % of tools that cover about 80 % of the users.</>,
     },
   ],
   [
     {
-      question: "Do the people giving you tips realize what they are doing?",
+      question: "Is this app really free?",
       answer:
-        "Again I would argue this isn’t really our responsibility. People make their own choices. If they don’t research the consequences that’s on them, not on us.",
+        <>Share My Stack is totally free. It is a hobby project and not supposed to be a "startup." I reserve the right to add some form of monetization in the future, like a "Pro" plan or affiliate links, but the basic set of functionality will always be free. More than that, the entire source of code of this app will actually be available as open source soon (see below).</>,
     },
     {
-      question: "Where is Pocket based?",
+      question: "How was this built?",
       answer:
-        "Let’s just say it’s not somewhere where the SEC is going to find us.",
-    },
-    {
-      question: "Is there any age limit to trading on Pocket?",
-      answer:
-        "For our free plan, the age limit is based on the minimum age to trade in your country of residence. Our VIP plan uses advanced transaction anonymization though, so you can use that plan even if you’re 9 years old. Or a dog.",
-    },
-  ],
-  [
-    {
-      question: "How did you get this on the App Store?",
-      answer:
-        "Honestly we were surprised too, but eventually we found out that the app reviewer found the app so compelling they approved it just so they could use it themselves.",
-    },
-    {
-      question: "How do I explain the money I withdraw from Pocket to the IRS?",
-      answer:
-        "This feels like one-hundred percent a you problem. Pocket is not responsible in any way for your tax returns.",
-    },
-    {
-      question: "How do I become an insider?",
-      answer:
-        "Contact us with some details about your industry and the type of access you have to apply for an insider account. Once approved, we’ll send you a guide on collecting insider information without being detected at work.",
+        <>Share My Stack was build by a single indie hacker as a side project within four months. It is build with React Native and Expo, using Supabase for the backend and Tamagui for the UI. All the code will actually available as open source soon. Please join the <a href="/#newsletter" className="underline">newsletter</a> if you’re interested in this.</>,
     },
   ],
 ];
 
-export function Faqs() {
+export function Faq() {
   return (
     <section
-      id="faqs"
-      aria-labelledby="faqs-title"
+      id="faq"
+      aria-labelledby="faq-title"
       className="border-t border-gray-200 py-20 sm:py-32"
     >
       <Container>
         <div className="mx-auto max-w-2xl lg:mx-0">
           <h2
-            id="faqs-title"
+            id="faq-title"
             className="text-3xl font-medium tracking-tight text-gray-900"
           >
             Frequently asked questions
@@ -72,10 +58,10 @@ export function Faqs() {
           <p className="mt-2 text-lg text-gray-600">
             If you have anything else you want to ask,{" "}
             <a
-              href="mailto:info@example.com"
+              href="https://bndkt.com"
               className="text-gray-900 underline"
             >
-              reach out to us
+              reach out to me
             </a>
             .
           </p>
@@ -84,7 +70,7 @@ export function Faqs() {
           role="list"
           className="mx-auto mt-16 grid max-w-2xl grid-cols-1 gap-8 sm:mt-20 lg:max-w-none lg:grid-cols-3"
         >
-          {faqs.map((column, columnIndex) => (
+          {faq.map((column, columnIndex) => (
             <li key={columnIndex}>
               <ul role="list" className="space-y-10">
                 {column.map((faq, faqIndex) => (
