@@ -1,18 +1,9 @@
 import { useId } from "react";
-import clsx from "clsx";
 
 import { AppStoreLink } from "~/components/home/AppStoreLink";
 import { Button } from "~/components/Button";
 import { Container } from "~/components/Container";
 import { PhoneFrame } from "~/components/home/PhoneFrame";
-import logoBbc from "~/images/logos/bbc.svg";
-import logoCbs from "~/images/logos/cbs.svg";
-import logoCnn from "~/images/logos/cnn.svg";
-import logoFastCompany from "~/images/logos/fast-company.svg";
-import logoForbes from "~/images/logos/forbes.svg";
-import logoHuffpost from "~/images/logos/huffpost.svg";
-import logoTechcrunch from "~/images/logos/techcrunch.svg";
-import logoWired from "~/images/logos/wired.svg";
 import { config } from "~/lib/config";
 import { ProductHunt } from "./ProductHunt";
 
@@ -115,6 +106,17 @@ export function Hero() {
               Discover what other people are using and get inspired to try out
               new tools.
             </p>
+            <p className="mt-6 text-lg text-gray-600">
+              Launching on the App Store in{" "}
+              <span className="font-bold">
+                {Math.ceil(
+                  (new Date(2023, 9, 8).getTime() - new Date().getTime()) /
+                    (1000 * 60 * 60 * 24)
+                )}{" "}
+                days
+              </span>{" "}
+              (October 8).
+            </p>
             <div className="mt-8 flex flex-wrap gap-x-6 gap-y-4">
               <AppStoreLink />
               {config.videoLink ? (
@@ -150,28 +152,6 @@ export function Hero() {
           </div>
           <div className="relative -mt-4 lg:col-span-7 lg:mt-0 xl:col-span-6">
             <ProductHunt />
-            {/* <p className="text-center text-sm font-semibold text-gray-900 lg:text-left">
-              As featured in
-            </p>
-            <ul
-              role="list"
-              className="mx-auto mt-8 flex max-w-xl flex-wrap justify-center gap-x-10 gap-y-8 lg:mx-0 lg:justify-start"
-            >
-              {[
-                ["Forbes", logoForbes],
-                ["TechCrunch", logoTechcrunch],
-                ["Wired", logoWired],
-                ["CNN", logoCnn, "hidden xl:block"],
-                ["BBC", logoBbc],
-                ["CBS", logoCbs],
-                ["Fast Company", logoFastCompany],
-                ["HuffPost", logoHuffpost, "hidden xl:block"],
-              ].map(([name, logo, className]) => (
-                <li key={name} className={clsx("flex", className)}>
-                  <img src={logo} alt={name} className="h-8" />
-                </li>
-              ))}
-            </ul> */}
           </div>
         </div>
       </Container>
