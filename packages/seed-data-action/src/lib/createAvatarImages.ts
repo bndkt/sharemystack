@@ -6,15 +6,15 @@ import { encode } from "blurhash";
 import { supabase } from "./supabase.js";
 import { RecordIds } from "../types/types.js";
 
-export async function createProfileImages({
+export async function createAvatarImages({
   profileRecordIds,
 }: {
   profileRecordIds: RecordIds;
 }) {
   const imagesPath =
     process.env.GITHUB_ACTIONS === "true"
-      ? "./assets/images/profiles"
-      : "../../assets/images/profiles";
+      ? "./assets/images/avatars"
+      : "../../assets/images/avatars";
 
   const files = await fs.readdir(imagesPath, {});
 
@@ -25,7 +25,7 @@ export async function createProfileImages({
       const filePath = path.join(imagesPath, file);
 
       const slug = path.basename(file, path.extname(file));
-      const image = `${slug}.webp`;
+      const avatar_image = `${slug}.webp`;
 
       const sharpImage = sharp(filePath);
 
@@ -34,14 +34,14 @@ export async function createProfileImages({
       webpImage.toBuffer(async (err, data, info) => {
         const { error } = await supabase.storage
           .from("public-images")
-          .upload(`profiles/${image}`, data, {
+          .upload(`avatars/${avatar_image}`, data, {
             contentType: "image/webp",
             cacheControl: "3600",
             upsert: true,
           });
         (error || err) && console.error(error, err);
 
-        const blurhash = encode(
+        const avatar_blurhash = encode(
           new Uint8ClampedArray(
             await sharpImage.raw().ensureAlpha().toBuffer()
           ),
@@ -51,10 +51,10 @@ export async function createProfileImages({
           4
         );
 
-        if (blurhash && profileRecordIds[slug]) {
+        if (avatar_blurhash && profileRecordIds[slug]) {
           await supabase
             .from("profiles")
-            .update({ image, blurhash })
+            .update({ avatar_image, avatar_blurhash })
             .match({ id: profileRecordIds[slug] });
         }
       });

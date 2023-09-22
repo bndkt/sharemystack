@@ -1,7 +1,4 @@
-import { Share } from "@tamagui/lucide-icons";
-import { Slot, Stack, useLocalSearchParams, useRouter } from "expo-router";
-import { useFeatureFlag } from "posthog-react-native";
-import { Button } from "tamagui";
+import { Slot, Stack, useLocalSearchParams } from "expo-router";
 
 import { List } from "@/components/list";
 import { CustomSuspense } from "@/components/loading/CustomSuspense";
@@ -10,7 +7,6 @@ import { useProfile } from "@/hooks/data/useProfile";
 import { useAuth } from "@/hooks/useAuth";
 
 export default function Layout() {
-  const router = useRouter();
   const { stack: stackId } = useLocalSearchParams<{
     stack: string;
   }>();
@@ -25,15 +21,6 @@ export default function Layout() {
       <Stack.Screen
         options={{
           title: `${stack?.stackTypeName} Stack`,
-          headerRight: () => (
-            <Button
-              icon={<Share size="$1.5" />}
-              onPress={() => {
-                router.push(`/(tabs)/my/share/${stackId}`);
-              }}
-              unstyled
-            />
-          ),
         }}
       />
       <CustomSuspense

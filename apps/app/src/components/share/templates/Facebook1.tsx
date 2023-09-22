@@ -14,8 +14,8 @@ export function Facebook1({
     const maxIcons = 10;
 
     const iconSizes = new Map<number, Token>([
-      [3, "$8"],
-      [10, "$3"],
+      [4, "$5"],
+      [10, "$2"],
     ]);
 
     return {

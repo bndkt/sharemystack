@@ -1,7 +1,6 @@
 {
   "name": "@sharemystack/monorepo",
   "version": "0.0.1",
-  "private": true,
   "scripts": {
     "clear": "rm -f pnpm-lock.yaml && find ./ -type d -and \\( -name node_modules -or -name build -or -name .turbo \\) -exec rm -rf '{}' +",
     "reinstall": "pnpm run clear && pnpm i",
@@ -29,5 +28,7 @@
   "packageManager": "pnpm@8.7.5",
   "engines": {
     "node": ">=18.16.0"
-  }
+  },
+  "license": "UNLICENSED",
+  "private": true
 }

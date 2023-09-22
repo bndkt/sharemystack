@@ -26,12 +26,12 @@ export const IconGrid = memo(
     picks = picks.slice(0, maxIcons);
 
     const sortedIconSizes: Map<number, Token> = new Map(
-      Array.from(iconSizes).sort(([aKey], [bKey]) => aKey - bKey),
+      Array.from(iconSizes).sort(([aKey], [bKey]) => bKey - aKey),
     );
 
-    let iconSize: Token = "$3";
+    let iconSize: Token = "$2";
     sortedIconSizes.forEach((value, key) => {
-      if (picks.length < key) {
+      if (key >= picks.length) {
         iconSize = value;
       }
     });
