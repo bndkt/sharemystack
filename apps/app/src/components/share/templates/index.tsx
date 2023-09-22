@@ -2,7 +2,7 @@ import { Facebook1 } from "./Facebook1";
 import { Instagram1 } from "./Instagram1";
 import { LinkedIn1 } from "./LinkedIn1";
 import { Twitter1 } from "./Twitter1";
-import { ShareOptions } from "../ShareOptions";
+import { TShareOptions } from "../ShareOptions";
 
 import { Pick } from "@/model/Pick";
 import { Profile } from "@/model/Profile";
@@ -19,7 +19,7 @@ export type Template = {
 export type TemplateProps = {
   profile: Profile;
   stack: Stack;
-  options: ShareOptions;
+  options: TShareOptions;
   width: number;
   picks: Pick[];
 };

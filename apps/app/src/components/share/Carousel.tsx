@@ -4,7 +4,7 @@ import { useRef, useState } from "react";
 import ViewShot, { releaseCapture } from "react-native-view-shot";
 import { Button, Theme, YStack, useThemeName } from "tamagui";
 
-import { ShareOptions } from "./ShareOptions";
+import { TShareOptions, ShareOptions } from "./ShareOptions";
 import { TemplateSelector } from "./TemplateSelector";
 import { Target, Template, TemplateProps, templates } from "./templates";
 
@@ -27,7 +27,7 @@ export function Carousel({
   const { capture } = useAnalytics();
   const themeName = useThemeName();
 
-  const [options, setOptions] = useState<ShareOptions>({
+  const [options, setOptions] = useState<TShareOptions>({
     showTitle: true,
     darkMode: themeName === "dark",
   });

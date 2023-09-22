@@ -1,8 +1,8 @@
+import { Download } from "@tamagui/lucide-icons";
 import * as Linking from "expo-linking";
 import { Button } from "tamagui";
 
 import { Tool } from "@/model/Tool";
-import { Download } from "@tamagui/lucide-icons";
 
 export function ToolLink({ tool }: { tool: Tool }) {
   function openUrl(link: string) {

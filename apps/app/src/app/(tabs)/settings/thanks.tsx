@@ -1,1 +1,1 @@
-const thanks: string[] = ["Baconbrix", "MrPompeii_", "kudochien", "notbrent"];
+// const thanks: string[] = ["Baconbrix", "MrPompeii_", "kudochien", "notbrent"];

@@ -1,5 +1,5 @@
-import { ChevronRight } from "@tamagui/lucide-icons";
-import { useRouter } from "expo-router";
+// import { ChevronRight } from "@tamagui/lucide-icons";
+// import { useRouter } from "expo-router";
 import { ListItem } from "tamagui";
 
 import { List } from "../list";
@@ -19,7 +19,7 @@ export function PicksList({
   stack: Stack;
   picks: Pick[];
 }) {
-  const router = useRouter();
+  // const router = useRouter();
 
   return (
     <List

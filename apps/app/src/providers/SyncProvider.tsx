@@ -96,7 +96,7 @@ export function SyncProvider({ children }: { children: ReactNode }) {
               (c) => c.record.syncStatus !== "synced",
             );
 
-            if (changes?.length || changedRecords?.length) {
+            if (changes?.length ?? changedRecords?.length) {
               console.log(
                 "♻️ Database changes",
                 changes?.length,

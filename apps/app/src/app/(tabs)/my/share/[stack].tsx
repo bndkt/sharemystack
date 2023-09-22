@@ -1,4 +1,4 @@
-import { Stack, useLocalSearchParams, useRouter } from "expo-router";
+import { useLocalSearchParams } from "expo-router";
 
 import { CustomSuspense } from "@/components/loading/CustomSuspense";
 import { ShareStack } from "@/components/share/ShareStack";

@@ -1,7 +1,7 @@
 import { Info } from "@tamagui/lucide-icons";
 import { Label, Switch, Text, XStack } from "tamagui";
 
-export type ShareOptions = {
+export type TShareOptions = {
   showTitle?: boolean;
   includeHandle?: boolean;
   darkMode?: boolean;
@@ -11,10 +11,10 @@ export function ShareOptions({
   options,
   setOptions,
 }: {
-  options: ShareOptions;
-  setOptions: React.Dispatch<React.SetStateAction<ShareOptions>>;
+  options: TShareOptions;
+  setOptions: React.Dispatch<React.SetStateAction<TShareOptions>>;
 }) {
-  const updateOptions = (newOptions: Partial<ShareOptions>) => {
+  const updateOptions = (newOptions: Partial<TShareOptions>) => {
     setOptions((prevOptions) => ({ ...prevOptions, ...newOptions }));
   };
 

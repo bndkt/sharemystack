@@ -40,7 +40,7 @@ export function ShareStack({
     }
   }
 
-  async function shareToFacebook(uri: string) {
+  /* async function shareToFacebook(uri: string) {
     if (!permissionResponse?.granted) {
       await requestPermission();
     }
@@ -55,7 +55,7 @@ export function ShareStack({
     } else {
       await Sharing.shareAsync(uri);
     }
-  }
+  } */
 
   async function handleShare({ uri, target }: { uri: string; target: Target }) {
     console.log("Share!", { uri, target });
