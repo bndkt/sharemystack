@@ -27,7 +27,6 @@ export function UpdatePicksList({
   const { addTag, addTrigger } = useAnalytics();
 
   function addPick({ stack, tool }: { stack: Stack; tool: Tool }) {
-    console.log("Add", tool.name, "in", category.name);
     stack.addPick(tool, category);
     // TODO: (Workaround) Sync manually, because otherwise an immediate deletion after adding would not work
     queueSync();
