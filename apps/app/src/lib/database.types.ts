@@ -970,6 +970,8 @@ export interface Database {
       }
       sync_profiles_view: {
         Row: {
+          avatar_blurhash: string | null
+          avatar_image: string | null
           blurhash: string | null
           created_at: string | null
           deleted_at: string | null
