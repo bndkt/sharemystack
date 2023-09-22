@@ -23,7 +23,7 @@ export type Tool = {
   name: string;
   color: string | null;
   website: string | null;
-  appStore: string | null;
+  appStore?: string | null;
   affiliateLink?: string;
   icon?: string;
   categories: (keyof Categories)[];
