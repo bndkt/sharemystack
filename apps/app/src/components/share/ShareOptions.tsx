@@ -1,6 +1,7 @@
-import { Label, Switch, XStack } from "tamagui";
+import { Info } from "@tamagui/lucide-icons";
+import { Label, Switch, Text, XStack } from "tamagui";
 
-export type ShareOptions = {
+export type TShareOptions = {
   showTitle?: boolean;
   includeHandle?: boolean;
   darkMode?: boolean;
@@ -10,10 +11,10 @@ export function ShareOptions({
   options,
   setOptions,
 }: {
-  options: ShareOptions;
-  setOptions: React.Dispatch<React.SetStateAction<ShareOptions>>;
+  options: TShareOptions;
+  setOptions: React.Dispatch<React.SetStateAction<TShareOptions>>;
 }) {
-  const updateOptions = (newOptions: Partial<ShareOptions>) => {
+  const updateOptions = (newOptions: Partial<TShareOptions>) => {
     setOptions((prevOptions) => ({ ...prevOptions, ...newOptions }));
   };
 
@@ -73,6 +74,13 @@ export function ShareOptions({
         >
           Dark mode
         </Label>
+      </XStack>
+      <XStack paddingHorizontal="$3" alignItems="center">
+        <Info size="$1" />
+        <Text marginLeft="$3">
+          Tip: If you want to exclude a specific tool from the image, just tap
+          the icon to hide it.
+        </Text>
       </XStack>
     </XStack>
   );

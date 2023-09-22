@@ -1,14 +1,10 @@
-import { Instagram, Share } from "@tamagui/lucide-icons";
 import * as Linking from "expo-linking";
 import * as MediaLibrary from "expo-media-library";
 import * as Sharing from "expo-sharing";
-import { useRef, useState } from "react";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import ViewShot, { releaseCapture } from "react-native-view-shot";
-import { Button, XStack, YStack, useThemeName } from "tamagui";
+import { YStack } from "tamagui";
 
 import { Carousel } from "./Carousel";
-import { ShareOptions } from "./ShareOptions";
 import { Target } from "./templates";
 
 import { Pick } from "@/model/Pick";
@@ -24,13 +20,6 @@ export function ShareStack({
   stack: Stack;
   picks: Pick[];
 }) {
-  const themeName = useThemeName();
-
-  const viewShotRef = useRef<ViewShot>(null);
-  const [options, setOptions] = useState<ShareOptions>({
-    showTitle: true,
-    darkMode: themeName === "dark",
-  });
   const insets = useSafeAreaInsets();
   const [permissionResponse, requestPermission] = MediaLibrary.usePermissions();
 
@@ -51,7 +40,7 @@ export function ShareStack({
     }
   }
 
-  async function shareToFacebook(uri: string) {
+  /* async function shareToFacebook(uri: string) {
     if (!permissionResponse?.granted) {
       await requestPermission();
     }
@@ -66,7 +55,7 @@ export function ShareStack({
     } else {
       await Sharing.shareAsync(uri);
     }
-  }
+  } */
 
   async function handleShare({ uri, target }: { uri: string; target: Target }) {
     console.log("Share!", { uri, target });
@@ -81,53 +70,10 @@ export function ShareStack({
 
   return (
     <YStack fullscreen paddingBottom={insets.bottom}>
-      <YStack flexGrow={1}>
-        <Carousel
-          templateProps={{ profile, stack, options }}
-          picks={picks}
-          onShare={handleShare}
-        />
-      </YStack>
-      <ShareOptions options={options} setOptions={setOptions} />
-      {/* <ViewShot
-          ref={viewShotRef}
-          options={{
-            format: "png",
-            fileName: "sharemystack.png",
-            // result: "base64",
-          }}
-        >
-          <Template1
-            profile={profile}
-            stack={stack}
-            picks={picks}
-            options={options}
-          />
-        </ViewShot>
-      <YStack padding="$3">
-        <ShareOptions options={options} setOptions={setOptions} />
-        <XStack space="$3">
-          <Button
-            marginTop="$1"
-            themeInverse
-            backgroundColor="#ff7a00"
-            onPress={() =>
-              handleCapture(async (uri) => {
-                await shareToInstagram(uri);
-              })
-            }
-            icon={<Instagram size="$1.5" />}
-          />
-          <Button
-            marginTop="$1"
-            themeInverse
-            onPress={() =>
-              handleCapture(async (uri) => await Sharing.shareAsync(uri))
-            }
-            icon={<Share size="$1.5" />}
-          />
-        </XStack>
-      </YStack> */}
+      <Carousel
+        templateProps={{ profile, stack, picks }}
+        onShare={handleShare}
+      />
     </YStack>
   );
 }

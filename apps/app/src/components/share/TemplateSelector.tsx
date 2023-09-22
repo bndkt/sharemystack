@@ -30,15 +30,17 @@ export function TemplateSelector({
   }
 
   const TemplateButton = styled(Button, {
-    marginLeft: "$3",
-    padding: "$3",
+    marginLeft: "$1.5",
+    marginRight: "$1.5",
+    paddingTop: "$3",
+    paddingBottom: "$2",
     variants: {
       active: {
         true: {
           backgroundColor: "$sms",
         },
         false: {
-          backgroundColor: "$gray10",
+          backgroundColor: "$borderColor",
         },
       },
     },
@@ -48,7 +50,9 @@ export function TemplateSelector({
     <TemplateButton
       onPress={onPress}
       active={active}
-      icon={<Icon size="$1.5" color="white" />}
+      borderBottomLeftRadius={0}
+      borderBottomRightRadius={0}
+      icon={<Icon size="$1" color={active ? "$background" : "$gray10"} />}
     />
   );
 }

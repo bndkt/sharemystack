@@ -2,8 +2,6 @@ import {
   Home,
   Layers,
   Settings,
-  Tag,
-  User,
   UserCircle,
   Wrench,
 } from "@tamagui/lucide-icons";

@@ -48,7 +48,6 @@ export function useProfile({
             profile.slug = slug;
             profile.userId = user.id;
             profile.twitter = user.user_metadata.preferred_username;
-            profile.twitterImageUrl = user.user_metadata.avatar_url;
           });
           setProfile(profile);
         });
@@ -86,7 +85,7 @@ export function useProfile({
 
           await Promise.all(
             data.map(async (item) => {
-              if (includeEmptyStacks || (await item.picks.count)) {
+              if (includeEmptyStacks ?? (await item.picks.count)) {
                 stacks.push(item);
               }
             }),
