@@ -80,7 +80,7 @@ export function Card({
       style={stylez}
     >
       <YStack flexGrow={1}>
-        <H3>{tool.name}</H3>
+        <H3 color="$sms">{tool.name}</H3>
         <CustomSuspense
           promise={tool.categories.fetch()}
           name="categories"
