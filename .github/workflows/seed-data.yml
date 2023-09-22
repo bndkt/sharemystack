@@ -27,8 +27,8 @@ jobs:
         uses: actions/checkout@v3
       - name: 🏗 Setup monorepo
         uses: ./.github/actions/setup-monorepo
-      - name: 👷 Build packages
-        run: pnpm build
+      - name: 👷 Build package
+        run: pnpm build --filter @sharemystack/seed-data-action
       - name: 🌱 Seed data into staging
         uses: ./packages/seed-data-action
         if: ${{ inputs.environment == 'staging' }}
