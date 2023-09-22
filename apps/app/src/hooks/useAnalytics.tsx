@@ -23,5 +23,17 @@ export function useAnalytics() {
     postHog?.capture(event, properties);
   }
 
-  return { identify, logout, capture };
+  function addTag(key: string, value: string) {
+    if (value === "now()") {
+      value = Math.floor(Date.now() / 1000).toString();
+    }
+
+    OneSignal.User.addTag(key, value);
+  }
+
+  function addTrigger(key: string, value: string) {
+    OneSignal.InAppMessages.addTrigger(key, value);
+  }
+
+  return { identify, logout, capture, addTag, addTrigger };
 }

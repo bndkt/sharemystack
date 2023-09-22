@@ -40,7 +40,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       id: user?.id,
       email: user?.email,
     });
-    capture("Sign in", { user: user?.id });
+    capture("signed_in", { user: user?.id });
   }
 
   async function signOut() {
@@ -48,7 +48,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     logout();
     setSession(null);
     setUser(null);
-    capture("Sign out");
+    capture("signed_out");
 
     if (error) {
       console.error(error);

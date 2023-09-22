@@ -54,7 +54,6 @@ export function Carousel({
   };
 
   function handleShare() {
-    capture("share");
     const target = templates[activeIndex].target;
 
     if (viewShotRef.current?.capture) {
@@ -63,6 +62,8 @@ export function Carousel({
         releaseCapture(uri);
       });
     }
+
+    capture("stack_shared", { target });
   }
 
   return (

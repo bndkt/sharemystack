@@ -1,5 +1,4 @@
 import { Edit, Share as ShareIcon } from "@tamagui/lucide-icons";
-import { useRouter } from "expo-router";
 import { useState } from "react";
 import { Share } from "react-native";
 import { Button, H3, H4, XStack, YStack } from "tamagui";
@@ -11,10 +10,8 @@ import { Profile } from "@/model/Profile";
 
 export function MyProfileHeader({ profile }: { profile: Profile }) {
   const [isEditing, setIsEditing] = useState<boolean>(false);
-  const router = useRouter();
 
   function handleEdit() {
-    console.log("Edit");
     setIsEditing(true);
   }
 
@@ -23,7 +20,6 @@ export function MyProfileHeader({ profile }: { profile: Profile }) {
   }
 
   async function handleSubmit({ name, slug }: { name: string; slug: string }) {
-    console.log("submit", { name, slug });
     profile.updateProfile({ name, slug });
     setIsEditing(false);
   }

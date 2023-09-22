@@ -24,22 +24,27 @@ export function UpdatePicksList({
 }) {
   const { capture } = useAnalytics();
   const { queueSync } = useSync();
+  const { addTag, addTrigger } = useAnalytics();
 
   function addPick({ stack, tool }: { stack: Stack; tool: Tool }) {
     console.log("Add", tool.name, "in", category.name);
     stack.addPick(tool, category);
     // TODO: (Workaround) Sync manually, because otherwise an immediate deletion after adding would not work
     queueSync();
-    capture("Add pick", {
+    capture("pick_added", {
       tool: tool.slug,
       category: category.slug,
       // stack: stack?.id,
     });
+    addTag("pick_added", "now()");
+    addTrigger("pick_added", "true");
   }
 
   function removePick({ stack, pick }: { stack: Stack; pick: Pick }) {
     stack.removePick(pick);
-    capture("Remove pick");
+    capture("pick_removed");
+    addTag("pick_removed", "now()");
+    addTrigger("pick_removed", "true");
   }
 
   function matchPick(tool: Tool) {
