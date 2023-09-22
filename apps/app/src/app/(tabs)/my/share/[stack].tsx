@@ -6,13 +6,12 @@ import { useProfile } from "@/hooks/data/useProfile";
 import { useAuth } from "@/hooks/useAuth";
 
 export default function ShareStackRoute() {
-  const router = useRouter();
   const { stack: stackId } = useLocalSearchParams<{
     stack: string;
   }>();
 
   const { user } = useAuth();
-  const { profile, stacks, stack, picks } = useProfile({ user, stackId });
+  const { profile, stack, picks } = useProfile({ user, stackId });
 
   return (
     <>

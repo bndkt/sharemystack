@@ -1,4 +1,5 @@
-import { Label, Switch, XStack } from "tamagui";
+import { Info } from "@tamagui/lucide-icons";
+import { Label, Switch, Text, XStack } from "tamagui";
 
 export type ShareOptions = {
   showTitle?: boolean;
@@ -73,6 +74,13 @@ export function ShareOptions({
         >
           Dark mode
         </Label>
+      </XStack>
+      <XStack paddingHorizontal="$3" alignItems="center">
+        <Info size="$1" />
+        <Text marginLeft="$3">
+          Tip: If you want to exclude a specific tool from the image, just tap
+          the icon to hide it.
+        </Text>
       </XStack>
     </XStack>
   );

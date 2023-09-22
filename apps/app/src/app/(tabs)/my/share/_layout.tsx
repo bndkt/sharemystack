@@ -18,6 +18,7 @@ export default function Layout() {
             color="$gray10"
           />
         ),
+        headerShadowVisible: false,
       }}
     >
       <Stack.Screen name="index" options={{ title: "Share" }} />

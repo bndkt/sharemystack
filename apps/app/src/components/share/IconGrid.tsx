@@ -1,5 +1,5 @@
-import { memo } from "react";
-import { Square, Token, XStack } from "tamagui";
+import { memo, useState } from "react";
+import { Square, XStack } from "tamagui";
 
 import { CustomSuspense } from "../loading/CustomSuspense";
 import { ToolIcon } from "../tools/ToolIcon";
@@ -10,31 +10,16 @@ export const IconGrid = memo(
   ({
     picks,
     maxIcons,
-    iconSizes,
+    width,
+    ratio,
   }: {
     picks: Pick[];
     maxIcons?: number;
-    iconSizes?: Map<number, Token>;
+    width: number;
+    ratio: number;
   }) => {
-    maxIcons ??= 20;
-    iconSizes ??= new Map<number, Token>([
-      [3, "$8"],
-      [10, "$5"],
-      [20, "$3"],
-    ]);
-
-    picks = picks.slice(0, maxIcons);
-
-    const sortedIconSizes: Map<number, Token> = new Map(
-      Array.from(iconSizes).sort(([aKey], [bKey]) => bKey - aKey),
-    );
-
-    let iconSize: Token = "$2";
-    sortedIconSizes.forEach((value, key) => {
-      if (key >= picks.length) {
-        iconSize = value;
-      }
-    });
+    const factor = 10 * ratio;
+    const iconWidth = Math.floor(width / factor);
 
     return (
       <XStack
@@ -45,24 +30,24 @@ export const IconGrid = memo(
         gap="$3"
       >
         {picks.map((pick) => {
-          return (
+          const [hide, setHide] = useState(false);
+
+          return hide ? null : (
             <Square
               key={pick.id}
               backgroundColor="$background"
-              padding="$3"
-              // shadowColor="red"
-              // shadowOffset={{ width: 3, height: 3 }}
+              padding="$2"
               borderColor="$borderColor"
               borderWidth="$1"
               elevation="$3"
               radiused={true}
-              // shadowRadius={3}
+              onPress={() => setHide(true)}
             >
               <CustomSuspense
                 promise={pick.tool.fetch()}
                 name="icon"
                 component={(tool) => (
-                  <ToolIcon tool={tool} size={iconSize} key={pick.id} />
+                  <ToolIcon tool={tool} size={iconWidth} key={pick.id} />
                 )}
               />
             </Square>
