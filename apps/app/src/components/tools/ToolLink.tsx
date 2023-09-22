@@ -2,6 +2,7 @@ import * as Linking from "expo-linking";
 import { Button } from "tamagui";
 
 import { Tool } from "@/model/Tool";
+import { Download } from "@tamagui/lucide-icons";
 
 export function ToolLink({ tool }: { tool: Tool }) {
   function openUrl(link: string) {
@@ -17,7 +18,11 @@ export function ToolLink({ tool }: { tool: Tool }) {
     const link = tool.affiliateLink;
 
     return (
-      <Button onPress={() => openUrl(link)} themeInverse>
+      <Button
+        onPress={() => openUrl(link)}
+        themeInverse
+        icon={<Download size="$1" />}
+      >
         {`Get ${tool.name}`}
       </Button>
     );
@@ -25,7 +30,11 @@ export function ToolLink({ tool }: { tool: Tool }) {
     const link = `itms-apps://apps.apple.com/us/app/${tool.appStore}`;
 
     return (
-      <Button onPress={() => openUrl(link)} themeInverse>
+      <Button
+        onPress={() => openUrl(link)}
+        themeInverse
+        icon={<Download size="$1" />}
+      >
         {`Get ${tool.name}`}
       </Button>
     );
@@ -33,7 +42,11 @@ export function ToolLink({ tool }: { tool: Tool }) {
     const link = tool.website;
 
     return (
-      <Button onPress={() => openUrl(link)} themeInverse>
+      <Button
+        onPress={() => openUrl(link)}
+        themeInverse
+        icon={<Download size="$1" />}
+      >
         {`Get ${tool.name}`}
       </Button>
     );

@@ -10,7 +10,7 @@ export default defineConfig({
   name: "default",
   title: "Share My Stack",
 
-  projectId: "4rnjelmp",
+  projectId: process.env.SANITY_STUDIO_PROJECT_ID as string,
   dataset: "production",
 
   plugins: [deskTool(), visionTool(), ...(isDev ? devOnlyPlugins : [])],

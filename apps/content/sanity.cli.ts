@@ -2,7 +2,7 @@ import { defineCliConfig } from "sanity/cli";
 
 export default defineCliConfig({
   api: {
-    projectId: "4rnjelmp",
+    projectId: process.env.SANITY_STUDIO_PROJECT_ID as string,
     dataset: "production",
   },
 });

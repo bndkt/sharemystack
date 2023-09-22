@@ -1,1 +1,3 @@
-export const schemaTypes = [];
+import { tool } from "./tool";
+
+export const schemaTypes = [tool];

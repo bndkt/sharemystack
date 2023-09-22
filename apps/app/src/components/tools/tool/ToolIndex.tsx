@@ -1,9 +1,12 @@
 import { useLocalSearchParams } from "expo-router";
-import { Text, YStack } from "tamagui";
+import { YStack } from "tamagui";
+
+import { ToolContent } from "./ToolContent";
 
 import { Loading } from "@/components/Loading";
-import { ToolLink } from "@/components/tools/ToolLink";
+import { CustomSuspense } from "@/components/loading/CustomSuspense";
 import { useTool } from "@/hooks/data/useTool";
+import { getContentTool } from "@/lib/sanity";
 
 export function ToolIndex() {
   const { tool: slug } = useLocalSearchParams<{ tool: string }>();
@@ -18,12 +21,17 @@ export function ToolIndex() {
     return <Loading message="Loading tool" />;
   }
 
+  const toolContent = getContentTool(tool.slug);
+
   return (
     <YStack fullscreen padding="$3">
-      <Text textAlign="center" paddingVertical="$6">
-        More content coming soon.
-      </Text>
-      <ToolLink tool={tool} />
+      <YStack flexGrow={1}>
+        <CustomSuspense
+          promise={toolContent}
+          name="content"
+          component={(content) => <ToolContent content={content} />}
+        />
+      </YStack>
     </YStack>
   );
 }
