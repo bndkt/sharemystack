@@ -29,7 +29,7 @@ export async function createAvatarImages({
 
       const sharpImage = sharp(filePath);
 
-      const webpImage = sharpImage.resize(430).webp();
+      const webpImage = sharpImage.resize(400).webp();
 
       webpImage.toBuffer(async (err, data, info) => {
         const { error } = await supabase.storage
