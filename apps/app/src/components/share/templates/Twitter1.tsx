@@ -6,17 +6,16 @@ import { Grid1 } from "./Grid1";
 
 import { Pick } from "@/model/Pick";
 
-export function Instagram1({
+export function Twitter1({
   picks,
   ...templateProps
 }: TemplateProps & { picks: Pick[] }) {
   const iconGridProps = useMemo(() => {
-    console.log("iconGridProps");
-    const maxIcons = 15;
+    const maxIcons = 10;
 
     const iconSizes = new Map<number, Token>([
-      [8, "$5"],
-      [15, "$3"],
+      [4, "$5"],
+      [10, "$2"],
     ]);
 
     return {
@@ -26,5 +25,7 @@ export function Instagram1({
     };
   }, [picks]);
 
-  return <Grid1 {...templateProps} ratio={1} iconGridProps={iconGridProps} />;
+  return (
+    <Grid1 {...templateProps} ratio={16 / 9} iconGridProps={iconGridProps} />
+  );
 }

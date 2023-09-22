@@ -1,11 +1,13 @@
 import { FlashList } from "@shopify/flash-list";
-import { memo, useRef, useState } from "react";
+import { Share } from "@tamagui/lucide-icons";
+import { useRef, useState } from "react";
 import ViewShot, { releaseCapture } from "react-native-view-shot";
 import { Button, Theme, YStack } from "tamagui";
 
 import { TemplateSelector } from "./TemplateSelector";
 import { Target, Template, TemplateProps, templates } from "./templates";
 
+import { useAnalytics } from "@/hooks/useAnalytics";
 import { Pick } from "@/model/Pick";
 
 const THUMB_SIZE = 80;
@@ -24,6 +26,7 @@ export function Carousel({
   const thumbRef = useRef<FlashList<Template>>(null);
   const [width, setWidth] = useState(0);
   const viewShotRef = useRef<ViewShot>(null);
+  const { capture } = useAnalytics();
 
   const scrollToIndex = (index: number) => {
     if (index === activeIndex) {
@@ -51,6 +54,7 @@ export function Carousel({
   };
 
   function handleShare() {
+    capture("share");
     const target = templates[activeIndex].target;
 
     if (viewShotRef.current?.capture) {
@@ -145,8 +149,9 @@ export function Carousel({
             backgroundColor="$sms"
             color="white"
             onPress={handleShare}
+            icon={<Share size="$1" />}
           >
-            Share My Stack
+            Share my stack
           </Button>
         </YStack>
       ) : null}

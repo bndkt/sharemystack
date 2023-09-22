@@ -1,9 +1,19 @@
-import { H5, Square, Text, Token, XStack, YStack, useThemeName } from "tamagui";
+import {
+  H5,
+  Square,
+  Text,
+  Token,
+  XStack,
+  YStack,
+  useTheme,
+  useThemeName,
+} from "tamagui";
 
 import { TemplateProps } from ".";
 import { IconGrid } from "../IconGrid";
 
 import { Pick } from "@/model/Pick";
+import { Logo } from "@/components/Logo";
 
 export function Grid1({
   profile,
@@ -35,6 +45,7 @@ export function Grid1({
   ); */
 
   const themeName = useThemeName();
+  const theme = useTheme();
 
   return (
     <Square
@@ -54,6 +65,10 @@ export function Grid1({
         <IconGrid {...iconGridProps} />
       </YStack>
       <XStack alignItems="center" marginTop="$3" paddingBottom="$3">
+        <XStack>
+          <Logo width={24} height={24} color="#f43f5e" />
+          {/* TODO: Use token for color */}
+        </XStack>
         <Text marginLeft="$2">sharemystack.com/@{profile.slug}</Text>
       </XStack>
     </Square>

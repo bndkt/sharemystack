@@ -1,5 +1,7 @@
 import { Facebook1 } from "./Facebook1";
 import { Instagram1 } from "./Instagram1";
+import { LinkedIn1 } from "./LinkedIn1";
+import { Twitter1 } from "./Twitter1";
 import { ShareOptions } from "../ShareOptions";
 
 import { Pick } from "@/model/Pick";
@@ -23,38 +25,31 @@ export type TemplateProps = {
 
 export const templates: Template[] = [
   {
-    id: "t1",
+    id: "instagram1",
     component: (templateProps, picks) => (
       <Instagram1 {...templateProps} picks={picks} />
     ),
     target: "instagram",
   },
   {
-    id: "t2",
+    id: "facebook1",
     component: (templateProps, picks) => (
       <Facebook1 {...templateProps} picks={picks} />
     ),
     target: "facebook",
   },
   {
-    id: "t3",
+    id: "twitter1",
     component: (templateProps, picks) => (
-      <Instagram1 {...templateProps} picks={picks} />
+      <Twitter1 {...templateProps} picks={picks} />
     ),
     target: "twitter",
   },
   {
-    id: "t4",
+    id: "linkedin1",
     component: (templateProps, picks) => (
-      <Instagram1 {...templateProps} picks={picks} />
+      <LinkedIn1 {...templateProps} picks={picks} />
     ),
     target: "linkedin",
-  },
-  {
-    id: "t5",
-    component: (templateProps, picks) => (
-      <Instagram1 {...templateProps} picks={picks} />
-    ),
-    target: "instagram",
   },
 ];
