@@ -5,7 +5,7 @@ import { config } from "./config";
 
 OneSignal.initialize(config.oneSignalAppId);
 
-OneSignal.Notifications.requestPermission(true);
+// __DEV__ && OneSignal.Notifications.requestPermission(true);
 
 OneSignal.InAppMessages.addEventListener("click", (event) => {
   if (event.result.actionId === "requestReview") {
