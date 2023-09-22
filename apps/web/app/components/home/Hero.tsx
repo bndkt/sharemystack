@@ -107,10 +107,15 @@ export function Hero() {
               new tools.
             </p>
             <p className="mt-6 text-lg text-gray-600">
-              <span className="font-bold">Launching in the App Store on October 8</span>{" "}
-              (in {
-                Math.ceil((new Date(2023, 9, 8).getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24))
-              } days).
+              Launching on the App Store in{" "}
+              <span className="font-bold">
+                {Math.ceil(
+                  (new Date(2023, 9, 8).getTime() - new Date().getTime()) /
+                    (1000 * 60 * 60 * 24)
+                )}{" "}
+                days
+              </span>{" "}
+              (October 8).
             </p>
             <div className="mt-8 flex flex-wrap gap-x-6 gap-y-4">
               <AppStoreLink />
