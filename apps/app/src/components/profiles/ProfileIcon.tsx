@@ -8,7 +8,7 @@ import { Profile } from "@/model/Profile";
 
 export function ProfileIcon({ profile }: { profile: Profile }) {
   const avatarImage = profile.avatarImage
-    ? `${config.supabaseUrl}/storage/v1/object/public/public-images/profiles/${profile.image}?width=100`
+    ? `${config.supabaseUrl}/storage/v1/object/public/public-images/profiles/${profile.avatarImage}?width=100`
     : undefined;
 
   return (
