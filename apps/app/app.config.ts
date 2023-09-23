@@ -18,19 +18,6 @@ const sentryProject =
     ? "sharemystack"
     : "sharemystack-dev";
 
-const hooks: ExpoConfig["hooks"] = { postPublish: [] };
-
-if (process.env.SENTRY_AUTH_TOKEN) {
-  hooks.postPublish?.push({
-    file: "sentry-expo/upload-sourcemaps",
-    config: {
-      organization: "feldapp",
-      project: sentryProject,
-      setCommits: true,
-    },
-  });
-}
-
 const config: ExpoConfig = {
   name,
   slug: "sharemystack",
@@ -144,7 +131,18 @@ const config: ExpoConfig = {
       },
     ],
   ],
-  hooks,
+  hooks: {
+    postPublish: [
+      {
+        file: "sentry-expo/upload-sourcemaps",
+        config: {
+          organization: "feldapp",
+          project: sentryProject,
+          setCommits: true,
+        },
+      },
+    ],
+  },
   runtimeVersion: {
     policy: "sdkVersion",
   },
