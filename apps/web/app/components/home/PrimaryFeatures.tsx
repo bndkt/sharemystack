@@ -15,18 +15,6 @@ import { PhoneFrame } from "~/components/home/PhoneFrame";
 import { config } from "~/lib/config";
 
 const features = [
-  /* {
-    name: "Create your profile and add stacks",
-    description: (
-      <>
-        Are you into productivity? Create your <b>productivity stack</b>.
-        Developers can add a <b>development stack</b> to their profile. And even
-        more stacks are coming soon.
-      </>
-    ),
-    icon: UserCircleIcon,
-    screenshot: "/images/screenshot2.webp",
-  }, */
   {
     name: "Curate your stack",
     description:
