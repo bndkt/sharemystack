@@ -32,21 +32,21 @@ const features = [
     description:
       "Add tools to your stack by browsing through the available categories. Are you missing a category or a specific tool? Let us know through the app, we're constantly adding new stuff.",
     icon: Square3Stack3DIcon,
-    screenshot: "/images/screenshot3.webp",
+    screenshot: "/images/screenshot2.webp",
   },
   {
     name: "Explore what apps others are using",
     description:
       "Take a peek at other people's stacks and get inspired to try out new tool. We even feature stacks of your favorite creators in the productivity and tech spaces.",
     icon: UserGroupIcon,
-    screenshot: "/images/screenshot4.webp",
+    screenshot: "/images/screenshot3.webp",
   },
   {
     name: "Share your stack with the world",
     description:
       "Create beautiful images of your stack and share them on social media. We will add different templates for this over time.",
     icon: ShareIcon,
-    screenshot: "/images/screenshot5.webp",
+    screenshot: "/images/screenshot4.webp",
   },
 ];
 
