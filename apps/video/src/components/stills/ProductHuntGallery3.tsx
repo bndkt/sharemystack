@@ -20,7 +20,7 @@ export function ProductHuntGallery3() {
       </div>
       <Phone
         width={phoneWidth}
-        screenshot="Simulator Screenshot - iPhone 14 Pro Max - 2023-09-19 at 09.23.44.png"
+        screenshot="creator.png"
         className="absolute z-10"
         style={{ right: width / 5 - phoneWidth / 2, top: 50 }}
       />

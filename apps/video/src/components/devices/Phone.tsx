@@ -25,7 +25,7 @@ export function Phone({
       <div className="flex justify-center items-center">
         <Img
           src={staticFile(
-            "images/devices/iPhone 15 Pro Max - Black Titanium - Portrait.png",
+            "images/devices/iPhone 15 Pro Max - Black Titanium - Portrait.png"
           )}
           className="absolute z-20"
           style={{ width, height }}
@@ -35,6 +35,7 @@ export function Phone({
           // width={1290}
           className="flex z-10"
           style={{
+            marginTop: -2,
             width: screenshotWidth,
             height: screenshotHeight,
             borderRadius: 100 * zoom,

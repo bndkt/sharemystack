@@ -9,32 +9,32 @@ export function TwitterBanner() {
     <AbsoluteFill className="bg-rose-500">
       <Phone
         width={phoneWidth}
-        screenshot="Simulator Screenshot - iPhone 14 Pro Max - 2023-09-19 at 09.22.49.png"
+        screenshot="stack.png"
         className="absolute z-10 top-[120px]"
         style={{ left: width / 5 - phoneWidth / 2 }}
       />
       <Phone
         width={phoneWidth}
-        screenshot="Simulator Screenshot - iPhone 14 Pro Max - 2023-09-19 at 09.22.44.png"
+        screenshot="profile.png"
         className="absolute z-20 top-[80px]"
         style={{ left: width / 3 - phoneWidth / 2 }}
       />
       {/* Center */}
       <Phone
         width={phoneWidth}
-        screenshot="Simulator Screenshot - iPhone 14 Pro Max - 2023-09-19 at 09.23.51.png"
+        screenshot="home.png"
         className="absolute z-30 top-[50px]"
         style={{ left: width / 2 - phoneWidth / 2 }}
       />
       <Phone
         width={phoneWidth}
-        screenshot="Simulator Screenshot - iPhone 14 Pro Max - 2023-09-19 at 09.22.18.png"
+        screenshot="creator.png"
         className="absolute z-20 top-[80px]"
         style={{ right: width / 3 - phoneWidth / 2 }}
       />
       <Phone
         width={phoneWidth}
-        screenshot="Simulator Screenshot - iPhone 14 Pro Max - 2023-09-19 at 09.23.36.png"
+        screenshot="share.png"
         className="absolute z-10 top-[120px]"
         style={{ right: width / 5 - phoneWidth / 2 }}
       />

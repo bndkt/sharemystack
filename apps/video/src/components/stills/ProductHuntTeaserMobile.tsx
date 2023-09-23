@@ -9,7 +9,7 @@ export function ProductHuntTeaserMobile() {
     <AbsoluteFill>
       <Phone
         width={phoneWidth * 0.9}
-        screenshot="Simulator Screenshot - iPhone 14 Pro Max - 2023-09-19 at 09.22.49.png"
+        screenshot="stack.png"
         className="absolute z-10"
         style={{
           left: 0,
@@ -18,7 +18,7 @@ export function ProductHuntTeaserMobile() {
       />
       <Phone
         width={phoneWidth}
-        screenshot="Simulator Screenshot - iPhone 14 Pro Max - 2023-09-20 at 17.53.32.png"
+        screenshot="home.png"
         className="absolute z-30"
         style={{
           left: width / 2 - phoneWidth / 2,
@@ -27,7 +27,7 @@ export function ProductHuntTeaserMobile() {
       />
       <Phone
         width={phoneWidth * 0.9}
-        screenshot="Simulator Screenshot - iPhone 14 Pro Max - 2023-09-19 at 09.23.36.png"
+        screenshot="share.png"
         className="absolute z-10"
         style={{
           right: 0,
