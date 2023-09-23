@@ -108,10 +108,9 @@ export function Hero() {
               {config.tagline}
             </h1>
             <p className="mt-6 text-lg text-gray-600">
-              Curate your personal productivity stack or your favorite
-              development stack. Share it within the app or on social media.
-              Discover what other people are using and get inspired to try out
-              new tools.
+              Curate your personal productivity stack or favorite development
+              stack. Share it on social media. Discover what others use and get
+              inspired to try new tools.
             </p>
             <p className="mt-6 text-lg text-gray-600">
               Launching on the App Store in{" "}
