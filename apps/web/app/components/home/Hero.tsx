@@ -1,4 +1,5 @@
 import { useId } from "react";
+import clsx from "clsx";
 
 import { AppStoreLink } from "~/components/home/AppStoreLink";
 import { Button } from "~/components/Button";
@@ -6,6 +7,12 @@ import { Container } from "~/components/Container";
 import { PhoneFrame } from "~/components/home/PhoneFrame";
 import { config } from "~/lib/config";
 import { ProductHunt } from "./ProductHunt";
+
+import logoExpo from "~/images/logos/expo.svg";
+import logoReact from "~/images/logos/react.svg";
+import logoTamagui from "~/images/logos/tamagui.svg";
+import logoSupabase from "~/images/logos/supabase.svg";
+import logoRemix from "~/images/logos/remix.svg";
 
 function BackgroundIllustration(props: React.ComponentPropsWithoutRef<"div">) {
   let id = useId();
@@ -153,6 +160,27 @@ export function Hero() {
           <div className="relative -mt-4 lg:col-span-7 lg:mt-0 xl:col-span-6">
             <ProductHunt />
           </div>
+          {/* <div className="relative -mt-4 lg:col-span-7 lg:mt-0 xl:col-span-6">
+            <p className="text-center text-sm font-semibold text-gray-900 lg:text-left">
+              Proudly built with
+            </p>
+            <ul
+              role="list"
+              className="mx-auto mt-8 flex max-w-xl flex-wrap justify-center gap-x-10 gap-y-8 lg:mx-0 lg:justify-start text-neutral-500"
+            >
+              {[
+                ["Expo", logoExpo],
+                ["Supabase", logoSupabase],
+                ["Remix", logoRemix],
+                ["React Native", logoReact],
+                ["Tamagui", logoTamagui],
+              ].map(([name, logo, className]) => (
+                <li key={name} className={clsx("flex", className)}>
+                  <img src={logo} alt={name} className="h-8" />
+                </li>
+              ))}
+            </ul>
+          </div> */}
         </div>
       </Container>
     </div>
