@@ -24,7 +24,7 @@ export function OgImage() {
       </div>
       <Phone
         width={phoneWidth}
-        screenshot="Simulator Screenshot - iPhone 14 Pro Max - 2023-09-20 at 17.53.32.png"
+        screenshot="home.png"
         className="absolute z-10 right-12 top-16"
       />
     </AbsoluteFill>

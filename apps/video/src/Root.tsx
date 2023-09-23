@@ -12,6 +12,7 @@ import { ProductHuntGallery3 } from "./components/stills/ProductHuntGallery3";
 import { ProductHuntTeaserMobile } from "./components/stills/ProductHuntTeaserMobile";
 import { ProductHuntTeaserDesktop } from "./components/stills/ProductHuntTeaserDesktop";
 import { OgImage } from "./components/stills/OgImage";
+import { CreatorBanner } from "./components/stills/CreatorBanner";
 
 export const RemotionRoot: React.FC = () => {
   const fps = 30;
@@ -64,6 +65,12 @@ export const RemotionRoot: React.FC = () => {
           height={1000}
         />
         <Still id="OgImage" component={OgImage} width={1200} height={630} />
+        <Still
+          id="CreatorBanner"
+          component={CreatorBanner}
+          width={1200}
+          height={630}
+        />
       </Folder>
     </>
   );

@@ -11,7 +11,7 @@ export function ProductHuntTeaserDesktop() {
     <AbsoluteFill>
       <Phone
         width={phoneWidth}
-        screenshot="Simulator Screenshot - iPhone 14 Pro Max - 2023-09-20 at 17.53.32.png"
+        screenshot="home.png"
         className="absolute z-30"
         style={{
           left: width / 2 - phoneWidth / 2,
