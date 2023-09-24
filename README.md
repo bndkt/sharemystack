@@ -1,5 +1,7 @@
 # Share My Stack
 
+> Curate your personal productivity stack or your favorite development stack. Share it within the app or on social media. Discover what other people are using and get inspired to try out new tools.
+
 [https://sharemystack.com](https://sharemystack.com)
 
 ## Built with
@@ -11,22 +13,12 @@
 - [Supabase](https://github.com/supabase/supabase-js)
 - [React Native Bottom Sheet 5](https://github.com/gorhom/react-native-bottom-sheet)
 - [WatermelonDB](https://github.com/Nozbe/WatermelonDB)
+- [Remix 2](https://github.com/remix-run)
+- [Remotion 4](https://github.com/remotion-dev/remotion)
 
-## Messaging
+## Planned technical enhancements
 
-- OneSignal
-
-## Analytics
-
-- Sentry
-- Vexo
-- Mixpanel
-- PostHog
-
-## Here is a list of "stuff" I plan to demonstrate with this app (in no particular order):
-
-- [ ] iOS App Clips (using https://github.com/bndkt/react-native-app-clip)
-- [ ] iOS Widgets/Live Activities (using https://github.com/bndkt/react-native-widget-extension)
-- [ ] Universal Links (using https://github.com/expo/router)
-- [ ] iOS Handoff (using https://github.com/expo/router)
-- [ ] Web App powered by React Native Web (using https://github.com/expo/router)
+- [ ] iOS App Clips (using [react-native-app-clip](https://github.com/bndkt/react-native-app-clip))
+- [ ] iOS Widgets/Live Activities (using [react-native-widget-extension](https://github.com/bndkt/react-native-widget-extension))
+- [ ] iOS Handoff (using [Expo Router](https://github.com/expo/expo/tree/main/packages/expo-router))
+- [ ] Web App powered by React Native Web (using [Expo Router](https://github.com/expo/expo/tree/main/packages/expo-router))
