@@ -28,7 +28,7 @@ function BackgroundIllustration(props: React.ComponentPropsWithoutRef<"div">) {
         <path
           d="M1025 513c0 282.77-229.23 512-512 512S1 795.77 1 513 230.23 1 513 1s512 229.23 512 512Z"
           strokeOpacity="0.7"
-          className="stroke-rose-100"
+          className="stroke-sms-100"
         />
         <path
           d="M513 1025C230.23 1025 1 795.77 1 513"
@@ -43,7 +43,7 @@ function BackgroundIllustration(props: React.ComponentPropsWithoutRef<"div">) {
             x2="1"
             y2="1025"
             gradientUnits="userSpaceOnUse"
-            className="text-rose-500"
+            className="text-sms-500"
           >
             <stop stopColor="currentColor" stopOpacity="0.5" />
             <stop offset="1" stopColor="currentColor" stopOpacity="0" />
@@ -59,7 +59,7 @@ function BackgroundIllustration(props: React.ComponentPropsWithoutRef<"div">) {
         <path
           d="M913 513c0 220.914-179.086 400-400 400S113 733.914 113 513s179.086-400 400-400 400 179.086 400 400Z"
           strokeOpacity="0.7"
-          className="stroke-rose-100"
+          className="stroke-sms-100"
         />
         <path
           d="M913 513c0 220.914-179.086 400-400 400"
@@ -74,7 +74,7 @@ function BackgroundIllustration(props: React.ComponentPropsWithoutRef<"div">) {
             x2="913"
             y2="913"
             gradientUnits="userSpaceOnUse"
-            className="text-rose-500"
+            className="text-sms-500"
           >
             <stop stopColor="currentColor" stopOpacity="0.5" />
             <stop offset="1" stopColor="currentColor" stopOpacity="0" />
