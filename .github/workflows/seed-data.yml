@@ -29,6 +29,9 @@ jobs:
         uses: oven-sh/setup-bun@v1
       - name: Install dependencies
         run: bun install
+      - name: Install sharp (Workaround)
+        run: npm i sharp
+        working-directory: packages/seed-data-action
       - name: Build package
         run: bun run build
         working-directory: packages/seed-data-action
