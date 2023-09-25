@@ -20,8 +20,8 @@ export const meta: MetaFunction = () => [
   },
   {
     name: "apple-itunes-app",
-    content:
-      "app-id=G76836P2D4.com.sharemystack, app-clip-bundle-id=G76836P2D4.com.sharemystack.Clip, app-clip-display=card",
+    content: "app-id=G76836P2D4.com.sharemystack",
+    // "app-id=G76836P2D4.com.sharemystack, app-clip-bundle-id=G76836P2D4.com.sharemystack.Clip, app-clip-display=card",
   },
   {
     property: "og:title",

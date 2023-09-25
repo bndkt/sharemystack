@@ -2,22 +2,12 @@
   "name": "@sharemystack/monorepo",
   "version": "0.0.1",
   "scripts": {
-    "clear": "rm -f pnpm-lock.yaml && find ./ -type d -and \\( -name node_modules -or -name build -or -name .turbo \\) -exec rm -rf '{}' +",
-    "reinstall": "pnpm run clear && pnpm i",
-    "rebuild": "pnpm run reinstall && pnpm run build",
+    "clear": "rm -f bun.lockb && find ./ -type d -and \\( -name node_modules -or -name build -or -name dist \\) -exec rm -rf '{}' +",
     "build": "CI=1 turbo run build",
     "dev": "turbo run dev",
     "types": "turbo run types",
     "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "update": "pnpm update -i -r -L",
-    "manypkg": "npx @manypkg/cli@latest check",
-    "dump": "npx supabase db dump -f supabase/exports/dump.sql --data-only -s public",
-    "export": "psql -h db.ltmpiwwmhypfxvbihxdn.supabase.co -p 5432 -d postgres -U postgres -f ./supabase/scripts/export.sql",
-    "import": "PGPASSWORD=postgres psql -h localhost -p 54322 -d postgres -U postgres -f ./supabase/scripts/import.sql",
-    "size": "PGPASSWORD=postgres psql -h localhost -p 54322 -d postgres -U postgres -c \"SELECT pg_size_pretty(pg_total_relation_size('tool_icons'));\"",
-    "import:staging": "psql -h db.vmbhbonhvzmoafvxinfj.supabase.co -p 5432 -d postgres -U postgres -f ./supabase/scripts/import.sql",
-    "import:production": "psql -h db.ltmpiwwmhypfxvbihxdn.supabase.co -p 5432 -d postgres -U postgres -f ./supabase/scripts/import.sql"
+    "manypkg": "npx @manypkg/cli@latest check"
   },
   "dependencies": {
     "esbuild": "0.19.3",
@@ -25,10 +15,10 @@
     "supabase": "1.99.5",
     "turbo": "1.10.14"
   },
-  "packageManager": "pnpm@8.7.5",
-  "engines": {
-    "node": ">=18.16.0"
-  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "license": "UNLICENSED",
   "private": true
 }

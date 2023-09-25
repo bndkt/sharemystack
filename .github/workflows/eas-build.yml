@@ -25,12 +25,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 🚚 Checkout
+      - name: Checkout repository
         uses: actions/checkout@v3
-      - name: 🏗 Setup monorepo
-        uses: ./.github/actions/setup-monorepo
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
+      - name: Install dependencies
+        run: bun install
+      - name: Setup EAS
+        uses: expo/expo-github-action@v8
         with:
-          expo-token: ${{ secrets.EXPO_TOKEN }}
+          eas-version: latest
+          packager: bun
+          token: ${{ secrets.EXPO_TOKEN }}
       - name: 📢 EAS Build
         run: eas build -e ${{ inputs.profile }} -p ios --non-interactive --no-wait
         working-directory: ./apps/app

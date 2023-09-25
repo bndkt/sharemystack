@@ -1,21 +1,19 @@
-name: Node.js CI
-
+name: CI
 on:
-  - push
-  - pull_request
+  push:
+    branches:
+      - main
+  pull_request:
 
 jobs:
-  build:
-    name: Build
+  CI:
     runs-on: ubuntu-latest
     steps:
-      - name: 🚚 Checkout
+      - name: Checkout repository
         uses: actions/checkout@v3
-      - name: 🏗 Setup monorepo
-        uses: ./.github/actions/setup-monorepo
-      # - name: 👷‍♂️ Build all
-      #  run: pnpm build
-      - name: 👮‍♂️ Lint
-        run: pnpm lint
-      # - name: Run tests
-      #  run: pnpm test
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
+      - name: Install dependencies
+        run: bun install
+      - name: Build packages
+        run: bun run build
