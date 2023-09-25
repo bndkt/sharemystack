@@ -9,7 +9,7 @@
     "web": "expo start --web --clear",
     "doc": "npx expo-doctor@latest",
     "prebuild": "expo prebuild --platform ios --clean",
-    "build:simulator": "eas build --profile simulator --platform ios --local",
+    "build:simulator": "SENTRY_AUTH_TOKEN=48302205068a7660528daf8d56c57f9786bf633648c0e7ae70a9f9b5fe3e0ca1 eas build --profile simulator --platform ios --local",
     "build:development": "eas build --profile development --platform ios --local",
     "build:production": "eas build --profile production --platform ios --local",
     "types": "supabase gen types typescript --local > src/lib/database.types.ts",
@@ -80,7 +80,7 @@
     "vexo-analytics": "1.3.11"
   },
   "devDependencies": {
-    "@babel/core": "7.22.20",
+    "@babel/core": "7.23.0",
     "@types/react": "18.2.22",
     "eslint": "8.50.0",
     "eslint-config-universe": "12.0.0",
