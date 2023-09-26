@@ -121,7 +121,7 @@ export function Hero() {
                 )}{" "}
                 days
               </span>{" "}
-              (October 8).
+              (October 8, 2023).
             </p>
             <div className="mt-8 flex flex-wrap gap-x-6 gap-y-4">
               <AppStoreLink />

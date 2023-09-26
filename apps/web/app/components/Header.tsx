@@ -132,7 +132,7 @@ export function Header() {
                               to="/#newsletter"
                               variant="outline"
                             >
-                              Join waitlist
+                              Join newsletter
                             </Popover.Button>
                             {config.appStoreLink ? (
                               <Button to={config.appStoreLink}>
@@ -152,7 +152,7 @@ export function Header() {
               variant="outline"
               className="hidden lg:block"
             >
-              Join waitlist
+              Join newsletter
             </Button>
             {config.appStoreLink ? (
               <Button to={config.appStoreLink} className="hidden lg:block">
