@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "scripts": {
     "clear": "rm -f bun.lockb && find ./ -type d -and \\( -name node_modules -or -name build -or -name dist \\) -exec rm -rf '{}' +",
+    "ncu": "bun x npm-check-updates -p bun -ws",
     "build": "CI=1 turbo run build",
     "dev": "turbo run dev",
     "types": "turbo run types",
