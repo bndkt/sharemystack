@@ -49,7 +49,7 @@ export function Footer() {
             <div className="group relative -mx-4 flex items-center self-stretch p-4 transition-colors hover:bg-gray-100 sm:self-auto sm:rounded-2xl lg:mx-0 lg:self-auto lg:p-6">
               <div className="relative flex h-24 w-24 flex-none items-center justify-center">
                 <QrCodeBorder className="absolute inset-0 h-full w-full stroke-gray-300 transition-colors group-hover:stroke-sms-500" />
-                <img src={qrCode} alt="" />
+                <img src={qrCode} alt="" className="p-2" />
               </div>
               <div className="ml-8 lg:w-64">
                 <p className="text-base font-semibold text-gray-900">
@@ -87,7 +87,7 @@ export function Footer() {
               name="email_address"
             />
             <Button type="submit" color="sms" className="ml-4 flex-none">
-              Join waitlist
+              Join newsletter
             </Button>
           </form>
           <p className="mt-6 text-sm text-gray-500 md:mt-0">
