@@ -24,6 +24,8 @@ export default function Profile() {
           data={stacks}
           name="stacks"
           component={(stacks) => {
+            const primaryStackId = profile.primaryStackId ?? stacks[0].id;
+
             return (
               <YStack fullscreen>
                 <Stack.Screen
@@ -37,6 +39,7 @@ export default function Profile() {
                         tabBarProps={props}
                         profile={profile}
                         stacks={stacks}
+                        primaryStackId={primaryStackId}
                       />
                     )}
                   >
@@ -44,7 +47,7 @@ export default function Profile() {
                       name="[stack]"
                       options={{ title: "Stack Type" }}
                       initialParams={{
-                        primaryStackId: profile.primaryStackId ?? stacks[0].id,
+                        primaryStackId,
                       }}
                     />
                   </MaterialTopTabs>
