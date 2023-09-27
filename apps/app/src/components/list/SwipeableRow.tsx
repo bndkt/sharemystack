@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, useRef } from "react";
 import { Animated } from "react-native";
 import { Swipeable } from "react-native-gesture-handler";
 import { Button, XStack } from "tamagui";
@@ -40,15 +40,22 @@ function RightAction({
 }
 
 function RightActions({
+  close,
   rightActions,
   progress,
 }: {
+  close: () => void;
   rightActions: { text: ReactNode; color: string; onPress: () => void }[];
   progress: Animated.AnimatedInterpolation<number>;
 }) {
   return (
     <XStack width={rightActions.length * 64} paddingBottom={3}>
       {rightActions.map((action, index) => {
+        function onPress() {
+          action.onPress();
+          close();
+        }
+
         return (
           <RightAction
             key={index}
@@ -56,7 +63,7 @@ function RightActions({
             color={action.color}
             x={(index + 1) * 64}
             progress={progress}
-            onPress={action.onPress}
+            onPress={onPress}
           />
         );
       })}
@@ -72,8 +79,15 @@ export function SwipeableRow({
   // leftActions?: { text: ReactNode; color: string; onPress: () => void }[];
   rightActions?: { text: ReactNode; color: string; onPress: () => void }[];
 }) {
+  const ref = useRef<Swipeable>(null);
+
+  function close() {
+    ref.current?.close();
+  }
+
   return rightActions ? (
     <Swipeable
+      ref={ref}
       friction={2}
       enableTrackpadTwoFingerGesture
       leftThreshold={30}
@@ -82,7 +96,11 @@ export function SwipeableRow({
       renderRightActions={
         rightActions
           ? (progress) => (
-              <RightActions rightActions={rightActions} progress={progress} />
+              <RightActions
+                close={close}
+                rightActions={rightActions}
+                progress={progress}
+              />
             )
           : undefined
       }

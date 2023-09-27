@@ -60,6 +60,12 @@ export class Profile extends Model {
     .query(Q.where("profile_id", this.id))
     .observeCount();
 
+  @writer async primaryStack(stackId: string) {
+    await this.update((profile) => {
+      profile.primaryStackId = stackId;
+    });
+  }
+
   @writer async addStar(userId: string) {
     const star = await this.collections
       .get<Star>(TableName.STARS)
@@ -97,7 +103,7 @@ export class Profile extends Model {
   }
 
   @writer async updateProfile({ name, slug }: { name: string; slug: string }) {
-    this.update((profile) => {
+    await this.update((profile) => {
       profile.name = name;
       profile.slug = slug;
     });

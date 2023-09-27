@@ -70,13 +70,13 @@ export function useProfile({
 
       return () => subscription.unsubscribe();
     }
-  }, [database, user, slug]);
+  }, [profilesCollection, user, slug]);
 
   // If profile is loaded, load stacks
   useEffect(() => {
     if (profile) {
       const subscription = profile.stacks
-        .extend(Q.sortBy("created_at", "desc"))
+        .extend(Q.sortBy("stack_type_name", "asc"))
         .observe()
         .subscribe(async (data) => {
           data = data.filter(async (stack) => (await stack.picks.count) > 0);

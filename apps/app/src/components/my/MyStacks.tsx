@@ -1,7 +1,8 @@
-import { ChevronRight, Plus } from "@tamagui/lucide-icons";
-import { useRouter } from "expo-router";
+import { withObservables } from "@nozbe/watermelondb/react";
+import { Plus } from "@tamagui/lucide-icons";
 import { H5, ListItem, Text } from "tamagui";
 
+import { StacksListItem } from "./StacksListItem";
 import { CategoryIcon } from "../categories/CategoryIcon";
 import { List } from "../list";
 
@@ -11,7 +12,7 @@ import { Profile } from "@/model/Profile";
 import { Stack } from "@/model/Stack";
 import { StackType } from "@/model/StackType";
 
-export function MyStacks({
+export function MyStacksBase({
   profile,
   stacks,
 }: {
@@ -19,7 +20,6 @@ export function MyStacks({
   stacks: Stack[];
 }) {
   const { stackTypes } = useStackTypes();
-  const router = useRouter();
   const { capture, addTag, addTrigger } = useAnalytics();
 
   async function handleCreateStack(stackType: StackType) {
@@ -58,6 +58,7 @@ export function MyStacks({
   return (
     <List
       data={items}
+      extraData={profile}
       renderItem={({ item }) => {
         if (typeof item === "string") {
           return (
@@ -94,14 +95,7 @@ export function MyStacks({
             />
           );
         } else if (item instanceof Stack) {
-          return (
-            <ListItem
-              onPress={() => router.push(`/my/${item.id}`)}
-              title={item.stackTypeName}
-              icon={<CategoryIcon name={item.stackTypeIconName} size="$1.5" />}
-              iconAfter={<ChevronRight size="$1.5" />}
-            />
-          );
+          return <StacksListItem stack={item} profile={profile} />;
         } else {
           return <></>;
         }
@@ -109,3 +103,9 @@ export function MyStacks({
     />
   );
 }
+
+const enhance = withObservables(["profile"], ({ profile }) => ({
+  profile,
+}));
+
+export const MyStacks = enhance(MyStacksBase);

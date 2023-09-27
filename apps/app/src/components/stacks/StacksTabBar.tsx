@@ -11,14 +11,16 @@ export function StacksTabBar({
   tabBarProps,
   profile,
   stacks,
+  primaryStackId,
 }: {
   tabBarProps: MaterialTopTabBarProps;
   profile: Profile;
   stacks: Stack[];
+  primaryStackId: string;
 }) {
   const router = useRouter();
   let { stack: stackId } = useGlobalSearchParams<{ stack: string }>();
-  stackId ??= profile.primaryStackId ?? stacks[0] ? stacks[0].id : undefined;
+  stackId ??= primaryStackId;
 
   return stacks.length > 0 ? (
     <XStack borderBottomColor="$borderColor" borderBottomWidth="$1">
