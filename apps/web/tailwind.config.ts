@@ -40,9 +40,9 @@ export default {
         sms: colors.rose,
         gray: colors.neutral,
       }),
-      /* fontFamily: {
-        sans: "var(--font-inter)",
-      }, */
+      fontFamily: {
+        sans: "Inter var",
+      },
       keyframes: {
         "fade-in": {
           from: {
