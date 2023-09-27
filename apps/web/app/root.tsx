@@ -24,6 +24,10 @@ export const meta: MetaFunction = () => [
     // "app-id=G76836P2D4.com.sharemystack, app-clip-bundle-id=G76836P2D4.com.sharemystack.Clip, app-clip-display=card",
   },
   {
+    property: "og:type",
+    content: "website",
+  },
+  {
     property: "og:title",
     content: `${config.name} - ${config.tagline}`,
   },
