@@ -130,7 +130,7 @@ export function Carousel({
                       Math.floor(ev.nativeEvent.contentOffset.x / width),
                     );
                   }}
-                  extraData={options}
+                  extraData={{ options, activeIndex }}
                   estimatedItemSize={width}
                   renderItem={({
                     item,
