@@ -1,5 +1,7 @@
 # Share My Stack
 
+![Share My Stack Screenshots](https://sharemystack.com/images/banner.webp)
+
 > Curate your personal productivity stack or your favorite development stack. Share it within the app or on social media. Discover what other people are using and get inspired to try out new tools.
 
 This is the original repository of the app Share My Stack, which you can download from the App Store today:
@@ -10,13 +12,13 @@ To find out more about Share My Stack, check out [https://sharemystack.com](http
 
 ## This repo includes:
 
-- The app itself (React Native): [apps/app](./apps/app)
-- Sanity Studio (to edit editorial content shown in the app): [apps/content](./apps/content)
-- A Remotion project (to generate mockups and videos for marketing): [apps/video](./apps/video)
-- The landing page (Remix): [apps/web](./apps/web)
-- Static data for the app (categories, tools, icons): [assets](./assets)
-- A custom GitHub actions to seed the static data into Supabase: [packages/seed-data-action](./packages/seed-data-action)
-- GitHub actions for CI and to deploy to Expo (build the mobile app) and Cloudflare (website): [.github/workflows](./.github/workflows)
+- [apps/app](./apps/app): The app itself (React Native)
+- [apps/content](./apps/content): Sanity Studio (to edit editorial content shown in the app)
+- [apps/video](./apps/video): A Remotion project (to generate mockups and videos for marketing)
+- [apps/web](./apps/web): The landing page (Remix)
+- [assets](./assets): Static data for the app (categories, tools, icons)
+- [packages/seed-data-action](./packages/seed-data-action): A custom GitHub actions to seed the static data into Supabase
+- [.github/workflows](./.github/workflows): GitHub actions for CI and to deploy to Expo (build the mobile app) and Cloudflare (website)
 
 ## Built with
 
