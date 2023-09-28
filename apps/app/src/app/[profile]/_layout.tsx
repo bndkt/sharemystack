@@ -24,7 +24,12 @@ export default function Profile() {
           data={stacks}
           name="stacks"
           component={(stacks) => {
-            const primaryStackId = profile.primaryStackId ?? stacks[0].id;
+            const stackIds = stacks.map((stack) => stack.id);
+            const primaryStackId =
+              profile.primaryStackId &&
+              stackIds.includes(profile.primaryStackId)
+                ? profile.primaryStackId
+                : stackIds[0];
 
             return (
               <YStack fullscreen>

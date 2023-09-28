@@ -13,6 +13,9 @@ import { ProductHuntTeaserMobile } from "./components/stills/ProductHuntTeaserMo
 import { ProductHuntTeaserDesktop } from "./components/stills/ProductHuntTeaserDesktop";
 import { OgImage } from "./components/stills/OgImage";
 import { CreatorBanner } from "./components/stills/CreatorBanner";
+import { TwitterPost } from "./components/stills/TwitterPost";
+import { InstagramPost } from "./components/stills/InstagramPost";
+import { LinkedInBanner } from "./components/stills/LinkedInBanner";
 
 export const RemotionRoot: React.FC = () => {
   const fps = 30;
@@ -70,6 +73,24 @@ export const RemotionRoot: React.FC = () => {
           component={CreatorBanner}
           width={1200}
           height={630}
+        />
+        <Still
+          id="TwitterPost"
+          component={TwitterPost}
+          width={1600}
+          height={900}
+        />
+        <Still
+          id="InstagramPost"
+          component={InstagramPost}
+          width={1080}
+          height={1080}
+        />
+        <Still
+          id="LinkedInBanner"
+          component={LinkedInBanner}
+          width={1584}
+          height={396}
         />
       </Folder>
     </>
