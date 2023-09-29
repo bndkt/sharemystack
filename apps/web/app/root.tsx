@@ -41,7 +41,7 @@ export const links: LinksFunction = () => [
     type: "image/png",
     href: "/favicon.png",
   },
-  { rel: "stylesheet", href: "/fonts/inter.woff2" },
+  // { rel: "stylesheet", href: "/fonts/inter.woff2" },
 ];
 
 export default function App() {
