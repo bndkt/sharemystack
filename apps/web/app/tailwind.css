@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: "Inter var";
+  src:
+    local("Inter var"),
+    url("/fonts/inter.woff2") format("woff");
+}
