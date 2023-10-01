@@ -132,7 +132,7 @@ const config: ExpoConfig = {
     ],
   ],
   hooks: {
-    /* postPublish: [
+    postPublish: [
       {
         file: "sentry-expo/upload-sourcemaps",
         config: {
@@ -141,7 +141,7 @@ const config: ExpoConfig = {
           setCommits: true,
         },
       },
-    ], */
+    ],
   },
   runtimeVersion: {
     policy: "sdkVersion",
