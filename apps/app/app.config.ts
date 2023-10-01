@@ -133,14 +133,14 @@ const config: ExpoConfig = {
   ],
   hooks: {
     postPublish: [
-      {
+      /* {
         file: "sentry-expo/upload-sourcemaps",
         config: {
           organization: "feldapp",
           project: sentryProject,
           setCommits: true,
         },
-      },
+      }, */
     ],
   },
   runtimeVersion: {
