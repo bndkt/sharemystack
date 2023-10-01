@@ -7,6 +7,7 @@ const headingFont = createInterFont();
 const bodyFont = createInterFont();
 
 const appConfig = createTamagui({
+  settings: { fastSchemeChange: true },
   themes,
   defaultTheme: "dark",
   shouldAddPrefersColorThemes: false,
