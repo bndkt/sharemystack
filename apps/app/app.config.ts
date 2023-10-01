@@ -23,7 +23,7 @@ const config: ExpoConfig = {
   slug: "sharemystack",
   scheme,
   owner: "feldapp",
-  version: "1.0.3",
+  version: "1.0.5",
   orientation: "portrait",
   icon: "./assets/icon.png",
   userInterfaceStyle: "automatic",
@@ -132,7 +132,7 @@ const config: ExpoConfig = {
     ],
   ],
   hooks: {
-    postPublish: [
+    /* postPublish: [
       {
         file: "sentry-expo/upload-sourcemaps",
         config: {
@@ -141,7 +141,7 @@ const config: ExpoConfig = {
           setCommits: true,
         },
       },
-    ],
+    ], */
   },
   runtimeVersion: {
     policy: "sdkVersion",
