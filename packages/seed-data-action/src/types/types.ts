@@ -39,7 +39,6 @@ export type Profile = {
   image: string | null;
   website: string;
   twitter: string;
-  twitter_image_url: string;
   youtube: string;
   is_featured: boolean;
   stacks?: {
