@@ -2,13 +2,16 @@
 
 ![Share My Stack Screenshots](https://sharemystack.com/images/banner.webp)
 
-> Curate your personal productivity stack or your favorite development stack. Share it within the app or on social media. Discover what other people are using and get inspired to try out new tools.
+**Curate your personal productivity stack or your favorite development stack. Share it within the app or on social media. Discover what other people are using and get inspired to try out new tools.**
 
 This is the original repository of the app Share My Stack, which you can download from the App Store today:
 
 [![Download on the App Store](https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg)](https://apps.apple.com/us/app/share-my-stack/id6450111644)
 
 To find out more about Share My Stack, check out [https://sharemystack.com](https://sharemystack.com)
+
+> [!NOTE]
+> This app (and all code in this repo) was created by Benedikt Müller ([@bndkt](https://x.com/bndkt), [bndkt.com](https://bndkt.com)). I'm making this repo accessible for educational purposes and as inspiration, but without license. I'm **available for freelance work** in React and React Native projects, please reach out to me at [hello@bndkt.com](hello@bndkt.com).
 
 ## This repo includes:
 
