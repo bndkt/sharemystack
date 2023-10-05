@@ -1,3 +1,5 @@
+// Adapted from: https://github.com/laurentpayot/minidenticons
+
 const COLORS_NB = 9;
 const DEFAULT_SATURATION = 95;
 const DEFAULT_LIGHTNESS = 45;
