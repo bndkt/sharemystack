@@ -112,17 +112,6 @@ export function Hero() {
               stack. Share it on social media. Discover what others use and get
               inspired to try new tools.
             </p>
-            <p className="mt-6 text-lg text-gray-600">
-              Launching on the App Store in{" "}
-              <span className="font-bold">
-                {Math.ceil(
-                  (new Date(2023, 9, 8).getTime() - new Date().getTime()) /
-                    (1000 * 60 * 60 * 24)
-                )}{" "}
-                days
-              </span>{" "}
-              (October 8, 2023).
-            </p>
             <div className="mt-8 flex flex-wrap gap-x-6 gap-y-4">
               <AppStoreLink />
               {config.videoLink ? (
