@@ -1,7 +1,9 @@
+import { loadFont } from "@remotion/google-fonts/Inter";
+
 import { AbsoluteFill, useVideoConfig } from "remotion";
 import { Phone } from "../devices/Phone";
 import { Logo } from "../Logo";
-import { loadFont } from "@remotion/google-fonts/Inter";
+import producthunt from "../images/producthunt.svg";
 
 const { fontFamily } = loadFont();
 
@@ -16,7 +18,8 @@ export function TwitterPost() {
         <p className="ml-4 text-3xl font-semibold">Share My Stack</p>
       </div>
       <div className="absolute bottom-12 left-12 w-1/3 text-8xl leading-tight">
-        <div className="mb-4">Available for pre-order now</div>
+        <div className="mb-12">Launching in 7 days</div>
+        <img src={producthunt} className="h-24" />
       </div>
       {/* Center */}
       <Phone
