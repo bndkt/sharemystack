@@ -13,12 +13,21 @@ interface Props {
 }
 
 export const onRequest: PagesFunction<Env> = async (context) => {
+  const stack =
+    context.params.stack && context.params.stack.length > 0
+      ? context.params.stack[0]
+      : null;
+
+  if (!stack ?? stack?.substring(0, 1) !== "@") {
+    return context.next();
+  }
+
   const supabase = getSupabaseClient(
     context.env.SUPABASE_URL,
     context.env.SUPABASE_ANON_KEY
   );
 
-  const slug = context.params.stack[0].substring(1);
+  const slug = stack.substring(1);
 
   const { data, error } = await supabase
     .from("og_view")
