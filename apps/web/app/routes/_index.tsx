@@ -29,7 +29,7 @@ export const meta: MetaFunction = () => [
   },
   {
     property: "twitter:card",
-    content: "summary",
+    content: "summary_large_image",
   },
   { property: "twitter:site", content: "@sharemystack" },
 ];
