@@ -1,0 +1,2 @@
+create view og_view as
+select tool_icons.icon_svg, picks_view.profile_slug, picks_view.tool_name from picks_view left join tools_view on (tools_view.id = picks_view.tool_id) left join tool_icons on (tool_icons.id = tools_view.tool_icon_id) group by tool_icons.id, picks_view.profile_slug, picks_view.tool_name

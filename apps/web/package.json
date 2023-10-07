@@ -6,7 +6,8 @@
     "build": "remix build",
     "dev": "remix dev --manual -c \"npm run start\"",
     "start": "wrangler pages dev --compatibility-date=2023-06-21 ./public",
-    "typecheck": "tsc"
+    "typecheck": "tsc",
+    "types": "supabase gen types typescript --local > app/lib/database.types.ts"
   },
   "packageManager": "pnpm@8.6.1",
   "dependencies": {
@@ -18,6 +19,7 @@
     "@remix-run/cloudflare-pages": "2.0.1",
     "@remix-run/react": "2.0.1",
     "@supabase/auth-helpers-remix": "0.2.2",
+    "@supabase/supabase-js": "^2.38.0",
     "@tailwindcss/forms": "^0.5.6",
     "@tsndr/cloudflare-worker-jwt": "2.2.5",
     "clsx": "^2.0.0",
