@@ -656,6 +656,14 @@ export interface Database {
         }
         Relationships: []
       }
+      og_view: {
+        Row: {
+          icon_svg: string | null
+          profile_slug: string | null
+          tool_name: string | null
+        }
+        Relationships: []
+      }
       picks_view: {
         Row: {
           category_icon_name: string | null
