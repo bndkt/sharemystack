@@ -7,6 +7,7 @@ export function OgImage({
   ogTitle,
   pathname,
   icons,
+  dark,
 }: {
   ogTitle: string;
   pathname: string;
@@ -15,6 +16,7 @@ export function OgImage({
         icon_svg: any;
       }[]
     | null;
+  dark?: boolean;
 }) {
   const title = ogTitle.replace(/- Share My Stack/g, "");
 
@@ -28,7 +30,6 @@ export function OgImage({
     flexDirection: "row",
     paddingLeft: 50,
     paddingRight: 50,
-    // gap: 30,
     justifyContent: "space-between",
   };
 
@@ -42,15 +43,33 @@ export function OgImage({
     justifyContent: "center",
   };
 
+  function Icon({ svgString }: { svgString?: string }) {
+    if (!svgString) return null;
+
+    if (dark) {
+      svgString = svgString.replaceAll("currentColor", "white");
+    }
+
+    return (
+      <div key={svgString} style={iconStyle}>
+        <img
+          src={`data:image/svg+xml,${svgString}`}
+          style={{ width: size * 0.8 }}
+        />
+      </div>
+    );
+  }
+
   return (
     <div
       style={{
-        color: config.color,
         height: "100%",
         width: "100%",
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
+        backgroundColor: dark ? "black" : "white",
+        color: dark ? "white" : "black",
       }}
     >
       <div
@@ -60,8 +79,7 @@ export function OgImage({
           paddingLeft: 50,
           paddingTop: 25,
           paddingBottom: 25,
-          color: "black",
-          borderBottomColor: "black",
+          borderBottomColor: config.color, // dark ? "white" : "black",
           borderBottomWidth: 2,
         }}
       >
@@ -76,43 +94,30 @@ export function OgImage({
       </div>
       {row1 ? (
         <div style={rowStyle}>
-          {row1.map((icon) => {
-            return icon.icon_svg ? (
-              <div key={icon.icon_svg} style={iconStyle}>
-                <img
-                  src={`data:image/svg+xml,${icon.icon_svg}`}
-                  style={{ width: size * 0.8 }}
-                />
-              </div>
-            ) : null;
-          })}
+          {row1.map((icon) => (
+            <Icon svgString={icon.icon_svg} />
+          ))}
         </div>
       ) : null}
       {row2 ? (
         <div style={rowStyle}>
-          {row2.map((icon) => {
-            return icon.icon_svg ? (
-              <div key={icon.icon_svg} style={iconStyle}>
-                <img
-                  src={`data:image/svg+xml,${icon.icon_svg}`}
-                  style={{ width: size * 0.8 }}
-                />
-              </div>
-            ) : null;
-          })}
+          {row2.map((icon) => (
+            <Icon svgString={icon.icon_svg} />
+          ))}
         </div>
       ) : null}
       <div
         style={{
           display: "flex",
           flexDirection: "row",
-          alignItems: "flex-end",
+          alignItems: "center",
           justifyContent: "flex-end",
           fontSize: 72,
           paddingRight: 50,
           paddingTop: 25,
           paddingBottom: 25,
-          borderTopColor: config.color,
+          backgroundColor: config.color,
+          color: "white",
           borderTopWidth: 2,
         }}
       >
