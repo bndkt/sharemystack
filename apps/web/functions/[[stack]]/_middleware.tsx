@@ -22,6 +22,12 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     return context.next();
   }
 
+  const dark =
+    context.request.url.includes("?dark=1") ||
+    context.request.url.includes("?dark=true") ||
+    context.request.url.includes("?d=1") ||
+    context.request.url.includes("?d=true");
+
   const supabase = getSupabaseClient(
     context.env.SUPABASE_URL,
     context.env.SUPABASE_ANON_KEY
@@ -39,7 +45,7 @@ export const onRequest: PagesFunction<Env> = async (context) => {
   return vercelOGPagesPlugin<Props>({
     imagePathSuffix: "/social-image.png",
     component: ({ ogTitle, pathname }) => (
-      <OgImage ogTitle={ogTitle} pathname={pathname} icons={data} />
+      <OgImage ogTitle={ogTitle} pathname={pathname} icons={data} dark={dark} />
     ),
     extractors: {
       on: {
