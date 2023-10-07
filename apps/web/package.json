@@ -6,7 +6,8 @@
     "build": "remix build",
     "dev": "remix dev --manual -c \"npm run start\"",
     "start": "wrangler pages dev --compatibility-date=2023-06-21 ./public",
-    "typecheck": "tsc"
+    "typecheck": "tsc",
+    "types": "supabase gen types typescript --local > app/lib/database.types.ts"
   },
   "packageManager": "pnpm@8.6.1",
   "dependencies": {
