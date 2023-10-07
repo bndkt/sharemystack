@@ -23,7 +23,7 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => [
   },
   {
     property: "twitter:card",
-    content: "summary",
+    content: "summary_large_image",
   },
   { property: "twitter:site", content: "@sharemystack" },
 ];
