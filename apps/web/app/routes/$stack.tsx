@@ -21,6 +21,11 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => [
     property: "og:image",
     content: `https://sharemystack.com/@${data?.stack}/social-image.png`,
   },
+  {
+    property: "twitter:card",
+    content: "summary",
+  },
+  { property: "twitter:site", content: "@sharemystack" },
 ];
 
 export async function loader({ params }: LoaderFunctionArgs) {

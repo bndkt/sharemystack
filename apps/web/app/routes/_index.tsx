@@ -27,6 +27,11 @@ export const meta: MetaFunction = () => [
     property: "og:image",
     content: "https://sharemystack.com/og.png",
   },
+  {
+    property: "twitter:card",
+    content: "summary",
+  },
+  { property: "twitter:site", content: "@sharemystack" },
 ];
 
 export default function Home() {
