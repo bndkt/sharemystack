@@ -10,7 +10,7 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => [
   },
   {
     property: "og:title",
-    content: `${data?.stack}’s Stack - ${config.name}`,
+    content: `@${data?.stack}’s Stack - ${config.name}`,
   },
   {
     property: "og:description",
