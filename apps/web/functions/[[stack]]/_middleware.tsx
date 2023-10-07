@@ -36,8 +36,6 @@ export const onRequest: PagesFunction<Env> = async (context) => {
     .neq("icon_svg", null)
     .limit(16);
 
-  console.log(data);
-
   return vercelOGPagesPlugin<Props>({
     imagePathSuffix: "/social-image.png",
     component: ({ ogTitle, pathname }) => (
