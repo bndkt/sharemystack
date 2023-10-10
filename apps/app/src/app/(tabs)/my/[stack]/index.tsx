@@ -11,6 +11,13 @@ export default function Index() {
   return (
     <YStack padding="$3" gap="$3">
       <Button
+        onPress={() => router.push(`/(tabs)/my/${stackId}/picks`)}
+        icon={<PlusCircle size="$1" />}
+      >
+        Add tools to this stack
+      </Button>
+
+      <Button
         onPress={() => {
           router.push(`/(tabs)/my/share/${stackId}`);
         }}
@@ -19,12 +26,6 @@ export default function Index() {
         color="white"
       >
         Share this stack
-      </Button>
-      <Button
-        onPress={() => router.push(`/(tabs)/my/${stackId}/picks`)}
-        icon={<PlusCircle size="$1" />}
-      >
-        Add tools to this stack
       </Button>
     </YStack>
   );
