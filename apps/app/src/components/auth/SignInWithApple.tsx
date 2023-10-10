@@ -1,15 +1,21 @@
 import * as AppleAuthentication from "expo-apple-authentication";
+import { useThemeName } from "tamagui";
 
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/lib/supabase";
 
 export function SignInWithApple() {
   const { signIn } = useAuth();
+  const theme = useThemeName();
 
   return (
     <AppleAuthentication.AppleAuthenticationButton
       buttonType={AppleAuthentication.AppleAuthenticationButtonType.SIGN_IN}
-      buttonStyle={AppleAuthentication.AppleAuthenticationButtonStyle.BLACK}
+      buttonStyle={
+        theme === "dark"
+          ? AppleAuthentication.AppleAuthenticationButtonStyle.WHITE
+          : AppleAuthentication.AppleAuthenticationButtonStyle.BLACK
+      }
       cornerRadius={5}
       style={{
         height: 44,

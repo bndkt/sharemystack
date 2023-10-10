@@ -16,7 +16,7 @@ export function InstagramPost() {
         <p className="ml-4 text-3xl font-semibold">Share My Stack</p>
       </div>
       <div className="absolute bottom-12 left-12 w-1/2 text-8xl leading-tight">
-        <div className="mb-4">Available for pre-order now</div>
+        <div className="mb-4">Download on App Store now</div>
       </div>
       <Phone
         width={phoneWidth}
