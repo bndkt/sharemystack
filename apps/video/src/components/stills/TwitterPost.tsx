@@ -8,7 +8,6 @@ import producthunt from "../images/producthunt.svg";
 const { fontFamily } = loadFont();
 
 export function TwitterPost() {
-  const { width } = useVideoConfig();
   const phoneWidth = 450; // 1530
 
   return (
@@ -18,27 +17,27 @@ export function TwitterPost() {
         <p className="ml-4 text-3xl font-semibold">Share My Stack</p>
       </div>
       <div className="absolute bottom-12 left-12 w-1/3 text-8xl leading-tight">
-        <div className="mb-12">Launching in 7 days</div>
-        <img src={producthunt} className="h-24" />
+        <div>Only one more day</div>
+        <img src={producthunt} className="mt-12 h-24" />
       </div>
       {/* Center */}
       <Phone
         width={phoneWidth}
         screenshot="stack.png"
         className="absolute z-20 top-[150px]"
-        style={{ left: width / 2 - phoneWidth / 2 }}
+        style={{ right: phoneWidth + 48 }}
       />
       <Phone
         width={phoneWidth}
         screenshot="home.png"
         className="absolute z-30 top-[95px]"
-        style={{ right: width / 3 - phoneWidth / 2 }}
+        style={{ right: phoneWidth / 2 + 48 }}
       />
       <Phone
         width={phoneWidth}
         screenshot="share.png"
         className="absolute z-10 top-[150px]"
-        style={{ right: width / 5 - phoneWidth / 2 }}
+        style={{ right: 48 }}
       />
     </AbsoluteFill>
   );
