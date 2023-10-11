@@ -11,7 +11,7 @@ export type StackTypes = {
 export type Category = {
   name: string;
   iconName: string;
-  isComingSoon: boolean;
+  isComingSoon?: boolean;
   stackTypes: (keyof StackTypes)[];
 };
 
@@ -21,7 +21,7 @@ export type Categories = {
 
 export type Tool = {
   name: string;
-  color: string | null;
+  color?: string | null;
   website: string | null;
   appStore?: string | null;
   affiliateLink?: string;
