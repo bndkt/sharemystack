@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "scripts": {
     "clear": "rm -f bun.lockb && find ./ -type d -and \\( -name node_modules -or -name build -or -name dist \\) -exec rm -rf '{}' +",
-    "ncu": "bun x npm-check-updates -p bun -ws",
+    "ncu": "npx npm-check-updates -p bun -ui -ws",
     "build": "CI=1 turbo run build",
     "dev": "turbo run dev",
     "types": "turbo run types",
@@ -20,7 +20,7 @@
     "apps/*",
     "packages/*"
   ],
-  "packageManager": "bun@1.0.3",
+  "packageManager": "bun@1.0.6",
   "license": "UNLICENSED",
   "private": true
 }
