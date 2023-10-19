@@ -23,7 +23,7 @@ const config: ExpoConfig = {
   slug: "sharemystack",
   scheme,
   owner: "feldapp",
-  version: "1.0.7",
+  version: "1.0.8",
   orientation: "portrait",
   icon: "./assets/icon.png",
   userInterfaceStyle: "automatic",
