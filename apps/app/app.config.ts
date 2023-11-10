@@ -77,6 +77,7 @@ const config: ExpoConfig = {
       foregroundImage: "./assets/adaptive-icon.png",
       backgroundColor: "#ffffff",
     },
+    package: bundleIdentifier,
   },
   web: {
     favicon: "./assets/favicon.png",

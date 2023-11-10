@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "scripts": {
     "clear": "rm -f bun.lockb && find ./ -type d -and \\( -name node_modules -or -name build -or -name dist \\) -exec rm -rf '{}' +",
-    "ncu": "npx npm-check-updates -p bun -ui -ws",
+    "ncu": "bun x npm-check-updates -p bun -ui -ws",
     "build": "CI=1 turbo run build",
     "dev": "turbo run dev",
     "types": "turbo run types",
@@ -11,16 +11,16 @@
     "manypkg": "npx @manypkg/cli@latest check"
   },
   "dependencies": {
-    "esbuild": "0.19.4",
+    "esbuild": "0.19.5",
     "prettier": "3.0.3",
     "supabase": "1.100.1",
-    "turbo": "1.10.15"
+    "turbo": "1.10.16"
   },
   "workspaces": [
     "apps/*",
     "packages/*"
   ],
-  "packageManager": "bun@1.0.6",
+  "packageManager": "bun@1.0.7",
   "license": "UNLICENSED",
   "private": true
 }
