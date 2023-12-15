@@ -98,7 +98,6 @@ const config: ExpoConfig = {
       },
     ],
     "expo-apple-authentication",
-    "expo-localization",
     [
       "onesignal-expo-plugin",
       {
