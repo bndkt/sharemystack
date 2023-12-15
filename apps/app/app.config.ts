@@ -98,7 +98,7 @@ const config: ExpoConfig = {
       },
     ],
     "expo-apple-authentication",
-    [
+    /* [
       "onesignal-expo-plugin",
       {
         mode:
@@ -106,7 +106,7 @@ const config: ExpoConfig = {
             ? "production"
             : "development",
       },
-    ],
+    ], */
     [
       "expo-build-properties",
       {
