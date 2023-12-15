@@ -11,16 +11,16 @@
     "manypkg": "npx @manypkg/cli@latest check"
   },
   "dependencies": {
-    "esbuild": "0.19.5",
-    "prettier": "3.0.3",
-    "supabase": "1.100.1",
+    "esbuild": "0.19.9",
+    "prettier": "3.1.1",
+    "supabase": "1.123.4",
     "turbo": "1.10.16"
   },
   "workspaces": [
     "apps/*",
     "packages/*"
   ],
-  "packageManager": "bun@1.0.7",
+  "packageManager": "bun@1.0.18",
   "license": "UNLICENSED",
   "private": true
 }
