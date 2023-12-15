@@ -34,6 +34,11 @@ export const meta: MetaFunction = () => [
 ];
 
 export const links: LinksFunction = () => [
+  { rel: "preconnect", href: "https://fonts.gstatic.com" },
+  {
+    rel: "stylesheet",
+    href: "https://fonts.googleapis.com/css?family=Inter&display=swap",
+  },
   { rel: "stylesheet", href: styles },
   { rel: "apple-touch-icon", sizes: "180x180", href: "/apple-touch-icon.png" },
   {
@@ -41,7 +46,6 @@ export const links: LinksFunction = () => [
     type: "image/png",
     href: "/favicon.png",
   },
-  // { rel: "stylesheet", href: "/fonts/inter.woff2" },
 ];
 
 export default function App() {
