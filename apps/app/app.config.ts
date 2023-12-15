@@ -13,10 +13,6 @@ const scheme =
   process.env.EXPO_PUBLIC_APP_VARIANT === "production"
     ? "sharemystack"
     : "sharemystack-dev";
-const sentryProject =
-  process.env.EXPO_PUBLIC_APP_VARIANT === "production"
-    ? "sharemystack"
-    : "sharemystack-dev";
 
 const config: ExpoConfig = {
   name,
@@ -89,24 +85,13 @@ const config: ExpoConfig = {
     },
   },
   plugins: [
-    "sentry-expo",
     [
       "expo-router",
       {
         origin: "https://sharemystack.com",
-        // asyncRoutes: "development",
       },
     ],
     "expo-apple-authentication",
-    /* [
-      "onesignal-expo-plugin",
-      {
-        mode:
-          process.env.EXPO_PUBLIC_APP_VARIANT === "production"
-            ? "production"
-            : "development",
-      },
-    ], */
     [
       "expo-build-properties",
       {
@@ -130,18 +115,6 @@ const config: ExpoConfig = {
       },
     ],
   ],
-  hooks: {
-    postPublish: [
-      /* {
-        file: "sentry-expo/upload-sourcemaps",
-        config: {
-          organization: "feldapp",
-          project: sentryProject,
-          setCommits: true,
-        },
-      }, */
-    ],
-  },
   runtimeVersion: {
     policy: "sdkVersion",
   },
