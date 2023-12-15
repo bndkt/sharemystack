@@ -2,7 +2,7 @@ name: Web Preview
 on:
   push:
     branches:
-      - main
+      - dev
     paths:
       - apps/web/**/*
   pull_request:
@@ -15,7 +15,7 @@ jobs:
       url: ${{ steps.cloudflare-publish.outputs.url }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       - name: Setup Bun
         uses: oven-sh/setup-bun@v1
       - name: Install dependencies
