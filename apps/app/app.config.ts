@@ -23,7 +23,7 @@ const config: ExpoConfig = {
   slug: "sharemystack",
   scheme,
   owner: "feldapp",
-  version: "1.0.8",
+  version: "1.1.0",
   orientation: "portrait",
   icon: "./assets/icon.png",
   userInterfaceStyle: "automatic",
@@ -98,8 +98,7 @@ const config: ExpoConfig = {
       },
     ],
     "expo-apple-authentication",
-    "expo-localization",
-    [
+    /* [
       "onesignal-expo-plugin",
       {
         mode:
@@ -107,7 +106,7 @@ const config: ExpoConfig = {
             ? "production"
             : "development",
       },
-    ],
+    ], */
     [
       "expo-build-properties",
       {
