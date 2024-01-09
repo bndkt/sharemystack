@@ -3,15 +3,16 @@
   "version": "0.0.1",
   "scripts": {
     "clear": "rm -f bun.lockb && find ./ -type d -and \\( -name node_modules -or -name build -or -name dist \\) -exec rm -rf '{}' +",
-    "ncu": "bun x npm-check-updates -p bun -ui -ws",
+    "ncu": "ncu",
     "build": "CI=1 turbo run build",
     "dev": "turbo run dev",
     "types": "turbo run types",
     "lint": "turbo run lint",
-    "manypkg": "npx @manypkg/cli@latest check"
+    "manypkg": "manypkg check"
   },
   "dependencies": {
-    "esbuild": "0.19.11",
+    "@manypkg/cli": "0.21.1",
+    "npm-check-updates": "16.14.12",
     "prettier": "3.1.1",
     "supabase": "1.127.4",
     "turbo": "1.11.3"
