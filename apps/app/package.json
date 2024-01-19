@@ -7,7 +7,7 @@
     "android": "expo run:android",
     "ios": "expo run:ios",
     "web": "expo start --web --clear",
-    "doc": "expo install --check",
+    "doc": "bun x expo-doctor@latest",
     "prebuild": "expo prebuild --platform android --clean",
     "build:simulator": "eas build --profile simulator --platform ios --local",
     "build:simulator:android": "eas build --profile simulator --platform android --local",
