@@ -7,4 +7,5 @@ export const config = {
   vexoApiKey: process.env.EXPO_PUBLIC_VEXO_API_KEY as string,
   supabaseUrl: process.env.EXPO_PUBLIC_SUPABASE_URL as string,
   supabaseAnonKey: process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY as string,
+  sanityProjectId: process.env.EXPO_PUBLIC_SANITY_PROJECT_ID as string,
 };
