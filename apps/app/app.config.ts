@@ -28,9 +28,6 @@ const config: ExpoConfig = {
     resizeMode: "contain",
     backgroundColor: "#f43f5e",
   },
-  developmentClient: {
-    silentLaunch: true,
-  },
   updates: {
     enabled: true,
     url: `https://u.expo.dev/${projectId}`,
@@ -50,23 +47,9 @@ const config: ExpoConfig = {
     ],
     appStoreUrl: "https://apps.apple.com/us/app/share-my-stack/id6450111644",
     infoPlist: {
-      NSLocationWhenInUseUsageDescription:
-        "Share My Stack uses your location to help you connect with other users nearby and to show you relevant local content.", // Note: The app doesn't use location information, but this has to be included because the OneSignal plugin includes location access logic
       NSCameraUsageDescription:
         "Share My Stack app requires access to your photo library to save generated graphics, enabling you to view and share them at your convenience.",
-      LSApplicationQueriesSchemes: [
-        "itms",
-        "itms-apps",
-        "whatsapp",
-        "instagram",
-        "instagram-stories",
-        "fb",
-        "facebook-stories",
-      ],
     },
-  },
-  experiments: {
-    tsconfigPaths: true,
   },
   android: {
     adaptiveIcon: {
@@ -85,12 +68,6 @@ const config: ExpoConfig = {
     },
   },
   plugins: [
-    [
-      "expo-router",
-      {
-        origin: "https://sharemystack.com",
-      },
-    ],
     "expo-apple-authentication",
     [
       "expo-build-properties",

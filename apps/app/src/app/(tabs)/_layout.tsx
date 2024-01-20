@@ -2,7 +2,7 @@ import {
   Home,
   Layers,
   Settings,
-  UserCircle,
+  UserRound,
   Wrench,
 } from "@tamagui/lucide-icons";
 import { Tabs } from "expo-router";
@@ -23,7 +23,7 @@ export default function Layout() {
         options={{
           title: "Profile",
           headerShown: false,
-          tabBarIcon: ({ color }) => <UserCircle color={color} />,
+          tabBarIcon: ({ color }) => <UserRound color={color} />,
         }}
       />
       <Tabs.Screen
