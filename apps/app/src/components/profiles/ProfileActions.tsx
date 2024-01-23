@@ -27,7 +27,7 @@ export function ProfileActions({ profile }: { profile: Profile }) {
   }
 
   return (
-    <XStack space="$3">
+    <XStack gap="$3">
       {user && (
         <Button
           icon={

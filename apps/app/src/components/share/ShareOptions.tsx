@@ -20,7 +20,7 @@ export function ShareOptions({
 
   return (
     <XStack gap="$3" alignItems="center" padding="$3" flexWrap="wrap">
-      <XStack space="$3" alignItems="center">
+      <XStack gap="$3" alignItems="center">
         <Switch
           id="showTitleSwitch"
           size="$1"
@@ -39,7 +39,7 @@ export function ShareOptions({
           Include title
         </Label>
       </XStack>
-      <XStack space="$3" alignItems="center">
+      <XStack gap="$3" alignItems="center">
         <Switch
           id="includeHandleSwitch"
           size="$1"
@@ -58,7 +58,7 @@ export function ShareOptions({
           Personalize title
         </Label>
       </XStack>
-      <XStack space="$3" alignItems="center">
+      <XStack gap="$3" alignItems="center">
         <Switch
           id="darkModeSwitch"
           size="$1"
