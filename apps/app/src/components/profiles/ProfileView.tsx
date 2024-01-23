@@ -26,7 +26,7 @@ export function ProfileView({
         paddingBottom="$3"
         borderBottomColor="$borderColor"
         borderBottomWidth="$1"
-        space="$3"
+        gap="$3"
       >
         {/* <YStack paddingHorizontal="$3">
           <H3>{profile.name}</H3>
@@ -44,7 +44,7 @@ export function ProfileView({
           </Unspaced>
         )}
         <XStack paddingHorizontal="$3" marginTop="$3">
-          <XStack flexGrow={1} space="$3">
+          <XStack flexGrow={1} gap="$3">
             {profile.website && (
               <Button
                 onPress={() => Linking.openURL(profile.website)}

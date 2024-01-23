@@ -17,7 +17,7 @@ export const SyncContext = createContext<{
   isSyncing: boolean;
   queueSync: ({
     reset,
-    broadcast = true,
+    broadcast,
   }?: {
     reset?: boolean;
     broadcast?: boolean;
@@ -38,6 +38,10 @@ export function SyncProvider({ children }: { children: ReactNode }) {
   const [isSyncQueued, setIsSyncQueued] = useState(false);
   const [channel, setChannel] = useState<RealtimeChannel>();
   const { user } = useAuth();
+
+  useEffect(() => {
+    queueSync();
+  }, [user]);
 
   // Subscribe to broadcasts
   useEffect(() => {
@@ -62,7 +66,12 @@ export function SyncProvider({ children }: { children: ReactNode }) {
   }, [user]);
 
   // Send broadcast
-  function sendBroadcast(payload: { [key: string]: any; type: string }) {
+  function sendBroadcast(payload: {
+    type: "broadcast" | "presence" | "postgres_changes";
+    event: string;
+    payload?: any;
+    [key: string]: any;
+  }) {
     if (channel) {
       console.log("♻️ Sending broadcast");
       channel.send(payload).then((response) => {

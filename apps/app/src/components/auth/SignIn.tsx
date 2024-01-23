@@ -11,7 +11,7 @@ export function SignIn({ standalone }: { standalone?: boolean }) {
     <YStack
       padding="$3"
       paddingTop={standalone ? inlets.top : undefined}
-      space="$3"
+      gap="$3"
       fullscreen
       justifyContent="center"
     >

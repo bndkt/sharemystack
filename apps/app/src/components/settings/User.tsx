@@ -25,9 +25,9 @@ function User() {
   }
 
   return (
-    <YStack padding="$3" space="$3">
+    <YStack padding="$3" gap="$3">
       <Text>Email: {user?.email}</Text>
-      <XStack alignItems="center" space="$3">
+      <XStack alignItems="center" gap="$3">
         <Switch
           id="includeHandleSwitch"
           size="$4"

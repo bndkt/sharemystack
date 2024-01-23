@@ -1,4 +1,4 @@
-import { Edit, Share as ShareIcon } from "@tamagui/lucide-icons";
+import { FileEdit, Share as ShareIcon } from "@tamagui/lucide-icons";
 import { useState } from "react";
 import { Share } from "react-native";
 import { Button, H3, H4, XStack, YStack } from "tamagui";
@@ -47,8 +47,8 @@ export function MyProfileHeader({ profile }: { profile: Profile }) {
         <H3>{profile.name}</H3>
         <H4>@{profile.slug}</H4>
       </YStack>
-      <XStack padding="$3" space="$3">
-        <Button icon={<Edit size="$1.5" />} unstyled onPress={handleEdit} />
+      <XStack padding="$3" gap="$3">
+        <Button icon={<FileEdit size="$1.5" />} unstyled onPress={handleEdit} />
         <Button
           icon={<ShareIcon size="$1.5" />}
           unstyled
