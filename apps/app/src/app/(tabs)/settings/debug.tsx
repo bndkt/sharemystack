@@ -41,7 +41,7 @@ export default function Debug() {
       <Button onPress={() => reset()} icon={<DatabaseBackup size="$1" />}>
         Reset local database
       </Button>
-      <YStack space="$3" flexGrow={1}>
+      <YStack gap="$3" flexGrow={1}>
         {Application.nativeBuildVersion && (
           <Text textAlign="center" color="$gray10">
             Build: {Application.nativeBuildVersion} ({Updates.runtimeVersion}

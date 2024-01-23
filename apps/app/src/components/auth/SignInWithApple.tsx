@@ -3,9 +3,11 @@ import { useThemeName } from "tamagui";
 
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/lib/supabase";
+import { useSync } from "@/hooks/useSync";
 
 export function SignInWithApple() {
   const { signIn } = useAuth();
+  const { reset } = useSync();
   const theme = useThemeName();
 
   return (
@@ -39,6 +41,7 @@ export function SignInWithApple() {
               console.error(error);
             } else {
               signIn(data);
+              reset();
             }
           }
         } catch (e: any) {

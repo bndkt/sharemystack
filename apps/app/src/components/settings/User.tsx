@@ -7,9 +7,11 @@ import { DeleteUserButton } from "./DeleteUserButton";
 import { withAuth } from "@/components/auth/withAuth";
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/lib/supabase";
+import { useSync } from "@/hooks/useSync";
 
 function User() {
   const { user, signOut } = useAuth();
+  const { reset } = useSync();
   const postHog = usePostHog();
   const [isBetaUser, setIsBetaUser] = useState<boolean>(
     user?.user_metadata?.is_beta_user ?? false,
@@ -22,6 +24,11 @@ function User() {
       data: { is_beta_user },
     });
     setIsBetaUser(is_beta_user);
+  }
+
+  function handleSignOut() {
+    signOut();
+    reset();
   }
 
   return (
@@ -45,7 +52,7 @@ function User() {
         </Label>
       </XStack>
       <DeleteUserButton />
-      <Button onPress={signOut}>Sign out</Button>
+      <Button onPress={handleSignOut}>Sign out</Button>
     </YStack>
   );
 }

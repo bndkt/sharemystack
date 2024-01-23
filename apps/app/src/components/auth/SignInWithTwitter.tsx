@@ -7,6 +7,7 @@ import { Button } from "tamagui";
 
 import { useAuth } from "@/hooks/useAuth";
 import { supabase } from "@/lib/supabase";
+import { useSync } from "@/hooks/useSync";
 
 WebBrowser.maybeCompleteAuthSession();
 
@@ -15,6 +16,7 @@ const redirectTo = makeRedirectUri();
 export function SignInWithTwitter() {
   const [authUrl, setAuthUrl] = useState<string | null>(null);
   const { signIn } = useAuth();
+  const { reset } = useSync();
 
   async function prepareAuth() {
     const { data, error } = await supabase.auth.signInWithOAuth({
@@ -61,6 +63,7 @@ export function SignInWithTwitter() {
           console.error(error);
         } else {
           signIn(data);
+          reset();
         }
       }
     }
